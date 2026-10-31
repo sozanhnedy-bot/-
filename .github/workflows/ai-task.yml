@@ -1,0 +1,81 @@
+name: Run owner website task
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: Website task request (do not include secrets or private data)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: site-publish
+  cancel-in-progress: false
+
+jobs:
+  task-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    timeout-minutes: 20
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+      TASK_PROMPT: ${{ inputs.task }}
+    steps:
+      - name: Check out public source
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install project dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Validate owner configuration without printing credentials
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then echo "::error::Add OPENAI_API_KEY in repository Actions secrets."; exit 1; fi
+          if [ -z "$OPENAI_MODEL" ]; then echo "::error::Add OPENAI_MODEL in repository Actions variables."; exit 1; fi
+
+      - name: Propose, validate, and publish the requested site change
+        run: python scripts/run_ai_task.py
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Build static site
+        run: python scripts/build_site.py --output _site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy updated site
+        id: deployment
+        uses: actions/deploy-pages@v4

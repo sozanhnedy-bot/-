@@ -1,0 +1,51 @@
+name: Daily social publishing
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: social-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: ${{ vars.SOCIAL_AUTOPUBLISH == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SOCIAL_AUTOPUBLISH: ${{ vars.SOCIAL_AUTOPUBLISH }}
+      X_USER_ACCESS_TOKEN: ${{ secrets.X_USER_ACCESS_TOKEN }}
+      FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+      FB_PAGE_ID: ${{ vars.FB_PAGE_ID }}
+      META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+    steps:
+      - name: Check out public source
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Publish one report or current trend digest per configured platform
+        run: python scripts/publish_social.py
+
+      - name: Save successful publication state
+        if: always()
+        run: |
+          if [ ! -f data/social-publish-state.json ] || git diff --quiet -- data/social-publish-state.json; then
+            echo "No successful social posts to record."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/social-publish-state.json
+          git commit -m "Record daily social publication state"
+          git push origin HEAD:main

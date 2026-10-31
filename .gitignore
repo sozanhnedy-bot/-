@@ -6,3 +6,13 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
+android-app/.gradle/
+android-app/build/
+android-app/app/build/
+android-app/local.properties
+*.apk
+*.jks
+*.keystore
+assets/story-finswimming.jpg
+assets/story-morocco-stadium.jpg
+assets/story-yemen-diplomacy.jpg

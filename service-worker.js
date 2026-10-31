@@ -1,65 +1,49 @@
-const CACHE_NAME = "threads-documentary-v1";
+const CACHE_NAME = "threads-doc-news-v8";
 const ROOT = new URL("./", self.location.href);
-const NEWS_URL = new URL("data/news.json", ROOT).href;
+const DATA_URLS = ["data/news.json", "data/reports.json", "data/trending.json", "data/threads_signals.json"].map((path) => new URL(path, ROOT).href);
 const SHELL_URLS = [
   ROOT.href,
   new URL("index.html", ROOT).href,
+  new URL("task-chat.html", ROOT).href,
+  new URL("task-chat.js", ROOT).href,
   new URL("styles.css", ROOT).href,
   new URL("app.js", ROOT).href,
+  new URL("article.js", ROOT).href,
+  new URL("threads-signals.js", ROOT).href,
   new URL("manifest.webmanifest", ROOT).href,
-  new URL("assets/channel-logo.png", ROOT).href,
+  new URL("assets/brand-mark.png", ROOT).href,
   new URL("assets/app-icon-192.png", ROOT).href,
   new URL("assets/app-icon-512.png", ROOT).href,
-  NEWS_URL,
+  new URL("assets/story-finswimming.webp", ROOT).href,
+  new URL("assets/story-morocco-stadium.webp", ROOT).href,
+  new URL("assets/story-yemen-diplomacy.webp", ROOT).href,
+  new URL("assets/story-finswimming-social.jpg", ROOT).href,
+  new URL("assets/story-morocco-stadium-social.jpg", ROOT).href,
+  new URL("assets/story-yemen-diplomacy-social.jpg", ROOT).href,
+  ...DATA_URLS,
 ];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(SHELL_URLS))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_URLS)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))).then(() => self.clients.claim()));
 });
 
 self.addEventListener("fetch", (event) => {
   const request = event.request;
   if (request.method !== "GET" || new URL(request.url).origin !== self.location.origin) return;
-
-  if (request.url === NEWS_URL) {
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          if (response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-          }
-          return response;
-        })
-        .catch(async () => (await caches.match(request)) || new Response("{\"schema_version\":1,\"updated_at\":null,\"items\":[]}", {
-          headers: { "Content-Type": "application/json; charset=utf-8" },
-        }))
-    );
+  const key = new URL(request.url).href.split("?")[0];
+  if (DATA_URLS.includes(key)) {
+    event.respondWith(fetch(request).then((response) => {
+      if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(request, response.clone()));
+      return response;
+    }).catch(async () => (await caches.match(request)) || new Response("{}", {headers:{"Content-Type":"application/json; charset=utf-8"}})));
     return;
   }
-
-  event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached;
-      return fetch(request).then((response) => {
-        if (response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-        }
-        return response;
-      });
-    })
-  );
+  event.respondWith(caches.match(request).then((cached) => cached || fetch(request).then((response) => {
+    if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(request, response.clone()));
+    return response;
+  })));
 });

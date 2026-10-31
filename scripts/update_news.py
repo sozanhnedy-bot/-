@@ -27,7 +27,7 @@ MAX_FEED_BYTES = 1_500_000
 MAX_EXCERPT_CHARS = 4_000
 MAX_SUMMARY_CHARS = 600
 ALLOWED_FEED_HOSTS = {"news.google.com"}
-RSS_NO_DETAILS = "لا تتوفر تفاصيل إضافية في خلاصة المصدر؛ افتح رابط المصدر لقراءة الخبر."
+RSS_NO_DETAILS = "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط."
 
 
 class _TextExtractor(HTMLParser):
@@ -232,7 +232,7 @@ def build_update(
             url = item.get("url", "")
             if not url or url in known_urls or url in seen_urls:
                 continue
-            if not item.get("title") or not item.get("excerpt"):
+            if not item.get("title"):
                 continue
             seen_urls.add(url)
             candidates.append(item)
@@ -251,7 +251,7 @@ def build_update(
     additions: list[dict] = []
     for item in candidates[:limit]:
         try:
-            summary = clean_text(summarizer(item))
+            summary = RSS_NO_DETAILS if not clean_text(item.get("excerpt", "")) else clean_text(summarizer(item))
         except Exception as exc:
             warnings.append(f"تعذر تلخيص خبر: {type(exc).__name__}")
             continue
@@ -322,13 +322,15 @@ def main() -> int:
         return 0
 
     api_key = os.environ.get("OPENAI_API_KEY", "").strip()
-    model = os.environ.get("OPENAI_MODEL", "gpt-6.1-sol").strip()
-    if api_key:
+    model = os.environ.get("OPENAI_MODEL", "").strip()
+    if api_key and model:
         from openai import OpenAI
         client = OpenAI(api_key=api_key)
         summarizer = lambda item: summarize_news(client, item, model)
         summary_type = "ai_summary"
     else:
+        if api_key and not model:
+            print("OPENAI_MODEL is not configured; keeping to safe RSS excerpts.", file=sys.stderr)
         summarizer = summarize_rss_excerpt
         summary_type = "source_excerpt"
 

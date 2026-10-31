@@ -1,23 +1,13 @@
 {
-  "max_items_per_feed": 12,
+  "max_items_per_feed": 8,
   "feeds": [
-    {
-      "name": "Google News — العالم",
-      "region": "world",
-      "url": "https://news.google.com/rss/search?q=world&hl=ar&gl=US&ceid=US:ar",
-      "enabled": true
-    },
-    {
-      "name": "Google News — العالم العربي",
-      "region": "arab",
-      "url": "https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85+%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A&hl=ar&gl=EG&ceid=EG:ar",
-      "enabled": true
-    },
-    {
-      "name": "Google News Egypt Arabic RSS",
-      "region": "egypt",
-      "url": "https://news.google.com/rss?hl=ar&gl=EG&ceid=EG:ar",
-      "enabled": true
-    }
+    {"name":"Google News — العالم بالعربية","region":"arab","url":"https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
+    {"name":"Google News — العالم بالإنجليزية","region":"world","url":"https://news.google.com/rss/search?q=world%20news&hl=en&gl=US&ceid=US:en","enabled":true},
+    {"name":"Google News — الشرق الأوسط","region":"arab","url":"https://news.google.com/rss/search?q=Middle%20East%20news&hl=en&gl=GB&ceid=GB:en","enabled":true},
+    {"name":"Google News — مصر","region":"egypt","url":"https://news.google.com/rss?hl=ar&gl=EG&ceid=EG:ar","enabled":true},
+    {"name":"Google News — الخليج","region":"arab","url":"https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC&hl=ar&gl=SA&ceid=SA:ar","enabled":true},
+    {"name":"Google News — الاقتصاد","region":"world","url":"https://news.google.com/rss/search?q=%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
+    {"name":"Google News — الرياضة","region":"world","url":"https://news.google.com/rss/search?q=%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
+    {"name":"Google News — التكنولوجيا بالإنجليزية","region":"world","url":"https://news.google.com/rss/search?q=technology%20news&hl=en&gl=US&ceid=US:en","enabled":true}
   ]
 }

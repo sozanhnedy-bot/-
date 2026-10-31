@@ -4,9 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  workflow_run:
-    workflows: [Update news summaries]
-    types: [completed]
 
 permissions:
   contents: read
@@ -14,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: github-pages
+  group: site-publish
   cancel-in-progress: false
 
 jobs:
@@ -28,18 +25,25 @@ jobs:
       - name: Check out public source
         uses: actions/checkout@v4
 
-      - name: Prepare static site artifact
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh trend snapshots when authorized
+        env:
+          THREADS_USER_ACCESS_TOKEN: ${{ secrets.THREADS_USER_ACCESS_TOKEN }}
         run: |
-          mkdir -p _site/assets _site/data
-          cp index.html app.js styles.css manifest.webmanifest service-worker.js _site/
-          cp assets/channel-logo.png assets/app-icon-192.png assets/app-icon-512.png _site/assets/
-          cp data/news.json _site/data/
-          touch _site/.nojekyll
+          python scripts/update_trends.py
+          python scripts/update_threads_signals.py
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
+
+      - name: Build static site
+        run: python scripts/build_site.py --output _site
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3

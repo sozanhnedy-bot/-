@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime, timezone
 
-from scripts.update_news import build_update, clean_text, parse_feed
+from scripts.update_news import RSS_NO_DETAILS, build_update, clean_text, parse_feed
 
 
 NOW = datetime(2026, 10, 31, 0, 0, tzinfo=timezone.utc)
@@ -79,6 +79,19 @@ class NewsUpdateTests(unittest.TestCase):
         )
         self.assertFalse(changed)
         self.assertEqual(data["items"], existing["items"])
+
+    def test_title_only_rss_item_becomes_safe_brief_without_ai_call(self):
+        item = {**self.entries[0], "excerpt": ""}
+        data, changed, _ = build_update(
+            {"schema_version": 1, "updated_at": None, "items": []},
+            [self.feed],
+            lambda *_: [item],
+            lambda _item: self.fail("summarizer must not be called without an excerpt"),
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["summary"], RSS_NO_DETAILS)
+        self.assertEqual(data["items"][0]["summary_type"], "source_notice")
 
     def test_all_feed_failures_preserve_existing_data(self):
         existing = {"schema_version": 1, "updated_at": "previous", "items": [{"url": "https://example.com", "summary": "قديم"}]}

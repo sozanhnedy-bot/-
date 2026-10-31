@@ -3,82 +3,62 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#102650">
-  <meta name="application-name" content="ثريدز وثائقي">
+  <meta name="theme-color" content="#14283f">
+  <meta name="application-name" content="Threads Documentary News">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="description" content="آخر الأخبار العالمية والعربية والمصرية بملخصات عربية محايدة ومصادر واضحة.">
-  <title>ثريدز وثائقي | Threads Documentary</title>
+  <meta name="description" content="Threads Documentary News — مشروع إخباري مستقل مرتبط بحساب مالكه على Threads عند التفويض، ويقدم تقارير عربية داخل الموقع ومؤشرات ترند متعددة المصادر.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Threads Documentary News | أخبار وثائقية مستقلة">
+  <meta property="og:description" content="الصورة الأوسع، في تقرير عربي واضح ومسنَد.">
+  <meta property="og:image" content="https://sozanhnedy-bot.github.io/-/assets/brand-mark.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sozanhnedy-bot.github.io/-/assets/brand-mark.png">
+  <title>Threads Documentary News | أخبار وثائقية مستقلة</title>
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./assets/app-icon-192.png">
-  <link rel="icon" href="./assets/channel-logo.png" type="image/png">
+  <link rel="icon" href="./assets/brand-mark.png" type="image/png">
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./app.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">انتقل إلى الأخبار</a>
-  <header class="site-header">
-    <div class="brand-wrap">
-      <img class="brand-logo" src="./assets/channel-logo.png" alt="شعار ثريدز وثائقي">
-      <div class="brand-copy">
-        <p class="brand-kicker">THREADS DOCUMENTARY</p>
-        <h1>ثريدز وثائقي</h1>
-        <p class="brand-subtitle">أخبار موثقة، بملخص واضح ومحايد</p>
-      </div>
-    </div>
-    <div class="header-status" aria-live="polite">
-      <span class="status-dot" aria-hidden="true"></span>
-      <span id="update-status">جارٍ تحميل آخر التحديثات</span>
+  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="./" aria-label="Threads Documentary News — الرئيسية">
+        <img class="brand-mark" src="./assets/brand-mark.png" alt="">
+        <span class="brand-wordmark"><span class="brand-kicker">مشروع مستقل مرتبط بحساب المالك عند التفويض</span><span class="brand-name">Threads Documentary News</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="التنقل الرئيسي">
+        <a href="#latest">أحدث التقارير</a><a href="#trending">الترند الآن</a><a href="#about">منهجنا</a><a href="./task-chat.html">مساحة المهام</a>
+      </nav>
+      <div class="live-status" aria-live="polite"><span class="live-dot" aria-hidden="true"></span><span id="update-status">جارٍ تحميل التحديثات</span></div>
     </div>
   </header>
-
+  <div class="breaking-strip" role="status" aria-live="polite">
+    <span class="strip-label">مرصد الأخبار</span>
+    <span class="strip-copy" id="breaking-copy">نرصد الأخبار من خلاصات عربية وعالمية، ونطابقها مع مؤشرات الترند.</span>
+    <button id="alerts-toggle" class="alert-toggle" type="button">فعّل تنبيه الترند</button>
+    <span class="strip-refresh">تحديث الموقع كل 10 دقائق</span>
+  </div>
   <main id="main" class="page-shell">
-    <section class="intro" aria-labelledby="page-title">
-      <div>
-        <p class="eyebrow">موجز الأخبار</p>
-        <h2 id="page-title">الصورة الكاملة، من مصادرها</h2>
-        <p class="intro-copy">ملخصات عربية موجزة مع رابط المصدر الأصلي. تُعرض الأخبار بحسب المنطقة، وتُحدّث آليًا عندما تكون خدمة التحديث متاحة.</p>
-      </div>
-      <label class="search-box">
-        <span class="sr-only">ابحث في الأخبار</span>
-        <input id="search-input" type="search" placeholder="ابحث في العناوين والملخصات" autocomplete="off">
-        <span class="search-icon" aria-hidden="true">⌕</span>
-      </label>
+    <div class="edition-row"><span id="edition-date">نسخة اليوم</span><span id="last-updated">آخر تحديث: —</span></div>
+    <section id="top-stories" class="top-stories" aria-label="أبرز التقارير"><div class="loading-card" role="status">جارٍ تجهيز التقارير…</div></section>
+    <section id="trending" class="trend-section" aria-labelledby="trend-title">
+      <div class="section-heading"><div><p class="eyebrow">إشارات من الميدان</p><h2 id="trend-title">الترند الآن</h2></div><span class="section-rule" aria-hidden="true"></span><span id="trend-updated" class="muted-label">يتحدث مع وصول مصادر جديدة</span></div>
+      <div id="trending-list" class="trending-list"><p class="loading-card">جارٍ تحليل حداثة الأخبار وتكرارها…</p></div>
     </section>
-
-    <nav class="filter-bar" aria-label="تصفية الأخبار حسب المنطقة">
-      <button class="filter-button is-active" type="button" data-region="all" aria-pressed="true">الكل</button>
-      <button class="filter-button" type="button" data-region="world" aria-pressed="false">العالم</button>
-      <button class="filter-button" type="button" data-region="arab" aria-pressed="false">العالم العربي</button>
-      <button class="filter-button" type="button" data-region="egypt" aria-pressed="false">مصر</button>
-    </nav>
-
-    <section class="feed-heading" aria-live="polite">
-      <div>
-        <h2>أحدث الأخبار</h2>
-        <p id="feed-count">يتم تجهيز الموجز</p>
-      </div>
-      <span id="last-updated" class="last-updated"></span>
+    <section id="latest" class="latest-section" aria-labelledby="latest-title">
+      <div class="section-heading"><div><p class="eyebrow">قراءة من داخل الموقع</p><h2 id="latest-title">أحدث التقارير</h2><p id="feed-count" class="muted-label">يتم تجهيز الموجز</p></div><label class="search-box"><span class="sr-only">ابحث في التقارير</span><input id="search-input" type="search" placeholder="ابحث في العناوين والتفاصيل" autocomplete="off"><span aria-hidden="true">⌕</span></label></div>
+      <nav class="filter-bar" aria-label="تصفية التقارير حسب المنطقة"><button class="filter-button is-active" type="button" data-region="all" aria-pressed="true">كل المناطق</button><button class="filter-button" type="button" data-region="world" aria-pressed="false">العالم</button><button class="filter-button" type="button" data-region="arab" aria-pressed="false">العالم العربي</button><button class="filter-button" type="button" data-region="egypt" aria-pressed="false">مصر</button></nav>
+      <div id="news-list" class="news-grid" aria-label="التقارير"></div>
+      <div id="empty-state" class="empty-state" hidden><span class="empty-symbol" aria-hidden="true">T</span><h3>لا توجد تقارير مطابقة</h3><p>جرّب كلمة بحث مختلفة أو اختر منطقة أخرى.</p></div>
     </section>
-
-    <section id="news-list" class="news-list" aria-label="الأخبار">
-      <div class="loading-card" role="status">جارٍ تحميل الأخبار…</div>
+    <section id="latest-briefs" class="briefs-section" aria-labelledby="briefs-title" hidden>
+      <div class="section-heading"><div><p class="eyebrow">من خلاصات RSS</p><h2 id="briefs-title">أخبار موجزة داخل الموقع</h2><p class="briefs-note">موجز أولي فقط؛ لا يظهر كرابط خارجي ولا يُقدَّم كتقرير كامل قبل اكتمال التحقق التحريري.</p></div><span class="section-rule" aria-hidden="true"></span></div>
+      <div id="briefs-list" class="briefs-grid" aria-label="أخبار موجزة داخل الموقع"></div>
     </section>
-
-    <section id="empty-state" class="empty-state" hidden>
-      <div class="empty-mark" aria-hidden="true">ث</div>
-      <h3>لا توجد أخبار مطابقة الآن</h3>
-      <p>جرّب تغيير المنطقة أو كلمة البحث. يعود الموجز للظهور بعد أول تحديث ناجح.</p>
-    </section>
-
-    <aside class="editorial-note">
-      <span class="note-mark" aria-hidden="true"></span>
-      <p>الملخصات موجزة وتعتمد على البيانات المتاحة في الخلاصة الإخبارية. راجع المصدر الأصلي للتفاصيل والسياق الكامل.</p>
-    </aside>
+    <section id="about" class="editorial-note" aria-label="منهجية التحرير"><span class="note-mark" aria-hidden="true">●</span><div><h2>خبر واضح، مصدر معروف</h2><p>نجمع الأخبار من خلاصات عربية وعالمية متعددة، ونرصد الترند عبر Google Trends. عند تفعيل صلاحية البحث الرسمية نعرض إشارة مجمعة من Threads، لا نصوص منشورات الناس. نذكر مصادر الأخبار بأسمائها ونكتب التقرير داخل الموقع؛ لا نعيد توجيه القارئ إلى مواقع أخرى. الأخبار التي لا تملك تقريرًا مكتملًا تظهر كموجز RSS داخلي واضح، ولا تُقدّم كتقرير كامل. الصور الموسومة «صورة توضيحية» ليست صورًا فوتوغرافية من موقع الحدث. زر المشاركة هنا يدوي؛ والنشر اليومي على X وFacebook مسار منفصل يحتاج ربط الحسابين وتفعيله. نشر YouTube يجب أن ينتظر تنبيه المالك وموافقته، لكن مسار الموافقة والرفع غير مفعّل بعد. المشروع مستقل ولا يمثل خدمة Meta الرسمية.</p></div></section>
   </main>
-
-  <footer class="site-footer">
-    <span>ثريدز وثائقي <span lang="en" dir="ltr">· Threads Documentary</span></span>
-    <span>كل الحقوق للمصادر الأصلية. تُذكر المصادر مع كل خبر.</span>
-  </footer>
+  <footer class="site-footer"><div class="footer-brand">Threads Documentary News</div><p>أخبار وثائقية مستقلة · يُذكر المصدر مع كل تقرير · تحديث آلي دوري</p><a href="./task-chat.html">مساحة المهام</a></footer>
 </body>
 </html>

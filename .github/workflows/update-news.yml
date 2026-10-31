@@ -1,4 +1,4 @@
-name: Update news summaries
+name: Refresh news and trends
 
 on:
   schedule:
@@ -7,16 +7,27 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: news-feed-update
+  group: site-publish
   cancel-in-progress: false
 
 jobs:
   refresh:
-    if: ${{ vars.AUTOMATION_ENABLED == 'true' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    timeout-minutes: 15
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+      THREADS_USER_ACCESS_TOKEN: ${{ secrets.THREADS_USER_ACCESS_TOKEN }}
+      X_TRENDS_BEARER_TOKEN: ${{ secrets.X_TRENDS_BEARER_TOKEN }}
+      X_TRENDS_WOEID: ${{ vars.X_TRENDS_WOEID }}
+      X_TRENDS_ENABLED: ${{ vars.X_TRENDS_ENABLED }}
     steps:
       - name: Check out public source
         uses: actions/checkout@v4
@@ -31,23 +42,44 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Fetch RSS and update public news data
+      - name: Fetch news from configured feeds
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: gpt-6.1-sol
           MAX_NEW_SUMMARIES_PER_RUN: "3"
           MAX_SUMMARIES_PER_DAY: "30"
           MAX_STORED_ITEMS: "150"
         run: python scripts/update_news.py
 
-      - name: Commit updated feed when changed
+      - name: Fetch current Google Trends
+        run: python scripts/update_trends.py
+
+      - name: Search public Threads posts for top trends when authorized
+        run: python scripts/update_threads_signals.py
+
+      - name: Commit changed news and trend snapshots
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/news.json
+          git add data/news.json data/trending.json data/threads_signals.json
           if git diff --cached --quiet; then
-            echo "No news changes to commit."
-            exit 0
+            echo "No public data changes."
+          else
+            git commit -m "Update public news feed"
+            git push origin HEAD:main
           fi
-          git commit -m "Update public news feed"
-          git push
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Build static site
+        run: python scripts/build_site.py --output _site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy site
+        id: deployment
+        uses: actions/deploy-pages@v4
