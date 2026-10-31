@@ -1,0 +1,23 @@
+{
+  "max_items_per_feed": 12,
+  "feeds": [
+    {
+      "name": "Google News — العالم",
+      "region": "world",
+      "url": "https://news.google.com/rss/search?q=world&hl=ar&gl=US&ceid=US:ar",
+      "enabled": true
+    },
+    {
+      "name": "Google News — العالم العربي",
+      "region": "arab",
+      "url": "https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85+%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A&hl=ar&gl=EG&ceid=EG:ar",
+      "enabled": true
+    },
+    {
+      "name": "Google News Egypt Arabic RSS",
+      "region": "egypt",
+      "url": "https://news.google.com/rss?hl=ar&gl=EG&ceid=EG:ar",
+      "enabled": true
+    }
+  ]
+}

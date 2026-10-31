@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102650">
+  <meta name="application-name" content="ثريدز وثائقي">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="description" content="آخر الأخبار العالمية والعربية والمصرية بملخصات عربية محايدة ومصادر واضحة.">
+  <title>ثريدز وثائقي | Threads Documentary</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./assets/app-icon-192.png">
+  <link rel="icon" href="./assets/channel-logo.png" type="image/png">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">انتقل إلى الأخبار</a>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <img class="brand-logo" src="./assets/channel-logo.png" alt="شعار ثريدز وثائقي">
+      <div class="brand-copy">
+        <p class="brand-kicker">THREADS DOCUMENTARY</p>
+        <h1>ثريدز وثائقي</h1>
+        <p class="brand-subtitle">أخبار موثقة، بملخص واضح ومحايد</p>
+      </div>
+    </div>
+    <div class="header-status" aria-live="polite">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span id="update-status">جارٍ تحميل آخر التحديثات</span>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">موجز الأخبار</p>
+        <h2 id="page-title">الصورة الكاملة، من مصادرها</h2>
+        <p class="intro-copy">ملخصات عربية موجزة مع رابط المصدر الأصلي. تُعرض الأخبار بحسب المنطقة، وتُحدّث آليًا عندما تكون خدمة التحديث متاحة.</p>
+      </div>
+      <label class="search-box">
+        <span class="sr-only">ابحث في الأخبار</span>
+        <input id="search-input" type="search" placeholder="ابحث في العناوين والملخصات" autocomplete="off">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+      </label>
+    </section>
+
+    <nav class="filter-bar" aria-label="تصفية الأخبار حسب المنطقة">
+      <button class="filter-button is-active" type="button" data-region="all" aria-pressed="true">الكل</button>
+      <button class="filter-button" type="button" data-region="world" aria-pressed="false">العالم</button>
+      <button class="filter-button" type="button" data-region="arab" aria-pressed="false">العالم العربي</button>
+      <button class="filter-button" type="button" data-region="egypt" aria-pressed="false">مصر</button>
+    </nav>
+
+    <section class="feed-heading" aria-live="polite">
+      <div>
+        <h2>أحدث الأخبار</h2>
+        <p id="feed-count">يتم تجهيز الموجز</p>
+      </div>
+      <span id="last-updated" class="last-updated"></span>
+    </section>
+
+    <section id="news-list" class="news-list" aria-label="الأخبار">
+      <div class="loading-card" role="status">جارٍ تحميل الأخبار…</div>
+    </section>
+
+    <section id="empty-state" class="empty-state" hidden>
+      <div class="empty-mark" aria-hidden="true">ث</div>
+      <h3>لا توجد أخبار مطابقة الآن</h3>
+      <p>جرّب تغيير المنطقة أو كلمة البحث. يعود الموجز للظهور بعد أول تحديث ناجح.</p>
+    </section>
+
+    <aside class="editorial-note">
+      <span class="note-mark" aria-hidden="true"></span>
+      <p>الملخصات موجزة وتعتمد على البيانات المتاحة في الخلاصة الإخبارية. راجع المصدر الأصلي للتفاصيل والسياق الكامل.</p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <span>ثريدز وثائقي <span lang="en" dir="ltr">· Threads Documentary</span></span>
+    <span>كل الحقوق للمصادر الأصلية. تُذكر المصادر مع كل خبر.</span>
+  </footer>
+</body>
+</html>
