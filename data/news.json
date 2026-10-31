@@ -1,7 +1,46 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T23:22:18.366692Z",
+  "updated_at": "2026-10-31T23:54:40.975142Z",
   "items": [
+    {
+      "id": "8aa88d7561ce7ed1b24c",
+      "region": "world",
+      "title": "Global Lense: The One about bears and wolves - Tech News TT",
+      "summary": "Global Lense: The One about bears and wolves Tech News TT",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5iWG84UE5Zcy11OHB2Smw4Rjd3WWhHcGxkYVdoN0g3aFBuQTl5WTJPMjVRRTdjbEZvbmZyVWE2YXRSeF9WNjd3YTV2NzEweUFUU3p6RzdtOTFXMUZSbW9udXJlbkUwMm5kMEw4dzRBYUxVTE56VVE?oc=5",
+      "source_name": "Tech News TT",
+      "source_url": "https://technewstt.com",
+      "published_at": "2026-10-31T23:39:33Z",
+      "created_at": "2026-10-31T23:54:40.975142Z",
+      "summary_date": "2026-10-31"
+    },
+    {
+      "id": "0cbc62df2fd490e13e37",
+      "region": "arab",
+      "title": "«سوليدرتي» تشارك في فعاليات «أسبوع الشجرة» - أخبار الخليج",
+      "summary": "«سوليدرتي» تشارك في فعاليات «أسبوع الشجرة» أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBjTzJISzRDeGlYci1IakZPMlIxMWFmcHRHU3pscWRRU0xub2ZmanZQZHBuVHlrd0l4ZTg4Q0lPbVBEaXhiU2swU2NQOTdseHB0OVlLZHRnNVFYMGxFY1E?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "published_at": "2026-10-31T23:00:00Z",
+      "created_at": "2026-10-31T23:54:40.975142Z",
+      "summary_date": "2026-10-31"
+    },
+    {
+      "id": "face9ad9cb86278c77c7",
+      "region": "arab",
+      "title": "مستشار الأمن القومي العراقي: رئيس الوزراء العراقي في البحرين الأربعاء - أخبار الخليج",
+      "summary": "مستشار الأمن القومي العراقي: رئيس الوزراء العراقي في البحرين الأربعاء أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1WZnc4eGM3d243LXFxajBsVkM5dTBfLTZQbHRoVjl4RVVoWERCdy0zQTVpTmd5VEFBVkNMd0VKWVYxS2MtQkNMR1c2eXo2NENuWGktVTM4NjdkaEJfUlE?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "published_at": "2026-10-31T23:00:00Z",
+      "created_at": "2026-10-31T23:54:40.975142Z",
+      "summary_date": "2026-10-31"
+    },
     {
       "id": "0954b04ef1d63a37d582",
       "region": "arab",
