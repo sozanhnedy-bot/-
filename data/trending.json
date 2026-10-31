@@ -1,89 +1,31 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T22:56:27.619184Z",
+  "updated_at": "2026-10-31T23:22:22.247078Z",
   "items": [
     {
-      "id": "1fce4318fc41409e15",
-      "title": "miami fl vs unc",
+      "id": "5187bdf8da4be33864",
+      "title": "daylight savings 2026",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "50000+",
-      "score": 71.1,
-      "published_at": "2026-10-31T22:30:00Z",
+      "approx_traffic": "100000+",
+      "score": 74.3,
+      "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Week 9 has the ACC in the spotlight and backup QBs taking over the Big Ten",
-          "source": "ESPN",
+          "title": "Daylight saving time 2026 ends tonight. Here's what time the clocks change and more key details.",
+          "source": "CBS News",
           "snippet": ""
         },
         {
-          "title": "Miami vs. North Carolina prediction, odds, time: Week 9 college football picks via advanced model",
-          "source": "CBS Sports",
+          "title": "Fire officials give tips as Daylight Savings Time ends",
+          "source": "Yahoo",
           "snippet": ""
         },
         {
-          "title": "Franklin Street businesses prepare for game day, Halloween crowds",
-          "source": "ABC11 News",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "da8dd6868e6bc85c5b",
-      "title": "ms state vs texas",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "10000+",
-      "score": 64.1,
-      "published_at": "2026-10-31T22:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "What time does Texas football play today? TV channel, info for Mississippi State game",
-          "source": "Austin American-Statesman",
-          "snippet": ""
-        },
-        {
-          "title": "How to watch Mississippi State vs Texas: Live stream NCAA College Football, TV channel",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Bulldog Game Day: 5:00 availability update with more State starters sidelined today",
-          "source": "247Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "2e34bd0ccc9b96565b",
-      "title": "friday the 13th",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 61.4,
-      "published_at": "2026-10-31T22:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Welcome to the real ‘Crystal Lake': Visiting the New Jersey town where ‘Friday the 13th' was filmed",
-          "source": "NBC New York",
-          "snippet": ""
-        },
-        {
-          "title": "‘Crystal Lake’ Hits 1.3 Billion Minutes Watched in 11 Days, Becoming Peacock’s No. 4 Scripted Debut Ever",
-          "source": "Variety",
-          "snippet": ""
-        },
-        {
-          "title": "'Crystal Lake' is great, but nothing tops the space horror shenanigans of 'Jason X'",
-          "source": "Space",
+          "title": "Opinion | Why daylight saving time should be eliminated entirely",
+          "source": "The Washington Post",
           "snippet": ""
         }
       ],
@@ -95,65 +37,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "5000+",
-      "score": 60.4,
-      "published_at": "2026-10-31T22:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Match facts: Barcelona v Alaves (Spain La Liga) - Talents Abroad - Sports",
-          "source": "Ahram Online",
-          "snippet": ""
-        },
-        {
-          "title": "By the numbers: Barcelona's attacking deluge unprecedented in 86 years!",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "Barça was back to its old self",
-          "source": "MARCA",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "ff95126e8fe9cecb11",
-      "title": "georgia tech vs pittsburgh",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.5,
-      "published_at": "2026-10-31T22:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Follow Live: Pitt Football vs. Georgia Tech",
-          "source": "PittsburghPanthers.com",
-          "snippet": ""
-        },
-        {
-          "title": "The 3-2-1 Column: Panthers have a winnable game tomorrow, basketball season on the horizon and more",
-          "source": "247Sports",
-          "snippet": ""
-        },
-        {
-          "title": "‘Hungry for a win’: Like Pitt, Georgia Tech has navigated injuries, frustrating defeats",
-          "source": "TribLIVE.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "c72484e591147ba53f",
-      "title": "fc barcelona vs deportivo alavés standings",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 56.5,
+      "score": 59.6,
       "published_at": "2026-10-31T22:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -164,8 +48,37 @@
           "snippet": ""
         },
         {
-          "title": "Hansi Flick: 'We want to show our best'",
-          "source": "Official FC Barcelona Website",
+          "title": "Match facts: Barcelona v Alaves (Spain La Liga) - Talents Abroad - Sports",
+          "source": "Ahram Online",
+          "snippet": ""
+        },
+        {
+          "title": "Hansi Flick Defends His Philosophy After Two Tough Defeats",
+          "source": "Sportscape Magazine",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "c72484e591147ba53f",
+      "title": "fc barcelona vs deportivo alavés standings",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "5000+",
+      "score": 59.6,
+      "published_at": "2026-10-31T22:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Barcelona 6-1 Alaves: Lamine Yamal and Raphinha each score twice as Barca return to top of La Liga",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Hansi Flick Defends His Philosophy After Two Tough Defeats",
+          "source": "Sportscape Magazine",
           "snippet": ""
         },
         {
@@ -177,58 +90,87 @@
       "alert": false
     },
     {
-      "id": "f4536380726767a9ee",
-      "title": "washington st vs san diego st",
+      "id": "cc2edc104c7d5ac85a",
+      "title": "samsung news",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.5,
-      "published_at": "2026-10-31T22:40:00Z",
+      "approx_traffic": "2000+",
+      "score": 57.3,
+      "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Volleyball Fights Hard in Loss at San Diego State",
-          "source": "Washington State University Athletics",
+          "title": "Samsung discontinues preinstalled app; what’s happening to users’ data",
+          "source": "FOX 32 Chicago",
           "snippet": ""
         },
         {
-          "title": "GAME THREAD: Spooky Cougar offense travels to San Diego State",
-          "source": "Yahoo Sports",
+          "title": "Check your Galaxy phone: Samsung is shutting down a built-in feature",
+          "source": "PhoneArena",
           "snippet": ""
         },
         {
-          "title": "How to watch: Washington State at San Diego State",
-          "source": "247Sports",
+          "title": "Samsung News is shutting down: How to switch to Google Discover",
+          "source": "SamMobile",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "fdeecbd5c4baa91716",
-      "title": "grayson allen",
+      "id": "8f0ecf8d528d741199",
+      "title": "cavaliers vs bucks",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 54.5,
-      "published_at": "2026-10-31T22:40:00Z",
+      "score": 54.3,
+      "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Media Availability | Grayson Allen - 10/26/26 | Charlotte Hornets",
-          "source": "NBA.com",
+          "title": "Milwaukee Bucks vs Cleveland Cavaliers Injury Report and Game Preview",
+          "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "Grayson Allen News: Shooting woes continue",
-          "source": "RotoWire",
+          "title": "Cavs vs. Bucks: preview, odds, injury report, TV",
+          "source": "Cleveland.com",
           "snippet": ""
         },
         {
-          "title": "Hornets' Grayson Allen: Shooting woes continue",
-          "source": "CBS Sports",
+          "title": "Milwaukee Bucks-Cleveland Cavaliers Preview: Injuries, Odds, How to Watch & Starters",
+          "source": "Sports Illustrated",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "444a3a347a2450dc79",
+      "title": "cbs sports",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.3,
+      "published_at": "2026-10-31T23:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "4 Realistic NFL Trade Deadline Deals The Ravens Should Explore Right Now",
+          "source": "Sports Illustrated",
+          "snippet": ""
+        },
+        {
+          "title": "4 trade targets Ravens should pursue after missing out on Quenton Nelson",
+          "source": "Ebony Bird",
+          "snippet": ""
+        },
+        {
+          "title": "Ravens Trade Idea Secures $13 Million Marlon Humphrey Successor",
+          "source": "Heavy.com",
           "snippet": ""
         }
       ],
@@ -240,7 +182,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 52.5,
+      "score": 51.6,
       "published_at": "2026-10-31T21:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -256,157 +198,99 @@
           "snippet": ""
         },
         {
-          "title": "بعد تسجيله \"هاتريك\".. أين وصل رونالدو في الطريق نحو الـ1000 هدف؟",
-          "source": "CNN Arabic",
+          "title": "لاعب الخلود شاكيل لـ«عكاظ»: النصر حسم المواجهة بجودته.. وتركيزنا على تحقيق الانتصارات",
+          "source": "عكاظ",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "68775d6206e3918546",
-      "title": "penguins vs canadiens",
+      "id": "bf90825591c8fe27dc",
+      "title": "timberwolves vs spurs",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-10-31T22:40:00Z",
+      "score": 51.3,
+      "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "NHL On Tap: Canadiens eyeing fifth straight win highlights Halloween sked",
-          "source": "NHL.com",
+          "title": "Game Preview: San Antonio Spurs vs Minnesota Timberwolves",
+          "source": "Pounding The Rock",
           "snippet": ""
         },
         {
-          "title": "Penguins Take A Goaltending Gamble Against Surging Canadiens",
+          "title": "🎃Game Preview #7: Wolves vs Spurs Game Thread🎃",
+          "source": "Canis Hoopus",
+          "snippet": ""
+        },
+        {
+          "title": "Timberwolves vs Spurs Injury Report: Key Starter Listed For Minnesota",
           "source": "Yahoo Sports",
           "snippet": ""
-        },
-        {
-          "title": "Game Preview: Pittsburgh Penguins @ Montreal Canadiens 10/31/2026",
-          "source": "PensBurgh",
-          "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "62edaea6b4b8d8a504",
-      "title": "76ers vs charlotte hornets match player stats",
+      "id": "f60fa164308428b077",
+      "title": "luke drzewiecki",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-10-31T22:40:00Z",
+      "score": 51.3,
+      "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Sharks 3-2 Canucks (Oct 29, 2026) Game Recap",
-          "source": "ESPN",
+          "title": "This transfer didn’t join the Gophers until August. Now he’s winning them trophies.",
+          "source": "Star Tribune",
           "snippet": ""
         },
         {
-          "title": "Smith and Celebrini reunited as Sharks storm back to beat Vancouver Canucks",
-          "source": "The Mercury News",
+          "title": "P.J. Fleck’s ‘most unique’ recruiting experience has paid off for the Gophers in a big way",
+          "source": "Bring Me the Sports",
           "snippet": ""
         },
         {
-          "title": "Sharks Insight: It All Starts With Killing Plays",
-          "source": "San Jose Hockey Now",
+          "title": "Kicking in a new environment",
+          "source": "The Minnesota Daily",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "6c4b8d662699b9b553",
-      "title": "fc barcelona",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 51.1,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Opción ‘Licha’ Martínez en el Atlético",
-          "source": "Diario AS",
-          "snippet": ""
-        },
-        {
-          "title": "¿Se avecina la salida de Lisandro Martinez? El Barcelona estudia el sorprendente fichaje del defensa del Manchester United tras su encontronazo con Jason Wilcox",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "El Clásico se convierte en una pesadilla para una estrella del Madrid: ladrones irrumpen en su casa y roban objetos de valor",
-          "source": "Goal.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "add90a760b60c44287",
-      "title": "ac milan vs inter milan standings",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "884675a92d311f3dd3",
+      "title": "sion james",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 50.4,
-      "published_at": "2026-10-31T22:10:00Z",
+      "score": 51.3,
+      "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Milan 3-1 Inter Milan (Oct 31, 2026) Game Analysis",
+          "title": "Niyo: 'Baddest' Boys: Pistons' depth charge ignites early success",
+          "source": "The Detroit News",
+          "snippet": ""
+        },
+        {
+          "title": "Pistons vs Hornets final score: Detroit overcomes slow offensive start",
+          "source": "Detroit Bad Boys",
+          "snippet": ""
+        },
+        {
+          "title": "Pistons 97-89 Hornets (Oct 28, 2026) Game Recap",
           "source": "ESPN",
           "snippet": ""
-        },
-        {
-          "title": "Christian Pulisic scores again vs Inter in Derby della Madonnina",
-          "source": "USA Today",
-          "snippet": ""
-        },
-        {
-          "title": "AC Milan 3-1 Inter Milan: Diego Moreira stars as AC Milan beat Inter in thrilling derby",
-          "source": "BBC",
-          "snippet": ""
         }
       ],
-      "alert": false
-    },
-    {
-      "id": "fe91f0f4e184c36777",
-      "title": "ac milan vs inter milan standings",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 50.1,
-      "published_at": "2026-10-31T22:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Milan 3-1 Inter Milan (Oct 31, 2026) Game Analysis",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Christian Pulisic scores again vs Inter in Derby della Madonnina",
-          "source": "USA Today",
-          "snippet": ""
-        },
-        {
-          "title": "AC Milan 3-1 Inter Milan: Diego Moreira stars as AC Milan beat Inter in thrilling derby",
-          "source": "BBC",
-          "snippet": ""
-        }
-      ],
-      "alert": false
+      "alert": true
     },
     {
       "id": "79092b5ba380f31895",
@@ -414,24 +298,24 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 49.4,
+      "score": 48.6,
       "published_at": "2026-10-31T21:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Pope: In an age marked by distance, sports bring people together",
-          "source": "Vatican News",
+          "title": "Local teams shine at D6 cross country championships",
+          "source": "Indiana Gazette Online",
           "snippet": ""
         },
         {
-          "title": "Villanova vs. Notre Dame prediction, pick, odds, spread: Why Irish, Wildcats are opening season in Rome",
-          "source": "CBS Sports",
+          "title": "Central Cambria teams, Bishop Carroll's Noah Knobloch lead area runners at District 6 cross country championships",
+          "source": "The Tribune-Democrat",
           "snippet": ""
         },
         {
-          "title": "Pope Leo XIV says he's neutral on Notre Dame-Villanova basketball game in Rome, Italy; Robert Prevost has other ideas",
-          "source": "ABC7 Chicago",
+          "title": "Cross country: Huskies sweep four opponents in final home meet",
+          "source": "Lewistown Sentinel",
           "snippet": ""
         }
       ],
@@ -443,7 +327,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 48.4,
+      "score": 47.6,
       "published_at": "2026-10-31T21:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -467,58 +351,174 @@
       "alert": false
     },
     {
-      "id": "91798cbdb10b608e69",
-      "title": "llaneros - junior",
+      "id": "45234ec609e65c08b0",
+      "title": "washington vs nebraska",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-10-31T22:40:00Z",
+      "score": 47.3,
+      "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Cuándo juegan Llaneros vs. Junior por Liga BetPlay: equipo, fecha, hora y TV en vivo",
-          "source": "ESPN Deportes",
+          "title": "Huskers Return Home to Host Washington - University of Nebraska - Official Athletics Website",
+          "source": "huskers.com",
           "snippet": ""
         },
         {
-          "title": "Junior viaja a Villavicencio sin Teófilo Gutiérrez ni Cristian Barrios: estos son los convocados",
-          "source": "PrimerTiempo.CO",
+          "title": "Live: Updates: Huskies visit Nebraska off bye week with question mark at QB",
+          "source": "The Seattle Times",
           "snippet": ""
         },
         {
-          "title": "Llaneros vs. Junior: sigue la agonía",
-          "source": "ELHERALDO.CO",
+          "title": "Over 35 Recruits Set to Visit Nebraska for Second Annual Blackout Game Against Washington",
+          "source": "Sports Illustrated",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "9c6a743c69968302eb",
-      "title": "get out",
+      "id": "7a3c68eafbac4e523a",
+      "title": "moussa diabaté",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 47.5,
+      "score": 47.3,
+      "published_at": "2026-10-31T23:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Moussa Diabaté a double-double in loss to Wizards",
+          "source": "NBC Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Moussa Diabate is unlocking Hornets' potential on both ends of the floor",
+          "source": "Swarm and Sting",
+          "snippet": ""
+        },
+        {
+          "title": "Hornets Postgame | Moussa Diabaté ‑ 10/30/26",
+          "source": "NBA.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "8dfb2e51e52d7ed029",
+      "title": "sean hannity news",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-10-31T23:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Sean Hannity Blindsided as His Own Callers Turn on Trump",
+          "source": "The Daily Beast",
+          "snippet": ""
+        },
+        {
+          "title": "On the eve of the midterms, Sean Hannity callers express their disillusionment: \"We were convinced by Donald Trump that he was different\"",
+          "source": "Media Matters for America",
+          "snippet": ""
+        },
+        {
+          "title": "Ainsley Earhardt and Sean Hannity marry at the same church where they got engaged",
+          "source": "Fox News",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "319a287f7f8cca0837",
+      "title": "مسرح",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 47.3,
+      "published_at": "2026-10-31T21:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سهير المرشدى وإلهام شاهين وأشرف عبد الباقى وبدير يصلون مهرجان شرم الشيخ",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "وصول قسطنطين كرياك وديانا لازار لشرم الشيخ للمشاركة بالدورة الـ11 لمهرجان شرم الشيخ الدولي للمسرح الشبابي",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "حنان مطاوع عن تكريم والدتها سهير المرشدي: «مقدّرة في بلدها»",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "aec81c9c65bfea909d",
+      "title": "aston villa vs fulham f.c. standings",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 46.6,
       "published_at": "2026-10-31T22:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Maine's Troy Jackson: I don't know anything about the polls",
-          "source": "Fox News",
+          "title": "Aston Villa 1-1 Fulham: Zion Suzuki own goal blunder after Nicolas Jackson scores again",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "Troy Jackson's closing message to Maine voters: Do you think the government is working for you?",
-          "source": "MS NOW",
+          "title": "Aston Villa Football Club - The Official Club Website",
+          "source": "Aston Villa",
           "snippet": ""
         },
         {
-          "title": "Troy Jackson’s logger brand rests on a woods career that ended years ago",
-          "source": "Bangor Daily News",
+          "title": "Arbeloa gives Barcelona a \"precious gift\"",
+          "source": "Goal.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6a00e3cdfec672122c",
+      "title": "সৌদি আরব",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 44.6,
+      "published_at": "2026-10-31T23:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "সউদী আরবে অগ্নিকাণ্ডে নিহত ৭ প্রবাসীর লাশ দেশে, স্বজনদের আহাজারি",
+          "source": "দৈনিক ইনকিলাব",
+          "snippet": ""
+        },
+        {
+          "title": "সৌদির আগুনে ছেলে হারিয়ে মায়ের আহাজারি, ঋণে দিশাহারা পরিবার",
+          "source": "Barta 24",
+          "snippet": ""
+        },
+        {
+          "title": "প্রবাসে বসে পান মেয়ের জন্মের খবর, ছুঁয়ে দেখার হলো না শামীমের",
+          "source": "Jagonews24",
           "snippet": ""
         }
       ],
@@ -530,7 +530,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 45.5,
+      "score": 44.6,
       "published_at": "2026-10-31T21:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -541,17 +541,46 @@
           "snippet": ""
         },
         {
-          "title": "فليك يغيّر وجه رافينيا في الكلاسيكو.. أرقام تتحدث عن نفسها",
-          "source": "Kooora",
+          "title": "برشلونة ضد ألافيس.. رافينيا يطارد رونالدو وتكرار إنجاز زبيري",
+          "source": "اخبارك نت",
           "snippet": ""
         },
         {
-          "title": "مبابي 2 رافينيا 1.. مَن يتصدر هدافي الدوري الإسباني في الجولة العاشرة؟",
-          "source": "يلاكورة",
+          "title": "فليك يغيّر وجه رافينيا في الكلاسيكو.. أرقام تتحدث عن نفسها",
+          "source": "Kooora",
           "snippet": ""
         }
       ],
       "alert": false
+    },
+    {
+      "id": "5c36c2bd7cf9df9e94",
+      "title": "علياء قمرون",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 44.3,
+      "published_at": "2026-10-31T23:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعد تداول أخبار القبض على علياء قمرون.. محام: \"ماليش علاقة بيها\"",
+          "source": "Masrawy",
+          "snippet": ""
+        },
+        {
+          "title": "تفاصيل القبض على البلوجر علياء قمرون وزوجها في المنوفية.. وملاحقتها بأحكام وقضايا سابقة",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "القبض على التيك توكر علياء قمرون",
+          "source": "البوابة نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "6d27f6255b02d0ad0d",
@@ -559,7 +588,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 45.1,
+      "score": 44.3,
       "published_at": "2026-10-31T21:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -588,7 +617,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 44.5,
+      "score": 43.6,
       "published_at": "2026-10-31T21:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -612,41 +641,12 @@
       "alert": false
     },
     {
-      "id": "319a287f7f8cca0837",
-      "title": "مسرح",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 44.1,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "استمرار التقديم لمسابقة \"علاء عبد العزيز للتأليف المسرحى\" حتى 15 نوفمبر",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "اليوم..انطلاق مسابقة «توفيق الحكيم» للتأليف المسرحى",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        },
-        {
-          "title": "المركز القومي للمسرح يطلق الدورة الـ6 من «مسابقة توفيق الحكيم للتأليف»",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "78ac8a4267e360f2f2",
       "title": "آثار الحكيم",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 44.1,
+      "score": 43.3,
       "published_at": "2026-10-31T21:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -657,13 +657,13 @@
           "snippet": ""
         },
         {
-          "title": "بعد 15 عامًا من الاعتزال.. آثار الحكيم تظهر متخفية وتنهار باكية",
-          "source": "إرم نيوز",
+          "title": "تجسد أدوار الزعيم| نوستالجيا 80 / 90 تعود على مسرح البالون",
+          "source": "بوابة أخبار اليوم الإلكترونية",
           "snippet": ""
         },
         {
-          "title": "بعد اعتزال 15 عاما.. آثار الحكيم تظهر خلال حضورها عرض «نوستالجيا 80/90» وتبكي لهذا السبب",
-          "source": "بوابة الأهرام",
+          "title": "بعد 15 عامًا من الاعتزال.. آثار الحكيم تظهر متخفية وتنهار باكية",
+          "source": "إرم نيوز",
           "snippet": ""
         }
       ],
@@ -675,7 +675,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 44.1,
+      "score": 43.3,
       "published_at": "2026-10-31T21:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -699,12 +699,70 @@
       "alert": false
     },
     {
+      "id": "f39ed5642ab5fae476",
+      "title": "barcelona fc",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 43.0,
+      "published_at": "2026-10-31T20:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "“Es lo que quería ver después de dos derrotas”",
+          "source": "Diario AS",
+          "snippet": ""
+        },
+        {
+          "title": "Hansi Flick alaba el rendimiento de Lamine Yamal después de las dos últimas derrotas del Barcelona: \"Es la actitud que quiero...\"",
+          "source": "DAZN",
+          "snippet": ""
+        },
+        {
+          "title": "Flick llega a las 100 victorias con el Barça",
+          "source": "Mundo Deportivo",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "85b7e9298eb21cc875",
+      "title": "شريهان",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 42.6,
+      "published_at": "2026-10-31T20:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "الفنانة العالمية شيرين أحمد توجه رسالة مؤثرة لشريهان فى أحدث ظهور لها.. صور",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "أحدث ظهور لـ شريهان مع السوبرانو العالمية شيرين أحمد - صور",
+          "source": "Masrawy",
+          "snippet": ""
+        },
+        {
+          "title": "5 صور.. ظهور مبهر جديد للنجمة شريهان بصحبة ابنتها والفنانة شيرين أحمد تكشف قصة حلمها باللقاء الذي تحقق أخيرا",
+          "source": "www.hiamag.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "2ec9f095cc5232a04b",
       "title": "مايكروسوفت",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 43.2,
+      "score": 42.3,
       "published_at": "2026-10-31T22:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -733,7 +791,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 43.2,
+      "score": 42.3,
       "published_at": "2026-10-31T22:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -762,7 +820,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 42.8,
+      "score": 42.0,
       "published_at": "2026-10-31T21:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -791,7 +849,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 42.8,
+      "score": 42.0,
       "published_at": "2026-10-31T21:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -809,64 +867,6 @@
         {
           "title": "كين يهدي الكرة الذهبية لجماهير بايرن قبل قمة دورتموند",
           "source": "عكاظ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "85b7e9298eb21cc875",
-      "title": "شريهان",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 40.5,
-      "published_at": "2026-10-31T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "الفنانة العالمية شيرين أحمد توجه رسالة مؤثرة لشريهان فى أحدث ظهور لها.. صور",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "أحدث ظهور لـ شريهان مع السوبرانو العالمية شيرين أحمد - صور",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "5 صور.. ظهور مبهر جديد للنجمة شريهان بصحبة ابنتها والفنانة شيرين أحمد تكشف قصة حلمها باللقاء الذي تحقق أخيرا",
-          "source": "www.hiamag.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7827815c6e5de132d8",
-      "title": "وزارة التعليم",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 38.5,
-      "published_at": "2026-10-31T21:10:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "حلول لمنع \"تضخم\" الدرجات الكاملة (10/10).",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        },
-        {
-          "title": "التقييم الدوري العام: مخاوف بشأن أسئلة الامتحان",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        },
-        {
-          "title": "وتوضح وزارة التعليم والتدريب أن الغرض من إنشاء أسئلة اختبار موحدة هو الكشف عن حالات \"التلاعب بالدرجات\".",
-          "source": "Vietnam.vn",
           "snippet": ""
         }
       ],

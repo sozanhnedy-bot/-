@@ -1,7 +1,46 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T22:56:23.543898Z",
+  "updated_at": "2026-10-31T23:22:18.366692Z",
   "items": [
+    {
+      "id": "0954b04ef1d63a37d582",
+      "region": "arab",
+      "title": "مشاركة واسعة ومتحدثون محليون وعالميون يحتضنهم منتدى بوابة الخليج 2026 - أخبار الخليج",
+      "summary": "مشاركة واسعة ومتحدثون محليون وعالميون يحتضنهم منتدى بوابة الخليج 2026 أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB6a1dqTGtjSE9ndTZ1SG9EYkh2czlISW1DMllzV2Zxa2tJaldxWWVqWnZQRjFyVHVsakNfaUxuNDR3SHo4R3FpME9Md09LWWVPRGF4QWhCOVpDSEpMNUE?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "published_at": "2026-10-31T23:00:00Z",
+      "created_at": "2026-10-31T23:22:18.366692Z",
+      "summary_date": "2026-10-31"
+    },
+    {
+      "id": "3a57a088c0e9b4bc3be4",
+      "region": "arab",
+      "title": "السفير اليمني لـ«أخبار الخليج»: تهريب السلاح الإيراني إلى الحوثيين يهدد بتوسع الصراع إلى إفريقيا - أخبار الخليج",
+      "summary": "السفير اليمني لـ«أخبار الخليج»: تهريب السلاح الإيراني إلى الحوثيين يهدد بتوسع الصراع إلى إفريقيا أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9oZDZBNnFHemdOQVZKcEJUbVBXZWxQSUVEUnJfVXFpaGxCZWJBRW1sRTNVSUhPVjFPeV8zYTRLX3VUT21sbnVMRkxiVjU3OHNQenZ1MTcyLVRZc0oyYmc?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "published_at": "2026-10-31T23:00:00Z",
+      "created_at": "2026-10-31T23:22:18.366692Z",
+      "summary_date": "2026-10-31"
+    },
+    {
+      "id": "b5e40a1e6c26b8f2e869",
+      "region": "arab",
+      "title": "التحالف: اعتراض وتدمير مسيَّرة معادية بمنطقة الرياض - أخبار الخليج",
+      "summary": "التحالف: اعتراض وتدمير مسيَّرة معادية بمنطقة الرياض أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5yNnBGTERHNm5RQURyYnZZXzh2VlVFSWd2RVN0YVFRdnh3bk1IR3NDem03WUlaMUxXZ00xR1AyLTJ0LWkxSWIwdWd6TzdZQVZXd1oxVGxSZGxndml3elE?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "published_at": "2026-10-31T23:00:00Z",
+      "created_at": "2026-10-31T23:22:18.366692Z",
+      "summary_date": "2026-10-31"
+    },
     {
       "id": "16463746f003eab01573",
       "region": "world",
