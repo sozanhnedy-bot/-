@@ -1,263 +1,147 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T21:18:59.734970Z",
+  "updated_at": "2026-10-31T21:56:57.227566Z",
   "items": [
     {
-      "id": "5a68d2661e7dc64a1b",
-      "title": "تعليق",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 57.4,
-      "published_at": "2026-10-31T21:00:00Z",
+      "id": "319870c22fbf417b51",
+      "title": "apple tv",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "10000+",
+      "score": 64.1,
+      "published_at": "2026-10-31T21:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "بسبب إيبولا .. السعودية تعلق سفر مواطنيها إلى كينيا وتوقف إصدار التأشيرات للقادمين منها",
-          "source": "العربية",
+          "title": "A serial killer, an obsessed cop and an undercover FBI agent. Welcome to Apple's 'Nocturne'",
+          "source": "AP News",
           "snippet": ""
         },
         {
-          "title": "صحي / المملكة تتخذ إجراءات احترازية إضافية لمواجهة فيروس \"إيبولا\" تشمل تعليق السفر والقدوم من جمهورية كينيا",
-          "source": "وكالة الأنباء السعودية",
+          "title": "Stephen Graham Credits Wife Hannah for Helping Him Get into the Mind of a Serial Killer in Nocturne (Exclusive)",
+          "source": "People.com",
           "snippet": ""
         },
         {
-          "title": "التميمي يطالب بمنع دخول القادمين من كينيا احترازيًا بسبب مخاطر «فيروس إيبولا»",
-          "source": "الأيام البحرينية",
+          "title": "'Nocturne' Review: Liev Schreiber in Apple's Serial Killer Thriller",
+          "source": "The Hollywood Reporter",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "e481f8798f449a9472",
-      "title": "76ers vs hornets",
+      "id": "00e05381218ff7035d",
+      "title": "is jaylen brown playing tonight",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.4,
-      "published_at": "2026-10-31T21:00:00Z",
+      "approx_traffic": "10000+",
+      "score": 63.8,
+      "published_at": "2026-10-31T21:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Sixers at Hornets: Game Preview, Injury Report and How to Watch 10/31/2026",
-          "source": "NBA.com",
-          "snippet": ""
-        },
-        {
-          "title": "How to watch 76ers vs Hornets: NBA, live stream, TV channel",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Sixers try to keep it rolling in Charlotte with both teams on short rest",
-          "source": "Liberty Ballers",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "18cd8cdd64f43a7d88",
-      "title": "barca game",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 56.7,
-      "published_at": "2026-10-31T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Confirmed: Barcelona starting lineup against Deportivo Alaves – academy product debuts",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Barcelona Under PRESSURE! FC Barcelona vs. Alaves La Liga MATCH PREVIEW! - Scoreline Stream of Soccer",
-          "source": "CBS Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Barcelona vs. Alavés: How to Livestream La Liga Soccer",
-          "source": "CNET",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0d0637669d0737feb1",
-      "title": "barcelona",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 54.4,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Opción ‘Licha’ Martínez en el Atlético",
-          "source": "Diario AS",
-          "snippet": ""
-        },
-        {
-          "title": "¿Se avecina la salida de Lisandro Martinez? El Barcelona estudia el sorprendente fichaje del defensa del Manchester United tras su encontronazo con Jason Wilcox",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Vídeo: Lamine Yamal responde a la decepción del Balón de Oro con un gol de misil",
-          "source": "Goal.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "6c9f97150fead7c03a",
-      "title": "owen wilson",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.4,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "'Stick' cast, creators preview Season 2 of Owen Wilson-starring sports comedy",
-          "source": "13newsnow.com",
-          "snippet": ""
-        },
-        {
-          "title": "‘Stick’ Season 2 Release Schedule: When Do New Episodes Come Out?",
-          "source": "Deadline",
-          "snippet": ""
-        },
-        {
-          "title": "Apple TV celebrates the second season of 'Stick' with Owen Wilson at Topgolf",
-          "source": "AppleInsider",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "08932dd502c5533fcd",
-      "title": "austin vs la galaxy",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.7,
-      "published_at": "2026-10-31T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Starting XI presented by Modelo: LA Galaxy vs Austin FC | October 31, 2026",
-          "source": "LA Galaxy",
-          "snippet": ""
-        },
-        {
-          "title": "Player Availability Report: LA Galaxy vs. Austin FC | Oct. 31, 2026",
-          "source": "Austin FC",
-          "snippet": ""
-        },
-        {
-          "title": "Vanney backs fully-fit LA Galaxy to defeat anyone in playoffs",
-          "source": "FotMob",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f74bbb8686917739e4",
-      "title": "استون فيلا",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 52.7,
-      "published_at": "2026-10-31T20:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "أول تصرف من ناصف ساويرس ضد جيمي كاراغر بعد \"إهانته\" لأستون فيلا",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "بعد تهديده قانونيًا.. كاراجر ينهي أزمته مع أستون فيلا باعتذار رسمي",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "كاراغر لأستون فيلا: لن تصبحوا يونايتد أبداً.. والنادي يبدأ مقاضاته",
-          "source": "العربية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "c2be3e8c69339a7e97",
-      "title": "tim tebow",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Among ESPN College GameDay and SEC Nation talent, only one picks Florida over Georgia",
-          "source": "DawgNation",
-          "snippet": ""
-        },
-        {
-          "title": "Tim Tebow's childhood instilled distain for Georgia",
+          "title": "Without injured Brown, 76ers outlast Knicks in NBA Cup Group Play",
           "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Tim Tebow breaks down Florida's keys to upsetting Georgia",
+          "title": "Full injury report for Sixers-Hornets on Saturday",
+          "source": "PhillyVoice",
+          "snippet": ""
+        },
+        {
+          "title": "76ers' Jaylen Brown missed Friday's win over Knicks with left patellar tendinopathy",
           "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2d276698df472218ba",
+      "title": "app state vs ga southern",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.4,
+      "published_at": "2026-10-31T21:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "DOWELL LOGGAINS INTERVIEW: GEORGIA SOUTHERN WEEK",
+          "source": "247Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Eagles, App renew rivalry on Halloween night in Paulson Stadium",
+          "source": "Statesboro Herald",
+          "snippet": ""
+        },
+        {
+          "title": "GAME PREVIEW | Old rivals renew acquaintances Saturday",
+          "source": "Grice Connect",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "472102a17e7033fe1d",
-      "title": "blippi",
+      "id": "844e3a1bc922f74a1a",
+      "title": "uc football",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-10-31T21:00:00Z",
+      "approx_traffic": "1000+",
+      "score": 54.4,
+      "published_at": "2026-10-31T21:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "‘CoComelon’s JJ’s Animal Time’ and ‘Blippi’ Find a New Home on Paramount+",
-          "source": "Animation Magazine",
+          "title": "College Football Chaos: Upsets, Field Storms And Unforgettable Scenes",
+          "source": "FOX Sports",
           "snippet": ""
         },
         {
-          "title": "Paramount+ Acquires Rights to Moonbug Series From the ‘Blippi’ and ‘CoComelon’ Universes (EXCLUSIVE)",
-          "source": "Variety",
+          "title": "Cincinnati upsets No. 8 Texas Tech in battle of teams linked by Sorsby",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Paramount + Brings Beloved Moonbug Entertainment Kids’ Shows Including Blippi and CoComelon Favorites to Audiences Around the World",
-          "source": "NickALive!",
+          "title": "Texas Tech’s comeuppance, plus the Brewers are halfway to history",
+          "source": "The New York Times",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "067086dfb0a349227e",
+      "title": "naz reid stats",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.1,
+      "published_at": "2026-10-31T21:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Naz Reid shows off the range on 3-pointer",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "Hornets Postgame | Naz Reid ‑ 10/24/26",
+          "source": "NBA.com",
+          "snippet": ""
+        },
+        {
+          "title": "Naz Reid flirts with double-double in Saturday's win over Heat",
+          "source": "FantasyPros",
           "snippet": ""
         }
       ],
@@ -268,270 +152,183 @@
       "title": "تعليق الدراسة",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 51.0,
+      "approx_traffic": "1000+",
+      "score": 52.8,
       "published_at": "2026-10-31T20:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "جامعة تعز تعلق استئناف الامتحانات في فرع التربة عقب اختطاف الحوثيين طالباً",
-          "source": "صحافتك",
+          "title": "السعودية: الدراسة \"عن بُعد\" في الرياض حتى هذا التاريخ",
+          "source": "جريدة الشرق",
           "snippet": ""
         },
         {
-          "title": "الحوثيون يختطوفون طالباً جامعياً من قاعة الامتحانات في التربة بتعز",
-          "source": "يمن مونيتور",
+          "title": "تعليق الدراسة الحضورية في مدارس جدة ورابغ وتحويلها إلى التعليم عن بُعد",
+          "source": "https://www.alwathaq.com/",
           "snippet": ""
         },
         {
-          "title": "تعز .. عصابة الحوثي تعتقل 35 طالباً من جامعة المعافر وسط مخاوف من تجنيدهم قسرياً",
-          "source": "المنتصف نت",
+          "title": "تعليم الطائف.. استمرار الدراسة “عن بُعد” حتى 25 جمادى الأولى",
+          "source": "شاهد الآن",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "2254f72fcfad3c8fca",
-      "title": "joe kropschot",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "79092b5ba380f31895",
+      "title": "teams",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 51.0,
-      "published_at": "2026-10-31T20:50:00Z",
+      "score": 51.4,
+      "published_at": "2026-10-31T21:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Nick Klein vs. Joe Kropschot prediction, odds, pick for UFC Vegas 123",
-          "source": "ClutchPoints",
+          "title": "Sources: Colts willing to trade RB Jonathan Taylor, active in talks with teams",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Nick Klein vs. Joe Kropschot prediction, odds, pick for UFC Vegas 123",
+          "title": "Jonathan Taylor Trade Rumors Make Fantasy Managers Nervous Now",
           "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "Joe Kropschot believes he’s a “nightmare” matchup for Nick Klein in UFC debut",
-          "source": "MyMMANews",
+          "title": "Josh Jacobs could be on thin ice in Green Bay",
+          "source": "NBC Sports",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "9bfe24c43cab036c1c",
-      "title": "jeongyeong lee",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "62dd0923ce9e5bdeb8",
+      "title": "هدف",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 51.0,
-      "published_at": "2026-10-31T20:50:00Z",
+      "score": 51.4,
+      "published_at": "2026-10-31T21:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "UFC Fight Night Underdog Pick: Julian Erosa (+150) vs. JeongYeong Lee",
-          "source": "Deadspin",
+          "title": "أوبك+ يتجه لتثبيت أهداف إنتاج النفط في ديسمبر وسط ترقب حصص 2027 ومراجعة الطاقات الإنتاجية",
+          "source": "صحيفة سبق الإلكترونية",
           "snippet": ""
         },
         {
-          "title": "\"I am the Korean Tiger, and I will prove it\": Lee Jung-young passes weigh-in, vows fiery showdown with U.S. fighter",
-          "source": "스타뉴스",
+          "title": "أوبك+ يتفق على إبقاء أهداف الإنتاج دون تغيير في ديسمبر",
+          "source": "عاجل",
           "snippet": ""
         },
         {
-          "title": "UFC Fighter Confirms Retirement Bout at the Meta Apex Irrespective of Result",
-          "source": "EssentiallySports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "16069f17ca502bea66",
-      "title": "barca",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 47.4,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Turismo nautico Sicilia: 1.712 imprese, posti barca record",
-          "source": "NAUTICA REPORT",
-          "snippet": ""
-        },
-        {
-          "title": "INTERVISTE- Seacily 2026: Tamajo e Russo a Castellammare per il rilancio della Blue Economy siciliana",
-          "source": "La Tr3",
-          "snippet": ""
-        },
-        {
-          "title": "Blue economy, nel Messinese oltre 5mila imprese",
-          "source": "MessinaToday",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "cf6649094bf06da66e",
-      "title": "raphinha",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.4,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Barcelona captain Raphinha matches Lionel Messi's historic La Liga record after stunning start to season",
-          "source": "Barca Universal",
-          "snippet": ""
-        },
-        {
-          "title": "Barcelona superstar discusses Vinicius Jr., Fede Valverde and Jose Mourinho ahead of Real Madrid clash",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Despite the Clasico defeat: Raphinha follows in Cristiano Ronaldo's footsteps",
-          "source": "Yardbarker",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b85dcb2b76ec5a042d",
-      "title": "fc barcelona",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.4,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "El Barça mira hacia París en busca de un central",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "No solo el FC Barcelona: los otros equipos interesados en William Pacho",
-          "source": "Bolavip",
-          "snippet": ""
-        },
-        {
-          "title": "¿Willian Pacho al Barcelona? Cuánto costaría su fichaje y cómo encajaría en el equipo",
-          "source": "Diario Extra",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "be12c0bb9c1fd8fb7b",
-      "title": "talita alencar",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.1,
-      "published_at": "2026-10-31T20:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Talita Alencar Ready To Execute Her Plan",
-          "source": "UFC.com",
-          "snippet": ""
-        },
-        {
-          "title": "UFC Vegas 123: Talita Alencar vs. Piera Rodriguez Predictions & Odds",
-          "source": "sports.betmgm.com",
-          "snippet": ""
-        },
-        {
-          "title": "Talita Alencar not concerned about Piera Rodriguez's striking",
-          "source": "MMA Sucka",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "49a85a044274e539a8",
-      "title": "رافينيا",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.4,
-      "published_at": "2026-10-31T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "الرابع عشر.. رافينيا يحلق في صدارة هدافي الدوري الإسباني",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "فليك يغيّر وجه رافينيا في الكلاسيكو.. أرقام تتحدث عن نفسها",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "ترتيب هدافي الدوري الإسباني بعد ثنائية مبابي في الكلاسيكو",
+          "title": "مصادر: تحالف \"أوبك+\" يتفق على إبقاء أهداف الإنتاج دون تغيير في ديسمبر",
           "source": "إرم نيوز",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "17b1cf3f8cc50ef75a",
-      "title": "مدرسة",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 46.1,
-      "published_at": "2026-10-31T20:20:00Z",
+      "id": "da4cf89bdddf5208bb",
+      "title": "la liga",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 51.1,
+      "published_at": "2026-10-31T21:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Education under fire: Gaza’s children face death on their way to school",
-          "source": "Al Jazeera",
+          "title": "Live score: Barcelona v Alaves (Spain La Liga) - Talents Abroad - Sports",
+          "source": "Ahram Online",
           "snippet": ""
         },
         {
-          "title": "In Gaza, even going to class can be deadly",
-          "source": "Prism",
+          "title": "Hansi Flick: 'We want to show our best'",
+          "source": "Official FC Barcelona Website",
           "snippet": ""
         },
         {
-          "title": "Rebuilding Gaza’s Education System Could Take Up to Seven Years, UNRWA Warns",
-          "source": "ShiaWaves",
+          "title": "🚨 Two surprises in FC Barcelona's squad announcement",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "5f7d6a03a9bddfc409",
+      "title": "appletv",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.8,
+      "published_at": "2026-10-31T21:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "New tvOS 27.2 Features To Try For An Upgraded Apple TV Experience",
+          "source": "Engadget",
+          "snippet": ""
+        },
+        {
+          "title": "Apple released new updates for Apple TV, HomeUnder the Vision Pro",
+          "source": "Letem světem Applem",
+          "snippet": ""
+        },
+        {
+          "title": "iOS 27.2 adds Find My support for Apple TV remotes",
+          "source": "Mezha.net",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "cd062448be3e9344b2",
-      "title": "ac milan",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 45.7,
-      "published_at": "2026-10-31T20:10:00Z",
+      "id": "6c4b8d662699b9b553",
+      "title": "fc barcelona",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 50.1,
+      "published_at": "2026-10-31T21:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "El Levante UD Femenino supera al FC Barcelona B y se pone líder",
+          "source": "Levante UD",
+          "snippet": ""
+        },
+        {
+          "title": "El Levante UD Femenino asalta la casa del campeón y es nuevo líder (0-3)",
+          "source": "OneFootball",
+          "snippet": ""
+        },
+        {
+          "title": "Flick ensalza a Brian Fariñas y presiona, aún más, a Alejandro Balde",
+          "source": "MARCA",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "66237e3c62ef22e367",
+      "title": "milan",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 49.1,
+      "published_at": "2026-10-31T20:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
@@ -554,12 +351,331 @@
       "alert": false
     },
     {
+      "id": "bd38ece70f66c86a29",
+      "title": "james bond",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-10-31T21:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Sydney Sweeney would make wonderful Bond girl, says 007 star",
+          "source": "The Telegraph",
+          "snippet": ""
+        },
+        {
+          "title": "Two Actors Reportedly Exit James Bond Race as ‘Clear Favorite’ Emerges",
+          "source": "Men's Journal",
+          "snippet": ""
+        },
+        {
+          "title": "Profile: Jack Lowden",
+          "source": "MI6-HQ.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "157401ce75bddbb29e",
+      "title": "minnesota",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-10-31T21:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Minnesota official's voter guide message on Somali TV triggers viral backlash: 'Not an accident'",
+          "source": "Fox News",
+          "snippet": ""
+        },
+        {
+          "title": "Are IDs required to vote in Minnesota?",
+          "source": "MinnPost",
+          "snippet": ""
+        },
+        {
+          "title": "Fraud-linked TV host interviews MN SOS official on voting w/o ID",
+          "source": "Center of the American Experiment",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "2ab0eb4e07ec3fe5da",
+      "title": "where is the breeders cup this year",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-10-31T21:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "‘I don’t really want to go home.’ Breeders’ Cup returns to Keeneland with fans from around the world",
+          "source": "WKYT",
+          "snippet": ""
+        },
+        {
+          "title": "2026 Breeders’ Cup results tracker: Winners, payouts, race-by-race updates, analysis",
+          "source": "NBC Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Breeders’ Cup 2026, day two: horse racing – live",
+          "source": "The Guardian",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "52e46246103c2c519e",
+      "title": "moscow",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-10-31T21:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Security Alert: Threat to Tsaritysyno Museum Reserve in Moscow (October 31, 2026)",
+          "source": "U.S. Embassy & Consulates in Russia (.gov)",
+          "snippet": ""
+        },
+        {
+          "title": "Russia says responding to US report of planned attack on Moscow",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "U.S. Embassy Warns of Potential 'Mass Casualty Event' in Moscow",
+          "source": "The Moscow Times",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "319a287f7f8cca0837",
+      "title": "مسرح",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 46.1,
+      "published_at": "2026-10-31T21:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "وصول قسطنطين كرياك وديانا لازار وسمر جميل إلى مهرجان شرم الشيخ للمسرح الشبابى",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "نجوم الفن يصلون شرم الشيخ للمشاركة في الدورة الـ11 من مهرجان المسرح الشبابي",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "حنان مطاوع عن تكريم والدتها سهير المرشدي: «مقدّرة في بلدها»",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "16069f17ca502bea66",
+      "title": "barca",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 46.1,
+      "published_at": "2026-10-31T21:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Turismo nautico Sicilia: 1.712 imprese, posti barca record",
+          "source": "NAUTICA REPORT",
+          "snippet": ""
+        },
+        {
+          "title": "Seacily, la cantieristica trapanese fa rete e porta le sue proposte in Regione",
+          "source": "Il Nautilus",
+          "snippet": ""
+        },
+        {
+          "title": "Mare, Trapani tra le prime province d’Italia: l’11,6% degli occupati lavora nella Blue Economy",
+          "source": "trapanisi.it",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "cf6649094bf06da66e",
+      "title": "raphinha",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 46.1,
+      "published_at": "2026-10-31T21:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Barcelona captain Raphinha has a scoring record to settle against Alaves",
+          "source": "Barca Universal",
+          "snippet": ""
+        },
+        {
+          "title": "Raphinha joins Lionel Messi and Cristiano Ronaldo in an impressive LaLiga feat with brace for Barcelona vs ...",
+          "source": "World Soccer Talk",
+          "snippet": ""
+        },
+        {
+          "title": "Barcelona star has already scored more goals this season than last",
+          "source": "Get Spanish Football News",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "49a85a044274e539a8",
+      "title": "رافينيا",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 45.1,
+      "published_at": "2026-10-31T20:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "الخامس عشر.. رافينيا يحلق في صدارة هدافي الدوري الإسباني",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "برشلونة ضد ألافيس.. رافينيا يطارد رونالدو وتكرار إنجاز زبيري",
+          "source": "العين الإخبارية",
+          "snippet": ""
+        },
+        {
+          "title": "فليك يغيّر وجه رافينيا في الكلاسيكو.. أرقام تتحدث عن نفسها",
+          "source": "Kooora",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "685708b407e892d740",
+      "title": "inter milan",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.1,
+      "published_at": "2026-10-31T20:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Licensable picture: AC Milan v FC Internazionale - Serie A Enilive",
+          "source": "Reuters Connect",
+          "snippet": ""
+        },
+        {
+          "title": "Serie A: AC Milan score two early goals against Inter Milan",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Christian Pulisic celebrates Milan contract extension with opening goal in Derby della Madonnina",
+          "source": "The New York Times",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "9872b7254552d36523",
+      "title": "رافينيا",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 44.5,
+      "published_at": "2026-10-31T21:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ترتيب هدافي الدوري الإسباني بعد ثنائية رافينيا أمام ألافيس",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "فليك يغيّر وجه رافينيا في الكلاسيكو.. أرقام تتحدث عن نفسها",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "فيديو | رافينها يسجل هدف تعادل برشلونة أمام ريال مدريد",
+          "source": "بطولات",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "6d27f6255b02d0ad0d",
+      "title": "raphinha",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 44.1,
+      "published_at": "2026-10-31T21:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Barcelona captain Raphinha has a scoring record to settle against Alaves",
+          "source": "Barca Universal",
+          "snippet": ""
+        },
+        {
+          "title": "Barcelona star has already scored more goals this season than last",
+          "source": "Get Spanish Football News",
+          "snippet": ""
+        },
+        {
+          "title": "Raphinha scores brace as stats suggest best is yet to come 📊",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
       "id": "1186f7fbb93e6b3b01",
       "title": "وصول",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 44.7,
+      "score": 43.5,
       "published_at": "2026-10-31T21:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -580,36 +696,7 @@
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "319a287f7f8cca0837",
-      "title": "مسرح",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 44.4,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "وصول قسطنطين كرياك وديانا لازار وسمر جميل إلى مهرجان شرم الشيخ للمسرح الشبابى",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "نجوم الفن يصلون شرم الشيخ للمشاركة في الدورة الـ11 من مهرجان المسرح الشبابي",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "مين فين؟",
-          "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "4615ee34b1f737c9d5",
@@ -617,7 +704,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 44.1,
+      "score": 42.8,
       "published_at": "2026-10-31T20:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -638,7 +725,7 @@
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "d7911eda9bc6a9a857",
@@ -646,53 +733,24 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 43.7,
+      "score": 42.5,
       "published_at": "2026-10-31T20:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "LIVE Milan-Inter 3-1: Pulisic, Rabiot, Bastoni e Moreira. Si scaldano Pio e Dimarco",
+          "title": "Si scrive derby, si legge Moreira: due assist e punizione capolavoro, il Milan splende e batte un'Inter spenta",
           "source": "La Gazzetta dello Sport",
           "snippet": ""
         },
         {
-          "title": "![Ecco&#tv;s Come Guardare]\" Inter Milan contro AC Milan 𝐈𝐍 𝐃𝐈𝐑𝐄𝐓𝐓Ａ 𝐒ｔｒｅａｍｉｎｇ Ｃａｎａｌｅ Ｔｖ",
-          "source": "Muzeul Național al Literaturii Române",
+          "title": "Derby, l'attesa all'esterno del Meazza",
+          "source": "Sky Sport",
           "snippet": ""
         },
         {
-          "title": "Derby Milan-Inter, tornano le coreografie: sfottò Curva nerazzurra per i rivali. Nuovo striscione per i rossoneri",
-          "source": "Il Giorno",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "b98a4a54c9f253a4e2",
-      "title": "فيرمين لوبيز",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 43.7,
-      "published_at": "2026-10-31T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "فيرمين لوبيز يتخطى عدد أهداف ديمبيلي في الدوري الإسباني",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
-        },
-        {
-          "title": "برشلونة ضد ألافيس.. حمزة عبد الكريم يتصدر قائمة البارسا لمواجهة الليلة",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "تشكيل برشلونة.. 3 تغييرات من فليك.. وحمزة عبد الكريم بديلًا أمام ألافيس",
-          "source": "يلاكورة",
+          "title": "\"Noi non ti tradiremo mai\", la spettacolare scenografia della curva del Milan",
+          "source": "Corriere dello Sport",
           "snippet": ""
         }
       ],
@@ -704,7 +762,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 43.7,
+      "score": 42.5,
       "published_at": "2026-10-31T20:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -728,87 +786,58 @@
       "alert": false
     },
     {
-      "id": "66237e3c62ef22e367",
-      "title": "milan",
+      "id": "b98a4a54c9f253a4e2",
+      "title": "فيرمين لوبيز",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 43.4,
-      "published_at": "2026-10-31T20:30:00Z",
+      "score": 42.5,
+      "published_at": "2026-10-31T20:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "'We fell behind' - what does new San Siro deal mean for AC Milan and Inter?",
-          "source": "BBC",
+          "title": "فيرمين لوبيز يتخطى عدد أهداف ديمبيلي في الدوري الإسباني",
+          "source": "365Scores",
           "snippet": ""
         },
         {
-          "title": "Licensable picture: Milano, evento di unveiling del progetto del nuovo stadio di calcio San Siro al Castello Sforzesco",
-          "source": "Reuters Connect",
+          "title": "برشلونة ضد ألافيس.. حمزة عبد الكريم على مقاعد البدلاء في الدوري الإسباني",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "Inter, AC Milan and Generali together for derby day",
-          "source": "Inter.it",
+          "title": "حمزة عبد الكريم و4 وجوه شابة ضمن قائمة برشلونة لمواجهة ألافيس في الليجا",
+          "source": "يلاكورة",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "60954aa500dfbf0b87",
-      "title": "serie a",
+      "id": "926e6866c8bca3b5f2",
+      "title": "nokia 2360 flip phone",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 43.4,
-      "published_at": "2026-10-31T20:30:00Z",
+      "score": 42.5,
+      "published_at": "2026-10-31T20:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Roma, il calendario sorride a Gasp: 5 partite per mettere nel mirino la vetta. Per Chivu si complica",
-          "source": "La Gazzetta dello Sport",
+          "title": "The Nokia 2360 Flip is a dual-display feature phone with an SOS button",
+          "source": "GSMArena.com",
           "snippet": ""
         },
         {
-          "title": "Calcio, classifica serie A: Roma a -1 dalla vetta",
-          "source": "Askanews",
+          "title": "Tech wrap this week: HMD Nokia 2360 Flip, Oppo Find X10 Series and Infinix GT 50 Pro",
+          "source": "CNBC TV18",
           "snippet": ""
         },
         {
-          "title": "Come acquistare i biglietti della Roma per la stagione 2026/27: Prossime partite, prezzi dei biglietti per la Serie A, informazioni sullo Stadio Olimpico e altro",
-          "source": "Goal.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "8a8029027c4beb596d",
-      "title": "inter milan",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 43.1,
-      "published_at": "2026-10-31T20:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Licensable picture: AC Milan v FC Internazionale - Serie A Enilive",
-          "source": "Reuters Connect",
-          "snippet": ""
-        },
-        {
-          "title": "Serie A: AC Milan score two early goals against Inter Milan",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Christian Pulisic celebrates Milan contract extension with opening goal in Derby della Madonnina",
-          "source": "The New York Times",
+          "title": "Nokia 2360 flip phone launched for students and seniors that has parentel control, limit on calls and SMS;",
+          "source": "The Economic Times",
           "snippet": ""
         }
       ],
@@ -820,7 +849,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 41.7,
+      "score": 40.5,
       "published_at": "2026-10-31T21:10:00Z",
       "source": "Google Trends",
       "source_count": 1,
