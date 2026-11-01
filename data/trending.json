@@ -1,160 +1,15 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T19:37:23.287846Z",
+  "updated_at": "2026-11-01T20:33:37.710503Z",
   "items": [
     {
-      "id": "82f7fd84cff982f475",
-      "title": "braelon allen",
+      "id": "5fd6ef4973724ea5d4",
+      "title": "hunger games",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "20000+",
-      "score": 67.1,
-      "published_at": "2026-11-01T19:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Breece Hall is not expected to play against Raiders",
-          "source": "NBC Sports",
-          "snippet": ""
-        },
-        {
-          "title": "New York Jets Put T'Vondre Sweat on Injured Reserve, Say Braelon Allen Will Start vs. Raiders",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Is Breece Hall playing today? Jets injury report with RB nearing a return",
-          "source": "FanSided",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "6da4233517c2d5b148",
-      "title": "liverpool f.c. vs arsenal f.c. standings",
-      "region": "egypt",
-      "region_label": "مصر",
       "approx_traffic": "5000+",
-      "score": 60.1,
-      "published_at": "2026-11-01T18:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Liverpool 0-1 Arsenal LIVE: Kai Havertz scores winner in rare Anfield win for Gunners",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Liverpool vs Arsenal LIVE! Premier League match updates, news, score, stream and highlights",
-          "source": "Sky Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Arsenal ride out Liverpool storm to top Premier League - World - Sports",
-          "source": "Ahram Online",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "953ebc91b6b3d7edf6",
-      "title": "liverpool f.c. vs arsenal f.c. standings",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 60.1,
-      "published_at": "2026-11-01T18:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Liverpool 0-1 Arsenal LIVE: Kai Havertz scores winner in rare Anfield win for Gunners",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Liverpool vs Arsenal LIVE! Premier League match updates, news, score, stream and highlights",
-          "source": "Sky Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Liverpool v Arsenal: Premier League – live",
-          "source": "The Guardian",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "068658ec9292f646c2",
-      "title": "george pickens",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.4,
-      "published_at": "2026-11-01T19:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "George Pickens is ready to go for the Cowboys",
-          "source": "NBC Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Week 8 inactives for Cowboys",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Cowboys star questionable for Sunday; Cardinals down multiple 1st-round picks",
-          "source": "Fort Worth Star-Telegram",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "1b9a37482c66d0d5ff",
-      "title": "joe flacco",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.4,
-      "published_at": "2026-11-01T19:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Bears QB Caleb Williams won't 'spat' custom cleats out of principle, source says",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "NFL keeps fining Caleb Williams for refusing to cover logo of \"science\" cleats worn by over 80 players",
-          "source": "Fox News",
-          "snippet": ""
-        },
-        {
-          "title": "Caddix Cleats founder offers to pay Caleb Williams' NFL fine",
-          "source": "WBAL-TV",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "78ce2362fe7d1e4c4c",
-      "title": "hunger games movies",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.4,
-      "published_at": "2026-11-01T19:20:00Z",
+      "score": 61.2,
+      "published_at": "2026-11-01T20:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
@@ -164,100 +19,71 @@
           "snippet": ""
         },
         {
-          "title": "Elizabeth Banks on New \"Hunger Games\" Star Joseph Zada: \"Perfect\"",
-          "source": "Variety",
-          "snippet": ""
-        },
-        {
           "title": "Elle Fanning’s ‘Hunger Games’ Style Officially Takes Flight",
           "source": "Vogue",
           "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "8ddd50f0da5ab63d9b",
-      "title": "baker mayfield",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.1,
-      "published_at": "2026-11-01T19:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Baker Mayfield Opted For No Glove On Past Wet Days",
-          "source": "JoeBucsFan.com",
-          "snippet": ""
         },
         {
-          "title": "Buccaneers' Baker Mayfield: Still wearing glove on throwing hand",
-          "source": "CBS Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Just how healthy is Baker Mayfields' thumb?",
-          "source": "Buccaneers Wire",
+          "title": "Elizabeth Banks on New \"Hunger Games\" Star Joseph Zada: \"Perfect\"",
+          "source": "Variety",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "61774f406d10812be5",
-      "title": "athletic - real sociedad",
+      "id": "a3cea872e8f3ec0f74",
+      "title": "formula 1",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "2000+",
-      "score": 57.1,
-      "published_at": "2026-11-01T19:10:00Z",
+      "score": 57.6,
+      "published_at": "2026-11-01T20:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Athletic - Real Sociedad en directo | Última hora de LALIGA EA Sports en vivo hoy",
-          "source": "MARCA",
+          "title": "OFFICIAL GRID: Who starts where for the Mexico City GP",
+          "source": "Formula 1",
           "snippet": ""
         },
         {
-          "title": "Terzic: \"Los derbis están llenos de emociones y debemos estar preparados\"",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "El primer derbi sin ti",
-          "source": "Diario AS",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "e40b3f0a8ad5727f1c",
-      "title": "kyler murray",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.1,
-      "published_at": "2026-11-01T19:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Kyler Murray Given Bold Prediction Before Vikings-Lions Game",
+          "title": "Valtteri Bottas Faces Uncertain Future After Penalty and Illness",
           "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "3 Vikings Coaching Decisions I'd Make If I Were Kevin O'Connell Ahead of the Lions Game in Week 8",
-          "source": "Sports Illustrated",
+          "title": "2026 Mexican Grand Prix grid",
+          "source": "RaceFans",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "f8f27e0bc22651eec6",
+      "title": "ps5",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 57.6,
+      "published_at": "2026-11-01T20:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Report: Bend Studio’s Next Game Is a Third-Person Co-op Game; Reveal Set for 2027",
+          "source": "MP1st",
           "snippet": ""
         },
         {
-          "title": "Kyler Murray Stats vs. Lions: Career Stats & Game Logs",
-          "source": "sports.betmgm.com",
+          "title": "Sony’s Bend Studio Reportedly Plans a 2027 Reveal and Possible Release for Its Third-Person Co-Op Game, Despite Starting the Project Only in Mid-2025",
+          "source": "Wccftech",
+          "snippet": ""
+        },
+        {
+          "title": "Rumour: Days Gone Dev to Announce and Launch New PS5 Game in 2027",
+          "source": "Push Square",
           "snippet": ""
         }
       ],
@@ -268,8 +94,8 @@
       "title": "يوفنتوس ضد نابولي",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 54.1,
+      "approx_traffic": "2000+",
+      "score": 55.2,
       "published_at": "2026-11-01T19:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -290,61 +116,90 @@
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "7726a1fec8ea80c579",
-      "title": "مصر والصين",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 53.8,
-      "published_at": "2026-11-01T17:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "منتخب الناشئين يتقدم على الصين بهدفين فى الشوط الأول بكأس الخليج",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "موعد مباراة مصر والصين في نصف نهائي كأس الخليج للناشئين والقنوات الناقلة",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        },
-        {
-          "title": "الكشف عن حكام مباراة مصر والصين في نصف نهائي كأس الخليج للناشئين",
-          "source": "يلاكورة",
-          "snippet": ""
-        }
-      ],
       "alert": false
     },
     {
-      "id": "a8a4c50e4a1d6d81f1",
-      "title": "brian branch",
+      "id": "b9e10c366f7359386d",
+      "title": "tyler allgeier",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T19:20:00Z",
+      "approx_traffic": "1000+",
+      "score": 54.2,
+      "published_at": "2026-11-01T20:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Lions’ Brian Branch hit with hefty fine after return against Packers",
-          "source": "MLive.com",
+          "title": "Tyler Allgeier Week 8 Outlook - Cardinals at Cowboys",
+          "source": "FantasyPros",
           "snippet": ""
         },
         {
-          "title": "Lions S Brian Branch Fined by NFL",
-          "source": "Yahoo Sports",
+          "title": "Tyler Allgeier off injury report, to play vs. DAL",
+          "source": "NBC Sports",
           "snippet": ""
         },
         {
-          "title": "Packers CB Brandon Cisse and pair of Lions defenders fined for Week 7 actions",
-          "source": "Packers Wire",
+          "title": "Tyler Allgeier Ready for Sunday",
+          "source": "Fantasy Footballers Podcast",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "2b88e2d4d167e16f22",
+      "title": "atlético grau - universitario",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.2,
+      "published_at": "2026-11-01T20:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Ruidíaz no jugará el Grau vs. Universitario por el Clausura de la Liga 1 2026",
+          "source": "ESPN Deportes",
+          "snippet": ""
+        },
+        {
+          "title": "Edison Flores fue sorprendido en plena entrevista por exigencia de un hincha: \"Patea de afuera\"",
+          "source": "Diario Líbero",
+          "snippet": ""
+        },
+        {
+          "title": "Atlético Grau - Universitario de Deportes | Pronóstico y cuotas 01.11.2026",
+          "source": "Diario AS",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "a9627901a2265f4195",
+      "title": "pat freiermuth",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.2,
+      "published_at": "2026-11-01T20:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Pittsburgh Steelers quarterback Aaron Rodgers finds tight end Pat Freiermuth for a 28-yard gain up the seam",
+          "source": "NFL.com",
+          "snippet": ""
+        },
+        {
+          "title": "Pat Freiermuth Two catches in win over New Orleans",
+          "source": "Fantasy Footballers Podcast",
+          "snippet": ""
+        },
+        {
+          "title": "Freiermuth ineffective in Week 7 vs. Saints",
+          "source": "NBC Sports",
           "snippet": ""
         }
       ],
@@ -355,66 +210,66 @@
       "title": "juventus vs napoli",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 51.1,
+      "approx_traffic": "1000+",
+      "score": 52.2,
       "published_at": "2026-11-01T19:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Cannavaro: ‘Spalletti and Allegri are similar, Kolo Muani and Hojlund less killer than strikers of my era’",
-          "source": "Football Italia",
-          "snippet": ""
-        },
-        {
-          "title": "Luciano Spalletti's press conference ahead of Juventus-Napoli",
-          "source": "Juventus.com",
-          "snippet": ""
-        },
-        {
-          "title": "'Juve never die!' – Massimiliano Allegri delivers sharp response to Juventus crisis claims",
+          "title": "Juventus-Napoli 0-0 LIVE: superb save by Vicario from Lucca",
           "source": "Goal.com",
+          "snippet": ""
+        },
+        {
+          "title": "!!$$~~[DIRETTA!] Napoli-Juve Milan - Roma in diretta tv e live streaming gratis 1° novembre 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "Juventus - Napoli LIVE. Serie A latest updates",
+          "source": "MARCA",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "7a2d650b2276ae4b8a",
       "title": "juventus vs napoli",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 51.1,
+      "approx_traffic": "1000+",
+      "score": 52.2,
       "published_at": "2026-11-01T19:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Cannavaro: ‘Spalletti and Allegri are similar, Kolo Muani and Hojlund less killer than strikers of my era’",
+          "title": "Video: Juventus fans protest outside stadium ahead of Napoli clash",
           "source": "Football Italia",
           "snippet": ""
         },
         {
-          "title": "Luciano Spalletti's press conference ahead of Juventus-Napoli",
+          "title": "Serie A | Juventus-Napoli | Squad List",
           "source": "Juventus.com",
           "snippet": ""
         },
         {
-          "title": "Serie A Preview: Juventus vs Napoli – Team News, Lineups & Prediction",
-          "source": "The Cult of Calcio",
+          "title": "Napoli, Manna: “Lucca must prove he deserves to wear this shirt. Patience, yes, but not too much”",
+          "source": "Goal.com",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "91735fcc17531a06b2",
       "title": "يوفنتوس ضد نابولي",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 51.1,
+      "approx_traffic": "1000+",
+      "score": 52.2,
       "published_at": "2026-11-01T19:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -435,90 +290,148 @@
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "484915ea27a7b3c33c",
-      "title": "أتلتيك بيلباو ضد ريال سوسيداد",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.8,
-      "published_at": "2026-11-01T19:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بلباو وسوسييداد.. ديربي ساخن يعتمد على \"الاحترام\" وإلقاء الشعر",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "مباراة أتلتيك بلباو وريال سوسيداد: نقطة ساخنة في سباق الصدارة",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        },
-        {
-          "title": "تقديم مباراة أتلتيك بيلباو وريال سوسيداد",
-          "source": "Goal.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "7bf7d174897b2cbb61",
-      "title": "athletic vs real sociedad",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.8,
-      "published_at": "2026-11-01T19:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Las dos grandes noticias para Edin Terzic de cara al derbi Athletic-Real Sociedad",
-          "source": "El Desmarque",
-          "snippet": ""
-        },
-        {
-          "title": "[ＤｉｒｅｃＴＶ＠ＶＥＲ!] Athletic Bilbao vs. Real Sociedad EN VIVO y EN DIRECTO La Liga de España 2026",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        },
-        {
-          "title": "Sancet regresa a la convocatoria del Athletic y Vizcay sigue entre los elegidos",
-          "source": "Mundo Deportivo",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "765ca0e748173e88b9",
-      "title": "كأس آسيا 2027",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "9f5c834af055f9c887",
+      "title": "seth mcgowan",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 47.8,
-      "published_at": "2026-11-01T17:30:00Z",
+      "score": 51.5,
+      "published_at": "2026-11-01T20:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "سيناريو التأجيل يلوح في الأفق.. كأس آسيا 2027 تعود لإثارة الجدل!",
-          "source": "Kooora",
+          "title": "Colts’ Backup RB Seth McGowan is a Must-Add Fantasy Football Pickup",
+          "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "من يناير إلى ديسمبر.. أنباء عن تأجيل كأس آسيا",
-          "source": "إرم نيوز",
+          "title": "Running Back Handcuffs Update for Week 8: Is Seth McGowan's Time Coming?",
+          "source": "FantasyLife",
           "snippet": ""
         },
         {
-          "title": "بين التأجيل والترحيل.. أنباء عن تغيير موعد كأس آسيا المقررة في السعودية",
-          "source": "صحيفة سبورت السعودية",
+          "title": "McGowan sees career-high 12 touches in Week 7 loss",
+          "source": "NBC Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "c021fc3d2b891609f1",
+      "title": "buffalo",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.5,
+      "published_at": "2026-11-01T20:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Buffalo Bills defense is 'horrible' and that means team cannot win the Super Bowl, Terry Bradshaw says on Fox",
+          "source": "Fox News",
+          "snippet": ""
+        },
+        {
+          "title": "Buffalo Bills fans again concerned Josh Allen will be let down by defense",
+          "source": "Buffalo Rumblings",
+          "snippet": ""
+        },
+        {
+          "title": "Buffalo Bills have NFL's best offense and one of its worst defenses",
+          "source": "Democrat and Chronicle",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "dfd6aa6280efa1dbda",
+      "title": "dallas game",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.5,
+      "published_at": "2026-11-01T20:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Cowboys tight end Jake Ferguson exits game vs. Cardinals, is questionable to return",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Jake Ferguson Ruled out for rest of game",
+          "source": "Fantasy Footballers Podcast",
+          "snippet": ""
+        },
+        {
+          "title": "Cowboys' Jake Ferguson: Injures ankle Sunday",
+          "source": "CBS Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "fa4788f272f2f054ce",
+      "title": "الاهلي والمقاولون العرب",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 51.2,
+      "published_at": "2026-11-01T18:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "قائمة الأهلي لمواجهة المقاولون العرب بكأس الرابطة",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "وائل جمعة يكشف لـ في الجول سبب استبعاد إمام وزيزو والشناوي من لقاء المقاولون",
+          "source": "FilGoal",
+          "snippet": ""
+        },
+        {
+          "title": "أحمد جمال يدير مواجهة الزمالك ووادي دجلة في كأس عاصمة مصر",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "50d7a9513ab2847e33",
+      "title": "أتلتيك بيلباو ضد ريال سوسيداد",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 49.5,
+      "published_at": "2026-11-01T19:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Jon Martin interview: Real Sociedad and Spain defender on why he is staying at his 'home' amid interest from biggest clubs",
+          "source": "Sky Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Preview: Athletic Bilbao vs Real Sociedad - prediction, team news, lineups",
+          "source": "Sports Mole",
+          "snippet": ""
+        },
+        {
+          "title": "Real Sociedad's Talent Machine Gives It The Edge In The Basque Derby",
+          "source": "Yahoo Sports",
           "snippet": ""
         }
       ],
@@ -529,8 +442,8 @@
       "title": "محمد شحاتة",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 47.5,
+      "approx_traffic": "500+",
+      "score": 49.5,
       "published_at": "2026-11-01T19:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -551,61 +464,177 @@
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "a7be3df72d1b84c86b",
-      "title": "david hasselhoff",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-11-01T19:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "David Hasselhoff’s K.I.T.T. Replica From ‘Knight Rider’ Is Heading to Auction",
-          "source": "Robb Report",
-          "snippet": ""
-        },
-        {
-          "title": "This classic 'self-driving car' is up for sale: it's Hasselhoff's replica KITT from Knight Rider",
-          "source": "Top Gear",
-          "snippet": ""
-        },
-        {
-          "title": "David Hasselhoff's Stolen KITT Replica Recovered By Interpol, Now It Could Be Yours",
-          "source": "CarScoops",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "ff7611b6f2991ea58d",
-      "title": "elche vs valencia",
+      "id": "bffe226989f1984514",
+      "title": "منتخب مصر للناشئين",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 47.4,
-      "published_at": "2026-11-01T17:20:00Z",
+      "score": 49.2,
+      "published_at": "2026-11-01T19:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Elche vs Valencia – Prediction, Where to Watch, Kick-off Time and Lineups 01-11",
-          "source": "Odds Scanner",
+          "title": "إعلان حكام مباراتي نصف نهائي كأس الخليج تحت 17 عامًا",
+          "source": "عاجل",
           "snippet": ""
         },
         {
-          "title": "🚨XIs confirmed: Relegation derby at the Martínez Valero",
+          "title": "منتخب مصر للناشئين فى مواجهة الصين بنصف نهائي كأس الخليج الليلة",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "3 لاعبين مصريين خطفوا الأنظار في كأس الخليج تحت 17 عاماً",
+          "source": "annahar.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2db79225f6bc22c082",
+      "title": "gardner minshew ii",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 48.5,
+      "published_at": "2026-11-01T20:20:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Cardinals and Eagles are perfect trade partners for a Gardner Minshew reunion",
+          "source": "Raising Zona",
+          "snippet": ""
+        },
+        {
+          "title": "Jacoby Brissett benched by Arizona Cardinals vs. Cowboys",
           "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "Martín Anselmi Tips His Hat to Javier Aguirre’s Legendary Career Ahead of Elche vs Valencia Showdown in LaLiga",
-          "source": "Soy Futbol",
+          "title": "Jacoby Brissett benched in favor of Gardner Minshew as Cardinals struggle vs. Cowboys",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "484915ea27a7b3c33c",
+      "title": "أتلتيك بيلباو ضد ريال سوسيداد",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.9,
+      "published_at": "2026-11-01T19:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بلباو وسوسييداد.. ديربي ساخن يعتمد على \"الاحترام\" وإلقاء الشعر",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "مباراة أتلتيك بلباو وريال سوسيداد: نقطة ساخنة في سباق الصدارة",
+          "source": "Vietnam.vn",
+          "snippet": ""
+        },
+        {
+          "title": "تقديم مباراة أتلتيك بيلباو وريال سوسيداد",
+          "source": "Goal.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7bf7d174897b2cbb61",
+      "title": "athletic vs real sociedad",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.9,
+      "published_at": "2026-11-01T19:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "!Aquí tienes cómo ver la transmisión en vivo de GP de México de F1 por canal de televisión, 1 de noviembre de 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "Terzic analiza la vuelta de Sancet a la lista y explica su relación con Matarazzo",
+          "source": "FútbolFantasy",
+          "snippet": ""
+        },
+        {
+          "title": "Alineaciones confirmadas del derbi Athletic-Real Sociedad en la jornada 11 de LALIGA EA Sports",
+          "source": "El Desmarque",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "765ca0e748173e88b9",
+      "title": "كأس آسيا 2027",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 45.9,
+      "published_at": "2026-11-01T17:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سيناريو التأجيل يلوح في الأفق.. كأس آسيا 2027 تعود لإثارة الجدل!",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "من يناير إلى ديسمبر.. أنباء عن تأجيل كأس آسيا",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "بالفيديو.. بتال القوس يكشف احتمالية تأجيل بطولة كأس آسيا في السعودية.. ويوضح الموعد الجديد",
+          "source": "صحيفة المرصد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "cf0440ad202d988462",
+      "title": "بالميراس ضد فاسكو دا جاما",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 45.2,
+      "published_at": "2026-11-01T19:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "📋 Palmeiras and Vasco name line-ups for Copa do Brasil semi-final",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Share your predictions for the Copa do Brasil semi-finals 🏆",
+          "source": "OneFootball",
+          "snippet": ""
+        },
+        {
+          "title": "Palmeiras vs Vasco da Gama Prediction, Betting Tips, Lineups & Odds | 01 Nov 2026",
+          "source": "Sportsgambler",
           "snippet": ""
         }
       ],
@@ -617,140 +646,24 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 46.8,
+      "score": 44.9,
       "published_at": "2026-11-01T19:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "WetterTicker: Kaltstart in die neue Woche",
-          "source": "WetterOnline",
+          "title": "Wetter in Deutschland: Herbst in Deutschland bleibt überwiegend trüb und regnerisch",
+          "source": "DIE ZEIT",
           "snippet": ""
         },
         {
-          "title": "\"Klaus\" kommt - und verdrängt Wind und Regen",
-          "source": "n-tv.de",
+          "title": "Wetter Deutschland: DWD erwartet Regen und Nebel am Sonntag",
+          "source": "ad-hoc-news.de",
           "snippet": ""
         },
         {
-          "title": "Bis zu +18 Grad im November: Der Vollherbst droht komplett auszufallen",
-          "source": "Wetterprognose und Wettervorhersage",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2af6723e70511520ec",
-      "title": "النادي المكناسي ضد الجيش الملكي",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 45.5,
-      "published_at": "2026-11-01T18:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ما القنوات الناقلة لمباراة وداد تمارة والمغرب الفاسي في الدوري المغربي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "لاعبو وداد تمارة فرحانين مع الأصدقاء والأهل ديالهم بعد الفوز على المغرب الفاسي 😍",
-          "source": "Elbotola",
-          "snippet": ""
-        },
-        {
-          "title": "الوداد الرياضي تمارة في مواجهة قوية أمام المغرب الفاسي بالملعب الأولمبي بالرباط",
-          "source": "https://inews.ma/",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "3e18fcd5a31b3b77d4",
-      "title": "highmark stadium",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 44.5,
-      "published_at": "2026-11-01T19:20:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "Photos: Table smashing, breakfast sandwiches and Fall colors as Bills fans tailgate before Ravens game",
-          "source": "Buffalo News",
-          "snippet": ""
-        },
-        {
-          "title": "Photos: Buffalo Bills players arrive at Highmark Stadium to play Baltimore Ravens",
-          "source": "Buffalo News",
-          "snippet": ""
-        },
-        {
-          "title": "Noah Kahan is bringing The Last Of The Bugs World Tour 2027 to Highmark Stadium",
-          "source": "Buffalo Bills",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1eb242b4aca8a2dc87",
-      "title": "النفس المطمئنة",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 44.1,
-      "published_at": "2026-11-01T17:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ظهور جواز عربي في مسلسل يشعل غضباً.. وسعيد الماروق يعتذر",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "جواز سفر عماني يثير الجدل في مسلسل خليجي على \"نتفليكس\".. والمخرج يعتذر",
-          "source": "جريدة الشرق",
-          "snippet": ""
-        },
-        {
-          "title": "«النفس المطمئنة»… دراما رعب كويتية يلاحقها الجدل",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "861eaa1f705e61285e",
-      "title": "economy of saudi arabia",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.8,
-      "published_at": "2026-11-01T19:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Saudi Economy Shrank at Slower Pace Before Houthi War Escalation",
-          "source": "Bloomberg.com",
-          "snippet": ""
-        },
-        {
-          "title": "Houthi strikes cause damage but Kingdom’s credit standing remains",
-          "source": "Arab News",
-          "snippet": ""
-        },
-        {
-          "title": "Saudi Arabia’s Non-Oil Growth Accelerates To 1.9% In Q3 As Oil Sector Shrinks 20.4%",
-          "source": "Forbes Middle East",
+          "title": "Der Herbst bleibt grau - in manchen Orten gibt es aber Lichtblicke - Panorama - SZ.de",
+          "source": "SZ.de",
           "snippet": ""
         }
       ],
@@ -761,8 +674,8 @@
       "title": "بنك السودان المركزي",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.5,
+      "approx_traffic": "200+",
+      "score": 44.6,
       "published_at": "2026-11-01T18:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -786,29 +699,174 @@
       "alert": false
     },
     {
-      "id": "60aa6010ba8dfc111a",
-      "title": "paris fc vs monaco",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "22c370976bf96bbdf4",
+      "title": "haley stevens",
+      "region": "egypt",
+      "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 40.8,
-      "published_at": "2026-11-01T17:30:00Z",
+      "score": 43.9,
+      "published_at": "2026-11-01T20:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Licensable picture: November 1, 2026, Paris, France: Paris FC Defeats AS Monaco (3-1) At Jean-Bouin Stadium During The 9th Matchday Of The Ligue 1 McDonald's. Lassine Sinayoko Scored A Brace And Pablo Pagis Sealed The Win For Paris. Folarin",
-          "source": "Reuters Connect",
+          "title": "El-Sayed and Stevens to make rare joint appearance as Democrats seek unity in Michigan Senate race",
+          "source": "AP News",
           "snippet": ""
         },
         {
-          "title": "Football: Uninspired AS Monaco see winless run extended by Paris FC",
-          "source": "Monaco Life",
+          "title": "Midterm elections latest: Democrats denounce Stevens after she endorses Michigan GOP Senate nominee",
+          "source": "CNN",
           "snippet": ""
         },
         {
-          "title": "PLAYER RATINGS | Paris FC 3-1 Monaco: Pierre Ferracci era ends with statement win over Filipe Luís’ side",
+          "title": "Abdul El-Sayed downplays endorsement feud at campaign event: ‘I actually don’t think about Haley Stevens’ – live",
+          "source": "The Guardian",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "a01603893d2e01c777",
+      "title": "ciara mageean",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.9,
+      "published_at": "2026-11-01T20:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Tributes to 'inspirational' Olympian Ciara Mageean after death at 34",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Ciara Mageean, European 1500m gold medallist with Ireland, dies aged 34",
+          "source": "The Guardian",
+          "snippet": ""
+        },
+        {
+          "title": "'Just Heartbreaking': LPGA Pro Pens Emotional Message as Athletic Legend Breathes Her Last After Cancer Battle",
           "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2af6723e70511520ec",
+      "title": "النادي المكناسي ضد الجيش الملكي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 43.6,
+      "published_at": "2026-11-01T18:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "القنوات الناقلة لمباراة الجيش الملكي ضد المكناسي اليوم في الدوري المغربي مع الموعد والتشكيلة",
+          "source": "قناة ومنصة المشهد - أخبار العالم اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "الجيش الملكي يعود بنقطة من مكناس",
+          "source": "Hespress",
+          "snippet": ""
+        },
+        {
+          "title": "إعفاء نجم الجيش من مواجهة الكوديم – الرياضة",
+          "source": "Anbaetv",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6f221343b4248d2ce6",
+      "title": "palmeiras vs vasco",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.3,
+      "published_at": "2026-11-01T19:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Copa do Brasil: 500 profissionais desmontam palco e liberam Nubank Parque para semifinal",
+          "source": "tmc.com.br",
+          "snippet": ""
+        },
+        {
+          "title": "Palmeiras 1 X 0 Vasco - Gol Maurício - Copa do Brasil 2026",
+          "source": "UOL",
+          "snippet": ""
+        },
+        {
+          "title": "Copa do Brasil abre semifinais neste domingo às 16h; no Brasileirão Flamengo ampliou vantagem",
+          "source": "Tribuna do Sertão",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "861eaa1f705e61285e",
+      "title": "economy of saudi arabia",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 41.9,
+      "published_at": "2026-11-01T19:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Saudi Economy Shrank at Slower Pace Before Houthi War Escalation",
+          "source": "Bloomberg.com",
+          "snippet": ""
+        },
+        {
+          "title": "Houthi strikes cause damage but Kingdom’s credit standing remains",
+          "source": "Arab News",
+          "snippet": ""
+        },
+        {
+          "title": "Saudi Arabia’s Non-Oil Growth Accelerates To 1.9% In Q3 As Oil Sector Shrinks 20.4%",
+          "source": "Forbes Middle East",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ff56e27f536225f5fd",
+      "title": "elche vs valencia",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 40.9,
+      "published_at": "2026-11-01T18:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Elche 0-1 Valencia: Sadiq settles it as Chust stands out",
+          "source": "Sofascore",
+          "snippet": ""
+        },
+        {
+          "title": "🚨XIs confirmed: Relegation derby at the Martínez Valero",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "PREVIEW: ELCHE CF VS. VALENCIA CF",
+          "source": "Valencia CF",
           "snippet": ""
         }
       ],
