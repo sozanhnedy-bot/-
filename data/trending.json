@@ -1,234 +1,147 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T11:00:24.530970Z",
+  "updated_at": "2026-11-01T11:36:05.158879Z",
   "items": [
     {
-      "id": "99245f02186028dd07",
-      "title": "projected top 25",
+      "id": "0ea4cb028b1bb4d46c",
+      "title": "levante badalona - barcelona",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.0,
-      "published_at": "2026-11-01T10:30:00Z",
+      "approx_traffic": "1000+",
+      "score": 53.8,
+      "published_at": "2026-11-01T11:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Tomorrow's Top 25 Today: Ohio State falls from top 10, USC reenters college football rankings after upset win",
-          "source": "CBS Sports",
+          "title": "El Barça defiende el liderato en el derbi catalán; Madrid CFF y Dépor miran a Europa",
+          "source": "Yahoo",
           "snippet": ""
         },
         {
-          "title": "Ohio State replaces BYU at No. 2 as Top 25 jumbled again by top-10 losses",
-          "source": "ESPN",
+          "title": "En directo FC Badalona Women vs FC Barcelona Primera División Femenina",
+          "source": "Artículo 14",
           "snippet": ""
         },
         {
-          "title": "Brett McMurphy's college football AP Top 25 ballot after Week 9",
-          "source": "On3",
+          "title": "A seguir sumando en Palamós",
+          "source": "FC Barcelona",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "0e26c4de916f629e4c",
-      "title": "feeding our future",
+      "id": "6cd17c00e26541b308",
+      "title": "hotel",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 51.7,
-      "published_at": "2026-11-01T09:20:00Z",
+      "score": 53.5,
+      "published_at": "2026-11-01T10:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Man who pleaded guilty in scheme to bribe Feeding Our Future juror sentenced",
-          "source": "CBS News",
-          "snippet": ""
-        },
-        {
-          "title": "After fraud acquittal, Feeding Our Future defendant gets 6 1/2 year sentence for bribing juror",
-          "source": "MPR News",
-          "snippet": ""
-        },
-        {
-          "title": "Man who tried to bride Feeding Our Future juror gets 6.5 years in jail",
-          "source": "Willmar Radio",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "c2f831cbd7119dd990",
-      "title": "technology news",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 51.3,
-      "published_at": "2026-11-01T09:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Big Tech returns smallest share of cash to shareholders in 15 years, given AI spending",
-          "source": "Reuters",
-          "snippet": ""
-        },
-        {
-          "title": "An AI slowdown that takes some air out of the exuberance could actually extend the boom, Wall Street veteran says",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "Big Tech’s Data Center Blitz Is Burning Through Cash and Scaring Wall St.",
-          "source": "The New York Times",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "43f77339e8f2fa5658",
-      "title": "latest news",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 51.3,
-      "published_at": "2026-11-01T09:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Trump's push to oust Omar faces historic Supreme Court test, but legal experts see ‘uncharted’ twist",
+          "title": "Two men die after suspected electrocution at hotel pool as rescue effort injures others",
           "source": "Fox News",
           "snippet": ""
         },
         {
-          "title": "Opinion | Trump Is Turning to an Old Tool of Authoritarian Repression",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Here’s what Omar could face as federal investigators scrutinize her past",
-          "source": "Baltimore Sun",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0ad97adf795ca82212",
-      "title": "বাংলাদেশ",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 50.7,
-      "published_at": "2026-11-01T10:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "সৌদিগামী ১৫৯ ফ্লাইট বাতিল",
-          "source": "Jugantor",
-          "snippet": ""
-        },
-        {
-          "title": "১৪ নভেম্বর পর্যন্ত সৌদি আরবের জেদ্দা, রিয়াদ এবং দাম্মামে বিমান পরিষেবা স্থগিত",
-          "source": "Aaro Ananda",
-          "snippet": ""
-        },
-        {
-          "title": "সৌদির ১৬৫টি ফ্লাইটে বিঘ্ন, ভোগান্তিতে ২২ হাজারের বেশি যাত্রী",
-          "source": "Ajker Patrika",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "e373e10210c4ec81b0",
-      "title": "varun chakaravarthy",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 47.7,
-      "published_at": "2026-11-01T08:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "IND vs NZ, 5th T20I: New Zealand sign off with consolation win, India take series 3-2",
+          "title": "‘I tried my best’: Hotel staffer who jumped in to save two men stable, but traumatised",
           "source": "The Times of India",
           "snippet": ""
         },
         {
-          "title": "Vaibhav Sooryavanshi Snubbed Again As India Make 2 Changes In Playing XI For 5th T20I",
-          "source": "NDTV Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Mitchell Santner wins first toss of series as India bat in final T20I",
-          "source": "Telangana Today",
+          "title": "Slovakian couple had come for a holiday to India, man died hours after checking into Conrad",
+          "source": "The Hindu",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "4628d87f974eeedecf",
-      "title": "persib bandung vs adhyaksa",
+      "id": "aafe294b3562a8f0d7",
+      "title": "como vs venezia",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 47.7,
-      "published_at": "2026-11-01T08:50:00Z",
+      "score": 50.8,
+      "published_at": "2026-11-01T11:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Babak I: Peralta dan Menalo Bawa Persib Unggul 3-0 atas Isenmulang",
-          "source": "CNN Indonesia",
+          "title": "Venezia se concentra para salir del último lugar ante Como 1907",
+          "source": "Anecdotarios",
           "snippet": ""
         },
         {
-          "title": "Persib Tanpa Teja Paku Alam dan Gabriel Mutombo saat Jamu Isen Mulang Sore Ini",
-          "source": "TINTAHIJAU.com",
+          "title": "Como – Venecia: horario y dónde ver hoy por TV el partido de fútbol de la Serie A",
+          "source": "La Vanguardia",
           "snippet": ""
         },
         {
-          "title": "Hasil BRI Super League: Persib Menang Telak 4-0, PSIM Raih Kemenangan Perdana",
-          "source": "Liputan6.com",
+          "title": "Alineaciones de Como contra Venezia",
+          "source": "rcdm.es",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "99def435d0c2e13816",
-      "title": "villanova basketball",
+      "id": "d17f573106e4633a48",
+      "title": "como vs venezia",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.7,
-      "published_at": "2026-11-01T10:20:00Z",
+      "approx_traffic": "500+",
+      "score": 50.5,
+      "published_at": "2026-11-01T10:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Pope Leo tells Villanova and Notre Dame basketball teams he is neutral. Prevost has other ideas",
-          "source": "AP News",
+          "title": "Cuándo juegan Como vs. Venezia por la Serie A: equipo, fecha, hora y TV en vivo",
+          "source": "ESPN Deportes",
           "snippet": ""
         },
         {
-          "title": "Pope: In an age marked by distance, sports bring people together",
-          "source": "Vatican News",
+          "title": "Como – Venecia: horario y dónde ver hoy por TV el partido de fútbol de la Serie A",
+          "source": "La Vanguardia",
           "snippet": ""
         },
         {
-          "title": "Bill Raftery hopes to avoid confessional booth after calling game in pope's honor",
-          "source": "ESPN",
+          "title": "Alineaciones de Como contra Venezia",
+          "source": "rcdm.es",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "24bf358d87f865fcdf",
+      "title": "black friday 2026",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.1,
+      "published_at": "2026-11-01T10:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Costco Reveals Its Full Black Friday Ad and Sale Dates for 2026, Discounts Include Frozen Food and Gaming PCs",
+          "source": "IGN",
+          "snippet": ""
+        },
+        {
+          "title": "Black Friday sales are starting early at Costco, Target and Walmart",
+          "source": "Dallas News",
+          "snippet": ""
+        },
+        {
+          "title": "Costco’s Holiday Savings Event Starts This Week—Here’s What’s Going on Sale",
+          "source": "Martha Stewart",
           "snippet": ""
         }
       ],
@@ -239,8 +152,8 @@
       "title": "حالة الطقس اليوم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.0,
+      "approx_traffic": "500+",
+      "score": 48.8,
       "published_at": "2026-11-01T10:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -264,62 +177,178 @@
       "alert": false
     },
     {
-      "id": "0beae857770dada071",
-      "title": "guy ritchie",
+      "id": "f6a79b4e2ab999fc7c",
+      "title": "ciara mageean",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 46.0,
-      "published_at": "2026-11-01T10:00:00Z",
+      "score": 46.8,
+      "published_at": "2026-11-01T11:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Guy Ritchie's Debut Mystery Thriller on Prime Is Better Than 'The Gentlemen'",
-          "source": "MovieWeb",
+          "title": "Ciara Mageean: European champion and Olympian dies aged 34",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "Series with 'zero boring episodes' filmed in South Wales hailed as 'absolute gem'",
-          "source": "Wales Online",
+          "title": "Irish Olympian and European champion Ciara Mageean has died aged 34",
+          "source": "The Irish Times",
           "snippet": ""
         },
         {
-          "title": "Prime Video mystery thriller from creator of Netflix's The Gentleman is a 'must-watch'",
-          "source": "AOL.com",
+          "title": "Irish Olympian and European champion Ciara Mageean dies aged 34",
+          "source": "Yahoo Sports",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "0de4e9b93bee322be3",
-      "title": "هيوماين",
+      "id": "e373e10210c4ec81b0",
+      "title": "varun chakaravarthy",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 46.0,
-      "published_at": "2026-11-01T08:00:00Z",
+      "score": 46.5,
+      "published_at": "2026-11-01T08:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "\"أرامكو\" تكمل الاستحواذ على 49% من \"هيوماين\" بضخ 9.9 مليار ريال",
-          "source": "الاقتصادية",
+          "title": "New Zealand field in final T20I; Bhuvneshwar and Varun in for India",
+          "source": "Cricinfo",
           "snippet": ""
         },
         {
-          "title": "أرامكو تستحوذ على 49% من «هيوماين» باستثمارات نقدية وأصول تقارب 9.9 مليارات ريال لتعزيز ريادة المملكة في الذكاء الاصطناعي",
-          "source": "صحيفة سبق الإلكترونية",
+          "title": "India vs New Zealand Live Score, 5th T20I: Varun breaks partnership, removes Daryl Mitchell",
+          "source": "The Times of India",
           "snippet": ""
         },
         {
-          "title": "صندوق الاستثمارات العامة و \"أرامكو\" يعلنان إتمام صفقة استحواذ على 49% من شركة \"هيوماين\"",
-          "source": "عاجل",
+          "title": "New Zealand finally wins a toss and decides to bowl in the 5th T20 against India",
+          "source": "Eagle-Tribune",
           "snippet": ""
         }
       ],
       "alert": false
+    },
+    {
+      "id": "4628d87f974eeedecf",
+      "title": "persib bandung vs adhyaksa",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 46.5,
+      "published_at": "2026-11-01T08:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Babak I: Peralta dan Menalo Bawa Persib Unggul 3-0 atas Isenmulang",
+          "source": "CNN Indonesia",
+          "snippet": ""
+        },
+        {
+          "title": "Maung Mengganas, Persib Bandung Gilas Kalteng FC Tanpa Balas",
+          "source": "TIMES Indonesia",
+          "snippet": ""
+        },
+        {
+          "title": "Persib Tanpa Teja Paku Alam dan Gabriel Mutombo saat Jamu Isen Mulang Sore Ini",
+          "source": "TINTAHIJAU.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "0ad97adf795ca82212",
+      "title": "বাংলাদেশ",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.5,
+      "published_at": "2026-11-01T10:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "আসছেন না রোনান সুলিভান, সাফের আগে বড় ধাক্কা খেল বাংলাদেশ",
+          "source": "দ্য ডেইলি স্টার বাংলা",
+          "snippet": ""
+        },
+        {
+          "title": "দলের সঙ্গে যোগ দিলেন জায়ান",
+          "source": "dhakapost.com",
+          "snippet": ""
+        },
+        {
+          "title": "ছোটবেলা থেকে হামজার খেলা দেখতেন, এবার তাঁর সঙ্গে খেলতে তর সইছে না মাহির",
+          "source": "Ajker Patrika",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "10b190f4b62b0a2b2a",
+      "title": "sirius xm",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.5,
+      "published_at": "2026-11-01T11:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Rosenblatt maintains Sirius XM Holdings at Buy, raises price target to $47 from $46",
+          "source": "TradingView",
+          "snippet": ""
+        },
+        {
+          "title": "SIRI Maintained by StoneX -- Price Target Raised to $38.00",
+          "source": "GuruFocus",
+          "snippet": ""
+        },
+        {
+          "title": "SiriusXM Holdings Inc. (SIRI) Stock Forecasts",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "8e2fe7a153f86398cb",
+      "title": "november 1st",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.5,
+      "published_at": "2026-11-01T11:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Today in History: November 1, 2026",
+          "source": "Capital Gazette",
+          "snippet": ""
+        },
+        {
+          "title": "Today in History: November 1, Seabiscuit wins 'Race of the Century'",
+          "source": "The Cumberland Times-News",
+          "snippet": ""
+        },
+        {
+          "title": "Today in History: November 1, Seabiscuit wins 'Race of the Century'",
+          "source": "Black Hills Pioneer",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "330b1e86ada8d59e10",
@@ -327,7 +356,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 45.7,
+      "score": 44.5,
       "published_at": "2026-11-01T09:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -338,71 +367,71 @@
           "snippet": ""
         },
         {
-          "title": "وفاء عامر في رسالة غامضة: \"قدامك مساكين وفي ضهرك ماسكين سكاكين\"",
-          "source": "Masrawy",
+          "title": "شيماء سيف: أيتن عامر هى اللى قالت لى مش هتخلفى غير لما تخسى",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "شيماء سيف تفجر مفاجأة وتكشف سر خلافها مع آيتن عامر وعدم إنجابها (فيديو)",
-          "source": "المصري اليوم",
+          "title": "عتاب واعتذار علني.. أزمة أيتن عامر وشيماء سيف تشعل نقاشا بين رواد مواقع التواصل الاجتماعي",
+          "source": "بوابة الشروق",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "7f6a0f8c8aab203038",
-      "title": "southern california floods",
+      "id": "ba4085bab128932ab9",
+      "title": "ice age",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 45.4,
-      "published_at": "2026-11-01T09:40:00Z",
+      "approx_traffic": "100+",
+      "score": 44.2,
+      "published_at": "2026-11-01T11:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Record-breaking high tides spark chaos – and kayak commutes – across California",
-          "source": "The Guardian",
+          "title": "We'd Be Entering an Ice Age Right Now if Climate Change Hadn't Terminated It, Study Suggests",
+          "source": "ScienceAlert",
           "snippet": ""
         },
         {
-          "title": "As unusual low-latitude storm approaches SoCal and threatens serious Four Corners flood risk once again, record-warm and record-high ocean conditions persist along CA coast amid still-strengthening El Niño",
-          "source": "Weather West",
+          "title": "Humans accidentally canceled the next ice age — but it’s no reason to celebrate, scientists say",
+          "source": "CNN",
           "snippet": ""
         },
         {
-          "title": "Flooding concerns remain along SoCal coast with another day of high tides forecast",
-          "source": "ABC7 Los Angeles",
+          "title": "Human-Driven Warming May Have Halted the Onset of a New Ice Age",
+          "source": "Yale E360",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "c1e69e134ee0c5e428",
-      "title": "klara and the sun",
+      "id": "506ae583b2c2c2f4ad",
+      "title": "new york city marathon",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 45.4,
-      "published_at": "2026-11-01T09:40:00Z",
+      "approx_traffic": "100+",
+      "score": 43.8,
+      "published_at": "2026-11-01T11:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Taika Waititi Adapted a Strange and Beautiful Novel. The Result Is Shaping Up to Be a Legendary Bomb.",
-          "source": "Slate",
+          "title": "The best NYC running routes and gear to go the distance, per real runners",
+          "source": "New York Post",
           "snippet": ""
         },
         {
-          "title": "Jenna Ortega’s New Dystopian Sci-Fi Movie Cancels International Release After Box Office Flop",
-          "source": "MovieWeb",
+          "title": "Breast cancer patient to run New York City Marathon to change the future for her daughters",
+          "source": "WFLX",
           "snippet": ""
         },
         {
-          "title": "Spain Scraps \"Klara and the Sun\" Release",
-          "source": "Dark Horizons",
+          "title": "Breast cancer survivor to run New York City Marathon after remission",
+          "source": "Spectrum News NY1",
           "snippet": ""
         }
       ],
@@ -414,19 +443,19 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 44.7,
+      "score": 43.5,
       "published_at": "2026-11-01T09:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Cadê o 'Tiririca americano'? Candidatos 'meme' são raros nas eleições dos EUA; entenda por quê",
-          "source": "G1",
+          "title": "Como o crescimento da NFL no Brasil pode impulsionar o futebol americano no Ceará",
+          "source": "O POVO",
           "snippet": ""
         },
         {
-          "title": "Por que candidatos meme são raros nas eleições dos EUA?",
-          "source": "BNT - Boca no Trombone",
+          "title": "NFL ganha 20% de torcida no Brasil e bate recorde de público no Maracanã",
+          "source": "bra1.com.br",
           "snippet": ""
         },
         {
@@ -443,7 +472,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 44.7,
+      "score": 43.5,
       "published_at": "2026-11-01T09:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -467,58 +496,58 @@
       "alert": false
     },
     {
-      "id": "9080f19fe64292e4f0",
-      "title": "crypto exchange binance hacked",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.0,
-      "published_at": "2026-11-01T09:00:00Z",
+      "id": "485f453c64a885c9b8",
+      "title": "اليو ديانج",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.2,
+      "published_at": "2026-11-01T10:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "FBI Accuses NKorea of Standing Behind $6 Billion Crypto Theft from Binance",
-          "source": "ASHARQ AL-AWSAT English",
+          "title": "تعليق واقعى من معتز الشامى على أنباء إستغناء فالنسيا الاسباني عن أليوديانج",
+          "source": "الزمالك اليوم",
           "snippet": ""
         },
         {
-          "title": "Notorious hacker says stolen crypto is like ‘holding a hot potato’",
-          "source": "CNN",
+          "title": "تقارير: فالنسيا يقرر التخلص من ديانج",
+          "source": "يلاكورة",
           "snippet": ""
         },
         {
-          "title": "Security Incident Update (2026-10-30)",
-          "source": "Binance",
+          "title": "هل يعود ديانغ إلى الأهلي المصري؟ مصدر يكشف التفاصيل لـ\"إرم نيوز\"",
+          "source": "إرم نيوز",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "52b55775104e2cd8bd",
-      "title": "patrick kane",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "397beced131d1afd33",
+      "title": "الاتحاد والعين",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 43.4,
+      "score": 42.2,
       "published_at": "2026-11-01T10:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "NHL On Tap: Kane returns to Detroit looking for 900th NHL assist",
-          "source": "NHL.com",
+          "title": "جرس إنذار.. 4 أزمات ترعب الاتحاد قبل الملحمة الآسيوية أمام العين",
+          "source": "إرم نيوز",
           "snippet": ""
         },
         {
-          "title": "As Patrick Kane returns to Detroit, the Chicago Blackhawks great’s scoring slump puts him in uncharted waters",
-          "source": "Chicago Tribune",
+          "title": "كيفية الحصول على تذاكر مباراة الاتحاد وباختاكور طشقند: أسعار تذاكر دوري أبطال آسيا للنخبة، ومعلومات المباراة، وبيع التذاكر في اللحظات الأخيرة والمزيد | كووورة",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "How Patrick Kane (and his son) had 'big impact' on Detroit Red Wings",
-          "source": "Detroit Free Press",
+          "title": "صافرة قطرية لمباراة الاتحاد والعين بالآسيوية",
+          "source": "جريدة الشرق",
           "snippet": ""
         }
       ],
@@ -530,7 +559,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 43.4,
+      "score": 42.2,
       "published_at": "2026-11-01T08:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -541,71 +570,13 @@
           "snippet": ""
         },
         {
-          "title": "5745 فرصة عمل جديدة في القطاع الخاص بـ17 محافظة.. اعرف التفاصيل",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "برواتب تصل إلى 30 ألف جنيه.. وزارة العمل توفر 10 وظائف للصيادلة بالقاهرة وتعلن شروط التقديم - صوت الأمة",
+          "title": "مطلوب فنيين كهرباء .. وزارة العمل تعلن عن 70 فرصة عمل برواتب تصل لـ12,600 جنيها - صوت الأمة",
           "source": "اخبارك نت",
           "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "e53e6023e949687e58",
-      "title": "gta 6",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 43.0,
-      "published_at": "2026-11-01T10:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Grand Theft Auto VI exclusive – The state that never sleeps",
-          "source": "GamesRadar+",
-          "snippet": ""
         },
         {
-          "title": "Rockstar art-directed 600,000 animations, so that GTA 6’s passers-by feel like real people",
-          "source": "Creative Bloq",
-          "snippet": ""
-        },
-        {
-          "title": "Screw Grand Theft Auto 6's supercars, I'm here for Leonida's robust public transportation system",
-          "source": "PC Gamer",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "846fc376bfd58a8e6a",
-      "title": "when is black friday",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 43.0,
-      "published_at": "2026-11-01T10:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "When is Black Friday 2026? Here’s everything you need to know",
-          "source": "About Amazon",
-          "snippet": ""
-        },
-        {
-          "title": "Amazon's early Black Friday deals includes a fall-ready heavyweight Hanes hoodie for just $15 (plus 10 more fab deals)",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "The best sales to shop this weekend: Up to 70% off Apple, All Clad, and more top brands",
-          "source": "AOL.com",
+          "title": "5745 فرصة عمل داخل 72 شركة بالقطاع الخاص بـ17 محافظة- صور",
+          "source": "Masrawy",
           "snippet": ""
         }
       ],
@@ -617,7 +588,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 42.7,
+      "score": 41.5,
       "published_at": "2026-11-01T09:50:00Z",
       "source": "Google Trends",
       "source_count": 2,
@@ -646,24 +617,82 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 42.7,
+      "score": 41.5,
       "published_at": "2026-11-01T08:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Watch: Heidi Klum as giant severed hand for Halloween bash",
-          "source": "BBC",
+          "title": "Heidi Klum Becomes Her Left Hand for Halloween",
+          "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "Heidi Klum, the 'Queen of Halloween,' reveals 2026 costume",
-          "source": "WUSA9",
+          "title": "Heidi Klum's 2026 Halloween Costume Is Absolutely Unhinged",
+          "source": "Yahoo",
           "snippet": ""
         },
         {
-          "title": "Taylor Momsen, James Charles & More Celebrities Who Scared Up a Good Time at Heidi Klum’s Halloween Party",
-          "source": "E! News",
+          "title": "Heidi Klum’s 25 Best Halloween Costumes, Ranked By How Much Time I Assume They Took To Put On",
+          "source": "BuzzFeed",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6798fe6c9daea2d98b",
+      "title": "دولار",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 41.2,
+      "published_at": "2026-11-01T09:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "تقرير أولي.. نتائج إعمار للربع الثالث 2026",
+          "source": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
+          "snippet": ""
+        },
+        {
+          "title": "\"إعمار المدينة الاقتصادية\" تتكبد 64.27 مليون دولار في الربع الثالث",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "«إعمار المدينة الاقتصادية» ترفع خسائرها 78.5 % إلى 64 مليون دولار في الربع الثالث",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2767af88d8cca85e40",
+      "title": "prince yadav",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 40.8,
+      "published_at": "2026-11-01T09:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Prince's all-phase utility makes him a rare asset: Ambati Rayudu",
+          "source": "Cricbuzz",
+          "snippet": ""
+        },
+        {
+          "title": "Who is Prince Yadav? How Delhi pacer became India’s trusted death-overs specialist",
+          "source": "Oherald",
+          "snippet": ""
+        },
+        {
+          "title": "Prince Yadav: Delhi’s tennis-ball prodigy has become India’s death-overs man",
+          "source": "The Indian Express",
           "snippet": ""
         }
       ],
@@ -675,7 +704,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 41.7,
+      "score": 40.5,
       "published_at": "2026-11-01T07:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -691,37 +720,32 @@
           "snippet": ""
         },
         {
-          "title": "شاكيرا تعلن تأجيل حفلها في مصر وتوجه رسالة لجمهورها",
-          "source": "Masrawy",
+          "title": "شاكيرا تؤجل حلم الأهرامات للمرة الثانية.. لماذا لم تلتق النجمة الكولومبية بجمهورها المصري؟",
+          "source": "بوابة الأهرام",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "2a68a4dbc4dc9cc9c1",
-      "title": "ranking",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 41.7,
-      "published_at": "2026-11-01T07:50:00Z",
+      "id": "59e972e6a4dc65a244",
+      "title": "masters tournament catering bill lawsuit",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 40.2,
+      "published_at": "2026-11-01T10:40:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 2,
       "news_items": [
         {
-          "title": "The chaotic SEC football championship race, explained by the data",
-          "source": "NCAA.com",
+          "title": "A California restaurant catered meals for a golfer's family at the Masters without agreeing on a price, t",
+          "source": "The Times of India",
           "snippet": ""
         },
         {
-          "title": "Updated SEC standings after exciting Week 10 slate",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "SEC Armageddon? How nine teams could finish the season 9-3 and create CFP chaos",
-          "source": "CBS Sports",
+          "title": "A California Restaurant Catered the Masters Without Quoting a Price, Then Sent a $75,000 Bill: How an Unwritten Deal Sparked a Years-Long Legal War",
+          "source": "Istituto Impariamo",
           "snippet": ""
         }
       ],
@@ -733,7 +757,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 41.0,
+      "score": 39.8,
       "published_at": "2026-11-01T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -757,29 +781,29 @@
       "alert": false
     },
     {
-      "id": "760b8c8f2e6140799a",
-      "title": "blair tickner",
+      "id": "9080f19fe64292e4f0",
+      "title": "crypto exchange binance hacked",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 40.4,
-      "published_at": "2026-11-01T08:40:00Z",
+      "score": 39.8,
+      "published_at": "2026-11-01T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "India becomes first team to reach 400 T20I sixes in a calendar year",
-          "source": "ANI News",
+          "title": "FBI Accuses NKorea of Standing Behind $6 Billion Crypto Theft from Binance",
+          "source": "ASHARQ AL-AWSAT English",
           "snippet": ""
         },
         {
-          "title": "India Becomes First Team To Smash 400 Sixes In Single Calendar Year After Naman Dhir’s Six Off Blair Tickner In 5th T20I",
-          "source": "Sportscape Magazine",
+          "title": "Security Incident Update (2026-10-30)",
+          "source": "Binance",
           "snippet": ""
         },
         {
-          "title": "India Make History, Become 1st Cricket Team In The World To Hit 400 T20I Sixes In A Year",
-          "source": "News18",
+          "title": "Crypto firm Binance covers 90% of losses after $6.3bn hack",
+          "source": "BBC",
           "snippet": ""
         }
       ],
@@ -791,11 +815,16 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 40.4,
+      "score": 39.2,
       "published_at": "2026-11-01T07:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "إليسا تختار اسمها الحقيقي عنواناً لألبومها الجديد",
+          "source": "اخبارك نت",
+          "snippet": ""
+        },
         {
           "title": "إليسا تختار اسمها الحقيقي عنوانًا لألبومها الجديد وتكشف سر التسمية",
           "source": "المصري اليوم",
@@ -804,11 +833,6 @@
         {
           "title": "أحمد حسن راؤول يكشف لـ يوليو مفاجأة إليسا في ألبومها الجديد | خاص",
           "source": "https://www.youlyou.com/",
-          "snippet": ""
-        },
-        {
-          "title": "إليسا تفتح صفحة البدايات... \"أليسار\"",
-          "source": "العربي الجديد",
           "snippet": ""
         }
       ],
@@ -820,7 +844,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 39.0,
+      "score": 37.8,
       "published_at": "2026-11-01T08:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -838,35 +862,6 @@
         {
           "title": "فاتورة الكهرباء هتقل 30%.. تطبيق قرار الحكومة بشأن العدادات الكودية اليوم رسميًا",
           "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "eeea497931d52d155b",
-      "title": "مناخ",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 39.0,
-      "published_at": "2026-11-01T08:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "المحيطات تحت الضغط.. تغيرات خطيرة تهدد توازن المناخ العالمي",
-          "source": "إرم نيوز",
-          "snippet": ""
-        },
-        {
-          "title": "تحولات مقلقة في القطب الجنوبي",
-          "source": "Elfann",
-          "snippet": ""
-        },
-        {
-          "title": "ترامب يلغي ضوابط انبعاثات الميثان وتأثيرها على المناخ والطاقة",
-          "source": "annahar.com",
           "snippet": ""
         }
       ],
