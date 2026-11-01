@@ -1,101 +1,14 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T09:54:43.818649Z",
+  "updated_at": "2026-11-01T10:25:01.841250Z",
   "items": [
-    {
-      "id": "8fc7c6e3258d963ea0",
-      "title": "nyc marathon start time",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 60.2,
-      "published_at": "2026-11-01T09:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Your guide to the 2026 TCS NYC Marathon",
-          "source": "ABC7 New York",
-          "snippet": ""
-        },
-        {
-          "title": "Here are the Upper West Side Street Closures to Know About on Marathon Sunday",
-          "source": "West Side Rag",
-          "snippet": ""
-        },
-        {
-          "title": "New York City Marathon 2026: How to watch live coverage, track runners, see the route map, and more",
-          "source": "Fast Company",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "87f28cf9dda79cb8e5",
-      "title": "photos",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 60.2,
-      "published_at": "2026-11-01T09:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Princess Kate makes debut Halloween post with adorable Prince Louis photo",
-          "source": "USA Today",
-          "snippet": ""
-        },
-        {
-          "title": "Prince William and Kate Middleton share rare Halloween photo of Prince Louis",
-          "source": "ABC News - Breaking News, Latest News and Videos",
-          "snippet": ""
-        },
-        {
-          "title": "Kate Middleton and Prince William Share Halloween Post for the First Time with Throwback Photo of Prince Louis",
-          "source": "People.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "ebe2e566c1920529b2",
-      "title": "when is black friday 2026",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 56.5,
-      "published_at": "2026-11-01T09:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Costco Reveals Its Full Black Friday Ad and Sale Dates for 2026, Discounts Include Frozen Food and Gaming PCs",
-          "source": "IGN",
-          "snippet": ""
-        },
-        {
-          "title": "Black Friday sales are starting early at Costco, Target and Walmart",
-          "source": "Dallas News",
-          "snippet": ""
-        },
-        {
-          "title": "Costco’s Holiday Savings Event Starts This Week—Here’s What’s Going on Sale",
-          "source": "Martha Stewart",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
     {
       "id": "0e26c4de916f629e4c",
       "title": "feeding our future",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 53.8,
+      "score": 52.8,
       "published_at": "2026-11-01T09:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -119,41 +32,12 @@
       "alert": false
     },
     {
-      "id": "43f77339e8f2fa5658",
-      "title": "latest news",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.5,
-      "published_at": "2026-11-01T09:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Live updates: Trump makes his last red-state stops as GOP tries to save midterms",
-          "source": "CNN",
-          "snippet": ""
-        },
-        {
-          "title": "Trump rallies in Kansas and Iowa are back on after RNC said they were canceled: Source",
-          "source": "CNBC",
-          "snippet": ""
-        },
-        {
-          "title": "What to know ahead of President Trump’s rally in Salina on Sunday",
-          "source": "KSN-TV",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "c2f831cbd7119dd990",
       "title": "technology news",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.5,
+      "approx_traffic": "1000+",
+      "score": 52.5,
       "published_at": "2026-11-01T09:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -177,42 +61,42 @@
       "alert": false
     },
     {
-      "id": "1a7ee036fddc188301",
-      "title": "car accident attorney",
+      "id": "43f77339e8f2fa5658",
+      "title": "latest news",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.2,
-      "published_at": "2026-11-01T09:00:00Z",
+      "approx_traffic": "1000+",
+      "score": 52.5,
+      "published_at": "2026-11-01T09:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Best Car Accident Lawyers in Baltimore, MD",
-          "source": "MarylandReporter.com",
+          "title": "Rift grows between Democrats Abdul El-Sayed and Haley Stevens in Michigan | CNN Politics",
+          "source": "CNN",
           "snippet": ""
         },
         {
-          "title": "Survivor of deadly Highway 30 crash in Jefferson County calls for road markings",
-          "source": "KMOV",
+          "title": "Trump uncancels weekend rallies in Iowa and Kansas with Senate control at stake",
+          "source": "NBC News",
           "snippet": ""
         },
         {
-          "title": "Lawyers target MoDOT over fatal Highway 30 accident",
-          "source": "FOX 2",
+          "title": "What to know ahead of President Trump’s rally in Salina on Sunday",
+          "source": "KSN-TV",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "0d9726eaf804a504da",
-      "title": "lilli tagger",
+      "id": "9d3227be6cfe605095",
+      "title": "harriet dart",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 49.8,
-      "published_at": "2026-11-01T08:50:00Z",
+      "score": 49.5,
+      "published_at": "2026-11-01T09:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
@@ -235,29 +119,87 @@
       "alert": false
     },
     {
-      "id": "1b0f91bdb77a9639b0",
-      "title": "عام دراسي",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 49.2,
-      "published_at": "2026-11-01T07:00:00Z",
+      "id": "ebe2e566c1920529b2",
+      "title": "when is black friday 2026",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 49.5,
+      "published_at": "2026-11-01T09:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "موعد إجازة نصف العام الدراسى للطلاب.. اعرف التفاصيل",
+          "title": "Costco Reveals Its Full Black Friday Ad and Sale Dates for 2026, Discounts Include Frozen Food and Gaming PCs",
+          "source": "IGN",
+          "snippet": ""
+        },
+        {
+          "title": "Black Friday sales are starting early at Costco, Target and Walmart",
+          "source": "Dallas News",
+          "snippet": ""
+        },
+        {
+          "title": "Costco’s Holiday Savings Event Starts This Week—Here’s What’s Going on Sale",
+          "source": "Martha Stewart",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "bc0fe3dcfd2206f5f7",
+      "title": "حالة الطقس اليوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 47.2,
+      "published_at": "2026-11-01T10:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "تغيرات مفاجئة.. الأرصاد تكشف عن تقلبات درجات الحرارة اعتبارا من الغد",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "التعليم تحسم الجدل حول تأجيل امتحانات نوفمبر 2026.. انطلاق الاختبارات 29 نوفمبر لصفوف النقل",
-          "source": "المصري اليوم",
+          "title": "طقس مفاجئ خلال الأسبوع الحالي في مصر.. رياح وأمطار رغم ارتفاع الحرارة",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "موعد امتحانات الفصل الدراسي الأول لصفوف النقل بالمدارس والشهادة الإعدادية",
-          "source": "Masrawy",
+          "title": "فيديو.. الأرصاد: غدا ذروة ارتفاع الحرارة.. والعظمى تصل إلى 37",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "0de4e9b93bee322be3",
+      "title": "هيوماين",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 47.2,
+      "published_at": "2026-11-01T08:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "صندوق الاستثمارات العامة و \"أرامكو\" يعلنان إتمام صفقة استحواذ على 49% من شركة \"هيوماين\"",
+          "source": "عاجل",
+          "snippet": ""
+        },
+        {
+          "title": "أرامكو تستحوذ على 49% من «هيوماين» باستثمارات نقدية وأصول تقارب 9.9 مليارات ريال لتعزيز ريادة المملكة في الذكاء الاصطناعي",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "أرامكو تستحوذ على 49% من أسهم شركة \"هيوماين\" السعودية للذكاء الاصطناعي",
+          "source": "مونت كارلو الدولية",
           "snippet": ""
         }
       ],
@@ -269,7 +211,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 48.2,
+      "score": 47.2,
       "published_at": "2026-11-01T08:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -293,12 +235,41 @@
       "alert": false
     },
     {
+      "id": "7f6a0f8c8aab203038",
+      "title": "southern california floods",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.5,
+      "published_at": "2026-11-01T09:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Record-breaking high tides spark chaos – and kayak commutes – across California",
+          "source": "The Guardian",
+          "snippet": ""
+        },
+        {
+          "title": "As unusual low-latitude storm approaches SoCal and threatens serious Four Corners flood risk once again, record-warm and record-high ocean conditions persist along CA coast amid still-strengthening El Niño",
+          "source": "Weather West",
+          "snippet": ""
+        },
+        {
+          "title": "‘This is the worst it’s been.’ King tides flood Southern California beach bars and restaurants",
+          "source": "Los Angeles Times",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "c1e69e134ee0c5e428",
       "title": "klara and the sun",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 47.5,
+      "score": 46.5,
       "published_at": "2026-11-01T09:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -319,7 +290,7 @@
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "dd0a539540f821c268",
@@ -327,7 +298,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 46.9,
+      "score": 45.9,
       "published_at": "2026-11-01T09:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -338,187 +309,42 @@
           "snippet": ""
         },
         {
-          "title": "EUA diz à PF que Rei da Sucata foi localizado em território americano",
-          "source": "Metrópoles",
+          "title": "Por que candidatos meme são raros nas eleições dos EUA?",
+          "source": "BNT - Boca no Trombone",
           "snippet": ""
         },
         {
-          "title": "EUA informam à PF que Rei da Sucata foi localizado em território americano",
-          "source": "PAIPEE -",
+          "title": "EUA diz à PF que Rei da Sucata foi localizado em território americano",
+          "source": "Metrópoles",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "4628d87f974eeedecf",
-      "title": "persib bandung vs adhyaksa",
+      "id": "3436613b714ef6ba4a",
+      "title": "starbucks",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
       "score": 45.9,
-      "published_at": "2026-11-01T08:50:00Z",
+      "published_at": "2026-11-01T09:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Link Live Streaming Persib vs Isenmulang Hari Ini: Demi Kejar Persija di Puncak, Maung Tumpuk 4 Pemain Depan, Tayang di Vidio",
-          "source": "AFU.id",
+          "title": "Starbucks wants to trial a 'fast pass' drive-through with AI",
+          "source": "Yahoo Finance",
           "snippet": ""
         },
         {
-          "title": "Persib Tunda Kembalinya Teja dan Gabriel saat Jamu Isen Mulang",
-          "source": "Demokratis.co.id",
+          "title": "Starbucks puts greater personalization on the menu for 2027",
+          "source": "CX Dive",
           "snippet": ""
         },
         {
-          "title": "Daftar Susunan Pemain Persib Bandung vs Isenmulang Kalteng Hari Ini",
-          "source": "Media Indonesia",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f408412b0cea4c8256",
-      "title": "وزارة العمل",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 45.5,
-      "published_at": "2026-11-01T08:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "وزارة العمل تعلن عن فرص جديدة بقطاع الأمن والحراسة برواتب تصل لـ30 ألف جنيه",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "برواتب تصل إلى 30 ألف جنيه.. وزارة العمل توفر 10 وظائف للصيادلة بالقاهرة وتعلن شروط التقديم - صوت الأمة",
-          "source": "اخبارك نت",
-          "snippet": ""
-        },
-        {
-          "title": "في القطاع الخاص.. وزير العمل يعلن عن 5745 فرصة عمل جديدة في 72 شركة",
-          "source": "البوابة نيوز",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6798fe6c9daea2d98b",
-      "title": "دولار",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 44.6,
-      "published_at": "2026-11-01T09:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "نمو أرباح \"الإعادة السعودية\" الفصلية 5.9% إلى 8.69 مليون دولار",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "تقرير أولي.. نتائج الإعادة السعودية للربع الثالث 2026",
-          "source": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
-          "snippet": ""
-        },
-        {
-          "title": "السوق السعودي يترقب نتائج الربع الثالث والموعد النهائي 11 نوفمبر",
-          "source": "أريبيان بزنس",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "7f6a0f8c8aab203038",
-      "title": "southern california floods",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.6,
-      "published_at": "2026-11-01T09:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "As unusual low-latitude storm approaches SoCal and threatens serious Four Corners flood risk once again, record-warm and record-high ocean conditions persist along CA coast amid still-strengthening El Niño",
-          "source": "Weather West",
-          "snippet": ""
-        },
-        {
-          "title": "‘This is the worst it’s been.’ King tides flood Southern California beach bars and restaurants",
-          "source": "Los Angeles Times",
-          "snippet": ""
-        },
-        {
-          "title": "Flooding concerns remain along SoCal coast with another day of high tides forecast",
-          "source": "ABC7 Los Angeles",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "0de4e9b93bee322be3",
-      "title": "هيوماين",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.2,
-      "published_at": "2026-11-01T08:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "صندوق الاستثمارات العامة و \"أرامكو\" يعلنان إتمام صفقة استحواذ على 49% من شركة \"هيوماين\"",
-          "source": "عاجل",
-          "snippet": ""
-        },
-        {
-          "title": "أرامكو تستحوذ على 49% من «هيوماين» باستثمارات نقدية وأصول تقارب 9.9 مليارات ريال لتعزيز ريادة المملكة في الذكاء الاصطناعي",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "بـ9.9 مليار ريال.. «أرامكو» تستحوذ على 49% من «هيوماين» التابعة لـ PIF",
-          "source": "عكاظ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2a68a4dbc4dc9cc9c1",
-      "title": "ranking",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 43.9,
-      "published_at": "2026-11-01T07:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "College Football Playoff top 12 projection after Week 9",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "College football winners and losers: How we think the initial College Football Playoff rankings will look after Week 9",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Live CFP rankings predictions: Projecting first Playoff bracket as Week 9 reshapes race",
-          "source": "USA Today",
+          "title": "Starbucks Eyes AI Drive-Thru Tech to Help Baristas Take Orders",
+          "source": "Bloomberg.com",
           "snippet": ""
         }
       ],
@@ -529,8 +355,8 @@
       "title": "crypto exchange binance hacked",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.2,
+      "approx_traffic": "200+",
+      "score": 45.2,
       "published_at": "2026-11-01T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -546,124 +372,356 @@
           "snippet": ""
         },
         {
-          "title": "Crypto firm Binance covers 90% of losses after $6.3bn hack",
-          "source": "BBC",
+          "title": "Security Incident Update (2026-10-30)",
+          "source": "Binance",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "f23667eb542614b2d9",
-      "title": "ireland cricket team vs namibia national cricket team match scorecard",
+      "id": "4628d87f974eeedecf",
+      "title": "persib bandung vs adhyaksa",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 42.9,
-      "published_at": "2026-11-01T07:20:00Z",
+      "score": 44.9,
+      "published_at": "2026-11-01T08:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Ireland Cricket: Jai Moondra takes six wickets as Ireland level series against Namibia",
-          "source": "BBC",
+          "title": "Link Live Streaming Persib vs Isenmulang Hari Ini: Demi Kejar Persija di Puncak, Maung Tumpuk 4 Pemain Depan, Tayang di Vidio",
+          "source": "AFU.id",
           "snippet": ""
         },
         {
-          "title": "Ireland's Indian-origin pacer Jai Moondra creates cricket history with record-breaking 6/26 bowling figur",
-          "source": "The Times of India",
+          "title": "Persib Tunda Kembalinya Teja dan Gabriel saat Jamu Isen Mulang",
+          "source": "Demokratis.co.id",
           "snippet": ""
         },
         {
-          "title": "4th ODI, Ireland tour of Namibia at Windhoek, Oct 30 2026",
-          "source": "ESPN",
+          "title": "Dansat Brimob Jabar Pimpin TWG dan TFG, Matangkan Pengamanan Persib VS Isenmulang Kalteng FC",
+          "source": "86News",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "17adc735b3cab6b1f4",
-      "title": "heidi klum",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "52b55775104e2cd8bd",
+      "title": "patrick kane",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.5,
+      "published_at": "2026-11-01T10:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "NHL On Tap: Kane returns to Detroit looking for 900th NHL assist",
+          "source": "NHL.com",
+          "snippet": ""
+        },
+        {
+          "title": "As Patrick Kane returns to Detroit, the Chicago Blackhawks great’s scoring slump puts him in uncharted waters",
+          "source": "Chicago Tribune",
+          "snippet": ""
+        },
+        {
+          "title": "How Patrick Kane (and his son) had 'big impact' on Detroit Red Wings",
+          "source": "Detroit Free Press",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "f408412b0cea4c8256",
+      "title": "وزارة العمل",
+      "region": "egypt",
+      "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 42.5,
-      "published_at": "2026-11-01T07:10:00Z",
+      "score": 44.5,
+      "published_at": "2026-11-01T08:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Watch: Heidi Klum as giant severed hand for Halloween bash",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Taylor Momsen, James Charles & More Celebrities Who Scared Up a Good Time at Heidi Klum’s Halloween Party",
-          "source": "E! News",
-          "snippet": ""
-        },
-        {
-          "title": "Heidi Klum shares her extraordinary Halloween transformation",
-          "source": "London Evening Standard",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "c2ca58619f99e5af4d",
-      "title": "حمزة عبد الكريم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 42.2,
-      "published_at": "2026-11-01T05:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "غضب جماهير برشلونة من هانز فليك بسبب حمزة عبدالكريم بعد سداسية ألافيس",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "كل ما تريد ان تعرف عن سمير المرابط - ستراسبورج",
-          "source": "FilGoal",
-          "snippet": ""
-        },
-        {
-          "title": "احترافية حمزة عبد الكريم تبهر برشلونة",
-          "source": "Kooora",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "de6fd3fd7e0858305a",
-      "title": "أخبار الزمالك",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 42.2,
-      "published_at": "2026-11-01T03:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "تعديل نسبة الزمالك فى شركة الكرة.. و40% الحد الأدنى لحصة النادي",
+          "title": "وزارة العمل تعلن عن فرص جديدة بقطاع الأمن والحراسة برواتب تصل لـ30 ألف جنيه",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "صدمه تعطل إنشاء شركه الكره",
+          "title": "5745 فرصة عمل جديدة في القطاع الخاص بـ17 محافظة.. اعرف التفاصيل",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "برواتب تصل إلى 30 ألف جنيه.. وزارة العمل توفر 10 وظائف للصيادلة بالقاهرة وتعلن شروط التقديم - صوت الأمة",
+          "source": "اخبارك نت",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e53e6023e949687e58",
+      "title": "gta 6",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 44.2,
+      "published_at": "2026-11-01T10:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Grand Theft Auto VI exclusive – The state that never sleeps",
+          "source": "GamesRadar+",
+          "snippet": ""
+        },
+        {
+          "title": "Rockstar art-directed 600,000 animations, so that GTA 6’s passers-by feel like real people",
+          "source": "Creative Bloq",
+          "snippet": ""
+        },
+        {
+          "title": "Screw Grand Theft Auto 6's supercars, I'm here for Leonida's robust public transportation system",
+          "source": "PC Gamer",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "0beae857770dada071",
+      "title": "guy ritchie",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.2,
+      "published_at": "2026-11-01T10:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Guy Ritchie's Debut Mystery Thriller on Prime Is Better Than 'The Gentlemen'",
+          "source": "MovieWeb",
+          "snippet": ""
+        },
+        {
+          "title": "Series with 'zero boring episodes' filmed in South Wales hailed as 'absolute gem'",
+          "source": "Wales Online",
+          "snippet": ""
+        },
+        {
+          "title": "Prime Video mystery thriller from creator of Netflix's The Gentleman is a 'must-watch'",
+          "source": "AOL.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "846fc376bfd58a8e6a",
+      "title": "when is black friday",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.2,
+      "published_at": "2026-11-01T10:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "When is Black Friday 2026? Here’s everything you need to know",
+          "source": "About Amazon",
+          "snippet": ""
+        },
+        {
+          "title": "Amazon's early Black Friday deals includes a fall-ready heavyweight Hanes hoodie for just $15 (plus 10 more fab deals)",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "The best sales to shop this weekend: Up to 70% off Apple, All Clad, and more top brands",
+          "source": "AOL.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "330b1e86ada8d59e10",
+      "title": "أيتن عامر",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 43.9,
+      "published_at": "2026-11-01T09:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "آيتن عامر تعتذر لشيماء سيف.. والأخيرة تعلق",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "شيماء سيف: أيتن عامر هى اللى قالت لى مش هتخلفى غير لما تخسى",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "وفاء عامر تثير الجدل برسالة غامضة عبر \"فيسبوك\" | مصراوي",
+          "source": "Masrawy",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6798fe6c9daea2d98b",
+      "title": "دولار",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.5,
+      "published_at": "2026-11-01T09:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "\"حديد وطني\" تتحول إلى الربحية في الربع الثالث مع نمو الإيرادات 111.6%",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "تقرير أولي.. نتائج حدید وطني للربع الثالث 2026",
+          "source": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
+          "snippet": ""
+        },
+        {
+          "title": "«حديد وطني» تتحوَّل إلى الربحية في الربع الثالث محققةً 1.6 مليون دولار",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2a68a4dbc4dc9cc9c1",
+      "title": "ranking",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 42.9,
+      "published_at": "2026-11-01T07:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Tracking undefeated FBS college football teams in the 2026 season",
+          "source": "NCAA.com",
+          "snippet": ""
+        },
+        {
+          "title": "AP Top 25 Poll Prediction: Where Will Miami, Utah, and UCLA Rank?",
+          "source": "College Football News",
+          "snippet": ""
+        },
+        {
+          "title": "Race for the CFP Week 9: Three Unbeatens Remain",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "c10e99794f5fc2a39e",
+      "title": "black friday",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.2,
+      "published_at": "2026-11-01T09:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Costco Reveals Its Full Black Friday Ad and Sale Dates for 2026, Discounts Include Frozen Food and Gaming PCs",
+          "source": "IGN",
+          "snippet": ""
+        },
+        {
+          "title": "Black Friday sales are starting early at Costco, Target and Walmart",
+          "source": "Dallas News",
+          "snippet": ""
+        },
+        {
+          "title": "Costco’s Holiday Savings Event Starts This Week—Here’s What’s Going on Sale",
+          "source": "Martha Stewart",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "760b8c8f2e6140799a",
+      "title": "blair tickner",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 41.5,
+      "published_at": "2026-11-01T08:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "India becomes first team to reach 400 T20I sixes in a calendar year",
+          "source": "ANI News",
+          "snippet": ""
+        },
+        {
+          "title": "India Becomes First Team To Smash 400 Sixes In Single Calendar Year After Naman Dhir’s Six Off Blair Tickner In 5th T20I",
+          "source": "Sportscape Magazine",
+          "snippet": ""
+        },
+        {
+          "title": "India Make History, Become 1st Cricket Team In The World To Hit 400 T20I Sixes In A Year",
+          "source": "News18",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6424a99c4ce0d4c1ee",
+      "title": "يوسف أسامة نبيه",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 40.9,
+      "published_at": "2026-11-01T09:50:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "أول تعليق من يوسف أسامة نبيه على الرحيل عن الزمالك .. وطموح العودة",
           "source": "الزمالك اليوم",
           "snippet": ""
         },
         {
-          "title": "لا مساس بالأصول أو الشعار.. هاني حتحوت يكشف مفاجآت جديدة بشأن بيع شركة الكرة بنادي الزمالك",
-          "source": "صدى البلد",
+          "title": "يوسف أسامة نبيه: رحيلي عن الزمالك خطأ كبير",
+          "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "يوسف أسامة نبيه يتحدث عن جماهير الزمالك وقدرة الفريق على المنافسة الأفريقية",
+          "source": "الزمالك اليوم",
           "snippet": ""
         }
       ],
@@ -675,82 +733,24 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 41.9,
+      "score": 40.9,
       "published_at": "2026-11-01T08:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Watch: Heidi Klum as giant severed hand for Halloween bash",
+          "title": "Heidi Klum Becomes Her Left Hand for Halloween",
+          "source": "The New York Times",
+          "snippet": ""
+        },
+        {
+          "title": "Ghoulish guests arrive for Heidi Klum's Halloween bash",
           "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "Heidi Klum’s 25 Best Halloween Costumes, Ranked By How Much Time I Assume They Took To Put On",
-          "source": "BuzzFeed",
-          "snippet": ""
-        },
-        {
-          "title": "Taylor Momsen, James Charles & More Celebrities Who Scared Up a Good Time at Heidi Klum’s Halloween Party",
-          "source": "E! News",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "bf17fe1d63af836660",
-      "title": "درجه الحراره اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 41.8,
-      "published_at": "2026-11-01T04:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "الأرصاد تكشف مفاجآت الطقس ودرجات الحرارة حتى الجمعة المقبل",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "طقس مفاجئ خلال الأسبوع الحالي في مصر.. رياح وأمطار رغم ارتفاع الحرارة",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "فيديو.. الأرصاد: غدا ذروة ارتفاع الحرارة.. والعظمى تصل إلى 37",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7a4eecf476263cc5b6",
-      "title": "اسعار باقات الانترنت الارضي",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 41.5,
-      "published_at": "2026-11-01T06:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "50 جيجا انترنت زيادة مجانا.. شركات المحمول تضاعف باقة الانترنت الأرضي",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "رسميًا.. زيادة 100% في باقة الإنترنت الأرضي اليوم «بنفس السعر»",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "بعد مضاعفة سعة باقة الإنترنت الأساسية كيف تستفيد من الـ100 جيجابايت؟",
-          "source": "جريدة المال",
+          "title": "Heidi Klum Dressed Up as a Severed Human Hand for Her Annual Halloween Party",
+          "source": "Variety",
           "snippet": ""
         }
       ],
@@ -762,7 +762,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 41.2,
+      "score": 40.2,
       "published_at": "2026-11-01T08:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -778,8 +778,8 @@
           "snippet": ""
         },
         {
-          "title": "خصم الـ 30% للعداد الكودي.. هل تُنهي مهلة الـ 6 أشهر أزمة سرقات التيار وتقنين الأوضاع؟",
-          "source": "أهل مصر",
+          "title": "تخفيض الكهرباء 30%.. شرط مهم قبل شحن كارت العداد الكودي",
+          "source": "صدى البلد",
           "snippet": ""
         }
       ],
@@ -791,7 +791,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.2,
+      "score": 40.2,
       "published_at": "2026-11-01T08:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -820,7 +820,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 40.9,
+      "score": 39.9,
       "published_at": "2026-11-01T07:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -849,7 +849,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 39.6,
+      "score": 38.5,
       "published_at": "2026-11-01T07:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
