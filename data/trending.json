@@ -1,60 +1,31 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T13:35:54.942551Z",
+  "updated_at": "2026-11-01T14:36:29.768225Z",
   "items": [
     {
-      "id": "c9325fcbfd2076cb69",
-      "title": "موعد اذان العصر",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "10000+",
-      "score": 62.8,
-      "published_at": "2026-11-01T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ساعات فتح وغلق المحلات والمولات بعد بدء التوقيت الشتوى",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "كيف يؤثر التوقيت الشتوي على صحتك؟ 5 فوائد للنوم والعظام والقلب",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "من فكرة لتوفير الشموع لساعة بنغيّرها كل سنة.. القصة الكاملة للتوقيت الشتوي",
-          "source": "Masrawy",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "90c36be6a511ce99cd",
-      "title": "star trek",
+      "id": "e432f32a442a693c76",
+      "title": "racing santander vs real madrid",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "5000+",
-      "score": 61.5,
-      "published_at": "2026-11-01T13:20:00Z",
+      "score": 61.4,
+      "published_at": "2026-11-01T14:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "What Patrick Stewart’s ‘brief’ dementia journey reveals about lifespans after diagnosis",
-          "source": "The Washington Post",
+          "title": "Racing Santander vs Real Madrid, 2026 La Liga: Predicted lineups",
+          "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "How Sir Ian McKellen and Star Trek cast members are remembering Sir Patrick Stewart",
-          "source": "Yahoo",
+          "title": "¿A qué hora es el partido Racing de Santander vs Real Madrid y cómo verlo en TV y streaming online?",
+          "source": "Sports Illustrated",
           "snippet": ""
         },
         {
-          "title": "‘SNL’ Pays Tribute To Patrick Stewart With Clip From His 1994 Episode",
-          "source": "Deadline",
+          "title": "¿Cuándo Real Madrid? Un partido con bajas importantes ante el Racing de Santander",
+          "source": "azcentral.com and The Arizona Republic",
           "snippet": ""
         }
       ],
@@ -65,8 +36,8 @@
       "title": "طرابزون سبور ضد غازي عنتاب",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 56.1,
+      "approx_traffic": "5000+",
+      "score": 58.1,
       "published_at": "2026-11-01T12:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -77,8 +48,8 @@
           "snippet": ""
         },
         {
-          "title": "محمد صلاح يقود طرابزون سبور أمام غازي عنتاب فى الدوري التركي",
-          "source": "اليوم السابع",
+          "title": "محمد صلاح يقود التشكيل المتوقع لطرابزون أمام غازي عنتاب في الدوري التركي",
+          "source": "بوابة الشروق",
           "snippet": ""
         },
         {
@@ -90,232 +61,203 @@
       "alert": false
     },
     {
-      "id": "7ee7d1e0cd47734808",
-      "title": "trabzonspor vs gaziantep",
+      "id": "c1b3c5f24ce3247e23",
+      "title": "رسينغ ضد الريال",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 55.8,
-      "published_at": "2026-11-01T12:30:00Z",
+      "score": 57.5,
+      "published_at": "2026-11-01T14:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "TRT 1 şifresiz canlı izle: Gaziantep FK Trabzonspor maçı canlı TRT 1 izle yayın 3 Temmuz 2026,",
-          "source": "Pierce Manufacturing",
+          "title": "من يستغل الفرصة؟.. ضربة الكلاسيكو تعيد حسابات مورينيو في خط الدفاع",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "Orhan Ak açıkladı! “Bugün burada savaşan bir takım olacak”",
-          "source": "61SAAT",
+          "title": "راسينج ضد الريال.. مبابي ودياموندي يقودان هجوم الملكي فى الدوري الإسباني",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "Onuachu, G.Antep’i seviyor",
-          "source": "Fotomaç",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "93dd6b1ffeb1b11867",
-      "title": "servicio de ciudadanía e inmigración de los estados unidos",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.5,
-      "published_at": "2026-11-01T13:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "USCIS suma 2,200,000 acciones migratorias desde el regreso de Donald Trump a la Casa Blanca",
-          "source": "Univision",
-          "snippet": ""
-        },
-        {
-          "title": "22 personas baleadas y 62 muertes bajo custodia de ICE: las cifras de la era Trump",
-          "source": "Conexión Migrante",
-          "snippet": ""
-        },
-        {
-          "title": "Cubanos con trámites pendientes ante un escenario más restrictivo: USCIS reporta 2,2 millones de acciones migratorias desde 2025",
-          "source": "Cuba en Miami",
+          "title": "بعد الفوز على برشلونة.. ريال مدريد يسعى لمواصلة انتصاراته أمام راسينج",
+          "source": "بوابة الشروق",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "32a2ceb1f842318975",
-      "title": "درجة حرارة",
+      "id": "677ef98a1043bc71c4",
+      "title": "racing santander vs real madrid",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 50.5,
-      "published_at": "2026-11-01T12:50:00Z",
+      "approx_traffic": "1000+",
+      "score": 54.5,
+      "published_at": "2026-11-01T14:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "تغيرات مفاجئة.. الأرصاد تكشف عن تقلبات درجات الحرارة اعتبارا من الغد",
-          "source": "اليوم السابع",
+          "title": "Alineación posible del Real Madrid hoy contra el Racing en LaLiga EA Sports",
+          "source": "Diario AS",
           "snippet": ""
         },
         {
-          "title": "طقس مفاجئ خلال الأسبوع الحالي في مصر.. رياح وأمطار رغم ارتفاع الحرارة",
-          "source": "العربية",
+          "title": "Racing de Santander vs Real Madrid: horario, alineaciones y minuto a minuto | J11 LaLiga EA Sports",
+          "source": "Radio Televisión Canaria",
           "snippet": ""
         },
         {
-          "title": "فيديو.. الأرصاد: غدا ذروة ارتفاع الحرارة.. والعظمى تصل إلى 37",
-          "source": "بوابة الشروق",
+          "title": "Dónde ver hoy por TV el Racing - Real Madrid: horario y canal del partido de LaLiga EA Sports de fútbol | Primera División",
+          "source": "Mundo Deportivo",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "da28b3ac72a0f57b28",
-      "title": "qatar",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 50.5,
-      "published_at": "2026-11-01T12:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Qatari Gas Tanker Struck in Gulf",
-          "source": "ASHARQ AL-AWSAT English",
-          "snippet": ""
-        },
-        {
-          "title": "Qatari LNG carrier struck by unidentified objects in Gulf waters; no injuries reported",
-          "source": "Saudi Gazette",
-          "snippet": ""
-        },
-        {
-          "title": "Indian Seafarers Targeted In Projectile Attacks At Strait of Hormuz Safe: Sarbananda Sonowal",
-          "source": "Deccan Chronicle",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "bf9a8333c23810c421",
-      "title": "trabzonspor vs gaziantep",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 50.1,
-      "published_at": "2026-11-01T12:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Orhan Ak açıkladı! “Bugün burada savaşan bir takım olacak”",
-          "source": "61SAAT",
-          "snippet": ""
-        },
-        {
-          "title": "Onuachu, G.Antep’i seviyor",
-          "source": "Fotomaç",
-          "snippet": ""
-        },
-        {
-          "title": "Trabzonspor-Gaziantep FK maçı sonrası Papara Park'ta son durum / CANLI YAYIN",
-          "source": "Haber61",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "8afc83135f5f9bf6fd",
-      "title": "محمود عصمت",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 49.5,
-      "published_at": "2026-11-01T12:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "قرار جديد من وزير الكهرباء.. بدء التنفيذ غدًا الاثنين (التفاصيل)",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "إصدار لائحة تنظيم تعاقدات الجهاز التنفيذي للإشراف على مشروعات إنشاء المحطات النووية",
-          "source": "المصدر",
-          "snippet": ""
-        },
-        {
-          "title": "الجريدة الرسمية: وزير الكهرباء يصدر لائحة تعاقدات جهاز الإشراف على المحطات النووية",
-          "source": "القاهرة 24",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "de317ee1f9f4685da3",
-      "title": "طائر",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 49.1,
-      "published_at": "2026-11-01T12:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "هل تكذب الحيوانات مثل البشر؟.. طائر أفريقي يحير العلماء",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "طائر أفريقي يخدع الحيوانات بأكثر من 50 نداءً.. هل تمارس الكائنات الكذب عمداً؟",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "هل تكذب الحيوانات؟ طائر يقلّد نداءات الخطر لسرقة الطعام",
-          "source": "عكاظ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6627b9d4282b537177",
-      "title": "alex de minaur",
+      "id": "999abb9414ad31b0c8",
+      "title": "afg vs zim",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 48.5,
-      "published_at": "2026-11-01T13:20:00Z",
+      "score": 53.8,
+      "published_at": "2026-11-01T14:00:00Z",
       "source": "Google Trends",
-      "source_count": 1,
+      "source_count": 3,
       "news_items": [
         {
-          "title": "[ＬＩＶＥＳＴＲＥＡＭs]𝐓𝐕!! Vienna Open final match LIvE FrEe StReAm",
-          "source": "Pierce Manufacturing",
+          "title": "Afghanistan vs Zimbabwe 3rd T20I prediction, lineups and Sharjah pitch report — who will win?",
+          "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "[!Buffstreams!] Where To Watch Carlos Alcaraz vs de Minaur Live Free Tennis in US UK AU 01 November 2026",
-          "source": "Pierce Manufacturing",
+          "title": "YouTube Music and Premium Subscriber Base Crosses 150 Million in Q3 2026 Despite Subscription Price Increas",
+          "source": "News18",
           "snippet": ""
         },
         {
-          "title": "+)HERE'S!!(* WAY TO WATCH ATP Vienna Open final 2026 Live Updates! 01 november 2026",
+          "title": "Masuku debuts, Curran back as Zimbabwe bowl in opening T20I",
+          "source": "Cricinfo",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f569f6a79725d7d5c7",
+      "title": "afg vs zim",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 50.8,
+      "published_at": "2026-11-01T14:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "High on Omarzai - Afghanistan allrounder has a night to remember",
+          "source": "Cricinfo",
+          "snippet": ""
+        },
+        {
+          "title": "YouTube Music and Premium Subscriber Base Crosses 150 Million in Q3 2026 Despite Subscription Price Increas",
+          "source": "News18",
+          "snippet": ""
+        },
+        {
+          "title": "Match Predictions: Afghanistan vs Zimbabwe in UAE 2026 - 3rd T20I - Afghanistan vs Zimbabwe - November 1st",
+          "source": "Cricket World",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "294bf93b6915b63ea3",
+      "title": "jadarian price",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.8,
+      "published_at": "2026-11-01T14:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Zach Charbonnet, Jadarian Price have no game designations for Monday",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "Seahawks RB Zach Charbonnet (knee) off injury report, set for season debut vs. Bears",
+          "source": "NFL.com",
+          "snippet": ""
+        },
+        {
+          "title": "Seahawks RBs Zach Charbonnet, Jadarian Price will return Monday night",
+          "source": "NBC Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2d4f3f02c6624bffdc",
+      "title": "lazio - cagliari",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.4,
+      "published_at": "2026-11-01T13:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Orgoglio Gattuso: \"Non faccio vincere neanche mio figlio: vivo di emozioni, sennò andrei a passeggio col cane\"",
+          "source": "La Gazzetta dello Sport",
+          "snippet": ""
+        },
+        {
+          "title": "Gattuso senza filtri dalla dedica alla moglie, ai tifosi, al momento della Lazio: \"Io vivo di emozioni, altrimenti andrei a passeggio col cane\"",
+          "source": "Corriere dello Sport",
+          "snippet": ""
+        },
+        {
+          "title": "[DIRETTA@CALCIO] Cagliari Lazio In Ｄｉｒｅｔｔａ Ｓｔｒｅａｍｉｎｇ Ｇｒａｔｉｓ 01 novembre 2026 Stream",
           "source": "Pierce Manufacturing",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "fd26fd4cb19a6e43e7",
+      "title": "صندوق تنمية الموارد البشرية",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 49.8,
+      "published_at": "2026-11-01T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "اقتصادي / صندوق تنمية الموارد البشرية يرفع الحد الأدنى للأجر المدعوم في منتج دعم التوظيف",
+          "source": "وكالة الأنباء السعودية",
+          "snippet": ""
+        },
+        {
+          "title": "«الضمان»: صرف الزيادة بدون تقديم طلبات",
+          "source": "جريدة المدينة",
+          "snippet": ""
+        },
+        {
+          "title": "لتحصيل زيادة الـ 500 بالضمان الاجتماعي.. هل يجب تقديم طلب جديد؟",
+          "source": "alyaum",
           "snippet": ""
         }
       ],
@@ -326,12 +268,17 @@
       "title": "بلدية اسطنبول ضد سامسون سبور",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 47.5,
+      "approx_traffic": "500+",
+      "score": 49.4,
       "published_at": "2026-11-01T13:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "İstanbul Başakşehir vs Samsunspor: Turkish Süper Lig stats & head-to-head",
+          "source": "BBC",
+          "snippet": ""
+        },
         {
           "title": "Basaksehir v Samsunspor Odds",
           "source": "FanDuel Sportsbook",
@@ -341,196 +288,17 @@
           "title": "Shomurodov in the starting lineup: Istanbul Basaksehir hosts Samsunspor today",
           "source": "Zamin.uz",
           "snippet": ""
-        },
-        {
-          "title": "[Live/fREE]** Samsunspor vs. Basaksehir 𝐋ＩＶＥ Ｓｔｒｅａｍｓ",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "238ff08d91ef33ef25",
-      "title": "سار",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-11-01T13:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "«سار» السعودية تخفض الانبعاثات 364.8 ألف طن وتوفر 139 مليون لتر وقود",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "مركز القيادة والتحكم بقوات أمن المنشآت.. منظومة أمنية متكاملة",
-          "source": "www.al-jazirahonline.com",
-          "snippet": ""
-        },
-        {
-          "title": "السعودية توفر 139 مليون لتر وقود عبر القطارات وتتجنب 364 ألف طن من الانبعاثات.. ماذا تكشف أرقام «سار»؟",
-          "source": "nedaelwatan.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b763cde394d8d78e72",
-      "title": "browns vs steelers",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-11-01T13:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Steelers-Browns scouting report: The highly paid pass rush has to get to Deshaun Watson",
-          "source": "Pittsburgh Post-Gazette",
-          "snippet": ""
-        },
-        {
-          "title": "Cleveland Browns vs. Pittsburgh Steelers: How to watch today, start time, where to stream and more",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Browns vs. Steelers predictions, odds. Who's winning NFL Week 8 game?",
-          "source": "USA Today",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "8bff565b6704ba0927",
-      "title": "is lamar jackson playing today",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-11-01T13:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Ravens QB Jackson to return for Bills clash, calls ankle pain 'bearable'",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Lamar Jackson to start Sunday vs. Bills | 'The NFL Report'",
-          "source": "NFL.com",
-          "snippet": ""
-        },
-        {
-          "title": "Joe Brady: We know we’re going to get the best version of Lamar Jackson",
-          "source": "NBC Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "c5a294d864ca53bf5c",
-      "title": "falkirk vs celtic",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.2,
-      "published_at": "2026-11-01T13:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "[CBS-TV] Where to watch Falkirk vs Celtic Live Free October 15, 2026",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        },
-        {
-          "title": "Falkirk v CELTIC // LIVE Full-Time Reaction // ACSOM // A Celtic State of Mind",
-          "source": "Celtic news now - Celtic FC News",
-          "snippet": ""
-        },
-        {
-          "title": "Falkirk vs Celtic LIVE Score Updates in Scottish Premiership Match",
-          "source": "VAVEL.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b52cd78e1eb4de7cad",
-      "title": "election day",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.2,
-      "published_at": "2026-11-01T13:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Democrats, unaffiliated voters fuel record early voting turnout in North Carolina",
-          "source": "WRAL",
-          "snippet": ""
-        },
-        {
-          "title": "Early voting for the 2026 General Election ends tomorrow",
-          "source": "Wake County Government (.gov)",
-          "snippet": ""
-        },
-        {
-          "title": "'The only way I can make a difference': WNC voters turn out on final day of early voting",
-          "source": "WLOS",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "133bc31974a64e6f23",
-      "title": "college basketball",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.2,
-      "published_at": "2026-11-01T13:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Ranking the top 100 players in men's college basketball",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "College basketball’s treats, plus the NHL MVP demands a trade",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "College basketball is back, but this season looks different",
-          "source": "NCAA.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "365acc27338e41a3f2",
       "title": "فالكريك ضد سيلتك",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.8,
+      "approx_traffic": "500+",
+      "score": 48.8,
       "published_at": "2026-11-01T13:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -541,7 +309,7 @@
           "snippet": ""
         },
         {
-          "title": "هيثم حسن يتصدر تشكيل سيلتيك ضد فالكريك فى الدوري الاسكتلندي",
+          "title": "فالكريك يتفوق على سيلتيك بثنائية فى الشوط الأول بمشاركة هيثم حسن",
           "source": "اليوم السابع",
           "snippet": ""
         },
@@ -554,145 +322,406 @@
       "alert": false
     },
     {
-      "id": "ab7470f040e9059927",
-      "title": "getafe vs sevilla",
+      "id": "da28b3ac72a0f57b28",
+      "title": "qatar",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 46.8,
-      "published_at": "2026-11-01T12:30:00Z",
+      "score": 48.4,
+      "published_at": "2026-11-01T12:50:00Z",
       "source": "Google Trends",
-      "source_count": 2,
+      "source_count": 3,
       "news_items": [
         {
-          "title": "$+ +LIVE@sTRAmS]*Falkirk vs. Celtic Soccer Live free streams",
-          "source": "Pierce Manufacturing",
+          "title": "Marc Marquez to go to Qatar at “latest possible time” after awkward press conference exchange",
+          "source": "Crash.net",
           "snippet": ""
         },
         {
-          "title": "+++[En-Vivo]* Getafe vs. Sevilla Ｅｎ Ｖｉｖｏ",
-          "source": "Pierce Manufacturing",
+          "title": "Yamaha pulls out of next weekend's MotoGP race in Qatar over safety concerns in the Middle East",
+          "source": "ABC News - Breaking News, Latest News and Videos",
           "snippet": ""
         },
         {
-          "title": "🔥【WATCH MATCH ONLINE】Getafe CF vs Sevilla FC Live Free – 31 october 2026",
-          "source": "Villa de la Orotava",
+          "title": "One week before the Qatar GP, the drivers are raising their voices: \"There are 19 of us who don't want to go\"",
+          "source": "https://www.autohebdof1.com/",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "47ad0f5087a77adc2e",
-      "title": "como vs venezia",
+      "id": "05c026538329878eeb",
+      "title": "ثعبان",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 45.5,
-      "published_at": "2026-11-01T12:20:00Z",
+      "score": 47.5,
+      "published_at": "2026-11-01T14:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Con Nico Paz titular, el Como vence al Venezia con polémica :: Olé - ole.com.ar",
-          "source": "Olé",
+          "title": "إطلاق الوحش.. ثعبان عملاق يتحول إلى جاسوس",
+          "source": "البيان",
           "snippet": ""
         },
         {
-          "title": "Como – Venecia: horario y dónde ver hoy por TV el partido de fútbol de la Serie A",
-          "source": "La Vanguardia",
-          "snippet": ""
-        },
-        {
-          "title": "Venezia se concentra para salir del último lugar ante Como 1907",
-          "source": "Anecdotarios",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "090eb1a8a874b93cc4",
-      "title": "ire vs nam",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 45.5,
-      "published_at": "2026-11-01T12:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Ireland's Indian-origin pacer Jai Moondra creates cricket history with record-breaking 6/26 bowling figur",
-          "source": "The Times of India",
-          "snippet": ""
-        },
-        {
-          "title": "Namibia v Ireland: Tourists fall behind in ODI series after defeat in Windhoek",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Smit, Brassell set up Namibia's series victory over Ireland",
-          "source": "Cricbuzz",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "d6c6fcb7f1a113bbc0",
-      "title": "موعد اذان العصر",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 45.2,
-      "published_at": "2026-11-01T12:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "موعد صلاة الظهر اليوم الأحد 1 نوفمبر 2026 في القاهرة وأسوان والمحافظات",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "مواقيت الصلاة اليوم الأحد 1 نوفمبر 2026 في القاهرة والمحافظات",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "موعد أذان وصلاة العصر اليوم الأحد الموافق 1 نوفمبر",
-          "source": "Masrawy",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "4a8d336848e03fc36e",
-      "title": "ماما نجوى ابراهيم",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.5,
-      "published_at": "2026-11-01T11:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بسبب \"مايوهات\" الفنانات.. أزمة بين نجوى إبراهيم ونقابة الممثلين",
+          "title": "أفعى سامة من نوع \"كوبرا\" تثير الذعر بمدرسة ابتدائية في مصر",
           "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "شمس البارودي تعاتب نجوى إبراهيم: «النصيحة في العلن فضيحة»",
-          "source": "عكاظ",
+          "title": "بعد اقتحام الكوبرا.. غياب السور يحول مدرسة محفوظ شريف بالفيوم إلى مأوى للزواحف",
+          "source": "موقع الصفحة الأولى",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "b3fcde0629f827c31c",
+      "title": "رسينغ ضد الريال",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T14:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "من يستغل الفرصة؟.. ضربة الكلاسيكو تعيد حسابات مورينيو في خط الدفاع",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "ياسمين الخطيب تدعم نجوى إبراهيم بعد جدل تصريحاتها عن ملابس الفنانات",
-          "source": "مجلة لها",
+          "title": "فالفيردي يمنح \"المغضوب عليهم\" فرصة العمر في ريال مدريد",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "بث مباشر لمباراة ريال مدريد ضد راسينغ سانتاندير في الدوري الإسباني",
+          "source": "annahar.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "04357fd8a10b3ae7fc",
+      "title": "سعر الدولار في مصر",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T14:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "خسارة جديدة لسعر الدولار في مصر",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "سعر الدولار يواصل التراجع أمام الجنيه فى البنوك اليوم الأحد",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "انخفاض سعر الدولار مقابل الجنيه في بنكين مع بداية تعاملات الأحد",
+          "source": "Masrawy",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "a3ea36a5b9d2270227",
+      "title": "tracy morgan",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T14:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "NYC Marathon: Tracy Morgan to serve as Grand Marshal",
+          "source": "ABC7 New York",
+          "snippet": ""
+        },
+        {
+          "title": "Comedian Tracy Morgan is grand marshal of 2026 NYC Marathon",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Tracy Morgan Named Grand Marshal of 2026 NYC Marathon as Five-Borough Race Celebrates 50 Years",
+          "source": "Complex",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "05d6895b1604b0a5f0",
+      "title": "كاس عاصمة مصر",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-11-01T14:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "5 تساؤلات مهمة عن مباراة الأهلي والمقاولون العرب بكأس عاصمة مصر غداً",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "مران الأهلي| الفريق يبدأ الاستعداد لمباراة المقاولون بكأس عاصمة مصر",
+          "source": "الموقع الرسمي للنادي الأهلي المصري",
+          "snippet": ""
+        },
+        {
+          "title": "عموتة يستقر على الدفع بحمزة علاء أمام المقاولون العرب في كأس عاصمة مصر",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "690fabc422523194cc",
+      "title": "michael mann",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-11-01T14:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Michael Mann Accidentally Shoots Himself in Leg at Los Angeles Gun Range",
+          "source": "TMZ",
+          "snippet": ""
+        },
+        {
+          "title": "Director Michael Mann Accidentally Shoots Himself, Taken to Hospital (Report)",
+          "source": "Just Jared",
+          "snippet": ""
+        },
+        {
+          "title": "Hollywood Icon, 83, Behind ‘Miami Vice’ and ‘Heat’ Accidentally Shoots Himself at Los Angeles Gun Range",
+          "source": "Parade Magazine",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "60fd0b56b781d2e060",
+      "title": "strasbourg vs auxerre",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-11-01T14:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Strasbourg vs Auxerre: French Ligue 1 stats & head-to-head",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Strasbourg predicted XI v Auxerre: Martial Godo and Gio Reyna to start",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Strasbourg vs Auxerre: Lineups, Prediction, Odds & Bet Builder Tip",
+          "source": "WhoScored.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "3a24c8b547469f1c9f",
+      "title": "military commissary refrigeration cyberattack probe",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.8,
+      "published_at": "2026-11-01T14:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Hackers pushed freezers at hundreds of French supermarkets to 122 degrees. Now the Pentagon is asking whether the same thing hit U.S. military bases",
+          "source": "Fortune",
+          "snippet": ""
+        },
+        {
+          "title": "EXCLUSIVE: Pentagon treating military base freezer malfunctions as suspected cyberattack, officials say",
+          "source": "Reuters",
+          "snippet": ""
+        },
+        {
+          "title": "U.S. Military Thinks Hackers Defrosted All Its Ice Cream",
+          "source": "Gizmodo",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "3a7c17ad914ce89108",
+      "title": "spencer lee",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.8,
+      "published_at": "2026-11-01T14:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Senior Worlds Wrestling Live Results & Updates: Men's Freestyle",
+          "source": "FloWrestling",
+          "snippet": ""
+        },
+        {
+          "title": "Live Updates: 2026 Senior World Championships Day 9",
+          "source": "USA Wrestling",
+          "snippet": ""
+        },
+        {
+          "title": "Bravo Young Puts Mexico in World Finals Where Lee Awaits",
+          "source": "United World Wrestling",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "783ff10a725f0072ad",
+      "title": "nfl today games",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.8,
+      "published_at": "2026-11-01T14:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "2026 NFL trade deadline: Potential landing spots for RB Jonathan Taylor, S Budda Baker and more",
+          "source": "NFL.com",
+          "snippet": ""
+        },
+        {
+          "title": "NFL trade deadline: A Colts duo and others to keep tabs on for fantasy football",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "The trends fueling the NFL’s new trade deadline aggression - The Athletic",
+          "source": "The New York Times",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "047ed81d6f2a4dce69",
+      "title": "تهريب",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 46.5,
+      "published_at": "2026-11-01T13:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سلام: معابر لبنان لن تكون ممرات لتهريب المخدرات",
+          "source": "زاد الاردن",
+          "snippet": ""
+        },
+        {
+          "title": "جابر يشيد بإنجاز \"الجمارك\" في المطار",
+          "source": "VDL NEWS",
+          "snippet": ""
+        },
+        {
+          "title": "بعد ضبط شحنة الكوكايين... موقف حازم من سلام!",
+          "source": "Alkalima Online",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6f6c75991835e6dd9b",
+      "title": "janakpur bolts vs pokhara avengers match scorecard",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.8,
+      "published_at": "2026-11-01T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "POA 66/3 (10) vs JAB 147/7 (Shakib Al Hasan 8(15) Arjun Gharti 5(8)) | Janakpur Bolts vs Pokhara Avengers, 9th Match, Nepal Premier League 2026 Live Cricket Stream, live scores, ball-by-ball commentary, highlights, videos, news, and more in",
+          "source": "Cricbuzz",
+          "snippet": ""
+        },
+        {
+          "title": "Janakpur Bolts set 148-run target for Pokhara Avengers",
+          "source": "Nepalnews.com",
+          "snippet": ""
+        },
+        {
+          "title": "Match Predictions: Nepal Premier League 2026 - 9th Match - Janakpur Bolts vs Pokhara Avengers - 1st November",
+          "source": "Cricket World",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "238ff08d91ef33ef25",
+      "title": "سار",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.5,
+      "published_at": "2026-11-01T13:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "فتح التقديم لبرنامج \"سار\" للابتعاث المبتدئ بالتوظيف",
+          "source": "أخبار 24",
+          "snippet": ""
+        },
+        {
+          "title": "يبتدئ بالتوظيف.. ابتعاث “”stc في تخصصات الحاسب والذكاء الاصطناعي",
+          "source": "صحيفة صُبرة الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "ابتعاث مبتدئ بالتوظيف لدى (stc).. التقديم متاح حتى (5 نوفمبر)",
+          "source": "صحيفة صراحة الالكترونية",
           "snippet": ""
         }
       ],
@@ -703,8 +732,8 @@
       "title": "أسعار الفراخ البيضاء اليوم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 43.8,
+      "approx_traffic": "200+",
+      "score": 44.8,
       "published_at": "2026-11-01T13:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -732,8 +761,8 @@
       "title": "arsenal vs aston villa",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.8,
+      "approx_traffic": "200+",
+      "score": 44.8,
       "published_at": "2026-11-01T13:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -744,100 +773,71 @@
           "snippet": ""
         },
         {
-          "title": "Arsenal vs Aston Villa: Women's Super League stats & head-to-head",
-          "source": "BBC",
+          "title": "FA Women’s Super League – Preview…",
+          "source": "Yellow Advertiser",
           "snippet": ""
         },
         {
-          "title": "Renee Slegers exclusive: Going 'back to basics' has loosened Arsenal team following back-to-back wins",
-          "source": "Sky Sports",
+          "title": "Alessia Russo's late equaliser not enough to prevent Arsenal's draw with Villa",
+          "source": "Yahoo",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "920bd2b33f35c10ea5",
-      "title": "كومو",
+      "id": "2c53c915c55660598c",
+      "title": "طائر",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
       "score": 42.8,
-      "published_at": "2026-11-01T12:30:00Z",
+      "published_at": "2026-11-01T13:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "تشكيل فروزينوني أمام تورينو في الدوري الإيطالي اليوم.. موقف عمر فايد",
-          "source": "المصري اليوم",
+          "title": "وضع حلقة حول ساق طائر.. وبعد 70 عاماً كانت المفاجأة",
+          "source": "البيان",
           "snippet": ""
         },
         {
-          "title": "ما القنوات الناقلة لمباراة أتالانتا وبارما في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Goal.com",
+          "title": "75 عاما وما زال يطعم صغاره.. كيف هزم هذا الطائر قوانين الشيخوخة؟",
+          "source": "إرم نيوز",
           "snippet": ""
         },
         {
-          "title": "ما القنوات الناقلة لمباراة ساسولو وفيورنتينا في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Kooora",
+          "title": "هل تكذب الحيوانات مثل البشر؟.. طائر أفريقي يحير العلماء",
+          "source": "العربية",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "f82696bcad3cad3919",
-      "title": "nyc marathon live stream",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 41.2,
-      "published_at": "2026-11-01T13:10:00Z",
+      "id": "ff306e10767cce21d8",
+      "title": "صندوق تحيا مصر",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.5,
+      "published_at": "2026-11-01T13:20:00Z",
       "source": "Google Trends",
-      "source_count": 1,
+      "source_count": 3,
       "news_items": [
         {
-          "title": "‍‍FREE~[𝐒𝐓ream]here's*! Watch 2026 NYC Marathon Online Without Cable",
-          "source": "Pierce Manufacturing",
+          "title": "\"تحيا مصر\" يتدخل لإنقاذ مشروع عقاري متعثر منذ 2016 بالساحل الشمالي",
+          "source": "الشرق بلومبرغ",
           "snippet": ""
         },
         {
-          "title": "‍LIVE/FREE: TCS New York City Marathon Live FREE 29 July , 2026",
-          "source": "Pierce Manufacturing",
+          "title": "من توجيهات السيسي إلى شراكة «تحيا مصر» مع «ذا مارك».. لماذا يتجه الصندوق لإنقاذ المشروعات العقارية المتعثرة؟",
+          "source": "جريدة المطور",
           "snippet": ""
         },
         {
-          "title": "‍(LIVE-FREE) NYC Marathon Live Free HS Football 2026",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "46f735545d38be9094",
-      "title": "new york marathon tracker",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 41.2,
-      "published_at": "2026-11-01T13:10:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "‍2026 NYC Marathon LIVE. [[[CBS^Sports]]",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        },
-        {
-          "title": "‍『LIVeSTREAMS』 2026 NYC Marathon Tracker: How to Track Runners Live",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        },
-        {
-          "title": "+++【HSF![LIVES'TREAMs!SKY+TV] New York City Marathon Live Broadcast",
-          "source": "Pierce Manufacturing",
+          "title": "«تحيا مصر» و«ذا مارك» تطوران مشروعًا عقاريًا على 900 فدان بالساحل الشمالي بإيرادات 150 مليار جنيه",
+          "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         }
       ],
@@ -849,23 +849,23 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 40.5,
+      "score": 38.5,
       "published_at": "2026-11-01T12:50:00Z",
       "source": "Google Trends",
       "source_count": 1,
       "news_items": [
         {
-          "title": "London City vs. Man City (1 Nov, 2026) Team Stats",
+          "title": "Frosinone vs. Torino (1 Nov, 2026) Team Stats",
           "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Getafe vs. Sevilla (Nov 1, 2026) Team Stats",
+          "title": "West Ham vs. Liverpool (Nov 1, 2026) Team Stats",
           "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "London City vs. Man City (Nov 1, 2026) Team Stats",
+          "title": "Lazio vs. Cagliari (Nov 1, 2026) Team Stats",
           "source": "ESPN",
           "snippet": ""
         }
