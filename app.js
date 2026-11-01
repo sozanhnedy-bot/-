@@ -1,4 +1,5 @@
 const REGION_LABELS = { world: "العالم", arab: "العالم العربي", egypt: "مصر" };
+const PUBLIC_API_BASE = "https://threadsnews-uheqs7td.manus.space";
 const REFRESH_MS = 10 * 60 * 1000;
 const state = { news: [], reports: [], trends: [], region: "all", query: "", initialLoad: true, alertEnabled: localStorage.getItem("wdw-alerts") === "on" };
 const $ = (selector) => document.querySelector(selector);
@@ -196,27 +197,40 @@ async function fetchJson(path) {
 async function loadData() {
   const oldTrendIds = new Set(state.trends.map((item) => item.id));
   try {
-    const [news, reports, trends] = await Promise.all([fetchJson("./data/news.json"), fetchJson("./data/reports.json"), fetchJson("./data/trending.json")]);
-    state.news = Array.isArray(news.items) ? news.items : [];
-    reportMap.clear();
-    state.reports = Array.isArray(reports.items) ? reports.items : [];
-    state.reports.forEach((report) => reportMap.set(report.id, report));
+    const [apiNewsResponse, trends] = await Promise.all([
+      fetch(`${PUBLIC_API_BASE}/api/news?v=${Date.now()}`, { cache: "no-store" }),
+      fetch(`${PUBLIC_API_BASE}/api/trends?v=${Date.now()}`, { cache: "no-store" }).then((response) => response.ok ? response.json() : { items: [] }),
+    ]);
+    if (!apiNewsResponse.ok) throw new Error(`API news: ${apiNewsResponse.status}`);
+    const apiNews = await apiNewsResponse.json();
+    state.news = Array.isArray(apiNews.items) ? apiNews.items : [];
+    state.reports = state.news.map((item) => item.report).filter((report) => report && report.id);
+    reportMap.clear(); state.reports.forEach((report) => reportMap.set(report.id, report));
     state.trends = Array.isArray(trends.items) ? trends.items : [];
     state.trendUpdated = trends.updated_at;
-    const updated = formatDate(news.updated_at);
-    $("#update-status").textContent = updated ? `آخر نشر للأخبار: ${updated}` : "بانتظار أول تحديث للأخبار";
-    $("#last-updated").textContent = updated ? `بيانات الأخبار: ${updated}` : "لا توجد بيانات منشورة بعد";
+    const updated = formatDate(apiNews.updated_at);
+    $("#update-status").textContent = updated ? `متصل بالخادم · ${updated}` : "متصل بخادم الأخبار";
+    $("#last-updated").textContent = updated ? `بيانات الأخبار: ${updated}` : "بيانات الأخبار متصلة بالخادم";
     $("#edition-date").textContent = new Intl.DateTimeFormat("ar-EG", { dateStyle: "full" }).format(new Date());
     const top = state.trends.find((item) => item.alert) || state.trends[0];
     $("#breaking-copy").textContent = top ? `${top.title} — ${top.approx_traffic || "ترند حديث"}` : "نرصد الترندات الحديثة، وتظهر هنا عند وصول بيانات جديدة.";
     render(); notifyNewTrends(oldTrendIds); state.initialLoad = false;
-  } catch (error) {
-    $("#update-status").textContent = "تعذر تحديث البيانات الآن";
-    if (state.initialLoad) { newsList.replaceChildren(el("p", "loading-card", "تعذر تحميل الأخبار مؤقتًا. أعد المحاولة بعد قليل.")); }
-    console.error("Could not load portal data", error);
+  } catch (apiError) {
+    try {
+      const [news, reports, trends] = await Promise.all([fetchJson("./data/news.json"), fetchJson("./data/reports.json"), fetchJson("./data/trending.json")]);
+      state.news = Array.isArray(news.items) ? news.items : [];
+      reportMap.clear(); state.reports = Array.isArray(reports.items) ? reports.items : []; state.reports.forEach((report) => reportMap.set(report.id, report));
+      state.trends = Array.isArray(trends.items) ? trends.items : []; state.trendUpdated = trends.updated_at;
+      const updated = formatDate(news.updated_at); $("#update-status").textContent = updated ? `وضع احتياطي · ${updated}` : "وضع احتياطي للبيانات المحلية"; $("#last-updated").textContent = updated ? `بيانات محلية: ${updated}` : "الخادم غير متاح مؤقتًا"; $("#edition-date").textContent = new Intl.DateTimeFormat("ar-EG", { dateStyle: "full" }).format(new Date());
+      const top = state.trends.find((item) => item.alert) || state.trends[0]; $("#breaking-copy").textContent = top ? `${top.title} — ${top.approx_traffic || "ترند حديث"}` : "نرصد الترندات الحديثة، وتظهر هنا عند وصول بيانات جديدة.";
+      render(); notifyNewTrends(oldTrendIds); state.initialLoad = false;
+    } catch (error) {
+      $("#update-status").textContent = "تعذر تحديث البيانات الآن";
+      if (state.initialLoad) newsList.replaceChildren(el("p", "loading-card", "تعذر تحميل الأخبار مؤقتًا. أعد المحاولة بعد قليل."));
+      console.error("Could not load portal data", apiError, error);
+    }
   }
 }
-
 document.querySelectorAll(".filter-button").forEach((button) => button.addEventListener("click", () => {
   state.region = button.dataset.region || "all";
   document.querySelectorAll(".filter-button").forEach((candidate) => { const active = candidate === button; candidate.classList.toggle("is-active", active); candidate.setAttribute("aria-pressed", String(active)); });

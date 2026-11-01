@@ -263,7 +263,6 @@ a { color: inherit; }
 .task-footer-note { margin: 22px 0 0; padding-top: 15px; border-top: 1px solid var(--line); }
 @media (max-width: 600px) { .task-shell { padding-top: 16px; } .task-card { padding: 18px 15px; } .task-submit { width: 100%; } }
 
-/* Existing task-chat.html markup */
 .task-shell { width: min(900px, calc(100% - 40px)); margin: 0 auto; }
 .task-shell h1 { margin: 0; color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.35; }
 .task-setup, .task-form { margin: 18px 0; padding: clamp(16px, 3vw, 26px); background: var(--card); border: 1px solid var(--line); box-shadow: 0 6px 18px rgba(20,40,63,.045); }
