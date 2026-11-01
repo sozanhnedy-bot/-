@@ -28,7 +28,7 @@ def safe_image(value: object) -> str:
 def safe_social_image(value: object) -> str:
     image_path = safe_image(value)
     if image_path == "assets/brand-mark.png":
-        return image_path
+        return "assets/brand-cover.jpg"
     candidate = str(Path(image_path).with_name(Path(image_path).stem + "-social.jpg"))
     return candidate if (ROOT / candidate).is_file() else image_path
 
@@ -91,7 +91,7 @@ def render(report: dict, code: str) -> str:
 <html lang="ar" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#14283f"><meta name="description" content="{dek}">
-<meta property="og:type" content="article"><meta property="og:title" content="{title} | {BRAND}">
+<meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{title} | {BRAND}">
 <meta property="og:description" content="{dek}"><meta property="og:image" content="{SITE_URL}/{social_image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title} | {BRAND}"><meta name="twitter:description" content="{dek}"><meta name="twitter:image" content="{SITE_URL}/{social_image}">
 <meta property="og:url" content="{canonical}"><link rel="canonical" href="{canonical}">
@@ -99,7 +99,7 @@ def render(report: dict, code: str) -> str:
 <title>{title} | {BRAND}</title><script defer src="../article.js"></script>
 </head><body class="article-body">
 <a class="skip-link" href="#article-main">انتقل إلى التقرير</a>
-<header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>مشروع إخباري مستقل</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
+<header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>ثريدز وثائقي</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
 <main id="article-main" class="article-shell">
 <nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><span>تقرير مفصل</span></nav>
 <article class="full-report" data-report-id="{report_id}" data-short-url="../r/{code}.html">
@@ -127,7 +127,7 @@ def render_short_link(report: dict) -> str:
     return f'''<!doctype html>
 <html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="refresh" content="0;url={target}"><link rel="canonical" href="{canonical}">
-<meta property="og:type" content="article"><meta property="og:title" content="{title} | {BRAND}"><meta property="og:description" content="{dek}"><meta property="og:image" content="{SITE_URL}/{image}">
+<meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{title} | {BRAND}"><meta property="og:description" content="{dek}"><meta property="og:image" content="{SITE_URL}/{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title} | {BRAND}"><meta name="twitter:description" content="{dek}"><meta name="twitter:image" content="{SITE_URL}/{image}">
 <title>{title} | {BRAND}</title><script>location.replace({target_json});</script></head>
 <body><main><h1>{title}</h1><p>يجري فتح التقرير على الموقع.</p><a href="{target}">افتح التقرير الكامل</a></main></body></html>'''

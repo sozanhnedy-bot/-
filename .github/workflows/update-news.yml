@@ -2,7 +2,8 @@ name: Refresh news and trends
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    # Free RSS/Google Trends check twice an hour, offset from the top of the hour.
+    - cron: "5,35 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -22,12 +23,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     timeout-minutes: 15
     env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
       THREADS_USER_ACCESS_TOKEN: ${{ secrets.THREADS_USER_ACCESS_TOKEN }}
-      X_TRENDS_BEARER_TOKEN: ${{ secrets.X_TRENDS_BEARER_TOKEN }}
-      X_TRENDS_WOEID: ${{ vars.X_TRENDS_WOEID }}
-      X_TRENDS_ENABLED: ${{ vars.X_TRENDS_ENABLED }}
+      AI_SUMMARIZATION_ENABLED: "false"
+      X_TRENDS_ENABLED: "false"
     steps:
       - name: Check out public source
         uses: actions/checkout@v4
@@ -44,8 +42,8 @@ jobs:
 
       - name: Fetch news from configured feeds
         env:
-          MAX_NEW_SUMMARIES_PER_RUN: "3"
-          MAX_SUMMARIES_PER_DAY: "30"
+          MAX_NEW_SUMMARIES_PER_RUN: "20"
+          MAX_SUMMARIES_PER_DAY: "200"
           MAX_STORED_ITEMS: "150"
         run: python scripts/update_news.py
 

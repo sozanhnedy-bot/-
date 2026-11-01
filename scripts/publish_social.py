@@ -44,6 +44,7 @@ def report_content(report: dict, report_ids: list[str], today: str) -> dict:
         if (ROOT / social_image).is_file():
             image = social_image
     caption = str(report.get("social_caption") or report.get("title") or "").strip()
+    caption = f"ثريدز وثائقي | {caption}" if caption else "ثريدز وثائقي"
     image_caption = str(report.get("image_caption") or "")
     if "توضيحية" in image_caption or "لا تمثل" in image_caption:
         caption += "\n(الصورة توضيحية وليست من موقع الحدث.)"
@@ -61,24 +62,19 @@ def trend_digest(trends_data: dict, today: str) -> dict | None:
         reverse=True,
     )
     topics: list[str] = []
-    sources: list[str] = []
     for item in items:
         title = item["title"].strip()
         if title and title not in topics:
             topics.append(title)
-        source = str(item.get("source") or "").strip()
-        if source and source not in sources:
-            sources.append(source)
         if len(topics) == 3:
             break
     if not topics:
         return None
-    origin = " و ".join(sources) if sources else "المتابعة التحريرية"
     caption = (
-        f"أبرز ما يتصدر الرصد اليوم ({today}): {'، '.join(topics)}. "
-        f"مصادر الرصد: {origin}. هذا ملخص لما يلقى رواجًا، وليس تأكيدًا مستقلًا لتفاصيل الخبر."
+        f"ثريدز وثائقي | أبرز الموضوعات الصاعدة اليوم ({today}): {', '.join(topics)}. "
+        "هذا ملخص لما يلقى رواجًا، وليس تأكيدًا مستقلًا لتفاصيل الخبر."
     )
-    return {"key": f"trends:{today}", "report_id": None, "caption": caption, "url": SITE_URL + "/", "image": "assets/brand-mark.png"}
+    return {"key": f"trends:{today}", "report_id": None, "caption": caption, "url": SITE_URL + "/", "image": "assets/brand-cover.jpg"}
 
 
 def choose_content(platform_state: dict, reports: list[dict], trends_data: dict, today: str) -> dict | None:

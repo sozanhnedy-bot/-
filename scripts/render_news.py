@@ -38,13 +38,13 @@ def render(item: dict) -> str:
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#14283f"><meta name="description" content="{description}">
-  <meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)}">
-  <meta property="og:description" content="{description}"><meta property="og:image" content="https://sozanhnedy-bot.github.io/-/assets/brand-mark.png">
-  <meta name="twitter:card" content="summary"><title>{e(title)} | Threads Documentary News</title>
+  <meta property="og:site_name" content="Threads Documentary News"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)}">
+  <meta property="og:description" content="{description}"><meta property="og:image" content="https://sozanhnedy-bot.github.io/-/assets/brand-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image"><title>{e(title)} | Threads Documentary News</title>
   <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css">
 </head>
 <body class="article-body">
-  <header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>مشروع إخباري مستقل</small><b>Threads Documentary News</b></span></a><a class="article-home" href="../">العودة إلى الموقع</a></header>
+  <header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>ثريدز وثائقي</small><b>Threads Documentary News</b></span></a><a class="article-home" href="../">العودة إلى الموقع</a></header>
   <main class="article-shell"><nav class="breadcrumb"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><span>موجز أولي</span></nav>
     <article class="full-report brief-report"><header class="article-heading"><p class="eyebrow">موجز أولي · {e(region)}</p><h1>{e(title)}</h1><p class="article-dek">{e(summary)}</p>
       <div class="article-meta"><span>المصدر: {e(source)}</span>{f'<time datetime="{e(published, quote=True)}">{e(published)}</time>' if published else ''}</div>

@@ -1,4 +1,4 @@
-const CACHE_NAME = "threads-doc-news-v8";
+const CACHE_NAME = "threads-doc-news-v10";
 const ROOT = new URL("./", self.location.href);
 const DATA_URLS = ["data/news.json", "data/reports.json", "data/trending.json", "data/threads_signals.json"].map((path) => new URL(path, ROOT).href);
 const SHELL_URLS = [
@@ -12,6 +12,8 @@ const SHELL_URLS = [
   new URL("threads-signals.js", ROOT).href,
   new URL("manifest.webmanifest", ROOT).href,
   new URL("assets/brand-mark.png", ROOT).href,
+  new URL("assets/brand-cover.jpg", ROOT).href,
+  new URL("assets/brand-logo-full.webp", ROOT).href,
   new URL("assets/app-icon-192.png", ROOT).href,
   new URL("assets/app-icon-512.png", ROOT).href,
   new URL("assets/story-finswimming.webp", ROOT).href,

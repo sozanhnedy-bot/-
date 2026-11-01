@@ -1,7 +1,8 @@
 import unittest
 from datetime import datetime, timezone
+from unittest.mock import patch
 
-from scripts.update_news import RSS_NO_DETAILS, build_update, clean_text, parse_feed
+from scripts.update_news import RSS_NO_DETAILS, ai_summarization_enabled, build_update, clean_text, parse_feed
 
 
 NOW = datetime(2026, 10, 31, 0, 0, tzinfo=timezone.utc)
@@ -113,6 +114,12 @@ class NewsUpdateTests(unittest.TestCase):
         )
         self.assertFalse(changed)
         self.assertEqual(data["updated_at"], "previous")
+
+    def test_ai_summaries_are_off_without_explicit_opt_in(self):
+        with patch.dict("os.environ", {}, clear=True):
+            self.assertFalse(ai_summarization_enabled())
+        with patch.dict("os.environ", {"AI_SUMMARIZATION_ENABLED": "true"}, clear=True):
+            self.assertTrue(ai_summarization_enabled())
 
 
 if __name__ == "__main__":

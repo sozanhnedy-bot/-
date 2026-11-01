@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts import publish_social, render_articles, render_news, update_threads_signals, update_trends
+from scripts import publish_social, render_articles, render_news, render_trends, update_threads_signals, update_trends
 
 
 class SocialPublisherTests(unittest.TestCase):
@@ -26,6 +26,7 @@ class SocialPublisherTests(unittest.TestCase):
         result = publish_social.report_content(report, [report["id"]], "2026-10-31")
         self.assertEqual(result["url"], "https://sozanhnedy-bot.github.io/-/r/fb839c.html")
         self.assertEqual(result["image"], "assets/story-finswimming-social.jpg")
+        self.assertIn("ثريدز وثائقي", result["caption"])
         self.assertIn("الصورة توضيحية", result["caption"])
 
     def test_trend_digest_is_labeled_as_rising_topics_not_verified_events(self):
@@ -35,6 +36,10 @@ class SocialPublisherTests(unittest.TestCase):
         ]}, "2026-10-31")
         self.assertIsNotNone(result)
         self.assertIn("ليس تأكيدًا مستقلًا", result["caption"])
+        self.assertIn("ثريدز وثائقي", result["caption"])
+        self.assertNotIn("Google Trends", result["caption"])
+        self.assertNotIn("X Trends", result["caption"])
+        self.assertEqual(result["image"], "assets/brand-cover.jpg")
         self.assertEqual(result["url"], "https://sozanhnedy-bot.github.io/-/")
 
     def test_x_text_keeps_the_internal_url_and_stays_bounded(self):
@@ -96,6 +101,46 @@ class SocialPublisherTests(unittest.TestCase):
                 self.assertEqual(render_news.build(output), 1)
             self.assertTrue((output / "news" / "rss-brief.html").is_file())
             self.assertFalse((output / "news" / "full-report.html").exists())
+
+
+class InternalTrendPageTests(unittest.TestCase):
+    def test_trend_page_is_internal_and_hides_provider_and_publisher_labels(self):
+        item = {
+            "id": "a" * 18,
+            "title": "موضوع رائج",
+            "region": "egypt",
+            "region_label": "X · مصر",
+            "source": "X Trends",
+            "news_items": [{"title": "عنوان مرتبط", "source": "Publisher Confidential", "snippet": "مقتطف <script>"}],
+        }
+        page = render_trends.render(item)
+        self.assertIn("موضوع رائج", page)
+        self.assertIn("عنوان مرتبط", page)
+        self.assertIn("مقتطف &lt;script&gt;", page)
+        self.assertNotIn("X Trends", page)
+        self.assertNotIn("Publisher Confidential", page)
+        self.assertNotIn("href=\"https://publisher.example", page)
+        self.assertIn('href="../"', page)
+
+    def test_build_creates_internal_route_for_each_valid_trend(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "trending.json"
+            source.write_text(json.dumps({"items": [
+                {"id": "b" * 18, "title": "ترند أول"},
+                {"id": "../unsafe", "title": "مسار غير صالح"},
+            ]}, ensure_ascii=False), encoding="utf-8")
+            output = root / "site"
+            with patch.object(render_trends, "TRENDS_PATH", source):
+                self.assertEqual(render_trends.build(output), 1)
+            self.assertTrue((output / "trends" / f"{'b' * 18}.html").is_file())
+            self.assertFalse((output / "trends" / ".." / "unsafe.html").exists())
+        app_js = (Path(__file__).resolve().parents[1] / "app.js").read_text(encoding="utf-8")
+        self.assertIn("function trendUrl(id)", app_js)
+        self.assertIn("title.href = destination", app_js)
+        self.assertIn("const rawRegion", app_js)
+        self.assertIn("replace(/^(?:X|Google Trends)", app_js)
+        self.assertNotIn("trend.source", app_js)
 
 
 class XTrendTests(unittest.TestCase):

@@ -17,6 +17,7 @@ DATA_FILES = (
 )
 ASSET_FILES = (
     "brand-mark.png", "app-icon-192.png", "app-icon-512.png",
+    "brand-cover.jpg", "brand-logo-full.webp",
     "story-finswimming.webp", "story-morocco-stadium.webp", "story-yemen-diplomacy.webp",
     "story-finswimming-social.jpg", "story-morocco-stadium-social.jpg", "story-yemen-diplomacy-social.jpg",
 )
@@ -45,6 +46,11 @@ def build(output: Path) -> int:
     )
     subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "render_news.py"), "--output", str(output)],
+        cwd=ROOT,
+        check=True,
+    )
+    subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "render_trends.py"), "--output", str(output)],
         cwd=ROOT,
         check=True,
     )

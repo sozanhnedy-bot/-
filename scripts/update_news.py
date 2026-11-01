@@ -298,6 +298,10 @@ def summarize_rss_excerpt(item: dict) -> str:
     return RSS_NO_DETAILS
 
 
+def ai_summarization_enabled() -> bool:
+    return os.environ.get("AI_SUMMARIZATION_ENABLED", "false").strip().lower() in {"1", "true", "yes"}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Refresh the public RSS news feed")
     parser.add_argument("--dry-run", action="store_true", help="Fetch RSS only; do not call AI or upload")
@@ -323,13 +327,16 @@ def main() -> int:
 
     api_key = os.environ.get("OPENAI_API_KEY", "").strip()
     model = os.environ.get("OPENAI_MODEL", "").strip()
-    if api_key and model:
+    ai_enabled = ai_summarization_enabled()
+    if ai_enabled and api_key and model:
         from openai import OpenAI
         client = OpenAI(api_key=api_key)
         summarizer = lambda item: summarize_news(client, item, model)
         summary_type = "ai_summary"
     else:
-        if api_key and not model:
+        if not ai_enabled:
+            print("AI summarization is disabled; using safe RSS excerpts.")
+        elif api_key and not model:
             print("OPENAI_MODEL is not configured; keeping to safe RSS excerpts.", file=sys.stderr)
         summarizer = summarize_rss_excerpt
         summary_type = "source_excerpt"

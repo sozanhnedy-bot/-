@@ -87,28 +87,34 @@ function renderHero() {
   if (items.length < 2) side.append(el("p", "muted-label", "تُضاف التقارير الجديدة تلقائيًا بعد اكتمال تحريرها."));
   host.append(side);
 }
+function trendUrl(id) { return `./trends/${encodeURIComponent(id)}.html`; }
 function renderTrends() {
   const host = $("#trending-list"); host.replaceChildren();
   const trends = [...state.trends].sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 9);
   const stamp = state.trendUpdated ? formatDate(state.trendUpdated) : "";
-  const sources = [...new Set(state.trends.map((item) => item.source).filter(Boolean))];
-  const sourceLabel = sources.length ? sources.join(" + ") : "Google Trends";
-  $("#trend-updated").textContent = stamp ? `آخر رصد: ${stamp} · ${sourceLabel}` : `تُحدّث البيانات دوريًا من ${sourceLabel}`;
+  $("#trend-updated").textContent = stamp ? `آخر رصد: ${stamp}` : "تُحدّث الترندات دوريًا";
   if (!trends.length) { host.append(el("p", "loading-card", "لا توجد ترندات حديثة متاحة في آخر رصد. ستظهر العناصر الجديدة هنا تلقائيًا.")); return; }
   for (const [index, trend] of trends.entries()) {
+    if (!/^[a-f0-9]{18}$/.test(String(trend.id || ""))) continue;
     const item = el("article", "trend-item");
     item.append(el("span", "trend-number", String(index + 1).padStart(2, "0")));
     const body = document.createElement("div");
-    const source = trend.source === "X Trends" ? "من X" : "من Google Trends";
-    body.append(el("span", "trend-label", `${trend.alert ? "تنبيه ترند" : "ترند حديث"} · ${source}`));
-    body.append(el("h3", "", trend.title));
-    const detail = [trend.approx_traffic ? `${trend.approx_traffic} عملية بحث تقريبًا` : "رصد جديد", trend.region_label || "مصر", trend.published_at ? formatDate(trend.published_at, { dateStyle: "short", timeStyle: "short" }) : ""].filter(Boolean).join(" · ");
-    body.append(el("p", "", detail));
-    const sources = [...new Set((trend.news_items || []).map((news) => news.source).filter(Boolean))];
-    if (sources.length) body.append(el("p", "", `مصادر التغطية: ${sources.join("، ")}`));
     const report = (trend.report_id && reportMap.get(trend.report_id)) || null;
-    if (report) { const link = el("a", "read-link", "افتح التقرير داخل الموقع"); link.href = reportUrl(report.id); body.append(link); }
-    else if (trend.news_items?.length) body.append(el("p", "", `أبرز العناوين: ${trend.news_items.slice(0, 2).map((news) => news.title).join(" · ")}`));
+    const destination = report ? reportUrl(report.id) : trendUrl(trend.id);
+    body.append(el("span", "trend-label", trend.alert ? "تنبيه ترند" : "ترند حديث"));
+    const heading = el("h3");
+    const title = el("a", "trend-title-link", trend.title || "موضوع رائج");
+    title.href = destination;
+    title.setAttribute("aria-label", `افتح المحتوى الداخلي: ${trend.title || "موضوع رائج"}`);
+    heading.append(title);
+    body.append(heading);
+    const rawRegion = String(trend.region_label || "").replace(/^(?:X|Google Trends)\s*[·-]\s*/i, "").trim();
+    const region = REGION_LABELS[trend.region] || rawRegion || "مصر";
+    const detail = [trend.approx_traffic ? `اهتمام تقريبي: ${trend.approx_traffic}` : "رصد جديد", region, trend.published_at ? formatDate(trend.published_at, { dateStyle: "short", timeStyle: "short" }) : ""].filter(Boolean).join(" · ");
+    body.append(el("p", "", detail));
+    const relatedTitles = [...new Set((trend.news_items || []).map((news) => String(news?.title || "").trim()).filter(Boolean))].slice(0, 2);
+    if (relatedTitles.length) body.append(el("p", "trend-related-preview", `عناوين مرتبطة: ${relatedTitles.join(" · ")}`));
+    const link = el("a", "read-link", "افتح المحتوى داخل الموقع"); link.href = destination; body.append(link);
     item.append(body); host.append(item);
   }
 }

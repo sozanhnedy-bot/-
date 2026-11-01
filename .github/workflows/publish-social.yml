@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   publish:
-    if: ${{ vars.SOCIAL_AUTOPUBLISH == 'true' }}
+    if: ${{ vars.SOCIAL_AUTOPUBLISH == 'true' && vars.PAID_SOCIAL_APIS_APPROVED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
