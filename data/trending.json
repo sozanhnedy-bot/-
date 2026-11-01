@@ -1,26 +1,26 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T11:36:05.158879Z",
+  "updated_at": "2026-11-01T12:07:10.848188Z",
   "items": [
     {
       "id": "0ea4cb028b1bb4d46c",
       "title": "levante badalona - barcelona",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.8,
+      "approx_traffic": "2000+",
+      "score": 55.8,
       "published_at": "2026-11-01T11:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "El Barça defiende el liderato en el derbi catalán; Madrid CFF y Dépor miran a Europa",
-          "source": "Yahoo",
+          "title": "Badalona - Barcelona, en directo: Liga F, hoy en vivo",
+          "source": "Diario AS",
           "snippet": ""
         },
         {
-          "title": "En directo FC Badalona Women vs FC Barcelona Primera División Femenina",
-          "source": "Artículo 14",
+          "title": "El Barça defiende el liderato en el derbi catalán; Madrid CFF y Dépor miran a Europa",
+          "source": "Yahoo",
           "snippet": ""
         },
         {
@@ -32,29 +32,58 @@
       "alert": false
     },
     {
-      "id": "6cd17c00e26541b308",
-      "title": "hotel",
+      "id": "eb6e0e7d1b9614f8bf",
+      "title": "orlando weather",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 53.5,
-      "published_at": "2026-11-01T10:50:00Z",
+      "score": 53.4,
+      "published_at": "2026-11-01T11:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Two men die after suspected electrocution at hotel pool as rescue effort injures others",
-          "source": "Fox News",
+          "title": "Pineapple express a flood threat to California, Southwest",
+          "source": "The Weather Channel",
           "snippet": ""
         },
         {
-          "title": "‘I tried my best’: Hotel staffer who jumped in to save two men stable, but traumatised",
-          "source": "The Times of India",
+          "title": "Rain and storms to haunt millions of Halloween trick-or-treaters across 20+ states",
+          "source": "FOX Weather",
           "snippet": ""
         },
         {
-          "title": "Slovakian couple had come for a holiday to India, man died hours after checking into Conrad",
-          "source": "The Hindu",
+          "title": "Mostly Cloudy with a few Drizzle Spots this Halloween",
+          "source": "KTTC | Rochester, MN",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6d81fa839c6f930b10",
+      "title": "como - venezia",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.1,
+      "published_at": "2026-11-01T11:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Cuándo juegan Como vs. Venezia por la Serie A: equipo, fecha, hora y TV en vivo",
+          "source": "ESPN Deportes",
+          "snippet": ""
+        },
+        {
+          "title": "Como – Venecia: horario y dónde ver hoy por TV el partido de fútbol de la Serie A",
+          "source": "La Vanguardia",
+          "snippet": ""
+        },
+        {
+          "title": "Alineaciones de Como contra Venezia",
+          "source": "rcdm.es",
           "snippet": ""
         }
       ],
@@ -66,7 +95,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 50.8,
+      "score": 49.8,
       "published_at": "2026-11-01T11:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -90,70 +119,12 @@
       "alert": false
     },
     {
-      "id": "d17f573106e4633a48",
-      "title": "como vs venezia",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.5,
-      "published_at": "2026-11-01T10:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Cuándo juegan Como vs. Venezia por la Serie A: equipo, fecha, hora y TV en vivo",
-          "source": "ESPN Deportes",
-          "snippet": ""
-        },
-        {
-          "title": "Como – Venecia: horario y dónde ver hoy por TV el partido de fútbol de la Serie A",
-          "source": "La Vanguardia",
-          "snippet": ""
-        },
-        {
-          "title": "Alineaciones de Como contra Venezia",
-          "source": "rcdm.es",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "24bf358d87f865fcdf",
-      "title": "black friday 2026",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.1,
-      "published_at": "2026-11-01T10:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Costco Reveals Its Full Black Friday Ad and Sale Dates for 2026, Discounts Include Frozen Food and Gaming PCs",
-          "source": "IGN",
-          "snippet": ""
-        },
-        {
-          "title": "Black Friday sales are starting early at Costco, Target and Walmart",
-          "source": "Dallas News",
-          "snippet": ""
-        },
-        {
-          "title": "Costco’s Holiday Savings Event Starts This Week—Here’s What’s Going on Sale",
-          "source": "Martha Stewart",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "bc0fe3dcfd2206f5f7",
       "title": "حالة الطقس اليوم",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 48.8,
+      "score": 47.8,
       "published_at": "2026-11-01T10:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -177,91 +148,120 @@
       "alert": false
     },
     {
-      "id": "f6a79b4e2ab999fc7c",
-      "title": "ciara mageean",
+      "id": "9cbdc33688182ea789",
+      "title": "kelsey mitchell",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 46.8,
-      "published_at": "2026-11-01T11:00:00Z",
+      "score": 47.5,
+      "published_at": "2026-11-01T11:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Ciara Mageean: European champion and Olympian dies aged 34",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Irish Olympian and European champion Ciara Mageean has died aged 34",
-          "source": "The Irish Times",
-          "snippet": ""
-        },
-        {
-          "title": "Irish Olympian and European champion Ciara Mageean dies aged 34",
+          "title": "Fever Star Kelsey Mitchell Celebrates Father's Posthumous Hall of Fame Recognition",
           "source": "Yahoo Sports",
           "snippet": ""
+        },
+        {
+          "title": "Kelsey Mitchell Shares Foundation Update Amid WNBA Offseason",
+          "source": "Athlon Sports",
+          "snippet": ""
+        },
+        {
+          "title": "What is Kelsey Mitchell's future with Fever?",
+          "source": "NBC Sports",
+          "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "e373e10210c4ec81b0",
-      "title": "varun chakaravarthy",
+      "id": "de54e66d652bb2d9a3",
+      "title": "moeen ali",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 46.5,
-      "published_at": "2026-11-01T08:50:00Z",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-11-01T11:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "New Zealand field in final T20I; Bhuvneshwar and Varun in for India",
-          "source": "Cricinfo",
+          "title": "Saif Hassan stars with bat and ball as Janakpur Bolts beat Kathmandu Gorkhas",
+          "source": "BDCricTime",
           "snippet": ""
         },
         {
-          "title": "India vs New Zealand Live Score, 5th T20I: Varun breaks partnership, removes Daryl Mitchell",
-          "source": "The Times of India",
+          "title": "Match Predictions: Nepal Premier League 2026 - 5th & 6th Match - Bolts vs Gorkhas; Yaks vs Kings - 29th October",
+          "source": "Cricket World",
           "snippet": ""
         },
         {
-          "title": "New Zealand finally wins a toss and decides to bowl in the 5th T20 against India",
-          "source": "Eagle-Tribune",
+          "title": "Kathmandu Gurkhas Score 100 Runs for 9 Wickets in 18 Overs Against Janakpur Bolts",
+          "source": "Ratopati",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "4628d87f974eeedecf",
-      "title": "persib bandung vs adhyaksa",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 46.5,
-      "published_at": "2026-11-01T08:50:00Z",
+      "id": "00b37645c0bb1e6a9f",
+      "title": "week 8 fantasy rankings",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-11-01T11:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Babak I: Peralta dan Menalo Bawa Persib Unggul 3-0 atas Isenmulang",
-          "source": "CNN Indonesia",
+          "title": "NFL Week 8 predictions: Upsets, fantasy sleepers, stat lines, TD scorers, more",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Maung Mengganas, Persib Bandung Gilas Kalteng FC Tanpa Balas",
-          "source": "TIMES Indonesia",
+          "title": "Gerry Dulac’s 2026 NFL predictions: Week 8",
+          "source": "Pittsburgh Post-Gazette",
           "snippet": ""
         },
         {
-          "title": "Persib Tanpa Teja Paku Alam dan Gabriel Mutombo saat Jamu Isen Mulang Sore Ini",
-          "source": "TINTAHIJAU.com",
+          "title": "NFL Week 8 bold predictions: Joe Burrow throws 6 TD passes; Jahmyr Gibbs punishes Vikings' defense",
+          "source": "NFL.com",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
+    },
+    {
+      "id": "4a8d336848e03fc36e",
+      "title": "ماما نجوى ابراهيم",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 44.5,
+      "published_at": "2026-11-01T11:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بسبب \"مايوهات\" الفنانات.. أزمة بين نجوى إبراهيم ونقابة الممثلين",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "شمس البارودي تعاتب نجوى إبراهيم: «النصيحة في العلن فضيحة»",
+          "source": "عكاظ",
+          "snippet": ""
+        },
+        {
+          "title": "ياسمين الخطيب تدعم نجوى إبراهيم بعد جدل تصريحاتها عن ملابس الفنانات",
+          "source": "مجلة لها",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "0ad97adf795ca82212",
@@ -269,24 +269,111 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 45.5,
+      "score": 44.5,
       "published_at": "2026-11-01T10:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "আসছেন না রোনান সুলিভান, সাফের আগে বড় ধাক্কা খেল বাংলাদেশ",
-          "source": "দ্য ডেইলি স্টার বাংলা",
+          "title": "বাংলাদেশ-যুক্তরাষ্ট্রের যৌথ বিমান মহড়া শুরু",
+          "source": "thenews24.com",
           "snippet": ""
         },
         {
-          "title": "দলের সঙ্গে যোগ দিলেন জায়ান",
-          "source": "dhakapost.com",
+          "title": "চট্টগ্রাম বন্দরে মার্কিন যুদ্ধজাহাজ ইউএসএস ওয়ারিয়র",
+          "source": "RTV News",
           "snippet": ""
         },
         {
-          "title": "ছোটবেলা থেকে হামজার খেলা দেখতেন, এবার তাঁর সঙ্গে খেলতে তর সইছে না মাহির",
-          "source": "Ajker Patrika",
+          "title": "যৌথ প্রশিক্ষণ মহড়া উপলক্ষে চট্টগ্রাম বন্দরে মার্কিন নৌবাহিনীর জাহাজ",
+          "source": "bvnews24",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "cece4152bd2467f5f5",
+      "title": "early voting results",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.1,
+      "published_at": "2026-11-01T11:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "More than 50m Americans cast ballots in early voting with three days to go before midterms",
+          "source": "The Guardian",
+          "snippet": ""
+        },
+        {
+          "title": "Early voting jumps across Senate battlegrounds as millions more Americans vote ahead of Election Day",
+          "source": "AP News",
+          "snippet": ""
+        },
+        {
+          "title": "US midterms: 3 days to go – What latest polls say as early voting surges",
+          "source": "Al Jazeera",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "dde54311281ca1888a",
+      "title": "finn allen",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 44.1,
+      "published_at": "2026-11-01T10:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Arshdeep Singh equals Tim Southee's record with stellar start against New Zealand in fifth T20I",
+          "source": "India TV News",
+          "snippet": ""
+        },
+        {
+          "title": "Live Cricket Score, Schedule, Latest News, Stats & Videos",
+          "source": "Cricbuzz",
+          "snippet": ""
+        },
+        {
+          "title": "Arshdeep Singh 150 Wickets: The Security Guard’s Son Who Conquered World Cricket",
+          "source": "https://northdesk.in/",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "8e2fe7a153f86398cb",
+      "title": "november 1st",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.5,
+      "published_at": "2026-11-01T11:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Today in History: November 1, 2026",
+          "source": "Capital Gazette",
+          "snippet": ""
+        },
+        {
+          "title": "Today in History: November 1, Seabiscuit wins 'Race of the Century'",
+          "source": "The Cumberland Times-News",
+          "snippet": ""
+        },
+        {
+          "title": "Today in History: November 1, Seabiscuit wins 'Race of the Century'",
+          "source": "Star Beacon",
           "snippet": ""
         }
       ],
@@ -298,7 +385,7 @@
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "100+",
-      "score": 44.5,
+      "score": 43.5,
       "published_at": "2026-11-01T11:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -319,36 +406,36 @@
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "8e2fe7a153f86398cb",
-      "title": "november 1st",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.5,
-      "published_at": "2026-11-01T11:20:00Z",
+      "id": "6424a99c4ce0d4c1ee",
+      "title": "يوسف أسامة نبيه",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 43.5,
+      "published_at": "2026-11-01T09:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Today in History: November 1, 2026",
-          "source": "Capital Gazette",
+          "title": "يوسف نبيه: أخطأت بالرحيل عن الزمالك.. وأسعى للانضمام إلى منتخب مصر",
+          "source": "يلاكورة",
           "snippet": ""
         },
         {
-          "title": "Today in History: November 1, Seabiscuit wins 'Race of the Century'",
-          "source": "The Cumberland Times-News",
+          "title": "أخبار | يوسف نبيه: استعدت جزء من مستواي مع الموصل.. وأخطأت بالرحيل عن الزمالك",
+          "source": "FilGoal",
           "snippet": ""
         },
         {
-          "title": "Today in History: November 1, Seabiscuit wins 'Race of the Century'",
-          "source": "Black Hills Pioneer",
+          "title": "أول تعليق من يوسف أسامة نبيه على الرحيل عن الزمالك .. وطموح العودة",
+          "source": "الزمالك اليوم",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "330b1e86ada8d59e10",
@@ -356,7 +443,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 44.5,
+      "score": 43.5,
       "published_at": "2026-11-01T09:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -385,7 +472,7 @@
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "100+",
-      "score": 44.2,
+      "score": 43.1,
       "published_at": "2026-11-01T11:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -406,35 +493,6 @@
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "506ae583b2c2c2f4ad",
-      "title": "new york city marathon",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 43.8,
-      "published_at": "2026-11-01T11:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "The best NYC running routes and gear to go the distance, per real runners",
-          "source": "New York Post",
-          "snippet": ""
-        },
-        {
-          "title": "Breast cancer patient to run New York City Marathon to change the future for her daughters",
-          "source": "WFLX",
-          "snippet": ""
-        },
-        {
-          "title": "Breast cancer survivor to run New York City Marathon after remission",
-          "source": "Spectrum News NY1",
-          "snippet": ""
-        }
-      ],
       "alert": false
     },
     {
@@ -443,7 +501,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 43.5,
+      "score": 42.5,
       "published_at": "2026-11-01T09:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -472,7 +530,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 43.5,
+      "score": 42.5,
       "published_at": "2026-11-01T09:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -496,24 +554,53 @@
       "alert": false
     },
     {
+      "id": "9080f19fe64292e4f0",
+      "title": "crypto exchange binance hacked",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 41.8,
+      "published_at": "2026-11-01T09:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Notorious hacker says stolen crypto is like ‘holding a hot potato’",
+          "source": "CNN",
+          "snippet": ""
+        },
+        {
+          "title": "FBI Accuses NKorea of Standing Behind $6 Billion Crypto Theft from Binance",
+          "source": "ASHARQ AL-AWSAT English",
+          "snippet": ""
+        },
+        {
+          "title": "Crypto firm Binance covers 90% of losses after $6.3bn hack",
+          "source": "BBC",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "485f453c64a885c9b8",
       "title": "اليو ديانج",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 42.2,
+      "score": 41.1,
       "published_at": "2026-11-01T10:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "تعليق واقعى من معتز الشامى على أنباء إستغناء فالنسيا الاسباني عن أليوديانج",
-          "source": "الزمالك اليوم",
+          "title": "تقارير: فالنسيا يقرر التخلص من ديانج",
+          "source": "يلاكورة",
           "snippet": ""
         },
         {
-          "title": "تقارير: فالنسيا يقرر التخلص من ديانج",
-          "source": "يلاكورة",
+          "title": "تعليق واقعى من معتز الشامى على أنباء إستغناء فالنسيا الاسباني عن أليوديانج",
+          "source": "الزمالك اليوم",
           "snippet": ""
         },
         {
@@ -530,14 +617,14 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 42.2,
+      "score": 41.1,
       "published_at": "2026-11-01T10:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "جرس إنذار.. 4 أزمات ترعب الاتحاد قبل الملحمة الآسيوية أمام العين",
-          "source": "إرم نيوز",
+          "title": "أمام العين.. الاتحاد يبحث عن الفوز العاشر على الأندية الإماراتية",
+          "source": "العربية",
           "snippet": ""
         },
         {
@@ -546,66 +633,8 @@
           "snippet": ""
         },
         {
-          "title": "صافرة قطرية لمباراة الاتحاد والعين بالآسيوية",
-          "source": "جريدة الشرق",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f408412b0cea4c8256",
-      "title": "وزارة العمل",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.2,
-      "published_at": "2026-11-01T08:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "وزارة العمل تعلن عن فرص جديدة بقطاع الأمن والحراسة برواتب تصل لـ30 ألف جنيه",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "مطلوب فنيين كهرباء .. وزارة العمل تعلن عن 70 فرصة عمل برواتب تصل لـ12,600 جنيها - صوت الأمة",
-          "source": "اخبارك نت",
-          "snippet": ""
-        },
-        {
-          "title": "5745 فرصة عمل داخل 72 شركة بالقطاع الخاص بـ17 محافظة- صور",
-          "source": "Masrawy",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6424a99c4ce0d4c1ee",
-      "title": "يوسف أسامة نبيه",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 41.5,
-      "published_at": "2026-11-01T09:50:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "أول تعليق من يوسف أسامة نبيه على الرحيل عن الزمالك .. وطموح العودة",
-          "source": "الزمالك اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "يوسف أسامة نبيه: رحيلي عن الزمالك خطأ كبير",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "يوسف أسامة نبيه يتحدث عن جماهير الزمالك وقدرة الفريق على المنافسة الأفريقية",
-          "source": "الزمالك اليوم",
+          "title": "كيفية الحصول على تذاكر مباراة الاتحاد والعين: أسعار تذاكر دوري أبطال آسيا للنخبة، ومعلومات المباراة، وبيع التذاكر في اللحظات الأخيرة والمزيد",
+          "source": "Goal.com",
           "snippet": ""
         }
       ],
@@ -617,7 +646,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 41.5,
+      "score": 40.5,
       "published_at": "2026-11-01T08:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -628,42 +657,13 @@
           "snippet": ""
         },
         {
-          "title": "Heidi Klum's 2026 Halloween Costume Is Absolutely Unhinged",
-          "source": "Yahoo",
+          "title": "Heidi Klum reveals Halloween costume as her iconic party marks 25 years",
+          "source": "WFLA",
           "snippet": ""
         },
         {
-          "title": "Heidi Klum’s 25 Best Halloween Costumes, Ranked By How Much Time I Assume They Took To Put On",
-          "source": "BuzzFeed",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6798fe6c9daea2d98b",
-      "title": "دولار",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 41.2,
-      "published_at": "2026-11-01T09:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "تقرير أولي.. نتائج إعمار للربع الثالث 2026",
-          "source": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
-          "snippet": ""
-        },
-        {
-          "title": "\"إعمار المدينة الاقتصادية\" تتكبد 64.27 مليون دولار في الربع الثالث",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "«إعمار المدينة الاقتصادية» ترفع خسائرها 78.5 % إلى 64 مليون دولار في الربع الثالث",
-          "source": "الشرق الأوسط",
+          "title": "Watch: Heidi Klum as giant severed hand for Halloween bash",
+          "source": "BBC",
           "snippet": ""
         }
       ],
@@ -675,7 +675,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 40.8,
+      "score": 39.8,
       "published_at": "2026-11-01T09:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -704,7 +704,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 40.5,
+      "score": 39.5,
       "published_at": "2026-11-01T07:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -728,36 +728,12 @@
       "alert": false
     },
     {
-      "id": "59e972e6a4dc65a244",
-      "title": "masters tournament catering bill lawsuit",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 40.2,
-      "published_at": "2026-11-01T10:40:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "A California restaurant catered meals for a golfer's family at the Masters without agreeing on a price, t",
-          "source": "The Times of India",
-          "snippet": ""
-        },
-        {
-          "title": "A California Restaurant Catered the Masters Without Quoting a Price, Then Sent a $75,000 Bill: How an Unwritten Deal Sparked a Years-Long Legal War",
-          "source": "Istituto Impariamo",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "c10e99794f5fc2a39e",
       "title": "black friday",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 39.8,
+      "score": 38.8,
       "published_at": "2026-11-01T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -781,29 +757,29 @@
       "alert": false
     },
     {
-      "id": "9080f19fe64292e4f0",
-      "title": "crypto exchange binance hacked",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "f408412b0cea4c8256",
+      "title": "وزارة العمل",
+      "region": "egypt",
+      "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 39.8,
-      "published_at": "2026-11-01T09:00:00Z",
+      "score": 38.1,
+      "published_at": "2026-11-01T08:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "FBI Accuses NKorea of Standing Behind $6 Billion Crypto Theft from Binance",
-          "source": "ASHARQ AL-AWSAT English",
+          "title": "وزارة العمل تعلن عن فرص جديدة بقطاع الأمن والحراسة برواتب تصل لـ30 ألف جنيه",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "Security Incident Update (2026-10-30)",
-          "source": "Binance",
+          "title": "مطلوب فنيين كهرباء .. وزارة العمل تعلن عن 70 فرصة عمل برواتب تصل لـ12,600 جنيها - صوت الأمة",
+          "source": "اخبارك نت",
           "snippet": ""
         },
         {
-          "title": "Crypto firm Binance covers 90% of losses after $6.3bn hack",
-          "source": "BBC",
+          "title": "5745 فرصة عمل داخل 72 شركة بالقطاع الخاص بـ17 محافظة- صور",
+          "source": "Masrawy",
           "snippet": ""
         }
       ],
@@ -815,24 +791,24 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 39.2,
+      "score": 38.1,
       "published_at": "2026-11-01T07:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
+          "title": "إليسا تكشف عن اسم ألبومها الجديد رقم 14",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "إليسا تتصدر تريند \"جوجل\" بعد الكشف عن اسم ألبومها الجديد",
+          "source": "Masrawy",
+          "snippet": ""
+        },
+        {
           "title": "إليسا تختار اسمها الحقيقي عنواناً لألبومها الجديد",
           "source": "اخبارك نت",
-          "snippet": ""
-        },
-        {
-          "title": "إليسا تختار اسمها الحقيقي عنوانًا لألبومها الجديد وتكشف سر التسمية",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "أحمد حسن راؤول يكشف لـ يوليو مفاجأة إليسا في ألبومها الجديد | خاص",
-          "source": "https://www.youlyou.com/",
           "snippet": ""
         }
       ],
@@ -844,7 +820,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 37.8,
+      "score": 36.8,
       "published_at": "2026-11-01T08:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
