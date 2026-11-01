@@ -1,379 +1,176 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T17:08:16.846431Z",
+  "updated_at": "2026-11-01T18:02:38.764231Z",
   "items": [
     {
-      "id": "e560438e6a13cc1144",
-      "title": "new cfb rankings",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "20000+",
-      "score": 67.4,
-      "published_at": "2026-11-01T16:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Tomorrow's Top 25 Today: Ohio State falls from top 10, USC reenters college football rankings after upset win",
-          "source": "CBS Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Riley: In my latest AP top 25 poll, a scary Saturday for Ohio State creates opportunity for Utah",
-          "source": "NOLA.com",
-          "snippet": ""
-        },
-        {
-          "title": "College Football Rankings: How Far Ohio State Fell, USC Rose — Plus, 4 New Teams",
-          "source": "FOX Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b9e745314a2717a90a",
-      "title": "ليفربول ضد آرسنال",
+      "id": "46fade6fed4846f1f2",
+      "title": "kylian mbappé",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "20000+",
-      "score": 65.1,
-      "published_at": "2026-11-01T15:40:00Z",
+      "approx_traffic": "2000+",
+      "score": 56.6,
+      "published_at": "2026-11-01T17:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "إيزاك يقود تشكيل ليفربول.. وأرسنال يتسلح بهافيرتز",
-          "source": "يلاكورة",
+          "title": "Our part of Mbappe, China issue over: Real Madrid's Mourinho - World - Sports",
+          "source": "Ahram Online",
           "snippet": ""
         },
         {
-          "title": "مواعيد مباريات اليوم.. قمة ليفربول أمام آرسنال وطرابزون مع جازينتاب",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "هافيرتز يعاقب ليفربول بهدف في مرمى أليسون (فيديو)",
-          "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "d31ee96b1e2266b292",
-      "title": "liverpool vs arsenal",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "10000+",
-      "score": 62.1,
-      "published_at": "2026-11-01T15:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Liverpool v Arsenal: Premier League – live",
-          "source": "The Guardian",
-          "snippet": ""
-        },
-        {
-          "title": "Liverpool vs Arsenal LIVE: Premier League score, lineups, commentary & updates",
+          "title": "'Best thing is keep your mouth shut' - Mourinho on Mbappe-Mao row",
           "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "Team news: Confirmed Liverpool line-up v Arsenal",
-          "source": "Liverpool FC",
+          "title": "Chinese sponsors cut ties with Kylian Mbappé after Mao meme backlash",
+          "source": "ABC News & Headlines – Australian Broadcasting Corporation",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "3227df32696e03962c",
-      "title": "liverpool vs arsenal",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "10000+",
-      "score": 62.1,
-      "published_at": "2026-11-01T15:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Liverpool vs Arsenal LIVE: Premier League score, lineups, commentary & updates",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Team news: Confirmed Liverpool line-up v Arsenal",
-          "source": "Liverpool FC",
-          "snippet": ""
-        },
-        {
-          "title": "Jamie Carragher: Liverpool have emerged as Arsenal’s biggest title challengers",
-          "source": "The Telegraph",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "5c5c9b936f5c404ba1",
-      "title": "ليفربول ضد آرسنال",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "10000+",
-      "score": 62.1,
-      "published_at": "2026-11-01T15:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "جدول مباريات اليوم الأحد 1 نوفمبر 2026 .. القنوات الناقلة والمعلقين",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "إيراولا لجماهير ليفربول: من المبكر الحديث عن لقب الدوري",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "سر الـ10 أهداف.. أكبر اختبار لليفربول دون محمد صلاح",
-          "source": "إرم نيوز",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "140d274c7951f52851",
-      "title": "موعد صلاه العشاء",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 60.0,
-      "published_at": "2026-11-01T16:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مواعيد فتح وغلق الورش والأعمال الحرفية فى الشتاء 2026.. اعرف التفاصيل",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "تعرف علي مواعيد الفتح والغلق للمحلات والمطاعم والورش خلال التوقيت الشتوي - صوت الأمة",
-          "source": "اخبارك نت",
-          "snippet": ""
-        },
-        {
-          "title": "كيف يؤثر التوقيت الشتوي على صحتك؟ 5 فوائد للنوم والعظام والقلب",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a947e2f80e104f7969",
-      "title": "ايجار",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 58.7,
-      "published_at": "2026-11-01T15:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "النائب أيمن محسب: توجه الدولة يركز على الخروج من فكرة الاستقرار في التمليك.. وطرح 400 ألف وحدة بالإيجار تخفض الأسعار",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "مصر توقع اتفاقيات شراكة مع القطاع الخاص لتوفير وحدات سكنية لمنخفضي الدخل",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "أجهزة المدن الجديدة تكثف التواصل مع المواطنين ومتابعة الخدمات ومشروعات التنمية",
-          "source": "اليوم السابع",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2d931d38305047cc13",
-      "title": "hayley stevens",
+      "id": "f4316d75df48d65ab1",
+      "title": "jets vs hurricanes",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.4,
-      "published_at": "2026-11-01T16:50:00Z",
+      "approx_traffic": "2000+",
+      "score": 56.3,
+      "published_at": "2026-11-01T17:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Michigan Democrats’ unity push falters as Stevens is asked to skip event with El-Sayed",
-          "source": "AP News",
+          "title": "Projected Lineup: November 1 vs. Winnipeg",
+          "source": "NHL.com",
           "snippet": ""
         },
         {
-          "title": "Haley Stevens appears at Detroit church with Mike Rogers",
-          "source": "The Detroit News",
+          "title": "Hurricanes versus Winnipeg: Preview, How to Watch, Game Thread",
+          "source": "Canes Country",
           "snippet": ""
         },
         {
-          "title": "El-Sayed Doesn’t Want Haley Stevens to Join Him at Sunday Event",
+          "title": "How to watch Jets vs. Hurricanes: TV channel and streaming options for November 1",
           "source": "The New York Times",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "394473336aa74a89c6",
-      "title": "enes kanter freedom wnba comments",
+      "id": "3de39965872117e6c5",
+      "title": "boca juniors - river plate",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 54.4,
-      "published_at": "2026-11-01T16:50:00Z",
+      "score": 54.2,
+      "published_at": "2026-11-01T17:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Enes Kanter Freedom praises WNBA Finals players, rips leadership after Valkyries' historic championship win",
-          "source": "Fox News",
+          "title": "Boca Juniors vs River Plate: Match Preview",
+          "source": "365Scores",
           "snippet": ""
         },
         {
-          "title": "‘Get rid of the WNBA’ – Enes Kanter lambasts Stephanie White’s trans comment",
-          "source": "Yahoo Sports",
+          "title": "The Superclásico That Brings Argentina to a Standstill: Here's How Boca and River Are Heading to La Bombonera",
+          "source": "www.futbolmundial.com",
           "snippet": ""
         },
         {
-          "title": "‘Nothing better to do’: Megan Rapinoe rips ‘grifting’ Enes Kanter Freedom and Royce White",
-          "source": "thecomeback.com",
+          "title": "Boca vs. River LIVE: Argentine Superclásico 2026",
+          "source": "beIN SPORTS",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "d780db3424796d9a2e",
-      "title": "elche c. f. - valencia c. f.",
+      "id": "1d5c238390f6629c38",
+      "title": "chris murphy",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-01T16:40:00Z",
+      "score": 53.9,
+      "published_at": "2026-11-01T17:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Anselmi podría marcar el destino del Vasco Aguirre en Valencia",
-          "source": "ESPN Deportes",
+          "title": "Chris Murphy is hospitalized after stroke",
+          "source": "Politico",
           "snippet": ""
         },
         {
-          "title": "🚨XIs listos: Derbi por la permanencia en el Martínez Valero",
-          "source": "OneFootball",
+          "title": "Democratic Senator Murphy Hospitalized After Stroke, Politico Reports",
+          "source": "U.S. News & World Report",
           "snippet": ""
         },
         {
-          "title": "Alineaciones confirmadas del Elche CF - Valencia CF para la Jornada 11 de LALIGA",
-          "source": "El Desmarque",
+          "title": "Democratic Senator Murphy hospitalized after stroke, chief of staff says",
+          "source": "Reuters",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "a8bbb674bd12b50573",
-      "title": "elche vs valencia",
+      "id": "39d8a0547125af50c0",
+      "title": "market",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-01T16:40:00Z",
+      "score": 53.9,
+      "published_at": "2026-11-01T17:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Elche vs Valencia: Spanish La Liga stats & head-to-head",
+          "title": "Prediction: A Bear Market Is Coming. Here's Warren Buffett's Best Advice to Prepare for Volatility",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "Here’s the 1 Indicator I’m Watching to See if the S&P 500 Is About to Enter a Correction… or Come Crashing Down",
+          "source": "Barchart.com",
+          "snippet": ""
+        },
+        {
+          "title": "The Stock Market Is Doing Something for Only the 3rd Time in 28 Years, and History Says It's Clear What Comes Next for Stocks",
+          "source": "The Motley Fool",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "5ad1ea7b2e964ce4be",
+      "title": "كيليان مبابي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 53.6,
+      "published_at": "2026-11-01T17:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "الصين \"تخفي\" هدفي مبابي في مباراة برشلونة وريال مدريد",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "كيليان مبابي: الصين تجبر اللاعب الفرنسي على الاعتذار، لكن كثيرين لا يعرفون بالضبط ما قاله",
           "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "🚨XIs confirmed: Relegation derby at the Martínez Valero",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Elche vs Valencia predictions today (5.30pm KO): Hosts fancied to end their home wait",
-          "source": "Squawka",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "4eed28d907913c9caa",
-      "title": "kai havertz",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T16:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Arsenal's Kai Havertz in goal drought so should Mikel Arteta keep faith in him ahead of Viktor Gyokeres against Liverpool?",
-          "source": "Sky Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Viktor Gyokeres, Kai Havertz and Arsenal’s perennial strikers problem",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Arsenal's Kai Havertz problem isn't what Fleetwood performance suggests",
-          "source": "Pain in the Arsenal",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "9063425a6080fedb0f",
-      "title": "lyon fc",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.7,
-      "published_at": "2026-11-01T16:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "DIRECT VIDÉO) Paris FC Monaco foot en direct et gratuitement",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        },
-        {
-          "title": "PFC-ASM : les compositions",
-          "source": "OneFootball",
-          "snippet": ""
-        },
-        {
-          "title": "But dans le jeu, passes courtes, Golo’... Les stats à connaître avant le Paris FC",
-          "source": "AS Monaco",
+          "title": "ما الرابط المشترك بين مبابي و\"هالو كيتي\"؟.. كلاهما أثار غضب الصين | CNN Arabic | CNN",
+          "source": "CNN Arabic",
           "snippet": ""
         }
       ],
@@ -384,8 +181,8 @@
       "title": "منتخب مصر لكرة القدم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 50.4,
+      "approx_traffic": "1000+",
+      "score": 51.6,
       "published_at": "2026-11-01T16:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -409,70 +206,157 @@
       "alert": false
     },
     {
-      "id": "054e607f014c765edd",
-      "title": "أون سبورت",
-      "region": "egypt",
-      "region_label": "مصر",
+      "id": "cf24e34fd27ef78563",
+      "title": "jaylen waddle",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 50.1,
-      "published_at": "2026-11-01T16:10:00Z",
+      "score": 51.2,
+      "published_at": "2026-11-01T17:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "استحواذ أقل ولكن.. هل أصاب عموتة في اعتقاده بتطور أداء الأهلي؟",
-          "source": "يلاكورة",
+          "title": "Broncos WR Jaylen Waddle is trending in the right direction to play today vs. the Chiefs",
+          "source": "Mile High Report",
           "snippet": ""
         },
         {
-          "title": "من ميسى إلى على فوزى.. مصطفى شوبير بطل اللحظات الحاسمة مع الأهلى والفراعنة",
-          "source": "اليوم السابع",
+          "title": "Injury Report: DL Zach Allen, WR Jaylen Waddle return to practice for Broncos ahead of Week 8",
+          "source": "Denver Broncos",
           "snippet": ""
         },
         {
-          "title": "الثاني على التوالي.. الساعي يسجل مجددا في الدوري أمام مودرن سبورت",
-          "source": "FilGoal",
+          "title": "Week 8 injury report - Should fantasy managers be starting Jaylen Waddle this week?",
+          "source": "Yahoo Sports",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "95219d5b3bac7a96f5",
-      "title": "liverpool",
-      "region": "egypt",
-      "region_label": "مصر",
+      "id": "42d123cc56c9d99362",
+      "title": "michael strahan",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 49.4,
-      "published_at": "2026-11-01T15:50:00Z",
+      "score": 51.2,
+      "published_at": "2026-11-01T17:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Liverpool vs Arsenal LIVE: Premier League score, lineups, commentary & updates",
-          "source": "BBC",
+          "title": "‘GMA’ Fans Rally Around Michael Strahan After Seeing His Major Career News",
+          "source": "Good Housekeeping",
           "snippet": ""
         },
         {
-          "title": "Team news: Confirmed Liverpool line-up v Arsenal",
-          "source": "Liverpool FC",
+          "title": "Fox NFL legend Michael Strahan honored in major personal achievement – ‘well deserved’",
+          "source": "The Sun",
           "snippet": ""
         },
         {
-          "title": "Jamie Carragher: Liverpool have emerged as Arsenal’s biggest title challengers",
-          "source": "The Telegraph",
+          "title": "Support Pours In for Michael Strahan After Personal News",
+          "source": "Yardbarker",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "ac2958732e32f93dc9",
-      "title": "arsenal",
+      "id": "221323e49709230898",
+      "title": "كيليان مبابي",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.8,
+      "approx_traffic": "500+",
+      "score": 50.6,
+      "published_at": "2026-11-01T17:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "الصين \"تخفي\" هدفي مبابي في مباراة برشلونة وريال مدريد",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "بسبب مبابي... التلفزيون الصيني يتجاهل بث مباراة ريال مدريد",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        },
+        {
+          "title": "\"الصمت أفضل\".. حين أغضب مبابي الصين بكلمتين",
+          "source": "الحرة",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "3b307239a5b620e5c5",
+      "title": "sean payton",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.6,
+      "published_at": "2026-11-01T17:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Steve Spagnuolo discusses Sean Payton taking over play-calling duties",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Broncos face challenges as Payton takes charge of offensive strategy",
+          "source": "Fort Collins Country Radio",
+          "snippet": ""
+        },
+        {
+          "title": "Headset Handoff: Sean Payton should consider giving playcalling duties back to Davis Webb",
+          "source": "Mile High Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "bc4b6b85f910ae005b",
+      "title": "nfl defense rankings",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.6,
+      "published_at": "2026-11-01T17:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "NFL Fantasy 2026 Start 'Em, Sit 'Em: Defenses for Week 8",
+          "source": "NFL.com",
+          "snippet": ""
+        },
+        {
+          "title": "Week 8 Fantasy Football Defense Rankings",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "2026 Fantasy Football Week 8 Defense (DST) Rankings and Streamers",
+          "source": "NBC Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f118b895fc27333429",
+      "title": "arsenal",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 49.9,
       "published_at": "2026-11-01T17:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -484,60 +368,31 @@
         },
         {
           "title": "Gary Neville singles out 'embarrassing' Arsenal star minutes into Liverpool clash",
-          "source": "AOL.co.uk",
+          "source": "The Mirror",
           "snippet": ""
         },
         {
-          "title": "Neville brands Gabriel 'embarrassing' after Arsenal star's antics vs Liverpool",
+          "title": "Gary Neville brands Gabriel Magalhaes 'embarrassing' after Arsenal star's antics just minutes into Liverpool clash",
           "source": "The Sun",
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "65fd45ad8b2051df2e",
-      "title": "lecce vs genoa",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.1,
-      "published_at": "2026-11-01T16:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "✅ Official Lecce-Genoa line-ups: Stulic, El Shaarawy and Vitinha calls 👀",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Lecce vs Genoa: Italian Serie A stats & head-to-head",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Lecce vs Genoa match lineup | Serie A · 1 Nov 2026",
-          "source": "YSscores",
-          "snippet": ""
-        }
-      ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "fcef910295f5b6103b",
       "title": "باريس ضد موناكو",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.4,
+      "approx_traffic": "500+",
+      "score": 48.6,
       "published_at": "2026-11-01T16:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "مواجهة مرتقبة بين باريس إف سي وموناكو",
-          "source": "beIN SPORTS",
+          "title": "موناكو يتقدم على باريس إف سي في الشوط الأول بالدوري الفرنسي",
+          "source": "صدى البلد",
           "snippet": ""
         },
         {
@@ -554,206 +409,42 @@
       "alert": false
     },
     {
-      "id": "b09c542ff47d0daf13",
-      "title": "يان ديوماندي",
-      "region": "egypt",
-      "region_label": "مصر",
+      "id": "2709f32b66a0eadcd6",
+      "title": "bill cowher",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 46.4,
-      "published_at": "2026-11-01T16:20:00Z",
+      "score": 47.3,
+      "published_at": "2026-11-01T17:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "فيديو: \"لا مكان الآن لفينيسيوس\".. ديوماندي يزلزل حسابات ريال مدريد بهدف مذهل!",
-          "source": "Kooora",
+          "title": "Sources - Philip Rivers in talks about NC State coaching job",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "5 أسباب تدفع مورينيو لتفضيل ديوماندى على فينيسيوس فى ريال مدريد",
-          "source": "اليوم السابع",
+          "title": "Philip Rivers to NC State is ‘heating up’ as Wolfpack eye the star alum to jolt program - The Athletic",
+          "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "رقم قياسي لنجم ريال مدريد أمام برشلونة.. وهدف يفصله عن إنجاز فاران",
-          "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "9fc1e0ccc5510f057b",
-      "title": "ol vs angers",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 44.8,
-      "published_at": "2026-11-01T17:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "*@![EN DIRECT] Angers OL match EN DIRECT à la télé",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        },
-        {
-          "title": "OL - Angers : Nuamah en pointe accompagné par Nakamura et Duranville",
-          "source": "www.live-mercato.com",
-          "snippet": ""
-        },
-        {
-          "title": "Après le petit pas face à Lorient, Angers-SCO va devoir allonger la foulée contre Lyon",
-          "source": "Ouest-France",
+          "title": "Philip Rivers on college coaching rumors: ‘N.C. State is special to me’",
+          "source": "AL.com",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "d9c8a9d74621fecf4c",
-      "title": "braeden smith",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 44.4,
-      "published_at": "2026-11-01T16:50:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "NCAA Men's Basketball",
-          "source": "Idaho Press",
-          "snippet": ""
-        },
-        {
-          "title": "NCAA Men's Basketball",
-          "source": "couriernews.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "ae8a56f4c2ec748751",
-      "title": "peter doocy",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 44.4,
-      "published_at": "2026-11-01T16:50:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "Fox News’ Peter Doocy and Wife Hillary Vaughn Welcome Their 3rd Baby, a Girl (Exclusive)",
-          "source": "People.com",
-          "snippet": ""
-        },
-        {
-          "title": "A Live White House Sprint and Chaos at Home: Peter Doocy and Hillary Vaughn Welcome Baby Number Three",
-          "source": "Istituto Impariamo",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7210b5f533ed69a508",
-      "title": "منتخب مصر لكرة القدم",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.4,
-      "published_at": "2026-11-01T15:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "إنفانتينو يكرم منتخب مصر تحت 15 عامًا بجائزة خاصة",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "منتخب سن 15 عاما يختتم مشاركته في كأس العالم ومهرجان فيفا",
-          "source": "زاد الاردن",
-          "snippet": ""
-        },
-        {
-          "title": "بطولة كأس العالم تحت 15 عامًا في باكو تستحدث جوائز خاصة للفرق",
-          "source": "صحيفة مكة الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "bfa1afd4ebd4fa329f",
-      "title": "ترتيب الدوري التركي",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.4,
-      "published_at": "2026-11-01T15:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "أوسيمين يوجه ضربة موجعة لمصطفى محمد وصلاح",
-          "source": "إرم نيوز",
-          "snippet": ""
-        },
-        {
-          "title": "جدول ترتيب هدافي الدوري التركي.. محمد صلاح يقترب من الصدارة",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "نتيجة مباراة فريقي كونيا سبور و جينتشلاربيرليجي في بطولة الدوري التركي - الأسبوع 9",
-          "source": "FilGoal",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1ea8a50c90cce37056",
-      "title": "وسام أبو علي",
+      "id": "7726a1fec8ea80c579",
+      "title": "مصر والصين",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 43.4,
-      "published_at": "2026-11-01T16:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "الفلسطينى خالد النبريصي يزف بشرى بشأن عودة وسام أبو علي",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "مدرب فلسطين: عدي الدباغ مصدر فخر لنا.. ووسام أبوعلي قد يغيب عن أمم آسيا",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "أبو جزر يتحدث عن مصير لاعبان مع المنتخب الوطني",
-          "source": "فلسطين أون لاين",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "d4b291e418a84eaeb6",
-      "title": "منتخب مصر تحت 17 سنة لكرة القدم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 43.1,
-      "published_at": "2026-11-01T16:10:00Z",
+      "approx_traffic": "200+",
+      "score": 46.9,
+      "published_at": "2026-11-01T17:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
@@ -776,57 +467,144 @@
       "alert": false
     },
     {
-      "id": "fe7257f83d51e457bd",
-      "title": "boeing 787 dreamliner",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 42.1,
-      "published_at": "2026-11-01T15:40:00Z",
+      "id": "754915170949bd2278",
+      "title": "sukhoi su-35",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.9,
+      "published_at": "2026-11-01T17:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "PIA's first Boeing 787-9 Dreamliner arrives in Islamabad",
-          "source": "Dawn",
+          "title": "Iran to receive Russian Su-35 fighter jets after US-Iran war ends, IRGC spokesman says - report",
+          "source": "The Jerusalem Post",
           "snippet": ""
         },
         {
-          "title": "PIA increases London flights, likely to restore Birmingham operations",
-          "source": "Dunya News",
+          "title": "Iranian army spox: Russian Su-35s to arrive ‘after this war’",
+          "source": "JNS.org",
           "snippet": ""
         },
         {
-          "title": "Pak gets its first Boeing 787-9 plane, people mock it saying 'It's not yours, it's leased' | 'It's a lease, no PIA logo, shame!' | Inshorts",
-          "source": "Inshorts",
+          "title": "Iran to receive Russian Su-35 jets after war ends, IRGC says",
+          "source": "Middle East Eye",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "0dc13e29c6240f2f99",
-      "title": "لاتسيو ضد كالياري",
+      "id": "6592d47a613a33755b",
+      "title": "kylian mbappé",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 41.8,
-      "published_at": "2026-11-01T15:30:00Z",
+      "approx_traffic": "200+",
+      "score": 46.6,
+      "published_at": "2026-11-01T17:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "حفيد ديكتاتور إيطاليا يتصدر العناوين بهدفه الأول",
+          "title": "China State TV Does Not Air First La Liga Games Since Mbappe Furore",
+          "source": "ASHARQ AL-AWSAT English",
+          "snippet": ""
+        },
+        {
+          "title": "What do Kylian Mbappé and Hello Kitty have in common? They’ve both angered China",
+          "source": "CNN",
+          "snippet": ""
+        },
+        {
+          "title": "'Best thing is keep your mouth shut' - Mourinho on Mbappe-Mao row",
+          "source": "BBC",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "48e9b49ffd50e774e1",
+      "title": "اجازة رسمية",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 44.3,
+      "published_at": "2026-11-01T17:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "إجازة 3 أيام متواصلة للطلاب والموظفين بالقطاعين الحكومي والخاص (تفاصيل)",
+          "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "إجازات 2027 في مصر.. موعد أول عطلة رسمية للعاملين والطلاب",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "هل انتهت الإجازات الرسمية في 2026؟.. موعد أول إجازة باليوم والتاريخ",
+          "source": "اليوم السابع",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "1eb242b4aca8a2dc87",
+      "title": "النفس المطمئنة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 44.3,
+      "published_at": "2026-11-01T17:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ظهور جواز عربي في مسلسل يشعل غضباً.. وسعيد الماروق يعتذر",
           "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "آخر أخبار الدوري الإيطالي - لاتسيو ينفرد بصدارة الكالتشيو بفوز درامي على كالياري",
-          "source": "قناة ومنصة المشهد - أخبار العالم اليوم",
+          "title": "جواز سفر عماني يثير الجدل في مسلسل خليجي على \"نتفليكس\".. والمخرج يعتذر",
+          "source": "جريدة الشرق",
           "snippet": ""
         },
         {
-          "title": "انفرد بالصدارة.. لاتسيو يستغل سقوط إنتر وينتصر على كالياري",
+          "title": "خاص لـ سيدتي: يعقوب الفرحان وليلى عبدالله بعد عرض حلقات مسلسل \"النفس المطمئنة\"يكشفان إعجابهما بالنص والصعوبات التي واجهاها بالتصوير",
+          "source": "مجلة سيدتي",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "287e322e5d286cfbaf",
+      "title": "مركز حدود جابر",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 44.3,
+      "published_at": "2026-11-01T16:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "شحنة مخدرات ضخمة في قبضة الأمن الأردني.. عبر معبر مع سوريا",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "الأردن: إحباط تهريب مليوني حبة مخدر على الحدود مع سورية",
+          "source": "عكاظ",
+          "snippet": ""
+        },
+        {
+          "title": "السويداء وحدود الأردن.. تهريب مخدرات وأسلحة وغارات ولجنة أمنية",
           "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         }
@@ -834,29 +612,261 @@
       "alert": false
     },
     {
-      "id": "d8abc76874b55007cb",
-      "title": "lazio vs cagliari",
+      "id": "765ca0e748173e88b9",
+      "title": "كأس آسيا 2027",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.4,
-      "published_at": "2026-11-01T15:20:00Z",
+      "score": 44.0,
+      "published_at": "2026-11-01T17:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Serie A Liveblog: Como vs. Venezia, Lazio vs. Cagliari, Juventus vs. Napoli and more",
-          "source": "Football Italia",
+          "title": "سيناريو التأجيل يلوح في الأفق.. كأس آسيا 2027 تعود لإثارة الجدل!",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "✅ Official 3pm line-ups | The call on Sutalo, Fitz-Jim, Mendy and Fazzini",
-          "source": "Yahoo Sports",
+          "title": "من يناير إلى ديسمبر.. أنباء عن تأجيل كأس آسيا",
+          "source": "إرم نيوز",
           "snippet": ""
         },
         {
-          "title": "Gattuso effect! Lazio make Italian football history",
-          "source": "Dailysports",
+          "title": "بالفيديو.. بتال القوس يكشف احتمالية تأجيل بطولة كأس آسيا في السعودية.. ويوضح الموعد الجديد",
+          "source": "صحيفة المرصد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ff7611b6f2991ea58d",
+      "title": "elche vs valencia",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 43.6,
+      "published_at": "2026-11-01T17:20:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "̳̳[[[Fox^Sports]] Elche vs Valencia ＬＩＶＥ Ｓｔｒｅａｍ in 01 November 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "+[#!WATCHLIVE-Tv!]™Elche CF vs Valencia CF Live Free uefa 1 November 2026",
+          "source": "Villa de la Orotava",
+          "snippet": ""
+        },
+        {
+          "title": "(LIVE@STREAMs@Soccer-2026!)* Elche vS Valencia 𝐋ＩＶＥ Ｆｒｅｅ Ｓｔｒｅａｍｓ",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d0eadb627e36a786c3",
+      "title": "باريس ضد موناكو",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.6,
+      "published_at": "2026-11-01T17:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "توقعات مباراة باريس إف سي ضد موناكو: نقطة ساخنة في سباق الصدارة",
+          "source": "Vietnam.vn",
+          "snippet": ""
+        },
+        {
+          "title": "موناكو يتقدم على باريس إف سي في الشوط الأول بالدوري الفرنسي",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "مواعيد مباريات اليوم الأحد 1-11-2026 في الدوري الفرنسي والقنوات الناقلة",
+          "source": "بوابة دار الهلال",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e405169f9e956c7209",
+      "title": "arsenal vs liverpool",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 43.3,
+      "published_at": "2026-11-01T17:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Why Is Bukayo Saka Not Playing Today for Arsenal vs. Liverpool?",
+          "source": "Athlon Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Bukayo Saka is the biggest victim of Arsenal's transfer failures",
+          "source": "London Evening Standard",
+          "snippet": ""
+        },
+        {
+          "title": "Arsenal still unsure on Saka as key injury question emerges",
+          "source": "Daily Cannon",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d8836b7ffefb501b6a",
+      "title": "قاسم باشا ضد بشكتاش",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.3,
+      "published_at": "2026-11-01T17:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعد 3 مباريات بلا تسجيل.. فلاهوفيتش يستهدف هز شباك قاسم باشا مع بشكتاش",
+          "source": "تركيا عاجل",
+          "snippet": ""
+        },
+        {
+          "title": "تشكيلة مباراة قاسم باشا وبشكتاش | الدوري التركي الممتاز · 1 نوفمبر 2026",
+          "source": "YSscores",
+          "snippet": ""
+        },
+        {
+          "title": "بشكتاش يواجه قاسم باشا مساء اليوم في الدوري التركي الممتاز",
+          "source": "شبكة تواصل الإخبارية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "9fc1e0ccc5510f057b",
+      "title": "ol vs angers",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.0,
+      "published_at": "2026-11-01T17:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Angers SCO - Le groupe angevin pour affronter l'OL",
+          "source": "MadeInGones",
+          "snippet": ""
+        },
+        {
+          "title": "Angers : El Ouazzani forfait à Lyon, lésion aux adducteurs, Nice en doute",
+          "source": "Footix.fr",
+          "snippet": ""
+        },
+        {
+          "title": "Privé d'Amine el-Ouazzani, l'entraîneur d'Angers Stéphane Gilli pourrait encore changer son plan de jeu contre l'OL",
+          "source": "L'Équipe",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "971215d3f176cfb27b",
+      "title": "محمود عصمت",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 42.6,
+      "published_at": "2026-11-01T16:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "قرار جديد من وزير الكهرباء.. بدء التنفيذ غدًا الاثنين (التفاصيل)",
+          "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "إصدار لائحة تنظيم تعاقدات الجهاز التنفيذي للإشراف على مشروعات إنشاء المحطات النووية",
+          "source": "المصدر",
+          "snippet": ""
+        },
+        {
+          "title": "الجريدة الرسمية: وزير الكهرباء يصدر لائحة تعاقدات جهاز الإشراف على المحطات النووية",
+          "source": "القاهرة 24",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "274d83399064e9315d",
+      "title": "كذب",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.3,
+      "published_at": "2026-11-01T16:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "«5 أشياء لو فعلتها الزوجة تخسر زوجها».. داعية إسلامية تُحذر السيدات",
+          "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "الإفتاء تحسم الجدل: رمي بواقي الأكل في القمامة حرام",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "من الكذب إلى تفتيش الهاتف.. نيفين مختار تكشف 5 تصرفات تجعل الزوج يفقد الثقة في زوجته",
+          "source": "صدى البلد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "60aa6010ba8dfc111a",
+      "title": "paris fc vs monaco",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 38.0,
+      "published_at": "2026-11-01T17:30:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "(+!LIVESTREAMs/FREE+)!*Valerenga vs Tromso Live FREE online In 1 November 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "~💢!【LIVE@STREAMs】Cowboys vs Cardinals 𝐋𝐈𝐕𝐄 𝐒𝐭𝐫𝐞𝐚𝐦𝐢𝐧𝐠 Ｔｖ Ｃｈａｎｎｅｌ 31 october 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "[!!##@!!OFFICIAL!!##@]Brøndby IF vs Aarhus Live Game Tv",
+          "source": "Pierce Manufacturing",
           "snippet": ""
         }
       ],
