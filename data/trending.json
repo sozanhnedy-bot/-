@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T07:43:34.902015Z",
+  "updated_at": "2026-11-01T08:28:31.244344Z",
   "items": [
     {
       "id": "b8ea4d08a4e89018bd",
@@ -8,95 +8,37 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "20000+",
-      "score": 65.9,
+      "score": 64.4,
       "published_at": "2026-11-01T06:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
-        {
-          "title": "NZ vs IND 5th T20I: Mitchell Santner Wins Toss And Opts To Bowl, Ends Shreyas Iyer’s Toss Winning Streak",
-          "source": "Sportscape Magazine",
-          "snippet": ""
-        },
         {
           "title": "Vaibhav Sooryavanshi Snubbed Again As India Make 2 Changes In Playing XI For 5th T20I",
           "source": "NDTV Sports",
           "snippet": ""
         },
         {
-          "title": "Ready for Action one last time in NZ v IND T20Is",
-          "source": "BCCI",
+          "title": "New Zealand field in final T20I; Bhuvneshwar and Varun in for India",
+          "source": "Cricinfo",
+          "snippet": ""
+        },
+        {
+          "title": "New Zealand finally wins a toss and decides to bowl in the 5th T20 against India",
+          "source": "Eagle-Tribune",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "86ee408cd3252719a1",
-      "title": "pak vs oma",
+      "id": "05f465d4066c770501",
+      "title": "australia vs afghanistan",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "10000+",
-      "score": 62.2,
-      "published_at": "2026-11-01T06:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Pakistan set up plate final against Oman after Abbas Afridi’s blazing fifty",
-          "source": "The News Pakistan",
-          "snippet": ""
-        },
-        {
-          "title": "Hong Kong, China vs Pakistan Plate Semi Final 2 Highlights 2026: Pakistan beat Hong Kong, China by 6 wickets",
-          "source": "SportsTak",
-          "snippet": ""
-        },
-        {
-          "title": "Hong Kong, China vs Pakistan Live Cricket Score:: Plate Semi Final 2 Full Scorecard & Commentary",
-          "source": "Firstpost",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0922d78388080ac4f9",
-      "title": "powerball winning numbers",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 61.2,
-      "published_at": "2026-11-01T07:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Did anyone win Powerball's $760M jackpot? Here are the winning numbers for Oct. 31",
-          "source": "cbs8.com",
-          "snippet": ""
-        },
-        {
-          "title": "Lottery ticket worth $100,000 sold in Lehigh County",
-          "source": "The Morning Call",
-          "snippet": ""
-        },
-        {
-          "title": "Winning Powerball ticket purchased in Columbus, player wins $50,000",
-          "source": "WRBL",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "a516007de197566aa9",
-      "title": "australia national cricket team vs afghanistan national cricket team match scorecard",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 60.9,
-      "published_at": "2026-11-01T07:10:00Z",
+      "score": 62.0,
+      "published_at": "2026-11-01T07:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
@@ -119,29 +61,58 @@
       "alert": false
     },
     {
-      "id": "73e14440c58de24f81",
-      "title": "pizza near me",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 60.9,
-      "published_at": "2026-11-01T07:10:00Z",
+      "id": "86ee408cd3252719a1",
+      "title": "pak vs oma",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "10000+",
+      "score": 60.7,
+      "published_at": "2026-11-01T06:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Pizza delivery worker's heartbreaking reaction to cruel prank sparks $680K in donations",
-          "source": "Fox News",
+          "title": "Plate, 2nd Semi-Final, Hong Kong International Sixes at Mong Kok, Oct 31 2026",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Red Baron pizza worker goes viral after impassioned video confrontation",
-          "source": "Yahoo",
+          "title": "Pakistan set up plate final against Oman after Abbas Afridi’s blazing fifty",
+          "source": "The News Pakistan",
           "snippet": ""
         },
         {
-          "title": "Over $446K raised for Michigan grocer harassed by streamers",
-          "source": "National News Desk",
+          "title": "OMA vs PAK Plate Final Stats - Mong Kok (01 November 2026)",
+          "source": "SportsTak",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "0922d78388080ac4f9",
+      "title": "powerball winning numbers",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "5000+",
+      "score": 59.7,
+      "published_at": "2026-11-01T07:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Did anyone win Powerball's $760M jackpot? Here are the winning numbers for Oct. 31",
+          "source": "cbs8.com",
+          "snippet": ""
+        },
+        {
+          "title": "Lottery ticket worth $100,000 sold in Lehigh County",
+          "source": "The Morning Call",
+          "snippet": ""
+        },
+        {
+          "title": "Winning Powerball ticket purchased in Columbus, player wins $50,000",
+          "source": "WRBL",
           "snippet": ""
         }
       ],
@@ -153,7 +124,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "10000+",
-      "score": 59.9,
+      "score": 58.4,
       "published_at": "2026-11-01T05:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -164,54 +135,54 @@
           "snippet": ""
         },
         {
-          "title": "England vs South Africa Stats",
-          "source": "SportsTak",
+          "title": "SA:101/1 (5.1) | Live Cricket Score | ENG vs SA | hk sixes 2026 | Cricket Scoreboard",
+          "source": "NDTV Sports",
           "snippet": ""
         },
         {
-          "title": "South Africa underline world-beating credentials with comeback win",
-          "source": "Cricinfo",
+          "title": "England vs South Africa Stats",
+          "source": "SportsTak",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "5bbb8a73fda26e2de7",
-      "title": "ind vs nz",
+      "id": "6f25b944935e7d7f98",
+      "title": "rockstar games gta vi",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "2000+",
-      "score": 56.6,
-      "published_at": "2026-11-01T07:00:00Z",
+      "score": 57.1,
+      "published_at": "2026-11-01T08:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "New Zealand field in final T20I; Bhuvneshwar and Varun in for India",
-          "source": "Cricinfo",
+          "title": "Travis Scott’s Cactus Jack x Rockstar Games x Nike Air Force 1 Low GTA 6 Pack Releases November 2026",
+          "source": "Sole Retriever",
           "snippet": ""
         },
         {
-          "title": "New Zealand finally wins a toss and decides to bowl in the 5th T20 against India",
-          "source": "WRAL",
+          "title": "'GTA 6' Cactus Jack x Rockstar Games x Nike Air Force 1s Releasing Soon",
+          "source": "Complex",
           "snippet": ""
         },
         {
-          "title": "New Zealand vs. India live score, win probability, chances of victory for 5th T20I in Hamilton",
-          "source": "Yahoo Sports",
+          "title": "Travis Scott, Rockstar Games, and Nike Team Up for Three Air Force 1 Colorways",
+          "source": "House of Heat°",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
       "id": "43e8aa37f8b110dfd9",
       "title": "ihop",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.9,
+      "approx_traffic": "2000+",
+      "score": 55.4,
       "published_at": "2026-11-01T07:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -235,12 +206,70 @@
       "alert": false
     },
     {
+      "id": "4f9c9d25baf05b0334",
+      "title": "king khalid international airport",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "2000+",
+      "score": 53.7,
+      "published_at": "2026-11-01T06:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Houthi Attacks on Riyadh Airport Ramp Up Flight Cancellations",
+          "source": "Bloomberg.com",
+          "snippet": ""
+        },
+        {
+          "title": "The Saudi Airline That Launched Right in the Middle of a War",
+          "source": "WSJ",
+          "snippet": ""
+        },
+        {
+          "title": "Jazeera Airways resumes daily flights to Riyadh",
+          "source": "TradeArabia",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "409068356bd631c58f",
+      "title": "إثيوبيا",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "5000+",
+      "score": 51.0,
+      "published_at": "2026-11-01T03:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعد اتهامات لإثيوبيا.. بيان مصري بشأن هجمات بطائرات مُسيرة في السودان",
+          "source": "CNN Arabic",
+          "snippet": ""
+        },
+        {
+          "title": "غوتيريش: المسيّرات تقتل المئات في السودان",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        },
+        {
+          "title": "عفو رئاسي في الجزائر يشمل أكثر من 5500 سجين",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "32822b6c9791b1b748",
       "title": "fundraiser",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 51.5,
+      "score": 50.0,
       "published_at": "2026-11-01T07:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -256,12 +285,12 @@
           "snippet": ""
         },
         {
-          "title": "Beyond the gala: How Naples nonprofits are changing fundraising",
-          "source": "Gulfshore Business",
+          "title": "OpenAI slashes funding target by $10bn as tech anxieties mount",
+          "source": "Financial Times",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "1b0f91bdb77a9639b0",
@@ -269,7 +298,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 50.5,
+      "score": 49.0,
       "published_at": "2026-11-01T07:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -293,186 +322,12 @@
       "alert": false
     },
     {
-      "id": "4f9c9d25baf05b0334",
-      "title": "king khalid international airport",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 49.2,
-      "published_at": "2026-11-01T06:20:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "Riyadh King Khalid International Airport Departures",
-          "source": "Flightradar24",
-          "snippet": ""
-        },
-        {
-          "title": "Catania Fontanarossa Airport Departures",
-          "source": "Flightradar24",
-          "snippet": ""
-        },
-        {
-          "title": "Tenerife South Airport Arrivals",
-          "source": "Flightradar24",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "409068356bd631c58f",
-      "title": "إثيوبيا",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 48.6,
-      "published_at": "2026-11-01T03:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بعد اتهامات لإثيوبيا.. بيان مصري بشأن هجمات بطائرات مُسيرة في السودان",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "غوتيريش: المسيّرات تقتل المئات في السودان",
-          "source": "سكاي نيوز عربية",
-          "snippet": ""
-        },
-        {
-          "title": "مصر تدين تصاعد الهجمات بالطائرات المسيرة في السودان وتؤكد ضرورة حماية المدنيين",
-          "source": "اليوم السابع",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "e7cb1010d65a559028",
-      "title": "سعر الدولار مقابل الجنيه المصري اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.9,
-      "published_at": "2026-11-01T07:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "تعرف على سعر الدولار مقابل الجنيه اليوم الأحد قبل بدء التداول",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "سعر الدولار في البنوك اليوم السبت 31 أكتوبر 2026",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        },
-        {
-          "title": "استقرار أسعار العملات العربية في ختام تعاملات اليوم 31 أكتوبر 2026",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6b85915ff5ddbbd116",
-      "title": "apple iphone duo",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.6,
-      "published_at": "2026-11-01T07:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Apple responds to user reports of broken iPhone Duo screens on new foldable phone",
-          "source": "CNBC",
-          "snippet": ""
-        },
-        {
-          "title": "iPhone Duo owners say Apple's new foldable phone broke within hours of purchase",
-          "source": "CBS News",
-          "snippet": ""
-        },
-        {
-          "title": "Samsung Slices at Apple’s iPhone Duo With Its Z Fold 8 Ad",
-          "source": "CNET",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "de6fd3fd7e0858305a",
-      "title": "أخبار الزمالك",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 46.6,
-      "published_at": "2026-11-01T03:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "تعديل نسبة الزمالك فى شركة الكرة.. و40% الحد الأدنى لحصة النادي",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "إبراهيم فايق يكشف مقترح جديد بشأن حصة الزمالك في شركة كرة القدم",
-          "source": "الزمالك اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "لا مساس بالأصول أو الشعار.. هاني حتحوت يكشف مفاجآت جديدة بشأن بيع شركة الكرة بنادي الزمالك",
-          "source": "صدى البلد",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "9c08dbb7fc002020ff",
-      "title": "india national cricket team vs new zealand national cricket team match scorecard",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.2,
-      "published_at": "2026-11-01T06:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Glenn Phillips knows his time is now",
-          "source": "Cricinfo",
-          "snippet": ""
-        },
-        {
-          "title": "Glenn Phillips on the brink of breaking world record in last T20I vs India",
-          "source": "The Times of India",
-          "snippet": ""
-        },
-        {
-          "title": "‘A learning curve’: Iyer says India still adapting to NZ grounds after Eden Park drubbing",
-          "source": "Cricbuzz",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "b5bce61f87809d8788",
       "title": "جورج وسوف",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.9,
+      "approx_traffic": "500+",
+      "score": 47.4,
       "published_at": "2026-11-01T06:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -488,8 +343,66 @@
           "snippet": ""
         },
         {
-          "title": "جورج وسوف يتفاعل مع جمهوره في العراق: «الله عليكم يا أهل العراق»",
-          "source": "بوابة دار الهلال",
+          "title": "شذى حسون توجه رسالة لـ جورج وسوف بعد لقائها معه",
+          "source": "Masrawy",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "1c8f9e271ff4be257f",
+      "title": "gulbadin naib",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-11-01T08:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Scotland vs Afghanistan 2nd Semi-Final Stats - Mong Kok | Most Runs, Wickets & Boundaries, 31 October 2026",
+          "source": "SportsTak",
+          "snippet": ""
+        },
+        {
+          "title": "Scotland vs Afghanistan Live Scorecard: Live Cricket Score SCO vs AFG, 2nd Semi-Final, Hong Kong Sixes, 2026",
+          "source": "India Today",
+          "snippet": ""
+        },
+        {
+          "title": "Afghanistan Defeats Scotland to Reach Hong Kong Sixes Final",
+          "source": "باختر خبري اژانس",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "f23667eb542614b2d9",
+      "title": "ireland cricket team vs namibia national cricket team match scorecard",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.7,
+      "published_at": "2026-11-01T07:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Ireland's Indian-origin pacer Jai Moondra creates cricket history with record-breaking 6/26 bowling figur",
+          "source": "The Times of India",
+          "snippet": ""
+        },
+        {
+          "title": "Ireland Cricket: Jai Moondra takes six wickets as Ireland level series against Namibia",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "4th ODI, Ireland tour of Namibia at Windhoek, Oct 30 2026",
+          "source": "ESPN",
           "snippet": ""
         }
       ],
@@ -500,8 +413,8 @@
       "title": "ravens vs bills",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 43.9,
+      "approx_traffic": "200+",
+      "score": 45.4,
       "published_at": "2026-11-01T07:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -517,7 +430,7 @@
           "snippet": ""
         },
         {
-          "title": "'We know the type of talent they have' | The Bills look ahead to their matchup against the Ravens",
+          "title": "Buffalo Bills vs. Baltimore Ravens | Where to watch, stream and listen | Week 8",
           "source": "Buffalo Bills",
           "snippet": ""
         }
@@ -525,18 +438,47 @@
       "alert": false
     },
     {
-      "id": "a75bdf2ae742d02c79",
-      "title": "درجات الحرارة",
+      "id": "de6fd3fd7e0858305a",
+      "title": "أخبار الزمالك",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 43.9,
-      "published_at": "2026-11-01T05:40:00Z",
+      "approx_traffic": "1000+",
+      "score": 45.1,
+      "published_at": "2026-11-01T03:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "ارتفاع الحرارة وفرص أمطار خفيفة وشبورة والصغرى بالقاهرة ترتفع 22 درجة اليوم",
+          "title": "تعديل نسبة الزمالك فى شركة الكرة.. و40% الحد الأدنى لحصة النادي",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "صدمه تعطل إنشاء شركه الكره",
+          "source": "الزمالك اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "لا مساس بالأصول أو الشعار.. هاني حتحوت يكشف مفاجآت جديدة بشأن بيع شركة الكرة بنادي الزمالك",
+          "source": "صدى البلد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "bf17fe1d63af836660",
+      "title": "درجه الحراره اليوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 44.7,
+      "published_at": "2026-11-01T04:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "تغيرات مفاجأة.. الأرصاد تكشف عن تقلبات درجات الحرارة اعتبارا من الغد",
           "source": "اليوم السابع",
           "snippet": ""
         },
@@ -554,29 +496,261 @@
       "alert": false
     },
     {
-      "id": "179531cb5cce1ddbb1",
-      "title": "leni klum",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "0de4e9b93bee322be3",
+      "title": "هيوماين",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 43.6,
-      "published_at": "2026-11-01T07:00:00Z",
+      "score": 44.1,
+      "published_at": "2026-11-01T08:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Heidis Halloween Party: Als gigantische Hand stiehlt Heidi Klum ihren Gästen die Show - Video",
-          "source": "WELT",
+          "title": "صندوق الاستثمارات العامة و \"أرامكو\" يعلنان إتمام صفقة استحواذ على 49% من شركة \"هيوماين\"",
+          "source": "عاجل",
           "snippet": ""
         },
         {
-          "title": "Henry Samuel, der Sohn von Heidi Klum, überrascht bei ihrer Halloween-Party 2026 mit einem unerwarteten Kostüm",
-          "source": "VOGUE",
+          "title": "أرامكو السعودية تستحوذ على 49 بالمئة من \"هيوماين\" للذكاء الاصطناعي",
+          "source": "Anadolu Ajansı",
           "snippet": ""
         },
         {
-          "title": "Heidi Klum Halloween-Party: Schweizer Designer erlebt rührendes Wiedersehen",
-          "source": "20 Minuten",
+          "title": "أرامكو تستحوذ على 49% من «هيوماين» باستثمارات نقدية وأصول تقارب 9.9 مليارات ريال لتعزيز ريادة المملكة في الذكاء الاصطناعي",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "8e713ed3471390ac06",
+      "title": "rugby league world cup",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.8,
+      "published_at": "2026-11-01T07:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Kangaroos pile on the points in World Cup thrashing of Cook Islands",
+          "source": "ABC News & Headlines – Australian Broadcasting Corporation",
+          "snippet": ""
+        },
+        {
+          "title": "Australia 66-6 Cook Islands: men’s Rugby League World Cup – as it happened",
+          "source": "The Guardian",
+          "snippet": ""
+        },
+        {
+          "title": "Kangaroos enjoy semi-final tune-up with big win over Cook Islands",
+          "source": "NRL.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "db418697258cd07065",
+      "title": "día de los muertos",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.8,
+      "published_at": "2026-11-01T07:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "México cobra vida durante las celebraciones anuales del Día de Muertos",
+          "source": "Reading Eagle",
+          "snippet": ""
+        },
+        {
+          "title": "Fotos, velas e incienso: te explicamos el simbolismo de los altares de Día de Muertos",
+          "source": "Univision",
+          "snippet": ""
+        },
+        {
+          "title": "¿Qué almas llegan cada día antes del Día de Muertos? En la tradición, no todos cruzan Igual",
+          "source": "azcentral.com and The Arizona Republic",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "c6524d39d5befa5784",
+      "title": "travis kelce ohio estate objections",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.4,
+      "published_at": "2026-11-01T07:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Taylor Swift and Travis Kelce Face Growing Backlash Over Plans for Ohio Home",
+          "source": "Sports Illustrated",
+          "snippet": ""
+        },
+        {
+          "title": "Kelce, Swift neighbors nay No to home improvement plans at Ohio mansion",
+          "source": "The Columbus Dispatch",
+          "snippet": ""
+        },
+        {
+          "title": "The toxic row threatening Taylor and Travis’ marriage: ‘They don’t want to give up’",
+          "source": "Heatworld",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "54a510f00593d06e86",
+      "title": "mexico gp",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.4,
+      "published_at": "2026-11-01T07:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Lawson disqualified from Mexican GP qualifying for technical breach",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Max Verstappen slams Liam Lawson for FP2 clash at F1 Mexico GP",
+          "source": "Motorsport.com",
+          "snippet": ""
+        },
+        {
+          "title": "Motor racing-Verstappen and Lawson get grid drops after Mexico practice clash",
+          "source": "The Daily News | Texas' Oldest Newspaper",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e40af8ae39dba4860f",
+      "title": "سهير المرشدي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 43.4,
+      "published_at": "2026-11-01T02:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "نجوم الفن يتوافدون على شرم الشيخ للمشاركة في فعاليات مهرجان المسرح الشبابي",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "وصول قسطنطين كرياك وديانا لازار لشرم الشيخ للمشاركة بالدورة الـ11 لمهرجان شرم الشيخ الدولي للمسرح الشبابي",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "حنان مطاوع عن تكريم والدتها سهير المرشدي: «مقدّرة في بلدها»",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "a2de130e20de2f6603",
+      "title": "valentino",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 42.8,
+      "published_at": "2026-11-01T07:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "McKenna Grace Wore a Museum-Worthy Hand-Beaded Dress Resembling the “Hunger Games” Arena",
+          "source": "My Modern Met",
+          "snippet": ""
+        },
+        {
+          "title": "The best and worst looks the cast of 'The Hunger Games: Sunrise on the Reaping' wore to a UK fan screening",
+          "source": "Business Insider",
+          "snippet": ""
+        },
+        {
+          "title": "Elle Fanning’s ‘Hunger Games’ Style Officially Takes Flight",
+          "source": "Vogue",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e7cb1010d65a559028",
+      "title": "سعر الدولار مقابل الجنيه المصري اليوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 42.4,
+      "published_at": "2026-11-01T07:10:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "تعرف على سعر الدولار مقابل الجنيه اليوم الأحد قبل بدء التداول",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "استقرار سعر الدولار مقابل الجنيه في بداية تعاملات اليوم الأحد",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "سعر الدولار في البنوك اليوم السبت 31 أكتوبر 2026",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "17adc735b3cab6b1f4",
+      "title": "heidi klum",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 42.4,
+      "published_at": "2026-11-01T07:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Watch: Heidi Klum as giant severed hand for Halloween bash",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Heidi Klum’s Halloween 2026 Costume: A Giant Severed Hand",
+          "source": "Haute Living",
+          "snippet": ""
+        },
+        {
+          "title": "Heidi Klum as severed hand to ‘Doomsday’ role swapping: Hollywood celebrates Halloween",
+          "source": "Telegraph India",
           "snippet": ""
         }
       ],
@@ -588,7 +762,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 42.9,
+      "score": 41.4,
       "published_at": "2026-11-01T06:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -612,41 +786,12 @@
       "alert": false
     },
     {
-      "id": "5f76d91adc3d140520",
-      "title": "منخفض جوي",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 42.9,
-      "published_at": "2026-11-01T05:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "منخفض جوي عميق يغطي مساحة ضخمة من وسط المتوسط مرفق بالأمطار والثلوج ويمتد لدول عربية",
-          "source": "طقس العرب",
-          "snippet": ""
-        },
-        {
-          "title": "طقس العرب: منخفض جوي يعبر 3 قارات ويضرب 9 دول عربية بأمطار غزيرة وعواصف رعدية",
-          "source": "رؤيا الإخباري",
-          "snippet": ""
-        },
-        {
-          "title": "منخفضات جوية باردة وأمطار غزيرة تضرب الأردن وبلاد الشام نهاية الأسبوع المقبل",
-          "source": "سواليف - والهرج للجميع",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "def4c05eeea57c0927",
       "title": "اقتصاد",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 42.9,
+      "score": 41.4,
       "published_at": "2026-11-01T03:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -657,7 +802,7 @@
           "snippet": ""
         },
         {
-          "title": "السعودية .. نمو الاقتصاد غير النفطي 1.9% بالربع الثالث من 2026",
+          "title": "السعودية.. نمو الاقتصاد غير النفطي 1.9% بالربع الثالث من 2026",
           "source": "معلومات مباشر",
           "snippet": ""
         },
@@ -670,186 +815,12 @@
       "alert": false
     },
     {
-      "id": "bf17fe1d63af836660",
-      "title": "درجه الحراره اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.2,
-      "published_at": "2026-11-01T04:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "طقس متقلب على شمال سيناء اليوم حار نهارًا مصحوب برياح جنوبية خفيفة",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "ارتفاع طفيف في درجات الحرارة بشمال سيناء",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "أمطار غزيرة تضرب شمال سيناء مع انخفاض الحرارة إلى 22 درجة",
-          "source": "الوطن",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f5bd7cc2c0303dd630",
-      "title": "new york time",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 40.3,
-      "published_at": "2026-11-01T06:50:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "Opinion | Pope Leo XIV, the Tough Guy of High T Christianity",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "House Democrats Criticize Justice Dept. Support of OpenAI in Copyright Suit",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Cate Blanchett-Backed Group of Stars Files Brief in NYT-OpenAI Lawsuit",
-          "source": "Variety",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "25e7e7d503e33df4bf",
-      "title": "rockets vs thunder",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 39.9,
-      "published_at": "2026-11-01T05:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Oklahoma City has a 27% chance to beat Houston amid key player absences in NBA clash",
-          "source": "Pluang",
-          "snippet": ""
-        },
-        {
-          "title": "Where to watch Rockets vs Thunder Live Streams",
-          "source": "Muzeul Național al Literaturii Române",
-          "snippet": ""
-        },
-        {
-          "title": "Game Recap: Rockets 119, Thunder 98",
-          "source": "NBA.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "27b74690b5005574df",
-      "title": "صحيفة",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 39.3,
-      "published_at": "2026-11-01T04:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "صندوق الاستثمارات العامة و \"أرامكو\" يعلنان إتمام صفقة استحواذ على 49% من شركة \"هيوماين\"",
-          "source": "عاجل",
-          "snippet": ""
-        },
-        {
-          "title": "أرامكو تستحوذ على 49% من «هيوماين» باستثمارات نقدية وأصول تقارب 9.9 مليارات ريال لتعزيز ريادة المملكة في الذكاء الاصطناعي",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "\"أرامكو\" تكمل الاستحواذ على 49% من \"هيوماين\" بضخ 9.9 مليار ريال",
-          "source": "الاقتصادية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a2cda12542fdfeb2d5",
-      "title": "الابتدائية",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 39.3,
-      "published_at": "2026-11-01T04:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "4 hurt in lightning strike at El Mirage Elementary School",
-          "source": "FOX 10 Phoenix",
-          "snippet": ""
-        },
-        {
-          "title": "4 adults struck by lightning outside Arizona elementary school",
-          "source": "ABC News - Breaking News, Latest News and Videos",
-          "snippet": ""
-        },
-        {
-          "title": "4 adults hospitalized after lightning strike at West Valley school bus drop-off site",
-          "source": "KTAR News 92.3 FM",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "e40af8ae39dba4860f",
-      "title": "سهير المرشدي",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 37.9,
-      "published_at": "2026-11-01T02:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "وصول قسطنطين كرياك وديانا لازار وسمر جميل إلى مهرجان شرم الشيخ للمسرح الشبابى",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "نجوم الفن يصلون شرم الشيخ للمشاركة في الدورة الـ11 من مهرجان المسرح الشبابي",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "حنان مطاوع عن تكريم والدتها سهير المرشدي: «مقدّرة في بلدها»",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "60c88851ad2cdeee8a",
       "title": "منة فضالي",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 37.6,
+      "score": 36.1,
       "published_at": "2026-11-01T02:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -867,6 +838,35 @@
         {
           "title": "أنا مش نجمة شباك .. منة فضالي : من حقي أشتغل عملين وتلاته في السنة",
           "source": "صدى البلد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "9c3c231c41082071f4",
+      "title": "اقتصادي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 33.1,
+      "published_at": "2026-11-01T01:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "التحليل الفني للذهب بعد موجة الهبوط الحادة",
+          "source": "eDahab",
+          "snippet": ""
+        },
+        {
+          "title": "أسعار الذهب في قطر تتراجع تحت ضغط خسائر الأوقية في الأسواق العالمية",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "الذهب عند قاع أكثر من عام والفضة دون 50 دولارا للأوقية | رويترز",
+          "source": "Reuters",
           "snippet": ""
         }
       ],
