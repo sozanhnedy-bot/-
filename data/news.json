@@ -1,7 +1,46 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T02:24:57.282728Z",
+  "updated_at": "2026-11-01T03:09:38.059638Z",
   "items": [
+    {
+      "id": "22106ce64e2a8cc534a2",
+      "region": "arab",
+      "title": "أخبار العالم 1/11: إيران تسقط طائرة أمريكية أخرى بدون طيار من طراز MQM-170 - Vietnam.vn",
+      "summary": "أخبار العالم 1/11: إيران تسقط طائرة أمريكية أخرى بدون طيار من طراز MQM-170 Vietnam.vn",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOSHptVE5sM1NZMThQXzJwWWlDS0JYLXlDZ3BFbXFNV2VfWFJRS251a2Z1ZFNiLTMzWW9VSHhRQkpjZHNtNnNUd3NtdmxGa1d1d1JlSGFCcnZqYnJOZzhMMVpneHF3YjI5NHpiaGZUMUlTTDgxMG4zb3BTYnFwc0xfei1DclJZWmt1THNhNg?oc=5",
+      "source_name": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "published_at": "2026-11-01T00:05:36Z",
+      "created_at": "2026-11-01T03:09:38.059638Z",
+      "summary_date": "2026-11-01"
+    },
+    {
+      "id": "fde05ce47ad304ba79bb",
+      "region": "arab",
+      "title": "«لكزس» تفتتح جناحها بحلته الجديدة فـي قـريـة الـفـعالـيـات بنـادي راشـد - أخبار الخليج",
+      "summary": "«لكزس» تفتتح جناحها بحلته الجديدة فـي قـريـة الـفـعالـيـات بنـادي راشـد أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBlT25LbE9kRzQ2eU9JeXllMWdMMUtFUEFHTWZaNmw5MHptejZ6UC1IWlZvUXlYWWR4LVg5MGJ5S2JNTXFCQ1BXSko0ak1KN1p5dnBHVmhxMmFxREVZS2c?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "published_at": "2026-10-31T23:00:00Z",
+      "created_at": "2026-11-01T03:09:38.059638Z",
+      "summary_date": "2026-11-01"
+    },
+    {
+      "id": "73367b91ca48e7a053d6",
+      "region": "world",
+      "title": "Tusk defends overhaul of Poland’s constitutional court despite protests - The Guardian",
+      "summary": "Tusk defends overhaul of Poland’s constitutional court despite protests The Guardian",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQN2tCSVYwNXlmVktrRkpCNWM3UVVoRzVUWlhtVElmUllrbWlhZjIxcXV3MUNDTmVEM1lQLU9qWWtOOWNOaC1BYmN5RTdNMDY2dzJ0STYzNG1mQy1FS3ltbnliY0lKREtiVWNMWVN4NnJtYzlnek5qUFZfbFlSbzNXWUJHRjliVF9tbG51d0x0NjJuQlRpNjVzSWNFdXBLY0xqOTN4Ymo1LWRhV3ZqOFBuWGhaM0U1aVdXOVVz?oc=5",
+      "source_name": "The Guardian",
+      "source_url": "https://www.theguardian.com",
+      "published_at": "2026-10-31T22:43:00Z",
+      "created_at": "2026-11-01T03:09:38.059638Z",
+      "summary_date": "2026-11-01"
+    },
     {
       "id": "fa1caeb674f03e7ad1a3",
       "region": "arab",
