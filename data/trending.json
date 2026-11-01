@@ -1,31 +1,60 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T23:54:45.028304Z",
+  "updated_at": "2026-11-01T00:24:24.485238Z",
   "items": [
     {
-      "id": "bf9b6380bc160bf1b3",
-      "title": "dream vs valkyries",
+      "id": "1ad2d48832eb814a8f",
+      "title": "ohio state football",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "20000+",
-      "score": 67.5,
-      "published_at": "2026-10-31T23:40:00Z",
+      "score": 67.2,
+      "published_at": "2026-11-01T00:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "First Game 7 in WNBA history will decide first title for Dream or Valkyries",
-          "source": "ESPN",
+          "title": "USC Trojans vs. Ohio State Buckeyes: Live Score Updates",
+          "source": "Sports Illustrated",
           "snippet": ""
         },
         {
-          "title": "Golden State Valkyries fans thrilled for Halloween day Game 7 against Atlanta Dream",
-          "source": "CBS News",
+          "title": "【Live Streaming】#Free!! Ohio State v Oklahoma Live Free NCAA College Football Coverage",
+          "source": "Pierce Manufacturing",
           "snippet": ""
         },
         {
-          "title": "WNBA Finals odds, pick, prediction: Best bets for Dream-Valkyries Game 7",
+          "title": "LIVE UPDATES: Ohio State at USC in LA Memorial Coliseum",
+          "source": "On3",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "1358cf3234e21a2977",
+      "title": "wnba",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "20000+",
+      "score": 67.2,
+      "published_at": "2026-11-01T00:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "USA Sports and NBC claim record WNBA Finals ratings, but the comparisons leave out important context",
+          "source": "Fox News",
+          "snippet": ""
+        },
+        {
+          "title": "Dream's series-extending Game 6 win was fifth most-watched WNBA Finals game ever despite early tip",
           "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "WNBA Finals draw 1.5 million viewers for Thursday afternoon Game 6",
+          "source": "USA Today",
           "snippet": ""
         }
       ],
@@ -37,7 +66,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "10000+",
-      "score": 61.5,
+      "score": 60.5,
       "published_at": "2026-10-31T22:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -53,12 +82,70 @@
           "snippet": ""
         },
         {
-          "title": "Barcelona Player Ratings vs. Alaves: Barca Back in Business With Clinical Beatdown",
-          "source": "Forza Football",
+          "title": "Yamal nears Mbappe mark as Alaves visit, Boye and Sanchez Flores battle Barcelona hoodoos",
+          "source": "OneFootball",
           "snippet": ""
         }
       ],
       "alert": false
+    },
+    {
+      "id": "43075ef6d54125efaa",
+      "title": "aston villa vs fulham f.c. standings",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "5000+",
+      "score": 58.2,
+      "published_at": "2026-10-31T22:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Aston Villa 1-1 Fulham: Zion Suzuki own goal blunder after Nicolas Jackson scores again",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Emery's focus fully on Fulham despite Barcelona tie - World - Sports",
+          "source": "Ahram Online",
+          "snippet": ""
+        },
+        {
+          "title": "Aston Villa Football Club - The Official Club Website",
+          "source": "Aston Villa",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "22a4d20b4bb0b89fbd",
+      "title": "julian sayin injury",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 57.5,
+      "published_at": "2026-11-01T00:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Ohio State backup quarterback Luke Fahey 'has a moxie about him'",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "How a whiteboard mistake shaped Ohio State's new starting QB",
+          "source": "Cleveland.com",
+          "snippet": ""
+        },
+        {
+          "title": "Ohio State's Luke Fahey is an unheralded freshman raised on Buckeyes football and in line to be QB1",
+          "source": "On3",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "c72484e591147ba53f",
@@ -66,7 +153,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "5000+",
-      "score": 58.5,
+      "score": 57.5,
       "published_at": "2026-10-31T22:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -77,17 +164,46 @@
           "snippet": ""
         },
         {
-          "title": "Hansi Flick Defends His Philosophy After Two Tough Defeats",
-          "source": "Sportscape Magazine",
+          "title": "Barca hammer Alaves to retain Liga top spot",
+          "source": "Arab News",
           "snippet": ""
         },
         {
-          "title": "🚨 Two surprises in FC Barcelona's squad announcement",
-          "source": "Yahoo Sports",
+          "title": "All Goals: Barcelona vs Alavés | LaLiga",
+          "source": "beIN SPORTS",
           "snippet": ""
         }
       ],
       "alert": false
+    },
+    {
+      "id": "6c75d74e52ca09cd13",
+      "title": "brandon miller",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.5,
+      "published_at": "2026-11-01T00:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Brandon Miller’s (CHA) technical foul at the end of …",
+          "source": "HoopsHype",
+          "snippet": ""
+        },
+        {
+          "title": "Why Brandon Miller's Shooting Numbers Aren't a Big Concern Yet",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Brandon with an inefficient 19 and 7 rebounds",
+          "source": "NBC Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "aec81c9c65bfea909d",
@@ -95,7 +211,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "2000+",
-      "score": 55.5,
+      "score": 54.5,
       "published_at": "2026-10-31T22:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -119,290 +235,232 @@
       "alert": false
     },
     {
-      "id": "7f88dbc6af9d319918",
-      "title": "grambling st vs tx southern",
+      "id": "3bf7fb6d11bed06035",
+      "title": "kaila charles",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
       "score": 51.5,
-      "published_at": "2026-10-31T23:40:00Z",
+      "published_at": "2026-11-01T00:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Texas Southern vs. Grambling: How to watch, date, time, TV channel",
+          "title": "Live updates: Game 7 tips off as Maryland’s Angel Reese and Kaila Charles chase WNBA title",
+          "source": "The Baltimore Banner",
+          "snippet": ""
+        },
+        {
+          "title": "WNBA Finals Opponents Angel Reese and Kaila Charles Share Maryland Connection",
           "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "Texas Southern vs. Grambling: How to watch, date, time, TV channel",
-          "source": "Houston Chronicle",
-          "snippet": ""
-        },
-        {
-          "title": "Grambling looks for a refresh coming off their bye week",
-          "source": "KNOE",
+          "title": "WNBA Broadcaster Discloses What Angel Reese Has in Common With the Valkyries Star From Her Past After Heated Exchange",
+          "source": "EssentiallySports",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "a721464f5f194e13a5",
-      "title": "sherrod brown",
+      "id": "9fa996f0a6461f817d",
+      "title": "clarence thomas",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
       "score": 51.5,
-      "published_at": "2026-10-31T23:40:00Z",
+      "published_at": "2026-11-01T00:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Brown and Husted clash over who Ohio voters should blame for hard times",
-          "source": "Cleveland.com",
+          "title": "A Lame-Duck Supreme Court Showdown Could Be Coming",
+          "source": "Ms. Magazine",
           "snippet": ""
         },
         {
-          "title": "As Ohioans seek change, Brown, Husted pitch competing solutions",
-          "source": "The Columbus Dispatch",
-          "snippet": ""
-        },
-        {
-          "title": "Ramaswamy, Husted Dealt Blow in Fox News Forecast One Week Before Midterms",
+          "title": "Clarence Thomas, Samuel Alito Dissent As SCOTUS Blocks Trump’s Trans Policy",
           "source": "Newsweek",
           "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b433349c76e1148c32",
-      "title": "lincoln riley",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.5,
-      "published_at": "2026-10-31T23:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Colin Cowherd Sounds Off On Lincoln Riley’s Main Issue As USC's Head Coach",
-          "source": "FOX Sports",
-          "snippet": ""
         },
         {
-          "title": "Lincoln Riley, addressing future at USC, says 'This is where I want to be'",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Where will Lincoln Riley be in 2027? If not USC, how about these Texas schools?",
-          "source": "The New York Times",
+          "title": "Supreme Court rejects Trump administration on gender-affirming care in prison",
+          "source": "MS NOW",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "bda0ab6660417af496",
-      "title": "weapons",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.5,
-      "published_at": "2026-10-31T23:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "DIA Releases Challenges to Security in Space",
-          "source": "DIA.mil",
-          "snippet": ""
-        },
-        {
-          "title": "China Fielding Robotic Space Weapons That Can Attack Other Satellites",
-          "source": "Forbes",
-          "snippet": ""
-        },
-        {
-          "title": "America's enemies prepare to take the next major war into outer space",
-          "source": "Fox News",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "620069be6fe24f699b",
-      "title": "cam coleman",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.5,
-      "published_at": "2026-10-31T23:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Texas edge Colin Simmons ruled out vs. Mississippi State",
-          "source": "Burnt Orange Nation",
-          "snippet": ""
-        },
-        {
-          "title": "Mississippi State OL DJ Chester out vs. Texas in latest hit to offense",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Texas WR Cam Coleman, RB Hollywood Smothers no longer on SEC injury report ahead of Mississippi State game",
-          "source": "247Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "fe91f0f4e184c36777",
+      "id": "add90a760b60c44287",
       "title": "ac milan vs inter milan standings",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 48.2,
-      "published_at": "2026-10-31T22:00:00Z",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 50.5,
+      "published_at": "2026-10-31T22:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "AC Milan vs Inter Milan LIVE: Italian Serie A - watch, stats, table & head-to-head",
-          "source": "BBC",
+          "title": "Milan earn 3-1 derby win over Inter, Roma thump Udinese 5-2",
+          "source": "Arab News",
           "snippet": ""
         },
         {
-          "title": "Italy Serie A fixtures (Matchday 10) - World - Sports",
-          "source": "Ahram Online",
+          "title": "In the footsteps of Kaká and Çalhanoğlu: Rabiot writes an exceptional chapter with Milan",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "Licensable picture: Milano, San Siro si prepara ad accogliere i tifosi per il derby di Serie A Milan - Inter",
-          "source": "Reuters Connect",
+          "title": "Modric: ‘Maybe Milan’s best game of the season, we deserved the victory’",
+          "source": "OneFootball",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "777ff27ad2cc1dbd47",
-      "title": "former 49ers player joe williams",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-10-31T23:40:00Z",
+      "id": "6c4b8d662699b9b553",
+      "title": "fc barcelona",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 48.2,
+      "published_at": "2026-10-31T21:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Ex-NFL player arrested after allegedly trying to run away from police in West Hollywood",
-          "source": "NBC Los Angeles",
+          "title": "“Es lo que quería ver después de dos derrotas”",
+          "source": "Diario AS",
           "snippet": ""
         },
         {
-          "title": "Former 49ers running back arrested after police chase",
-          "source": "49ers Webzone",
+          "title": "El mayor riesgo es no arriesgar",
+          "source": "MARCA",
           "snippet": ""
         },
         {
-          "title": "Former 49er, Joseph Williams Arrested On Felony Warrant",
-          "source": "Canyon News",
+          "title": "Flick: “El equipo ha reaccionado, eso es lo que quería ver”",
+          "source": "La Vanguardia",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "bbdfcbd0f0dc926651",
-      "title": "reliant stadium",
+      "id": "73459e6a9605b6bd60",
+      "title": "november",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-10-31T23:40:00Z",
+      "score": 47.6,
+      "published_at": "2026-11-01T00:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Reliant Stadium warns Ye concertgoers: No hate symbols at Halloween show",
+          "title": "Weather Forecast: Warm start to November",
           "source": "Yahoo",
           "snippet": ""
         },
         {
-          "title": "How much are resale tickets to Ye’s Houston Halloween show?",
-          "source": "Houston Chronicle",
+          "title": "November starting off warmer than average",
+          "source": "WHIO TV",
           "snippet": ""
         },
         {
-          "title": "Reliant Stadium Bans Hate Symbols, Masks at Ye's Halloween Show in Houston",
-          "source": "Hoodline",
+          "title": "A mix of sun and clouds is on tap to start off November",
+          "source": "WMAR 2 News Baltimore",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "a3a5346b7b68868752",
-      "title": "pachuca",
+      "id": "224046d4dbba44699d",
+      "title": "memphis tigers football",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-10-31T23:40:00Z",
+      "score": 47.6,
+      "published_at": "2026-11-01T00:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Querétaro vs Pachuca: Pronóstico y posibles alineaciones del partido de la Liga Femenil BBVA",
-          "source": "sdpnoticias",
+          "title": "Memphis football vs Army score, live updates, start time, TV channel in Week 9",
+          "source": "The Commercial Appeal",
           "snippet": ""
         },
         {
-          "title": "Las Tuzas visitan a Querétaro en la penúltima jornada",
-          "source": "El Sol de México",
+          "title": "Where to watch Army football vs. Memphis for free today",
+          "source": "Syracuse.com",
           "snippet": ""
         },
         {
-          "title": "Tuzas visitan a Querétaro buscando mantener encendida la fe por clasificar",
-          "source": "Criterio Hidalgo",
+          "title": "Saturday Morning Best Bets - Week 9",
+          "source": "The Devy Royale",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "a396a3dfc845d2a210",
-      "title": "dennis schroder",
+      "id": "a7989de1b74893c42e",
+      "title": "inundación",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-10-31T23:40:00Z",
+      "score": 47.2,
+      "published_at": "2026-11-01T00:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Dennis Schröder (foot) upgraded to available",
-          "source": "NBC Sports",
+          "title": "Las lluvias anegan calles de Quito y causan inundación en El Condado",
+          "source": "El Comercio",
           "snippet": ""
         },
         {
-          "title": "Dennis Schroder Injury: Questionable for Friday",
-          "source": "RotoWire",
+          "title": "Socavón en la avenida Ilaló provoca cierres viales en Conocoto, Quito",
+          "source": "El Telégrafo (por eliminar)",
           "snippet": ""
         },
         {
-          "title": "Hornets' Dennis Schroder: Will play Friday",
-          "source": "CBS Sports",
+          "title": "Alerta por lluvias en Quito: afectaciones en vías e inundaciones, reporta el ECU 911 y la AMT",
+          "source": "Primicias",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "0def6767938c273420",
+      "title": "what happened to julian sayin",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.2,
+      "published_at": "2026-11-01T00:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "How many games will Ohio State win without Julian Sayin? Predictions for USC and beyond",
+          "source": "The New York Times",
+          "snippet": ""
+        },
+        {
+          "title": "College Football QB Injury Tracker, Week 9: Ohio State Set for First Game Without Julian Sayin",
+          "source": "Sports Illustrated",
+          "snippet": ""
+        },
+        {
+          "title": "BH: Free the Legend | Goals remain",
+          "source": "247Sports",
           "snippet": ""
         }
       ],
@@ -414,7 +472,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 47.5,
+      "score": 46.5,
       "published_at": "2026-10-31T21:40:00Z",
       "source": "Google Trends",
       "source_count": 2,
@@ -443,7 +501,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 47.5,
+      "score": 46.5,
       "published_at": "2026-10-31T21:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -454,13 +512,42 @@
           "snippet": ""
         },
         {
-          "title": "Packers Eye Blockbuster Jonathan Taylor Move: Report",
+          "title": "Broncos could trade for 'a weapon or two'; contact Colts about Jonathan Taylor",
           "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "NFL Network: Colts willing to trade RB Jonathan Taylor; talks are active, ongoing",
-          "source": "NFL.com",
+          "title": "Josh Jacobs could be on thin ice in Green Bay",
+          "source": "NBC Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6a00e3cdfec672122c",
+      "title": "সৌদি আরব",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.6,
+      "published_at": "2026-10-31T23:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "সউদী আরবে অগ্নিকাণ্ডে নিহত ৭ প্রবাসীর লাশ দেশে, স্বজনদের আহাজারি",
+          "source": "দৈনিক ইনকিলাব",
+          "snippet": ""
+        },
+        {
+          "title": "যে রেমিট্যান্স আর আসেনি বাড়িতে",
+          "source": "দ্য ডেইলি স্টার বাংলা",
+          "snippet": ""
+        },
+        {
+          "title": "সৌদিতে অগ্নিকাণ্ড: স্বপ্ন ফিরল কফিনবন্দী হয়ে",
+          "source": "Ajker Patrika",
           "snippet": ""
         }
       ],
@@ -472,7 +559,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 46.5,
+      "score": 45.5,
       "published_at": "2026-10-31T21:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -501,7 +588,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 46.2,
+      "score": 45.2,
       "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -512,158 +599,13 @@
           "snippet": ""
         },
         {
-          "title": "القبض على البلوجر علياء قمرون بتهمة نشر محتوى خادش للحياء",
-          "source": "القاهرة 24",
+          "title": "تفاصيل القبض على البلوجر علياء قمرون وزوجها في المنوفية.. وملاحقتها بأحكام وقضايا سابقة",
+          "source": "صدى البلد",
           "snippet": ""
         },
         {
-          "title": "\"مطلب جماهيري\" للقبض على علياء قمرون وزوجها حمادة.. ما القصة؟",
-          "source": "elmaser.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "319a287f7f8cca0837",
-      "title": "مسرح",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 46.2,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "سهير المرشدى وإلهام شاهين وأشرف عبد الباقى وبدير يصلون مهرجان شرم الشيخ",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "وصول قسطنطين كرياك وديانا لازار لشرم الشيخ للمشاركة بالدورة الـ11 لمهرجان شرم الشيخ الدولي للمسرح الشبابي",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "حنان مطاوع عن تكريم والدتها سهير المرشدي: «مقدّرة في بلدها»",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6a00e3cdfec672122c",
-      "title": "সৌদি আরব",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.6,
-      "published_at": "2026-10-31T23:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "সউদী আরবে অগ্নিকাণ্ডে নিহত ৭ প্রবাসীর লাশ দেশে, স্বজনদের আহাজারি",
-          "source": "দৈনিক ইনকিলাব",
-          "snippet": ""
-        },
-        {
-          "title": "যে রেমিট্যান্স আর আসেনি বাড়িতে",
-          "source": "দ্য ডেইলি স্টার বাংলা",
-          "snippet": ""
-        },
-        {
-          "title": "সৌদিতে অগ্নিকাণ্ড: স্বপ্ন ফিরল কফিনবন্দী হয়ে",
-          "source": "Ajker Patrika",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "9872b7254552d36523",
-      "title": "رافينيا",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 43.5,
-      "published_at": "2026-10-31T21:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "لا يتفوق عليهما سوى كريستيانو.. رافينيا يعادل رقم ميسي التاريخي",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "ترتيب هدافي الدوري الإسباني بعد ثنائية رافينيا أمام ألافيس",
-          "source": "إرم نيوز",
-          "snippet": ""
-        },
-        {
-          "title": "برشلونة ضد ألافيس.. رافينيا يطارد رونالدو وتكرار إنجاز زبيري",
-          "source": "العين الإخبارية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6d27f6255b02d0ad0d",
-      "title": "raphinha",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 43.2,
-      "published_at": "2026-10-31T21:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Barcelona captain Raphinha has a scoring record to settle against Alaves",
-          "source": "Barca Universal",
-          "snippet": ""
-        },
-        {
-          "title": "Barcelona superstar discusses Vinicius Jr., Fede Valverde and Jose Mourinho ahead of Real Madrid clash",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Only Cristiano is ahead of them: Raphinha equals Messi's historic record",
-          "source": "Goal.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1186f7fbb93e6b3b01",
-      "title": "وصول",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 42.5,
-      "published_at": "2026-10-31T21:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "واشنطن توافق على بيع 500 صاروخ «باتريوت» لأوكرانيا بـ 2.1 مليار دولار",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "\"الخارجية\" الأمريكية توافق على صفقة لتزويد أوكرانيا بصواريخ \"باتريوت\".. ما أهميتها؟",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "إدارة ترامب تقر تزويد أوكرانيا بـ500 صاروخ باتريوت",
-          "source": "العربية",
+          "title": "القبض على التيك توكر علياء قمرون",
+          "source": "البوابة نيوز",
           "snippet": ""
         }
       ],
@@ -674,8 +616,8 @@
       "title": "آثار الحكيم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.2,
+      "approx_traffic": "500+",
+      "score": 45.2,
       "published_at": "2026-10-31T21:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -699,12 +641,128 @@
       "alert": false
     },
     {
+      "id": "319a287f7f8cca0837",
+      "title": "مسرح",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 45.2,
+      "published_at": "2026-10-31T21:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سهير المرشدى وإلهام شاهين وأشرف عبد الباقى وبدير يصلون مهرجان شرم الشيخ",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "وصول قسطنطين كرياك وديانا لازار لشرم الشيخ للمشاركة بالدورة الـ11 لمهرجان شرم الشيخ الدولي للمسرح الشبابي",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "حنان مطاوع عن تكريم والدتها سهير المرشدي: «مقدّرة في بلدها»",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "dd2f716bc03c223431",
+      "title": "الديوان الملكي",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.9,
+      "published_at": "2026-10-31T23:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "المغرب يعلق على عدم التمديد لبعثة الأمم المتحدة في الصحراء الغربية",
+          "source": "CNN Arabic",
+          "snippet": ""
+        },
+        {
+          "title": "مجلس الأمن يرفض تمديد مهمة المينورسو وطي ملف الصحراء المغربية نهائياً",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "فيتو روسي يعرقل خطة أمريكية للصحراء الغربية وغموض يكتنف مصير \"مينورسو\"",
+          "source": "DW.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "9872b7254552d36523",
+      "title": "رافينيا",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 42.6,
+      "published_at": "2026-10-31T21:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "لا يتفوق عليهما سوى كريستيانو.. رافينيا يعادل رقم ميسي التاريخي",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "ترتيب هدافي الدوري الإسباني بعد ثنائية رافينيا أمام ألافيس",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "برشلونة ضد ألافيس.. رافينيا يطارد رونالدو وتكرار إنجاز زبيري",
+          "source": "اخبارك نت",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "c0015368e39742ad7e",
+      "title": "مي عز الدين",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 41.6,
+      "published_at": "2026-10-31T22:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "زوج مي عز الدين يرد على اتهامه بالزواج منها للشهرة",
+          "source": "مجلة لها",
+          "snippet": ""
+        },
+        {
+          "title": "أحمد تيموريكشف كواليس دعمه لمي عز الدين في اختيار أدوارها ليوليو",
+          "source": "www.youlyou.com",
+          "snippet": ""
+        },
+        {
+          "title": "زوج مي عز الدين يردّ على الجدل حول عمله وعلاقاته في الوسط الفني بعد زواجه منها – موقع بصراحة-موقع النجوم",
+          "source": "bisara7a",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "16069f17ca502bea66",
       "title": "barca",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 42.2,
+      "score": 41.2,
       "published_at": "2026-10-31T21:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -728,70 +786,12 @@
       "alert": false
     },
     {
-      "id": "f39ed5642ab5fae476",
-      "title": "barcelona fc",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 41.9,
-      "published_at": "2026-10-31T20:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "“Es lo que quería ver después de dos derrotas”",
-          "source": "Diario AS",
-          "snippet": ""
-        },
-        {
-          "title": "El mayor riesgo es no arriesgar",
-          "source": "MARCA",
-          "snippet": ""
-        },
-        {
-          "title": "Flick: “El equipo ha reaccionado, eso es lo que quería ver”",
-          "source": "La Vanguardia",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "85b7e9298eb21cc875",
-      "title": "شريهان",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 41.5,
-      "published_at": "2026-10-31T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "الفنانة العالمية شيرين أحمد توجه رسالة مؤثرة لشريهان فى أحدث ظهور لها.. صور",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "أحدث ظهور لـ شريهان مع السوبرانو العالمية شيرين أحمد - صور",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "شريهان وابنتها تاليا في أحدث ظهور لهما مع شيرين طارق أحمد",
-          "source": "مجلة لها",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "2ec9f095cc5232a04b",
       "title": "مايكروسوفت",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.2,
+      "score": 40.2,
       "published_at": "2026-10-31T22:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -820,7 +820,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.2,
+      "score": 40.2,
       "published_at": "2026-10-31T22:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -844,29 +844,29 @@
       "alert": false
     },
     {
-      "id": "94ee183f4ea793ccd2",
-      "title": "كاكا",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "a529a07aaaf8f54b42",
+      "title": "فيديو كفر الشيخ لشابين وفتاتين",
+      "region": "egypt",
+      "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 40.9,
+      "score": 39.9,
       "published_at": "2026-10-31T21:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "في أي مركز وضعت الصين مبابي قبل \"الأزمة\"؟.. و3 دول لم تصوت له إطلاقاً",
-          "source": "العربية",
+          "title": "الداخلية تكشف ملابسات فيديو الأفعال المنافية للآداب خلف مبنى بكفر الشيخ",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "اختيارات ممثل المغرب.. هل دفع يامال ثمن اختياره إسبانيا في تصويت الكرة الذهبية؟",
-          "source": "Kooora",
+          "title": "تفاصيل جريمة أخلاقية خلف مبنى في كفر الشيخ",
+          "source": "بوابة أخبار اليوم الإلكترونية",
           "snippet": ""
         },
         {
-          "title": "كين يهدي الكرة الذهبية لجماهير بايرن قبل قمة دورتموند",
-          "source": "عكاظ",
+          "title": "ضبط المتورطين في فيديو متداول | مبتدا",
+          "source": "مبتدا",
           "snippet": ""
         }
       ],
