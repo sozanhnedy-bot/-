@@ -1,89 +1,147 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T22:07:49.384537Z",
+  "updated_at": "2026-11-01T23:06:33.237008Z",
   "items": [
     {
-      "id": "aedc29532a9c7d559b",
-      "title": "nfl standings today",
+      "id": "d3804f84200ecc7a10",
+      "title": "justin tucker",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.4,
-      "published_at": "2026-11-01T21:50:00Z",
+      "approx_traffic": "10000+",
+      "score": 64.4,
+      "published_at": "2026-11-01T22:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "How to Watch Every 2026 NFL Game Live (Even Without Cable)",
-          "source": "PCMag",
+          "title": "Toub: Butker still Chiefs' kicker despite struggles, Tucker signing",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "=+[ＬＩＶＥＳＴＲＥＡＭs]TV!!] fox nfl fox live LIVE Ｆｒｅｅ Ｓｔｒｅａｍｓ ＯＮ Ｔｖ Ｃｈａｎｎｅｌ",
-          "source": "Pierce Manufacturing",
+          "title": "Patrick Mahomes Comments on Chiefs’ Decision to Sign Banished Kicker Justin Tucker",
+          "source": "People.com",
           "snippet": ""
         },
         {
-          "title": "How to watch NFL 2026 for free from anywhere in the world with this Black Friday VPN deal",
-          "source": "TechRadar",
+          "title": "Chiefs coach defends signing kicker who was suspended after sexual misconduct allegations",
+          "source": "NBC News",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "3a599b4af8224ada3b",
-      "title": "rashee rice",
+      "id": "77121b7f15745068f2",
+      "title": "santos laguna vs necaxa",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "2000+",
       "score": 57.1,
-      "published_at": "2026-11-01T21:40:00Z",
+      "published_at": "2026-11-01T22:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Week 8 Fantasy Football Full PPR FLEX Rankings",
-          "source": "Yahoo Sports",
+          "title": "Polymarket Promo Code WSN: $25 Bonus for Laguna vs. Necaxa (November 1)",
+          "source": "WSN.com",
           "snippet": ""
         },
         {
-          "title": "Fantasy football Start 'Em, Sit 'Em WR in Week 8: Parker Washington and Stefon Diggs feast on ripe matchups",
-          "source": "CBS Sports",
+          "title": "Santos Laguna vs Necaxa: Predictions, Picks, Odds & Lineups",
+          "source": "Squawka",
           "snippet": ""
         },
         {
-          "title": "Week 8 WR/CB Matchups For Fantasy Football: CeeDee Lamb, Parker Washington & More",
-          "source": "FantasyLife",
+          "title": "SANTOS LAGUNA COMPLETES ITS PREPARATION TO HOST NECAXA AT THE CORONA STADIUM",
+          "source": "Santos Laguna",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "1a5ac695786cf4867c",
-      "title": "jerry jones",
+      "id": "e415caee36db46eaae",
+      "title": "caleb douglas",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.1,
-      "published_at": "2026-11-01T21:40:00Z",
+      "approx_traffic": "1000+",
+      "score": 54.5,
+      "published_at": "2026-11-01T22:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Stephen Jones discusses Cowboys' front office philosophy ahead of trade deadline",
-          "source": "Dallas News",
+          "title": "Miami Dolphins WR Caleb Douglas rounding into form ahead of Pats matchup",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Jerry Jones Announces Final Decision On Cowboys Making a Trade Ahead of Deadline",
-          "source": "Yahoo Sports",
+          "title": "Caleb Douglas - Fantasy Football Waiver Wire Pickups for Week 8 (2026) - NFL News",
+          "source": "RotoBaller",
           "snippet": ""
         },
         {
-          "title": "Cowboys' Stephen Jones Addresses NFL Trade Deadline Approach After Joey Porter Jr. Move",
-          "source": "Bleacher Report",
+          "title": "Caleb Douglas: Two Game Breakout and Big Play Upside",
+          "source": "Central Oregon Daily",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "1e571574563a4a4001",
+      "title": "blake corum",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.1,
+      "published_at": "2026-11-01T22:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Kyren Williams, Blake Corum balance the Rams' offense. Can Sean McVay unlock their potential?",
+          "source": "Los Angeles Times",
+          "snippet": ""
+        },
+        {
+          "title": "The Rams have found their X-factor for survival. His name is Blake Corum",
+          "source": "NFL.com",
+          "snippet": ""
+        },
+        {
+          "title": "Week 8 Fantasy Football Mailbag: Can Managers Comfortably Start Both Kyren Williams and Blake Corum?",
+          "source": "Sports Illustrated",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "2e5defdc2b0a581356",
+      "title": "courtland sutton",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.1,
+      "published_at": "2026-11-01T22:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Courtland Sutton has a message for anyone who thinks the Broncos are a fluke – Denver Sports",
+          "source": "Denver Sports 104.3 The Fan",
+          "snippet": ""
+        },
+        {
+          "title": "Mark Kiszla: Broncos must top K.C. to lose rap of being lucky wannabes",
+          "source": "Denver Gazette",
+          "snippet": ""
+        },
+        {
+          "title": "WR Courtland Sutton on facing the Chiefs in Week 8: 'We know that we've got to show up'",
+          "source": "Denver Broncos",
           "snippet": ""
         }
       ],
@@ -95,7 +153,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 54.8,
+      "score": 52.8,
       "published_at": "2026-11-01T20:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -119,261 +177,140 @@
       "alert": false
     },
     {
-      "id": "78a4aa78d482edb4e3",
-      "title": "is taylor swift at the chiefs game today",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.4,
-      "published_at": "2026-11-01T21:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Is Taylor Swift Going to Chiefs Game Today, November 1? What We Know",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Why Taylor Swift Hasn’t Been Seen at Travis Kelce’s Chiefs-Seahawks Game in Seattle",
-          "source": "ELLE",
-          "snippet": ""
-        },
-        {
-          "title": "Seahawks troll Taylor Swift, Travis Kelce to top NFL Week 7's petty posts",
-          "source": "ESPN",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "ecaeae46cb2ad632c9",
-      "title": "brian schottenheimer",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-01T21:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "3 things Cowboys HC Brian Schottenheimer can carry into week 8",
-          "source": "Blogging The Boys",
-          "snippet": ""
-        },
-        {
-          "title": "The Cowboys Win All 6 Analytics Matchups on Offense vs. Arizona and Lose All 6 on Defense",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Week 8 is a great time for the Cowboys offense to spread out and pass",
-          "source": "Fort Worth Star-Telegram",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "d0ffff1926bc9e849e",
-      "title": "avión",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-01T21:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Actualizaciones en vivo: mueren 9 personas tras estrellarse avión privado en Palm Beach",
-          "source": "Telemundo Miami (51)",
-          "snippet": ""
-        },
-        {
-          "title": "Nueve personas muertas tras un accidente de jet privado en Florida",
-          "source": "Univision",
-          "snippet": ""
-        },
-        {
-          "title": "Avioneta se estrella en Palm Beach y desata teorías falsas en redes",
-          "source": "Telemundo",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "f791c82cd2c324afc8",
-      "title": "يوفنتوس ضد نابولي",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 52.1,
-      "published_at": "2026-11-01T19:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ما القنوات الناقلة لمباراة يوفنتوس ونابولي في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "التشكيل الرسمي لمباراة يوفنتوس ضد نابولي في قمة الدوري الإيطالي",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "يوفنتوس يصطدم بنابولي في مواجهة قوية بالدوري الإيطالي",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "91735fcc17531a06b2",
-      "title": "يوفنتوس ضد نابولي",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 52.1,
-      "published_at": "2026-11-01T19:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ما القنوات الناقلة لمباراة يوفنتوس ونابولي في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "يوفنتوس يتخطى نابولي بثنائية في الدوري الإيطالي",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "مواعيد مباريات اليوم الأحد 1-11-2026 في الدوري الإيطالي والقنوات الناقلة",
-          "source": "بوابة دار الهلال",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "edfd35e66837bd19df",
-      "title": "stephen a smith",
+      "id": "8d5a8fbb0176353d1a",
+      "title": "what did justin tucker do",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
       "score": 51.4,
-      "published_at": "2026-11-01T21:50:00Z",
+      "published_at": "2026-11-01T22:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "‘I truly do regret it’ – Stephen A. Smith issues public apology to former NBA No. 1 pick",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "“I Will Always Regret”: Stephen A. Smith Reflects on Infamous Ex-Laker Rant 20 Years Later",
-          "source": "EssentiallySports",
-          "snippet": ""
-        },
-        {
-          "title": "‘I truly do regret it’ – Stephen A. Smith issues public apology to former NBA No. 1 pick",
-          "source": "HITC",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "119aff2f1f7dc32e7d",
-      "title": "cowboys record",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T21:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Ranking the top 10 trick plays in Super Bowl history",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "ESPN Ranks Top 10 Trick Plays in Super Bowl History",
-          "source": "Yardbarker",
-          "snippet": ""
-        },
-        {
-          "title": "Cowboys have a franchise-record 14 straight games with 20 or more points allowed",
-          "source": "NBC Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "9e364fc1f184ea1d39",
-      "title": "ashley hinson",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T21:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Democrats, Hopeful All Over the Senate Map, Remain Jittery About Iowa",
+          "title": "Stop asking NFL men about forgiveness of alleged criminal acts. They have nothing to say - The Athletic",
           "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "WATCH LIVE: US Senate candidate Josh Turek meets with Iowa voters",
-          "source": "Fox News",
+          "title": "Toub: Butker still Chiefs' kicker despite struggles, Tucker signing",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Will a blue wave sweep Iowa on Tuesday?",
-          "source": "CNN",
+          "title": "Patrick Mahomes Comments on Chiefs’ Decision to Sign Banished Kicker Justin Tucker",
+          "source": "People.com",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "484915ea27a7b3c33c",
-      "title": "أتلتيك بيلباو ضد ريال سوسيداد",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 49.7,
-      "published_at": "2026-11-01T19:30:00Z",
+      "id": "dc8ade180ffacaf66b",
+      "title": "joe rogan",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-01T22:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "بلباو وسوسييداد.. ديربي ساخن يعتمد على \"الاحترام\" وإلقاء الشعر",
-          "source": "العربية",
+          "title": "Joe Rogan Torches ‘F**kin’ Stupid’ People Who Participate In Political Polls",
+          "source": "HuffPost",
           "snippet": ""
         },
         {
-          "title": "مباراة أتلتيك بلباو وريال سوسيداد: نقطة ساخنة في سباق الصدارة",
-          "source": "Vietnam.vn",
+          "title": "Joe Rogan Vents Polls Are Based on Bored 'Stupid' People",
+          "source": "Mediaite",
           "snippet": ""
         },
         {
-          "title": "تقديم مباراة أتلتيك بيلباو وريال سوسيداد",
-          "source": "Goal.com",
+          "title": "Joe Rogan points out major problem with Trump polling",
+          "source": "News24",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "4fa90e04e68bcbd1d4",
+      "title": "nascar points",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-01T22:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Chris Buescher makes 400th Cup Series start at Martinsville",
+          "source": "NASCAR.com",
+          "snippet": ""
+        },
+        {
+          "title": "Chris Buescher to make 400th career start at Martinsville Speedway",
+          "source": "Jayski",
+          "snippet": ""
+        },
+        {
+          "title": "Chris Buescher and Ryan Preece Martinsville 2 Media Availability",
+          "source": "SpeedwayMedia.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "1832e88381a981c6ad",
+      "title": "isiah pacheco",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-01T22:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "NOTEBOOK: Joseph feeling nostalgic in return to practice",
+          "source": "Detroit Lions",
+          "snippet": ""
+        },
+        {
+          "title": "Lions injury report: Kerby Joseph OUT, starting CB questionable vs. Vikings",
+          "source": "Pride Of Detroit",
+          "snippet": ""
+        },
+        {
+          "title": "Kerby Joseph injury update: Lions S has no timetable on playing in game",
+          "source": "Detroit Free Press",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "a1cd0abdca6374eb28",
+      "title": "lee majors",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 48.4,
+      "published_at": "2026-11-01T22:50:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "8 Old-School Action Thriller Shows That Are Now Unwatchable (#3 Was Groundbreaking for Its Time)",
+          "source": "MovieWeb",
+          "snippet": ""
+        },
+        {
+          "title": "Lee Majors Played An Assassin In This Canceled 2010s Show Based On A DC Comic",
+          "source": "SlashFilm",
           "snippet": ""
         }
       ],
@@ -385,19 +322,19 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 49.7,
+      "score": 47.8,
       "published_at": "2026-11-01T19:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "EN VIVO: Terminó el primer tiempo con un marcador 2-1 a favor de Athletic Bilbao sobre Real Sociedad",
-          "source": "DSports",
+          "title": "2-1. El Athletic toma impulso y frena a la Real en un derbi eléctrico",
+          "source": "HolaNews",
           "snippet": ""
         },
         {
-          "title": "Sancet, al 100%: \"Tengo sensaciones muy buenas, no tengo nada de dolor\"",
-          "source": "Mundo Deportivo",
+          "title": "!Aquí tienes cómo ver la transmisión en vivo de GP de México de F1 por canal de televisión, 1 de noviembre de 2026",
+          "source": "Pierce Manufacturing",
           "snippet": ""
         },
         {
@@ -409,157 +346,12 @@
       "alert": false
     },
     {
-      "id": "7a2d650b2276ae4b8a",
-      "title": "juventus vs napoli",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 49.1,
-      "published_at": "2026-11-01T19:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Video: Juventus fans protest outside stadium ahead of Napoli clash",
-          "source": "Football Italia",
-          "snippet": ""
-        },
-        {
-          "title": "Luciano Spalletti's press conference ahead of Juventus-Napoli",
-          "source": "Juventus.com",
-          "snippet": ""
-        },
-        {
-          "title": "'Juventus rarely die' – Napoli boss Allegri uneasy ahead of Turin return",
-          "source": "beIN SPORTS",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "18b3fbb95f064ab63b",
-      "title": "f1",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 48.7,
-      "published_at": "2026-11-01T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Who is Kimi Antonelli? What to know about F1's potential new champion",
-          "source": "Central Oregon Daily",
-          "snippet": ""
-        },
-        {
-          "title": "Mexico F1 GP Auto Racing",
-          "source": "Corsicana Daily Sun",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1f834c99842daaae23",
-      "title": "f1",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 48.7,
-      "published_at": "2026-11-01T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "F1 Mexico City GP LIVE: Race updates, results, stream and highlights from 19th round of 2026 Formula 1 season as Kimi Antonelli looks to seal drivers' title",
-          "source": "Sky Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Hamilton clinches first pole with Ferrari at Mexico City GP",
-          "source": "Formula 1",
-          "snippet": ""
-        },
-        {
-          "title": "Lewis Hamilton wins pole for Ferrari at the Mexico City Grand Prix",
-          "source": "Arab News",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "99c4e94e45de636597",
-      "title": "محمد شحاتة",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 46.4,
-      "published_at": "2026-11-01T19:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "خاص| محمد شحاتة يعرض خدماته على الأهلي.. ووكيله يتحرك لجس نبض عبد الحفيظ",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "كريم رمزي يكشف مفاجأة بشأن لاعب مهم في الزمالك.. ووسطاء يستفسرون عن موقف الأهلي من ضمه",
-          "source": "الزمالك اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "فيديو.. كوبري محمد شحاتة إلى الأهلي...",
-          "source": "نجم الجماهير",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "574941c00098abd60e",
-      "title": "نهضة بركان ضد الرجاء",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 45.1,
-      "published_at": "2026-11-01T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "منافس الأهلي.. 5 غيابات تضرب الرجاء أمام نهضة بركان فى الدوري المغربي",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "منافس الأهلي.. تقارير: الرجاء يفشل في محاولات فسخ التعاقد مع خيميز",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "ما القنوات الناقلة لمباراة نهضة بركان والرجاء في الدوري المغربي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Goal.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "0896ee2556607b08ef",
       "title": "سعيد الماروق",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 45.1,
+      "approx_traffic": "500+",
+      "score": 47.1,
       "published_at": "2026-11-01T20:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -583,70 +375,331 @@
       "alert": false
     },
     {
-      "id": "f35f69e28e8e62959e",
-      "title": "athletic vs real sociedad",
+      "id": "18b3fbb95f064ab63b",
+      "title": "f1",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 44.8,
+      "approx_traffic": "500+",
+      "score": 46.8,
       "published_at": "2026-11-01T20:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "!Aquí tienes cómo ver la transmisión en vivo de GP de México de F1 por canal de televisión, 1 de noviembre de 2026",
-          "source": "Pierce Manufacturing",
+          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "Alineación del partido A.Bilbao vs Sociedad | LaLiga · 1 nov. 2026",
-          "source": "YSscores",
+          "title": "LIVE: Reaction as Kimi Antonelli makes F1 history in Mexico as Ferrari civil war brews",
+          "source": "RacingNews365",
           "snippet": ""
         },
         {
-          "title": "Posiciones de Athletic Club vs Real Sociedad: Estadísticas, horarios y dónde ver",
-          "source": "Xpectro FM",
+          "title": "Kimi Antonelli becomes youngest Formula 1 champion ever at 20 years old",
+          "source": "NBC News",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "22c370976bf96bbdf4",
-      "title": "haley stevens",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 43.8,
-      "published_at": "2026-11-01T20:00:00Z",
+      "id": "1f834c99842daaae23",
+      "title": "f1",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 46.8,
+      "published_at": "2026-11-01T20:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "El-Sayed and Stevens to make rare joint appearance as Democrats seek unity in Michigan Senate race",
-          "source": "AP News",
+          "title": "Kimi Antonelli makes F1 history as youngest-ever world champion with maiden title",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Midterm elections latest: Democrats close ranks around El-Sayed’s Senate bid after Stevens endorses GOP nominee",
-          "source": "CNN",
+          "title": "2026 F1 championship standings after the Mexico City Grand Prix",
+          "source": "RacingNews365",
           "snippet": ""
         },
         {
-          "title": "Democrat Haley Stevens endorses Republican in Michigan Senate race",
-          "source": "BBC",
+          "title": "Paddock prankster with an AI agent’s brain: inside Kimi Antonelli’s triumph",
+          "source": "The Times",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "a01603893d2e01c777",
-      "title": "ciara mageean",
+      "id": "484915ea27a7b3c33c",
+      "title": "أتلتيك بيلباو ضد ريال سوسيداد",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
+      "approx_traffic": "1000+",
+      "score": 44.8,
+      "published_at": "2026-11-01T19:30:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "بعد 50 عاما... علم الباسك يعود إلى واجهة قمة أتليتيك بلباو وريال سوسيداد",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        },
+        {
+          "title": "«لا ليغا»: بلباو يكسر سلسلة سوسيداد ويهزمه في «ديربي الباسك»",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        },
+        {
+          "title": "بلباو وسوسييداد.. ديربي ساخن يعتمد على \"الاحترام\" وإلقاء الشعر",
+          "source": "العربية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "31ad99f3098f4f7126",
+      "title": "الإدارة العامة للتعليم بالطائف",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
       "score": 43.8,
+      "published_at": "2026-11-01T22:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "«تعليم الطائف» يعتمد مواعيد الدوام الشتوي اعتباراً من الأحد المقبل",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "28 جمادى الأولى.. بدء الدوام الشتوي في مدارس الرياض",
+          "source": "جريدة الرياض",
+          "snippet": ""
+        },
+        {
+          "title": "تعليم منطقة الجوف يبدأ اليوم تطبيق الدوام الشتوي",
+          "source": "عاجل",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6e4ae6f057f3124b80",
+      "title": "atlanta united vs toronto",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.5,
+      "published_at": "2026-11-01T22:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Atlanta United vs Toronto FC LIVE, Score Updates and Stream in MLS Match (3-0)",
+          "source": "VAVEL.com",
+          "snippet": ""
+        },
+        {
+          "title": "*[LIvE-FREE] TFC vs Atlanta United Match watch Live free",
+          "source": "Villa de la Orotava",
+          "snippet": ""
+        },
+        {
+          "title": "Atlanta - Toronto LIVE. Major League Soccer latest updates",
+          "source": "MARCA",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "574941c00098abd60e",
+      "title": "نهضة بركان ضد الرجاء",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 43.1,
+      "published_at": "2026-11-01T20:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "منافس الأهلى.. نهضة بركان يهزم الرجاء بثنائية في الدوري المغربى",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "ما القنوات الناقلة لمباراة نهضة بركان والرجاء في الدوري المغربي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "من بينهم النفاتي وبرقوق.. غيابات عديدة في قائمة الرجاء لمواجهة نهضة بركان",
+          "source": "Elbotola",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "659346a243515a6290",
+      "title": "قائمة منتخب مصر",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.8,
+      "published_at": "2026-11-01T22:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "قد يستبعد أحدهم.. 10 محترفين في قائمة منتخب مصر استعدادا لمواجهتي مالاوي (صور)",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "إمام عاشور ومحمد هانى فى قائمة منتخب مصر لمباراتىّ مالاوى بتصفيات أفريقيا",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "وماله .. حسام حسن يستقر على استدعاء ثنائى الاهلى الممستبعد من الاهلى أساساً",
+          "source": "الزمالك اليوم",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f35f69e28e8e62959e",
+      "title": "athletic vs real sociedad",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 42.8,
+      "published_at": "2026-11-01T20:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "La Real pierde la brújula",
+          "source": "Diario AS",
+          "snippet": ""
+        },
+        {
+          "title": "Traspié de la Real en San Mamés: las notas de Mikel Recalde",
+          "source": "Noticias de Gipuzkoa",
+          "snippet": ""
+        },
+        {
+          "title": "El 1x1 de la Real Sociedad ante el Athletic",
+          "source": "Mundo Deportivo",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "08634f58374795dbf6",
+      "title": "أولمبيك مارسيليا ضد تولوز",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 42.8,
+      "published_at": "2026-11-01T20:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سجل وصنع خلال 25 دقيقة.. أمين غويري يقود مارسيليا للفوز على تولوز (فيديو)",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "ببصمة ذهبية وإصابة مقلقة.. أمين حارث يعيش ليلة متقلبة الأحوال في بطولة الليغ1",
+          "source": "جريدة المنتخب",
+          "snippet": ""
+        },
+        {
+          "title": "تحديد سر الغياب «الغامض» لأمين غويري عن مارسيليا",
+          "source": "اخبارك نت",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4d0ce9d5fc11c03653",
+      "title": "صبا مبارك",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.5,
+      "published_at": "2026-11-01T21:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "مسلسل «جريمة في الزمالك».. استدعاء صبا مبارك للتحقيق معها",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "صبا مبارك تتصدر ترند إكس في مصر بعد عرض جريمة في الزمالك",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "مجدي الهواري يحتفل بتفاعل الجمهور مع حكاية «جريمة في الزمالك»",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ea61db208a5ee60bec",
+      "title": "قرض",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.5,
+      "published_at": "2026-11-01T21:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "قرض السيارة من بنك القاهرة.. تمويل يصل إلى 6 ملايين جنيه وفترة سداد 8 سنوات",
+          "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "عاجل.. تفاصيل قروض السيارات في مصر بعد رفع الفائدة",
+          "source": "شبكة تواصل الإخبارية",
+          "snippet": ""
+        },
+        {
+          "title": "أسعار باقات الإنترنت الأرضي 2026",
+          "source": "جريدة الديار",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "80476af09515b033ba",
+      "title": "ciara mageean",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 41.8,
       "published_at": "2026-11-01T20:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -663,164 +716,19 @@
         },
         {
           "title": "'Just Heartbreaking': LPGA Pro Pens Emotional Message as Athletic Legend Breathes Her Last After Cancer Battle",
-          "source": "EssentiallySports",
+          "source": "Yahoo Sports",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "50d7a9513ab2847e33",
-      "title": "أتلتيك بيلباو ضد ريال سوسيداد",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 43.4,
-      "published_at": "2026-11-01T19:20:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "Josh Allen links up with Dalton Kincaid to extend Bills' lead",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Nashville vs. Red Bull NY (Nov 1, 2026) Team Stats",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Atlanta vs. Toronto (Nov 1, 2026) Team Stats",
-          "source": "ESPN",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6f221343b4248d2ce6",
-      "title": "palmeiras vs vasco",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 43.1,
-      "published_at": "2026-11-01T19:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Palmeiras x Vasco: acompanhe a transmissão ao vivo",
-          "source": "tmc.com.br",
-          "snippet": ""
-        },
-        {
-          "title": "Abel Ferreira bate Pedro Emanuel e está mais perto da final da Taça do Brasil",
-          "source": "A Bola",
-          "snippet": ""
-        },
-        {
-          "title": "Atuações ENM: Colídio se salva em tarde de baixa criação cruz-maltina no Nubank Parque",
-          "source": "Terra",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "8361a031e17870763e",
-      "title": "النادي المصري",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.8,
-      "published_at": "2026-11-01T19:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "نبيل الكوكى يقود المران الأول للمصرى بعد تولى تدريب الفريق",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "المصري يعتمد تشكيل الجهاز المعاون للكوكي",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "عاد من يعرف البيت.. نبيل الكوكي مدربا للمصري البورسعيدي",
-          "source": "يلاكورة",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "861eaa1f705e61285e",
-      "title": "economy of saudi arabia",
+      "id": "a01603893d2e01c777",
+      "title": "ciara mageean",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
       "score": 41.8,
-      "published_at": "2026-11-01T19:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Saudi Economy Shrank at Slower Pace Before Houthi War Escalation",
-          "source": "Bloomberg",
-          "snippet": ""
-        },
-        {
-          "title": "Houthi strikes cause damage but Kingdom’s credit standing remains",
-          "source": "Arab News",
-          "snippet": ""
-        },
-        {
-          "title": "Saudi Arabia’s Non-Oil Growth Accelerates To 1.9% In Q3 As Oil Sector Shrinks 20.4%",
-          "source": "Forbes Middle East",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "53cebc888f9d3747a3",
-      "title": "tn titans",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 41.4,
-      "published_at": "2026-11-01T21:50:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "Packers 27-19 Panthers (Oct 29, 2026) Final Score",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Bears 30-24 Patriots (Oct 22, 2026) Final Score",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Rams 35-21 Raiders (Oct 25, 2026) Final Score",
-          "source": "ESPN",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "80476af09515b033ba",
-      "title": "ciara mageean",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 40.8,
       "published_at": "2026-11-01T20:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -844,12 +752,99 @@
       "alert": false
     },
     {
+      "id": "32b7233a82a08c249a",
+      "title": "فائدة",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 41.2,
+      "published_at": "2026-11-01T21:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "\"سي آي كابيتال\": رفع الفائدة في مصر إجراء احترازي وليس بداية دورة تشديد نقدي",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "بعد رفع الفائدة... كيف تتغير أولويات الشراء والادخار لدى المصريين؟",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        },
+        {
+          "title": "ماذا يعني رفع الفائدة في مصر للاقتصاد والعملة والتضخم؟",
+          "source": "الشرق بلومبرغ",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6f221343b4248d2ce6",
+      "title": "palmeiras vs vasco",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 41.1,
+      "published_at": "2026-11-01T19:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Pedro Emanuel reclama de critérios de arbitragem, mas coloca o Vasco vivo na Copa do Brasil",
+          "source": "Rádio Itatiaia",
+          "snippet": ""
+        },
+        {
+          "title": "Nubank Parque mobiliza 500 profissionais para receber Palmeiras x Vasco após show",
+          "source": "Gazeta Esportiva",
+          "snippet": ""
+        },
+        {
+          "title": "Abel projeta semifinal com o Vasco: 'Palmeiras é ofensivo e quer sempre ganhar'",
+          "source": "LANCE!",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "a433dcf0d5d0de9a3b",
+      "title": "formula 1",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 40.2,
+      "published_at": "2026-11-01T20:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Who is Kimi Antonelli? What to know about F1's potential new champion",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "Latest weather update for the 2026 Formula 1 Mexico City Grand Prix",
+          "source": "RacingNews365",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "dfc66d1578dc1fdf84",
       "title": "كسوف",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 40.8,
+      "score": 38.8,
       "published_at": "2026-11-01T20:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
