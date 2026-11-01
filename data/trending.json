@@ -1,147 +1,60 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T01:36:46.472589Z",
+  "updated_at": "2026-11-01T02:25:01.808824Z",
   "items": [
     {
-      "id": "77b616b50af3bbd100",
-      "title": "texas state vs boise state",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 61.1,
-      "published_at": "2026-11-01T01:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Game Day Guide: No. 20 Boise State looks to extend win streak in first showdown with Texas State",
-          "source": "KTVB",
-          "snippet": ""
-        },
-        {
-          "title": "Boise State vs. Texas State: Where to find the game on TV, streaming services",
-          "source": "Idaho Statesman",
-          "snippet": ""
-        },
-        {
-          "title": "Former Boise State quarterback Kellen Moore talks about returning to Boise for statue unveiling",
-          "source": "247Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "e0b1f58f82308363ca",
-      "title": "fc barcelona vs deportivo alavés standings",
-      "region": "egypt",
-      "region_label": "مصر",
+      "id": "68ff9ab69c6e095577",
+      "title": "krunal pandya",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "10000+",
-      "score": 58.1,
-      "published_at": "2026-10-31T22:10:00Z",
+      "score": 63.8,
+      "published_at": "2026-11-01T01:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Match facts: Barcelona v Alaves (Spain La Liga) - Talents Abroad - Sports",
-          "source": "Ahram Online",
+          "title": "UAE beat India and Pakistan, reach Hong Kong Sixes Cup semifinals",
+          "source": "Gulf News",
           "snippet": ""
         },
         {
-          "title": "Barcelona 6-1 Alaves: Lamine Yamal and Raphinha each score twice as Barca return to top of La Liga",
-          "source": "BBC",
+          "title": "United Arab Emirates vs India Match 12 Highlights 2026: United Arab Emirates beat India by 6 wickets",
+          "source": "SportsTak",
           "snippet": ""
         },
         {
-          "title": "Hansi Flick Defends His Philosophy After Two Tough Defeats",
-          "source": "Sportscape Magazine",
+          "title": "United Arab Emirates vs India T10 Today at Mission Road Ground, Mong Kok, Hong Kong stadium",
+          "source": "AIMA Media",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "2dd4116895f16d1a37",
-      "title": "flash flood warning",
+      "id": "56f09fc465de25109d",
+      "title": "oregon state vs fresno state",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "2000+",
-      "score": 57.5,
-      "published_at": "2026-11-01T01:20:00Z",
+      "score": 57.2,
+      "published_at": "2026-11-01T02:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Flash flood warning extended for Kauai as heavy showers drench island",
-          "source": "Honolulu Star-Advertiser",
+          "title": "Oregon State Beavers vs. Fresno State Bulldogs preview: OSU’s win streak, spot atop the Pac-12 on the line",
+          "source": "OregonLive.com",
           "snippet": ""
         },
         {
-          "title": "First Alert Weather Day: Rain lingers on Hawaii Island, conditions to improve Friday",
-          "source": "Hawaii News Now",
-          "snippet": ""
-        },
-        {
-          "title": "Flood Watch expires after periods of heavy rain, rockfalls, and road closures in East Maui and ʻĪao",
-          "source": "Maui Now",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "c72484e591147ba53f",
-      "title": "fc barcelona vs deportivo alavés standings",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 55.1,
-      "published_at": "2026-10-31T22:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Barcelona 6-1 Alaves: Lamine Yamal and Raphinha each score twice as Barca return to top of La Liga",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Barca hammer Alaves to retain Liga top spot",
-          "source": "Arab News",
-          "snippet": ""
-        },
-        {
-          "title": "Video: Fermin Lopez forces himself on Flick's radar, an exceptional night at the Camp Nou",
-          "source": "Goal.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "96247e8fda5c8bf8c1",
-      "title": "stephon castle",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.4,
-      "published_at": "2026-11-01T01:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Spurs Announce Late Stephon Castle Injury Update Before Timberwolves Game",
+          "title": "Oregon State football vs. Fresno State updates, score, TV, streaming",
           "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "Meleek Thomas (foot) probable Saturday vs. Bucks",
-          "source": "NBC Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Spurs have upgraded Stephon Castle (migraine) from …",
-          "source": "HoopsHype",
+          "title": "Pregame notes: Oregon State vs. Fresno State",
+          "source": "247Sports",
           "snippet": ""
         }
       ],
@@ -152,8 +65,8 @@
       "title": "bangladesh vs india",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 54.1,
+      "approx_traffic": "5000+",
+      "score": 56.5,
       "published_at": "2026-11-01T01:10:00Z",
       "source": "Google Trends",
       "source_count": 2,
@@ -172,86 +85,28 @@
       "alert": false
     },
     {
-      "id": "021a9364d69249e4c5",
-      "title": "flames vs avalanche",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-01T01:10:00Z",
+      "id": "e0b1f58f82308363ca",
+      "title": "fc barcelona vs deportivo alavés standings",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "10000+",
+      "score": 56.5,
+      "published_at": "2026-10-31T22:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Halloween Hockey",
-          "source": "NHL.com",
+          "title": "Barcelona 6-1 Alavés (Oct 31, 2026) Game Analysis",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Open Thread: Calgary Flames @ Colorado Avalanche 8:00 P.M. MDT)",
-          "source": "Yahoo Sports",
+          "title": "Barcelona 6-1 Alaves: Lamine Yamal and Raphinha each score twice as Barca return to top of La Liga",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "Preview: The Avs Host Calgary for a Spooktacular Saturday Night Spectacle!",
-          "source": "Mile High Hockey",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "77f67dcb1821243594",
-      "title": "5g",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-01T01:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ERIC vs. NOK: Which 5G Infrastructure Stock is the Better Buy Now?",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "AT&T upgrades 5G and fiber networks in Henry County",
-          "source": "Henry Herald",
-          "snippet": ""
-        },
-        {
-          "title": "The Smart Port Revolution: Penang’s Pioneering Leap into Private 5G",
-          "source": "Vocal",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "ab1930e72e195f5f71",
-      "title": "marcus smart",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.8,
-      "published_at": "2026-11-01T01:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "HOU starts Smart, Thompson, Durant, Smith, Şengün",
-          "source": "NBC Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Marcus Smart News: Starting Saturday",
-          "source": "RotoWire",
-          "snippet": ""
-        },
-        {
-          "title": "Rockets' Marcus Smart: Starting Saturday",
+          "title": "Barcelona Under PRESSURE! FC Barcelona vs. Alaves La Liga MATCH PREVIEW! - Scoreline Stream of Soccer",
           "source": "CBS Sports",
           "snippet": ""
         }
@@ -263,199 +118,344 @@
       "title": "ban vs ind",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 53.4,
+      "approx_traffic": "2000+",
+      "score": 54.8,
       "published_at": "2026-11-01T00:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "India face tricky WTC final road after South Africa's Cape Town Test win: Here's how",
+          "source": "India Today",
+          "snippet": ""
+        },
         {
           "title": "WTC points table after BAN vs WI 1st Test: India move up to fourth as Bangladesh drop to fifth after eight-wicket defeat",
           "source": "Livemint",
           "snippet": ""
         },
         {
-          "title": "BAN vs IND, 11th/12th Bowl, Play-off, Hong Kong Sixes 2026 - Commentary",
-          "source": "Cricbuzz",
-          "snippet": ""
-        },
-        {
-          "title": "India vs Bangladesh Live Streaming: When And Where To Watch Hong Kong Sixes 2026 Match Live In India",
-          "source": "NDTV Profit",
+          "title": "How Can India Qualify For WTC 2025-27 Final? Check Scenario After South Africa Vs Australia Test Series",
+          "source": "Outlook India",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "aec81c9c65bfea909d",
-      "title": "aston villa vs fulham f.c. standings",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 52.1,
-      "published_at": "2026-10-31T22:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Aston Villa 1-1 Fulham: Zion Suzuki own goal blunder after Nicolas Jackson scores again",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Aston Villa Football Club - The Official Club Website",
-          "source": "Aston Villa",
-          "snippet": ""
-        },
-        {
-          "title": "Aston Villa vs Fulham LIVE! Premier League match updates, news, score, stream and highlights",
-          "source": "Sky Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "9cad3e49a55265b792",
-      "title": "lisa leslie",
+      "id": "8dcfc70ce81c28e7c2",
+      "title": "los angeles weather",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T01:20:00Z",
+      "approx_traffic": "1000+",
+      "score": 54.5,
+      "published_at": "2026-11-01T02:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "UConn's Jana El Alfy named to Lisa Leslie Award watch list",
-          "source": "CT Insider",
+          "title": "Halloween weather forecast: what to expect where you are",
+          "source": "The Weather Channel",
           "snippet": ""
         },
         {
-          "title": "Crooks tabbed to Lisa Leslie Award Watch List",
-          "source": "Oklahoma State University Athletics",
+          "title": "Alex Biston's Halloween evening forecast",
+          "source": "CBS News",
           "snippet": ""
         },
         {
-          "title": "Elsa Lemmilä Named to Preseason Watchlist for Lisa Leslie Center of the Year Award",
-          "source": "Ohio State | Official Athletics Website",
+          "title": "Rain and storms to haunt millions of Halloween trick-or-treaters across 20+ states",
+          "source": "FOX Weather",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "5956f2548b28b53eac",
-      "title": "natalie nakase",
+      "id": "c3e7bda14a2e29ebfe",
+      "title": "jacob elordi",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T01:20:00Z",
+      "approx_traffic": "1000+",
+      "score": 54.2,
+      "published_at": "2026-11-01T02:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Natalie Nakase’s Asian American roots help inspire her community on and off the court",
-          "source": "The New York Times",
+          "title": "Did Jacob Elordi’s Kardashian Connection Impact His James Bond Chances? The Latest",
+          "source": "Cinemablend",
           "snippet": ""
         },
         {
-          "title": "Natalie Nakase’s ‘extremist’ style hit a wall in WNBA Finals. Then the Valkyries coach evolved",
-          "source": "San Francisco Chronicle",
+          "title": "Jacob Elordi Accused of Using Kendall Jenner Romance to Reach Jeff Bezos and Land James Bond Role",
+          "source": "Fashion Times UK",
           "snippet": ""
         },
         {
-          "title": "Valkyries starters need to ‘step up' in Game 4",
-          "source": "NBC Bay Area",
+          "title": "Jacob Elordi Loses James Bond Role Over Kendall Jenner Romance as 007 Bosses Fear Kardashian Family Would Hijack Red Carpet: 'They Don't Want Them Around'",
+          "source": "AOL.com",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "26800386f4e809f2cf",
-      "title": "ayo dosunmu",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.1,
+      "id": "b8ea0a59f7e922fc62",
+      "title": "زيادة المعاشات",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 52.5,
       "published_at": "2026-11-01T01:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Timberwolves' Ayo Dosunmu: Starting Wednesday",
-          "source": "CBS Sports",
+          "title": "هل يحصل جميع أصحاب المعاشات على 2080 جنيهًا حدًا أدنى؟.. التفاصيل والفئات المستفيدة",
+          "source": "المصري اليوم",
           "snippet": ""
         },
         {
-          "title": "Timberwolves need Ayo Dosunmu to scale up to have success without Anthony Edwards",
-          "source": "Dunking with Wolves",
+          "title": "هل يحصل أصحاب المعاشات على زيادة في يناير 2027؟.. تفاصيل قرار الحكومة برفع الحد الأدنى",
+          "source": "صدى البلد",
           "snippet": ""
         },
         {
-          "title": "Ayo Dosunmu with 17 and 4 steals in start vs Warriors",
+          "title": "قبل صرف معاشات نوفمبر 2026.. من يستفيد من قرار الزيادة الجديد في يناير؟",
+          "source": "الوطن",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4273afc607a9877d8c",
+      "title": "cam spencer",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.5,
+      "published_at": "2026-11-01T02:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Cam Spencer to start Saturday vs. Sacramento",
           "source": "NBC Sports",
           "snippet": ""
+        },
+        {
+          "title": "Cam Spencer News: Earning more playing time",
+          "source": "RotoWire",
+          "snippet": ""
+        },
+        {
+          "title": "Grizzlies' Cam Spencer: Starting vs. Sacramento",
+          "source": "CBS Sports",
+          "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "5242d486ccbf183ecd",
-      "title": "rory culkin",
+      "id": "d228ffe25a134c70e3",
+      "title": "kiah stokes",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 51.2,
+      "published_at": "2026-11-01T02:00:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Geno Auriemma says Kiah Stokes belongs in WNBA Finals MVP conversation",
+          "source": "USA Today",
+          "snippet": ""
+        },
+        {
+          "title": "How Geno Auriemma’s UConn influence is powering Valkyries’ title run",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "How Geno Auriemma’s UConn influence is powering Valkyries’ title run",
+          "source": "USA Today",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "498f6fbcead10c81a1",
+      "title": "blaise taylor",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 51.1,
-      "published_at": "2026-11-01T01:10:00Z",
+      "score": 51.2,
+      "published_at": "2026-11-01T02:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "A serial killer, an obsessed cop and an undercover FBI agent. Welcome to Apple's 'Nocturne'",
-          "source": "AP News",
+          "title": "Former Auburn assistant coach’s son’s murder trial to be featured on CBS’s ’48 Hours’",
+          "source": "AL.com",
           "snippet": ""
         },
         {
-          "title": "Stephen Graham Credits Wife Hannah for Helping Him Get into the Mind of a Serial Killer in Nocturne (Exclusive)",
-          "source": "People.com",
+          "title": "New 48 Hours October 31 Episode To Feature A Professional Chef Murder Scandal In Nashville",
+          "source": "IMDb",
           "snippet": ""
         },
         {
-          "title": "Liev Schreiber and Stephen Graham Lead Apple TV’s Gripping Serial Killer Thriller ‘Nocturne’: TV Review",
-          "source": "Variety",
+          "title": "Blaise Taylor case subject of '48 Hours'",
+          "source": "Jonesboro Sun",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "add90a760b60c44287",
-      "title": "ac milan vs inter milan standings",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "7b096e3ba78db15e16",
+      "title": "isaiah stewart",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 48.1,
-      "published_at": "2026-10-31T22:10:00Z",
+      "score": 51.2,
+      "published_at": "2026-11-01T02:00:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Isaiah Stewart hasn't forced the Pistons to change their mind yet",
+          "source": "PistonPowered",
+          "snippet": ""
+        },
+        {
+          "title": "Paul Reed is already vindicating Pistons for polarizing Isaiah Stewart trade",
+          "source": "PistonPowered",
+          "snippet": ""
+        },
+        {
+          "title": "Memphis Grizzlies vs Portland Trail Blazers Oct 29, 2026 Game Summary",
+          "source": "NBA.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "238fdecfb497eb8e75",
+      "title": "chase center",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.2,
+      "published_at": "2026-11-01T02:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "AC Milan 3-1 Inter Milan: Diego Moreira stars as AC Milan beat Inter in thrilling derby",
-          "source": "BBC",
+          "title": "Map: Where are San Francisco’s Halloween events and car-free streets?",
+          "source": "Mission Local",
           "snippet": ""
         },
         {
-          "title": "Milan earn 3-1 derby win over Inter, Roma thump Udinese 5-2",
-          "source": "Arab News",
+          "title": "All the SF streets that will be closed for Halloween, Game 7",
+          "source": "SFGATE",
           "snippet": ""
         },
         {
-          "title": "Following in the footsteps of Kaká and Calhanoglu: Rabiot writes an exceptional chapter with Milan",
-          "source": "Goal.com",
+          "title": "8 great Bay Area neighborhoods where kids can trick-or-treat",
+          "source": "The Mercury News",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "99f85bd5185130e9f4",
+      "title": "atlanta dream coach",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T02:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "JACKSON THOMPSON: Angel Reese trash talk timeline, from mocking Caitlin Clark to beefing with Bidens",
+          "source": "Fox News",
+          "snippet": ""
+        },
+        {
+          "title": "Angel Reese drains the triple for Atlanta",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "Angel Reese makes more WNBA history and it's (past) time for her to get her flowers",
+          "source": "USA Today",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "9663c67926bef05b54",
+      "title": "hayden christensen",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T02:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Star Wars Actor Reveals Shocking Real-Life Encounter With His Strangest Fan",
+          "source": "ScreenRant",
+          "snippet": ""
+        },
+        {
+          "title": "'Star Wars' Star Hayden Christensen Reveals the Bizarre Time a Burglar Recognized Him Mid-Robbery",
+          "source": "Comic Basics",
+          "snippet": ""
+        },
+        {
+          "title": "Anakin Skywalker Actor Hayden Christensen Reveals the Strangest Fan Encounter He’s Ever Had",
+          "source": "IGN",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "6a00e3cdfec672122c",
+      "title": "সৌদি আরব",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 45.5,
+      "published_at": "2026-10-31T23:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "সৌদির তেলসমৃদ্ধ অঞ্চল লক্ষ্য করে একের পর এক ড্রোন হামলা",
+          "source": "The Daily Ittefaq",
+          "snippet": ""
+        },
+        {
+          "title": "পবিত্র মক্কার কাছে ফের ড্রোন ভূপাতিত করার দাবি সউদীর, অস্বীকার হুথিদের",
+          "source": "দৈনিক ইনকিলাব",
+          "snippet": ""
+        },
+        {
+          "title": "সৌদি আরবের এক প্রদেশে জরুরি সতর্কতা",
+          "source": "কালের কণ্ঠ",
           "snippet": ""
         }
       ],
@@ -467,7 +467,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 46.8,
+      "score": 45.2,
       "published_at": "2026-11-01T01:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -491,58 +491,174 @@
       "alert": false
     },
     {
-      "id": "8fd73e8ddc550a2211",
-      "title": "sports",
+      "id": "417dab773d239df3a1",
+      "title": "حبيب الصايغ",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
+      "approx_traffic": "100+",
       "score": 44.5,
-      "published_at": "2026-10-31T23:50:00Z",
+      "published_at": "2026-11-01T02:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "#√☯️[[ESPN!!FREE+!]] Minnesota vs Sporting 𝐋𝐈𝐕𝐄 Ｓｔｒｅａｍ Ｆｒｅｅ ＯＮ Ｔｖ Ｃｈａｎｎｅｌ 29 October 2026",
-          "source": "Vantage Data Centers",
+          "title": "UN must investigate death of UAE poet and writer Habib al-Sayegh, advocacy group says",
+          "source": "Middle East Eye",
           "snippet": ""
         },
         {
-          "title": "Minnesota United come alive late in comeback win over Kansas City",
-          "source": "The Lufkin Daily News",
+          "title": "UAE security forces tortured, killed journalist for opposing Israel normalization: Report",
+          "source": "thecradle.co",
           "snippet": ""
         },
         {
-          "title": "Anthony Markanich and Mauricio González score 4 minutes apart to help Minnesota beat Sporting KC 3-1",
-          "source": "ABC News - Breaking News, Latest News and Videos",
+          "title": "UN: Investigate the UAE’s Alleged 2019 Killing of Poet Habib Al Sayegh",
+          "source": "Democracy for the Arab World Now",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "78ac8a4267e360f2f2",
+      "title": "آثار الحكيم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 44.2,
+      "published_at": "2026-10-31T21:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعد اعتزال 15 عاما.. آثار الحكيم تظهر بين جمهور نوستالجيا 80/90 على البالون",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "بعد 15 عامًا من الاعتزال.. آثار الحكيم تظهر متخفية وتنهار باكية",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "بعد اعتزال 15 عاما.. آثار الحكيم تظهر خلال حضورها عرض «نوستالجيا 80/90» وتبكي لهذا السبب",
+          "source": "بوابة الأهرام",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "6a00e3cdfec672122c",
-      "title": "সৌদি আরব",
+      "id": "bcb6989c63af133607",
+      "title": "bhuvneshwar kumar",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 43.1,
-      "published_at": "2026-10-31T23:10:00Z",
+      "approx_traffic": "100+",
+      "score": 43.2,
+      "published_at": "2026-11-01T01:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "সউদী আরবে অগ্নিকাণ্ডে নিহত ৭ প্রবাসীর লাশ দেশে, স্বজনদের আহাজারি",
-          "source": "দৈনিক ইনকিলাব",
+          "title": "NZ vs IND 2026/27, NZ vs IND 5th T20I Match Preview - Rest finally in sight for (some of) India's T20I globetrotters",
+          "source": "Cricinfo",
           "snippet": ""
         },
         {
-          "title": "যে রেমিট্যান্স আর আসেনি বাড়িতে",
-          "source": "দ্য ডেইলি স্টার বাংলা",
+          "title": "India seek bowling solutions in bid for 4-1 finish",
+          "source": "Cricbuzz",
           "snippet": ""
         },
         {
-          "title": "সৌদির আগুনে ছেলে হারিয়ে মায়ের আহাজারি, ঋণে দিশাহারা পরিবার",
-          "source": "Barta 24",
+          "title": "Kuldeep, Varun and India's spin conundrum in New Zealand",
+          "source": "The New Indian Express",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "36b4808827034c893d",
+      "title": "hornets vs 76ers",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 43.2,
+      "published_at": "2026-11-01T00:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Tyrese Maxey carries Sixers to clutch win without LeBron James and Joel Embiid",
+          "source": "PhillyVoice",
+          "snippet": ""
+        },
+        {
+          "title": "Game Recap: 76ers 109, Hornets 104",
+          "source": "NBA.com",
+          "snippet": ""
+        },
+        {
+          "title": "Tyrese Maxey News: Shines in win over Charlotte",
+          "source": "RotoWire",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "9c3c231c41082071f4",
+      "title": "اقتصادي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.2,
+      "published_at": "2026-11-01T01:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ماذا يعني رفع الفائدة في مصر للاقتصاد والعملة والتضخم؟",
+          "source": "الشرق بلومبرغ",
+          "snippet": ""
+        },
+        {
+          "title": "حكاية فكرة رفع سعر الفائدة",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "برلماني: المواطن المصري المستفيد نسبياً من رفع الفائدة.. والحكومة الأكثر تضرراً",
+          "source": "معلومات مباشر",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6453ea350182d3c4d7",
+      "title": "صبا مبارك",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 41.9,
+      "published_at": "2026-11-01T00:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "\"جريمة في الزمالك\".. صبا مبارك تخطف الأنظار",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "صبا مبارك تتصدر ترند إكس في مصر بعد عرض جريمة في الزمالك",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "صبا مبارك تواجه حكم الإعدام في «جريمة في الزمالك».. تفاصيل الحلقتين الثانية والثالثة من مسلسل القصة الكاملة",
+          "source": "اخبارك نت",
           "snippet": ""
         }
       ],
@@ -554,7 +670,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 43.1,
+      "score": 41.5,
       "published_at": "2026-10-31T21:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -583,7 +699,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 42.8,
+      "score": 41.2,
       "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -594,42 +710,13 @@
           "snippet": ""
         },
         {
-          "title": "تفاصيل القبض على البلوجر علياء قمرون وزوجها في المنوفية.. وملاحقتها بأحكام وقضايا سابقة",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
           "title": "القبض على التيك توكر علياء قمرون",
           "source": "البوابة نيوز",
           "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "78ac8a4267e360f2f2",
-      "title": "آثار الحكيم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 42.8,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بعد اعتزال 15 عاما.. آثار الحكيم تظهر بين جمهور نوستالجيا 80/90 على البالون",
-          "source": "اليوم السابع",
-          "snippet": ""
         },
         {
-          "title": "ربنا يرزقنا حسن الخاتمة.. آثار الحكيم تبكي على المسرح بعد استقبال الجمهور",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "بعد 15 عامًا من الاعتزال.. آثار الحكيم تظهر متخفية وتنهار باكية",
-          "source": "إرم نيوز",
+          "title": "القبض على البلوجر علياء قمرون في حلوان بسبب حكمين قضائيين",
+          "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         }
       ],
@@ -641,7 +728,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 42.8,
+      "score": 41.2,
       "published_at": "2026-10-31T21:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -665,41 +752,12 @@
       "alert": false
     },
     {
-      "id": "36b4808827034c893d",
-      "title": "hornets vs 76ers",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 41.8,
-      "published_at": "2026-11-01T00:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Tyrese Maxey scores 38, Jaylen Brown returns to 76ers' lineup for 109-104 win over Hornets",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "VJ does it again! Edgecombe’s scary big shot caps off Sixers’ comeback win over Hornets",
-          "source": "Liberty Ballers",
-          "snippet": ""
-        },
-        {
-          "title": "Observations after Maxey's 38 points lead Sixers to Halloween win over Hornets",
-          "source": "NBC Sports Philadelphia",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "dd2f716bc03c223431",
       "title": "الديوان الملكي",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.5,
+      "score": 39.9,
       "published_at": "2026-10-31T23:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -710,13 +768,13 @@
           "snippet": ""
         },
         {
-          "title": "مجلس الأمن يرفض تمديد مهمة المينورسو وطي ملف الصحراء المغربية نهائياً",
-          "source": "صحيفة سبق الإلكترونية",
+          "title": "بوريطة: الفيتو الروسي بمجلس الأمن خلق واقعا جديدا في الصحراء",
+          "source": "سكاي نيوز عربية",
           "snippet": ""
         },
         {
-          "title": "بوريطة: الفيتو الروسي بمجلس الأمن خلق واقعا جديدا في الصحراء",
-          "source": "سكاي نيوز عربية",
+          "title": "مجلس الأمن يرفض تمديد مهمة المينورسو وطي ملف الصحراء المغربية نهائياً",
+          "source": "صحيفة سبق الإلكترونية",
           "snippet": ""
         }
       ],
@@ -728,24 +786,24 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 39.5,
+      "score": 37.9,
       "published_at": "2026-10-31T22:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "تحذير أميركي من \"سلاح يوم القيامة\" الفضائي الروسي",
-          "source": "سكاي نيوز عربية",
+          "title": "خامنئي يأمر الجيش الإيراني \"برد فوري وفاعل بدون أي قيود جغرافية\" على أي تهديدات جديدة",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "سلاح نووي روسي في الفضاء يهدد آلاف الأقمار الصناعية.. تحذير استخباراتي أميركي من كارثة عالمية",
-          "source": "Euronews.com",
-          "snippet": ""
-        },
-        {
-          "title": "تقييم استخباراتي: حرب الفضاء تقترب.. وروسيا والصين تستعدان لشَلّ أقمار أميركا",
+          "title": "ترامب: نستطيع ضرب مواقع إيران النووية في 10 دقائق",
           "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "الشرق الأوسط على الحافة.. هل تتجدد الحرب مع إيران بعد انتخابات التجديد النصفي؟",
+          "source": "CNN Arabic",
           "snippet": ""
         }
       ],
@@ -757,7 +815,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 39.2,
+      "score": 37.5,
       "published_at": "2026-10-31T22:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -781,70 +839,12 @@
       "alert": false
     },
     {
-      "id": "16069f17ca502bea66",
-      "title": "barca",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 38.8,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Turismo nautico Sicilia: 1.712 imprese, posti barca record",
-          "source": "NAUTICA REPORT",
-          "snippet": ""
-        },
-        {
-          "title": "INTERVISTE- Seacily 2026: Tamajo e Russo a Castellammare per il rilancio della Blue Economy siciliana",
-          "source": "La Tr3",
-          "snippet": ""
-        },
-        {
-          "title": "Mare, Trapani tra le prime province d’Italia: l’11,6% degli occupati lavora nella Blue Economy",
-          "source": "trapanisi.it",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f39ed5642ab5fae476",
-      "title": "barcelona fc",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 38.5,
-      "published_at": "2026-10-31T20:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Los datos del Barcelona - Aston Villa de la jornada 4 de la UEFA Champions League",
-          "source": "UEFA.com",
-          "snippet": ""
-        },
-        {
-          "title": "FC Barcelona - Aston Villa | Pronóstico y cuotas 03.11.2026",
-          "source": "Diario AS",
-          "snippet": ""
-        },
-        {
-          "title": "¿Cuándo juega el Barcelona su próximo partido? Fecha, horario y rival en la Champions League",
-          "source": "SPORT",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "a529a07aaaf8f54b42",
       "title": "فيديو كفر الشيخ لشابين وفتاتين",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 37.5,
+      "score": 35.9,
       "published_at": "2026-10-31T21:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -855,13 +855,13 @@
           "snippet": ""
         },
         {
-          "title": "ضبط المتورطين في فيديو متداول | مبتدا",
-          "source": "مبتدا",
+          "title": "ضبط شخصين وفتاتين بعد تداول فيديو يتضمن أفعالًا منافية للآداب العامة بكفر الشيخ",
+          "source": "صدى البلد",
           "snippet": ""
         },
         {
-          "title": "ضبط شخصين وفتاتين لارتكاب أفعال منافية للآداب العامة بكفر الشيخ",
-          "source": "شبكة تواصل الإخبارية",
+          "title": "ضبط المتورطين في فيديو متداول | مبتدا",
+          "source": "مبتدا",
           "snippet": ""
         }
       ],

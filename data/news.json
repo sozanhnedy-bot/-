@@ -1,7 +1,46 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T01:36:42.389183Z",
+  "updated_at": "2026-11-01T02:24:57.282728Z",
   "items": [
+    {
+      "id": "fa1caeb674f03e7ad1a3",
+      "region": "arab",
+      "title": "الجزيرة نت تتجدد.. تصفح أسهل ومحتوى أقرب إلى اهتماماتك - الجزيرة نت",
+      "summary": "الجزيرة نت تتجدد.. تصفح أسهل ومحتوى أقرب إلى اهتماماتك الجزيرة نت",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMi0wJBVV95cUxNNUVSbUdIcEFMZVJmbld2QVE2eHZ4YllHaG5uT1ZLOFViQm9hMElXcmg2bE0yT0xLNUlhUVZ0NDI4d2tXZHpRSERZREJvR01JTEVvWHlWZ0lSc3JqUDNlYThaMXFSMkxPNGtubkJDTzU4Y0JJUzhrcjV3YVkxV182Y3ZYOTN4TzBKWlhhQ0p2cXRnUkVjR190bEd4VjBTLXlSZmlxOXdPSEV3M0U5Z3JXQnZwblBSNVY5aHRwWlBnclVfS21jQVJXOUVrVGM0aEp4a19KRU9TX1FnODdhbkkzeS1VV2xYZWdhOWZGY0dQUk9neFNQQkd1YkhONzljVzdvVGttOS1SVWY2X2xFYng4bGpiZzNxT0JDTm1OdTBjNEVqTkVrblNBc0tId1prdzM1UHRFMmM5V0FLZXV4R29XOUMxNjQ3VWo4UXJZZjBnMnRSOVU?oc=5",
+      "source_name": "الجزيرة نت",
+      "source_url": "https://www.aljazeera.net",
+      "published_at": "2026-11-01T00:58:42Z",
+      "created_at": "2026-11-01T02:24:57.282728Z",
+      "summary_date": "2026-11-01"
+    },
+    {
+      "id": "22f5007cf9c6e1504428",
+      "region": "arab",
+      "title": "الخالدية يواصل تقدمه.. والرفاع الشرقي يوقف الأهلي - أخبار الخليج",
+      "summary": "الخالدية يواصل تقدمه.. والرفاع الشرقي يوقف الأهلي أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE55eS1RcG1iOUJkNERkZ3pVQ3JabmZVbVN1X2MyVEZXVHRLaU02ZWxTWXB1RGFnMzhtUmNoOVFmS0JOOVdzekhEU3A5OUVmV2tPS0t6MjI0QXZqMDdxZ3c?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "published_at": "2026-10-31T23:00:00Z",
+      "created_at": "2026-11-01T02:24:57.282728Z",
+      "summary_date": "2026-11-01"
+    },
+    {
+      "id": "6ed0e94a08cc1644a51f",
+      "region": "arab",
+      "title": "لبنان يرفض استخدام أراضيه لتهديد أمن الخليج - أخبار الخليج",
+      "summary": "لبنان يرفض استخدام أراضيه لتهديد أمن الخليج أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1KLXRYVEs0cW43c1dJU0RSZ1RRRGNDc1pTMGJEZmp5NkJjYzlaNWZIb3p3bDJIalVMRGJfYnBiYUdVbG42OVJuQ3lBaENKWFU1S2kwSmNHc29CTm9TQlE?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "published_at": "2026-10-31T23:00:00Z",
+      "created_at": "2026-11-01T02:24:57.282728Z",
+      "summary_date": "2026-11-01"
+    },
     {
       "id": "9472dc2461c130a650e1",
       "region": "world",
