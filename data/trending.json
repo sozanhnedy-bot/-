@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T03:09:42.426419Z",
+  "updated_at": "2026-11-01T03:54:05.717663Z",
   "items": [
     {
       "id": "9d4dca89a04a6c1244",
@@ -8,7 +8,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "20000+",
-      "score": 64.0,
+      "score": 62.5,
       "published_at": "2026-11-01T01:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -24,49 +24,20 @@
           "snippet": ""
         },
         {
-          "title": "India XI vs Bangladesh XI 11th/12th Place Play-off 2026 Full Scorecard & Updates",
-          "source": "CricTracker",
+          "title": "IND:117/1 (6.0) | Live Cricket Score | BAN vs IND | hk sixes 2026 | Cricket Scoreboard",
+          "source": "NDTV Sports",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "aa9ec6ee4c302d104e",
-      "title": "prince",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 61.3,
-      "published_at": "2026-11-01T02:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Prince William and Kate Middleton share rare Halloween photo of Prince Louis",
-          "source": "ABC News - Breaking News, Latest News and Videos",
-          "snippet": ""
-        },
-        {
-          "title": "Princess Kate makes debut Halloween post with adorable Prince Louis photo",
-          "source": "Yahoo News New Zealand",
-          "snippet": ""
-        },
-        {
-          "title": "Kate Middleton and Prince William Share Halloween Post for the First Time with Throwback Photo of Prince Louis",
-          "source": "People.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
       "id": "928f768040f9869599",
       "title": "hong kong vs sri lanka",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 60.3,
+      "approx_traffic": "10000+",
+      "score": 61.9,
       "published_at": "2026-11-01T02:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -90,12 +61,128 @@
       "alert": false
     },
     {
+      "id": "45fe65b7601d669dbf",
+      "title": "powerball numbers",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "5000+",
+      "score": 61.2,
+      "published_at": "2026-11-01T03:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Did anyone win Powerball's $760M jackpot? Here are the winning numbers for Oct. 31",
+          "source": "cbs8.com",
+          "snippet": ""
+        },
+        {
+          "title": "Florida ticket wins, Powerball at $760 million for Halloween, daylight saving",
+          "source": "Treasure Coast News",
+          "snippet": ""
+        },
+        {
+          "title": "Lottery ticket worth $100,000 sold in Lehigh County",
+          "source": "The Morning Call",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "243b90e66302da8d92",
+      "title": "منصه",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "2000+",
+      "score": 57.5,
+      "published_at": "2026-11-01T03:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "إف بي آي: كوريا الشمالية وراء سرقة 6 مليارات دولار من منصة باينانس",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "منصة \"بينانس\".. ماذا قال ترامب عن \"أكبر عملية اختراق في العالم\"؟",
+          "source": "CNN Arabic",
+          "snippet": ""
+        },
+        {
+          "title": "20 دقيقة هزّت عالم العملات المشفرة... وفتحت معركة المليارات",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "31e81a46dd6b454381",
+      "title": "club america",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 56.5,
+      "published_at": "2026-11-01T03:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "América vs Toluca Prediction, Betting Tips, Lineups & Odds | 31 Oct 2026",
+          "source": "Sportsgambler",
+          "snippet": ""
+        },
+        {
+          "title": "CF America vs Toluca: Where to watch, live stream, TV channel and kick-off time",
+          "source": "Goal.com",
+          "snippet": ""
+        },
+        {
+          "title": "América vs Toluca: the forgotten final of 110,000 that changed Mexican soccer forever",
+          "source": "Diario AS",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e92c9daacdaab4b790",
+      "title": "unlv football",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 56.2,
+      "published_at": "2026-11-01T03:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "!+[Here's Way To Watch]\" NIU Huskies vs UNLV Rebels ＬｉｖｅＦｒｅｅ ＯＮ Ｔｖ Ｃｈａｎｎｅｌ 01 November 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "RJ reporters, editors make picks for UNLV’s football game vs. Northern Illinois",
+          "source": "Las Vegas Review-Journal",
+          "snippet": ""
+        },
+        {
+          "title": "NIU heads to Vegas looking to change winless fortunes: What to know ahead of UNLV game",
+          "source": "Shaw Local",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "dd10cc5265a7cf5a2f",
       "title": "ban vs ind",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "5000+",
-      "score": 57.3,
+      "score": 55.9,
       "published_at": "2026-11-01T00:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -119,87 +206,29 @@
       "alert": false
     },
     {
-      "id": "702873e493a1de03ce",
-      "title": "rockets",
+      "id": "f82e4beff28b029a99",
+      "title": "grambling state football",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.0,
-      "published_at": "2026-11-01T02:40:00Z",
+      "approx_traffic": "1000+",
+      "score": 54.2,
+      "published_at": "2026-11-01T03:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Houston Rockets jersey history No. 35 - Kenneth Faried (2019)",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Houston Rockets jersey history No. 35 - Lonny Baxter (2005-06)",
-          "source": "Rockets Wire",
-          "snippet": ""
-        },
-        {
-          "title": "Houston Rockets jersey history No. 35 - Montrezl Harrell (2015-17)",
-          "source": "Fort Worth Star-Telegram",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "81786017fcc319bcea",
-      "title": "jabari smith jr.",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.0,
-      "published_at": "2026-11-01T02:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "James Harden dishes out seven assists vs. MIL",
-          "source": "NBC Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Rockets 120-110 Hawks (Oct 26, 2026) Game Recap",
+          "title": "Sharks 3-2 Canucks (Oct 29, 2026) Game Recap",
           "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Hawks unravel late in loss to Rockets",
-          "source": "The Atlanta Journal-Constitution",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "7f407508c18dc1e6fd",
-      "title": "bill skarsgård",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.0,
-      "published_at": "2026-11-01T02:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "‘The Mosquito Bowl’ Review: Bringing the Gridiron to Guadalcanal",
-          "source": "WSJ",
+          "title": "Sharks Insight: It All Starts With Killing Plays",
+          "source": "San Jose Hockey Now",
           "snippet": ""
         },
         {
-          "title": "War Is Hell—And 'The Mosquito Bowl' Won’t Let Us Forget It",
-          "source": "Time Magazine",
-          "snippet": ""
-        },
-        {
-          "title": "Tom Francis and Ray Nicholson Bonded During ‘The Mosquito Bowl’ Training (Exclusive)",
-          "source": "People.com",
+          "title": "Smith and Celebrini reunited as Sharks storm back to beat Vancouver Canucks",
+          "source": "The Mercury News",
           "snippet": ""
         }
       ],
@@ -211,7 +240,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "10000+",
-      "score": 55.0,
+      "score": 53.5,
       "published_at": "2026-10-31T22:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -228,94 +257,123 @@
         },
         {
           "title": "Hansi Flick talks Brian Farinas and Frenkie de Jong in defence ahead of Barcelona vs Alaves",
-          "source": "Barca Blaugranes",
+          "source": "Yahoo Sports",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "3c7d98570f1b8b9abb",
-      "title": "victor wembanyama",
+      "id": "3e4034fce4bc701c79",
+      "title": "hong kong vs sri lanka",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 54.0,
-      "published_at": "2026-11-01T02:40:00Z",
+      "approx_traffic": "1000+",
+      "score": 52.9,
+      "published_at": "2026-11-01T02:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "OMAN 93/1 (4.4) vs SL 92/5 (Zohaib Amanat 43(13) Aamir Kaleem 1(1)) | Sri Lanka vs Oman, Plate, Semi Final 1, Hong Kong Sixes 2026 Live Cricket Stream, live scores, ball-by-ball commentary, highlights, videos, news, and more in USA & Canada",
+          "source": "Cricbuzz",
+          "snippet": ""
+        },
+        {
+          "title": "Plate, 1st Semi-Final, Hong Kong International Sixes at Mong Kok, Oct 31 2026",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "OMA:93/1 (4.4) | Live Cricket Score | SL vs OMA | hk sixes 2026 | Cricket Scoreboard",
+          "source": "NDTV Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4117a7db835d5e2311",
+      "title": "nebraska football schedule",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 51.5,
+      "published_at": "2026-11-01T03:40:00Z",
       "source": "Google Trends",
       "source_count": 2,
       "news_items": [
         {
-          "title": "Victor Wembanyama fights off defender for and-1",
-          "source": "ESPN",
+          "title": "[4k]Nebraska football schedule",
+          "source": "Pierce Manufacturing",
           "snippet": ""
         },
         {
-          "title": "Victor Wembanyama elevates for the big-time block",
-          "source": "ESPN",
+          "title": "🎞~Nebraska Live Stream",
+          "source": "Pierce Manufacturing",
           "snippet": ""
         },
         {
-          "title": "Victor Wembanyama doing it on both ends of the floor",
-          "source": "NBA.com",
+          "title": "No. 1 Huskers Stifle Spartans in Top-25 Battle - University of Nebraska - Official Athletics Website",
+          "source": "huskers.com",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "bf70b169f27a4094d1",
-      "title": "martha stewart",
+      "id": "67a2b7ab797ac0c428",
+      "title": "kellen moore",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.0,
-      "published_at": "2026-11-01T02:40:00Z",
+      "approx_traffic": "500+",
+      "score": 50.9,
+      "published_at": "2026-11-01T03:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Martha Stewart and Helen Mirren Twinned in This Luxe Sweater Trend That I’m Coveting for Fall",
-          "source": "People.com",
+          "title": "Kellen Moore returning to Boise State for statue unveiling Saturday",
+          "source": "KTVB",
           "snippet": ""
         },
         {
-          "title": "Martha Stewart’s Green Christmas Living Room Is a Masterclass in Festive Decorating – It’s One of the Prettiest Holiday Schemes I’ve Ever Seen",
-          "source": "Homes and Gardens",
+          "title": "Kellen Moore returns to Boise State for a ‘really cool honor.’ What else he said",
+          "source": "Idaho Statesman",
           "snippet": ""
         },
         {
-          "title": "Martha Stewart and Rihanna Just Revamped Matching Lounge Sets for Travel With One Fall-Coded Detail",
-          "source": "InStyle",
+          "title": "BRONCO GAMEDAY: Kellen Moore returns to Boise State for statue unveiling",
+          "source": "Idaho Press",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "a7dcb2eac2691d1114",
-      "title": "wnba commissioner",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.7,
-      "published_at": "2026-11-01T02:30:00Z",
+      "id": "476f75b4ed3c701995",
+      "title": "زفاف",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 50.5,
+      "published_at": "2026-11-01T03:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Sophie Cunningham Says the WNBA Needs A Commissioner With “A Backbone”",
-          "source": "Yahoo Sports",
+          "title": "خشي قلة الحضور في زفافه.. فنشر دعوة عامة وأتى الآلاف بعضهم بسيارات فاخرة",
+          "source": "الجزيرة نت",
           "snippet": ""
         },
         {
-          "title": "Sophie Cunningham's 'Mean' Mishap Says It All About Fever's Growth",
-          "source": "Sports Illustrated",
+          "title": "آلاف الغرباء يحضرون حفل زفاف عريس يتيم.",
+          "source": "Vietnam.vn",
           "snippet": ""
         },
         {
-          "title": "Sophie Cunningham Says Indiana Fever Had Just 200 Fans Before Caitlin Clark Arrived",
-          "source": "Fadeaway World",
+          "title": "«مايباخ» وهدايا.. غرباء يحولون زفاف عريس وحيد إلى أسطورة",
+          "source": "صحيفة الخليج",
           "snippet": ""
         }
       ],
@@ -327,7 +385,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 51.3,
+      "score": 49.9,
       "published_at": "2026-11-01T02:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -348,155 +406,15 @@
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "68fe8249562f49ff22",
-      "title": "um game",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.0,
-      "published_at": "2026-11-01T02:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "In Michigan’s Senate race, everything is on the table — including football",
-          "source": "NBC News",
-          "snippet": ""
-        },
-        {
-          "title": "Abdul El-Sayed greets fans at Michigan Stadium before the Michigan football game on Saturday, Oct. 24, 2026. 📹 by Junfu Han, Detroit Free Press @abdulelsayed #AbdulElSayed",
-          "source": "Instagram",
-          "snippet": ""
-        },
-        {
-          "title": "Abdul El-Sayed Makes a Splash in New Ad “Pool,” Airing During Michigan Football Game",
-          "source": "Abdul for U.S. Senate",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b8ea0a59f7e922fc62",
-      "title": "زيادة المعاشات",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 51.0,
-      "published_at": "2026-11-01T01:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "هل يحصل جميع أصحاب المعاشات على 2080 جنيهًا حدًا أدنى؟.. التفاصيل والفئات المستفيدة",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "هل يحصل أصحاب المعاشات على زيادة في يناير 2027؟.. تفاصيل قرار الحكومة برفع الحد الأدنى",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "قبل صرف معاشات نوفمبر 2026.. من يستفيد من قرار الزيادة الجديد في يناير؟",
-          "source": "الوطن",
-          "snippet": ""
-        }
-      ],
       "alert": false
-    },
-    {
-      "id": "68ff9ab69c6e095577",
-      "title": "krunal pandya",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 49.3,
-      "published_at": "2026-11-01T01:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "UAE beat India and Pakistan, reach Hong Kong Sixes Cup semifinals",
-          "source": "Gulf News",
-          "snippet": ""
-        },
-        {
-          "title": "United Arab Emirates vs India Match 12 Highlights 2026: United Arab Emirates beat India by 6 wickets",
-          "source": "SportsTak",
-          "snippet": ""
-        },
-        {
-          "title": "United Arab Emirates vs India T10 Today at Mission Road Ground, Mong Kok, Hong Kong stadium",
-          "source": "AIMA Media",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "3561886e1cb737d670",
-      "title": "kenrich williams",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 48.0,
-      "published_at": "2026-11-01T02:40:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "Thunder Rockets Basketball",
-          "source": "Corsicana Daily Sun",
-          "snippet": ""
-        },
-        {
-          "title": "Thunder Rockets Basketball",
-          "source": "itemonline.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "924bef2984f435d7b4",
-      "title": "pete ricketts",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.0,
-      "published_at": "2026-11-01T02:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Pete Ricketts Leads Dan Osborn in Nebraska Senate Race, Poll Finds",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Rail merger dispute could help decide the U.S. Senate",
-          "source": "Axios",
-          "snippet": ""
-        },
-        {
-          "title": "Florida, Nebraska Senate Races Shift Left in Midterm Homestretch",
-          "source": "Bloomberg.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
     },
     {
       "id": "0a7b27ea6781dd907a",
       "title": "sl vs hk",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 46.4,
+      "approx_traffic": "500+",
+      "score": 48.9,
       "published_at": "2026-11-01T02:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -520,12 +438,215 @@
       "alert": false
     },
     {
+      "id": "68ff9ab69c6e095577",
+      "title": "krunal pandya",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 47.9,
+      "published_at": "2026-11-01T01:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "UAE beat India and Pakistan, reach Hong Kong Sixes Cup semifinals",
+          "source": "Gulf News",
+          "snippet": ""
+        },
+        {
+          "title": "United Arab Emirates vs India Match 12 Highlights 2026: United Arab Emirates beat India by 6 wickets",
+          "source": "SportsTak",
+          "snippet": ""
+        },
+        {
+          "title": "United Arab Emirates vs India T10 Today at Mission Road Ground, Mong Kok, Hong Kong stadium",
+          "source": "AIMA Media",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "43075ef6d54125efaa",
+      "title": "aston villa vs fulham f.c. standings",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 47.2,
+      "published_at": "2026-10-31T22:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Aston Villa 1-1 Fulham: Zion Suzuki own goal blunder after Nicolas Jackson scores again",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Emery's focus fully on Fulham despite Barcelona tie - World - Sports",
+          "source": "Ahram Online",
+          "snippet": ""
+        },
+        {
+          "title": "Aston Villa Football Club - The Official Club Website",
+          "source": "Aston Villa",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6a52e8a96c0868518a",
+      "title": "robert lewandowski",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.9,
+      "published_at": "2026-11-01T03:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Nawet fani Chicago Fire \"przejechali się\" po Lewandowskim. Tak go nazwali",
+          "source": "Przegląd Sportowy",
+          "snippet": ""
+        },
+        {
+          "title": "Mocny głos z USA. \"Lewandowski nie wywiązuje się z zadania\"",
+          "source": "SportoweFakty",
+          "snippet": ""
+        },
+        {
+          "title": "Coraz trudniejsza sytuacja Lewandowskiego w USA. \"Wyraźne ograniczenia\"",
+          "source": "Interia Sport",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f5416c60f07fa8f732",
+      "title": "mike norvell",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.9,
+      "published_at": "2026-11-01T03:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Plane flies misspelled 'Fire Novell' banner at Clemson-Florida State",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "'Fire Novell?' FSU football fans' protest includes major typo",
+          "source": "Tallahassee Democrat",
+          "snippet": ""
+        },
+        {
+          "title": "Plane Banner Calling for Mike Norvell's Firing Seen in Video, Photo Ahead of FSU vs. Clemson",
+          "source": "Bleacher Report",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "409068356bd631c58f",
+      "title": "إثيوبيا",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 46.2,
+      "published_at": "2026-11-01T03:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعد اتهامات لإثيوبيا.. بيان مصري بشأن هجمات بطائرات مُسيرة في السودان",
+          "source": "CNN Arabic",
+          "snippet": ""
+        },
+        {
+          "title": "مصر تدين تصاعد الهجمات بالطائرات المسيرة في السودان وتؤكد ضرورة حماية المدنيين",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "عفو رئاسي في الجزائر يشمل أكثر من 5500 سجين",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "de6fd3fd7e0858305a",
+      "title": "أخبار الزمالك",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 44.2,
+      "published_at": "2026-11-01T03:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "صفقة من العيار الثقيل.. لاعب أساسي في الزمالك يسعى للانتقال إلى الأهلي",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "كريم رمزي يكشف مفاجأة بشأن لاعب مهم في الزمالك.. ووسطاء يستفسرون عن موقف الأهلي من ضمه",
+          "source": "الزمالك اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "صفقة قوية.. لاعب أساسي في الزمالك يقترب من الانتقال إلى الأهلي",
+          "source": "جريدة آخر الأخبار",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "c4fa1e87353f6c27d2",
+      "title": "miami university football",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 42.9,
+      "published_at": "2026-11-01T02:50:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Time Change: Nov. 10 Contest Versus Ohio Moved to 8 p.m.",
+          "source": "Miami University RedHawks",
+          "snippet": ""
+        },
+        {
+          "title": "RedHawks Put Win Streak on the Line Versus Buffalo on Tuesday",
+          "source": "Miami University RedHawks",
+          "snippet": ""
+        },
+        {
+          "title": "November 3, 2026: Ohio vs Akron Totals Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "6a39288444de2a6133",
       "title": "افلام",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 43.7,
+      "score": 42.2,
       "published_at": "2026-11-01T01:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -554,7 +675,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 43.1,
+      "score": 41.6,
       "published_at": "2026-11-01T02:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -583,7 +704,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "1000+",
-      "score": 42.7,
+      "score": 41.2,
       "published_at": "2026-10-31T21:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -612,7 +733,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.7,
+      "score": 40.2,
       "published_at": "2026-11-01T01:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -636,41 +757,12 @@
       "alert": false
     },
     {
-      "id": "36b4808827034c893d",
-      "title": "hornets vs 76ers",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 41.7,
-      "published_at": "2026-11-01T00:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "76ers 109-104 Hornets (Oct 31, 2026) Game Recap",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Tyrese Maxey News: Shines in win over Charlotte",
-          "source": "RotoWire",
-          "snippet": ""
-        },
-        {
-          "title": "VJ does it again! Edgecombe’s scary big shot caps off Sixers’ comeback win over Hornets",
-          "source": "Liberty Ballers",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "9c3c231c41082071f4",
       "title": "اقتصادي",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 40.7,
+      "score": 39.2,
       "published_at": "2026-11-01T01:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -694,58 +786,29 @@
       "alert": false
     },
     {
-      "id": "6453ea350182d3c4d7",
-      "title": "صبا مبارك",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 40.4,
-      "published_at": "2026-11-01T00:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "\"جريمة في الزمالك\".. صبا مبارك تخطف الأنظار",
-          "source": "إرم نيوز",
-          "snippet": ""
-        },
-        {
-          "title": "صبا مبارك تتصدر ترند إكس في مصر بعد عرض جريمة في الزمالك",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "صبا مبارك تواجه حكم الإعدام في «جريمة في الزمالك».. تفاصيل الحلقتين الثانية والثالثة من مسلسل القصة الكاملة",
-          "source": "اخبارك نت",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "8780171c89c829fe03",
       "title": "أشرف بن شرقي",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 40.0,
+      "score": 38.5,
       "published_at": "2026-10-31T21:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "إنبي: محمد بركات مستمر ولا عرض رسمي من الأهلي لضم حامد عبد الله",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
-        },
-        {
-          "title": "تعرف علي تفاصيل الجلسة المرتقبة بين الأهلي وبن شرقي لحسم ملف التجديد",
-          "source": "صوت الأمة",
-          "snippet": ""
-        },
-        {
-          "title": "عموته ووائل جمعة في المصيدة.. تصريحات بعد الفوز على مودرن \"فيديو\"",
+          "title": "إنبى: محمد بركات مستمر فى القيادة الفنية.. والأهلى لم يطلب ضم حامد عبد الله",
           "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "بديل بن شرقي داخل الأهلي بعد فرمان رحيله.. اشتعلت",
+          "source": "الأهلي نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "تحرك عاجل لتوقيع جوهرة إفريقيا للأهلي",
+          "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         }
       ],
@@ -757,7 +820,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 39.7,
+      "score": 38.2,
       "published_at": "2026-10-31T23:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -781,41 +844,12 @@
       "alert": false
     },
     {
-      "id": "319a287f7f8cca0837",
-      "title": "مسرح",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 39.7,
-      "published_at": "2026-10-31T21:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "سهير المرشدى وإلهام شاهين وأشرف عبد الباقى وبدير يصلون مهرجان شرم الشيخ",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "وصول قسطنطين كرياك وديانا لازار لشرم الشيخ للمشاركة بالدورة الـ11 لمهرجان شرم الشيخ الدولي للمسرح الشبابي",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "حنان مطاوع عن تكريم والدتها سهير المرشدي: «مقدّرة في بلدها»",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "c0015368e39742ad7e",
       "title": "مي عز الدين",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 36.1,
+      "score": 34.6,
       "published_at": "2026-10-31T22:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -833,35 +867,6 @@
         {
           "title": "زوج مي عز الدين يردّ على الجدل حول عمله وعلاقاته في الوسط الفني بعد زواجه منها – موقع بصراحة-موقع النجوم",
           "source": "bisara7a",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a529a07aaaf8f54b42",
-      "title": "فيديو كفر الشيخ لشابين وفتاتين",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 34.4,
-      "published_at": "2026-10-31T21:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "الداخلية تكشف ملابسات فيديو الأفعال المنافية للآداب خلف مبنى بكفر الشيخ",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "ضبط شخصين وفتاتين بعد تداول فيديو يتضمن أفعالًا منافية للآداب العامة بكفر الشيخ",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "ضبط المتورطين في فيديو متداول | مبتدا",
-          "source": "مبتدا",
           "snippet": ""
         }
       ],
