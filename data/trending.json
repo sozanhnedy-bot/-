@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T12:50:28.271390Z",
+  "updated_at": "2026-11-01T13:35:54.942551Z",
   "items": [
     {
-      "id": "e5e6b988b6803d2069",
-      "title": "موعد صلاة العصر",
+      "id": "c9325fcbfd2076cb69",
+      "title": "موعد اذان العصر",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "10000+",
-      "score": 64.3,
+      "score": 62.8,
       "published_at": "2026-11-01T12:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -24,37 +24,66 @@
           "snippet": ""
         },
         {
-          "title": "موعد أذان وصلاة المغرب اليوم الجمعة الموافق 30 أكتوبر",
+          "title": "من فكرة لتوفير الشموع لساعة بنغيّرها كل سنة.. القصة الكاملة للتوقيت الشتوي",
           "source": "Masrawy",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "90c36be6a511ce99cd",
+      "title": "star trek",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "5000+",
+      "score": 61.5,
+      "published_at": "2026-11-01T13:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "What Patrick Stewart’s ‘brief’ dementia journey reveals about lifespans after diagnosis",
+          "source": "The Washington Post",
+          "snippet": ""
+        },
+        {
+          "title": "How Sir Ian McKellen and Star Trek cast members are remembering Sir Patrick Stewart",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "‘SNL’ Pays Tribute To Patrick Stewart With Clip From His 1994 Episode",
+          "source": "Deadline",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "8743229c47b1298c94",
+      "id": "96c373672e0a0e12e6",
       "title": "طرابزون سبور ضد غازي عنتاب",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 60.6,
-      "published_at": "2026-11-01T12:10:00Z",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "2000+",
+      "score": 56.1,
+      "published_at": "2026-11-01T12:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "ما القنوات الناقلة لمباراة طرابزون سبور وغازي عنتاب في الدوري التركي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
+          "snippet": ""
+        },
         {
           "title": "محمد صلاح يقود طرابزون سبور أمام غازي عنتاب فى الدوري التركي",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "محمد صلاح يقود التشكيل المتوقع لطرابزون أمام غازي عنتاب في الدوري التركي",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "الموعد والقناة الناقلة لمباراة طرابزون سبور ضد غازي عنتاب",
-          "source": "يلاكورة",
+          "title": "مباشر.. مباراة طرابزون سبور ضد غازي عنتاب في الدوري التركي.. لحظة بلحظة",
+          "source": "الجزيرة نت",
           "snippet": ""
         }
       ],
@@ -66,314 +95,111 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 57.3,
+      "score": 55.8,
       "published_at": "2026-11-01T12:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "$$#→【TRT1-CANLI+!】 Trabzonspor Gaziantep FK Canlı Ücretsiz Şampiyonlar Ligi Maçı TV'de 09 Eylül 2026",
+          "title": "TRT 1 şifresiz canlı izle: Gaziantep FK Trabzonspor maçı canlı TRT 1 izle yayın 3 Temmuz 2026,",
           "source": "Pierce Manufacturing",
           "snippet": ""
         },
         {
-          "title": "Thomas Reis sakatlıklarla ilgili son durumu açıkladı",
+          "title": "Orhan Ak açıkladı! “Bugün burada savaşan bir takım olacak”",
           "source": "61SAAT",
           "snippet": ""
         },
         {
-          "title": "TRABZONSPOR GAZİANTEP FK CANLI | Trabzonspor, Gaziantep FK'yi konuk ediyor! İşte Thomas Reis'in 11'i…",
-          "source": "Sabah",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "c9325fcbfd2076cb69",
-      "title": "موعد اذان العصر",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 57.3,
-      "published_at": "2026-11-01T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مواقيت الصلاة اليوم الأحد 1 نوفمبر 2026 بمحافظات الجمهورية",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "موعد أذان وصلاة الظهر اليوم الأحد الموافق 1 نوفمبر",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "«الظهر في الإسكندرية 11.44».. جدول مواقيت الصلاة في محافظات مصر غدًا السبت 31 أكتوبر 2026",
-          "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "c68a218a8ea6c81efa",
-      "title": "2027",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 56.3,
-      "published_at": "2026-11-01T12:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "تفاصيل زيادة الحد الأدنى للمعاشات فى يناير 2027 والفئات المستفيدة",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "قبل صرف معاشات نوفمبر 2026.. من يستفيد من قرار الزيادة الجديد في يناير؟",
-          "source": "الوطن",
-          "snippet": ""
-        },
-        {
-          "title": "هل سيتغير الحد الأدنى لمبلغ المعاش التقاعدي اعتبارًا من عام 2027؟",
-          "source": "Vietnam.vn",
+          "title": "Onuachu, G.Antep’i seviyor",
+          "source": "Fotomaç",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "96c373672e0a0e12e6",
-      "title": "طرابزون سبور ضد غازي عنتاب",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "93dd6b1ffeb1b11867",
+      "title": "servicio de ciudadanía e inmigración de los estados unidos",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 54.7,
-      "published_at": "2026-11-01T12:40:00Z",
+      "score": 54.5,
+      "published_at": "2026-11-01T13:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "ما القنوات الناقلة لمباراة طرابزون سبور وغازي عنتاب في الدوري التركي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Kooora",
+          "title": "USCIS suma 2,200,000 acciones migratorias desde el regreso de Donald Trump a la Casa Blanca",
+          "source": "Univision",
           "snippet": ""
         },
         {
-          "title": "محمد صلاح يقود التشكيل المتوقع لطرابزون أمام غازي عنتاب في الدوري التركي",
+          "title": "22 personas baleadas y 62 muertes bajo custodia de ICE: las cifras de la era Trump",
+          "source": "Conexión Migrante",
+          "snippet": ""
+        },
+        {
+          "title": "Cubanos con trámites pendientes ante un escenario más restrictivo: USCIS reporta 2,2 millones de acciones migratorias desde 2025",
+          "source": "Cuba en Miami",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "32a2ceb1f842318975",
+      "title": "درجة حرارة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 50.5,
+      "published_at": "2026-11-01T12:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "تغيرات مفاجئة.. الأرصاد تكشف عن تقلبات درجات الحرارة اعتبارا من الغد",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "طقس مفاجئ خلال الأسبوع الحالي في مصر.. رياح وأمطار رغم ارتفاع الحرارة",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "فيديو.. الأرصاد: غدا ذروة ارتفاع الحرارة.. والعظمى تصل إلى 37",
           "source": "بوابة الشروق",
           "snippet": ""
-        },
-        {
-          "title": "6 مباريات فى 30 يوما.. ماذا ينتظر محمد صلاح مع طرابزون سبور فى نوفمبر؟",
-          "source": "اليوم السابع",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "125875e5be7827e283",
-      "title": "breece hall",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.3,
-      "published_at": "2026-11-01T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Is Breece Hall playing today? Injury update, Braelon Allen start-or-sit advice for Week 8",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Braelon Allen Set to start Sunday",
-          "source": "Fantasy Footballers Podcast",
-          "snippet": ""
-        },
-        {
-          "title": "Glenn: Breece Hall (quad) questionable for Week 8",
-          "source": "NBC Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "a89b4e276d561f539a",
-      "title": "getafe vs sevilla",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.7,
-      "published_at": "2026-11-01T12:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Getafe vs Sevilla: Spanish La Liga stats & head-to-head",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Predictions for Sevilla's XI from the sports press",
-          "source": "Comuniate",
-          "snippet": ""
-        },
-        {
-          "title": "Getafe CF vs Sevilla FC at Coliseum — LaLiga Tickets",
-          "source": "KarloBag.eu",
-          "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "fff070f2193ef9af77",
-      "title": "سعر الذهب اليوم عيار 21 الآن اليوم السابع",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 53.3,
-      "published_at": "2026-11-01T12:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "أسعار الذهب اليوم الأحد في مصر خلال بداية التعاملات الصباحية",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        },
-        {
-          "title": "تعرف على آخر تطورات سعر الذهب اليوم.. عيار 24 بـ7045 جنيها",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "تعرف على أسعار الذهب في مصر مع منتصف تعاملات اليوم الأحد",
-          "source": "معلومات مباشر",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "aafe294b3562a8f0d7",
-      "title": "como vs venezia",
+      "id": "da28b3ac72a0f57b28",
+      "title": "qatar",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 51.3,
-      "published_at": "2026-11-01T11:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Con Nico Paz titular, el Como recibe al Venezia por la Serie A :: Olé - ole.com.ar",
-          "source": "Olé",
-          "snippet": ""
-        },
-        {
-          "title": "Como – Venecia: horario y dónde ver hoy por TV el partido de fútbol de la Serie A",
-          "source": "La Vanguardia",
-          "snippet": ""
-        },
-        {
-          "title": "Venezia se concentra para salir del último lugar ante Como 1907",
-          "source": "Anecdotarios",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "79fbf8695fc86f10ab",
-      "title": "megan fox",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 51.0,
-      "published_at": "2026-11-01T12:20:00Z",
+      "score": 50.5,
+      "published_at": "2026-11-01T12:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Michele Morrone Becomes Part-Owner of Subs Website, Will Sell PPV Intimate Content to Fans",
-          "source": "IMDb",
+          "title": "Qatari Gas Tanker Struck in Gulf",
+          "source": "ASHARQ AL-AWSAT English",
           "snippet": ""
         },
         {
-          "title": "365 Days' Michele Morrone Joins Adult Platform",
-          "source": "조선일보",
+          "title": "Qatari LNG carrier struck by unidentified objects in Gulf waters; no injuries reported",
+          "source": "Saudi Gazette",
           "snippet": ""
         },
         {
-          "title": "Sydney Sweeney's hunky co-star signs up for X-rated OnlyFans-style site alongside Megan Fox",
-          "source": "The Sun",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0a4dacfbfb3c70b931",
-      "title": "getafe - sevilla",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.6,
-      "published_at": "2026-11-01T12:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Getafe - Sevilla: horario y dónde ver hoy en TV y online el partido de la jornada 11 de LaLiga EA Sports",
-          "source": "MARCA",
-          "snippet": ""
-        },
-        {
-          "title": "🚨 Bordalás con lo justo, LGP con todo: hay ONCES en el Getafe -Sevilla",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Luis García repite el once de Osasuna; Bordalás cuenta de inicio con Valou y Boselli",
-          "source": "Infobae",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "10a9bdf776db152357",
-      "title": "montana millionaire",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.6,
-      "published_at": "2026-11-01T12:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Montana Millionaire tickets now on sale with sixth grand prize",
-          "source": "Watauga Democrat",
-          "snippet": ""
-        },
-        {
-          "title": "Montana Millionaire tickets now on sale with sixth grand prize",
-          "source": "Community Newspaper Group",
-          "snippet": ""
-        },
-        {
-          "title": "Montana Millionaire tickets now on sale with sixth grand prize",
-          "source": "WFMZ.com",
+          "title": "Indian Seafarers Targeted In Projectile Attacks At Strait of Hormuz Safe: Sarbananda Sonowal",
+          "source": "Deccan Chronicle",
           "snippet": ""
         }
       ],
@@ -384,95 +210,37 @@
       "title": "trabzonspor vs gaziantep",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.7,
+      "approx_traffic": "500+",
+      "score": 50.1,
       "published_at": "2026-11-01T12:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "CANLI! Gaziantep FK Trabzonspor maçı canlı yayın | HS Football maçı TRT 1 izle,",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        },
-        {
-          "title": "Thomas Reis sakatlıklarla ilgili son durumu açıkladı",
+          "title": "Orhan Ak açıkladı! “Bugün burada savaşan bir takım olacak”",
           "source": "61SAAT",
           "snippet": ""
         },
         {
-          "title": "Trabzonspor, Gaziantep FK ile Kritik Maçta Karşılaşıyor",
-          "source": "www.superlighaberler.com",
+          "title": "Onuachu, G.Antep’i seviyor",
+          "source": "Fotomaç",
+          "snippet": ""
+        },
+        {
+          "title": "Trabzonspor-Gaziantep FK maçı sonrası Papara Park'ta son durum / CANLI YAYIN",
+          "source": "Haber61",
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "ab7470f040e9059927",
-      "title": "getafe vs sevilla",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-01T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Preview: Getafe vs Sevilla - prediction, team news, lineups",
-          "source": "Sports Mole",
-          "snippet": ""
-        },
-        {
-          "title": "Getafe CF vs Sevilla FC at Coliseum — LaLiga Tickets",
-          "source": "KarloBag.eu",
-          "snippet": ""
-        },
-        {
-          "title": "Getafe vs Sevilla Predictions, Bet Builder Tips, Lineups, Odds",
-          "source": "WhoScored.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "36c0e6feb611ec3826",
-      "title": "london vs man city",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-01T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Putellas provides mindset change as London City bid to upstage champions",
-          "source": "The Guardian",
-          "snippet": ""
-        },
-        {
-          "title": "Will Kang's London City disrupt this season's WSL? Man City clash might give us the answer",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Jeglertz on potential Coffey return against London City",
-          "source": "Manchester City FC",
-          "snippet": ""
-        }
-      ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "8afc83135f5f9bf6fd",
       "title": "محمود عصمت",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 47.0,
+      "approx_traffic": "500+",
+      "score": 49.5,
       "published_at": "2026-11-01T12:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -496,41 +264,12 @@
       "alert": false
     },
     {
-      "id": "090eb1a8a874b93cc4",
-      "title": "ire vs nam",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.0,
-      "published_at": "2026-11-01T12:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Ireland's Indian-origin pacer Jai Moondra creates cricket history with record-breaking 6/26 bowling figur",
-          "source": "The Times of India",
-          "snippet": ""
-        },
-        {
-          "title": "Namibia v Ireland: Tourists fall behind in ODI series after defeat in Windhoek",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Smit, Brassell set up Namibia's series victory over Ireland",
-          "source": "Cricbuzz",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "de317ee1f9f4685da3",
       "title": "طائر",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 46.7,
+      "approx_traffic": "500+",
+      "score": 49.1,
       "published_at": "2026-11-01T12:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -554,19 +293,367 @@
       "alert": false
     },
     {
+      "id": "6627b9d4282b537177",
+      "title": "alex de minaur",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 48.5,
+      "published_at": "2026-11-01T13:20:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "[ＬＩＶＥＳＴＲＥＡＭs]𝐓𝐕!! Vienna Open final match LIvE FrEe StReAm",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "[!Buffstreams!] Where To Watch Carlos Alcaraz vs de Minaur Live Free Tennis in US UK AU 01 November 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "+)HERE'S!!(* WAY TO WATCH ATP Vienna Open final 2026 Live Updates! 01 november 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "fc8fb6877c532d324c",
+      "title": "بلدية اسطنبول ضد سامسون سبور",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T13:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Basaksehir v Samsunspor Odds",
+          "source": "FanDuel Sportsbook",
+          "snippet": ""
+        },
+        {
+          "title": "Shomurodov in the starting lineup: Istanbul Basaksehir hosts Samsunspor today",
+          "source": "Zamin.uz",
+          "snippet": ""
+        },
+        {
+          "title": "[Live/fREE]** Samsunspor vs. Basaksehir 𝐋ＩＶＥ Ｓｔｒｅａｍｓ",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "238ff08d91ef33ef25",
+      "title": "سار",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T13:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "«سار» السعودية تخفض الانبعاثات 364.8 ألف طن وتوفر 139 مليون لتر وقود",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "مركز القيادة والتحكم بقوات أمن المنشآت.. منظومة أمنية متكاملة",
+          "source": "www.al-jazirahonline.com",
+          "snippet": ""
+        },
+        {
+          "title": "السعودية توفر 139 مليون لتر وقود عبر القطارات وتتجنب 364 ألف طن من الانبعاثات.. ماذا تكشف أرقام «سار»؟",
+          "source": "nedaelwatan.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "b763cde394d8d78e72",
+      "title": "browns vs steelers",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T13:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Steelers-Browns scouting report: The highly paid pass rush has to get to Deshaun Watson",
+          "source": "Pittsburgh Post-Gazette",
+          "snippet": ""
+        },
+        {
+          "title": "Cleveland Browns vs. Pittsburgh Steelers: How to watch today, start time, where to stream and more",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Browns vs. Steelers predictions, odds. Who's winning NFL Week 8 game?",
+          "source": "USA Today",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "8bff565b6704ba0927",
+      "title": "is lamar jackson playing today",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-01T13:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Ravens QB Jackson to return for Bills clash, calls ankle pain 'bearable'",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "Lamar Jackson to start Sunday vs. Bills | 'The NFL Report'",
+          "source": "NFL.com",
+          "snippet": ""
+        },
+        {
+          "title": "Joe Brady: We know we’re going to get the best version of Lamar Jackson",
+          "source": "NBC Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "c5a294d864ca53bf5c",
+      "title": "falkirk vs celtic",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.2,
+      "published_at": "2026-11-01T13:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "[CBS-TV] Where to watch Falkirk vs Celtic Live Free October 15, 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "Falkirk v CELTIC // LIVE Full-Time Reaction // ACSOM // A Celtic State of Mind",
+          "source": "Celtic news now - Celtic FC News",
+          "snippet": ""
+        },
+        {
+          "title": "Falkirk vs Celtic LIVE Score Updates in Scottish Premiership Match",
+          "source": "VAVEL.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "b52cd78e1eb4de7cad",
+      "title": "election day",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.2,
+      "published_at": "2026-11-01T13:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Democrats, unaffiliated voters fuel record early voting turnout in North Carolina",
+          "source": "WRAL",
+          "snippet": ""
+        },
+        {
+          "title": "Early voting for the 2026 General Election ends tomorrow",
+          "source": "Wake County Government (.gov)",
+          "snippet": ""
+        },
+        {
+          "title": "'The only way I can make a difference': WNC voters turn out on final day of early voting",
+          "source": "WLOS",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "133bc31974a64e6f23",
+      "title": "college basketball",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.2,
+      "published_at": "2026-11-01T13:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Ranking the top 100 players in men's college basketball",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "College basketball’s treats, plus the NHL MVP demands a trade",
+          "source": "The New York Times",
+          "snippet": ""
+        },
+        {
+          "title": "College basketball is back, but this season looks different",
+          "source": "NCAA.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "365acc27338e41a3f2",
+      "title": "فالكريك ضد سيلتك",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 46.8,
+      "published_at": "2026-11-01T13:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "هيثم حسن: تمثيل منتخب مصر شرف عظيم.. ومباراتان مالاوي حاسمتان في مشوارنا",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "هيثم حسن يتصدر تشكيل سيلتيك ضد فالكريك فى الدوري الاسكتلندي",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "هيثم حسن: هدفي الأول مع سيلتك اقترب .. واللعب لمنتخب مصر شرف عظيم",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ab7470f040e9059927",
+      "title": "getafe vs sevilla",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 46.8,
+      "published_at": "2026-11-01T12:30:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "$+ +LIVE@sTRAmS]*Falkirk vs. Celtic Soccer Live free streams",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "+++[En-Vivo]* Getafe vs. Sevilla Ｅｎ Ｖｉｖｏ",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "🔥【WATCH MATCH ONLINE】Getafe CF vs Sevilla FC Live Free – 31 october 2026",
+          "source": "Villa de la Orotava",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "47ad0f5087a77adc2e",
+      "title": "como vs venezia",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 45.5,
+      "published_at": "2026-11-01T12:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Con Nico Paz titular, el Como vence al Venezia con polémica :: Olé - ole.com.ar",
+          "source": "Olé",
+          "snippet": ""
+        },
+        {
+          "title": "Como – Venecia: horario y dónde ver hoy por TV el partido de fútbol de la Serie A",
+          "source": "La Vanguardia",
+          "snippet": ""
+        },
+        {
+          "title": "Venezia se concentra para salir del último lugar ante Como 1907",
+          "source": "Anecdotarios",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "090eb1a8a874b93cc4",
+      "title": "ire vs nam",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.5,
+      "published_at": "2026-11-01T12:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Ireland's Indian-origin pacer Jai Moondra creates cricket history with record-breaking 6/26 bowling figur",
+          "source": "The Times of India",
+          "snippet": ""
+        },
+        {
+          "title": "Namibia v Ireland: Tourists fall behind in ODI series after defeat in Windhoek",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Smit, Brassell set up Namibia's series victory over Ireland",
+          "source": "Cricbuzz",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "d6c6fcb7f1a113bbc0",
       "title": "موعد اذان العصر",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 46.7,
+      "score": 45.2,
       "published_at": "2026-11-01T12:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "موعد أذان وصلاة الظهر اليوم الأحد الموافق 1 نوفمبر",
-          "source": "Masrawy",
+          "title": "موعد صلاة الظهر اليوم الأحد 1 نوفمبر 2026 في القاهرة وأسوان والمحافظات",
+          "source": "صدى البلد",
           "snippet": ""
         },
         {
@@ -575,37 +662,8 @@
           "snippet": ""
         },
         {
-          "title": "مواقيت الصلاة في محافظات مصر اليوم السبت 31 أكتوبر 2026",
-          "source": "بوابة دار الهلال",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "74e51d4ab4d4e8723c",
-      "title": "prince harry kate middleton relationship",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.7,
-      "published_at": "2026-11-01T12:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Prince Harry's respectful gesture to Kate Middleton hints he hopes for a wider royal peace",
-          "source": "Woman & Home",
-          "snippet": ""
-        },
-        {
-          "title": "Princess Kate receives gracious message from Harry ahead of key event",
-          "source": "Geo News",
-          "snippet": ""
-        },
-        {
-          "title": "Kate Middleton Wants Prince Harry to Apologize to Her and William Before Reconciliation, Source Claims",
-          "source": "Yahoo",
+          "title": "موعد أذان وصلاة العصر اليوم الأحد الموافق 1 نوفمبر",
+          "source": "Masrawy",
           "snippet": ""
         }
       ],
@@ -617,7 +675,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 46.0,
+      "score": 44.5,
       "published_at": "2026-11-01T11:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -641,29 +699,58 @@
       "alert": false
     },
     {
-      "id": "de54e66d652bb2d9a3",
-      "title": "moeen ali",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 45.7,
-      "published_at": "2026-11-01T11:40:00Z",
+      "id": "3dda266256dffb65bd",
+      "title": "أسعار الفراخ البيضاء اليوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 43.8,
+      "published_at": "2026-11-01T13:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Saif Hassan stars with bat and ball as Janakpur Bolts beat Kathmandu Gorkhas",
-          "source": "BDCricTime",
+          "title": "تراجع أسعار الدواجن واللحوم في الأسواق المصرية اليوم الأحد",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "Match Predictions: Nepal Premier League 2026 - 5th & 6th Match - Bolts vs Gorkhas; Yaks vs Kings - 29th October",
-          "source": "Cricket World",
+          "title": "بعد الارتفاع الأخير.. سعر الفراخ البيضاء للمستهلك اليوم الأحد 1 نوفمبر 2026",
+          "source": "المصري اليوم",
           "snippet": ""
         },
         {
-          "title": "Kathmandu Gurkhas Score 100 Runs for 9 Wickets in 18 Overs Against Janakpur Bolts",
-          "source": "Ratopati",
+          "title": "سعر كرتونة البيض اليوم 1/11/2026 للمستهلك في السوق المحلية",
+          "source": "جريدة المال",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d4867db4db7b927095",
+      "title": "arsenal vs aston villa",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.8,
+      "published_at": "2026-11-01T13:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Team news: Renée makes one change against Villa",
+          "source": "Arsenal.com",
+          "snippet": ""
+        },
+        {
+          "title": "Arsenal vs Aston Villa: Women's Super League stats & head-to-head",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Renee Slegers exclusive: Going 'back to basics' has loosened Arsenal team following back-to-back wins",
+          "source": "Sky Sports",
           "snippet": ""
         }
       ],
@@ -675,198 +762,111 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 44.4,
+      "score": 42.8,
       "published_at": "2026-11-01T12:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "ما القنوات الناقلة لمباراة ساسوولو وفيورنتينا في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "ما القنوات الناقلة لمباراة أتالانتا وبارما في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "بارما يبحث عن طوق النجاة أمام أتلانتا المتعثر (معطيات وتوقعات)",
-          "source": "كورالوجي",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "ebc1761ba447ab6ae5",
-      "title": "november 2026 class action settlements",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.4,
-      "published_at": "2026-11-01T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Attorneys’ Fees in Class Action Settlements",
-          "source": "Reuters",
-          "snippet": ""
-        },
-        {
-          "title": "10 class action settlements you can claim in November 2026",
-          "source": "Top Class Actions",
-          "snippet": ""
-        },
-        {
-          "title": "Eligible Americans can get up to $5,000 checks from $2.99m healthcare settlement",
-          "source": "The Sun",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "30b8a6e6f53652a79b",
-      "title": "michigan state",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.4,
-      "published_at": "2026-11-01T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Michigan-Michigan State football kickoff time revealed ahead of rivalry week",
-          "source": "ClickOnDetroit | WDIV Local 4",
-          "snippet": ""
-        },
-        {
-          "title": "Michigan vs Michigan State football start time announced for 2026 game",
-          "source": "Detroit Free Press",
-          "snippet": ""
-        },
-        {
-          "title": "“Most Passionless Head Coach at Michigan Ever”: Fans Sick of Kyle Whittingham After Comments About Upcoming Michigan State Rivalry Game",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "47ad0f5087a77adc2e",
-      "title": "como vs venezia",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 44.0,
-      "published_at": "2026-11-01T12:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Con Nico Paz titular, el Como recibe al Venezia por la Serie A :: Olé - ole.com.ar",
-          "source": "Olé",
-          "snippet": ""
-        },
-        {
-          "title": "Venezia se concentra para salir del último lugar ante Como 1907",
-          "source": "Anecdotarios",
-          "snippet": ""
-        },
-        {
-          "title": "Como - Venezia, en directo | Serie A",
-          "source": "Mundo Deportivo",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "cd013c2dd40807c905",
-      "title": "nashville weather",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.0,
-      "published_at": "2026-11-01T12:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Cloudy for Trick or Treating with showers moving in Sunday",
-          "source": "WVLT",
-          "snippet": ""
-        },
-        {
-          "title": "First Alert Forecast: Gloomy skies, spooky showers Halloween weekend",
-          "source": "WSMV",
-          "snippet": ""
-        },
-        {
-          "title": "Pleasant Friday evening before increasing rain chances into the weekend",
-          "source": "WKRN News 2",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "3cf85e364f0b409404",
-      "title": "مي صالح",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 42.7,
-      "published_at": "2026-11-01T11:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مي صالح تعلن عن تعرض والدتها لحادث ودخولها غرفة العمليات",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "«حياتي كلها اتقلبت في لحظة».. مي صالح تكشف تعرض والدتها لحادث ودخولها غرفة العمليات",
+          "title": "تشكيل فروزينوني أمام تورينو في الدوري الإيطالي اليوم.. موقف عمر فايد",
           "source": "المصري اليوم",
           "snippet": ""
         },
         {
-          "title": "الفنانة مي صالح تُعلن تعرّض والدتها لحادث ودخولها غرفة العمليات .. تفاصيل",
-          "source": "صدى البلد",
+          "title": "ما القنوات الناقلة لمباراة أتالانتا وبارما في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Goal.com",
+          "snippet": ""
+        },
+        {
+          "title": "ما القنوات الناقلة لمباراة ساسولو وفيورنتينا في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "930c1c7f2f97e993a9",
-      "title": "أيتن عامر",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 42.4,
-      "published_at": "2026-11-01T11:30:00Z",
+      "id": "f82696bcad3cad3919",
+      "title": "nyc marathon live stream",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 41.2,
+      "published_at": "2026-11-01T13:10:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 1,
       "news_items": [
         {
-          "title": "شيماء سيف تكذب أيتن عامر وتكشف حقيقة اعتذارها",
-          "source": "عكاظ",
+          "title": "‍‍FREE~[𝐒𝐓ream]here's*! Watch 2026 NYC Marathon Online Without Cable",
+          "source": "Pierce Manufacturing",
           "snippet": ""
         },
         {
-          "title": "شيماء سيف تقبل اعتذار آيتن عامر وتتحدث عن حدود الزمالة",
-          "source": "CNN Arabic",
+          "title": "‍LIVE/FREE: TCS New York City Marathon Live FREE 29 July , 2026",
+          "source": "Pierce Manufacturing",
           "snippet": ""
         },
         {
-          "title": "عتاب واعتذار علني.. أزمة أيتن عامر وشيماء سيف تشعل نقاشا بين رواد مواقع التواصل الاجتماعي",
-          "source": "بوابة الشروق",
+          "title": "‍(LIVE-FREE) NYC Marathon Live Free HS Football 2026",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "46f735545d38be9094",
+      "title": "new york marathon tracker",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 41.2,
+      "published_at": "2026-11-01T13:10:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "‍2026 NYC Marathon LIVE. [[[CBS^Sports]]",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "‍『LIVeSTREAMS』 2026 NYC Marathon Tracker: How to Track Runners Live",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        },
+        {
+          "title": "+++【HSF![LIVES'TREAMs!SKY+TV] New York City Marathon Live Broadcast",
+          "source": "Pierce Manufacturing",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "07a42be5271f7770d9",
+      "title": "getafe vs sevilla",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 40.5,
+      "published_at": "2026-11-01T12:50:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "London City vs. Man City (1 Nov, 2026) Team Stats",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "Getafe vs. Sevilla (Nov 1, 2026) Team Stats",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "London City vs. Man City (Nov 1, 2026) Team Stats",
+          "source": "ESPN",
           "snippet": ""
         }
       ],
