@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b35">
+  <meta name="description" content="ثريدز وثائقي — الخبر كما حدث، والسياق الذي يهمك.">
+  <title>ثريدز وثائقي | Threads Documentary</title>
+  <link rel="icon" href="./assets/channel-logo.png" type="image/png">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+  <div class="site-chrome">
+    <header class="site-header">
+      <div class="topline page-width">
+        <a class="brand" href="#home" aria-label="ثريدز وثائقي — الصفحة الرئيسية">
+          <img class="brand-image" src="./assets/channel-logo.png" alt="ثريدز وثائقي Threads Documentary">
+        </a>
+        <div class="header-tools">
+          <span class="live-status"><i aria-hidden="true"></i><span id="update-status">جارٍ تحميل آخر التحديثات</span></span>
+          <button class="search-toggle" id="search-toggle" type="button" aria-expanded="false" aria-controls="global-search">بحث <span aria-hidden="true">⌕</span></button>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="الأقسام الرئيسية">
+        <div class="page-width nav-inner">
+          <a class="nav-link is-active" href="#home">الرئيسية</a>
+          <a class="nav-link" href="#section/egypt">مصر</a>
+          <a class="nav-link" href="#section/arab">العالم العربي</a>
+          <a class="nav-link" href="#section/world">العالم</a>
+          <a class="nav-link" href="#section/politics">سياسة</a>
+          <a class="nav-link" href="#section/economy">اقتصاد</a>
+          <a class="nav-link" href="#section/sports">رياضة</a>
+          <a class="nav-link" href="#section/technology">تكنولوجيا</a>
+          <a class="nav-link" href="#section/documentary">وثائقي</a>
+          <a class="nav-link nav-link-muted" href="#archive">الأرشيف</a>
+        </div>
+      </nav>
+      <form class="global-search page-width" id="global-search" role="search" hidden>
+        <label for="search-input">ابحث في الأخبار</label>
+        <div class="search-field"><input id="search-input" type="search" placeholder="ابحث بعنوان أو كلمة مفتاحية أو مصدر" autocomplete="off"><button type="submit">بحث</button></div>
+      </form>
+    </header>
+    <div class="breaking-bar" aria-label="الأخبار العاجلة">
+      <div class="page-width breaking-inner"><span class="breaking-label"><b aria-hidden="true">●</b> عاجل</span><div id="breaking-news" class="breaking-items"><span>تحديثات الأخبار تُعرض فور وصولها من المصادر المعتمدة</span></div><span class="breaking-date" id="today-label"></span></div>
+    </div>
+  </div>
+
+  <main id="main" class="page-width" tabindex="-1">
+    <div id="preview-note" class="preview-note" hidden><span>معاينة تصميم</span><p>هذه بيانات تجريبية لعرض الهوية والتخطيط لأن ملف الأخبار الحالي فارغ. ستختفي تلقائيًا عند وصول الأخبار الحقيقية.</p></div>
+    <section id="home-view" class="view" aria-labelledby="home-title">
+      <div class="section-intro">
+        <div><p class="kicker">موجز ثريدز</p><h1 id="home-title">الخبر كما حدث،<br><em>والسياق الذي يهمك.</em></h1></div>
+        <p class="intro-copy">منصة إخبارية مستقلة تجمع العناوين العربية والعالمية في قراءة واضحة، وتوصلك دائمًا إلى المصدر الأصلي.</p>
+      </div>
+      <div id="hero-grid" class="hero-grid"></div>
+      <section id="trending-section" class="trending-section" hidden aria-labelledby="trending-title">
+        <div class="section-heading"><div><span class="section-index">00</span><h2 id="trending-title">الترند الآن</h2></div><span class="trend-caption">رصد متعدد المصادر</span></div>
+        <div id="trending-list" class="trending-list"></div>
+      </section>
+      <div class="section-heading"><div><span class="section-index">01</span><h2>أحدث الأخبار</h2></div><a href="#archive">عرض الأرشيف <span aria-hidden="true">←</span></a></div>
+      <section id="latest-grid" class="news-grid latest-grid" aria-label="أحدث الأخبار"></section>
+      <div id="category-sections"></div>
+      <section class="video-section" aria-labelledby="video-title">
+        <div class="video-heading"><div><p class="kicker">الصورة المتحركة</p><h2 id="video-title">فيديوهات وتقارير وثائقية</h2></div><a href="#section/documentary">كل التقارير <span aria-hidden="true">←</span></a></div>
+        <div id="video-grid" class="video-grid"></div>
+      </section>
+      <aside class="editorial-note"><span class="note-line" aria-hidden="true"></span><div><strong>ملاحظة تحريرية</strong><p>الملخصات موجزة وتعتمد على البيانات المتاحة في الخلاصة الإخبارية. راجع المصدر الأصلي للتفاصيل والسياق الكامل.</p></div></aside>
+    </section>
+
+    <section id="article-view" class="view" hidden aria-labelledby="article-title"></section>
+
+    <section id="archive-view" class="view" hidden aria-labelledby="archive-title">
+      <div class="archive-heading"><div><p class="kicker">ذاكرة الأخبار</p><h1 id="archive-title">الأرشيف</h1><p>ابحث في الأخبار المنشورة حسب القسم، التاريخ أو الكلمات المفتاحية.</p></div><div class="archive-count" id="archive-count"></div></div>
+      <div class="archive-filters"><label>بحث<input id="archive-search" type="search" placeholder="كلمة مفتاحية..."></label><label>القسم<select id="archive-region"><option value="all">كل الأقسام</option><option value="egypt">مصر</option><option value="arab">العالم العربي</option><option value="world">العالم</option><option value="politics">سياسة</option><option value="economy">اقتصاد</option><option value="sports">رياضة</option><option value="technology">تكنولوجيا</option><option value="documentary">وثائقي</option></select></label><label>منذ تاريخ<input id="archive-date" type="date"></label><button id="clear-filters" type="button">مسح الفلاتر</button></div>
+      <div id="archive-list" class="archive-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="page-width footer-inner"><div><img src="./assets/channel-logo.png" alt="Threads Documentary" class="footer-logo"><p>الخبر كما حدث، والسياق الذي يهمك.</p></div><div class="footer-links"><a href="#home">الرئيسية</a><a href="#archive">الأرشيف</a><a href="#section/documentary">التقارير</a></div><div class="footer-meta"><span id="last-updated">لا توجد بيانات منشورة بعد</span><span>© Threads Documentary</span></div></div></footer>
+</body>
+</html>
