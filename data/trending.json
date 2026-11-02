@@ -1,408 +1,548 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T18:24:08.857317Z",
+  "updated_at": "2026-11-02T19:27:25.317490Z",
   "items": [
     {
-      "id": "c12e1c536c89a958ff",
-      "title": "chilis",
+      "id": "7e97c8f26a255c70e4",
+      "title": "harrison butker",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "10000+",
-      "score": 63.2,
-      "published_at": "2026-11-02T17:30:00Z",
+      "approx_traffic": "20000+",
+      "score": 67.4,
+      "published_at": "2026-11-02T19:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Chili’s Margaritas Rimmed With Degreaser Burn 5 People in North Carolina",
-          "source": "The New York Times",
+          "title": "Kansas City Chiefs kicker Harrison Butker misses fourth quarter FG in Denver",
+          "source": "NFL.com",
           "snippet": ""
         },
         {
-          "title": "Chili's customers get chemical burns after drinking margaritas",
-          "source": "USA Today",
+          "title": "JJ Watt and Jim Nantz Call Out Chiefs On-Air for Controversial Justin Tucker Signing",
+          "source": "People.com",
           "snippet": ""
         },
         {
-          "title": "Margarita Mix-Up Leaves Chili's Customers With Burns",
-          "source": "Newser",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2642f0d8ac8d20abe0",
-      "title": "ben arbuckle",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "10000+",
-      "score": 62.9,
-      "published_at": "2026-11-02T17:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Oklahoma fires offensive coordinator Ben Arbuckle as Sooners follow CFP with 4-4 start: Source",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "OU fires offensive coordinator Ben Arbuckle",
-          "source": "OU Daily",
-          "snippet": ""
-        },
-        {
-          "title": "Sources: Oklahoma fires second-year OC Ben Arbuckle",
+          "title": "Toub: Butker still Chiefs' kicker despite struggles, Tucker signing",
           "source": "ESPN",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "55c3c15f7424be6de5",
-      "title": "al-ittihad vs al ain",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 60.9,
-      "published_at": "2026-11-02T17:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "AFC Champions League Elite: Wissing Says Al-Ittihad Ready for Al-Ain Clash",
-          "source": "وكالة الأنباء السعودية",
-          "snippet": ""
-        },
-        {
-          "title": "AFC Champions League Elite: Saudi Arabia's Al-Ittihad to Host UAE's Al-Ain",
-          "source": "ASHARQ AL-AWSAT English",
-          "snippet": ""
-        },
-        {
-          "title": "Al-Ittihad coach says team seeks Asian rebound against Al-Ain",
-          "source": "Arab News",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "411c79e2818d6d6d89",
-      "title": "الغرافة ضد القادسية",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 56.9,
-      "published_at": "2026-11-02T17:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "القادسية يصل قطر ويستعد لمواجهة الغرافة في نخبة آسيا",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "«رودجرز» يركز على التكتيك قبل صدام الغرافة",
-          "source": "عكاظ",
-          "snippet": ""
-        },
-        {
-          "title": "بعثة القادسية تصل قطر لمواجهة الغرافة في دوري أبطال آسيا للنخبة",
-          "source": "عاجل",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "355bca06bc96085029",
-      "title": "clinch cans",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.2,
-      "published_at": "2026-11-02T18:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Today's the day to reserve a limited-edition Miller Lite Clinch Can",
-          "source": "Milwaukee Journal Sentinel",
-          "snippet": ""
-        },
-        {
-          "title": "Miller Lite reveals special-edition beer from moment Brewers won World Series",
-          "source": "USA Today",
-          "snippet": ""
-        },
-        {
-          "title": "RP Adler’s in Madison to give away free burgers to celebrate Brewers’ World Series win",
-          "source": "WMTV 15 NEWS",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "a1d0012cc3bfcc58f2",
-      "title": "michael wilbon",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.9,
-      "published_at": "2026-11-02T17:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Michael Wilbon to take leave of absence from ESPN due to health issues, hopes to return",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Michael Wilbon Announces Indefinite ESPN Leave of Absence Amid 'Multiple Health Issues'",
-          "source": "Bleacher Report",
-          "snippet": ""
-        },
-        {
-          "title": "Michael Wilbon announces indefinite leave from ESPN due to ‘multiple health issues’",
-          "source": "Awful Announcing",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7e3632f9eee7607d4a",
-      "title": "moss landing",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.9,
-      "published_at": "2026-11-02T17:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Multiple people killed in Moss Landing shooting, sheriff’s office says",
-          "source": "KSBW",
-          "snippet": ""
-        },
-        {
-          "title": "Moss Landing shooting leaves \"multiple fatalities,\" sheriff's office says",
-          "source": "CBS News",
-          "snippet": ""
-        },
-        {
-          "title": "Multiple people killed in California shooting near Monterey",
-          "source": "USA Today",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6cc95896cb4ddc9f83",
-      "title": "kimi",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 53.2,
-      "published_at": "2026-11-02T17:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Kimi Antonelli makes F1 history as youngest world champion with maiden title",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "The Boy Racer Who Just Ended Italy’s 73-Year Wait for an F1 Champion",
-          "source": "WSJ",
-          "snippet": ""
-        },
-        {
-          "title": "Mexican Grand Prix briefing: Antonelli seals F1 title with third place, Verstappen wins - The Athletic",
-          "source": "The New York Times",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "50960c439bbc1df092",
-      "title": "سياحة",
+      "id": "d997d5630281e968c2",
+      "title": "ترتيبات نادى السد – النادي الأهلي السعودي لكرة القدم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 51.2,
-      "published_at": "2026-11-02T16:30:00Z",
+      "approx_traffic": "5000+",
+      "score": 59.4,
+      "published_at": "2026-11-02T18:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "مؤثرات ضوئية صوتية تحكى تاريخ الأجداد.. فعاليات احتفالات المتحف المصرى الكبير بذكرى افتتاحه",
+          "title": "السد ضد الأهلى.. التعادل السلبى يحسم المواجهة فى دورى أبطال آسيا للنخبة",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "كان يومًا مجرد فكرة",
-          "source": "بوابة أخبار اليوم الإلكترونية",
+          "title": "الأهلي والسد في مباراة الانفراد بالانتصارات",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "«الشمس الأبدية» تضىء احتفال المتحف الكبير بعامه الأول",
-          "source": "بوابة الأهرام",
+          "title": "عدو الأهلي \"المتضخم\" أكبر من مارينو بوسيتش .. السد دفع ثمن \"عُقدة\" رازفان لوشيسكو وكيف تبدل حال روبرتو فيرمينو لهذه الدرجة؟!",
+          "source": "Goal.com",
           "snippet": ""
         }
       ],
       "alert": false
+    },
+    {
+      "id": "f8c135c0fb61ad0064",
+      "title": "newcastle vs everton",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 57.1,
+      "published_at": "2026-11-02T19:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Premier League: build-up to Newcastle v Everton - live text",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Newcastle vs Everton live updates: Premier League match team news, predictions and more",
+          "source": "The New York Times",
+          "snippet": ""
+        },
+        {
+          "title": "Everton Team News Confirmed For Newcastle Cup Clash",
+          "source": "Everton FC",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "35f3bb84b1f9b89d7b",
       "title": "الاتحاد ضد العين",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 50.9,
+      "approx_traffic": "2000+",
+      "score": 54.8,
       "published_at": "2026-11-02T17:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "ما القنوات الناقلة لمباراة الاتحاد والعين في دوري أبطال آسيا للنخبة 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
+          "snippet": ""
+        },
         {
           "title": "رامى ربيعة يقود تشكيل العين الرسمى أمام اتحاد جدة فى قمة آسيوية بدورى النخبة",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "الاتحاد مهدد بفقدان مدافعه في موقعة العين",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "القنوات الناقلة لمباراة العين والاتحاد في دوري أبطال آسيا للنخبة 2027",
-          "source": "اخبارك نت",
+          "title": "بقيادة رامي ربيعة.. العين يستهدف مواصلة انتصاراته أمام الاتحاد في دوري أبطال آسيا",
+          "source": "بوابة الشروق",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "5742de502ba5081c07",
-      "title": "south carolina women's basketball",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 49.9,
-      "published_at": "2026-11-02T17:20:00Z",
+      "id": "5eff4cd7bbd495b320",
+      "title": "القادسية",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 54.1,
+      "published_at": "2026-11-02T19:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "No. 20 Maryland women’s basketball vs. No. 1 South Carolina preview",
-          "source": "Testudo Times",
+          "title": "رايندرز أفضل لاعب وإنزاغي أفضل مدرب في دوري روشن لشهر أكتوبر",
+          "source": "صحيفة سبق الإلكترونية",
           "snippet": ""
         },
         {
-          "title": "Gamecocks Open Season with Top-20 Matchup in Paris",
-          "source": "University of South Carolina Athletics",
-          "snippet": ""
-        },
-        {
-          "title": "No. 20 Terps Set to Open Season vs. No. 1 Gamecocks in Paris",
-          "source": "University of Maryland Athletics",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "21e16437647187048d",
-      "title": "russia su-57 jet engine failure",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 49.9,
-      "published_at": "2026-11-02T17:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Russia’s $150 Million Su-57 Stealth Fighter Explodes Before It Even Takes Off",
-          "source": "UNITED24 Media",
-          "snippet": ""
-        },
-        {
-          "title": "Russia's advanced Su-57 fighter jet explodes at airfield, Ukraine says",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Ukraine’s HUR Confirms Russian Su-57 Explosion at Akhtubinsk Airfield",
-          "source": "Kyiv Post",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f528c60ac50b633c26",
-      "title": "فى الجول",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 49.5,
-      "published_at": "2026-11-02T17:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "رئيس الاتحاد السكندري يدعو محمد صلاح لزيارة النادي",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "محمد سلامة: نجحنا في بناء الاتحاد خلال شهرين.. وسيأتي دور أنس وائل والحبيب أحمد حسن",
-          "source": "FilGoal",
-          "snippet": ""
-        },
-        {
-          "title": "الاتحاد السكندرى يحصل على موافقة وزارة الرياضة لإنشاء مول تجارى بفرع الشاطبى",
-          "source": "اليوم السابع",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0c440c93d024000284",
-      "title": "العملة",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 48.9,
-      "published_at": "2026-11-02T16:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "الدولار يفقد مستوى 56 جنيهاً.. هل يستمر تعافي العملة المصرية؟",
+          "title": "إنزاغي: الهلال بات قوياً.. وأرقامه تثبت كلامي",
           "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "سعر الدولار أمام الجنيه الإثنين 2 نوفمبر 2026 في البنوك",
-          "source": "بوابة الأهرام",
+          "title": "إنزاغي المدرب الأفضل.. الكشف عن الفائزين بجوائز أكتوبر في الدوري السعودي",
+          "source": "CNN Arabic",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "5963f67d2d041c2c29",
+      "title": "ella langley toy story outfit",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 53.8,
+      "published_at": "2026-11-02T18:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Ella Langley's 'Toy Story' Halloween costume goes viral with nearly 500,000 Instagram likes",
+          "source": "Fox News",
           "snippet": ""
         },
         {
-          "title": "استقرار أسعار العملات العربية في ختام تعاملات اليوم 31 أكتوبر 2026",
-          "source": "بوابة أخبار اليوم الإلكترونية",
+          "title": "Ella Langley’s tricks don’t hide talent in St. Paul Halloween concert",
+          "source": "Star Tribune",
+          "snippet": ""
+        },
+        {
+          "title": "Country Star Ella Langley Dressed As Jessie In St. Paul",
+          "source": "WJON",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "c5c89575f2b2b1280d",
+      "title": "utep basketball",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 53.8,
+      "published_at": "2026-11-02T18:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Northern Kentucky vs UTEP Prediction, Pick, College Basketball Odds for Monday, Nov. 2",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "How to Watch UTEP Miners vs. Northern Kentucky Norse: Live Stream or on TV",
+          "source": "Bleacher Nation",
+          "snippet": ""
+        },
+        {
+          "title": "UTEP Miners and the Northern Kentucky Norse meet",
+          "source": "AP News",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "834027adcef52cc853",
+      "title": "smuggling",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 53.4,
+      "published_at": "2026-11-02T18:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Man in Saudi Arabia fined SAR3,800 for smuggling 380 litres of Zamzam water in car boot",
+          "source": "Khaleej Times",
+          "snippet": ""
+        },
+        {
+          "title": "Driver fined SAR 3,800 for smuggling 380 litres of Zamzam water",
+          "source": "The Siasat Daily",
+          "snippet": ""
+        },
+        {
+          "title": "Grief of losing son is unbearable, says Puri’s father seeking justice",
+          "source": "The Times of India",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7282f6405689f328b4",
+      "title": "newcastle vs everton",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 51.8,
+      "published_at": "2026-11-02T19:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Newcastle vs Everton live updates: Premier League match team news, predictions and more",
+          "source": "The New York Times",
+          "snippet": ""
+        },
+        {
+          "title": "Tip of the Day: Barnes to star with goals for both sides at St James’ Park",
+          "source": "101 Great Goals",
+          "snippet": ""
+        },
+        {
+          "title": "ProphetX promo code TSN: Get $75 prediction bonus for Newcastle vs. Everton, any Premier League games",
+          "source": "Sporting News",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "e1d4502cc8c980b0b3",
+      "title": "نيوكاسل يونايتد ضد إيفرتون",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 51.8,
+      "published_at": "2026-11-02T19:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ليلتان من السهر والكحول.. أسباب استبعاد إيفرتون لغريليش",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "عكس \"معسكر هاري كين\".. كيف اغتالت السهرات والكحول أغلى موهبة إنجليزية؟",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "ليلتان من السهر والكحول.. غريليش في ورطة مع إيفرتون",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "4f2b148fad12f06a67",
+      "title": "نيوكاسل يونايتد ضد إيفرتون",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T19:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ليلتان من السهر والكحول.. غريليش في ورطة مع إيفرتون",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        },
+        {
+          "title": "ليلتان من السهر والكحول.. كواليس استبعاد جريليش في إيفرتون",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "عكس \"معسكر هاري كين\".. كيف اغتالت السهرات والكحول أغلى موهبة إنجليزية؟",
+          "source": "إرم نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "fd39b6907926ce761c",
+      "title": "deportivo - osasuna",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T19:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Alineaciones confirmadas de Deportivo y Osasuna hoy, jornada 11 de LaLiga",
+          "source": "El Desmarque",
+          "snippet": ""
+        },
+        {
+          "title": "15:30 H | 02 NOVIEMBRE 2026 | DEPORTES COPE EN A CORUÑA",
+          "source": "COPE",
+          "snippet": ""
+        },
+        {
+          "title": "Partidos de hoy de fútbol: horario y dónde ver por TV",
+          "source": "Mundo Deportivo",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "48c88b365fba3055b0",
+      "title": "okc weather",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T19:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Waves of Storms likely Monday. Severe Storms likely, some see heavy rainfall.",
+          "source": "KFOR",
+          "snippet": ""
+        },
+        {
+          "title": "FORECAST: Severe storms with tornado risk possible Monday in Oklahoma",
+          "source": "KOCO",
+          "snippet": ""
+        },
+        {
+          "title": "BIG COUNTRY STORM TEAM: storm chances increase this evening",
+          "source": "Yahoo",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "8293cecb0186f6ea86",
+      "title": "atalanta vs parma",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.1,
+      "published_at": "2026-11-02T19:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Atalanta vs Parma: Italian Serie A stats & head-to-head",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "LASK vs Slovan Bratislava betting offers: Up to £50 in free bets across nine bookmakers",
+          "source": "Squawka",
+          "snippet": ""
+        },
+        {
+          "title": "Atalanta vs Parma: Lineups, Prediction, Odds & Bet Builder Tip",
+          "source": "WhoScored.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "435d6bda966198b9ef",
+      "title": "atlantic low pressure system forecast",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.1,
+      "published_at": "2026-11-02T19:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Subtropical storm could develop in the Atlantic this week",
+          "source": "The Weather Channel",
+          "snippet": ""
+        },
+        {
+          "title": "Hurricane forecasters track disturbance in the western Atlantic late into 2026 season",
+          "source": "NOLA.com",
+          "snippet": ""
+        },
+        {
+          "title": "NHC monitoring disturbance off U.S. east coast",
+          "source": "WFLA",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "fb923c9b55721966df",
+      "title": "الغرافة ضد القادسية",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 49.8,
+      "published_at": "2026-11-02T18:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعثة القادسية تصل قطر لمواجهة الغرافة في دوري أبطال آسيا للنخبة",
+          "source": "عاجل",
+          "snippet": ""
+        },
+        {
+          "title": "موعد مباراة الغرافة والقادسية في دوري أبطال آسيا للنخبة.. مواجهة مهمة لحسم موقف الفريقين",
+          "source": "اخبارك نت",
+          "snippet": ""
+        },
+        {
+          "title": "ما القنوات الناقلة لمباراة الغرافة والقادسية في دوري أبطال آسيا للنخبة 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6a7ea779049017c5b1",
+      "title": "russell westbrook",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 48.4,
+      "published_at": "2026-11-02T19:10:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Russell Westbrook's Thunder Jersey Retirement Announced in Hype Video for NBA Legend",
+          "source": "Bleacher Report",
+          "snippet": ""
+        },
+        {
+          "title": "OKC Thunder sets Russell Westbrook jersey retirement ceremony date. What to know",
+          "source": "The Oklahoman",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e21d1e4d7927ba251b",
+      "title": "newcastle vs everton",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-02T19:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ProphetX promo code TSN: Get $75 prediction bonus for Newcastle vs. Everton, any Premier League games",
+          "source": "Sporting News",
+          "snippet": ""
+        },
+        {
+          "title": "Tip of the Day: Barnes to star with goals for both sides at St James’ Park",
+          "source": "101 Great Goals",
+          "snippet": ""
+        },
+        {
+          "title": "Latest. Confirmed line-up: Elanga in for Everton",
+          "source": "Newcastle United",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "6f6d62cb2be9b269fe",
+      "title": "wetter morgen",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 46.8,
+      "published_at": "2026-11-02T18:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Wetter morgen am Dienstag: Einzelne Schauer im Norden, Hochnebel im Süden – Schneeschauer im Chiemgau möglich",
+          "source": "wetter.com",
+          "snippet": ""
+        },
+        {
+          "title": "Von Frost bis Sonne: So wirbelt das Wetter Deutschland durch die Woche",
+          "source": "BILD",
+          "snippet": ""
+        },
+        {
+          "title": "Kälte in Deutschland: Hochdruck sorgt für Frostnächte",
+          "source": "FOCUS online",
           "snippet": ""
         }
       ],
@@ -413,298 +553,95 @@
       "title": "al-ittihad vs al ain",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 47.6,
+      "approx_traffic": "500+",
+      "score": 46.4,
       "published_at": "2026-11-02T18:10:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 2,
       "news_items": [
         {
-          "title": "Al-Ittihad vs Al Ain Prediction, Betting Tips, Lineups & Odds | 02 Nov 2026",
-          "source": "Sportsgambler",
+          "title": "Rahimi against En-Nesyri: Moroccan magic tops the line-ups of Al-Ittihad and Al-Ain",
+          "source": "Goal.com",
+          "snippet": ""
+        },
+        {
+          "title": "Vicinha erupts: if we had beaten Abha the questions would have changed, and Al-Ittihad is ready for the Al-Ain battle!",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
           "title": "Today's matches (Monday) and broadcast channels: A fiery encounter between Al Ain and Al Ittihad Saudi",
           "source": "صوت الإمارات",
           "snippet": ""
-        },
-        {
-          "title": "Rahimi against En-Nesyri: Moroccan magic tops the line-up of Al-Ittihad and Al-Ain",
-          "source": "Goal.com",
-          "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "68ca547c2081fbb1f8",
-      "title": "alex molcan",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 47.5,
-      "published_at": "2026-11-02T17:40:00Z",
+      "id": "1a59aaf0e6fb9010db",
+      "title": "لايف",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 46.1,
+      "published_at": "2026-11-02T18:30:00Z",
       "source": "Google Trends",
-      "source_count": 1,
+      "source_count": 3,
       "news_items": [
         {
-          "title": "November 4, 2026: Alexander Zverev vs Lorenzo Musetti: Set 2 Winner Tennis Prediction Market",
-          "source": "Robinhood",
+          "title": "مراد مكرم ينضم إلى قناة «النهار لايف».. ويكشف موعد برنامجه الجديد",
+          "source": "بوابة الأهرام",
           "snippet": ""
         },
         {
-          "title": "November 3, 2026: Andrey Rublev vs Tomas Martin Etcheverry: Total Games Tennis Prediction Market",
-          "source": "Robinhood",
+          "title": "من استوديو «الستات» إلى «النهار بليل».. سهير جودة تدعم مفيدة شيحة في تجربتها الجديدة",
+          "source": "بوابة روز اليوسف",
           "snippet": ""
         },
         {
-          "title": "November 3, 2026: Alex Michelsen vs Jiri Lehecka: Set 1 Winner Tennis Prediction Market",
-          "source": "Robinhood",
+          "title": "مفيدة شيحة تفاجئ الجمهور: قررت أتحدى نفسي وأجرب ستاند أب كوميدي",
+          "source": "صدى البلد",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "9e74b78dcef5a08049",
-      "title": "al-gharafa vs al qadsiah",
+      "id": "d5e4b2e7558ef2ca14",
+      "title": "بي بي سي عربي",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 47.2,
-      "published_at": "2026-11-02T18:00:00Z",
+      "score": 45.8,
+      "published_at": "2026-11-02T18:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Kashiwa vs Daejeon Citizen: First Half BTTS",
-          "source": "Coinbase",
+          "title": "كيف تفاعل رواد مواقع التواصل مع قصة المصرية التي خسرت منزل أحلامها بعد 18 عاماً من الزواج؟",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "Prats hails Al Shamal’s focus after historic win",
-          "source": "The Peninsula Qatar",
+          "title": "\"بيت الأحلام طلع مش بيتي\".. سيدة مصرية تشعل التواصل",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Simone Inzaghi and Murad Al-Hawsawi Speak Ahead of Al-Shamal match",
-          "source": "الموقع الرسمي لنادي الهلال السعودي",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "1feb1f5643d9a81df7",
-      "title": "ساسولو ضد فيورنتينا",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.6,
-      "published_at": "2026-11-02T17:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "كيفية الحصول على تذاكر أتالانتا لموسم 2026/27: المباريات المقبلة، وأسعار تذاكر الدوري الإيطالي، ومعلومات عن ملعب نيو بالانس أرينا والمزيد",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "توقعات مباراة ساسولو ضد فيورنتينا: كلا الفريقين متعطشان للفوز.",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        },
-        {
-          "title": "مواعيد مباريات اليوم الاثنين 2-11-2026 في الدوري الإيطالي والقنوات الناقلة",
-          "source": "بوابة دار الهلال",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "770e38c93f50465ec8",
-      "title": "في الجول",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 46.6,
-      "published_at": "2026-11-02T17:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "محمد سلامة: نجحنا في بناء الاتحاد خلال شهرين.. وسيأتي دور أنس وائل والحبيب أحمد حسن",
-          "source": "FilGoal",
-          "snippet": ""
-        },
-        {
-          "title": "رئيس الاتحاد يوجه دعوة لمحمد صلاح ويكشف حقيقة مفاوضات الأهلي",
-          "source": "winwin",
-          "snippet": ""
-        },
-        {
-          "title": "«دعوة على الهواء».. رئيس الاتحاد السكندري يفاجئ محمد صلاح بطلب خاص ويشيد بأسطورته",
-          "source": "elmaser.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "9f798aead9c9c2bdd0",
-      "title": "كأس خادم الحرمين الشريفين",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 46.2,
-      "published_at": "2026-11-02T17:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مواجهات مثيرة في دور الـ16 في كأس الملك",
+          "title": "«بيت الأحلام طلع مش بيتي».. قصة «انفصال» تتصدر المنصات",
           "source": "عكاظ",
           "snippet": ""
-        },
-        {
-          "title": "مباريات دور الـ16 في كأس الملك: جدول المواعيد والملاعب",
-          "source": "أخبار السعودية | saudi news",
-          "snippet": ""
-        },
-        {
-          "title": "مواجهات نارية بدوري الـ16 في كأس الملك",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
         }
       ],
       "alert": false
-    },
-    {
-      "id": "a007939174ae86a133",
-      "title": "sassuolo vs fiorentina",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 46.2,
-      "published_at": "2026-11-02T17:00:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "̳̳‍【LIVESTREAMS】=Italian Serie A==FREE]FREE!$]Sassuolo vs Fiorentina 𝐋𝐈𝐕𝐄 Today Match Ｔｖ Ｃｈａｎｎｅｌ 02 November 2026, Full Live Coverage of Italian Serie A: Watch the Italian Serie A match live with full coverage on ESPN. Get Italian Serie A L",
-          "source": "Villa de la Orotava",
-          "snippet": ""
-        },
-        {
-          "title": "Sassuolo-Fiorentina 1-0 LIVE: Laurienté breaks the deadlock",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "̳̳~＠SPORTS!]％^２０２６！] Sassuolo vs Fiorentina LIVE ONLINE",
-          "source": "Villa de la Orotava",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "55dc4d0db4f564a22f",
-      "title": "قناة السويس",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 45.6,
-      "published_at": "2026-11-02T17:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "\"قناة السويس\" تبحث التعاون مع \"أفرامار\" الأسبانية في مجال الاستزراع السمكي",
-          "source": "معلومات مباشر",
-          "snippet": ""
-        },
-        {
-          "title": "رئيس هيئة قناة السويس يبحث مع شركة إسبانية التوسع في الاستزراع السمكي بالأقفاص",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "«قناة السويس» تخطط لإنشاء 32 قفصًا سمكيًا بالتعاون مع شركة إسبانية",
-          "source": "جريدة الاستثمار العربى",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "e56613ef09bed93c60",
-      "title": "الأزهر الشريف",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 45.2,
-      "published_at": "2026-11-02T17:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "المنصة الدولية للجامع الأزهر تُعلن عن فتح باب التقديم بـ\"رواق القرآن الكريم\" عن بُعد",
-          "source": "بوابة الأزهر الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "الجامع الأزهر يفتح باب التسجيل لتحفيظ القرآن عن بعد لـ5000 دارس.. اعرف الشروط",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "المنصة الدولية للجامع الأزهر تفتح باب التسجيل ببرامج تحفيظ القرآن الكريم عن بُعد لـ 5000 دارس بفروع الرواق الأزهري",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "3f7f4c9b107f8bfa4d",
-      "title": "مباراة الأهلي اليوم مباشر",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 44.6,
-      "published_at": "2026-11-02T18:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "صدام بيراميدز وبداية المشوار الأفريقي.. مباريات الأهلي في شهر نوفمبر",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "\"محلية وقارية\".. مواجهات قوية تنتظر الأهلي في شهر نوفمبر",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "أبرزها قمة بيراميدز.. 4 جبهات تحدد مصير الأهلي وعموتة في نوفمبر",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        }
-      ],
-      "alert": true
     },
     {
       "id": "0c0708a0fa3d3044c1",
       "title": "قطاع خاص",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 44.6,
+      "approx_traffic": "200+",
+      "score": 45.5,
       "published_at": "2026-11-02T18:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -725,31 +662,55 @@
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "7ec57344effe84805d",
-      "title": "كورة مباريات اليوم مباشر",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "3b72394715f4832ee2",
+      "title": "rocky barker third birthday celebration",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 45.1,
+      "published_at": "2026-11-02T19:00:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "Kourtney Kardashian Shares Glimpse Into Son Rocky's 3rd Birthday Party",
+          "source": "E! News",
+          "snippet": ""
+        },
+        {
+          "title": "Kourtney Kardashian Shares Look at Son Rocky Barker’s Un-bear-ably Cute 3rd Birthday Party",
+          "source": "E! News",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "5ac1e553d1993d6473",
+      "title": "الهام شاهين ومرتضى منصور",
+      "region": "egypt",
+      "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 44.6,
-      "published_at": "2026-11-02T18:10:00Z",
+      "score": 44.5,
+      "published_at": "2026-11-02T19:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "تيباس: قضية نيجريرا؟.. تصرف ريال مدريد غير مقبول",
-          "source": "Kooora",
+          "title": "\"روح اسأل أمك\" تشعل أزمة بين إلهام شاهين ومرتضى منصور",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "\"نيغريرا في غرفة ملابسهم\".. تيباس يسخر من ريال مدريد",
+          "title": "\"روح اسألْ أمك\".. تراشق حاد بين إلهام شاهين ومرتضى منصور",
           "source": "إرم نيوز",
           "snippet": ""
         },
         {
-          "title": "اتهامات مجانية لا يمكن التسامح معها",
+          "title": "إلهام شاهين: «لجان مأجورة تسعى لهدم الفن.. والسوشيال ميديا أكبر مصيبة في حياتنا»",
           "source": "المصري اليوم",
           "snippet": ""
         }
@@ -757,116 +718,145 @@
       "alert": true
     },
     {
-      "id": "d59e9464e0f5d6e639",
-      "title": "météo demain",
+      "id": "94ee183f4ea793ccd2",
+      "title": "كاكا",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 44.6,
-      "published_at": "2026-11-02T18:10:00Z",
+      "score": 44.5,
+      "published_at": "2026-11-02T19:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Météo week-end : entre fraîcheur, éclaircies et retour possible des pluies",
-          "source": "La Chaîne Météo",
+          "title": "ميلان يهزم إنتر في \"ديربي الغضب\"",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Le froid gagne la France : pourquoi la situation pourrait brutalement basculer 02/11/2026",
-          "source": "Meteo-Paris.com",
+          "title": "مودريتش بعد الديربي: لا وقت للتذمر.. وهذا ما يجب فعله للفوز بالألقاب",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "Ky është parashikimi i motit për sot dhe 4 ditët e ardhshme",
-          "source": "Reporteri.net",
+          "title": "ديربي «ديلا مادونينا».. ميلان يفسد انطلاقة إنتر بثلاثية",
+          "source": "صحيفة الرياضية",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "e461293fca8a80d4d9",
-      "title": "how to register to vote",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 44.6,
-      "published_at": "2026-11-02T18:10:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "Are you registered to vote for the 2026 midterms in New York and New Jersey? Here's how to check.",
-          "source": "CBS News",
-          "snippet": ""
-        },
-        {
-          "title": "How to register to vote in New York and New Jersey for the 2026 midterm elections",
-          "source": "CBS News",
-          "snippet": ""
-        },
-        {
-          "title": "Your 1-minute voting guide for Des Moines",
-          "source": "Axios",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6c526ea4d47c7111a3",
-      "title": "american songwriter",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 43.2,
-      "published_at": "2026-11-02T17:30:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "3 British Invasion Songs From the 1970s We Know You Sing All the Time in the Shower",
-          "source": "American Songwriter",
-          "snippet": ""
-        },
-        {
-          "title": "3 One-Hit Wonders From the 1970s We Bet You Sing All the Time in the Shower",
-          "source": "American Songwriter",
-          "snippet": ""
-        },
-        {
-          "title": "‘Jimmy Webb: American Songwriter’ Review: A Melody-Line Man on PBS",
-          "source": "WSJ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a86e91364d2711289f",
-      "title": "صلاح سرحان",
+      "id": "1feb1f5643d9a81df7",
+      "title": "ساسولو ضد فيورنتينا",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 42.6,
-      "published_at": "2026-11-02T17:10:00Z",
+      "approx_traffic": "200+",
+      "score": 44.5,
+      "published_at": "2026-11-02T17:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "فى ذكرى ميلاده.. صلاح سرحان العبقرى المنسى وصاحب الصوت المسرحى والإذاعى الخالد",
+          "title": "كيفية الحصول على تذاكر أتالانتا لموسم 2026/27: المباريات المقبلة، وأسعار تذاكر الدوري الإيطالي، ومعلومات عن ملعب نيو بالانس أرينا والمزيد",
+          "source": "Goal.com",
+          "snippet": ""
+        },
+        {
+          "title": "ما القنوات الناقلة لمباراة أتالانتا وبارما في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "بارما يبحث عن طوق النجاة أمام أتلانتا المتعثر (معطيات وتوقعات)",
+          "source": "كورالوجي",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7f8359ad543d53feab",
+      "title": "يلا كورة مباريات اليوم",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.5,
+      "published_at": "2026-11-02T18:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "جدول مباريات اليوم الإثنين 2 نوفمبر 2026 .. القنوات الناقلة والمعلقين",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "مواعيد مباريات اليوم.. قمة الاتحاد والعين فى نخبة آسيا ونيوكاسل ضد إيفرتون",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "فى ذكراه.. شجرة عائلة صلاح سرحان ومشواره الفني",
-          "source": "صدى البلد",
+          "title": "النصر والاتحاد والأهلي المصري.. مواعيد مباريات اليوم والقنوات الناقلة",
+          "source": "إرم نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d3926db1a9f2ad2600",
+      "title": "جورجينا رودريغيز",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 43.1,
+      "published_at": "2026-11-02T18:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "\"عروس الموت\".. كيف ظهرت جورجينا رودريغيز في هالوين 2026؟",
+          "source": "CNN Arabic",
           "snippet": ""
         },
         {
-          "title": "بـ«ستارة السرير وخيال الظل».. كيف ألهم صلاح سرحان شقيقه شكري لدخول عالم الفن؟",
-          "source": "الوطن",
+          "title": "شاهد.. جورجينا تكشف كواليس ليلة الرعب في قصر كريستيانو رونالدو!",
+          "source": "365Scores",
+          "snippet": ""
+        },
+        {
+          "title": "ليست ليلة زفاف عادية.. جورجينا رودريغيز تختار زي العروس المرعبة للهالوين",
+          "source": "Yasmina",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "3a4c8a8e493a59aa8d",
+      "title": "ساسولو ضد فيورنتينا",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.1,
+      "published_at": "2026-11-02T18:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ما القنوات الناقلة لمباراة أتالانتا وبارما في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "توقعات مباراة ساسولو ضد فيورنتينا: كلا الفريقين متعطشان للفوز.",
+          "source": "Vietnam.vn",
+          "snippet": ""
+        },
+        {
+          "title": "كيفية الحصول على تذاكر أتالانتا لموسم 2026/27: المباريات المقبلة، وأسعار تذاكر الدوري الإيطالي، ومعلومات عن ملعب نيو بالانس أرينا والمزيد",
+          "source": "Goal.com",
           "snippet": ""
         }
       ],
