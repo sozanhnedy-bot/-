@@ -1,15 +1,44 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T12:59:12.239450Z",
+  "updated_at": "2026-11-02T14:12:34.136777Z",
   "items": [
     {
-      "id": "b663275be6cf0e5909",
-      "title": "موعد صلاه العصر",
+      "id": "9b69e4a180665e2ecb",
+      "title": "باختاكور ضد النصر",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "20000+",
+      "score": 65.3,
+      "published_at": "2026-11-02T12:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعد استبعاد كريستيانو.. بوستيكوجلو يفجر تشكيل النصر في أبطال آسيا للنخبة",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "النصر يواجه باختاكور في طشقند بحثاً عن الفوز الثاني بنخبة آسيا",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "النصر في مهمة خاصة أمام باختاكور",
+          "source": "جريدة المدينة",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "1e1ccda585b1065474",
+      "title": "صلاه العصر",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 61.4,
-      "published_at": "2026-11-02T12:40:00Z",
+      "approx_traffic": "10000+",
+      "score": 61.6,
+      "published_at": "2026-11-02T12:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
@@ -24,66 +53,298 @@
           "snippet": ""
         },
         {
-          "title": "موعد صلاة الظهر اليوم الأحد 1 نوفمبر 2026 في القاهرة وأسوان والمحافظات",
-          "source": "صدى البلد",
+          "title": "مواقيت الصلاة اليوم الإثنين 2 نوفمبر 2026 في القاهرة والمحافظات",
+          "source": "بوابة الأهرام",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "c986901ccd91c7cb7a",
-      "title": "ken chenault",
+      "id": "c74c3b3a4c9c674f56",
+      "title": "باختاكور ضد النصر",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "5000+",
+      "score": 59.6,
+      "published_at": "2026-11-02T13:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعد استبعاد كريستيانو.. بوستيكوجلو يفجر تشكيل النصر في أبطال آسيا للنخبة",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "النصر يبحث عن انتصاره الثاني فى نخبة آسيا على حساب باختاكور",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "ما سبب غياب رونالدو عن مباراة النصر وباختاكور في أوزبكستان؟ | CNN Arabic | CNN",
+          "source": "CNN Arabic",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "628b3a3985f5b7e7eb",
+      "title": "pakhtakor vs al-nassr",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "5000+",
+      "score": 59.6,
+      "published_at": "2026-11-02T13:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Pakhtakor vs Al Nassr FC match lineup | AFC Champions League Elite · 2 Nov 2026",
+          "source": "YSscores",
+          "snippet": ""
+        },
+        {
+          "title": "After Cristiano's exclusion: Postecoglou shakes up Al-Nassr's line-up in the AFC Champions League Elite",
+          "source": "Goal.com",
+          "snippet": ""
+        },
+        {
+          "title": "Ange Postecoglou is leaning toward two changes for Pakhtakor trip — Pakhtakor Vs Al Nassr",
+          "source": "شبكة تواصل الإخبارية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "41e7a5881b87c9ba9a",
+      "title": "pakhtakor vs al-nassr",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 55.6,
+      "published_at": "2026-11-02T13:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Ange Postecoglou is leaning toward two changes for Pakhtakor trip — Pakhtakor Vs Al Nassr",
+          "source": "شبكة تواصل الإخبارية",
+          "snippet": ""
+        },
+        {
+          "title": "Pakhtakor vs Al Nassr LIVE, Score Updates in AFC Champions League Elite Match",
+          "source": "VAVEL.com",
+          "snippet": ""
+        },
+        {
+          "title": "Will Cristiano Ronaldo Play Today? Pakhtakor vs. Al Nassr Team News",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "83b36f4db45a5fa25b",
+      "title": "وفاء الكيلاني",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 53.6,
+      "published_at": "2026-11-02T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "تيم حسن يحسم جدل الزواج من أخرى.. ويكشف مفاجأة عن وفاء الكيلاني",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "تيم حسن يروي تفاصيل وفاة شقيقه خلدون.. حادث أليم أفقد والده الذاكرة",
+          "source": "العين الإخبارية",
+          "snippet": ""
+        },
+        {
+          "title": "تيم حسن يكشف تفاصيل إنسانية مؤثرة من حياته الشخصية في بودكاست قصتي",
+          "source": "ميوزيك نايشن",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f6e86fe29cb5e71a30",
+      "title": "bill murray",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.0,
+      "approx_traffic": "1000+",
+      "score": 53.3,
+      "published_at": "2026-11-02T13:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Watch CNBC's full interview with Bill Murray, author Tom Coyne on 'A Course Called Ireland'",
+          "source": "CNBC",
+          "snippet": ""
+        },
+        {
+          "title": "Bill Murray, 76, Says Fame Doesn't Make Him Happy After Decades in Hollywood: ‘In a Word, No’",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "Why Bill Murray Misses the Autograph ‘Era’ and More Surprising Revelations From His New Golf Documentary",
+          "source": "People.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "beaf1a3a0975a883b1",
+      "title": "تحطم طائرة فلوريدا",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 51.6,
       "published_at": "2026-11-02T12:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Equal to the Task — And Then Some",
-          "source": "Katie Couric Media",
+          "title": "تحطم طائرة في فلوريدا.. 9 قتلى في دقيقة",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "‘Will business stand up?’: Ken Chenault on CEO courage and the US midterms",
-          "source": "Semafor",
+          "title": "لحظة مخيفة لتحطم طائرة في أمريكا ومقتل ركابها.. وفيديو يوثق الكارثة",
+          "source": "CNN Arabic",
           "snippet": ""
         },
         {
-          "title": "The most important midterm dynamics for business leaders",
-          "source": "Fast Company",
+          "title": "35 ثانية فقط.. تسجيل يكشف الثواني الأخيرة لطائرة ليرجيت قبل الكارثة",
+          "source": "عكاظ",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "fbc62095894d8de021",
-      "title": "2 نوفمبر",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 50.0,
-      "published_at": "2026-11-02T09:00:00Z",
+      "id": "a3ea36a5b9d2270227",
+      "title": "tracy morgan",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.9,
+      "published_at": "2026-11-02T13:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "سعر الذهب اليوم.. عيار 21 يرتفع 20 جنيها مع صعود الأونصة إلى 3900 دولار",
+          "title": "Erika Alexander and Precious Way on Black women, new love and Season 2 of ‘The Fall and Rise of Reggie Dinkins’",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "'The Rise and Fall of Reggie Dinkins' stars on Tracy Morgan being 'patriarch' of the show",
+          "source": "KEYE",
+          "snippet": ""
+        },
+        {
+          "title": "‘Reggie Dinkins’ Adds ’30 Rock’ Alums Jane Krakowski, Scott Adsit to Season 2 (Exclusive)",
+          "source": "The Hollywood Reporter",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "0c1598d40750426692",
+      "title": "نادر أبو الليف",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 50.6,
+      "published_at": "2026-11-02T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "زواج المطرب أبو الليف.. والفنان: اللى بيحبنى يباركلى من قلبه",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "آي صاغة: من قمة 5595 إلى 3897 دولارا.. الذهب عالميا يواصل نزيف الخسائر",
+          "title": "أول تعليق من نادر أبو الليف بعد زواجه",
           "source": "Masrawy",
           "snippet": ""
         },
         {
-          "title": "تراجع سعر الجنيه الذهب اليوم 2 نوفمبر.. تفاصيل",
-          "source": "بوابة أخبار اليوم الإلكترونية",
+          "title": "نادر أبو الليف يعلن عن عقد قرانه على قوت المغازي",
+          "source": "صدى البلد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "b050ad48c2affebf81",
+      "title": "pagosa springs flooding",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.6,
+      "published_at": "2026-11-02T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Mandatory evacuations in southwestern Colorado as storms bring another round of historic flooding",
+          "source": "Colorado Public Radio",
+          "snippet": ""
+        },
+        {
+          "title": "Mandatory evacuation orders issued as historic flooding expected in southwest Colorado",
+          "source": "Denver7",
+          "snippet": ""
+        },
+        {
+          "title": "Watch: Drone footage of Colorado highway destroyed by floods",
+          "source": "The Weather Channel",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "61fdae0fb6474658bc",
+      "title": "nws",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 49.9,
+      "published_at": "2026-11-02T13:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Sierra snow leaves drivers waiting out chain controls on Interstate 80",
+          "source": "KCRA",
+          "snippet": ""
+        },
+        {
+          "title": "Atmospheric River Inbound For the West | Chase Powder Daily Snow Forecast",
+          "source": "OpenSnow",
+          "snippet": ""
+        },
+        {
+          "title": "Halloween storm could dump 2 feet of snow on Sierra peaks, bring snow to Tahoe",
+          "source": "San Francisco Chronicle",
           "snippet": ""
         }
       ],
@@ -94,25 +355,83 @@
       "title": "saudi news",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 49.4,
+      "approx_traffic": "1000+",
+      "score": 49.9,
       "published_at": "2026-11-02T11:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Air defenses intercept, destroy ballistic missile launched toward southern Saudi Arabia",
+          "title": "Saudi project clears 600,000 mines, bringing hope to Yemen",
           "source": "Arab News",
           "snippet": ""
         },
         {
-          "title": "Coalition: UAV Launched by Terrorist Houthi Militia toward Southern Region Intercepted, Destroyed",
-          "source": "وكالة الأنباء السعودية",
+          "title": "UK pledges action to support Saudi Arabia amid Houthi attacks: Minister",
+          "source": "Al Arabiya English",
           "snippet": ""
         },
         {
-          "title": "Saudi-led coalition intercepts a missile as fighting rages in Yemen’s al-Jawf",
-          "source": "Al Jazeera",
+          "title": "Britain’s Saudi air missions limited to defence of cities",
+          "source": "UK Defence Journal",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "027fd4d1912b99c0b9",
+      "title": "today show",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-02T13:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "TODAY Halloween 2026 Recap: See the Costume Reveals and Best Moments",
+          "source": "TODAY.com",
+          "snippet": ""
+        },
+        {
+          "title": "Carson Daly as Ella Langley and more must-see Halloween costumes from the “Today” show",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "Jenna Bush Hager Looks So Different as This Pop Culture Icon for Halloween",
+          "source": "InStyle",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "76f73ec10051bc8ecc",
+      "title": "موعد مباراه الزمالك اليوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 46.9,
+      "published_at": "2026-11-02T13:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "20 مباراة تكشف تاريخ مواجهات الزمالك ووادي دجلة قبل لقاء اليوم",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "المعلق وتفاصيل الاستوديو التحليلي.. خريطة إذاعة مباراة وادي دجلة والزمالك",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "نجم الزمالك السابق: أتمنى رؤية الجفالي أمام دجلة",
+          "source": "بوابة الشروق",
           "snippet": ""
         }
       ],
@@ -124,7 +443,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 49.4,
+      "score": 46.9,
       "published_at": "2026-11-02T11:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -148,232 +467,232 @@
       "alert": false
     },
     {
-      "id": "be169d4433a042b0d8",
-      "title": "محمد صلاح طرابزون سبور",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 49.0,
-      "published_at": "2026-11-02T06:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "7 انتصارات متتالية.. محمد صلاح يقود صحوة طرابزون سبور فى تركيا",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "محمد صلاح يقود التشكيل المتوقع لطرابزون أمام غازي عنتاب في الدوري التركي",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "تغطية حية مباشر لمباراة فريقي أياكس و ألكمار في بطولة الدوري الهولندي - الأسبوع 11",
-          "source": "FilGoal",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "02b46f5e84fa9c8488",
-      "title": "التامينات الاجتماعية",
+      "id": "3fd66b33cb55845bb7",
+      "title": "الاتحاد ضد العين",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 48.0,
-      "published_at": "2026-11-02T09:30:00Z",
+      "approx_traffic": "200+",
+      "score": 46.6,
+      "published_at": "2026-11-02T13:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "استبعاد عمالة من التأمينات وبلاغات هروب خاطئة تربك أصحاب العمل",
-          "source": "أخبار 24",
+          "title": "رياضي / دوري أبطال آسيا للنخبة: إيفيتش يؤكد تطلع العين للعودة بالنقاط الثلاث أمام الاتحاد",
+          "source": "وكالة الأنباء السعودية",
           "snippet": ""
         },
         {
-          "title": "النائب محمد فؤاد يتقدم بطلب إحاطة بشأن استمرار تعطل منظومة التأمينات الاجتماعية",
-          "source": "بوابة الشروق",
+          "title": "الاتحاد يستضيف العين الإماراتي في نخبة آسيا بحثاً عن انتصاره الثاني",
+          "source": "صحيفة سبق الإلكترونية",
           "snippet": ""
         },
         {
-          "title": "طلب إحاطة جديد بشأن تعطل منظومة التأمينات الاجتماعية.. عشرات الطلبات البرلمانية وتعهدات حكومية دون تنفيذ",
-          "source": "شبكة تواصل الإخبارية",
+          "title": "فيسينغ: مواجهة العين مختلفة",
+          "source": "جريدة الرياض",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "6055e4b188c12f6bfc",
-      "title": "rafael jodar",
+      "id": "2054093d72253fdf83",
+      "title": "andy richter",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 47.1,
-      "published_at": "2026-11-02T12:30:00Z",
+      "score": 46.6,
+      "published_at": "2026-11-02T13:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "How to watch the men’s Rolex Paris Masters: Streaming options for the Round of 64",
+          "title": "Alfonso Ribeiro Responds After Alexa PenaVega Claims ‘Dancing with the Stars’ Is ‘Rigged’",
+          "source": "People.com",
+          "snippet": ""
+        },
+        {
+          "title": "DWTS alum Andy Richter lifts the lid on top-secret voting process as show battles 'rigged' claims",
+          "source": "The Sun",
+          "snippet": ""
+        },
+        {
+          "title": "DWTS’ Alfonso Ribeiro Reacts to ‘Rigged’ Show Joke, Dax Shepard’s Marriage Revelation, More Top Stories",
+          "source": "AOL.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7d466f929ded488f27",
+      "title": "naomi watts",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.6,
+      "published_at": "2026-11-02T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "PROGRAMMING HIGHLIGHTS FOR ABC NEWS’ ‘GOOD MORNING AMERICA’ AND ‘GMA3,’ NOV. 2-7",
+          "source": "Detpress",
+          "snippet": ""
+        },
+        {
+          "title": "Good Morning America: Kim Kardashian, Naomi Watts",
+          "source": "IMDb",
+          "snippet": ""
+        },
+        {
+          "title": "\"GMA\" Guest List: Lacey Chabert, John Malkovich, and More to Appear Week of November 2nd",
+          "source": "LaughingPlace.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "58c55cad19c5c54627",
+      "title": "can you vote today",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.6,
+      "published_at": "2026-11-02T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "A Florida Election Chief Urges In-Person Voting Over ‘Serious’ Postal Delays",
           "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "̳̳̳[#!𝙎𝙏𝙍𝙀𝘼𝙈 𝙋𝙍𝙊!] Alejandro Tabilo vs Rafael Jodar LIVE ON FREE 02TH. November. 2026",
-          "source": "Pierce Manufacturing",
+          "title": "Too late to vote by mail in Florida? How to drop it off, get it counted",
+          "source": "firstcoastnews.com",
           "snippet": ""
         },
         {
-          "title": "La ATP modifica el ranking mundial tras el título de Alcaraz en Viena: corrección que favorece a Jódar",
-          "source": "Mundo Deportivo",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "2260f2eec9e137b3b6",
-      "title": "david jolly",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.1,
-      "published_at": "2026-11-02T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Donalds or Jolly? It’s no contest | Letters to the editor",
-          "source": "Sun Sentinel",
-          "snippet": ""
-        },
-        {
-          "title": "The Alligator’s governor voter guide",
-          "source": "The Independent Florida Alligator",
-          "snippet": ""
-        },
-        {
-          "title": "Florida Gubernatorial candidate Byron Donalds rallies Tampa Bay supporters as early voting ends",
-          "source": "wtsp.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b83c9ace5c3311d340",
-      "title": "جواو فيليكس",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 47.0,
-      "published_at": "2026-11-02T10:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مفاجأة كبرى.. الهلال يدخل سباق التعاقد مع محترف النصر",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "مفاجأة مدوية.. هل يخطف الهلال جواو فيليكس؟",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "مصادر «عكاظ»: النصر يقترب من تجديد عقد بوشل قبل «الحرة»",
-          "source": "عكاظ",
+          "title": "Elections officials: Don’t mail your ballot, drop it off instead",
+          "source": "Tampa Bay Times",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "b159992fc623b9be2b",
-      "title": "bill hader",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.7,
-      "published_at": "2026-11-02T12:20:00Z",
+      "id": "b21b151d8602098fff",
+      "title": "سهم بنك القاهرة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 46.6,
+      "published_at": "2026-11-02T10:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Bill Hader talks about his latest role as 'The Cat in the Hat'",
-          "source": "NPR",
+          "title": "460 مليون دولار التزامات المستثمرين الاستراتيجيين في طرح بنك القاهرة",
+          "source": "معلومات مباشر",
           "snippet": ""
         },
         {
-          "title": "Chaos with ‘Cat in the Hat’ Stars America Ferrera, Xochitl Gomez, and Bill Hader",
-          "source": "The Nerds of Color",
+          "title": "سهم بنك القاهرة يقفز 7% في أول أيام تداوله",
+          "source": "سكاي نيوز عربية",
           "snippet": ""
         },
         {
-          "title": "Bill Hader Is the Cat in the Hat — This Time a “Much Different Version” Than He Played on ‘SNL’",
-          "source": "The Hollywood Reporter",
+          "title": "تداول أسهم بنك القاهرة في البورصة المصرية بقيمة أكثر من 650 مليون دولار",
+          "source": "مونت كارلو الدولية",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "feb814f4554648f163",
-      "title": "voting",
+      "id": "97c776f7314d600fef",
+      "title": "internet invitational",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 46.7,
-      "published_at": "2026-11-02T12:20:00Z",
+      "score": 45.9,
+      "published_at": "2026-11-02T13:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Voters fear the America they’ve known is slipping away. On that, the left and right agree",
-          "source": "AP News",
+          "title": "Why Barstool’s latest golf swing is about much more than virality",
+          "source": "GOLF.com",
           "snippet": ""
         },
         {
-          "title": "Midterm voters reveal what's driving them to the polls — but what they're voting against may matter more",
-          "source": "Fox News",
+          "title": "Check out the handicap indexes of the biggest Internet Invitational stars (and scrubs)",
+          "source": "Golf Digest",
           "snippet": ""
         },
         {
-          "title": "Days away from a national verdict on Trump 2.0, we check in with nine voters across the political spectrum",
-          "source": "The Guardian",
+          "title": "Emotional tribute paid to Barstool employee who died at 31 as Dave Portnoy makes touching gesture",
+          "source": "AOL.com",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "19919734cc30e4afbf",
-      "title": "when is voting day 2026",
+      "id": "58fb246eb72391d5b5",
+      "title": "crwd stock",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 46.7,
-      "published_at": "2026-11-02T12:20:00Z",
+      "score": 45.9,
+      "published_at": "2026-11-02T13:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "6 things to watch for on election night",
-          "source": "NPR",
+          "title": "Here are Monday's biggest analyst calls: Nvidia, SpaceX, Apple, Rivian, Amazon, CrowdStrike, Broadcom & more",
+          "source": "CNBC",
           "snippet": ""
         },
         {
-          "title": "MS NOW’s Kabir Khanna talks key races to watch on election night",
-          "source": "MS NOW",
+          "title": "'Worrisome': Jim Cramer warns chip stocks have gone 'parabolic' — here are the defensive moves he's making now",
+          "source": "Yahoo Finance",
           "snippet": ""
         },
         {
-          "title": "Election cheat sheet: These early races could tell us where the midterms are headed",
-          "source": "Axios",
+          "title": "Jim Cramer Warns ‘Don’t Assume the Worst Is Behind Us’ After $1 Trillion Chip Stock Rout - Intel (NASDAQ",
+          "source": "Benzinga",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "3394da5c04f70024a5",
+      "title": "أحمد الشناوي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 45.6,
+      "published_at": "2026-11-02T13:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "مال سايب محدش بيسأل عليه ..رسمي : لجنة شؤون اللاعبين تُلزم أحمد الشناوي برد 8 ملايين للزمالك",
+          "source": "الزمالك اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "رفض تظلم الشناوي.. قرار جديد يلزم حارس بيراميدز برد 8ملايين جنيه للزمالك",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "أزمة الـ8 ملايين جنيه. ماذا حدث بين الزمالك والشناوي؟",
+          "source": "winwin",
           "snippet": ""
         }
       ],
@@ -384,8 +703,8 @@
       "title": "أصالة",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 44.4,
+      "approx_traffic": "200+",
+      "score": 44.9,
       "published_at": "2026-11-02T12:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -406,148 +725,119 @@
           "snippet": ""
         }
       ],
+      "alert": false
+    },
+    {
+      "id": "2f1bcd496ad2241658",
+      "title": "tadawul all-share index",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 44.3,
+      "published_at": "2026-11-02T13:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Saudi Stock Exchange Main Index Closes Higher",
+          "source": "وكالة الأنباء السعودية",
+          "snippet": ""
+        },
+        {
+          "title": "Saudi Market Rises 0.35% to 9,873 Points in Early Trading",
+          "source": "ASHARQ AL-AWSAT English",
+          "snippet": ""
+        },
+        {
+          "title": "Saudi Arabia stocks lower at close of trade; Tadawul All Share down 0.84%",
+          "source": "Investing.com",
+          "snippet": ""
+        }
+      ],
       "alert": true
     },
     {
-      "id": "f809e6ea0d94505518",
-      "title": "november calendar 2026",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "b06a816853fdc19ac2",
+      "title": "أصالة",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 44.4,
-      "published_at": "2026-11-02T12:40:00Z",
+      "score": 43.6,
+      "published_at": "2026-11-02T12:00:00Z",
       "source": "Google Trends",
-      "source_count": 2,
+      "source_count": 3,
       "news_items": [
         {
-          "title": "Your Happiness Calendar for November 2026",
-          "source": "Greater Good: The Science of a Meaningful Life",
+          "title": "أصالة تغازل معجباً وسيماً على المسرح: حليوة خلوه يتصور معي",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Fishing Calendar for November 2–8, 2026: Tips for Late Fall Fishing",
-          "source": "UA.NEWS",
+          "title": "أصالة بلفتة مميزة وحديثها عن المملكة العربية السعودية يُحدث تفاعلا واسعا",
+          "source": "Elfann",
           "snippet": ""
         },
         {
-          "title": "Fishing Calendar for November 2026: Highlights and the Best Days for Fishing",
-          "source": "UA.NEWS",
+          "title": "معجب يصدم أصالة باقتحامه المسرح بشكل متهور للتصوير معها.. فيديو",
+          "source": "صحيفة صدى الالكترونية",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "4135ed4bfcf58511a4",
-      "title": "massachusetts ballot questions",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "3f94f670da825c8fdb",
+      "title": "تاكر كارلسون",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 44.1,
-      "published_at": "2026-11-02T12:30:00Z",
+      "score": 40.6,
+      "published_at": "2026-11-02T12:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "How should you vote on each ballot question?",
-          "source": "The New Bedford Light",
+          "title": "ترامب محذراً: قد نضطر لتوجيه ضربة ساحقة لطهران",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Boston Globe Poll Indicates Divide On Three Ballot Questions",
-          "source": "Nantucket Current",
+          "title": "\"ضرب من الجنون\".. البرادعي يحذّر من أي هجوم أمريكي جديد ضد إيران",
+          "source": "CNN Arabic",
           "snippet": ""
         },
         {
-          "title": "Mass. election guide: Races, ballot questions and voting info",
-          "source": "WCVB",
+          "title": "على حافة الحرب.. نتنياهو يحرض وترمب يدرس خياراته وطهران تصعّد تهديداتها",
+          "source": "الجزيرة نت",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "a67f9b50cc2b66e6fe",
-      "title": "what time do polls open",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.1,
-      "published_at": "2026-11-02T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Iowa voters brave hourslong lines to cast ballots ahead of Election Day",
-          "source": "KCCI",
-          "snippet": ""
-        },
-        {
-          "title": "Voting in Iowa? Poll hours, ID rules and what to bring on Nov. 3",
-          "source": "The Des Moines Register",
-          "snippet": ""
-        },
-        {
-          "title": "As Election Day nears, Democrats focus on on-one-one conversations, energizing voters",
-          "source": "KGAN",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "7bbca8b615c91f8cb5",
-      "title": "syracuse basketball",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.1,
-      "published_at": "2026-11-02T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Syracuse coach Gerry McNamara’s father dies; McNamara will coach Orange in opener",
-          "source": "Syracuse.com",
-          "snippet": ""
-        },
-        {
-          "title": "Exclusive interview: The return of G-Mac",
-          "source": "Scranton Times-Tribune",
-          "snippet": ""
-        },
-        {
-          "title": "McNamara Era Begins as Syracuse Hosts New Haven",
-          "source": "Syracuse University Athletics",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "c39e3a835ab5c94519",
-      "title": "البورصة المصرية",
+      "id": "e53e6023e949687e58",
+      "title": "gta 6",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 43.7,
-      "published_at": "2026-11-02T07:20:00Z",
+      "approx_traffic": "100+",
+      "score": 40.3,
+      "published_at": "2026-11-02T11:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "طرح القرن بـ36.3 مليار جنيه.. بنك القاهرة يدخل البورصة بأضخم صفقة فى تاريخ مصر",
-          "source": "اليوم السابع",
+          "title": "Players have found a way to launch Grand Theft Auto VI on PlayStation 5 a day before release.",
+          "source": "GameGPU",
           "snippet": ""
         },
         {
-          "title": "460 مليون دولار التزامات المستثمرين الاستراتيجيين في طرح بنك القاهرة",
-          "source": "معلومات مباشر",
+          "title": "PS5 users can access GTA 6 up to 18 hours early on its release date with PSN workaround",
+          "source": "Notebookcheck",
           "snippet": ""
         },
         {
-          "title": "البورصة المصرية تعمق خسائرها و\"السبعيني\" يهبط بنحو 3%",
-          "source": "العربية",
+          "title": "PSN trick will let you play GTA 6 up to 18 hours early on the PS5",
+          "source": "PC Guide",
           "snippet": ""
         }
       ],
@@ -559,7 +849,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 42.4,
+      "score": 40.0,
       "published_at": "2026-11-02T11:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -570,293 +860,13 @@
           "snippet": ""
         },
         {
-          "title": "«نخبة آسيا» 4 مواجهات شعارها «لا للتعثر»",
-          "source": "عكاظ",
-          "snippet": ""
-        },
-        {
           "title": "الأهلي والسد في مباراة الانفراد بالانتصارات",
           "source": "العربية",
           "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "636dace7ac33c21795",
-      "title": "حافز",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 42.0,
-      "published_at": "2026-11-02T08:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بعد رفع قيمته لـ2100 جنيه.. من يستحق صرف حافز التدريس؟ التفاصيل",
-          "source": "اليوم السابع",
-          "snippet": ""
         },
         {
-          "title": "كل ما تريد معرفته عن حافز التدريس للمعلمين.. قيمته وشروطه والفئات المستثناة",
-          "source": "بوابة دار الهلال",
-          "snippet": ""
-        },
-        {
-          "title": "معلمو رياض الأطفال والفصل الواحد.. موقفهم من حافز التدريس 2026",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "ac01aa3093c4acf9e2",
-      "title": "airplane crash",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 41.1,
-      "published_at": "2026-11-02T09:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "‘Debris hit my house. Everything was on fire': Residents describe Palm Beach jet crash",
-          "source": "NBC 6 South Florida",
-          "snippet": ""
-        },
-        {
-          "title": "Learjet crashes and erupts into flames in Florida, killing all 9 on board",
-          "source": "CNN",
-          "snippet": ""
-        },
-        {
-          "title": "At least 9 dead after $2M Learjet crashes into Florida mobile home park: ‘Sounded like a missile’",
-          "source": "New York Post",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "57b61ac8125e98c88e",
-      "title": "حريق",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 40.1,
-      "published_at": "2026-11-02T10:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "السيطرة على حريق شقة سكنية بمساكن طابا في بنها دون إصابات",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "السيطرة على حريق بشقة سكنية في قرية السفاينة بطوخ",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "الحماية المدنية تسيطر على حريق شقة سكنية بمساكن طابا في بنها",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "b8090db1c117b2232d",
-      "title": "david warner",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 40.1,
-      "published_at": "2026-11-02T09:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "David Warner arrives in Nepal for Kathmandu Gorkhas’ NPL campaign",
-          "source": "The Kathmandu Post",
-          "snippet": ""
-        },
-        {
-          "title": "Lyon's fading force, Smith at No. 3, and the never-ending Boland debate - Questions for Australia after series defeat",
-          "source": "Cricinfo",
-          "snippet": ""
-        },
-        {
-          "title": "South Africa vs Australia: Five takeaways for England after epic series",
-          "source": "BBC",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2ff39d85bc20a654d2",
-      "title": "shoaib malik",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 39.4,
-      "published_at": "2026-11-02T09:40:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "Sania Mirza, Shoaib Malik’s latest pics with son grab attention",
-          "source": "The Siasat Daily",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6703d3b638a4f2888b",
-      "title": "test",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 38.7,
-      "published_at": "2026-11-02T08:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Apple's new CEO Ternus to face first earnings test as memory costs surge",
-          "source": "Reuters",
-          "snippet": ""
-        },
-        {
-          "title": "Apple to report Q4 earnings Monday, with iPhone 18 sales in the spotlight",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "Apple’s $1 Trillion Rally Leaves No Room for Error on Earnings",
-          "source": "Bloomberg",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f296fc30446dae01ed",
-      "title": "شريف مدكور",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 38.4,
-      "published_at": "2026-11-02T09:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "إسعاد يونس تستضيف مجموعة من أبناء كفر الشيخ في صاحبة السعادة الليلة",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "شريف مدكور: الرقص رياضة زي كرة القدم والسلة بيفرّغ الطاقة السلبية",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "شريف مدكور: «بقول الحمد لله إن جالي كانسر» (فيديو)",
-          "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "08dda65b06a45c549f",
-      "title": "اسماعيل الصيباري",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 38.4,
-      "published_at": "2026-11-02T09:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بايرن ميونيخ يكشف طبيعة إصابة إسماعيل صيباري",
-          "source": "سكاي نيوز عربية",
-          "snippet": ""
-        },
-        {
-          "title": "بعد صدمة صيباري.. بايرن ميونخ يحسم موقفه من الميركاتو الشتوي",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "الإصابات تضرب البايرن بعد «كلاسيكو» ألمانيا",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2a68a4dbc4dc9cc9c1",
-      "title": "ranking",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 37.1,
-      "published_at": "2026-11-02T09:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "UCLA into top 5, Ohio State out of top 10, New Mexico earns first AP ranking",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "AP Top 25: Ohio State drops nine spots after loss to USC",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Week 9 AP Top 25 Poll makes a mockery of Wake Forest and a laughable overreaction to USC's win over Buckeyes",
-          "source": "Fox News",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0509ccc0bcbbc99a2f",
-      "title": "سرطان",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 36.1,
-      "published_at": "2026-11-02T07:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بعد حديث شريف مدكور.. 7 علامات مبكرة لا تتجاهلها لسرطان القولون",
-          "source": "الكونسلتو",
-          "snippet": ""
-        },
-        {
-          "title": "الإصابة بسرطان القولون والمستقيم في أميركا تشمل كل الأعمار",
-          "source": "اندبندنت عربية",
-          "snippet": ""
-        },
-        {
-          "title": "دراسات حديثة تحذر من ارتفاع معدلات الإصابة بسرطان القولون في الولايات المتحدة",
-          "source": "جريدة القدس",
+          "title": "«نخبة آسيا»: الأهلي والنصر والقادسية في مهمة خارج الحدود",
+          "source": "الشرق الأوسط",
           "snippet": ""
         }
       ],
