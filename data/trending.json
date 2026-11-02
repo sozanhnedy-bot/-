@@ -1,49 +1,49 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T14:12:34.136777Z",
+  "updated_at": "2026-11-02T15:26:49.602522Z",
   "items": [
     {
       "id": "9b69e4a180665e2ecb",
       "title": "باختاكور ضد النصر",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "20000+",
-      "score": 65.3,
+      "approx_traffic": "50000+",
+      "score": 66.8,
       "published_at": "2026-11-02T12:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "مباشر مباراة النصر ضد باختاكور في دوري أبطال آسيا للنخبة.. لحظة بلحظة",
+          "source": "الجزيرة نت",
+          "snippet": ""
+        },
         {
           "title": "بعد استبعاد كريستيانو.. بوستيكوجلو يفجر تشكيل النصر في أبطال آسيا للنخبة",
           "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "النصر يواجه باختاكور في طشقند بحثاً عن الفوز الثاني بنخبة آسيا",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "النصر في مهمة خاصة أمام باختاكور",
-          "source": "جريدة المدينة",
+          "title": "ما سبب غياب رونالدو عن مباراة النصر وباختاكور في أوزبكستان؟ | CNN Arabic | CNN",
+          "source": "CNN Arabic",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "1e1ccda585b1065474",
-      "title": "صلاه العصر",
+      "id": "ef2d445687c91d7a4f",
+      "title": "اذان المغرب",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "10000+",
-      "score": 61.6,
-      "published_at": "2026-11-02T12:30:00Z",
+      "score": 64.1,
+      "published_at": "2026-11-02T15:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "موعد أذان وصلاة العصر اليوم الإثنين الموافق 2 نوفمبر",
+          "title": "موعد أذان وصلاة المغرب اليوم الإثنين الموافق 2 نوفمبر",
           "source": "Masrawy",
           "snippet": ""
         },
@@ -58,94 +58,384 @@
           "snippet": ""
         }
       ],
-      "alert": false
-    },
-    {
-      "id": "c74c3b3a4c9c674f56",
-      "title": "باختاكور ضد النصر",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 59.6,
-      "published_at": "2026-11-02T13:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بعد استبعاد كريستيانو.. بوستيكوجلو يفجر تشكيل النصر في أبطال آسيا للنخبة",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "النصر يبحث عن انتصاره الثاني فى نخبة آسيا على حساب باختاكور",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "ما سبب غياب رونالدو عن مباراة النصر وباختاكور في أوزبكستان؟ | CNN Arabic | CNN",
-          "source": "CNN Arabic",
-          "snippet": ""
-        }
-      ],
-      "alert": false
+      "alert": true
     },
     {
       "id": "628b3a3985f5b7e7eb",
       "title": "pakhtakor vs al-nassr",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 59.6,
+      "approx_traffic": "10000+",
+      "score": 60.1,
       "published_at": "2026-11-02T13:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Pakhtakor vs Al Nassr FC match lineup | AFC Champions League Elite · 2 Nov 2026",
-          "source": "YSscores",
-          "snippet": ""
-        },
-        {
-          "title": "After Cristiano's exclusion: Postecoglou shakes up Al-Nassr's line-up in the AFC Champions League Elite",
+          "title": "Following Cristiano's exclusion: Postecoglou surprises with Al-Nassr's line-up in the AFC Champions League Elite",
           "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "Ange Postecoglou is leaning toward two changes for Pakhtakor trip — Pakhtakor Vs Al Nassr",
-          "source": "شبكة تواصل الإخبارية",
+          "title": "Cristiano Ronaldo's Absence Shocks Fans in the AFC Champions League: What Happened?",
+          "source": "beIN SPORTS",
+          "snippet": ""
+        },
+        {
+          "title": "Pakhtakor vs. Al Nassr Lineups, Live Streaming, How & Where to Watch AFC Champions League Elite on TV",
+          "source": "Athlon Sports",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "41e7a5881b87c9ba9a",
-      "title": "pakhtakor vs al-nassr",
+      "id": "8d175cb069296b3cbd",
+      "title": "مباراة الزمالك اليوم",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 55.6,
-      "published_at": "2026-11-02T13:00:00Z",
+      "score": 57.1,
+      "published_at": "2026-11-02T15:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Ange Postecoglou is leaning toward two changes for Pakhtakor trip — Pakhtakor Vs Al Nassr",
-          "source": "شبكة تواصل الإخبارية",
+          "title": "تشكيل الزمالك أمام وادي دجلة في كأس الرابطة",
+          "source": "يلاكورة",
           "snippet": ""
         },
         {
-          "title": "Pakhtakor vs Al Nassr LIVE, Score Updates in AFC Champions League Elite Match",
-          "source": "VAVEL.com",
+          "title": "محمود الشناوي حارسا لمرمى الزمالك أمام وادي دجلة فى كأس عاصمة مصر",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "Will Cristiano Ronaldo Play Today? Pakhtakor vs. Al Nassr Team News",
-          "source": "Yahoo Sports",
+          "title": "سبب إستبعاد محمد حمد من مباراة الزمالك اليوم",
+          "source": "الزمالك اليوم",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "4d8539612028abd107",
+      "title": "voo stock",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 57.1,
+      "published_at": "2026-11-02T15:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "VOO vs. VTI: Which Vanguard Fund Is the Better Buy Right Now?",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "VOO vs. VTI: One Vanguard ETF Covers Nearly the Entire US Stock Market – Is It Better?",
+          "source": "TipRanks",
+          "snippet": ""
+        },
+        {
+          "title": "VOO vs. VTI: Which Vanguard Fund Is the Better Buy Right Now?",
+          "source": "The Motley Fool",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "922e3599a33c95160c",
+      "title": "schd",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.1,
+      "published_at": "2026-11-02T15:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Want a Portfolio That Generates Decades of Passive Income Without You Lifting a Finger? Here's Where to Start.",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "SCHD Vs. FDVV: Which Dividend ETF Wins Into 2027 (NYSEARCA:SCHD)",
+          "source": "Seeking Alpha",
+          "snippet": ""
+        },
+        {
+          "title": "The 1 Costly Mistake Income Investors Make When They Buy SCHD",
+          "source": "The Motley Fool",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "0b5121160ded35f4fe",
+      "title": "موعد مباراه الاهلي اليوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 54.1,
+      "published_at": "2026-11-02T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "المعلق وتفاصيل الاستوديو التحليلي.. خريطة إذاعة مباراة الأهلي والمقاولون في كأس الرابطة",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "زيزو والشحات والساعى وعطية والشناوى أبرز غيابات الأهلى أمام المقاولون",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "كأس عاصمة مصر| الأهلي يواجه المقاولون العرب اليوم على استاد القاهرة",
+          "source": "الموقع الرسمي للنادي الأهلي المصري",
           "snippet": ""
         }
       ],
       "alert": false
+    },
+    {
+      "id": "8325ae93d5dda61d4e",
+      "title": "السد ضد الأهلي",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T15:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "الأهلي السعودي يواجه السد القطري سعياً لمواصلة انتصاراته في نخبة آسيا",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "الأهلي والسد في مباراة الانفراد بالانتصارات",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "«نخبة آسيا»: الأهلي والنصر والقادسية في مهمة خارج الحدود",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "cc2685a07c8b6f4c79",
+      "title": "pltr",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T15:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Cantor Fitzgerald maintains Palantir Technologies at Neutral, raises price target to $207 from $156",
+          "source": "TradingView",
+          "snippet": ""
+        },
+        {
+          "title": "PLTR Maintained by Cantor Fitzgerald -- Price Target Raised to $207",
+          "source": "GuruFocus",
+          "snippet": ""
+        },
+        {
+          "title": "JPMorgan sets Palantir stock at Overweight with $262 price target",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "29e6c4b68f376c9a20",
+      "title": "qqqm",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T15:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "If You'd Put $3,000 Into QQQM 5 Years Ago, Here's What You'd Have Now",
+          "source": "The Motley Fool",
+          "snippet": ""
+        },
+        {
+          "title": "If You'd Put $3,000 Into QQQM 5 Years Ago, Here's What You'd Have Now",
+          "source": "The Globe and Mail",
+          "snippet": ""
+        },
+        {
+          "title": "QQQM: The Nasdaq 100 Is Having A Panic Attack And I Think This Pullback Should Be Bought",
+          "source": "Seeking Alpha",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "89e141fe7bd01e0210",
+      "title": "nasdaq composite",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T15:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Aspen Neuroscience, Inc.(NasdaqGS: ASPE) added to NASDAQ Composite Index",
+          "source": "marketscreener.com",
+          "snippet": ""
+        },
+        {
+          "title": "Why investors are dumping tech stocks, in one image",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "Stock market rocked as investors dump tech shares; Nasdaq suffers worst day since June: Live updates",
+          "source": "CNBC",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "35c0d9e85b294690f3",
+      "title": "jessica alba",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T15:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Jessica Alba deletes Halloween photos after bloody Nancy Kerrigan costume sparks backlash",
+          "source": "Page Six",
+          "snippet": ""
+        },
+        {
+          "title": "Jessica Alba Deletes Instagram Photos After Halloween Costume Backlash",
+          "source": "Cosmopolitan",
+          "snippet": ""
+        },
+        {
+          "title": "Jessica Alba Sparks Backlash After Deleting Beaten Nancy Kerrigan and Tonya Harding Halloween Costume",
+          "source": "Parade Magazine",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "477921f7db6a6feaad",
+      "title": "brent crude oil price",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T15:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Crude oil dives to session low on Iran peace talk hopes ahead of midterms",
+          "source": "CNBC",
+          "snippet": ""
+        },
+        {
+          "title": "Oil Prices Fall More Than 4% as Iran Peace Talks Ease Supply Fears",
+          "source": "WSJ",
+          "snippet": ""
+        },
+        {
+          "title": "Oil falls on Hormuz deal hopes but Trump keeps strikes on the table",
+          "source": "Euronews.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "08154ae2185ff6c980",
+      "title": "intel stock price",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.1,
+      "published_at": "2026-11-02T15:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Intel's 29% Plunge Sparks a Contrarian Buying Case",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "Intel Earnings Sell-Off Overdone? Is A 20% Recovery Realistic?",
+          "source": "Forbes",
+          "snippet": ""
+        },
+        {
+          "title": "Intel stock has worst day since 1970s, wiping about $12 billion off government's stake",
+          "source": "CNBC",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "864e720c526991ad3a",
+      "title": "palantir stock",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.1,
+      "published_at": "2026-11-02T15:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "JPMorgan sets Palantir stock at Overweight with $262 price target",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "Palantir Earnings On Tap. Can Software Maker Buck AI Sell-Off?",
+          "source": "Investor's Business Daily",
+          "snippet": ""
+        },
+        {
+          "title": "Prediction: This Will Be Palantir's Stock Price by Year-End 2027",
+          "source": "The Motley Fool",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "83b36f4db45a5fa25b",
@@ -153,7 +443,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "1000+",
-      "score": 53.6,
+      "score": 51.1,
       "published_at": "2026-11-02T13:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -177,303 +467,13 @@
       "alert": false
     },
     {
-      "id": "f6e86fe29cb5e71a30",
-      "title": "bill murray",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.3,
-      "published_at": "2026-11-02T13:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Watch CNBC's full interview with Bill Murray, author Tom Coyne on 'A Course Called Ireland'",
-          "source": "CNBC",
-          "snippet": ""
-        },
-        {
-          "title": "Bill Murray, 76, Says Fame Doesn't Make Him Happy After Decades in Hollywood: ‘In a Word, No’",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Why Bill Murray Misses the Autograph ‘Era’ and More Surprising Revelations From His New Golf Documentary",
-          "source": "People.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "beaf1a3a0975a883b1",
-      "title": "تحطم طائرة فلوريدا",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 51.6,
-      "published_at": "2026-11-02T12:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "تحطم طائرة في فلوريدا.. 9 قتلى في دقيقة",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "لحظة مخيفة لتحطم طائرة في أمريكا ومقتل ركابها.. وفيديو يوثق الكارثة",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "35 ثانية فقط.. تسجيل يكشف الثواني الأخيرة لطائرة ليرجيت قبل الكارثة",
-          "source": "عكاظ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a3ea36a5b9d2270227",
-      "title": "tracy morgan",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.9,
-      "published_at": "2026-11-02T13:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Erika Alexander and Precious Way on Black women, new love and Season 2 of ‘The Fall and Rise of Reggie Dinkins’",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "'The Rise and Fall of Reggie Dinkins' stars on Tracy Morgan being 'patriarch' of the show",
-          "source": "KEYE",
-          "snippet": ""
-        },
-        {
-          "title": "‘Reggie Dinkins’ Adds ’30 Rock’ Alums Jane Krakowski, Scott Adsit to Season 2 (Exclusive)",
-          "source": "The Hollywood Reporter",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0c1598d40750426692",
-      "title": "نادر أبو الليف",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 50.6,
-      "published_at": "2026-11-02T13:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "زواج المطرب أبو الليف.. والفنان: اللى بيحبنى يباركلى من قلبه",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "أول تعليق من نادر أبو الليف بعد زواجه",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "نادر أبو الليف يعلن عن عقد قرانه على قوت المغازي",
-          "source": "صدى البلد",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "b050ad48c2affebf81",
-      "title": "pagosa springs flooding",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.6,
-      "published_at": "2026-11-02T13:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Mandatory evacuations in southwestern Colorado as storms bring another round of historic flooding",
-          "source": "Colorado Public Radio",
-          "snippet": ""
-        },
-        {
-          "title": "Mandatory evacuation orders issued as historic flooding expected in southwest Colorado",
-          "source": "Denver7",
-          "snippet": ""
-        },
-        {
-          "title": "Watch: Drone footage of Colorado highway destroyed by floods",
-          "source": "The Weather Channel",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "61fdae0fb6474658bc",
-      "title": "nws",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 49.9,
-      "published_at": "2026-11-02T13:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Sierra snow leaves drivers waiting out chain controls on Interstate 80",
-          "source": "KCRA",
-          "snippet": ""
-        },
-        {
-          "title": "Atmospheric River Inbound For the West | Chase Powder Daily Snow Forecast",
-          "source": "OpenSnow",
-          "snippet": ""
-        },
-        {
-          "title": "Halloween storm could dump 2 feet of snow on Sierra peaks, bring snow to Tahoe",
-          "source": "San Francisco Chronicle",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "29ed62ce75d6d2440a",
-      "title": "saudi news",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 49.9,
-      "published_at": "2026-11-02T11:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Saudi project clears 600,000 mines, bringing hope to Yemen",
-          "source": "Arab News",
-          "snippet": ""
-        },
-        {
-          "title": "UK pledges action to support Saudi Arabia amid Houthi attacks: Minister",
-          "source": "Al Arabiya English",
-          "snippet": ""
-        },
-        {
-          "title": "Britain’s Saudi air missions limited to defence of cities",
-          "source": "UK Defence Journal",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "027fd4d1912b99c0b9",
-      "title": "today show",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-02T13:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "TODAY Halloween 2026 Recap: See the Costume Reveals and Best Moments",
-          "source": "TODAY.com",
-          "snippet": ""
-        },
-        {
-          "title": "Carson Daly as Ella Langley and more must-see Halloween costumes from the “Today” show",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Jenna Bush Hager Looks So Different as This Pop Culture Icon for Halloween",
-          "source": "InStyle",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "76f73ec10051bc8ecc",
-      "title": "موعد مباراه الزمالك اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.9,
-      "published_at": "2026-11-02T13:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "20 مباراة تكشف تاريخ مواجهات الزمالك ووادي دجلة قبل لقاء اليوم",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "المعلق وتفاصيل الاستوديو التحليلي.. خريطة إذاعة مباراة وادي دجلة والزمالك",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "نجم الزمالك السابق: أتمنى رؤية الجفالي أمام دجلة",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "44297b67e3226fb97c",
-      "title": "sikandar raza",
+      "id": "078a404ff260b1d0ad",
+      "title": "النخبة اسيا",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 46.9,
-      "published_at": "2026-11-02T11:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Raza 'hurt' with team-mates' 'complacency' in latest loss to Afghanistan",
-          "source": "Cricinfo",
-          "snippet": ""
-        },
-        {
-          "title": "World record at 40! Sikandar Raza smashes unbeaten ton against Afghanistan, enters elite list",
-          "source": "The Times of India",
-          "snippet": ""
-        },
-        {
-          "title": "Who are the oldest players to hit a century in T20I cricket? | To know more | Inshorts",
-          "source": "Inshorts",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "3fd66b33cb55845bb7",
-      "title": "الاتحاد ضد العين",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 46.6,
-      "published_at": "2026-11-02T13:30:00Z",
+      "score": 49.4,
+      "published_at": "2026-11-02T14:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
@@ -496,232 +496,290 @@
       "alert": false
     },
     {
-      "id": "2054093d72253fdf83",
-      "title": "andy richter",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.6,
-      "published_at": "2026-11-02T13:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Alfonso Ribeiro Responds After Alexa PenaVega Claims ‘Dancing with the Stars’ Is ‘Rigged’",
-          "source": "People.com",
-          "snippet": ""
-        },
-        {
-          "title": "DWTS alum Andy Richter lifts the lid on top-secret voting process as show battles 'rigged' claims",
-          "source": "The Sun",
-          "snippet": ""
-        },
-        {
-          "title": "DWTS’ Alfonso Ribeiro Reacts to ‘Rigged’ Show Joke, Dax Shepard’s Marriage Revelation, More Top Stories",
-          "source": "AOL.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7d466f929ded488f27",
-      "title": "naomi watts",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.6,
-      "published_at": "2026-11-02T13:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "PROGRAMMING HIGHLIGHTS FOR ABC NEWS’ ‘GOOD MORNING AMERICA’ AND ‘GMA3,’ NOV. 2-7",
-          "source": "Detpress",
-          "snippet": ""
-        },
-        {
-          "title": "Good Morning America: Kim Kardashian, Naomi Watts",
-          "source": "IMDb",
-          "snippet": ""
-        },
-        {
-          "title": "\"GMA\" Guest List: Lacey Chabert, John Malkovich, and More to Appear Week of November 2nd",
-          "source": "LaughingPlace.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "58c55cad19c5c54627",
-      "title": "can you vote today",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.6,
-      "published_at": "2026-11-02T13:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "A Florida Election Chief Urges In-Person Voting Over ‘Serious’ Postal Delays",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Too late to vote by mail in Florida? How to drop it off, get it counted",
-          "source": "firstcoastnews.com",
-          "snippet": ""
-        },
-        {
-          "title": "Elections officials: Don’t mail your ballot, drop it off instead",
-          "source": "Tampa Bay Times",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "b21b151d8602098fff",
-      "title": "سهم بنك القاهرة",
-      "region": "egypt",
-      "region_label": "مصر",
+      "id": "beaf1a3a0975a883b1",
+      "title": "تحطم طائرة فلوريدا",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 46.6,
-      "published_at": "2026-11-02T10:00:00Z",
+      "score": 49.1,
+      "published_at": "2026-11-02T12:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "460 مليون دولار التزامات المستثمرين الاستراتيجيين في طرح بنك القاهرة",
-          "source": "معلومات مباشر",
-          "snippet": ""
-        },
-        {
-          "title": "سهم بنك القاهرة يقفز 7% في أول أيام تداوله",
-          "source": "سكاي نيوز عربية",
-          "snippet": ""
-        },
-        {
-          "title": "تداول أسهم بنك القاهرة في البورصة المصرية بقيمة أكثر من 650 مليون دولار",
-          "source": "مونت كارلو الدولية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "97c776f7314d600fef",
-      "title": "internet invitational",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 45.9,
-      "published_at": "2026-11-02T13:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Why Barstool’s latest golf swing is about much more than virality",
-          "source": "GOLF.com",
-          "snippet": ""
-        },
-        {
-          "title": "Check out the handicap indexes of the biggest Internet Invitational stars (and scrubs)",
-          "source": "Golf Digest",
-          "snippet": ""
-        },
-        {
-          "title": "Emotional tribute paid to Barstool employee who died at 31 as Dave Portnoy makes touching gesture",
-          "source": "AOL.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "58fb246eb72391d5b5",
-      "title": "crwd stock",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 45.9,
-      "published_at": "2026-11-02T13:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Here are Monday's biggest analyst calls: Nvidia, SpaceX, Apple, Rivian, Amazon, CrowdStrike, Broadcom & more",
-          "source": "CNBC",
-          "snippet": ""
-        },
-        {
-          "title": "'Worrisome': Jim Cramer warns chip stocks have gone 'parabolic' — here are the defensive moves he's making now",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "Jim Cramer Warns ‘Don’t Assume the Worst Is Behind Us’ After $1 Trillion Chip Stock Rout - Intel (NASDAQ",
-          "source": "Benzinga",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "3394da5c04f70024a5",
-      "title": "أحمد الشناوي",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 45.6,
-      "published_at": "2026-11-02T13:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مال سايب محدش بيسأل عليه ..رسمي : لجنة شؤون اللاعبين تُلزم أحمد الشناوي برد 8 ملايين للزمالك",
-          "source": "الزمالك اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "رفض تظلم الشناوي.. قرار جديد يلزم حارس بيراميدز برد 8ملايين جنيه للزمالك",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "أزمة الـ8 ملايين جنيه. ماذا حدث بين الزمالك والشناوي؟",
-          "source": "winwin",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "5405feef3d39343a87",
-      "title": "أصالة",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 44.9,
-      "published_at": "2026-11-02T12:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "أصالة تغازل معجباً وسيماً على المسرح: حليوة خلوه يتصور معي",
+          "title": "تحطم طائرة في فلوريدا.. 9 قتلى في دقيقة",
           "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "أصالة بلفتة مميزة وحديثها عن المملكة العربية السعودية يُحدث تفاعلا واسعا",
-          "source": "Elfann",
+          "title": "لحظة مخيفة لتحطم طائرة في أمريكا ومقتل ركابها.. وفيديو يوثق الكارثة",
+          "source": "CNN Arabic",
           "snippet": ""
         },
         {
-          "title": "ما الذي حصل بفستان أصالة في أميركا",
-          "source": "ET بالعربي",
+          "title": "طيار بخبرة 20 ألف ساعة يحلل تحطم «ليرجيت» فلوريدا: الصعود وسط العاصفة ربما عقّد الموقف",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "0c1598d40750426692",
+      "title": "نادر أبو الليف",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 48.1,
+      "published_at": "2026-11-02T13:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "أبو الليف لـ \"اليوم السابع\" بعد زواجه من قوت المغازى: فرحان وربنا يخليهالى",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "نادر أبو الليف يحتفل بزفافه للمرة الثالثة.. ويكشف هوية العروس",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "«اللي بيحبني يباركلي ويدعيلي».. نادر أبو الليف يعلن عقد قرانه",
+          "source": "المصري اليوم",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "0ae2cd4f81a8039500",
+      "title": "pia boeing 787 dreamliner",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-02T15:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "PIA's first Boeing 787-9 Dreamliner arrives in Islamabad",
+          "source": "Dawn",
+          "snippet": ""
+        },
+        {
+          "title": "PIA increases London flights, likely to restore Birmingham operations",
+          "source": "Dunya News",
+          "snippet": ""
+        },
+        {
+          "title": "PIA’s first Boeing 787-9 Dreamliner arrives in Pakistan",
+          "source": "Business Recorder",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "3911f69fe69aeecc5a",
+      "title": "triumph band reunion tour canceled",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.5,
+      "published_at": "2026-11-02T15:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Rock band cancels first reunion tour in 33 years: ‘It’s unfortunate they waited so long’",
+          "source": "Syracuse.com",
+          "snippet": ""
+        },
+        {
+          "title": "Triumph Cancels Tour Due to Band Member's Medical Issue, Fans Express Concern",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "TRIUMPH Cancels Leg Two Of 2026 'Rock & Roll Machine Reloaded' U.S. Tour 'Due To Sudden And Unexpected Medical Circumstances'",
+          "source": "BLABBERMOUTH.NET",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "c0da6182185706b0b9",
+      "title": "المغرب اليوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 46.8,
+      "published_at": "2026-11-02T14:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "26 هدفًا وسجل خالٍ من الهزائم.. حصاد عموتة مع الأهلي قبل مواجهة المقاولون",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "الأهلي يُجَهِّز بديل \"عموتة\"",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "رد ناري من شوبير بشأن رحيل عموتة: «ما سبتش حد في النادي الأهلي ما سألتوش»",
+          "source": "Masrawy",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f6747ad28e95770a0a",
+      "title": "الفحص الدوري",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 46.1,
+      "published_at": "2026-11-02T14:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "محطة الفحص الدوري بصامطة.. 4 مسارات تخدم جنوب جازان وتستوعب 400 مركبة يوميًا",
+          "source": "عاجل",
+          "snippet": ""
+        },
+        {
+          "title": "\"المواصفات السعودية\": نستهدف رفع عدد مراكز فحص المركبات إلى 116",
+          "source": "الاقتصادية",
+          "snippet": ""
+        },
+        {
+          "title": "«المواصفات» توافق على تشغيل موقع جديد للفحص الفني الدوري في ظهران الجنوب بعسير",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "09f16273b3c1092376",
+      "title": "المغرب",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.8,
+      "published_at": "2026-11-02T14:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "رئيس «المينورسو» يستنفر مسؤولي البعثة لاجتماع طارئ بشأن مرحلة التصفية",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "\"انحياز مفرط للمغرب\".. الجزائر ترد على عدم تجديد مهمة بعثة الأمم المتحدة في الصحراء الغربية",
+          "source": "CNN Arabic",
+          "snippet": ""
+        },
+        {
+          "title": "فشل مشروعَي قرار أميركي وروسي حول الصحراء يمهد لرحيل «مينورسو»",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "37ac948c7321ea221f",
+      "title": "نخبة اسيا",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.5,
+      "published_at": "2026-11-02T14:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "موعد مباراة الوصل ضد القوة الجوية في دوري أبطال آسيا والقنوات الناقلة",
+          "source": "annahar.com",
+          "snippet": ""
+        },
+        {
+          "title": "غيابان مؤثران للجوية أمام الوصل الإماراتي",
+          "source": "الترا العراق",
+          "snippet": ""
+        },
+        {
+          "title": "رشيد جابر: قوة الوصل في الأساسيين والبدلاء",
+          "source": "صحيفة الخليج",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "763e36d3b19e90285c",
+      "title": "مباريات اليوم في مصر",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.8,
+      "published_at": "2026-11-02T14:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "مواعيد مباريات اليوم الإثنين 2-11-2026 والقنوات الناقلة",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "«إكسير الشباب» يسيطر على الجولة الثانية من كأس العاصمة «الأبيض» يدفع بالنجوم الصغار أمام «دجلة».. ومواجهة ثأرية بين الأهلى و«الذئاب»",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "الأهلي والزمالك في كأس عاصمة مصر.. أبرز مباريات اليوم والقنوات الناقلة",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "78f34a14eebdc101cb",
+      "title": "الابراج",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.5,
+      "published_at": "2026-11-02T14:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "برج الحمل.. حظك اليوم الإثنين 2 نوفمبر: تمهل قليلاً",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "أبراج - أبراج الاثنين 02 نوفمبر - تشرين الثاني 2026",
+          "source": "مونت كارلو الدولية",
+          "snippet": ""
+        },
+        {
+          "title": "تعرف على برجك اليوم 2026/11/1.. «الميزان»: تراودك أفكار جديدة تساعد على تحسين أوضاعك المالية.. و«السرطان»: تتمتع بجاذبية وحضور اجتماعي",
+          "source": "المصري اليوم",
           "snippet": ""
         }
       ],
@@ -733,7 +791,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 44.3,
+      "score": 41.8,
       "published_at": "2026-11-02T13:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -754,119 +812,32 @@
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "b06a816853fdc19ac2",
-      "title": "أصالة",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 43.6,
-      "published_at": "2026-11-02T12:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "أصالة تغازل معجباً وسيماً على المسرح: حليوة خلوه يتصور معي",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "أصالة بلفتة مميزة وحديثها عن المملكة العربية السعودية يُحدث تفاعلا واسعا",
-          "source": "Elfann",
-          "snippet": ""
-        },
-        {
-          "title": "معجب يصدم أصالة باقتحامه المسرح بشكل متهور للتصوير معها.. فيديو",
-          "source": "صحيفة صدى الالكترونية",
-          "snippet": ""
-        }
-      ],
       "alert": false
     },
     {
-      "id": "3f94f670da825c8fdb",
-      "title": "تاكر كارلسون",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 40.6,
-      "published_at": "2026-11-02T12:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ترامب محذراً: قد نضطر لتوجيه ضربة ساحقة لطهران",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "\"ضرب من الجنون\".. البرادعي يحذّر من أي هجوم أمريكي جديد ضد إيران",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "على حافة الحرب.. نتنياهو يحرض وترمب يدرس خياراته وطهران تصعّد تهديداتها",
-          "source": "الجزيرة نت",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "e53e6023e949687e58",
-      "title": "gta 6",
+      "id": "120d50e0cc83db2842",
+      "title": "احمد العوضي",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 40.3,
-      "published_at": "2026-11-02T11:50:00Z",
+      "score": 40.5,
+      "published_at": "2026-11-02T13:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Players have found a way to launch Grand Theft Auto VI on PlayStation 5 a day before release.",
-          "source": "GameGPU",
+          "title": "أحمد فهيم ومحمد على رزق ينضمان لمسلسل «سلطان الديب» فى رمضان 2027",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "PS5 users can access GTA 6 up to 18 hours early on its release date with PSN workaround",
-          "source": "Notebookcheck",
+          "title": "أحمد فهيم ينضم لـ مسلسل «سلطان الديب» مع أحمد العوضي في رمضان 2027",
+          "source": "المصري اليوم",
           "snippet": ""
         },
         {
-          "title": "PSN trick will let you play GTA 6 up to 18 hours early on the PS5",
-          "source": "PC Guide",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7e8d8286ac2fc83a44",
-      "title": "الاهلي والسد",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 40.0,
-      "published_at": "2026-11-02T11:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "الأهلي السعودي يواجه السد القطري سعياً لمواصلة انتصاراته في نخبة آسيا",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "الأهلي والسد في مباراة الانفراد بالانتصارات",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "«نخبة آسيا»: الأهلي والنصر والقادسية في مهمة خارج الحدود",
-          "source": "الشرق الأوسط",
+          "title": "هدى الأتربي تكشف كواليس «سلطان الديب».. ماذا تحضر للجمهور مع أحمد العوضي في رمضان 2027؟ | خاص",
+          "source": "أهل مصر",
           "snippet": ""
         }
       ],
