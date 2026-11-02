@@ -1,449 +1,159 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T01:59:32.535650Z",
+  "updated_at": "2026-11-02T02:48:55.710982Z",
   "items": [
     {
-      "id": "72565e392edb94d056",
-      "title": "cliff booth",
+      "id": "ed7bf11f058e00abbe",
+      "title": "susan st james",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 61.0,
-      "published_at": "2026-11-02T01:30:00Z",
+      "approx_traffic": "50000+",
+      "score": 71.4,
+      "published_at": "2026-11-02T02:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Netflix’s ‘Cliff Booth’ Won’t Play on Cinemark or Regal’s IMAX Screens",
-          "source": "IndieWire",
+          "title": "Susan Saint James, Emmy Winner Who Starred in ‘Kate & Allie,’ Dies at 80",
+          "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "‘The Further Mis-Adventures Of Cliff Booth’: Netflix Brad Pitt Pic Won’t Be Playing Top Chains Regal & Cinemark",
-          "source": "Deadline",
+          "title": "'McMillan & Wife', 'Kate & Allie' actress Susan Saint James dies at 80",
+          "source": "Detroit Free Press",
           "snippet": ""
         },
         {
-          "title": "Netflix’s ‘Cliff Booth’ Won’t Play in Regal and Cinemark Imax Theaters",
-          "source": "Variety",
+          "title": "Susan Saint James, Emmy-winning actor of ‘McMillan & Wife’ and ‘Kate & Allie,’ dies at 80",
+          "source": "CNN",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "4993725787fe90baaa",
-      "title": "dia de los muertos",
+      "id": "a9afca0016e7a16572",
+      "title": "lionel messi",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "5000+",
-      "score": 61.0,
-      "published_at": "2026-11-02T01:30:00Z",
+      "score": 61.4,
+      "published_at": "2026-11-02T02:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Desfile de Día de Muertos Reúne a Más de Mil Personas en Tijuana, Baja California",
-          "source": "N+",
+          "title": "Why was Lionel Messi not banned for his fifth MLS yellow card? A unique rule helped him",
+          "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "Evelyn Sánchez desfila con la comunidad mixteca en el Dí...",
-          "source": "El Mexicano",
+          "title": "Messi eligible for crunch Miami game with Revs despite yellow card haul",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Mercado Benito Juárez celebra Día de Los Muertos con altar y desfile de catrinas",
-          "source": "Semanario ZETA",
+          "title": "A strange rule prevents Messi from being suspended despite receiving 5 yellow cards",
+          "source": "Goal.com",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "108734cfc791adbba7",
-      "title": "darius cooper",
+      "id": "a2bfacee7bb10af61a",
+      "title": "موعد أذان الفجر في القاهرة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "5000+",
+      "score": 61.0,
+      "published_at": "2026-11-02T02:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ساعات فتح وغلق المحلات والمولات بعد بدء التوقيت الشتوى",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "تعرف علي مواعيد الفتح والغلق للمحلات والمطاعم والورش خلال التوقيت الشتوي - صوت الأمة",
+          "source": "اخبارك نت",
+          "snippet": ""
+        },
+        {
+          "title": "موعد أذان الفجر بالتوقيت الشتوي 2026.. مواقيت الصلاة اليوم في القاهرة",
+          "source": "المصري اليوم",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "9d1f953cf356a38149",
+      "title": "susan saint james cause of death",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "2000+",
-      "score": 57.0,
-      "published_at": "2026-11-02T01:30:00Z",
+      "score": 57.4,
+      "published_at": "2026-11-02T02:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Week 8 Fantasy Football TE Rankings from Justin Boone",
-          "source": "Yahoo Sports",
+          "title": "St. Charles County officials release actor Robert Kelker-Kelly's cause of death",
+          "source": "STLtoday.com",
           "snippet": ""
         },
         {
-          "title": "NFL Fantasy 2026 Start 'Em, Sit 'Em: Tight ends for Week 8",
-          "source": "NFL.com",
+          "title": "‘Days of Our Lives’ star Robert Kelker-Kelly cause of death revealed",
+          "source": "Global News",
           "snippet": ""
         },
         {
-          "title": "Next week’s waiver wire: Chig Okonkwo and more players to add before the Week 9 rush",
-          "source": "The New York Times",
+          "title": "Days of Our Lives Star Robert Kelker-Kelly’s Cause of Death Revealed After Sudden Symptoms",
+          "source": "E! News",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "721a55a8942b5d6583",
-      "title": "austin ekeler",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.4,
-      "published_at": "2026-11-02T01:40:00Z",
+      "id": "ae52b8fa366014d731",
+      "title": "خبر",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 56.4,
+      "published_at": "2026-11-02T02:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Practice notes | Commanders plan to 'lean in' on utilizing Austin Ekeler",
-          "source": "Washington Commanders",
+          "title": "تحذيرات من هجوم نووي تصل هواتف الأوكرانيين.. وكييف تعلق",
+          "source": "سكاي نيوز عربية",
           "snippet": ""
         },
         {
-          "title": "Jayden Daniels Backs Commanders’ Big Plan for ‘Decisive’ Veteran",
-          "source": "Yahoo Sports",
+          "title": "وزارة الطوارئ الروسية تتعرض لهجوم إلكترونى واسع استهدف تطبيقها الذكى",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "What will the Commanders do at running back?",
-          "source": "Commanders Wire",
+          "title": "هجمات إلكترونية تستهدف هيئة الإحصاءات الحكومية الروسية",
+          "source": "العربية",
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "0cc7a1ed3cbe7aa137",
-      "title": "cuba",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.4,
-      "published_at": "2026-11-02T01:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Cuba's doctors confront medicine and supply shortages along with power outages amid ongoing U.S. sanctions",
-          "source": "CBS News",
-          "snippet": ""
-        },
-        {
-          "title": "Cuban hematologist warns that the survival rate for children with leukemia would be below 50%",
-          "source": "CiberCuba",
-          "snippet": ""
-        },
-        {
-          "title": "Cuba’s Pediatric Leukemia Survival Rate Falls Below 50% Due to U.S. Blockade",
-          "source": "teleSUR English",
-          "snippet": ""
-        }
-      ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "4d24fa9a486077c542",
       "title": "new england vs inter miami",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 53.4,
-      "published_at": "2026-11-01T23:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Inter Miami name XI for New England trip, final away game of regular season",
-          "source": "OneFootball",
-          "snippet": ""
-        },
-        {
-          "title": "Best bets today for all sports: Sunday's picks include Miami vs. New England MLS play [11/1/2026]",
-          "source": "Dimers",
-          "snippet": ""
-        },
-        {
-          "title": "+*∇#[+[!LIVESTREAMs!]TV!] Miami - New England National Football League 𝐋𝐈𝐕𝐄 fRee",
-          "source": "Pierce Manufacturing",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "718bd70decceb2b17b",
-      "title": "نيو إنجلاند ضد إنتر ميامي",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 53.0,
-      "published_at": "2026-11-01T23:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "قاعدة غريبة تمنع إيقاف ميسي رغم تلقيه 5 إنذارات",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "كيفية مشاهدة البث المباشر لمباراة إنتر ميامي ونيو إنغلاند ريفولوشن في الدوري الأمريكي 2026",
-          "source": "اخبارك نت",
-          "snippet": ""
-        },
-        {
-          "title": "مباشر.. مباراة إنتر ميامي ونيو إنجلاند ريفولوشن في الدوري الأمريكي",
-          "source": "إرم نيوز",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2ff7de489043bd18e6",
-      "title": "بورصة الدواجن اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 51.7,
-      "published_at": "2026-11-01T22:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "سعر طبق البيض بالقليوبية اليوم الأحد 1 – 11 - 2026.. الأبيض بـ 113 جنيها",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "سعر كيلو الفراخ البيضاء الآن بعد الانخفاض الكبير.. أسعار الدواجن اليوم الأحد 1-11-2026 بالأسواق والبورصة",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "تراجع أسعار الدواجن واللحوم في مصر اليوم الأحد",
-          "source": "معلومات مباشر",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "272cedba0e515d160a",
-      "title": "washington redskins",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 51.4,
-      "published_at": "2026-11-02T01:40:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "Washington Commanders vs. Philadelphia Eagles Week 8 inactives: Who's in, out?",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Commanders Week 8 inactives",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Eagles-Commanders Week 8 injury report, with analysis",
-          "source": "PhillyVoice",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "36984a7b20e0cb0d4d",
-      "title": "jordan mailata",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.3,
-      "published_at": "2026-11-02T01:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Jordan Mailata Refuses to Make Excuses for Eagles' Disappointing Season",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Eagles’ $66 Million Leader Fired Back on Injury Excuses Before Week 8 Game",
-          "source": "Heavy.com",
-          "snippet": ""
-        },
-        {
-          "title": "Jordan Mailata's 2026 season with Eagles is criminally flying under the radar",
-          "source": "Inside the Iggles",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "8f6f4a40acd46fb445",
-      "title": "clima para amanhã",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.3,
-      "published_at": "2026-11-02T01:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Previsão do tempo hoje para Manaus (AM): sol com algumas nuvens; chove rápido durante o dia e à noite",
-          "source": "G1",
-          "snippet": ""
-        },
-        {
-          "title": "Alerta de chuvas intensas e forte calor marcam a sexta-feira na Região Norte",
-          "source": "Rondônia Dinâmica",
-          "snippet": ""
-        },
-        {
-          "title": "Sol forte, 33°C e vazante histórica marcam este domingo no Amazonas",
-          "source": "Portal do Holanda",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "8e78fb9ff5aa295ebd",
-      "title": "eagles qb today",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.3,
-      "published_at": "2026-11-02T01:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "NFL: Why did Jalen Hurts play for the Philadelphia Eagles with a blood clot?",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "What happened to Jalen Hurts? Eagles QB's blood clots explained",
-          "source": "USA Today",
-          "snippet": ""
-        },
-        {
-          "title": "If Philadelphia Eagles quarterback Jalen Hurts can get dangerous blood clots, so can you – here’s how some states are trying to reduce the risk",
-          "source": "The Conversation",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b289e9fd5c22e4b5d0",
-      "title": "nick sirianni",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.3,
-      "published_at": "2026-11-02T01:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "“I Don’t Even Like the Word”: Jason Kelce Issues Strong Response to Nick Foles’ Criticism of Eagles Culture Amid Losing Streak",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Nick Sirianni: 'Nick Foles Is Not In Our Building'",
-          "source": "Audacy",
-          "snippet": ""
-        },
-        {
-          "title": "Nick Foles says ‘culture things’ are hurting the Eagles; Nick Sirianni wants his team to ignore ‘that crap’",
-          "source": "Inquirer.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "dac1c28a83bf8306d0",
-      "title": "نيو إنجلاند ضد إنتر ميامي",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 50.4,
-      "published_at": "2026-11-01T23:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "قاعدة غريبة تمنع إيقاف ميسي رغم تلقيه 5 إنذارات",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "مباشر.. مباراة إنتر ميامي ونيو إنجلاند ريفولوشن في الدوري الأمريكي",
-          "source": "إرم نيوز",
-          "snippet": ""
-        },
-        {
-          "title": "قاعدة غريبة تُنقذ ميسي من الإيقاف رغم حصوله على 5 بطاقات صفراء",
-          "source": "annahar.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "4e7ae03cb64672f318",
-      "title": "الذهب",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 49.7,
-      "published_at": "2026-11-01T21:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "سعر الذهب عيار 14 اليوم الاثنين 2 نوفمبر يصل إلى 4100 جنيه",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "تعرف على أسعار الذهب في مصر مع منتصف تعاملات اليوم الأحد",
-          "source": "معلومات مباشر",
-          "snippet": ""
-        },
-        {
-          "title": "سعر الذهب اليوم الأحد 1-11-2026 في مصر بعد التراجع",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "16557815d2fd194af1",
-      "title": "new england vs inter miami",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 47.3,
+      "approx_traffic": "5000+",
+      "score": 55.7,
       "published_at": "2026-11-01T23:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -467,12 +177,326 @@
       "alert": false
     },
     {
+      "id": "9084ad41e55e6930b3",
+      "title": "dave bautista kratos casting update",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.0,
+      "published_at": "2026-11-02T02:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Dave Bautista Reveals He’s Gained 20 Pounds of Muscle Ahead of Playing Kratos in ‘God of War’ Series",
+          "source": "Variety",
+          "snippet": ""
+        },
+        {
+          "title": "Prime Video Assembled A Fantasy Cast So Good, Its New Game Adaptation Just Cannot Fail",
+          "source": "ScreenRant",
+          "snippet": ""
+        },
+        {
+          "title": "'God of War' TV Show: Release Date, Cast and Everything We Know About Prime Video's Series",
+          "source": "FanBolt",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "4334d8dfa3b9027e68",
+      "title": "makai lemon",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.0,
+      "published_at": "2026-11-02T02:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Jamey Eisenberg's Week 8 Fantasy football sleepers and DFS picks: Makai Lemon could be a bitter sweet surprise",
+          "source": "CBS Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Fantasy Football Start/Sit: Stefon Diggs, Makai Lemon, Antonio Williams",
+          "source": "FantasyPros",
+          "snippet": ""
+        },
+        {
+          "title": "Who Should I Start? Emeka Egbuka or Makai Lemon",
+          "source": "Fantasy Football Calculator",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "caa8634fad68548961",
+      "title": "houston dynamo vs portland",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 53.7,
+      "published_at": "2026-11-02T02:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Matchday | Timbers in big match Saturday against Houston on Native American Heritage Night",
+          "source": "Portland Timbers",
+          "snippet": ""
+        },
+        {
+          "title": "Playoff-bound Dynamo aim to spoil Timbers' postseason hopes",
+          "source": "Lexington Herald Leader",
+          "snippet": ""
+        },
+        {
+          "title": "Portland Timbers vs Houston Dynamo: Lineups, Prediction, Odds & Bet Builder Tip",
+          "source": "WhoScored.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "dac1c28a83bf8306d0",
+      "title": "نيو إنجلاند ضد إنتر ميامي",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "2000+",
+      "score": 51.7,
+      "published_at": "2026-11-01T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "قاعدة غريبة تمنع إيقاف ميسي رغم تلقيه 5 إنذارات",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "كيفية مشاهدة البث المباشر لمباراة إنتر ميامي ونيو إنغلاند ريفولوشن في الدوري الأمريكي 2026",
+          "source": "اخبارك نت",
+          "snippet": ""
+        },
+        {
+          "title": "مباشر.. مباراة إنتر ميامي ونيو إنجلاند ريفولوشن في الدوري الأمريكي",
+          "source": "إرم نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d4c43aa05ea945f6a2",
+      "title": "adam hamilton",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T02:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "October 2026 Kansas Poll: Hamilton Maintains Edge over Marshall in Toss-up Election",
+          "source": "- Emerson Polling",
+          "snippet": ""
+        },
+        {
+          "title": "Adam Hamilton speaks out ahead of President Trump’s visit to Salina",
+          "source": "KWCH",
+          "snippet": ""
+        },
+        {
+          "title": "How a Kansas Megachurch Pastor Might Determine Who Wins the Senate",
+          "source": "The New Yorker",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "718bd70decceb2b17b",
+      "title": "نيو إنجلاند ضد إنتر ميامي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 51.4,
+      "published_at": "2026-11-01T23:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "قاعدة غريبة تمنع إيقاف ميسي رغم تلقيه 5 إنذارات",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "كيفية مشاهدة البث المباشر لمباراة إنتر ميامي ونيو إنغلاند ريفولوشن في الدوري الأمريكي 2026",
+          "source": "اخبارك نت",
+          "snippet": ""
+        },
+        {
+          "title": "ما القنوات الناقلة لمباراة نيو إنجلاند ريفولوشن وإنتر ميامي في الدوري الأمريكي 2026؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Goal.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d703ed109957b74a30",
+      "title": "diggs",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.0,
+      "published_at": "2026-11-02T02:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Stefon Diggs rocks Allen Iverson jersey before Eagles-Commanders game",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Stefon Diggs rocks Allen Iverson jersey before Eagles-Commanders game",
+          "source": "Carlisle Sentinel",
+          "snippet": ""
+        },
+        {
+          "title": "Stefon Diggs' faith in Dan Quinn meets a must-win test for Commanders",
+          "source": "Riggo's Rag",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "2ff7de489043bd18e6",
+      "title": "بورصة الدواجن اليوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 50.0,
+      "published_at": "2026-11-01T22:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سعر طبق البيض بالقليوبية اليوم الأحد 1 – 11 - 2026.. الأبيض بـ 113 جنيها",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "سعر كيلو الفراخ البيضاء الآن بعد الانخفاض الكبير.. أسعار الدواجن اليوم الأحد 1-11-2026 بالأسواق والبورصة",
+          "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "تراجع أسعار الدواجن واللحوم في مصر اليوم الأحد",
+          "source": "معلومات مباشر",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "16557815d2fd194af1",
+      "title": "new england vs inter miami",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 48.7,
+      "published_at": "2026-11-01T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "(WAY) TO WATCH New England Revolution vs Inter Miami LIVE Streams Reddit ON TV",
+          "source": "Gold Derby",
+          "snippet": ""
+        },
+        {
+          "title": "Starting XI: New England Revolution vs. Inter Miami CF",
+          "source": "Inter Miami CF",
+          "snippet": ""
+        },
+        {
+          "title": "Why Is Luis Suarez Not Playing Today for Inter Miami vs. New England Revolution?",
+          "source": "Athlon Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4e7ae03cb64672f318",
+      "title": "الذهب",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 48.0,
+      "published_at": "2026-11-01T21:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سعر الذهب عيار 14 اليوم الاثنين 2 نوفمبر يصل إلى 4100 جنيه",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "تعرف على أسعار الذهب في مصر مع منتصف تعاملات اليوم الأحد",
+          "source": "معلومات مباشر",
+          "snippet": ""
+        },
+        {
+          "title": "سعر الذهب اليوم الأحد 1-11-2026 في مصر بعد التراجع",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "35f6bbceb3ccd8c1d1",
+      "title": "odell beckham jr",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 47.7,
+      "published_at": "2026-11-02T02:10:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Vikings Make Decision on Ex-Giants WR Odell Beckham Jr. Before Week 8",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Odell Beckham Jr. on his future with football 🏈 #shorts",
+          "source": "Yahoo",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "443535cc18303ed998",
       "title": "طقس",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 45.0,
+      "approx_traffic": "500+",
+      "score": 47.4,
       "published_at": "2026-11-02T00:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -496,41 +520,41 @@
       "alert": false
     },
     {
-      "id": "18b3fbb95f064ab63b",
-      "title": "f1",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 44.0,
-      "published_at": "2026-11-01T20:30:00Z",
+      "id": "e94b14ab2b6d4242cd",
+      "title": "bears injury report",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.1,
+      "published_at": "2026-11-02T02:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
-          "source": "BBC",
+          "title": "Chicago Bears' injury report has updates on Kyle Monangai, Colston Loveland",
+          "source": "NBC 5 Chicago",
           "snippet": ""
         },
         {
-          "title": "Mercedes driver Kimi Antonelli becomes youngest champion in F1 history at age 20",
-          "source": "AP News",
+          "title": "Bears RB Kyle Monangai (thumb/toe) ruled out again",
+          "source": "NBC Sports",
           "snippet": ""
         },
         {
-          "title": "Turning back the clock: F1’s youngest world champions",
-          "source": "RACER - Racing News",
+          "title": "Bears news roundup: Kyle Monangai out, Jeffery Simmons' first post-trade comments",
+          "source": "Bear Goggles On",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
       "id": "79faa3a8812301df17",
       "title": "عاصفة رعدية",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 43.3,
+      "approx_traffic": "1000+",
+      "score": 44.7,
       "published_at": "2026-11-02T00:40:00Z",
       "source": "Google Trends",
       "source_count": 1,
@@ -554,16 +578,137 @@
       "alert": false
     },
     {
+      "id": "3b0d5f72672aefb993",
+      "title": "ذهب",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 44.1,
+      "published_at": "2026-11-02T02:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "عاجل: الذهب ينتظر تراجع جديد..تغيّر قوي في مستهدفات الذهب في 2027",
+          "source": "Investing.com",
+          "snippet": ""
+        },
+        {
+          "title": "الذهب يغلق دون 4 آلاف دولار ويسجل خسائر أسبوعية وشهرية",
+          "source": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
+          "snippet": ""
+        },
+        {
+          "title": "الذهب يفقد 30% من قيمته منذ ذروته.. ويهبط لأدنى مستوى في عام",
+          "source": "عكاظ",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "83fdd355a7639ddfdc",
+      "title": "inter miami",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 43.7,
+      "published_at": "2026-11-02T00:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Nashville can match MLS points record against Red Bulls",
+          "source": "CBS Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Nashville SC stun Lionel Messi and Inter Miami by snatching historic MLS milestone",
+          "source": "World Soccer Talk",
+          "snippet": ""
+        },
+        {
+          "title": "Why Nashville SC is not 'settling' with Supporters' Shield after tie against Philadelphia",
+          "source": "The Tennessean",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e69c5a2ff5c982d16a",
+      "title": "jersey airport",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 41.7,
+      "published_at": "2026-11-02T01:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Flights diverted after drones flown near airport",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Flights disrupted after 'illegal and persistent' drone activity near airport",
+          "source": "Sky News",
+          "snippet": ""
+        },
+        {
+          "title": "Southampton flight forced to turn back after drone activity near runway",
+          "source": "Daily Echo",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ffa9ea3a3cc52d85c6",
+      "title": "عبد المجيد عبد الله",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 40.1,
+      "published_at": "2026-11-02T00:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "«كسر البروتوكول المسرحي».. لماذا أوقف عبدالمجيد عبدالله حفله الغنائي في دبي فجأةً؟",
+          "source": "عكاظ",
+          "snippet": ""
+        },
+        {
+          "title": "عبد المجيد عبد الله يوقف حفله في دبي بسبب رسالة هاتفية.. والموقف يشعل التفاعل!",
+          "source": "Elfann",
+          "snippet": ""
+        },
+        {
+          "title": "عبد المجيد عبدالله في دبي يختتم بروفات الحفل",
+          "source": "منصة كوليس",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "7a52d6d7cb0df89760",
       "title": "learjet 60",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 41.4,
+      "score": 39.7,
       "published_at": "2026-11-01T22:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "'Like a missile coming down' - Nine killed in fiery Florida jet crash",
+          "source": "BBC",
+          "snippet": ""
+        },
         {
           "title": "Learjet plane crash in Palm Beach County, Florida kills 9",
           "source": "CNN",
@@ -573,97 +718,34 @@
           "title": "At least 9 dead after $2M Learjet crashes into Florida mobile home park: ‘Sounded like a missile’",
           "source": "New York Post",
           "snippet": ""
-        },
-        {
-          "title": "'Like a missile coming down' - Nine killed in fiery Florida jet crash",
-          "source": "BBC",
-          "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "0896ee2556607b08ef",
-      "title": "سعيد الماروق",
+      "id": "507a013c64dc30b61c",
+      "title": "athletic bilbao vs real sociedad standings",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 41.3,
-      "published_at": "2026-11-01T20:40:00Z",
+      "approx_traffic": "100+",
+      "score": 38.7,
+      "published_at": "2026-11-01T23:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "ظهور جواز عربي في مسلسل يشعل غضباً.. وسعيد الماروق يعتذر",
-          "source": "العربية",
+          "title": "Kalejira to a txaranga beat enlivens Basque derby build-up",
+          "source": "OneFootball",
           "snippet": ""
         },
         {
-          "title": "«النفس المطمئنة»... دراما رعب كويتية يلاحقها الجدل",
-          "source": "الشرق الأوسط",
+          "title": "Athletic - Real Sociedad LIVE. LALIGA EA Sports latest updates",
+          "source": "MARCA",
           "snippet": ""
         },
         {
-          "title": "ظهور جواز عربي في مسلسل يدفع مخرجه إلى الاعتذار بعد موجة انتقادات",
-          "source": "عكاظ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1f834c99842daaae23",
-      "title": "f1",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 41.0,
-      "published_at": "2026-11-01T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Mercedes driver Kimi Antonelli becomes youngest champion in F1 history at age 20",
-          "source": "AP News",
-          "snippet": ""
-        },
-        {
-          "title": "Is this the most fitting podium in Formula 1 as history made in Mexico?",
-          "source": "RacingNews365",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6e4ae6f057f3124b80",
-      "title": "atlanta united vs toronto",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 40.7,
-      "published_at": "2026-11-01T22:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Match Highlights Atlanta United - Toronto FC",
-          "source": "YSscores",
-          "snippet": ""
-        },
-        {
-          "title": "Atlanta United FC vs Toronto FC Live: Toronto FC narrows the gap to 3-1",
-          "source": "Báo Nghệ An",
-          "snippet": ""
-        },
-        {
-          "title": "MLS Toronto FC Atlanta United Soccer",
-          "source": "chronicleonline.com",
+          "title": "Ath Bilbao vs Real Sociedad: Lineups and Live Text Commentary",
+          "source": "Zamin.uz",
           "snippet": ""
         }
       ],
@@ -675,7 +757,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 40.0,
+      "score": 38.4,
       "published_at": "2026-11-01T22:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -704,7 +786,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 39.7,
+      "score": 38.1,
       "published_at": "2026-11-01T21:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -733,14 +815,14 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 37.4,
+      "score": 35.7,
       "published_at": "2026-11-01T20:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "منافس الأهلي.. الرجاء يسقط أمام نهضة بركان بثنائية في الدوري المغربي",
-          "source": "يلاكورة",
+          "title": "منافس الأهلي.. 5 غيابات تضرب الرجاء أمام نهضة بركان فى الدوري المغربي",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
@@ -749,37 +831,8 @@
           "snippet": ""
         },
         {
-          "title": "منافس الأهلي.. 5 غيابات تضرب الرجاء أمام نهضة بركان فى الدوري المغربي",
-          "source": "اليوم السابع",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f35f69e28e8e62959e",
-      "title": "athletic vs real sociedad",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 37.0,
-      "published_at": "2026-11-01T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "2-1. El Athletic toma impulso y frena a la Real en un derbi eléctrico",
-          "source": "HolaNews",
-          "snippet": ""
-        },
-        {
-          "title": "Resumen del partido A.Bilbao - Sociedad | LaLiga | Yalla Shoot",
-          "source": "YSscores",
-          "snippet": ""
-        },
-        {
-          "title": "!Aquí tienes cómo ver la transmisión en vivo de GP de México de F1 por canal de televisión, 1 de noviembre de 2026",
-          "source": "Pierce Manufacturing",
+          "title": "البطولة الوطنية.. النتائج الكاملة للدورة السادسة والترتيب بعد فوز بركان على الرجاء",
+          "source": "https://inews.ma/",
           "snippet": ""
         }
       ],
@@ -791,7 +844,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 36.7,
+      "score": 35.1,
       "published_at": "2026-11-01T21:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -809,64 +862,6 @@
         {
           "title": "أسعار باقات الإنترنت الأرضي 2026",
           "source": "جريدة الديار",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7810b06c1798a19d2c",
-      "title": "كولسترول",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 35.4,
-      "published_at": "2026-11-01T21:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "اكتشاف مسار خفي يرفع الكوليسترول الضار.. ودواء تجريبي يثير الأمل",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "اكتشاف مسار بيولوجي جديد قد يمهد لعلاج مبتكر للكوليسترول",
-          "source": "https://capsulah.com/",
-          "snippet": ""
-        },
-        {
-          "title": "المفتاح الخفي للكوليسترول.. آلية سرية داخل الكبد تغيّر الطب",
-          "source": "Menafn",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "32b7233a82a08c249a",
-      "title": "فائدة",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 35.4,
-      "published_at": "2026-11-01T21:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "\"سي آي كابيتال\": رفع الفائدة في مصر إجراء احترازي وليس بداية دورة تشديد نقدي",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "بعد رفع الفائدة... كيف تتغير أولويات الشراء والادخار لدى المصريين؟",
-          "source": "الشرق الأوسط",
-          "snippet": ""
-        },
-        {
-          "title": "ماذا يعني رفع الفائدة في مصر للاقتصاد والعملة والتضخم؟",
-          "source": "الشرق بلومبرغ",
           "snippet": ""
         }
       ],
