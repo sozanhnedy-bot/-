@@ -1,224 +1,21 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T15:26:49.602522Z",
+  "updated_at": "2026-11-02T16:32:59.841328Z",
   "items": [
-    {
-      "id": "9b69e4a180665e2ecb",
-      "title": "باختاكور ضد النصر",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "50000+",
-      "score": 66.8,
-      "published_at": "2026-11-02T12:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مباشر مباراة النصر ضد باختاكور في دوري أبطال آسيا للنخبة.. لحظة بلحظة",
-          "source": "الجزيرة نت",
-          "snippet": ""
-        },
-        {
-          "title": "بعد استبعاد كريستيانو.. بوستيكوجلو يفجر تشكيل النصر في أبطال آسيا للنخبة",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "ما سبب غياب رونالدو عن مباراة النصر وباختاكور في أوزبكستان؟ | CNN Arabic | CNN",
-          "source": "CNN Arabic",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "ef2d445687c91d7a4f",
-      "title": "اذان المغرب",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "10000+",
-      "score": 64.1,
-      "published_at": "2026-11-02T15:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "موعد أذان وصلاة المغرب اليوم الإثنين الموافق 2 نوفمبر",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "مواقيت الصلاة اليوم الاثنين 2 نوفمبر 2026 بمحافظات الجمهورية",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "مواقيت الصلاة اليوم الإثنين 2 نوفمبر 2026 في القاهرة والمحافظات",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "628b3a3985f5b7e7eb",
-      "title": "pakhtakor vs al-nassr",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "10000+",
-      "score": 60.1,
-      "published_at": "2026-11-02T13:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Following Cristiano's exclusion: Postecoglou surprises with Al-Nassr's line-up in the AFC Champions League Elite",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "Cristiano Ronaldo's Absence Shocks Fans in the AFC Champions League: What Happened?",
-          "source": "beIN SPORTS",
-          "snippet": ""
-        },
-        {
-          "title": "Pakhtakor vs. Al Nassr Lineups, Live Streaming, How & Where to Watch AFC Champions League Elite on TV",
-          "source": "Athlon Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "8d175cb069296b3cbd",
-      "title": "مباراة الزمالك اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 57.1,
-      "published_at": "2026-11-02T15:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "تشكيل الزمالك أمام وادي دجلة في كأس الرابطة",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "محمود الشناوي حارسا لمرمى الزمالك أمام وادي دجلة فى كأس عاصمة مصر",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "سبب إستبعاد محمد حمد من مباراة الزمالك اليوم",
-          "source": "الزمالك اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "4d8539612028abd107",
-      "title": "voo stock",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.1,
-      "published_at": "2026-11-02T15:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "VOO vs. VTI: Which Vanguard Fund Is the Better Buy Right Now?",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "VOO vs. VTI: One Vanguard ETF Covers Nearly the Entire US Stock Market – Is It Better?",
-          "source": "TipRanks",
-          "snippet": ""
-        },
-        {
-          "title": "VOO vs. VTI: Which Vanguard Fund Is the Better Buy Right Now?",
-          "source": "The Motley Fool",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "922e3599a33c95160c",
-      "title": "schd",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-02T15:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Want a Portfolio That Generates Decades of Passive Income Without You Lifting a Finger? Here's Where to Start.",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "SCHD Vs. FDVV: Which Dividend ETF Wins Into 2027 (NYSEARCA:SCHD)",
-          "source": "Seeking Alpha",
-          "snippet": ""
-        },
-        {
-          "title": "The 1 Costly Mistake Income Investors Make When They Buy SCHD",
-          "source": "The Motley Fool",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "0b5121160ded35f4fe",
-      "title": "موعد مباراه الاهلي اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 54.1,
-      "published_at": "2026-11-02T13:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "المعلق وتفاصيل الاستوديو التحليلي.. خريطة إذاعة مباراة الأهلي والمقاولون في كأس الرابطة",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "زيزو والشحات والساعى وعطية والشناوى أبرز غيابات الأهلى أمام المقاولون",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "كأس عاصمة مصر| الأهلي يواجه المقاولون العرب اليوم على استاد القاهرة",
-          "source": "الموقع الرسمي للنادي الأهلي المصري",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
     {
       "id": "8325ae93d5dda61d4e",
       "title": "السد ضد الأهلي",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 51.4,
+      "approx_traffic": "20000+",
+      "score": 65.2,
       "published_at": "2026-11-02T15:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "الأهلي السعودي يواجه السد القطري سعياً لمواصلة انتصاراته في نخبة آسيا",
-          "source": "صحيفة سبق الإلكترونية",
+          "title": "ما القنوات الناقلة لمباراة السد والأهلي في دوري أبطال آسيا للنخبة 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
           "snippet": ""
         },
         {
@@ -232,253 +29,79 @@
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "cc2685a07c8b6f4c79",
-      "title": "pltr",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-02T15:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Cantor Fitzgerald maintains Palantir Technologies at Neutral, raises price target to $207 from $156",
-          "source": "TradingView",
-          "snippet": ""
-        },
-        {
-          "title": "PLTR Maintained by Cantor Fitzgerald -- Price Target Raised to $207",
-          "source": "GuruFocus",
-          "snippet": ""
-        },
-        {
-          "title": "JPMorgan sets Palantir stock at Overweight with $262 price target",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "29e6c4b68f376c9a20",
-      "title": "qqqm",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-02T15:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "If You'd Put $3,000 Into QQQM 5 Years Ago, Here's What You'd Have Now",
-          "source": "The Motley Fool",
-          "snippet": ""
-        },
-        {
-          "title": "If You'd Put $3,000 Into QQQM 5 Years Ago, Here's What You'd Have Now",
-          "source": "The Globe and Mail",
-          "snippet": ""
-        },
-        {
-          "title": "QQQM: The Nasdaq 100 Is Having A Panic Attack And I Think This Pullback Should Be Bought",
-          "source": "Seeking Alpha",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "89e141fe7bd01e0210",
-      "title": "nasdaq composite",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-02T15:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Aspen Neuroscience, Inc.(NasdaqGS: ASPE) added to NASDAQ Composite Index",
-          "source": "marketscreener.com",
-          "snippet": ""
-        },
-        {
-          "title": "Why investors are dumping tech stocks, in one image",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "Stock market rocked as investors dump tech shares; Nasdaq suffers worst day since June: Live updates",
-          "source": "CNBC",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "35c0d9e85b294690f3",
-      "title": "jessica alba",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-02T15:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Jessica Alba deletes Halloween photos after bloody Nancy Kerrigan costume sparks backlash",
-          "source": "Page Six",
-          "snippet": ""
-        },
-        {
-          "title": "Jessica Alba Deletes Instagram Photos After Halloween Costume Backlash",
-          "source": "Cosmopolitan",
-          "snippet": ""
-        },
-        {
-          "title": "Jessica Alba Sparks Backlash After Deleting Beaten Nancy Kerrigan and Tonya Harding Halloween Costume",
-          "source": "Parade Magazine",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "477921f7db6a6feaad",
-      "title": "brent crude oil price",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-02T15:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Crude oil dives to session low on Iran peace talk hopes ahead of midterms",
-          "source": "CNBC",
-          "snippet": ""
-        },
-        {
-          "title": "Oil Prices Fall More Than 4% as Iran Peace Talks Ease Supply Fears",
-          "source": "WSJ",
-          "snippet": ""
-        },
-        {
-          "title": "Oil falls on Hormuz deal hopes but Trump keeps strikes on the table",
-          "source": "Euronews.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "08154ae2185ff6c980",
-      "title": "intel stock price",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.1,
-      "published_at": "2026-11-02T15:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Intel's 29% Plunge Sparks a Contrarian Buying Case",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "Intel Earnings Sell-Off Overdone? Is A 20% Recovery Realistic?",
-          "source": "Forbes",
-          "snippet": ""
-        },
-        {
-          "title": "Intel stock has worst day since 1970s, wiping about $12 billion off government's stake",
-          "source": "CNBC",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "864e720c526991ad3a",
-      "title": "palantir stock",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.1,
-      "published_at": "2026-11-02T15:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "JPMorgan sets Palantir stock at Overweight with $262 price target",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "Palantir Earnings On Tap. Can Software Maker Buck AI Sell-Off?",
-          "source": "Investor's Business Daily",
-          "snippet": ""
-        },
-        {
-          "title": "Prediction: This Will Be Palantir's Stock Price by Year-End 2027",
-          "source": "The Motley Fool",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "83b36f4db45a5fa25b",
-      "title": "وفاء الكيلاني",
+      "id": "140d274c7951f52851",
+      "title": "موعد صلاه العشاء",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 51.1,
-      "published_at": "2026-11-02T13:30:00Z",
+      "approx_traffic": "10000+",
+      "score": 64.2,
+      "published_at": "2026-11-02T16:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "تيم حسن يحسم جدل الزواج من أخرى.. ويكشف مفاجأة عن وفاء الكيلاني",
-          "source": "العربية",
+          "title": "مواقيت الصلاة اليوم الاثنين 2 نوفمبر 2026 بمحافظات الجمهورية",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "تيم حسن يروي تفاصيل وفاة شقيقه خلدون.. حادث أليم أفقد والده الذاكرة",
-          "source": "العين الإخبارية",
+          "title": "موعد أذان وصلاة الظهر اليوم الإثنين الموافق 2 نوفمبر",
+          "source": "Masrawy",
           "snippet": ""
         },
         {
-          "title": "تيم حسن يكشف تفاصيل إنسانية مؤثرة من حياته الشخصية في بودكاست قصتي",
-          "source": "ميوزيك نايشن",
+          "title": "مواقيت الصلاة اليوم الإثنين 2 نوفمبر 2026 في القاهرة والمحافظات",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "a0b4b848495dd3809b",
+      "title": "الزمالك",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "10000+",
+      "score": 63.6,
+      "published_at": "2026-11-02T15:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "تشكيل الزمالك أمام وادي دجلة في كأس الرابطة",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "سبب إستبعاد محمد حمد من مباراة الزمالك اليوم",
+          "source": "الزمالك اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "15 دقيقة.. عمر عبد العزيز يتألق ويحافظ على نظافة شباك الزمالك أمام دجلة",
+          "source": "اليوم السابع",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "078a404ff260b1d0ad",
-      "title": "النخبة اسيا",
+      "id": "17bbb909bb3955142b",
+      "title": "دوري ابطال اسيا",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 49.4,
+      "approx_traffic": "5000+",
+      "score": 57.2,
       "published_at": "2026-11-02T14:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "رياضي / دوري أبطال آسيا للنخبة: إيفيتش يؤكد تطلع العين للعودة بالنقاط الثلاث أمام الاتحاد",
+          "title": "رياضي / دوري أبطال آسيا للنخبة: فيسينغ يؤكد جاهزية الاتحاد لمواجهة العين الإماراتي",
           "source": "وكالة الأنباء السعودية",
           "snippet": ""
         },
@@ -488,137 +111,398 @@
           "snippet": ""
         },
         {
-          "title": "فيسينغ: مواجهة العين مختلفة",
-          "source": "جريدة الرياض",
+          "title": "\"آسيا للنخبة\": إيفيتش يؤكد تطلع \"العين\" للعودة بالنقاط الثلاث أمام \"الاتحاد\"",
+          "source": "جريدة المدينة",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "beaf1a3a0975a883b1",
-      "title": "تحطم طائرة فلوريدا",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 49.1,
-      "published_at": "2026-11-02T12:30:00Z",
+      "id": "e34404d2645eb03ee0",
+      "title": "franklinton high school",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 56.6,
+      "published_at": "2026-11-02T15:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "تحطم طائرة في فلوريدا.. 9 قتلى في دقيقة",
-          "source": "العربية",
+          "title": "Heavy police presence at Franklinton High School",
+          "source": "WRAL",
           "snippet": ""
         },
         {
-          "title": "لحظة مخيفة لتحطم طائرة في أمريكا ومقتل ركابها.. وفيديو يوثق الكارثة",
-          "source": "CNN Arabic",
+          "title": "Law enforcement investigation underway at Franklin County high school, officials say",
+          "source": "CBS 17",
           "snippet": ""
         },
         {
-          "title": "طيار بخبرة 20 ألف ساعة يحلل تحطم «ليرجيت» فلوريدا: الصعود وسط العاصفة ربما عقّد الموقف",
-          "source": "صحيفة سبق الإلكترونية",
+          "title": "Bill Belichick is a free agent after breakup with 25-year-old girlfriend, Halloween costumes & groceries",
+          "source": "Fox News",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "0c1598d40750426692",
-      "title": "نادر أبو الليف",
+      "id": "66c4cd094412054b99",
+      "title": "السد ضد الأهلي",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 48.1,
-      "published_at": "2026-11-02T13:30:00Z",
+      "approx_traffic": "2000+",
+      "score": 55.9,
+      "published_at": "2026-11-02T15:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "أبو الليف لـ \"اليوم السابع\" بعد زواجه من قوت المغازى: فرحان وربنا يخليهالى",
+          "title": "السد يصطدم بالأهلي السعودي فى قمة آسيوية بطموحات استعادة الثقة",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "نادر أبو الليف يحتفل بزفافه للمرة الثالثة.. ويكشف هوية العروس",
+          "title": "الأهلي والسد في مباراة الانفراد بالانتصارات",
           "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "«اللي بيحبني يباركلي ويدعيلي».. نادر أبو الليف يعلن عقد قرانه",
-          "source": "المصري اليوم",
+          "title": "اليوم.. انطلاق الجولة الرابعة من دوري أبطال آسيا للنخبة لمنطقة الغرب",
+          "source": "عاجل",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "0ae2cd4f81a8039500",
-      "title": "pia boeing 787 dreamliner",
+      "id": "9359e0d4daa4be649d",
+      "title": "al sadd vs al-ahli",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-11-02T15:10:00Z",
+      "approx_traffic": "2000+",
+      "score": 52.9,
+      "published_at": "2026-11-02T15:30:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 2,
       "news_items": [
         {
-          "title": "PIA's first Boeing 787-9 Dreamliner arrives in Islamabad",
-          "source": "Dawn",
+          "title": "A long-awaited breakthrough at Al-Ahly before the Asian clash with Al-Sadd",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "PIA increases London flights, likely to restore Birmingham operations",
-          "source": "Dunya News",
+          "title": "How to get Al-Sadd vs Al Ahli tickets: AFC Champions League Elite prices, fixture information, last-minute sales & more",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "PIA’s first Boeing 787-9 Dreamliner arrives in Pakistan",
-          "source": "Business Recorder",
+          "title": "AFC Champions League Elite: Al-Ahli Visits Qatar's Al-Sadd Tomorrow",
+          "source": "وكالة الأنباء السعودية",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "3911f69fe69aeecc5a",
-      "title": "triumph band reunion tour canceled",
+      "id": "a8a1679db59a9fdd50",
+      "title": "willow wind sailboat rescue pacific ocean",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-11-02T15:10:00Z",
+      "approx_traffic": "1000+",
+      "score": 52.9,
+      "published_at": "2026-11-02T15:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Rock band cancels first reunion tour in 33 years: ‘It’s unfortunate they waited so long’",
-          "source": "Syracuse.com",
+          "title": "Coast Guard coordinates rescue of overdue mariner, dog 460 miles off San Diego",
+          "source": "United States Coast Guard News (.mil)",
           "snippet": ""
         },
         {
-          "title": "Triumph Cancels Tour Due to Band Member's Medical Issue, Fans Express Concern",
-          "source": "Yahoo",
+          "title": "86-Year-Old Sailor and His Dog Rescued 460 Miles Off Calif. Coast, More Than 2 Months After They Vanished",
+          "source": "People.com",
           "snippet": ""
         },
         {
-          "title": "TRIUMPH Cancels Leg Two Of 2026 'Rock & Roll Machine Reloaded' U.S. Tour 'Due To Sudden And Unexpected Medical Circumstances'",
-          "source": "BLABBERMOUTH.NET",
+          "title": "Missing Sailor, Dog Rescued 500 Miles Off California",
+          "source": "Newser",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "cdf99343c5d21b51f2",
+      "title": "spy stock",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 52.6,
+      "published_at": "2026-11-02T15:20:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "William Blair refreshes stock Conviction List with 5 additions, 3 removals (SPY:NYSEARCA)",
+          "source": "Seeking Alpha",
+          "snippet": ""
+        },
+        {
+          "title": "William Blair adds five stocks to November conviction list",
+          "source": "Investing.com",
+          "snippet": ""
+        },
+        {
+          "title": "This Is Why I'm Buying The Halloween Dip (NYSEARCA:SPY)",
+          "source": "Seeking Alpha",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "afbb51965d3f416980",
+      "title": "amd stock price",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 52.6,
+      "published_at": "2026-11-02T15:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "AMD Stock Got Caught in Intel’s Selloff. What to Watch This Week.",
+          "source": "Barchart.com",
+          "snippet": ""
+        },
+        {
+          "title": "AMD Threatens False Breakout Ahead of Earnings",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "Intel Has a Massive Warning for AMD Stock Investors. Is It Time to Book Profits Before Nov. 3?",
+          "source": "The Motley Fool",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f87060ae2269bcaf77",
+      "title": "hillary clinton",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.6,
+      "published_at": "2026-11-02T16:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Kaivan Shroff: Democrats, on track to win big in the midterms, still are missing the lesson from 2016",
+          "source": "Chicago Tribune",
+          "snippet": ""
+        },
+        {
+          "title": "Will a Republican loss make Trump more unpredictable?",
+          "source": "TVP World",
+          "snippet": ""
+        },
+        {
+          "title": "Hillary Clinton Warns Donald Trump Will Become 'More Unhinged' and Blame Others if Republicans Lose",
+          "source": "International Business Times UK",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "c0da6182185706b0b9",
-      "title": "المغرب اليوم",
+      "id": "9fd094857bdd401dcf",
+      "title": "apple new hardware lineup november 6",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.2,
+      "published_at": "2026-11-02T16:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Apple Isn't Done With 2026: Here's What's Still Coming",
+          "source": "MacRumors",
+          "snippet": ""
+        },
+        {
+          "title": "ICYMI: the 7 biggest tech stories of the week, including Apple's first touchscreen MacBook and our favorite tech of 2026",
+          "source": "TechRadar",
+          "snippet": ""
+        },
+        {
+          "title": "Launching this week: MacBook Pro, iPad Mini OLED, Motorola Signature 27 and more",
+          "source": "Mezha.net",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "7e8eccba8a5610ee46",
+      "title": "harley-davidson sprint 440",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.2,
+      "published_at": "2026-11-02T16:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "The 2027 Harley-Davidson Sprint 440 Finally Gives Entry-Level Riders What They Want",
+          "source": "RideApart.com",
+          "snippet": ""
+        },
+        {
+          "title": "Harley-Davidson’s Newest and Most Rider-Friendly Bike Is Also Its Most Affordable (By a Country Mile)",
+          "source": "Gear Patrol",
+          "snippet": ""
+        },
+        {
+          "title": "Harley-Davidson Sprint 440 spotted ahead of launch",
+          "source": "Team-BHP",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "9505c02c439ec446c7",
+      "title": "netflix collision course action movie",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.2,
+      "published_at": "2026-11-02T16:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Netflix ‘Collision Course’ Ending Explained",
+          "source": "IMDb",
+          "snippet": ""
+        },
+        {
+          "title": "Netflix’s ‘Collision Course’: A Crime Caper That Can’t Quite Get Away",
+          "source": "Forbes",
+          "snippet": ""
+        },
+        {
+          "title": "Unexpected Spanish Crime Thriller Is Suddenly Netflix’s No. 1 Streaming Movie",
+          "source": "AOL.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "3083a8f61b198e83bd",
+      "title": "كاس اسيا",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 50.9,
+      "published_at": "2026-11-02T14:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "15 نوفمبر.. اجتماع يحسم قرار كأس آسيا",
+          "source": "صحيفة الرياضية",
+          "snippet": ""
+        },
+        {
+          "title": "سيناريو التأجيل يلوح في الأفق.. كأس آسيا 2027 تعود لإثارة الجدل!",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "من يناير إلى ديسمبر.. أنباء عن تأجيل كأس آسيا",
+          "source": "إرم نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "32a162d18d99c4bf72",
+      "title": "healthcare marketplace",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.2,
+      "published_at": "2026-11-02T15:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Open enrollment just started. Here’s what to know about your premiums.",
+          "source": "The Washington Post",
+          "snippet": ""
+        },
+        {
+          "title": "Many with ACA coverage face a new crisis in 2027: Insurers fleeing the market",
+          "source": "NBC News",
+          "snippet": ""
+        },
+        {
+          "title": "Health insurance open enrollment: 5 things to review before choosing a plan",
+          "source": "Fox Business",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "74d93272eddd2ed090",
+      "title": "قاعدة العند الجوية",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 49.9,
+      "published_at": "2026-11-02T15:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "\"وصول الحوثيين إلى قاعدة العند الجوية الأكبر باليمن\".. ما حقيقة الفيديو؟",
+          "source": "CNN Arabic",
+          "snippet": ""
+        },
+        {
+          "title": "القوات المسلحة تواصل تقدمها في المقاطرة والسعودية تخلي قاعدة العند",
+          "source": "صحيفة «لا",
+          "snippet": ""
+        },
+        {
+          "title": "بدء إخلاء كبرى القواعد الجوية جنوبي اليمن",
+          "source": "الخبر اليمني",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "06dad95ee81a59d210",
+      "title": "موعد مباراة الاهلي القادمة",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 46.8,
-      "published_at": "2026-11-02T14:50:00Z",
+      "score": 45.9,
+      "published_at": "2026-11-02T15:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
@@ -641,12 +525,99 @@
       "alert": false
     },
     {
+      "id": "7a122bb9ecd1cb4a02",
+      "title": "joe manchin",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 45.6,
+      "published_at": "2026-11-02T15:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Joe Manchin advierte de que los socialistas demócratas están ganando terreno mientras los demócratas guardan silencio",
+          "source": "Fox News",
+          "snippet": ""
+        },
+        {
+          "title": "Manchin: Matthew McConaughey ‘absolutely so accurate’ on independents",
+          "source": "The Hill",
+          "snippet": ""
+        },
+        {
+          "title": "McConaughey says independents serve as 'permanent check' on parties",
+          "source": "USA Today",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "37ac948c7321ea221f",
+      "title": "نخبة اسيا",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 44.3,
+      "published_at": "2026-11-02T14:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بث مباشر لمباراة الوصل ضد القوة الجوية في دوري أبطال آسيا للنخبة",
+          "source": "annahar.com",
+          "snippet": ""
+        },
+        {
+          "title": "غيابان مؤثران للجوية أمام الوصل الإماراتي",
+          "source": "الترا العراق",
+          "snippet": ""
+        },
+        {
+          "title": "رشيد جابر: قوة الوصل في الأساسيين والبدلاء",
+          "source": "صحيفة الخليج",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ba9308ad4844bcfbb7",
+      "title": "القوات الخاصة للأمن البيئي",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 43.9,
+      "published_at": "2026-11-02T14:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "\"الأمن البيئي\" تضبط 4 مقيمين استغلوا الرواسب دون ترخيص في الرياض",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "\"الأمن البيئي\" يضبط 4 مخالفين لاستغلال الرواسب بالرياض",
+          "source": "جريدة المدينة",
+          "snippet": ""
+        },
+        {
+          "title": "القوات الخاصة للأمن البيئي تضبط 4 مخالفين لاستغلال الرواسب بمنطقة الرياض",
+          "source": "عاجل",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "f6747ad28e95770a0a",
       "title": "الفحص الدوري",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 46.1,
+      "score": 43.9,
       "published_at": "2026-11-02T14:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -670,58 +641,29 @@
       "alert": false
     },
     {
-      "id": "09f16273b3c1092376",
-      "title": "المغرب",
+      "id": "3492cea18f17d8fec5",
+      "title": "al wasl vs al-quwa al-jawiya",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 45.8,
-      "published_at": "2026-11-02T14:20:00Z",
+      "score": 43.6,
+      "published_at": "2026-11-02T15:50:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 2,
       "news_items": [
         {
-          "title": "رئيس «المينورسو» يستنفر مسؤولي البعثة لاجتماع طارئ بشأن مرحلة التصفية",
-          "source": "صحيفة سبق الإلكترونية",
+          "title": "Al-Wasl vs Al Quwa Al Jawiya: Where to watch, TV channel, live stream & kick-off time",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "\"انحياز مفرط للمغرب\".. الجزائر ترد على عدم تجديد مهمة بعثة الأمم المتحدة في الصحراء الغربية",
-          "source": "CNN Arabic",
+          "title": "Al Wasl takes on Iraq’s Al-Quwa Al-Jawiya in pursuit of its first victory in the AFC Champions League Elite",
+          "source": "صوت الإمارات",
           "snippet": ""
         },
         {
-          "title": "فشل مشروعَي قرار أميركي وروسي حول الصحراء يمهد لرحيل «مينورسو»",
-          "source": "الشرق الأوسط",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "37ac948c7321ea221f",
-      "title": "نخبة اسيا",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.5,
-      "published_at": "2026-11-02T14:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "موعد مباراة الوصل ضد القوة الجوية في دوري أبطال آسيا والقنوات الناقلة",
-          "source": "annahar.com",
-          "snippet": ""
-        },
-        {
-          "title": "غيابان مؤثران للجوية أمام الوصل الإماراتي",
-          "source": "الترا العراق",
-          "snippet": ""
-        },
-        {
-          "title": "رشيد جابر: قوة الوصل في الأساسيين والبدلاء",
-          "source": "صحيفة الخليج",
+          "title": "How to get Al-Wasl vs Al Quwa Al Jawiya tickets: AFC Champions League Elite prices, fixture information, last-minute sales & more",
+          "source": "Goal.com",
           "snippet": ""
         }
       ],
@@ -732,8 +674,8 @@
       "title": "مباريات اليوم في مصر",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 42.8,
+      "approx_traffic": "200+",
+      "score": 43.6,
       "published_at": "2026-11-02T14:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -749,8 +691,124 @@
           "snippet": ""
         },
         {
-          "title": "الأهلي والزمالك في كأس عاصمة مصر.. أبرز مباريات اليوم والقنوات الناقلة",
-          "source": "بوابة الشروق",
+          "title": "أبرز مباريات «اليوم»| الزمالك يواجه وادي دجلة.. والأهلي أمام المقاولون بكأس عاصمة مصر",
+          "source": "نجوم إف إم",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "09f16273b3c1092376",
+      "title": "المغرب",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 43.6,
+      "published_at": "2026-11-02T14:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "رئيس «المينورسو» يستنفر مسؤولي البعثة لاجتماع طارئ بشأن مرحلة التصفية",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "تعليمات بإخلاء مقرات \"المينورسو\" في الصحراء الغربية.. ما تفاصيلها وماذا يعني انتهاء ولايتها؟",
+          "source": "مونت كارلو الدولية",
+          "snippet": ""
+        },
+        {
+          "title": "\"انحياز مفرط للمغرب\".. الجزائر ترد على عدم تجديد مهمة بعثة الأمم المتحدة في الصحراء الغربية",
+          "source": "CNN Arabic",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "3e9d3db89ae0ade3e1",
+      "title": "مباريات النادى الاهلى",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 43.3,
+      "published_at": "2026-11-02T15:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "أرقام إمام عاشور تكشف سر استبعاده من مباريات الأهلي للمرة الثالثة تواليا",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "الأهلي يختار المواجهة.. أسرار بيان منتصف الليل حول إصابة إمام عاشور",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "ملف يلا كورة.. استبعاد إمام عاشور.. عقوبة شيكو بانزا.. وحقيقة أزمة صلاح",
+          "source": "يلاكورة",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "0451f90cb57f44ba1c",
+      "title": "شاي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.9,
+      "published_at": "2026-11-02T15:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "من الشاي إلى الأرز.. 5 مصادر يومية للبلاستيك في غذائنا",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "دراسة تحذر من أكياس الشاي البلاستيكية.. ماذا يحدث داخل كوب الشاي الساخن؟",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "دراسة: أكياس الشاي البلاستيكية تطلق آلاف الجزيئات الدقيقة في المشروب",
+          "source": "عاجل",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "8e36ebd0119cf7eb91",
+      "title": "senator chris murphy",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 41.3,
+      "published_at": "2026-11-02T14:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Chris Murphy is hospitalized after stroke",
+          "source": "Politico",
+          "snippet": ""
+        },
+        {
+          "title": "Senator Chris Murphy Is ‘Awake and Alert’ After Suffering a Stroke",
+          "source": "The New York Times",
+          "snippet": ""
+        },
+        {
+          "title": "What does recovery from a stroke look like?",
+          "source": "Connecticut Public",
           "snippet": ""
         }
       ],
@@ -762,7 +820,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 42.5,
+      "score": 40.3,
       "published_at": "2026-11-02T14:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -780,64 +838,6 @@
         {
           "title": "تعرف على برجك اليوم 2026/11/1.. «الميزان»: تراودك أفكار جديدة تساعد على تحسين أوضاعك المالية.. و«السرطان»: تتمتع بجاذبية وحضور اجتماعي",
           "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2f1bcd496ad2241658",
-      "title": "tadawul all-share index",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 41.8,
-      "published_at": "2026-11-02T13:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Saudi Stock Exchange Main Index Closes Higher",
-          "source": "وكالة الأنباء السعودية",
-          "snippet": ""
-        },
-        {
-          "title": "Saudi Market Rises 0.35% to 9,873 Points in Early Trading",
-          "source": "ASHARQ AL-AWSAT English",
-          "snippet": ""
-        },
-        {
-          "title": "Saudi Arabia stocks lower at close of trade; Tadawul All Share down 0.84%",
-          "source": "Investing.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "120d50e0cc83db2842",
-      "title": "احمد العوضي",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 40.5,
-      "published_at": "2026-11-02T13:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "أحمد فهيم ومحمد على رزق ينضمان لمسلسل «سلطان الديب» فى رمضان 2027",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "أحمد فهيم ينضم لـ مسلسل «سلطان الديب» مع أحمد العوضي في رمضان 2027",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "هدى الأتربي تكشف كواليس «سلطان الديب».. ماذا تحضر للجمهور مع أحمد العوضي في رمضان 2027؟ | خاص",
-          "source": "أهل مصر",
           "snippet": ""
         }
       ],
