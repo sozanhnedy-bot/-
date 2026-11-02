@@ -1,60 +1,118 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T08:41:27.507540Z",
+  "updated_at": "2026-11-02T09:59:12.625046Z",
   "items": [
     {
-      "id": "ff411715c006e30838",
-      "title": "oman vs netherlands",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "b0854b8295ff45538d",
+      "title": "se",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "5000+",
-      "score": 55.9,
-      "published_at": "2026-11-02T05:40:00Z",
+      "score": 60.4,
+      "published_at": "2026-11-02T09:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Netherlands vs Oman 140th Match ICC CWCL2 2026 Highlights",
-          "source": "CricHighlightsVidz",
+          "title": "Al menos nueve personas mueren al estrellarse un avión privado en Florida",
+          "source": "EL PAÍS",
           "snippet": ""
         },
         {
-          "title": "NED vs OMA 140th Match, 27 Oct 2026 Fantasy AI Predictions",
-          "source": "AI11",
+          "title": "Videos muestran el cráter y escombros tras el accidente de avión en Florida",
+          "source": "CNN en Español",
           "snippet": ""
         },
         {
-          "title": "Oman vs Netherlands: Live Streaming: When And Where To Watch ICC Cricket World Cup League 2 Match Live In India",
-          "source": "NDTV Profit",
+          "title": "Resumen: mueren 9 personas tras caer en picada un jet privado y estrellarse en Palm Beach",
+          "source": "Telemundo Miami (51)",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "ec664ba87cebd0e072",
-      "title": "maria sakkari",
+      "id": "5ca96b99184bd13ed4",
+      "title": "delaware",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.3,
-      "published_at": "2026-11-02T08:20:00Z",
+      "approx_traffic": "2000+",
+      "score": 55.4,
+      "published_at": "2026-11-02T08:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Golubic vs. Boulter Prediction at the Merida Open Akron – Sunday, November 1",
-          "source": "Bleacher Nation",
+          "title": "16-year-old victim of Newark shooting charged with possessing gun; shooter still at large",
+          "source": "Newark Post",
           "snippet": ""
         },
         {
-          "title": "WTA Hong Kong Day 1 Predictions Including Katie Boulter vs Viktorija Golubic",
-          "source": "Last Word On Sports",
+          "title": "6 people, including student, shot near University of Delaware",
+          "source": "6abc Philadelphia",
           "snippet": ""
         },
         {
-          "title": "Viktorija Golubic vs. Katie Boulter prediction, odds, picks for WTA Hong Kong Open 2026",
-          "source": "Dimers",
+          "title": "UPDATE: Monday classes cancelled at UD following Halloween shooting in Newark",
+          "source": "WDEL",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "150786945db87caa42",
+      "title": "weather orlando",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 52.0,
+      "published_at": "2026-11-02T08:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Potential for flooding rainfall Sunday and Monday",
+          "source": "WESH",
+          "snippet": ""
+        },
+        {
+          "title": "Heavy rain expected across Central Florida through Monday; some areas could see 4 inches",
+          "source": "WFTV",
+          "snippet": ""
+        },
+        {
+          "title": "Weather alert day issued for tonight and Monday as flood threat increases",
+          "source": "Yahoo",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "02b46f5e84fa9c8488",
+      "title": "التامينات الاجتماعية",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 51.0,
+      "published_at": "2026-11-02T09:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "استبعاد عمالة من التأمينات وبلاغات هروب خاطئة تربك أصحاب العمل",
+          "source": "أخبار 24",
+          "snippet": ""
+        },
+        {
+          "title": "أموال التأمينات والحد الأدنى للأجور على طاولة القوى العاملة بمجلس النواب اليوم",
+          "source": "شبكة تواصل الإخبارية",
+          "snippet": ""
+        },
+        {
+          "title": "من الأجر اليومي إلى الحد الأدنى للأجور.. حقوق العمال تحت مجهر القوى العاملة بالنواب",
+          "source": "برلمانى",
           "snippet": ""
         }
       ],
@@ -65,54 +123,54 @@
       "title": "البورصة المصرية",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 49.3,
+      "approx_traffic": "1000+",
+      "score": 49.7,
       "published_at": "2026-11-02T07:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "طرح القرن بـ36.3 مليار جنيه.. بنك القاهرة يدخل البورصة بأضخم صفقة فى تاريخ مصر",
+          "title": "محافظ البنك المركزي: طرح بنك القاهرة يعكس الثقة فى القطاع المصرفي",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "بعد قليل.. رئيس الوزراء يحضر جلسة بدء التداول على أسهم بنك القاهرة بعد طرحه حصة منه للاكتتاب العام",
-          "source": "بوابة الأهرام",
+          "title": "سهم بنك القاهرة يقفز نحو 7% في الدقائق الأولى من بدء تداوله بالبورصة",
+          "source": "معلومات مباشر",
           "snippet": ""
         },
         {
-          "title": "سلوك المستثمرين أبرزها.. خبير اقتصادي يكشف أسباب تراجعات البورصة: خسائر دفترية وليست حقيقية",
-          "source": "صدى البلد",
+          "title": "انطلاق التداول على أسهم بنك القاهرة في البورصة المصرية",
+          "source": "العربية",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "c027f1979608634495",
-      "title": "ظاهرة جوية",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 49.0,
-      "published_at": "2026-11-02T04:10:00Z",
+      "id": "a444c278429f6a018b",
+      "title": "ins",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.4,
+      "published_at": "2026-11-02T09:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "حالة الطقس.. الأرصاد تعلن الظواهر الجوية اليوم الاثنين وتحذير من ارتفاع الحرارة",
-          "source": "Masrawy",
+          "title": "Rafale M Conducts Maiden Trials onboard Indian Aircraft Carrier INS Vikrant",
+          "source": "Naval News",
           "snippet": ""
         },
         {
-          "title": "فيديو.. الأرصاد: غدا ذروة ارتفاع الحرارة.. والعظمى تصل إلى 37",
-          "source": "بوابة الشروق",
+          "title": "French Fighter Lands on Indian Carrier as Integration Begins",
+          "source": "Bloomberg",
           "snippet": ""
         },
         {
-          "title": "طقس مفاجئ خلال الأسبوع الحالي في مصر.. رياح وأمطار رغم ارتفاع الحرارة",
-          "source": "العربية",
+          "title": "Video | Rafale News | Rafale Fighter Jet Touches Down On INS Vikrant In Major Milestone For Indian Navy",
+          "source": "NDTV",
           "snippet": ""
         }
       ],
@@ -124,285 +182,111 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 48.9,
+      "score": 46.4,
       "published_at": "2026-11-02T07:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "بعد مكاسب قياسية فوق 56 جنيهاً.. الدولار يتراجع مجدداً أمام الجنيه المصري",
+          "title": "الدولار يفقد مستوى 56 جنيهاً.. هل يستمر تعافي العملة المصرية؟",
           "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "سعر الدولار يواصل التراجع أمام الجنيه فى البنوك اليوم الأحد",
+          "title": "سعر الدولار يتراجع 20 قرشا أمام الجنيه خلال التعاملات الصباحية",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "انخفاض سعر الدولار مقابل الجنيه في بنكين مع بداية تعاملات الاثنين",
+          "title": "سعر الدولار مقابل الجنيه اليوم الإثنين.. استقرار في البنوك المصرية",
+          "source": "alyaum",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "c027f1979608634495",
+      "title": "ظاهرة جوية",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 46.4,
+      "published_at": "2026-11-02T04:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "حالة الطقس اليوم.. الأرصاد تكشف مفاجآت درجات الحرارة والظواهر الجوية المتوقعة",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "حالة الطقس.. الأرصاد تعلن الظواهر الجوية اليوم الاثنين وتحذير من ارتفاع الحرارة",
           "source": "Masrawy",
           "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "da191d7b6d0483b2dc",
-      "title": "grambling basketball",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 48.6,
-      "published_at": "2026-11-02T07:00:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "Liverpool 0-1 Arsenal (Nov 1, 2026) Player Stats",
-          "source": "ESPN",
-          "snippet": ""
         },
         {
-          "title": "Jerry Jonens responds to Dallas OT loss: 'It's an indictment of the whole show'",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Merrimack vs. App State (Nov 2, 2026) Live Score",
-          "source": "ESPN",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "62972fb6ae07d32872",
-      "title": "polls",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-02T08:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Democrats Show Strength in Final Days of Race for the Senate, New Polls Find",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Latest Polls In 2026 Midterms: Democrats Lead Nearly All Key Senate Races",
-          "source": "Forbes",
-          "snippet": ""
-        },
-        {
-          "title": "NYTimes/Siena Poll of Likely Voters – Alaska, Iowa, Kansas, Maine, Michigan, Ohio, and Texas",
-          "source": "Siena Poll",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "79092b5ba380f31895",
-      "title": "teams",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 47.3,
-      "published_at": "2026-11-02T04:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Bucs down Falcons without pass completion; Bucky Irving, Kenny Gainwell run wild",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Zero passing yards, one win. Did the Bucs just reinvent the NFL in all the wrong ways?",
-          "source": "The Guardian",
-          "snippet": ""
-        },
-        {
-          "title": "An NFL team just won a game without completing a pass. No, seriously.",
-          "source": "NBC News",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "636dace7ac33c21795",
-      "title": "حافز",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.7,
-      "published_at": "2026-11-02T08:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بعد رقع قيمته لـ2100 جنيه.. من يستحق صرف حافز التدريس؟ التفاصيل",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "وزارة التعليم تحدد الفئات المستحقة لحافز التدريس.. هل اسمك بينهم؟",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
-        },
-        {
-          "title": "موعد صرف حافز التدريس 2026.. 2100 جنيه للمعلمين.. الشروط والفئات المستحقة",
-          "source": "صدى البلد",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "b4dea64024d182946d",
-      "title": "nintendo switch zelda 40th anniversary",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.7,
-      "published_at": "2026-11-02T08:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Nintendo Restocks Zelda 40th Anniversary Switch 2 Console",
-          "source": "IMDb",
-          "snippet": ""
-        },
-        {
-          "title": "If Walmart Canceled Your Zelda Switch 2 Pre-Order, The Store's Giving You 48 Hours To Get A New One",
-          "source": "Kotaku",
-          "snippet": ""
-        },
-        {
-          "title": "Zelda Switch 2 Restock: Target Nov. 5, $519.99 [2026]",
-          "source": "shattered.io",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "85c2e3be95f2e1a233",
-      "title": "kimi antonelli",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 46.6,
-      "published_at": "2026-11-02T04:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Kimi Antonelli becomes youngest F1 champion with third place in Mexican GP",
-          "source": "The Guardian",
-          "snippet": ""
-        },
-        {
-          "title": "Antonelli crowned champion in Mexico as Verstappen wins race",
-          "source": "Formula 1",
-          "snippet": ""
-        },
-        {
-          "title": "Look back at how Kimi Antonelli sealed the 2026 F1 drivers' title as Max Verstappen won a wild Mexico City Grand Prix",
-          "source": "Sky Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "bbb156696c50cbd027",
-      "title": "تحطم طائرة",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 46.0,
-      "published_at": "2026-11-02T07:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "\"سنصطدم\"..تسجيل مرعب قبل لحظات من تحطم طائرة بفلوريدا",
+          "title": "طقس مفاجئ خلال الأسبوع الحالي في مصر.. رياح وأمطار رغم ارتفاع الحرارة",
           "source": "العربية",
           "snippet": ""
-        },
-        {
-          "title": "تحطم طائرة على متنها 9 أشخاص في ولاية فلوريدا",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "مقتل 9 أشخاص في تحطم طائرة خاصة هوت من ارتفاع 35 ألف قدم في فلوريدا",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "3ca9a9ce2035c0f53b",
-      "title": "karl bushby",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "b8090db1c117b2232d",
+      "title": "david warner",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 45.7,
-      "published_at": "2026-11-02T07:30:00Z",
+      "score": 46.1,
+      "published_at": "2026-11-02T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "After 28 Years Walking Across the Globe, He’s Almost Home",
-          "source": "The New York Times",
+          "title": "Lyon's fading force, Smith at No. 3, and the never-ending Boland debate - Questions for Australia after series defeat",
+          "source": "Cricinfo",
           "snippet": ""
         },
         {
-          "title": "Karl Bushby 'overwhelmed' at Humber Bridge welcome",
+          "title": "South Africa vs Australia: Five takeaways for England after epic series",
           "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "In 28 years of walking, Karl Bushby has overcome jungle, desert and red tape. Now he's nearly home",
-          "source": "AP News",
+          "title": "Cape Town was the batting collapse we had to have. Now selectors must make changes",
+          "source": "SMH.com.au",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "47f1dc87d06f600050",
-      "title": "the avengers",
+      "id": "622dd6729638ce4afe",
+      "title": "nws winter storm warning snow winds",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 45.3,
-      "published_at": "2026-11-02T07:20:00Z",
+      "score": 46.1,
+      "published_at": "2026-11-02T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Spider-Man Defies the Avengers to Take on Marvel’s Most Terrifying Hulk in New Preview",
+          "title": "New Winter Storm Warning: 50 MPH Winds, 8 Inches of Snow Could Hit Multiple States",
           "source": "Yahoo",
           "snippet": ""
         },
         {
-          "title": "Infernal Hulk vs. Spider-Man #1 Preview: Spidey's Suicide Mission",
-          "source": "Bleeding Cool News",
+          "title": "First Winter Storm Forecast for 7 States to Bring Several Inches of 'Heavier Snow' Through Monday",
+          "source": "Men's Journal",
           "snippet": ""
         },
         {
-          "title": "The Infernal Hulk vs. The Avengers",
-          "source": "IGN Nordic",
+          "title": "First Alert Weather Day: Wind, heavy rain and snow could complicate Monday travel",
+          "source": "KOTA Territory News",
           "snippet": ""
         }
       ],
@@ -413,8 +297,8 @@
       "title": "رامز جلال",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.7,
+      "approx_traffic": "500+",
+      "score": 46.0,
       "published_at": "2026-11-02T07:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -438,145 +322,232 @@
       "alert": false
     },
     {
+      "id": "76cb1ad311abd379d9",
+      "title": "katie volynets",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 45.0,
+      "published_at": "2026-11-02T08:00:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "November 2, 2026: Samson vs Lizarazo Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 3, 2026: Ninomiya / Zhang Y (1998) vs Hozumi / Klepac Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 3, 2026: Gorgodze / Timofeeva vs Cho I-H / Cho Y Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "93db2bc1c1ffd6f221",
+      "title": "كهرباء",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 45.0,
+      "published_at": "2026-11-02T03:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "محافظ أسيوط يتفقد محطة كهرباء غرب أسيوط المركبة | صور",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "بالصور- محافظ أسيوط يتابع تشغيل محطة كهرباء غرب ومشروع زراعة 100 فدان جوجوبا",
+          "source": "Masrawy",
+          "snippet": ""
+        },
+        {
+          "title": "موعد تسجيل قراءة عداد الغاز لشهر نوفمبر 2026",
+          "source": "اليوم السابع",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "6703d3b638a4f2888b",
       "title": "test",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 44.3,
+      "approx_traffic": "200+",
+      "score": 44.7,
       "published_at": "2026-11-02T08:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Australia Test captain Pat Cummins to miss upcoming England matches",
-          "source": "The Guardian",
+          "title": "Apple's new CEO Ternus to face first earnings test as memory costs surge",
+          "source": "Reuters",
           "snippet": ""
         },
         {
-          "title": "Australia omit Pat Cummins, Josh Hazlewood and Mitchell Starc for England white-ball series",
-          "source": "BBC",
+          "title": "Apple to report Q4 earnings Monday, with iPhone 18 sales in the spotlight",
+          "source": "Yahoo Finance",
           "snippet": ""
         },
         {
-          "title": "Australia selects Renshaw and Green for England ODI series; Starc, Hazlewood, Cummins rested",
-          "source": "10tv.com",
+          "title": "Apple Shares Are Up 27% This Year. Is the Stock Still a Buy Ahead of Earnings?",
+          "source": "Morningstar",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ec664ba87cebd0e072",
+      "title": "maria sakkari",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 44.7,
+      "published_at": "2026-11-02T08:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Boulter holds off Golubic in Hong Kong for third straight head-to-head win",
+          "source": "WTA Tennis",
+          "snippet": ""
+        },
+        {
+          "title": "Golubic vs. Boulter Prediction at the Merida Open Akron – Sunday, November 1",
+          "source": "Bleacher Nation",
+          "snippet": ""
+        },
+        {
+          "title": "WTA Hong Kong Day 1 Predictions Including Katie Boulter vs Viktorija Golubic",
+          "source": "Last Word On Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2eeef470756ae99d9c",
+      "title": "marilee fiebig",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.4,
+      "published_at": "2026-11-02T09:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Andrew Shue marries Marilee Fiebig, weeks after their exes Amy Robach and T.J. Holmes tied the knot",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "Andrew Shue & Marilee Fiebig Marry at Their New Jersey Farm!",
+          "source": "IMDb",
+          "snippet": ""
+        },
+        {
+          "title": "Ihre Ex-Partner heirateten einander – jetzt sagen auch sie JA!",
+          "source": "RTL.de",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "ae3bab0e52e43ecb54",
-      "title": "al-nassr fc",
-      "region": "arab",
-      "region_label": "السعودية",
+      "id": "636dace7ac33c21795",
+      "title": "حافز",
+      "region": "egypt",
+      "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 44.3,
-      "published_at": "2026-11-02T06:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Cristiano Ronaldo DROPPED by Al Nassr amid major tournament security fears",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "Cristiano Ronaldo rested for Al Nassr's AFC Champions League trip to Pakhtakor",
-          "source": "OneFootball",
-          "snippet": ""
-        },
-        {
-          "title": "Ronaldo scored three on Thursday, and Postecoglou has left him out of Al-Nassr’s Champions League trip to Pakhtakor",
-          "source": "SportsAdda",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "5896ddfdc51ea8b12c",
-      "title": "snowfall",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 43.7,
+      "score": 44.1,
       "published_at": "2026-11-02T08:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Six Indian tourists stranded in Nepal's National Park rescued safely",
-          "source": "The Hindu",
-          "snippet": ""
-        },
-        {
-          "title": "6 Indian trekkers 'ignore weather warnings', get stranded in Nepal",
-          "source": "The Times of India",
-          "snippet": ""
-        },
-        {
-          "title": "Six tourists stranded by heavy snow near Nepal’s deepest lake",
-          "source": "The Independent",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "682aee12443960ba2d",
-      "title": "sadie sink",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 42.7,
-      "published_at": "2026-11-02T07:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Sadie Sink Chooses Perfect Follow-Up Movie to 'Spider-Man: Brand New Day'",
-          "source": "The Direct",
-          "snippet": ""
-        },
-        {
-          "title": "Sadie Sink and Maya Hawke Star in Hand-Drawn Prada Campaign by Legendary Disney Animator John Pomeroy",
-          "source": "Variety",
-          "snippet": ""
-        },
-        {
-          "title": "As AI slop floods feeds, luxury brands are going all in on handmade ads",
-          "source": "Fast Company",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "b5db0a0c86a08c56c6",
-      "title": "الشروق",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 42.6,
-      "published_at": "2026-11-02T04:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "اتحاد الغرف التجارية يبحث تعزيز التجارة والاستثمارات المشتركة خلال قمة B57+ بإسطنبول",
+          "title": "بعد رقع قيمته لـ2100 جنيه.. من يستحق صرف حافز التدريس؟ التفاصيل",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "تركيا: حجم تجارتنا مع دول التعاون الإسلامي يبلغ 108 مليارات دولار",
-          "source": "Anadolu Ajansı",
+          "title": "وزارة التعليم تحدد الفئات المستحقة لحافز التدريس.. هل اسمك بينهم؟",
+          "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         },
         {
-          "title": "عبدالله صالح: العالم الإسلامي يمتلك رؤوس أموال تؤهله ليكون قوة اقتصادية",
-          "source": "بوابة أخبار اليوم الإلكترونية",
+          "title": "موعد صرف حافز التدريس 2026.. 2100 جنيه للمعلمين.. الشروط والفئات المستحقة",
+          "source": "صدى البلد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "85c2e3be95f2e1a233",
+      "title": "kimi antonelli",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 44.0,
+      "published_at": "2026-11-02T04:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Kimi Antonelli becomes F1 world champion: How Mercedes driver clinched title in Mexico",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Antonelli crowned champion in Mexico as Verstappen wins race",
+          "source": "Formula 1",
+          "snippet": ""
+        },
+        {
+          "title": "Kimi Antonelli becomes youngest F1 champion with third place in Mexican GP",
+          "source": "The Guardian",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7550b608a835095b1e",
+      "title": "earthquake",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.7,
+      "published_at": "2026-11-02T09:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Nov. 2: Earthquake measuring 2.2 struck region near Westley, CA",
+          "source": "Sacramento Bee",
+          "snippet": ""
+        },
+        {
+          "title": "Three earthquakes strike California overnight along the San Andreas Fault",
+          "source": "New York Post",
+          "snippet": ""
+        },
+        {
+          "title": "PM for comprehensive preparations to address earthquake risks",
+          "source": "Bangladesh Sangbad Sangstha (BSS)",
           "snippet": ""
         }
       ],
@@ -587,8 +558,8 @@
       "title": "ഒമാന്",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 42.3,
+      "approx_traffic": "500+",
+      "score": 43.7,
       "published_at": "2026-11-02T07:20:00Z",
       "source": "Google Trends",
       "source_count": 2,
@@ -612,87 +583,164 @@
       "alert": false
     },
     {
-      "id": "16557815d2fd194af1",
-      "title": "new england vs inter miami",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 42.0,
-      "published_at": "2026-11-01T23:40:00Z",
+      "id": "bbb156696c50cbd027",
+      "title": "تحطم طائرة",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 43.4,
+      "published_at": "2026-11-02T07:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Lionel Messi Reaches 937 Career Goals and 428 Assists",
-          "source": "Head Topics",
+          "title": "\"سنصطدم\"..تسجيل مرعب قبل لحظات من تحطم طائرة بفلوريدا",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Match Highlights New England - Inter Miami",
-          "source": "YSscores",
+          "title": "مقتل 9 أشخاص في تحطم طائرة خاصة هوت من ارتفاع 35 ألف قدم في فلوريدا",
+          "source": "صحيفة سبق الإلكترونية",
           "snippet": ""
         },
         {
-          "title": "Lionel Messi’s masterclass puts Cristiano Ronaldo under pressure in the race to 1,000 goals",
-          "source": "MARCA",
+          "title": "لحظة مخيفة لتحطم طائرة في أمريكا ومقتل ركابها.. وفيديو يوثق الكارثة",
+          "source": "CNN Arabic",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "5619f236d771db50d3",
-      "title": "aliaksandra sasnovich",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "ae3bab0e52e43ecb54",
+      "title": "al-nassr fc",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 41.3,
-      "published_at": "2026-11-02T08:20:00Z",
+      "score": 41.7,
+      "published_at": "2026-11-02T06:50:00Z",
       "source": "Google Trends",
-      "source_count": 1,
+      "source_count": 3,
       "news_items": [
         {
-          "title": "November 3, 2026: Andrey Rublev vs Tomas Martin Etcheverry: Total Games Tennis Prediction Market",
-          "source": "Robinhood",
+          "title": "Pakhtakor FC vs Al Nassr LIVE streaming info: Where to watch AFC Champions League match?",
+          "source": "Sportstar",
           "snippet": ""
         },
         {
-          "title": "November 2, 2026: Alycia Parks vs Alexandra Eala: Set 1 Winner Tennis Prediction Market",
-          "source": "Robinhood",
+          "title": "Watch Pakhtakor Tashkent vs. Al Nassr FC live today: Who is broadcasting the match on TV and via live stream?",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "November 2, 2026: Maaya Rajeshwaran Revathi vs Katarzyna Kawa: Set 1 Winner Tennis Prediction Market",
-          "source": "Robinhood",
+          "title": "Will Cristiano Ronaldo Play Today? Pakhtakor vs. Al Nassr Team News",
+          "source": "Heavy.com",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "76cb1ad311abd379d9",
-      "title": "katie volynets",
+      "id": "ee0e8ffe1a96908c20",
+      "title": "lol",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 40.7,
-      "published_at": "2026-11-02T08:00:00Z",
+      "approx_traffic": "100+",
+      "score": 41.1,
+      "published_at": "2026-11-02T09:30:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "LYON Saint following his qualification to the quarterfinals: \"I feel like I died\"",
+          "source": "Sheep Esports",
+          "snippet": ""
+        },
+        {
+          "title": "Dhokla On Inspired-Saint Relationship: “If You Don’t Let The Stress Out, Nothing Gets Fixed”",
+          "source": "Hotspawn",
+          "snippet": ""
+        },
+        {
+          "title": "Worlds 2026: Swiss Stage viewership declines for second consecutive year, but remains above groups-era levels",
+          "source": "Sheep Esports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "b5db0a0c86a08c56c6",
+      "title": "الشروق",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 40.0,
+      "published_at": "2026-11-02T04:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "رئيس مياه القناة: الانتهاء من إصلاح الأعطال المفاجئة بالمحسمة والشروق والقنطرة شرق",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "رئيس مياه القناة: إصلاح كسور مفاجئة بالخطوط في المحسمة والشروق والقنطرة شرق",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "رئيس مياه القناة يتفقد محطة المستقبل بالإسماعيلية لمتابعة كفاءة التشغيل وجودة الإنتاج",
+          "source": "جريدة المال",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "0509ccc0bcbbc99a2f",
+      "title": "سرطان",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 39.1,
+      "published_at": "2026-11-02T07:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "جامعة القاهرة الأهلية تطلق فعالية متكاملة لإحياء أكتوبر الوردي",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "الصحة تنظم مؤتمرا علميا لتسليط الضوء على الجهود المصرية في رعاية مريضات سرطان الثدي",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "\"الصحة\": المبادرة الرئاسية لدعم صحة المرأة ترفع نسب الاكتشاف المبكر لسرطان الثدي إلى 61.3%",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2ff39d85bc20a654d2",
+      "title": "shoaib malik",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 38.4,
+      "published_at": "2026-11-02T09:40:00Z",
       "source": "Google Trends",
       "source_count": 1,
       "news_items": [
         {
-          "title": "November 2, 2026: Samson vs Lizarazo Tennis Prediction Market",
-          "source": "Robinhood",
-          "snippet": ""
-        },
-        {
-          "title": "November 2, 2026: Williams vs Stoiana Tennis Prediction Market",
-          "source": "Robinhood",
-          "snippet": ""
-        },
-        {
-          "title": "November 3, 2026: Gorgodze / Timofeeva vs Cho I-H / Cho Y Tennis Prediction Market",
-          "source": "Robinhood",
+          "title": "Sania Mirza, Shoaib Malik’s latest pics with son grab attention",
+          "source": "The Siasat Daily",
           "snippet": ""
         }
       ],
@@ -704,7 +752,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 40.7,
+      "score": 38.1,
       "published_at": "2026-11-02T06:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -733,24 +781,24 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 40.7,
+      "score": 38.1,
       "published_at": "2026-11-02T05:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Сильные дожди и похолодание идут в Казахстан",
-          "source": "TengriNews",
+          "title": "Мороз в пределах нормы: ноябрь принес в Украину похолодание",
+          "source": "ФАКТЫ",
           "snippet": ""
         },
         {
-          "title": "Сильные снегопады и похолодание идут на Казахстан – прогноз погоды на 3-5 ноября 2026 года",
-          "source": "Новости Zakon.kz",
+          "title": "Можно будет забыть о 10-градусном тепле, в Украину идет новая волна холода, - синоптик",
+          "source": "УНИАН",
           "snippet": ""
         },
         {
-          "title": "Зима всё ближе: какие регионы Казахстана накроют морозы и снег",
-          "source": "Ulysmedia.kz",
+          "title": "Дожди, туманы и до +14 градусов: с какой погодой наступил ноябрь",
+          "source": "24 Канал",
           "snippet": ""
         }
       ],
@@ -762,11 +810,16 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 40.3,
+      "score": 37.7,
       "published_at": "2026-11-02T06:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "\"طقطقة\".. أول تعليق من وليد الفراج حول أزمته مع ماجد عبدالله (فيديو)",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
         {
           "title": "في الشباك",
           "source": "جريدة الرياض",
@@ -775,40 +828,6 @@
         {
           "title": "تيجاني رينديرز: سلاح القادسية الأهم في دوري روشن السعودي",
           "source": "annahar.com",
-          "snippet": ""
-        },
-        {
-          "title": "القادسية يريح لاعبيه بعد سداسية الرياض",
-          "source": "صحيفة الرياضية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "4e77d14a4300cd17ef",
-      "title": "الاثنين",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 40.3,
-      "published_at": "2026-11-02T04:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "اتحاد منتجي الدواجن: المربون يبيعون بخسارة.. والأسعار تراجعت 15% رغم ارتفاع تكاليف الإنتاج",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "أسعار البيض اليوم الإثنين 2-11-2026 في مصر",
-          "source": "جريدة المال",
-          "snippet": ""
-        },
-        {
-          "title": "أسعار الفراخ البيضاء اليوم الاثنين 2-11-2026 في المنوفية",
-          "source": "اليوم السابع",
           "snippet": ""
         }
       ],
@@ -820,7 +839,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 40.0,
+      "score": 37.4,
       "published_at": "2026-11-02T04:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -838,35 +857,6 @@
         {
           "title": "ارتفاع أسعار الدواجن واللحوم في مصر اليوم الأربعاء",
           "source": "معلومات مباشر",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "ae52b8fa366014d731",
-      "title": "خبر",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 38.6,
-      "published_at": "2026-11-02T02:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "(وسائط متعددة) استطلاعات: يوتوفا تفوز بجولة الحسم الرئاسية في بلغاريا",
-          "source": "新华网",
-          "snippet": ""
-        },
-        {
-          "title": "إيليانا إيوتوفا المؤيدة للحوار مع موسكو تفوز بانتخابات رئاسة بلغاريا وفق استطلاعات للناخبين",
-          "source": "مونت كارلو الدولية",
-          "snippet": ""
-        },
-        {
-          "title": "جولة حاسمة في انتخابات بلغاريا.. مرشحة تميل لروسيا ومنافس يدعم أوكرانيا",
-          "source": "اليوم السابع",
           "snippet": ""
         }
       ],
