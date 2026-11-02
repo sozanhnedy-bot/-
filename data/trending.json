@@ -1,159 +1,43 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T10:57:02.386759Z",
+  "updated_at": "2026-11-02T11:50:51.694732Z",
   "items": [
     {
-      "id": "50e2cc0d2893414caa",
-      "title": "did the eagles win",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "10000+",
-      "score": 63.8,
-      "published_at": "2026-11-02T10:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Recap: Eagles drop sixth-straight game for first time since 2012",
-          "source": "NBC Sports Philadelphia",
-          "snippet": ""
-        },
-        {
-          "title": "Eagles at Commanders Injury Report",
-          "source": "Philadelphia Eagles",
-          "snippet": ""
-        },
-        {
-          "title": "Eagles' Saquon Barkley carries no injury designation for Commanders matchup",
-          "source": "ESPN",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "efd35c139d71f06de8",
-      "title": "crime",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 60.8,
-      "published_at": "2026-11-02T10:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Violent Halloween weekend in US with more than a dozen killed, over 90 injured in shootings",
-          "source": "CNN",
-          "snippet": ""
-        },
-        {
-          "title": "Halloween Shootings Leave at Least 24 Dead and 94 Wounded Nationwide",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Dallas Halloween shootings leave 4 dead, 15 injured, police say",
-          "source": "ABC News - Breaking News, Latest News and Videos",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6da499de5590e5007d",
-      "title": "dancing with the stars disney night",
+      "id": "40d7de30f5393b3a48",
+      "title": "weather tampa",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 53.4,
-      "published_at": "2026-11-02T10:10:00Z",
+      "score": 54.3,
+      "published_at": "2026-11-02T11:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "'Dancing with the Stars' Disney Night moves to Monday for midterm elections",
-          "source": "USA Today",
+          "title": "LIVE RADAR: Overnight rain into Monday morning",
+          "source": "WFLA",
           "snippet": ""
         },
         {
-          "title": "Cynthia Erivo Will Be a Guest Judge on Disney Night on Dancing With the Stars",
-          "source": "TheaterMania",
+          "title": "Scattered showers & Coastal Flood Advisory for Monday plus your recap for the remaining days of Hurricane Season 2026! (FULL WEATHER 10PM/11.1.2026)",
+          "source": "Yahoo",
           "snippet": ""
         },
         {
-          "title": "‘Dancing With The Stars’ Moves To Monday For Disney Night As Stars Take On Broadway",
-          "source": "Forbes",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "8db21187d5f225f92f",
-      "title": "venus williams",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-02T10:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Sports News, Transfers, Scores | Watch Live Sport",
-          "source": "Sky Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Venus Williams, 46, asked what keeps her motivated amid 16-match losing streak",
-          "source": "Tennis World USA",
-          "snippet": ""
-        },
-        {
-          "title": "Williams vs. Stoiana Prediction at the Merida Open Akron – Sunday, November 1",
-          "source": "Bleacher Nation",
+          "title": "Halloween weekend forecast for Northwest Florida",
+          "source": "WEAR TV",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "18cd9e48fa83b75178",
-      "title": "midterm polls",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.4,
-      "published_at": "2026-11-02T10:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "The top 11 Senate seats most likely to flip, the day before the midterms",
-          "source": "CNN",
-          "snippet": ""
-        },
-        {
-          "title": "‘A genuine tossup’: Senate battle comes down to red states and Republican voters",
-          "source": "NBC News",
-          "snippet": ""
-        },
-        {
-          "title": "Latest Polls In 2026 Midterms: Democrats Lead Nearly All Key Senate Races",
-          "source": "Forbes",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "02b46f5e84fa9c8488",
       "title": "التامينات الاجتماعية",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 49.1,
+      "approx_traffic": "1000+",
+      "score": 50.3,
       "published_at": "2026-11-02T09:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -177,29 +61,174 @@
       "alert": false
     },
     {
-      "id": "b8090db1c117b2232d",
-      "title": "david warner",
+      "id": "29ed62ce75d6d2440a",
+      "title": "saudi news",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 48.1,
-      "published_at": "2026-11-02T09:00:00Z",
+      "approx_traffic": "200+",
+      "score": 47.7,
+      "published_at": "2026-11-02T11:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Lyon's fading force, Smith at No. 3, and the never-ending Boland debate - Questions for Australia after series defeat",
-          "source": "Cricinfo",
+          "title": "Air defenses intercept, destroy ballistic missile launched toward southern Saudi Arabia",
+          "source": "Arab News",
           "snippet": ""
         },
         {
-          "title": "South Africa vs Australia: Five takeaways for England after epic series",
-          "source": "BBC",
+          "title": "Coalition: UAV Launched by Terrorist Houthi Militia toward Southern Region Intercepted, Destroyed",
+          "source": "وكالة الأنباء السعودية",
           "snippet": ""
         },
         {
-          "title": "Cape Town was the batting collapse we had to have. Now selectors must make changes",
-          "source": "SMH.com.au",
+          "title": "Saudi-led coalition intercepts a missile as fighting rages in Yemen’s al-Jawf",
+          "source": "Al Jazeera",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "650709adb0f89fd845",
+      "title": "rashid khan",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 47.6,
+      "published_at": "2026-11-02T08:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "KAG 81/2 (11) vs KAY 180/6 (Rashid Khan 31(19) Mohammad Aadil Alam 20(26)) | Karnali Yaks vs Kathmandu Gorkhas, 10th Match, Nepal Premier League 2026 Live Cricket Stream, live scores, ball-by-ball commentary, highlights, videos, news, and m",
+          "source": "Cricbuzz",
+          "snippet": ""
+        },
+        {
+          "title": "Kathmandu Gorkhas chase down 181-run target with two balls to spare",
+          "source": "Nepalnews.com",
+          "snippet": ""
+        },
+        {
+          "title": "Kathmandu’s Rashid Khan Scores Half-Century Against Karnali Yaks in NPL",
+          "source": "Ratopati",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "50950e00b481abb7f0",
+      "title": "noaa",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-02T11:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "October 30-November 2 Storm Favors California, Utah, and Colorado",
+          "source": "OpenSnow",
+          "snippet": ""
+        },
+        {
+          "title": "New Forecast Shows US States Facing Coldest Weather This November",
+          "source": "Men's Journal",
+          "snippet": ""
+        },
+        {
+          "title": "Winter Storm Could Dump 2 Feet of Snow Across 3 U.S. States by Monday",
+          "source": "AOL.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "ded20bf7271ee53145",
+      "title": "radar",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.0,
+      "published_at": "2026-11-02T11:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Weekly Radar 008: DRAM Tightness Splits by Capacity",
+          "source": "TrendForce",
+          "snippet": ""
+        },
+        {
+          "title": "Rain chances fade some for Sunday, More storms Tuesday",
+          "source": "KLFY.com",
+          "snippet": ""
+        },
+        {
+          "title": "Sunday PM Forecast: Midweek cold front brings storms and a cooldown",
+          "source": "WBRZ",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "341103f71f60fc6b78",
+      "title": "national weather service",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.0,
+      "published_at": "2026-11-02T11:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Warmer, more storms? Weather signals are telling us what to expect this November.",
+          "source": "The Boston Globe",
+          "snippet": ""
+        },
+        {
+          "title": "November weather outlook: Will your region see an early winter?",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "Florida Faces Above-Average Temperatures And Repeated Rainstorms As AccuWeather Releases Official November Forecast (Video)",
+          "source": "South Florida Reporter",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4ff70de228825add2b",
+      "title": "hubert hurkacz",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.3,
+      "published_at": "2026-11-02T11:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "NA ŻYWO: Hubert Hurkacz — Lorenzo Musetti w Paryżu. Relacja i wynik live",
+          "source": "Przegląd Sportowy",
+          "snippet": ""
+        },
+        {
+          "title": "Lorenzo Musetti - Hubert Hurkacz w turnieju ATP w Paryżu. Relacja na żywo",
+          "source": "Interia Sport",
+          "snippet": ""
+        },
+        {
+          "title": "Czas na turniej w Paryżu z udziałem Hurkacza, przed nami także WTA Finals",
+          "source": "Wyniki na żywo",
           "snippet": ""
         }
       ],
@@ -211,7 +240,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "1000+",
-      "score": 47.8,
+      "score": 46.0,
       "published_at": "2026-11-02T07:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -222,7 +251,7 @@
           "snippet": ""
         },
         {
-          "title": "سهم بنك القاهرة يقفز نحو 7% في الدقائق الأولى من بدء تداوله بالبورصة",
+          "title": "تباين مؤشرات بورصة مصر في التعاملات الصباحية مع بدء تداول بنك القاهرة",
           "source": "معلومات مباشر",
           "snippet": ""
         },
@@ -235,145 +264,261 @@
       "alert": false
     },
     {
-      "id": "7b6f1addbd9bdbe8be",
-      "title": "peso mexicano",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.8,
-      "published_at": "2026-11-02T10:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Así está el dólar en México hoy: tipo de cambio y cotizaciones en bancos",
-          "source": "Dallas News",
-          "snippet": ""
-        },
-        {
-          "title": "Precio del dólar hoy domingo 1 de noviembre: el peso inicia el mes bajo presión",
-          "source": "ABC Noticias",
-          "snippet": ""
-        },
-        {
-          "title": "La paridad ideal del peso: ¿cuál es?",
-          "source": "El Financiero",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "139ca5aaa99cc629fb",
-      "title": "weather radar",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.5,
-      "published_at": "2026-11-02T10:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Eyes remain on the Caribbean as historically quiet, El Niño driven hurricane season winds down",
-          "source": "FOX Weather",
-          "snippet": ""
-        },
-        {
-          "title": "Strong wind shear keeps tropics quiet",
-          "source": "FOX 13 Tampa Bay",
-          "snippet": ""
-        },
-        {
-          "title": "Weather update: No storm activity in the Atlantic, rain and cooler temperatures expected in SC",
-          "source": "Post and Courier",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "d2ff3f358116ac6dd9",
-      "title": "linda cardellini",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.1,
-      "published_at": "2026-11-02T10:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "‘Crystal Lake’ Hits 1.3 Billion Minutes Watched in 11 Days, Becoming Peacock’s No. 4 Scripted Debut Ever",
-          "source": "Variety",
-          "snippet": ""
-        },
-        {
-          "title": "Crystal Lake feels like the right direction for Friday the 13th",
-          "source": "Winter is Coming",
-          "snippet": ""
-        },
-        {
-          "title": "Welcome to the real ‘Crystal Lake': Visiting the New Jersey town where ‘Friday the 13th' was filmed",
-          "source": "NBC New York",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "bbb156696c50cbd027",
-      "title": "تحطم طائرة",
+      "id": "b83c9ace5c3311d340",
+      "title": "جواو فيليكس",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 45.4,
-      "published_at": "2026-11-02T07:40:00Z",
+      "approx_traffic": "200+",
+      "score": 45.3,
+      "published_at": "2026-11-02T10:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "\"سنصطدم\"..تسجيل مرعب قبل لحظات من تحطم طائرة بفلوريدا",
-          "source": "العربية",
+          "title": "أخبار الانتقالات | النصر يحسم مصير جواو فيليكس وريال مدريد يحدد خليفة كورتوا",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "طيار بخبرة 20 ألف ساعة يحلل تحطم «ليرجيت» فلوريدا: الصعود وسط العاصفة ربما عقّد الموقف",
-          "source": "صحيفة سبق الإلكترونية",
+          "title": "مفاجأة مدوية.. هل يخطف الهلال جواو فيليكس؟",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "لحظة مخيفة لتحطم طائرة في أمريكا ومقتل ركابها.. وفيديو يوثق الكارثة",
-          "source": "CNN Arabic",
+          "title": "مصادر «عكاظ»: النصر يقترب من تجديد عقد بوشل قبل «الحرة»",
+          "source": "عكاظ",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "ca8ce13d50e88fb04d",
-      "title": "سعر الدولار اليوم مقابل الجنيه المصري",
+      "id": "44297b67e3226fb97c",
+      "title": "sikandar raza",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 44.4,
-      "published_at": "2026-11-02T07:10:00Z",
+      "approx_traffic": "100+",
+      "score": 44.7,
+      "published_at": "2026-11-02T11:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "الدولار يفقد مستوى 56 جنيهاً.. هل يستمر تعافي العملة المصرية؟",
-          "source": "العربية",
+          "title": "Raza 'hurt' with team-mates' 'complacency' in latest loss to Afghanistan",
+          "source": "Cricinfo",
           "snippet": ""
         },
         {
-          "title": "سعر الدولار يتراجع 20 قرشا أمام الجنيه خلال التعاملات الصباحية",
+          "title": "World record at 40! Sikandar Raza smashes unbeaten ton against Afghanistan, enters elite list",
+          "source": "The Times of India",
+          "snippet": ""
+        },
+        {
+          "title": "Who are the oldest players to hit a century in T20I cricket? | To know more | Inshorts",
+          "source": "Inshorts",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "4dde3816762d648432",
+      "title": "philadelphia phillies",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.3,
+      "published_at": "2026-11-02T11:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "New hitting coach looks to bring 'grind-you-down' approach to Phillies' lineup",
+          "source": "MLB.com",
+          "snippet": ""
+        },
+        {
+          "title": "New Phillies' hitting coach Pete Fatse looks to lift a sagging offense",
+          "source": "NBC Sports Philadelphia",
+          "snippet": ""
+        },
+        {
+          "title": "Can new hitting coach help Justin Crawford in second year? Phillies want young outfielder to ‘lean into’ his strengths",
+          "source": "Phillies Nation",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "98e84e7c51fbbb248e",
+      "title": "tsm stock",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.3,
+      "published_at": "2026-11-02T11:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "If the AI Bubble Scare Gets Worse, This Is the Chip Stock I'd Still Hold",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "TSMC Just Dropped 11% in a Month. Is It Time to Sell, or Load Up?",
+          "source": "TIKR.com",
+          "snippet": ""
+        },
+        {
+          "title": "Taiwan Semiconductor Manufacturing Company Ltd. (TSM) - What Are Researchers Thinking About This Stock?",
+          "source": "MarketBeat",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "636dace7ac33c21795",
+      "title": "حافز",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 44.3,
+      "published_at": "2026-11-02T08:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بعد رفع قيمته لـ2100 جنيه.. من يستحق صرف حافز التدريس؟ التفاصيل",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "سعر الدولار مقابل الجنيه اليوم الإثنين.. استقرار في البنوك المصرية",
-          "source": "alyaum",
+          "title": "كل ما تريد معرفته عن حافز التدريس للمعلمين.. قيمته وشروطه والفئات المستثناة",
+          "source": "بوابة دار الهلال",
+          "snippet": ""
+        },
+        {
+          "title": "معلمو رياض الأطفال والفصل الواحد.. موقفهم من حافز التدريس 2026",
+          "source": "شبكة تواصل الإخبارية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ddde8713734ba9f187",
+      "title": "florida governor race",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.7,
+      "published_at": "2026-11-02T11:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Why Florida Republicans are \"white-knuckled\" about Tuesday",
+          "source": "Axios",
+          "snippet": ""
+        },
+        {
+          "title": "Early voting ends Saturday on the Treasure Coast, Okeechobee County",
+          "source": "WPBF",
+          "snippet": ""
+        },
+        {
+          "title": "Bay Area early voting ends this weekend: What voters need to know",
+          "source": "FOX 13 Tampa Bay",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ec1a416c1909a98fb5",
+      "title": "cincinnati weather",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.7,
+      "published_at": "2026-11-02T11:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Cincinnati Weather Forecast Brings Cloudy Sunday Before Midweek Rain",
+          "source": "Hoodline",
+          "snippet": ""
+        },
+        {
+          "title": "Mostly dry, few sprinkles possible today and tomorrow",
+          "source": "FOX19 | Cincinnati",
+          "snippet": ""
+        },
+        {
+          "title": "Slightly warmer in the Tri-State Sunday",
+          "source": "WCPO 9 Cincinnati",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "25436effdd90381e69",
+      "title": "fetterman",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.7,
+      "published_at": "2026-11-02T11:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Sen. Fetterman could have dramatic impact on US Senate after midterms",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "The 2028 race for John Fetterman’s seat starts soon — and one Pa. Democrat is getting a head start",
+          "source": "Inquirer.com",
+          "snippet": ""
+        },
+        {
+          "title": "Letters to the Editor: John Fetterman owes it to voters to remain in Democratic Party",
+          "source": "The Morning Call",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f296fc30446dae01ed",
+      "title": "شريف مدكور",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 43.7,
+      "published_at": "2026-11-02T09:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "إسعاد يونس تستضيف مجموعة من أبناء كفر الشيخ في صاحبة السعادة الليلة",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "شريف مدكور: الرقص رياضة زي كرة القدم والسلة بيفرّغ الطاقة السلبية",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "شريف مدكور: «الحمد لله على إصابتي بالسرطان.. وحب الناس غيّر نظرتي للحياة»",
+          "source": "بوابة الأهرام",
           "snippet": ""
         }
       ],
@@ -385,24 +530,24 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 44.4,
+      "score": 42.7,
       "published_at": "2026-11-02T04:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
-        {
-          "title": "حالة الطقس اليوم.. الأرصاد تكشف مفاجآت درجات الحرارة والظواهر الجوية المتوقعة",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
         {
           "title": "حالة الطقس.. الأرصاد تعلن الظواهر الجوية اليوم الاثنين وتحذير من ارتفاع الحرارة",
           "source": "Masrawy",
           "snippet": ""
         },
         {
-          "title": "فيديو.. الأرصاد: غدا ذروة ارتفاع الحرارة.. والعظمى تصل إلى 37",
-          "source": "بوابة الشروق",
+          "title": "عودة الأجواء الحارة.. الأرصاد تكشف درجات الحرارة والمدة والمناطق المتأثرة",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "«جهزوا الكمامات».. تحذير عاجل بشأن حالة الطقس غدا الاثنين",
+          "source": "المصري اليوم",
           "snippet": ""
         }
       ],
@@ -414,111 +559,111 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 44.1,
+      "score": 42.3,
       "published_at": "2026-11-02T10:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "السيطرة على حريق شقة سكنية بمساكن طابا في بنها دون إصابات",
-          "source": "المصري اليوم",
+          "title": "السيطرة على حريق أعلى سطح عقار فى فيصل بالجيزة دون إصابات",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "السيطرة على حريق داخل شقة سكنية في القليوبية دون إصابات",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "السيطرة على حريق بشقة سكنية في قرية السفاينة بطوخ",
-          "source": "صدى البلد",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b83c9ace5c3311d340",
-      "title": "جواو فيليكس",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 44.1,
-      "published_at": "2026-11-02T10:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مفاجأة مدوية.. هل يخطف الهلال جواو فيليكس؟",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "أخبار الانتقالات | النصر يحسم مصير جواو فيليكس وريال مدريد يحدد خليفة كورتوا",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "التويجري يكسر صمته بشأن أنباء انتقال فيليكس إلى الهلال!",
-          "source": "زاد الاردن",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "6a84e5b6c200a3231a",
-      "title": "رامز جلال",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 44.1,
-      "published_at": "2026-11-02T07:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "محمد فؤاد يعترف: قلدت رامز جلال بسبب الظروف المادية",
-          "source": "عكاظ",
-          "snippet": ""
-        },
-        {
-          "title": "محمد فؤاد يكشف سبب تقديمه برامج المقالب وعلاقته بعمر كمال",
-          "source": "مجلة لها",
-          "snippet": ""
-        },
-        {
-          "title": "محمد فؤاد يرد على شائعات خلافه مع عزيز الشافعي: «مين قال إن فيه بينا مشكلة؟»",
+          "title": "اندلاع حريق داخل شقة سكنية بمنطقة الدواجن بالمعصرة",
           "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "إخماد حريق داخل شقة سكنية في المرج دون إصابات",
+          "source": "Masrawy",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "ed3273b42e400516d8",
-      "title": "associated press",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 43.8,
-      "published_at": "2026-11-02T10:20:00Z",
+      "id": "b8090db1c117b2232d",
+      "title": "david warner",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 42.3,
+      "published_at": "2026-11-02T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "SMU hosts Southern in season opener",
-          "source": "Yahoo Sports",
+          "title": "David Warner arrives in Nepal for Kathmandu Gorkhas’ NPL campaign",
+          "source": "The Kathmandu Post",
           "snippet": ""
         },
         {
-          "title": "Men’s Basketball Season Preview: By the numbers",
-          "source": "The Daily Campus",
+          "title": "Lyon's fading force, Smith at No. 3, and the never-ending Boland debate - Questions for Australia after series defeat",
+          "source": "Cricinfo",
           "snippet": ""
         },
         {
-          "title": "Southern Jaguars vs SMU Mustangs Prediction",
-          "source": "ATS.io",
+          "title": "South Africa vs Australia: Five takeaways for England after epic series",
+          "source": "BBC",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6703d3b638a4f2888b",
+      "title": "test",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 41.0,
+      "published_at": "2026-11-02T08:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Apple’s $1 Trillion Rally Leaves No Room for Error on Earnings",
+          "source": "Bloomberg",
+          "snippet": ""
+        },
+        {
+          "title": "Apple to report Q4 earnings Monday, with iPhone 18 sales in the spotlight",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "PREVIEW Apple's new CEO Ternus to face first earnings test as memory costs surge",
+          "source": "Reuters",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "08dda65b06a45c549f",
+      "title": "اسماعيل الصيباري",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 40.7,
+      "published_at": "2026-11-02T09:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بايرن ميونيخ يكشف طبيعة إصابة إسماعيل صيباري",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        },
+        {
+          "title": "بعد صدمة صيباري.. بايرن ميونخ يحسم موقفه من الميركاتو الشتوي",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "الإصابات تضرب البايرن بعد «كلاسيكو» ألمانيا",
+          "source": "بوابة الأهرام",
           "snippet": ""
         }
       ],
@@ -530,7 +675,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 42.1,
+      "score": 40.3,
       "published_at": "2026-11-02T09:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -541,42 +686,13 @@
           "snippet": ""
         },
         {
-          "title": "Learjet plane crash in Palm Beach County, Florida kills 9",
-          "source": "CNN",
+          "title": "‘Debris hit my house. Everything was on fire': Residents describe Palm Beach jet crash",
+          "source": "NBC 6 South Florida",
           "snippet": ""
         },
         {
-          "title": "At least 9 dead after $2M Learjet crashes into Florida mobile home park: ‘Sounded like a missile’",
-          "source": "New York Post",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "636dace7ac33c21795",
-      "title": "حافز",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.1,
-      "published_at": "2026-11-02T08:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بعد رقع قيمته لـ2100 جنيه.. من يستحق صرف حافز التدريس؟ التفاصيل",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "موعد صرف حافز التدريس 2026.. 2100 جنيه للمعلمين.. الشروط والفئات المستحقة",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "التعليم: استرداد حافز التدريس من الأخصائيين وإحالة مسؤولي الصرف للشؤون القانونية",
-          "source": "https://www.youlyou.com/",
+          "title": "Nine dead in small plane crash near Trump's Florida home - International - World",
+          "source": "Ahram Online",
           "snippet": ""
         }
       ],
@@ -588,16 +704,11 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "1000+",
-      "score": 42.1,
+      "score": 40.3,
       "published_at": "2026-11-02T04:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
-        {
-          "title": "Kimi Antonelli becomes youngest F1 champion with third place in Mexican GP",
-          "source": "The Guardian",
-          "snippet": ""
-        },
         {
           "title": "Formula One: 'Grateful' Antonelli becomes youngest Formula One world champion - Omni sports - Sports",
           "source": "Ahram Online",
@@ -607,34 +718,10 @@
           "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
           "source": "BBC",
           "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a4075faf1b2605284e",
-      "title": "ഒമാന്",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 41.8,
-      "published_at": "2026-11-02T07:20:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "നാട്ടിലേക്ക് മടങ്ങിയ പ്രവാസിയെ തേടി ഒമാൻ പൗരൻ; 13 വർഷം കഴിഞ്ഞിട്ടും മറക്കാതെ കടം വീട്ടി, വൈറലായി സർപ്രൈസ്",
-          "source": "Manorama Online",
-          "snippet": ""
         },
         {
-          "title": "‘രക്ഷപ്പെടാൻ’ വിദേശത്തേക്ക് മുങ്ങി; ഇന്ത്യക്കാരനെ ഒമാൻ പൊലീസ് ‘പൂട്ടി’, ഇന്ത്യയ്ക്ക് കൈമാറി",
-          "source": "Manorama Online",
-          "snippet": ""
-        },
-        {
-          "title": "മഹാദേവ് ബെറ്റിങ് ആപ്പ് കേസ്: പ്രൊമോട്ടർ സൗരഭ് ചന്ദ്രാകറിനെ ഒമാൻ ഇന്ത്യക്ക് കൈമാറി",
-          "source": "Media One",
+          "title": "Kimi Antonelli becomes youngest F1 champion with third place in Mexican GP",
+          "source": "The Guardian",
           "snippet": ""
         }
       ],
@@ -646,7 +733,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.1,
+      "score": 39.3,
       "published_at": "2026-11-02T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -662,37 +749,8 @@
           "snippet": ""
         },
         {
-          "title": "UCLA earns AP top 5 ranking for first time since 2001; USC rejoins poll",
-          "source": "Los Angeles Times",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0509ccc0bcbbc99a2f",
-      "title": "سرطان",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 40.1,
-      "published_at": "2026-11-02T07:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "إسعاد يونس تستضيف مجموعة من أبناء كفر الشيخ في صاحبة السعادة الليلة",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "شريف مدكور: الرقص رياضة زي كرة القدم والسلة بيفرّغ الطاقة السلبية",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "شريف مدكور: «بقول الحمد لله إن جالي كانسر» (فيديو)",
-          "source": "المصري اليوم",
+          "title": "AP Top 25: Ohio State drops nine spots after loss to USC",
+          "source": "Yahoo Sports",
           "snippet": ""
         }
       ],
@@ -704,7 +762,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 39.5,
+      "score": 37.7,
       "published_at": "2026-11-02T09:40:00Z",
       "source": "Google Trends",
       "source_count": 1,
@@ -718,70 +776,12 @@
       "alert": false
     },
     {
-      "id": "b5db0a0c86a08c56c6",
-      "title": "الشروق",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 38.1,
-      "published_at": "2026-11-02T04:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ترحيل ليبي وتغريمه 2000 جنيه لعدم حمله تصريح إقامة في الشروق",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "ترحيل شاب يحمل جنسية دولة عربية وتغريمه 2000 جنيه لمخالفته شروط الإقامة في الشروق",
-          "source": "البوابة نيوز",
-          "snippet": ""
-        },
-        {
-          "title": "ترحيل ليبي وتغريمه 2000 جنيه لعدم حمل تصريح إقامة ساريا",
-          "source": "Masrawy",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "4198690200ff4b245d",
-      "title": "local news",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 37.8,
-      "published_at": "2026-11-02T10:20:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "Calhoun tennis star gives back to hometown and surprises the high school girls’ team",
-          "source": "Local 3 News",
-          "snippet": ""
-        },
-        {
-          "title": "Calhoun tennis star gives back to hometown",
-          "source": "Local 3 News",
-          "snippet": ""
-        },
-        {
-          "title": "Professional tennis star from Calhoun, GA gives back to hometown during 'One Point Slam' tournament",
-          "source": "Local 3 News",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "f2ebacb2d447ac57ba",
       "title": "قانون الأسرة",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 36.1,
+      "score": 34.3,
       "published_at": "2026-11-02T06:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -810,53 +810,53 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 36.1,
+      "score": 34.3,
       "published_at": "2026-11-02T05:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Дожди придут в Петербург во второй половине дня",
+          "title": "Облачно, но тепло: синоптик рассказал о погоде в Петербурге 1 ноября",
           "source": "Росбалт",
+          "snippet": ""
+        },
+        {
+          "title": "2 ноября в Санкт‑Петербурге: погодные рекорды, что ждать сегодня",
+          "source": "Погода Mail",
           "snippet": ""
         },
         {
           "title": "Тепло ещё с нами, но ненадолго",
           "source": "ФОНТАНКА.ру",
           "snippet": ""
-        },
-        {
-          "title": "В Петербурге ночные температуры устремились к нулю",
-          "source": "Погода Mail",
-          "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "6909ac42bf1cfc5182",
-      "title": "لحم",
+      "id": "b5db0a0c86a08c56c6",
+      "title": "الشروق",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 35.5,
-      "published_at": "2026-11-02T04:40:00Z",
+      "approx_traffic": "500+",
+      "score": 33.3,
+      "published_at": "2026-11-02T04:00:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 2,
       "news_items": [
         {
-          "title": "أسعار اللحوم اليوم الإثنين 2 نوفمبر 2026 في أسواق الأقصر",
-          "source": "المصري اليوم",
+          "title": "حبس متهم بسرقة التيار الكهربائي في الشروق 6 أشهر",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "نقيب الفلاحين: ارتفاع أسعار اللحم القائم 10 جنيهات.. وكيلو الجاموسي يصل إلى 170",
-          "source": "جريدة المال",
+          "title": "الحبس 6 أشهر وغرامة 10 آلاف جنيه لمتهم بسرقة الكهرباء في الشروق",
+          "source": "صدى البلد",
           "snippet": ""
         },
         {
-          "title": "ارتفاع أسعار الدواجن واللحوم في مصر اليوم الأربعاء",
-          "source": "معلومات مباشر",
+          "title": "غرامة 10 آلاف جنيه وقيمة مماثلة لمتهم بسرقة التيار الكهربائي في مدينة بدر",
+          "source": "اليوم السابع",
           "snippet": ""
         }
       ],
