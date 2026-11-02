@@ -1,151 +1,296 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-01T23:06:33.237008Z",
+  "updated_at": "2026-11-02T00:02:51.445605Z",
   "items": [
     {
-      "id": "d3804f84200ecc7a10",
-      "title": "justin tucker",
+      "id": "2bf3839b9a46e9007c",
+      "title": "inter miami vs new england",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "10000+",
-      "score": 64.4,
-      "published_at": "2026-11-01T22:50:00Z",
+      "score": 63.2,
+      "published_at": "2026-11-01T23:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Toub: Butker still Chiefs' kicker despite struggles, Tucker signing",
-          "source": "ESPN",
+          "title": "New England Revolution host Inter Miami in heavyweight clash",
+          "source": "MLSsoccer.com",
           "snippet": ""
         },
         {
-          "title": "Patrick Mahomes Comments on Chiefs’ Decision to Sign Banished Kicker Justin Tucker",
-          "source": "People.com",
+          "title": "Preview | Revs close regular season home slate against Inter Miami CF on Sunday night",
+          "source": "revolutionsoccer.net",
           "snippet": ""
         },
         {
-          "title": "Chiefs coach defends signing kicker who was suspended after sexual misconduct allegations",
-          "source": "NBC News",
+          "title": "MATCH PREVIEW: Inter Miami CF Visits the New England Revolution on Sunday",
+          "source": "Inter Miami CF",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "77121b7f15745068f2",
-      "title": "santos laguna vs necaxa",
+      "id": "125dd32270236ef79c",
+      "title": "russell wilson",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "5000+",
+      "score": 60.6,
+      "published_at": "2026-11-01T23:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Russell Wilson Video Picking Broncos-Chiefs Goes Viral After Sean Payton Saga",
+          "source": "Bleacher Report",
+          "snippet": ""
+        },
+        {
+          "title": "“Got Kicked Out of Here”: Russell Wilson Reveals His True Feelings on Broncos After Sean Payton Pushed Him Out",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Russell Wilson had a perfect message for Sean Payton before Broncos game",
+          "source": "Broncos Wire",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "db80814bbd65a40769",
+      "title": "kyle williams",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "2000+",
-      "score": 57.1,
-      "published_at": "2026-11-01T22:40:00Z",
+      "score": 56.6,
+      "published_at": "2026-11-01T23:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Polymarket Promo Code WSN: $25 Bonus for Laguna vs. Necaxa (November 1)",
-          "source": "WSN.com",
+          "title": "Drake Maye shakes off fumbled snap to deliver a 26-yard dot to Douglas",
+          "source": "New England Patriots",
           "snippet": ""
         },
         {
-          "title": "Santos Laguna vs Necaxa: Predictions, Picks, Odds & Lineups",
-          "source": "Squawka",
+          "title": "Mike Vrabel Has First-Hand Experience with Nightmares in Miami and How to Avoid Them",
+          "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "SANTOS LAGUNA COMPLETES ITS PREPARATION TO HOST NECAXA AT THE CORONA STADIUM",
-          "source": "Santos Laguna",
+          "title": "Boston 25 News. . Patriots head coach Mike Vrabel speaking ahead of game vs. Dolphins.",
+          "source": "Facebook",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "e415caee36db46eaae",
-      "title": "caleb douglas",
+      "id": "72f3cd029ea49f8c12",
+      "title": "stock futures",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 54.5,
+      "score": 53.9,
+      "published_at": "2026-11-01T23:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Stock futures tick higher ahead of busy week of earnings, jobs data and the midterm elections: Live updates",
+          "source": "CNBC",
+          "snippet": ""
+        },
+        {
+          "title": "A big sell-off collides with more Big Tech earnings and a midterm election: What to watch this week",
+          "source": "Yahoo Finance",
+          "snippet": ""
+        },
+        {
+          "title": "Futures Due After Market Sell-Off; Elections On Deck",
+          "source": "Investor's Business Daily",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4e7ae03cb64672f318",
+      "title": "الذهب",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 53.6,
+      "published_at": "2026-11-01T21:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سعر الذهب اليوم في مصر.. بكام عيار 24 فى الصاغة؟",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "أسعار الذهب اليوم الأحد في مصر خلال بداية التعاملات الصباحية",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "تعرف على أسعار الذهب في مصر مع منتصف تعاملات اليوم الأحد",
+          "source": "معلومات مباشر",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "b6d10105eb6902ca72",
+      "title": "aaron donald",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 53.2,
+      "published_at": "2026-11-01T23:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "“Why’d I Come Back?” Michael Strahan Questions Aaron Donald’s Unretirement Amid Rams’ Poor Start",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Aaron Donald will feast against Chargers’ battered offensive line",
+          "source": "New York Post",
+          "snippet": ""
+        },
+        {
+          "title": "Aaron Donald doesn't care about stats: 'Only thing that excites me is winning'",
+          "source": "Rams Wire",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4b78821f85bb883f7f",
+      "title": "سعيد الماروق",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 52.6,
       "published_at": "2026-11-01T22:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Miami Dolphins WR Caleb Douglas rounding into form ahead of Pats matchup",
+          "title": "ظهور جواز عربي في مسلسل يشعل غضباً.. وسعيد الماروق يعتذر",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "جواز سفر عماني يثير الجدل في مسلسل خليجي على \"نتفليكس\".. والمخرج يعتذر",
+          "source": "جريدة الشرق",
+          "snippet": ""
+        },
+        {
+          "title": "سعيد الماروق يعتذر ونتفليكس تعدل مشهد ''النفس المطمئنة''",
+          "source": "مجلة لها",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4d24fa9a486077c542",
+      "title": "new england vs inter miami",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 51.2,
+      "published_at": "2026-11-01T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "MATCH PREVIEW: Inter Miami CF Visits the New England Revolution on Sunday",
+          "source": "Inter Miami CF",
+          "snippet": ""
+        },
+        {
+          "title": "New England Revolution evolve into MLS Cup contender: \"Never satisfied\"",
+          "source": "MLSsoccer.com",
+          "snippet": ""
+        },
+        {
+          "title": "Is Lionel Messi playing today? Projected lineups for New England vs Inter Miami in 2026 MLS season",
+          "source": "World Soccer Talk",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "d7941cc253939958b2",
+      "title": "is saquon barkley playing today",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.2,
+      "published_at": "2026-11-01T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Eagles' Saquon Barkley carries no injury designation for Commanders matchup",
           "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Caleb Douglas - Fantasy Football Waiver Wire Pickups for Week 8 (2026) - NFL News",
-          "source": "RotoBaller",
+          "title": "Eagles Won’t Unleash Struggling Saquon Barkley vs Commanders",
+          "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "Caleb Douglas: Two Game Breakout and Big Play Upside",
-          "source": "Central Oregon Daily",
+          "title": "Eagles injury update: Saquon Barkley set to play against Commanders",
+          "source": "NBC Sports Philadelphia",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "1e571574563a4a4001",
-      "title": "blake corum",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-01T22:40:00Z",
+      "id": "718bd70decceb2b17b",
+      "title": "نيو إنجلاند ضد إنتر ميامي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 50.9,
+      "published_at": "2026-11-01T23:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Kyren Williams, Blake Corum balance the Rams' offense. Can Sean McVay unlock their potential?",
-          "source": "Los Angeles Times",
+          "title": "قاعدة غريبة تمنع إيقاف ميسي رغم تلقيه 5 إنذارات",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "The Rams have found their X-factor for survival. His name is Blake Corum",
-          "source": "NFL.com",
+          "title": "كيفية مشاهدة البث المباشر لمباراة إنتر ميامي ونيو إنغلاند ريفولوشن في الدوري الأمريكي 2026",
+          "source": "اخبارك نت",
           "snippet": ""
         },
         {
-          "title": "Week 8 Fantasy Football Mailbag: Can Managers Comfortably Start Both Kyren Williams and Blake Corum?",
-          "source": "Sports Illustrated",
+          "title": "مباشر.. مباراة إنتر ميامي ونيو إنجلاند ريفولوشن في الدوري الأمريكي",
+          "source": "إرم نيوز",
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "2e5defdc2b0a581356",
-      "title": "courtland sutton",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.1,
-      "published_at": "2026-11-01T22:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Courtland Sutton has a message for anyone who thinks the Broncos are a fluke – Denver Sports",
-          "source": "Denver Sports 104.3 The Fan",
-          "snippet": ""
-        },
-        {
-          "title": "Mark Kiszla: Broncos must top K.C. to lose rap of being lucky wannabes",
-          "source": "Denver Gazette",
-          "snippet": ""
-        },
-        {
-          "title": "WR Courtland Sutton on facing the Chiefs in Week 8: 'We know that we've got to show up'",
-          "source": "Denver Broncos",
-          "snippet": ""
-        }
-      ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "56ddb78497c1af8cca",
@@ -153,7 +298,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 52.8,
+      "score": 50.9,
       "published_at": "2026-11-01T20:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -177,169 +322,203 @@
       "alert": false
     },
     {
-      "id": "8d5a8fbb0176353d1a",
-      "title": "what did justin tucker do",
+      "id": "4bb65917f986de8eb2",
+      "title": "trent mcduffie",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T22:50:00Z",
+      "score": 50.6,
+      "published_at": "2026-11-01T23:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Stop asking NFL men about forgiveness of alleged criminal acts. They have nothing to say - The Athletic",
-          "source": "The New York Times",
+          "title": "Chargers-Rams Week 8 Inactives: Donte Jackson Won't Play Against Rams",
+          "source": "Los Angeles Chargers",
           "snippet": ""
         },
         {
-          "title": "Toub: Butker still Chiefs' kicker despite struggles, Tucker signing",
-          "source": "ESPN",
+          "title": "Rams' Jaylen Watson: Done for night",
+          "source": "CBS Sports",
           "snippet": ""
         },
         {
-          "title": "Patrick Mahomes Comments on Chiefs’ Decision to Sign Banished Kicker Justin Tucker",
-          "source": "People.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "dc8ade180ffacaf66b",
-      "title": "joe rogan",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T22:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Joe Rogan Torches ‘F**kin’ Stupid’ People Who Participate In Political Polls",
-          "source": "HuffPost",
-          "snippet": ""
-        },
-        {
-          "title": "Joe Rogan Vents Polls Are Based on Bored 'Stupid' People",
-          "source": "Mediaite",
-          "snippet": ""
-        },
-        {
-          "title": "Joe Rogan points out major problem with Trump polling",
-          "source": "News24",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "4fa90e04e68bcbd1d4",
-      "title": "nascar points",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T22:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Chris Buescher makes 400th Cup Series start at Martinsville",
-          "source": "NASCAR.com",
-          "snippet": ""
-        },
-        {
-          "title": "Chris Buescher to make 400th career start at Martinsville Speedway",
-          "source": "Jayski",
-          "snippet": ""
-        },
-        {
-          "title": "Chris Buescher and Ryan Preece Martinsville 2 Media Availability",
-          "source": "SpeedwayMedia.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "1832e88381a981c6ad",
-      "title": "isiah pacheco",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
-      "published_at": "2026-11-01T22:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "NOTEBOOK: Joseph feeling nostalgic in return to practice",
-          "source": "Detroit Lions",
-          "snippet": ""
-        },
-        {
-          "title": "Lions injury report: Kerby Joseph OUT, starting CB questionable vs. Vikings",
-          "source": "Pride Of Detroit",
-          "snippet": ""
-        },
-        {
-          "title": "Kerby Joseph injury update: Lions S has no timetable on playing in game",
-          "source": "Detroit Free Press",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "a1cd0abdca6374eb28",
-      "title": "lee majors",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 48.4,
-      "published_at": "2026-11-01T22:50:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "8 Old-School Action Thriller Shows That Are Now Unwatchable (#3 Was Groundbreaking for Its Time)",
-          "source": "MovieWeb",
-          "snippet": ""
-        },
-        {
-          "title": "Lee Majors Played An Assassin In This Canceled 2010s Show Based On A DC Comic",
-          "source": "SlashFilm",
+          "title": "Rams CB Trent McDuffie exits vs. Chargers due to back injury",
+          "source": "Yahoo Sports",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "7bf7d174897b2cbb61",
-      "title": "athletic vs real sociedad",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 47.8,
-      "published_at": "2026-11-01T19:30:00Z",
+      "id": "7690fed3d9777c4aed",
+      "title": "ram",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.6,
+      "published_at": "2026-11-01T23:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "2-1. El Athletic toma impulso y frena a la Real en un derbi eléctrico",
-          "source": "HolaNews",
+          "title": "‘Quite terrible’: Sam Altman says the RAM in your PC is a waste. OpenAI could soak up as much as 40% of supply",
+          "source": "Yahoo Finance",
           "snippet": ""
         },
         {
-          "title": "!Aquí tienes cómo ver la transmisión en vivo de GP de México de F1 por canal de televisión, 1 de noviembre de 2026",
-          "source": "Pierce Manufacturing",
+          "title": "OpenAI CEO says it's 'quite terrible' for your PC to have RAM — Sam Altman says data centers offer better utilization",
+          "source": "Tom's Hardware",
           "snippet": ""
         },
         {
-          "title": "Alineación del partido A.Bilbao vs Sociedad | LaLiga · 1 nov. 2026",
-          "source": "YSscores",
+          "title": "Sam Altman Suggests Running AI Locally Is a Waste of Memory",
+          "source": "PCMag",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e434aa55593f479749",
+      "title": "nasdaq futures",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 50.2,
+      "published_at": "2026-11-01T23:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Stock market rocked as investors dump tech shares; Nasdaq suffers worst day since June: Live updates",
+          "source": "CNBC",
+          "snippet": ""
+        },
+        {
+          "title": "Asian Stocks to Fall as Tech Rout Fuels AI Fears: Markets Wrap",
+          "source": "Bloomberg.com",
+          "snippet": ""
+        },
+        {
+          "title": "Tech stocks wipe out $1 trillion in value as concerns deepen about the AI boom",
+          "source": "NBC News",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "18b3fbb95f064ab63b",
+      "title": "f1",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 47.9,
+      "published_at": "2026-11-01T20:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Kimi Antonelli becomes youngest Formula 1 champion in history",
+          "source": "Gulf Coast News and Weather",
+          "snippet": ""
+        },
+        {
+          "title": "Turning back the clock: F1’s youngest world champions",
+          "source": "RACER - Racing News",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "16557815d2fd194af1",
+      "title": "new england vs inter miami",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-01T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "MATCH PREVIEW: Inter Miami CF Visits the New England Revolution on Sunday",
+          "source": "Inter Miami CF",
+          "snippet": ""
+        },
+        {
+          "title": "New England Revolution evolve into MLS Cup contender: \"Never satisfied\"",
+          "source": "MLSsoccer.com",
+          "snippet": ""
+        },
+        {
+          "title": "Is Lionel Messi playing today? Projected lineups for New England vs Inter Miami in 2026 MLS season",
+          "source": "World Soccer Talk",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "dac1c28a83bf8306d0",
+      "title": "نيو إنجلاند ضد إنتر ميامي",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-01T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "قاعدة غريبة تمنع إيقاف ميسي رغم تلقيه 5 إنذارات",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "مباشر.. مباراة إنتر ميامي ونيو إنجلاند ريفولوشن في الدوري الأمريكي",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "كلٌّ يستفيد بطريقته: وسط جدل \"الرأفة مع كريستيانو رونالدو\".. ليونيل ميسي يعيش في جنة القوانين الأمريكية و\"السلوك الجيد ينقذه\"!",
+          "source": "Goal.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "96d5aaef2a34ee4d48",
+      "title": "myles garrett injury",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.6,
+      "published_at": "2026-11-01T23:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "LA Rams Get New Myles Garrett Update Before Chargers Game",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Myles Garrett Injury Status, Return Timeline Updated By Rams' Sean McVay Amid Knee Issue",
+          "source": "Bleacher Report",
+          "snippet": ""
+        },
+        {
+          "title": "Rams' DE Garrett, TE Ferguson won't practice this week",
+          "source": "ESPN",
           "snippet": ""
         }
       ],
@@ -351,7 +530,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 47.1,
+      "score": 45.2,
       "published_at": "2026-11-01T20:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -375,99 +554,12 @@
       "alert": false
     },
     {
-      "id": "18b3fbb95f064ab63b",
-      "title": "f1",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 46.8,
-      "published_at": "2026-11-01T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "LIVE: Reaction as Kimi Antonelli makes F1 history in Mexico as Ferrari civil war brews",
-          "source": "RacingNews365",
-          "snippet": ""
-        },
-        {
-          "title": "Kimi Antonelli becomes youngest Formula 1 champion ever at 20 years old",
-          "source": "NBC News",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1f834c99842daaae23",
-      "title": "f1",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 46.8,
-      "published_at": "2026-11-01T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Kimi Antonelli makes F1 history as youngest-ever world champion with maiden title",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "2026 F1 championship standings after the Mexico City Grand Prix",
-          "source": "RacingNews365",
-          "snippet": ""
-        },
-        {
-          "title": "Paddock prankster with an AI agent’s brain: inside Kimi Antonelli’s triumph",
-          "source": "The Times",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "484915ea27a7b3c33c",
-      "title": "أتلتيك بيلباو ضد ريال سوسيداد",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 44.8,
-      "published_at": "2026-11-01T19:30:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "بعد 50 عاما... علم الباسك يعود إلى واجهة قمة أتليتيك بلباو وريال سوسيداد",
-          "source": "الشرق الأوسط",
-          "snippet": ""
-        },
-        {
-          "title": "«لا ليغا»: بلباو يكسر سلسلة سوسيداد ويهزمه في «ديربي الباسك»",
-          "source": "الشرق الأوسط",
-          "snippet": ""
-        },
-        {
-          "title": "بلباو وسوسييداد.. ديربي ساخن يعتمد على \"الاحترام\" وإلقاء الشعر",
-          "source": "العربية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "31ad99f3098f4f7126",
       "title": "الإدارة العامة للتعليم بالطائف",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.8,
+      "approx_traffic": "200+",
+      "score": 44.9,
       "published_at": "2026-11-01T22:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -491,29 +583,116 @@
       "alert": false
     },
     {
+      "id": "1f834c99842daaae23",
+      "title": "f1",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 44.9,
+      "published_at": "2026-11-01T20:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "World Champion Kimi Antonelli: record-breaker, heart-breaker, the Tifosi’s dream",
+          "source": "SPEEDWEEK.com",
+          "snippet": ""
+        },
+        {
+          "title": "Max Verstappen wins Mexican GP after starting fifth; Kimi Antonelli crowned champion",
+          "source": "NL Times",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4d0ce9d5fc11c03653",
+      "title": "صبا مبارك",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 43.6,
+      "published_at": "2026-11-01T21:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "مسلسل «جريمة في الزمالك».. استدعاء صبا مبارك للتحقيق معها",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "صبا مبارك تتصدر ترند إكس في مصر بعد عرض جريمة في الزمالك",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "مجدي الهواري يحتفل بتفاعل الجمهور مع حكاية «جريمة في الزمالك»",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7a52d6d7cb0df89760",
+      "title": "learjet 60",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 42.3,
+      "published_at": "2026-11-01T22:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "At least 9 dead after $2M Learjet crashes into Florida mobile home park: ‘Sounded like a missile’",
+          "source": "New York Post",
+          "snippet": ""
+        },
+        {
+          "title": "Military Trail closed after deadly Learjet crash; shelters open for hundreds displaced",
+          "source": "WPTV",
+          "snippet": ""
+        },
+        {
+          "title": "Business jet carrying 9 people crashed in a Florida neighborhood, erupting in a massive fireball",
+          "source": "Yahoo",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "6e4ae6f057f3124b80",
       "title": "atlanta united vs toronto",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 43.5,
+      "score": 41.6,
       "published_at": "2026-11-01T22:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Atlanta United vs Toronto FC LIVE, Score Updates and Stream in MLS Match (3-0)",
-          "source": "VAVEL.com",
+          "title": "Atlanta United FC vs Toronto FC - Prediction, where to watch, kick-off time and line-ups 01-11-2026",
+          "source": "OneFootball",
           "snippet": ""
         },
         {
-          "title": "*[LIvE-FREE] TFC vs Atlanta United Match watch Live free",
-          "source": "Villa de la Orotava",
+          "title": "MLS Toronto FC Atlanta United Soccer",
+          "source": "chronicleonline.com",
           "snippet": ""
         },
         {
-          "title": "Atlanta - Toronto LIVE. Major League Soccer latest updates",
-          "source": "MARCA",
+          "title": "Atlanta United FC vs Toronto FC Live: Toronto FC narrows the gap to 3-1",
+          "source": "Báo Nghệ An",
           "snippet": ""
         }
       ],
@@ -525,7 +704,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 43.1,
+      "score": 41.3,
       "published_at": "2026-11-01T20:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -554,7 +733,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 42.8,
+      "score": 40.9,
       "published_at": "2026-11-01T22:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -578,99 +757,12 @@
       "alert": false
     },
     {
-      "id": "f35f69e28e8e62959e",
-      "title": "athletic vs real sociedad",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.8,
-      "published_at": "2026-11-01T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "La Real pierde la brújula",
-          "source": "Diario AS",
-          "snippet": ""
-        },
-        {
-          "title": "Traspié de la Real en San Mamés: las notas de Mikel Recalde",
-          "source": "Noticias de Gipuzkoa",
-          "snippet": ""
-        },
-        {
-          "title": "El 1x1 de la Real Sociedad ante el Athletic",
-          "source": "Mundo Deportivo",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "08634f58374795dbf6",
-      "title": "أولمبيك مارسيليا ضد تولوز",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.8,
-      "published_at": "2026-11-01T20:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "سجل وصنع خلال 25 دقيقة.. أمين غويري يقود مارسيليا للفوز على تولوز (فيديو)",
-          "source": "إرم نيوز",
-          "snippet": ""
-        },
-        {
-          "title": "ببصمة ذهبية وإصابة مقلقة.. أمين حارث يعيش ليلة متقلبة الأحوال في بطولة الليغ1",
-          "source": "جريدة المنتخب",
-          "snippet": ""
-        },
-        {
-          "title": "تحديد سر الغياب «الغامض» لأمين غويري عن مارسيليا",
-          "source": "اخبارك نت",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "4d0ce9d5fc11c03653",
-      "title": "صبا مبارك",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 42.5,
-      "published_at": "2026-11-01T21:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مسلسل «جريمة في الزمالك».. استدعاء صبا مبارك للتحقيق معها",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        },
-        {
-          "title": "صبا مبارك تتصدر ترند إكس في مصر بعد عرض جريمة في الزمالك",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "مجدي الهواري يحتفل بتفاعل الجمهور مع حكاية «جريمة في الزمالك»",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "ea61db208a5ee60bec",
       "title": "قرض",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 42.5,
+      "score": 40.6,
       "published_at": "2026-11-01T21:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -694,157 +786,12 @@
       "alert": false
     },
     {
-      "id": "80476af09515b033ba",
-      "title": "ciara mageean",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 41.8,
-      "published_at": "2026-11-01T20:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Tributes to 'inspirational' Olympian Ciara Mageean after death at 34",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Ciara Mageean, European 1500m gold medallist with Ireland, dies aged 34",
-          "source": "The Guardian",
-          "snippet": ""
-        },
-        {
-          "title": "'Just Heartbreaking': LPGA Pro Pens Emotional Message as Athletic Legend Breathes Her Last After Cancer Battle",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a01603893d2e01c777",
-      "title": "ciara mageean",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 41.8,
-      "published_at": "2026-11-01T20:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Tributes to 'inspirational' Olympian Ciara Mageean after death at 34",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Ciara Mageean, European 1500m gold medallist with Ireland, dies aged 34",
-          "source": "The Guardian",
-          "snippet": ""
-        },
-        {
-          "title": "Athletics Ireland deeply saddened by the passing of Ciara Mageean",
-          "source": "Athletics Ireland",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "32b7233a82a08c249a",
-      "title": "فائدة",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 41.2,
-      "published_at": "2026-11-01T21:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "\"سي آي كابيتال\": رفع الفائدة في مصر إجراء احترازي وليس بداية دورة تشديد نقدي",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "بعد رفع الفائدة... كيف تتغير أولويات الشراء والادخار لدى المصريين؟",
-          "source": "الشرق الأوسط",
-          "snippet": ""
-        },
-        {
-          "title": "ماذا يعني رفع الفائدة في مصر للاقتصاد والعملة والتضخم؟",
-          "source": "الشرق بلومبرغ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6f221343b4248d2ce6",
-      "title": "palmeiras vs vasco",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 41.1,
-      "published_at": "2026-11-01T19:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Pedro Emanuel reclama de critérios de arbitragem, mas coloca o Vasco vivo na Copa do Brasil",
-          "source": "Rádio Itatiaia",
-          "snippet": ""
-        },
-        {
-          "title": "Nubank Parque mobiliza 500 profissionais para receber Palmeiras x Vasco após show",
-          "source": "Gazeta Esportiva",
-          "snippet": ""
-        },
-        {
-          "title": "Abel projeta semifinal com o Vasco: 'Palmeiras é ofensivo e quer sempre ganhar'",
-          "source": "LANCE!",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a433dcf0d5d0de9a3b",
-      "title": "formula 1",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 40.2,
-      "published_at": "2026-11-01T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Who is Kimi Antonelli? What to know about F1's potential new champion",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Latest weather update for the 2026 Formula 1 Mexico City Grand Prix",
-          "source": "RacingNews365",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "dfc66d1578dc1fdf84",
       "title": "كسوف",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 38.8,
+      "approx_traffic": "200+",
+      "score": 39.9,
       "published_at": "2026-11-01T20:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -862,6 +809,64 @@
         {
           "title": "الأطول حتى عام 2114.. العالم يترقب كسوفًا كليًا استثنائيًا للشمس في 2027",
           "source": "بوابة دار الهلال",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7810b06c1798a19d2c",
+      "title": "كولسترول",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 39.3,
+      "published_at": "2026-11-01T21:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "اكتشاف مسار خفي يرفع الكوليسترول الضار.. ودواء تجريبي يثير الأمل",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "اكتشاف مسار بيولوجي جديد قد يمهد لعلاج مبتكر للكوليسترول",
+          "source": "https://capsulah.com/",
+          "snippet": ""
+        },
+        {
+          "title": "المفتاح الخفي للكوليسترول.. آلية سرية داخل الكبد تغيّر الطب",
+          "source": "Menafn",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "32b7233a82a08c249a",
+      "title": "فائدة",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 39.3,
+      "published_at": "2026-11-01T21:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "\"سي آي كابيتال\": رفع الفائدة في مصر إجراء احترازي وليس بداية دورة تشديد نقدي",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "بعد رفع الفائدة... كيف تتغير أولويات الشراء والادخار لدى المصريين؟",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        },
+        {
+          "title": "ماذا يعني رفع الفائدة في مصر للاقتصاد والعملة والتضخم؟",
+          "source": "الشرق بلومبرغ",
           "snippet": ""
         }
       ],
