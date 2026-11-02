@@ -1,43 +1,14 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T05:58:47.297207Z",
+  "updated_at": "2026-11-02T07:18:10.926370Z",
   "items": [
-    {
-      "id": "dfc6389bda8334185d",
-      "title": "stocks",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "20000+",
-      "score": 67.1,
-      "published_at": "2026-11-02T05:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Stock futures jump ahead of a monster week after a $5 trillion AI rout",
-          "source": "Yahoo Finance",
-          "snippet": ""
-        },
-        {
-          "title": "Stock futures tick higher ahead of busy week of earnings, jobs data and the midterm elections: Live updates",
-          "source": "CNBC",
-          "snippet": ""
-        },
-        {
-          "title": "Dow Jones Futures Rise But Market Still Ails; Midterm Elections Ahead",
-          "source": "Investor's Business Daily",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
     {
       "id": "243b90e66302da8d92",
       "title": "منصه",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "10000+",
-      "score": 61.4,
+      "score": 58.7,
       "published_at": "2026-11-02T04:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -48,42 +19,42 @@
           "snippet": ""
         },
         {
-          "title": "«تريدر ترايتور» أداة قرصنة متطورة بيد بيونغ يانغ في حربها السيبرانية",
-          "source": "الشرق الأوسط",
+          "title": "اختراق ضخم لمنصة باينانس يسرق أكثر من 6 مليارات دولار ويهوي بأسعار العملات المشفرة",
+          "source": "Euronews.com",
           "snippet": ""
         },
         {
-          "title": "\"باينانس\" تستأنف عملياتها وتطمئن عملاءها بعد هجوم طال أكثر من 6 مليارات دولار من أصولها",
-          "source": "مونت كارلو الدولية",
+          "title": "«تريدر ترايتور» أداة قرصنة متطورة بيد بيونغ يانغ في حربها السيبرانية",
+          "source": "الشرق الأوسط",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "c3e6fc1a664a739f2f",
-      "title": "ryan murphy",
+      "id": "d5874fa0aec81b01bb",
+      "title": "tracker season 4",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "2000+",
-      "score": 55.1,
-      "published_at": "2026-11-02T04:30:00Z",
+      "score": 55.7,
+      "published_at": "2026-11-02T06:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Heidi Klum Becomes Her Left Hand for Halloween",
-          "source": "The New York Times",
+          "title": "‘Tracker’ Season 4 Cast Shakeup: Who Exited, Who’s Returning & the November 1 Surprise!",
+          "source": "Just Jared",
           "snippet": ""
         },
         {
-          "title": "Heidi Klum's Halloween costume revealed as Traitors' Maya Jama dresses as Mo Farah",
-          "source": "BBC",
+          "title": "Jensen Ackles as Reenie signs lease for Colter’s team in episode 4",
+          "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         },
         {
-          "title": "Heidi Klum's costume revealed – See her bloody 2026 Halloween party look",
-          "source": "Yahoo",
+          "title": "'Tracker' Season 4 Officially Rewrites the Rules of CBS' Action Thriller",
+          "source": "MovieWeb",
           "snippet": ""
         }
       ],
@@ -94,8 +65,8 @@
       "title": "oman vs netherlands",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 54.4,
+      "approx_traffic": "2000+",
+      "score": 54.7,
       "published_at": "2026-11-02T05:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -116,64 +87,6 @@
           "snippet": ""
         }
       ],
-      "alert": true
-    },
-    {
-      "id": "93db2bc1c1ffd6f221",
-      "title": "كهرباء",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 53.1,
-      "published_at": "2026-11-02T03:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بدء إجراءات تخفيض الشريحة المحاسبية للعدادات الكودية بالوادي الجديد",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "بدء سريان تخفيض سعر الكيلووات للعدادات الكودية لمدة 6 أشهر",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "خفض سعر الشريحة المحاسبية للعدادات الكودية بأسيوط.. والمحافظ يدعو المواطنين لتحديث البيانات",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1b89b4cf8dc8883017",
-      "title": "austin reaves",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 52.0,
-      "published_at": "2026-11-02T04:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Austin Reaves finishes victory with 21 points",
-          "source": "NBC Sports",
-          "snippet": ""
-        },
-        {
-          "title": "JJ Redick Addresses Austin Reaves’ Concerning Struggles Days After Lakers Star Called Himself “Terrible”",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Austin Reaves took the blame for the struggles of the second unit vs. Warriors",
-          "source": "Silver Screen and Roll",
-          "snippet": ""
-        }
-      ],
       "alert": false
     },
     {
@@ -181,20 +94,20 @@
       "title": "how to vote in the us midterms",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.4,
+      "approx_traffic": "2000+",
+      "score": 54.7,
       "published_at": "2026-11-02T05:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Unaffiliated voters are the fastest-growing group in Pennsylvania. They can decide who controls Congress.",
-          "source": "Inquirer.com",
+          "title": "US midterms: What to know about independent voters and candidates",
+          "source": "Al Jazeera",
           "snippet": ""
         },
         {
-          "title": "US midterms: What to know about independent voters and candidates",
-          "source": "Al Jazeera",
+          "title": "Unaffiliated voters are the fastest-growing group in Pennsylvania. They can decide who controls Congress.",
+          "source": "Inquirer.com",
           "snippet": ""
         },
         {
@@ -203,148 +116,206 @@
           "snippet": ""
         }
       ],
+      "alert": false
+    },
+    {
+      "id": "a4063950f82e99471b",
+      "title": "gta6",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 52.7,
+      "published_at": "2026-11-02T06:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Grand Theft Auto VI exclusive – The state that never sleeps",
+          "source": "GamesRadar+",
+          "snippet": ""
+        },
+        {
+          "title": "Rockstar art-directed 600,000 animations, so that GTA 6’s passers-by feel like real people",
+          "source": "Creative Bloq",
+          "snippet": ""
+        },
+        {
+          "title": "GTA 6 developer says 'you can have your life in the game' as Rockstar outlines roleplay depth",
+          "source": "TweakTown",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "29ca0b67ea98ab9c69",
+      "title": "northern illinois basketball",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 52.1,
+      "published_at": "2026-11-02T05:50:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Northern Illinois vs. Grambling (Nov 2, 2026) Live Score",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "Bruno Fernandes returns to Man United XI for Chelsea clash",
+          "source": "ESPN Philippines",
+          "snippet": ""
+        },
+        {
+          "title": "Gabby Williams drops a stellar 15 points in third quarter for Valkyries",
+          "source": "ESPN",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ca8ce13d50e88fb04d",
+      "title": "سعر الدولار اليوم مقابل الجنيه المصري",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 51.7,
+      "published_at": "2026-11-02T07:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "اعرف سعر الدولار بكام أمام الجنيه قبل بدء التداول عليه اليوم الإثنين",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "انخفاض سعر الدولار مقابل الجنيه في بنكين مع بداية تعاملات الأحد",
+          "source": "Masrawy",
+          "snippet": ""
+        },
+        {
+          "title": "بعد مكاسب قياسية فوق 56 جنيهاً.. الدولار يتراجع مجدداً أمام الجنيه المصري",
+          "source": "العربية",
+          "snippet": ""
+        }
+      ],
       "alert": true
     },
     {
-      "id": "5c9547008c20f13628",
-      "title": "المخرج سعيد الماروق",
+      "id": "1ebf0962358c1529cd",
+      "title": "playstation",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.4,
+      "published_at": "2026-11-02T07:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "What GTA VI’s $20 Ultimate Edition Upgrade Actually Buys You",
+          "source": "Forbes",
+          "snippet": ""
+        },
+        {
+          "title": "Grand Theft Auto 6 – The Cheapest Australian Day One Bargains",
+          "source": "Press Start Australia",
+          "snippet": ""
+        },
+        {
+          "title": "Get a $100 Xbox Gift Card for $90 and put the savings toward Grand Theft Auto 6",
+          "source": "Windows Central",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "93db2bc1c1ffd6f221",
+      "title": "كهرباء",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 50.0,
+      "approx_traffic": "2000+",
+      "score": 50.4,
       "published_at": "2026-11-02T03:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "ظهور جواز عربي في مسلسل يشعل غضباً.. وسعيد الماروق يعتذر",
-          "source": "العربية",
+          "title": "وزير الطاقة الألمانى: مصر دولة محورية لنقل الغاز الطبيعي والبترول",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "ظهور جواز عربي في مسلسل يدفع مخرجه إلى الاعتذار بعد موجة انتقادات",
-          "source": "عكاظ",
+          "title": "مصر وألمانيا تبحثان تمويل مشروعات كهرباء بقيمة 67.5 مليون يورو",
+          "source": "معلومات مباشر",
           "snippet": ""
         },
         {
-          "title": "جواز سفر عماني يثير الجدل في مسلسل خليجي على \"نتفليكس\".. والمخرج يعتذر",
-          "source": "جريدة الشرق",
+          "title": "وزير الاقتصاد والطاقة الألماني: حجم التبادل التجاري بين مصر وألمانيا تجاوز 6 مليارات يورو",
+          "source": "بوابة الشروق",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "1e013ded88d542c88d",
-      "title": "grand ole opry longest serving member",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 49.4,
-      "published_at": "2026-11-02T04:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "One of the Greatest Men in Country Music, the Grand Ole Opry’s Longest-Serving Member; “Whisperin’ Bill Turns 89",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Born 89 Years Ago Today in South Carolina, the Grand Ole Opry’s Longest-Serving Member Who Wrote Hits for Ray Price, Porter Wagoner, and Kenny Chesney",
-          "source": "American Songwriter",
-          "snippet": ""
-        },
-        {
-          "title": "This day in history: Happy birthday, Bill Anderson!",
-          "source": "AOL.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7827815c6e5de132d8",
-      "title": "وزارة التعليم",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 49.0,
-      "published_at": "2026-11-02T04:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ملتقى التعليم والاستثمار الدولي يُقام في الظهران فبراير 2027",
-          "source": "elmawkefalarabi.com",
-          "snippet": ""
-        },
-        {
-          "title": "برعاية سمو الأمير سعود بن نايف وبشراكة استراتيجية مع وزارة التعليم.. ملتقى التعليم والاستثمار الدولي 2027 نحو مستقبل واعد للتعليم واقتصاد المعرفة",
-          "source": "https://jeeltoday.com/",
-          "snippet": ""
-        },
-        {
-          "title": "في الفترة من 3 إلى 11 مارس، ستستخدم المدارس المهنية خطابات القبول الإلكترونية وستؤكد التسجيل عبر VNeID.",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "e0e5ef7448a0d5d45a",
-      "title": "giants schedule",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 49.0,
-      "published_at": "2026-11-02T04:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "‘Kudos and Wet Willies’, plus bye week thoughts on every Giants specialist",
-          "source": "Big Blue View",
-          "snippet": ""
-        },
-        {
-          "title": "State of the Giants entering bye week: How this team became a true contender",
-          "source": "New York Post",
-          "snippet": ""
-        },
-        {
-          "title": "Giants Bye Week Watchlist: 8 Players Who Will Decide the Second Half",
-          "source": "Sports Illustrated",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "718bd70decceb2b17b",
-      "title": "نيو إنجلاند ضد إنتر ميامي",
+      "id": "85c2e3be95f2e1a233",
+      "title": "kimi antonelli",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 49.0,
-      "published_at": "2026-11-01T23:30:00Z",
+      "approx_traffic": "1000+",
+      "score": 49.4,
+      "published_at": "2026-11-02T04:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "قاعدة غريبة تمنع إيقاف ميسي رغم تلقيه 5 إنذارات",
-          "source": "Kooora",
+          "title": "Kimi Antonelli becomes F1 world champion as Max Verstappen wins Mexico City Grand Prix",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "كيفية مشاهدة البث المباشر لمباراة إنتر ميامي ونيو إنغلاند ريفولوشن في الدوري الأمريكي 2026",
-          "source": "اخبارك نت",
+          "title": "Look back at how Kimi Antonelli sealed the 2026 F1 drivers' title as Max Verstappen won a wild Mexico City Grand Prix",
+          "source": "Sky Sports",
           "snippet": ""
         },
         {
-          "title": "ميسي يقود إنتر ميامي لفوز مثير على نيو إنجلاند ريفولوشن في الدوري الأمريكي",
-          "source": "إرم نيوز",
+          "title": "Kimi Antonelli becomes youngest F1 champion with third place in Mexican GP",
+          "source": "The Guardian",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7c55906173cedd0646",
+      "title": "kimi antonelli",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 49.4,
+      "published_at": "2026-11-02T04:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Kimi Antonelli becomes F1 world champion as Max Verstappen wins Mexico City Grand Prix",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "‘Kid’ Antonelli gets affectionate tributes from all quarters",
+          "source": "Arab News",
+          "snippet": ""
+        },
+        {
+          "title": "Look back at how Kimi Antonelli sealed the 2026 F1 drivers' title as Max Verstappen won a wild Mexico City Grand Prix",
+          "source": "Sky Sports",
           "snippet": ""
         }
       ],
@@ -355,8 +326,8 @@
       "title": "ظاهرة جوية",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 48.4,
+      "approx_traffic": "1000+",
+      "score": 48.7,
       "published_at": "2026-11-02T04:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -380,41 +351,12 @@
       "alert": false
     },
     {
-      "id": "b5db0a0c86a08c56c6",
-      "title": "الشروق",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 48.0,
-      "published_at": "2026-11-02T04:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ملف يلا كورة.. استبعاد إمام عاشور.. عقوبة شيكو بانزا.. وحقيقة أزمة صلاح",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "«تربية».. رد فعل قوي من جماهيرالأهلي بعد بيان النادي بشأن إمام عاشور",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "الأهلي يحسم الجدل بشأن إمام عاشور: اللاعب ملتزم في التدريبات وغيابه لأسباب فنية",
-          "source": "اليوم السابع",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "f7634839873fae871c",
       "title": "نادي شباب الأهلي",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 48.0,
+      "approx_traffic": "1000+",
+      "score": 48.4,
       "published_at": "2026-11-02T04:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -438,87 +380,290 @@
       "alert": false
     },
     {
-      "id": "5933bb7ec5619dc2f3",
-      "title": "prop 43",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.4,
-      "published_at": "2026-11-02T05:10:00Z",
+      "id": "5c9547008c20f13628",
+      "title": "المخرج سعيد الماروق",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 47.4,
+      "published_at": "2026-11-02T03:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Why you're seeing so many local tax measures on the ballot this year",
-          "source": "LAist",
+          "title": "ظهور جواز عربي في مسلسل يشعل غضباً.. وسعيد الماروق يعتذر",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "How state propositions on the ballot could affect Santa Cruz County",
-          "source": "Santa Cruz Local",
+          "title": "ظهور جواز عربي في مسلسل يدفع مخرجه إلى الاعتذار بعد موجة انتقادات",
+          "source": "عكاظ",
           "snippet": ""
         },
         {
-          "title": "Sup­porters, opponents of Propo­sition 43 make final push going into midterm election",
-          "source": "Spectrum News",
+          "title": "جواز سفر عماني يثير الجدل في مسلسل خليجي على \"نتفليكس\".. والمخرج يعتذر",
+          "source": "جريدة الشرق",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "cc8e86f7fdc8de6d5b",
-      "title": "grambling state basketball",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 46.4,
-      "published_at": "2026-11-02T05:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Huskies Open Season Early Monday Morning Against Grambling",
-          "source": "NIU Athletics",
-          "snippet": ""
-        },
-        {
-          "title": "Grambling vs Northern Illinois Prediction, Pick, College Basketball Odds for Monday, Nov. 2",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "How coaches are prepping for early morning tip-off times on opening day",
-          "source": "Mid-Major Madness",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7ba24635c50f5423a3",
-      "title": "عام دراسي",
+      "id": "4e77d14a4300cd17ef",
+      "title": "الاثنين",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 46.4,
-      "published_at": "2026-11-02T03:10:00Z",
+      "score": 47.1,
+      "published_at": "2026-11-02T04:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "موعد إجازة نصف العام الدراسى للطلاب.. اعرف التفاصيل",
+          "title": "موعد أذان وصلاة العشاء اليوم الأحد الموافق 1 نوفمبر",
+          "source": "Masrawy",
+          "snippet": ""
+        },
+        {
+          "title": "مواقيت الصلاة اليوم الاثنين 2 نوفمبر 2026 بمحافظات الجمهورية",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "هل تقرر تعديل موعد إجازة نصف العام 2027 لطلاب المدارس؟.. التعليم تحسم الجدل",
+          "title": "موعد صلاة الظهر اليوم الأحد 1 نوفمبر 2026 في القاهرة وأسوان والمحافظات",
           "source": "صدى البلد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "27a030eeff5d626dcd",
+      "title": "claire liu",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.4,
+      "published_at": "2026-11-02T06:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "WTA Hong Kong Day 1 Predictions Including Venus Williams vs Mary Stoiana",
+          "source": "Last Word On Sports",
           "snippet": ""
         },
         {
-          "title": "امتحانات صفوف النقل تنطلق 9 يناير والشهادة الإعدادية 16 يناير.. والخريطة الزمنية تحدد مواعيد الترم الثاني ونهاية العام الدراسي",
+          "title": "Williams vs. Stoiana Prediction at the Merida Open Akron – Sunday, November 1",
+          "source": "Bleacher Nation",
+          "snippet": ""
+        },
+        {
+          "title": "‘Always learning’ – 46-year-old Venus Williams on HK Open",
+          "source": "Toowoomba Chronicle",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7827815c6e5de132d8",
+      "title": "وزارة التعليم",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 46.4,
+      "published_at": "2026-11-02T04:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ملتقى التعليم والاستثمار الدولي يُقام في الظهران فبراير 2027",
+          "source": "elmawkefalarabi.com",
+          "snippet": ""
+        },
+        {
+          "title": "برعاية سمو الأمير سعود بن نايف وبشراكة استراتيجية مع وزارة التعليم.. ملتقى التعليم والاستثمار الدولي 2027 نحو مستقبل واعد للتعليم واقتصاد المعرفة",
+          "source": "https://jeeltoday.com/",
+          "snippet": ""
+        },
+        {
+          "title": "في الفترة من 3 إلى 11 مارس، ستستخدم المدارس المهنية خطابات القبول الإلكترونية وستؤكد التسجيل عبر VNeID.",
+          "source": "Vietnam.vn",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "32822b6c9791b1b748",
+      "title": "fundraiser",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.1,
+      "published_at": "2026-11-02T06:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Red Baron employee targeted in viral prank speaks out amid outpouring",
+          "source": "The Detroit News",
+          "snippet": ""
+        },
+        {
+          "title": "Over $446K raised for Michigan grocer harassed by streamers",
+          "source": "The National News Desk",
+          "snippet": ""
+        },
+        {
+          "title": "Pizza delivery worker's heartbreaking reaction to cruel prank sparks $680K in donations",
+          "source": "Fox News",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d16bddeb5587eac867",
+      "title": "katie boulter",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 44.7,
+      "published_at": "2026-11-02T06:40:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "November 3, 2026: Andrey Rublev vs Tomas Martin Etcheverry: Total Games Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 2, 2026: Alycia Parks vs Alexandra Eala: Set 1 Winner Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 2, 2026: Maaya Rajeshwaran Revathi vs Katarzyna Kawa: Set 1 Winner Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6a84e5b6c200a3231a",
+      "title": "رامز جلال",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 44.4,
+      "published_at": "2026-11-02T07:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "محمد فؤاد يعترف: قلدت رامز جلال بسبب الظروف المادية",
+          "source": "عكاظ",
+          "snippet": ""
+        },
+        {
+          "title": "محمد فؤاد يكشف سبب تقديمه برامج المقالب وعلاقته بعمر كمال",
+          "source": "مجلة لها",
+          "snippet": ""
+        },
+        {
+          "title": "محمد فؤاد يرد على شائعات خلافه مع عزيز الشافعي: «مين قال إن فيه بينا مشكلة؟»",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "ae3bab0e52e43ecb54",
+      "title": "al-nassr fc",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 44.1,
+      "published_at": "2026-11-02T06:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "New challenge for the Uzbeks: Al-Nassr aims for point…",
+          "source": "YSscores",
+          "snippet": ""
+        },
+        {
+          "title": "Postecoglou settles on two changes to Al-Nassr's line-up against Pakhtakor",
+          "source": "Goal.com",
+          "snippet": ""
+        },
+        {
+          "title": "Cristiano Ronaldo given night off by Al Nassr while Al Ain bid to stay perfect in AFC Champions League",
+          "source": "www.thenationalnews.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "fe38efc74c3b9255b5",
+      "title": "marty erlichman",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 43.8,
+      "published_at": "2026-11-02T06:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Martin Erlichman, Barbra Streisand’s Longtime Manager, Dies at 97",
+          "source": "The New York Times",
+          "snippet": ""
+        },
+        {
+          "title": "Marty Erlichman Dies: Barbra Streisand’s Longtime Manager Was 97",
+          "source": "Deadline",
+          "snippet": ""
+        },
+        {
+          "title": "Marty Erlichman, Longtime Manager for Barbra Streisand, Dies at 97",
+          "source": "Variety",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f2ebacb2d447ac57ba",
+      "title": "قانون الأسرة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 43.4,
+      "published_at": "2026-11-02T06:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "الرؤية الإلكترونية.. مشروع قانون الأسرة يضع ضوابط رؤية الطفل لحمايته",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "«بداية للخراب».. محام يقترح إلغاء الحبس في قانون الأسرة وإنشاء وثيقة تأمين ضد مخاطر الزواج",
           "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "رئيسة محكمة الأسرة سابقًا: وضع الأب ثانيًا في الحضانة قد يفتح باب الزواج العرفي",
+          "source": "Masrawy",
           "snippet": ""
         }
       ],
@@ -530,227 +675,53 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 46.1,
+      "score": 43.4,
       "published_at": "2026-11-02T05:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Утепляемся. Какую погоду обещают синоптики в понедельник",
-          "source": "Новости Беларуси | БелТА",
+          "title": "Зима всё ближе: какие регионы Казахстана накроют морозы и снег",
+          "source": "Ulysmedia.kz",
           "snippet": ""
         },
         {
-          "title": "Туман и гололед утром, до +10°С днем: погода в Беларуси 2 ноября",
-          "source": "Smartpress.by",
+          "title": "Дождь, снег, усиление ветра: какой будет погода в Казахстане 2 ноября",
+          "source": "TengriNews",
           "snippet": ""
         },
         {
-          "title": "Дожди, мокрый снег и туман: Дмитрий Рябов рассказал о погоде в Беларуси с 2 по 8 ноября",
-          "source": "ОНТ",
+          "title": "Аномально теплый ноябрь обещают синоптики",
+          "source": "Телеканал «Астана»",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "f3e0780bb778b852de",
-      "title": "lakers vs raptors",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 46.0,
-      "published_at": "2026-11-02T03:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "NBA fans have mixed reactions to Scottie Barnes and Luka Doncic's scuffle during Lakers vs Raptors",
-          "source": "HITC",
-          "snippet": ""
-        },
-        {
-          "title": "Luka Doncic makes sure Lakers bounce back from bad night like superstar always does",
-          "source": "Lake Show Life",
-          "snippet": ""
-        },
-        {
-          "title": "JJ Redick calls out Raptors after Lakers victory",
-          "source": "BasketNews.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "94b481cf794e997ee4",
-      "title": "el chapo",
+      "id": "24f4fac621742fd8f2",
+      "title": "elsie hewitt",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 45.7,
-      "published_at": "2026-11-02T04:50:00Z",
+      "approx_traffic": "100+",
+      "score": 42.8,
+      "published_at": "2026-11-02T06:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Operación Cisne Negro",
-          "source": "El Heraldo de México",
+          "title": "Exes Pete Davidson and Elsie Hewitt team up for family Halloween costume with daughter Scottie",
+          "source": "Page Six",
           "snippet": ""
         },
         {
-          "title": "‘Pidieron no intervenir’: CIA ordenó frenar operativo para capturar al ‘Chapo’ por entrevista con Kate",
-          "source": "El Financiero",
+          "title": "Pete Davidson Reunites with Ex Elsie Hewitt to Celebrate Daughter Scottie's First Halloween",
+          "source": "Just Jared",
           "snippet": ""
         },
         {
-          "title": "¡Escapes de película! En un carrito de lavandería y por un túnel en su celda, así se fugó dos veces \"El Chapo\"",
-          "source": "Expansión Política",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "16557815d2fd194af1",
-      "title": "new england vs inter miami",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "2000+",
-      "score": 45.4,
-      "published_at": "2026-11-01T23:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Lionel Messi magic leads Inter Miami comeback against New England Revolution to secure 2027 Champions Cup berth",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "Messi Scores Late as Inter Miami Clinch the Edge in Inter Miami Vs New England Revolution Standings",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
-        },
-        {
-          "title": "Lionel Messi’s masterclass puts Cristiano Ronaldo under pressure in the race to 1,000 goals",
-          "source": "MARCA",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "85c2e3be95f2e1a233",
-      "title": "kimi antonelli",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 45.1,
-      "published_at": "2026-11-02T04:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Kimi Antonelli becomes youngest F1 champion with third place in Mexican GP",
-          "source": "The Guardian",
-          "snippet": ""
-        },
-        {
-          "title": "F1 LIVE: Mexico City Grand Prix 2026 UK time, start time, grid, radio & updates",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Look back at how Kimi Antonelli sealed the 2026 F1 drivers' title as Max Verstappen won a wild Mexico City Grand Prix",
-          "source": "Sky Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "870dd26b5046282cee",
-      "title": "luka stats",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 45.1,
-      "published_at": "2026-11-02T04:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Curry's ankle-breaker on Luka highlights Warriors' stunning 25-point comeback",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Luka Dončić knows the Lakers have to be ‘way better’ when teams blitz him",
-          "source": "Silver Screen and Roll",
-          "snippet": ""
-        },
-        {
-          "title": "4 Takeaways: Warriors open Group Play with historic comeback win",
-          "source": "NBA.com",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1bd43bf501c6c051b6",
-      "title": "edge",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 43.7,
-      "published_at": "2026-11-02T03:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Democrats Show Strength in Final Days of Race for the Senate, New Polls Find",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Latest Polls In 2026 Midterms: Democrats Lead Nearly All Key Senate Races",
-          "source": "Forbes",
-          "snippet": ""
-        },
-        {
-          "title": "Senate What If: How the fight for Senate control could play out",
-          "source": "NBC News",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a2cda12542fdfeb2d5",
-      "title": "الابتدائية",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 43.7,
-      "published_at": "2026-11-02T03:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Haley Stevens faces tough questions from CNN on her endorsement flip | CNN Politics",
-          "source": "CNN",
-          "snippet": ""
-        },
-        {
-          "title": "How Rep. Haley Stevens Turned on a Fellow Democrat—and Became a Party Pariah",
-          "source": "WSJ",
-          "snippet": ""
-        },
-        {
-          "title": "El-Sayed's primary opponent stuns Democrats by endorsing Republican opponent in Michigan Senate race",
-          "source": "AP News",
+          "title": "Pete Davidson and Elsie Hewitt reunite with daughter Scottie after solo parenting claim",
+          "source": "Nine.com.au",
           "snippet": ""
         }
       ],
@@ -761,8 +732,8 @@
       "title": "لحم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 42.4,
+      "approx_traffic": "200+",
+      "score": 42.8,
       "published_at": "2026-11-02T04:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -786,29 +757,29 @@
       "alert": false
     },
     {
-      "id": "e6b5ee1ed52612ed81",
-      "title": "te",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 41.4,
-      "published_at": "2026-11-02T04:10:00Z",
+      "id": "16557815d2fd194af1",
+      "title": "new england vs inter miami",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 42.7,
+      "published_at": "2026-11-01T23:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "LEGO lijkt groots uit te pakken met Superman: bijna 3.000 steentjes en een flinke prijs",
-          "source": "XGN.nl",
+          "title": "Lionel Messi has goal, assist to rally Inter Miami to 2-1 victory over Revolution",
+          "source": "iNFOnews.ca",
           "snippet": ""
         },
         {
-          "title": "LIVE Federale kern bereikt geen akkoord, De Wever trekt naar de koning om wellicht ontslag aan te bieden",
-          "source": "VRT",
+          "title": "Match Highlights New England - Inter Miami",
+          "source": "YSscores",
           "snippet": ""
         },
         {
-          "title": "‘Regering scheert rakelings langs horrorscenario: in stuurloosheid vallen’",
-          "source": "De Tijd",
+          "title": "Lionel Messi’s masterclass puts Cristiano Ronaldo under pressure in the race to 1,000 goals",
+          "source": "MARCA",
           "snippet": ""
         }
       ],
@@ -819,54 +790,73 @@
       "title": "خبر",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 40.1,
+      "approx_traffic": "500+",
+      "score": 41.4,
       "published_at": "2026-11-02T02:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "وفاة جندي كوري جنوبي إثر إصابات في وحدة على خط المواجهة",
-          "source": "سكاي نيوز عربية",
+          "title": "تشاد تستعد لاستقبال مقاتلات «ميراج» الفرنسية مجدداً وسط توترات حدودية مع ليبيا",
+          "source": "بوابة الوسط",
           "snippet": ""
         },
         {
-          "title": "وفاة جندي كوري جنوبي متأثرا بإصابته في وحدة عسكرية",
-          "source": "الوطن",
+          "title": "مقاتلات فرنسية تعود إلى تشاد بشروط جديدة بين البلدين",
+          "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         },
         {
-          "title": "وفاة سيرجنت بجيش كوريا الجنوبية إثر إصابات على خط المواجهة",
-          "source": "إرم نيوز",
+          "title": "بعد عامين من التوتر.. فرنسا تعيد طائراتها العسكرية إلى تشاد",
+          "source": "شبكة رؤية الإخبارية",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "3bc11388904a838399",
-      "title": "المرحلة",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 38.1,
+      "id": "b5db0a0c86a08c56c6",
+      "title": "الشروق",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 39.4,
       "published_at": "2026-11-02T04:00:00Z",
       "source": "Google Trends",
       "source_count": 1,
       "news_items": [
         {
-          "title": "تحسين فرص التدريب المهني للطلاب بعد المرحلة الإعدادية.",
-          "source": "Vietnam.vn",
+          "title": "بقاء نتنياهو في السلطة على المحك مع انطلاق انتخابات إسرائيل",
+          "source": "Reuters",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "e6b5ee1ed52612ed81",
+      "title": "te",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 38.8,
+      "published_at": "2026-11-02T04:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "‘Ik dacht dat ik wel wist hoe mensen in elkaar zitten. Niet dus’: Cath Luyten zat op een eiland voor ‘Expeditie Robinson’",
+          "source": "De Morgen",
           "snippet": ""
         },
         {
-          "title": "في ظل سوق عمل صعب، يضطر الطلاب إلى إنفاق عشرات الملايين من عملة VND \"لشراء\" وظائف التدريب الداخلي.",
-          "source": "Vietnam.vn",
+          "title": "Maxime Meiland over Expeditie Robinson: ‘Ik wil een andere kant van mezelf laten zien’",
+          "source": "AD.nl",
           "snippet": ""
         },
         {
-          "title": "تهدف مؤسسة تاي نغوين إلى أن يحصل 100% من طلاب المرحلتين الإعدادية والثانوية على التوجيه المهني.",
-          "source": "Vietnam.vn",
+          "title": "“Voor vertrek heb ik me volgevreten en kwam ik 10 kilo bij”: Dorien Nuyts pakte voorbereiding ‘Expeditie Robinson’ helemaal anders aan",
+          "source": "HLN",
           "snippet": ""
         }
       ],
