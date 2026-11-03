@@ -1,14 +1,43 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T03:50:34.532472Z",
+  "updated_at": "2026-11-03T04:51:42.550166Z",
   "items": [
+    {
+      "id": "ad369ada4980b9b0ed",
+      "title": "nfl standings",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "20000+",
+      "score": 67.0,
+      "published_at": "2026-11-03T04:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "NFL news roundup: Rams LB Myles Garrett will practice this week; Daniel Jones to start Week 9",
+          "source": "NFL.com",
+          "snippet": ""
+        },
+        {
+          "title": "Packers expect Parsons at practice 'sometime this week'",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "Matt LaFleur comments on Josh Jacobs, Micah Parsons",
+          "source": "Green Bay Packers – packers.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
     {
       "id": "593665075a0e990f31",
       "title": "الفجر اليوم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 59.6,
+      "approx_traffic": "10000+",
+      "score": 60.6,
       "published_at": "2026-11-03T02:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -32,342 +61,376 @@
       "alert": false
     },
     {
-      "id": "4df9100e36b375d6ee",
-      "title": "kings",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "243b90e66302da8d92",
+      "title": "منصه",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "2000+",
       "score": 57.3,
-      "published_at": "2026-11-03T03:30:00Z",
+      "published_at": "2026-11-03T04:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Dallas Mavericks Make Their Stance on Kyrie Irving Clear",
-          "source": "Yahoo Sports",
+          "title": "اختراق \"باينانس\" يختبر ثقة المستثمرين.. لماذا كان رد فعل بيتكوين محدوداً؟",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Kyrie Irving’s latest injury update goes wrong direction for Mavericks-Kings tilt",
-          "source": "ClutchPoints",
+          "title": "منصة \"بينانس\".. ماذا قال ترامب عن \"أكبر عملية اختراق في العالم\"؟",
+          "source": "CNN Arabic",
           "snippet": ""
         },
         {
-          "title": "Kyrie Irving (knee) downgraded to out vs. SAC",
-          "source": "NBC Sports",
+          "title": "بيونغيانغ تنفي اتهام واشنطن بسرقة مليارات من منصة \"بايناس\"",
+          "source": "سكاي نيوز عربية",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "43036e51c328f8ae13",
-      "title": "memphis grizzlies",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 55.0,
-      "published_at": "2026-11-03T03:20:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "Wizards vs. Magic (Nov 2, 2026) Live Score",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Pistons vs. Hornets (Nov 2, 2026) Live Score",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Jazz vs. Spurs (Nov 2, 2026) Live Score",
-          "source": "ESPN",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "3c881a40d5e702d5b5",
-      "title": "tua tagovailoa",
+      "id": "c1d232d4b61e5e2cb4",
+      "title": "super bowl 2026",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 54.0,
-      "published_at": "2026-11-03T03:20:00Z",
+      "score": 54.3,
+      "published_at": "2026-11-03T04:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Michael Penix Jr. throws his 3rd INT of the 1st half",
+          "title": "MIAA football Super Bowls will not be held at Gillette Stadium this year",
+          "source": "The Boston Globe",
+          "snippet": ""
+        },
+        {
+          "title": "Turnover in Mass. high school football as MIAA championships move out of Gillette",
+          "source": "NBC Boston",
+          "snippet": ""
+        },
+        {
+          "title": "No more state championship football games at Gillette, MIAA says",
+          "source": "WCVB",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "6bdef624c6340d48c5",
+      "title": "nfc north standings 2026",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.3,
+      "published_at": "2026-11-03T04:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Sizing up wild NFL Week 8: Lamar Jackson's injury, Bucs' win, Cowboys' collapse",
           "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Ex-Dolphins QB Tua Tagovailoa Gets Potential News With Michael Penix INTs",
-          "source": "Yahoo Sports",
+          "title": "NFL experts’ Week 8 takeaways: Do Ravens need drastic QB measures? Plus, Cowboys collapse - The Athletic",
+          "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "Third INT for Michael Penix Jr.",
-          "source": "The New York Times",
+          "title": "2026 NFL season, Week 8: What We Learned from Sunday's games",
+          "source": "NFL.com",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "a721464f5f194e13a5",
-      "title": "sherrod brown",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "e44eae3e59783725a9",
+      "title": "ابو الليف",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 54.0,
-      "published_at": "2026-11-03T03:20:00Z",
+      "score": 51.6,
+      "published_at": "2026-11-03T03:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Vance gave up this Ohio Senate seat. It could decide who wins the chamber",
-          "source": "USA Today",
+          "title": "نادر أبو الليف يحتفل بزفافه للمرة الثالثة.. ويكشف هوية العروس",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Husted, Brown make final pitches to Ohio voters in U.S. Senate race",
-          "source": "WKYC",
-          "snippet": ""
-        },
-        {
-          "title": "Video: Can a Former Senator Come Back?",
-          "source": "The New York Times",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "927c455dfe8fd901f1",
-      "title": "إنترنت",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 48.6,
-      "published_at": "2026-11-02T21:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "التطبيق بدأ من اليوم والباقة تضاعفت.. 50 جيجا إنترنت زيادة مجانا.. فيديو",
+          "title": "أبو الليف لـ \"اليوم السابع\" بعد زواجه من قوت المغازى: فرحان وربنا يخليهالى",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "متحدث تنظيم الاتصالات: توصيات منتدى مصر نُفذت فورا وباقة الـ 150 جنيها أصبحت 100 جيجابايت",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "مصر.. بدء تطبيق مضاعفة باقة الإنترنت الأرضي إلى 100 جيجابايت دون زيادة السعر",
-          "source": "معلومات مباشر",
+          "title": "«اللي بيحبني يباركلي ويدعيلي».. نادر أبو الليف يعلن عقد قرانه",
+          "source": "المصري اليوم",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "3265c6773623c01f30",
-      "title": "justine lupe",
+      "id": "794cd268d726372d8c",
+      "title": "where is the super bowl 2027",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 48.3,
-      "published_at": "2026-11-03T03:30:00Z",
+      "score": 51.3,
+      "published_at": "2026-11-03T04:30:00Z",
       "source": "Google Trends",
-      "source_count": 2,
+      "source_count": 3,
       "news_items": [
         {
-          "title": "Nobody Wants This Season 3: Justine Lupe's Morgan Is The Performance Of The Week",
-          "source": "TVLine",
+          "title": "Jay-Z to headline Super Bowl LXI Halftime Show at SoFi Stadium in Inglewood",
+          "source": "NFL.com",
           "snippet": ""
         },
         {
-          "title": "TVLine's Performer Of The Week: Justine Lupe",
-          "source": "IMDb",
+          "title": "NFL fans mock Jay-Z as the Super Bowl halftime show headliner for ‘people in retirement homes’",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "JAŸ-Z chose himself for the Super Bowl. His summer shows explained why.",
+          "source": "Andscape",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
       "id": "7827815c6e5de132d8",
       "title": "وزارة التعليم",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.7,
+      "approx_traffic": "1000+",
+      "score": 49.6,
       "published_at": "2026-11-03T03:40:00Z",
       "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "تُلزم وزارة التعليم والتدريب بتحصيل الرسوم الدراسية الجامعية شهرياً؛ ما هي الفوائد التي سيحصل عليها الطلاب؟",
+          "source": "Vietnam.vn",
+          "snippet": ""
+        },
+        {
+          "title": "الجامعات الأردنية ومعادلة البقاء: حين لا تكفي الرسوم الدراسية",
+          "source": "TLB News",
+          "snippet": ""
+        },
+        {
+          "title": "تضاعفت رسوم الدراسة الجامعية في عام واحد فقط.",
+          "source": "Vietnam.vn",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "c23d68d225ad0770c8",
+      "title": "درجة الحرارة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-03T04:30:00Z",
+      "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "وزارة التربية تُدشّن ورشة كبار المدربين لتطوير مهارات مربيات رياض الأطفال",
-          "source": "www.sabanew.net",
+          "title": "لا تنخدعوا بارتفاع الحرارة.. الأرصاد تكشف مفاجآت بحالة الطقس حتى الأحد المقبل",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "اخبار عدن - مطابع الكتاب المدرسي بعدن توقّع اتفاقية لطباعة منهج رياض الأطفال التجريبي المطور بدعم من منظمة CRS",
-          "source": "عدن تايم",
+          "title": "الأرصاد: انخفاض درجات الحرارة بدءا من الخميس.. وفرص لسقوط أمطار",
+          "source": "بوابة الشروق",
           "snippet": ""
         },
         {
-          "title": "اخبار محلية - برعاية وزير التربية العبادي .. وزارة التربية تُدشّن ورشة كبار المدربين لتطوير مهارات مربيات رياض الأطفال",
-          "source": "صحيفة المرصد",
+          "title": "طقس مفاجئ خلال الأسبوع الحالي في مصر.. رياح وأمطار رغم ارتفاع الحرارة",
+          "source": "العربية",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "00e44e6f68b61d8572",
-      "title": "prop 3",
+      "id": "ff24f1fda3d7a73fb5",
+      "title": "nfl rankings",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
       "score": 47.3,
-      "published_at": "2026-11-03T03:30:00Z",
+      "published_at": "2026-11-03T04:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "While Prop. 40 flounders, another progressive tax in Calif. is looking likely",
-          "source": "SFGATE",
+          "title": "NFL Power Rankings: How all 32 teams stack up for Week 8, plus offseason adds",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "The tax on top earners at the heart of school funding: California’s Prop. 3 explained",
-          "source": "Sacramento Bee",
+          "title": "NFL Power Rankings, Week 8: Vikings claim No. 1 spot; Browns, Falcons nearing top 10",
+          "source": "NFL.com",
           "snippet": ""
         },
         {
-          "title": "California’s Prop. 3 tax on top earners holds strong days before election, new poll shows",
-          "source": "Yahoo",
+          "title": "NFL power rankings Week 9 change with Bears, Bills, Broncos, Rams wins",
+          "source": "azcentral.com and The Arizona Republic",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "46c3ba7b7c677406c6",
-      "title": "tulane basketball",
+      "id": "f46f36e81d110889cd",
+      "title": "new york lottery",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
       "score": 47.3,
-      "published_at": "2026-11-03T03:30:00Z",
+      "published_at": "2026-11-03T04:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "no.tulanebasketball.110326.262.jpg",
-          "source": "The Advocate",
+          "title": "NY Lottery Win 4, Take 5, Numbers winning numbers for Tuesday, Oct. 27",
+          "source": "Lohud",
           "snippet": ""
         },
         {
-          "title": "See photos: Tulane men tip off new season against UT Martin",
-          "source": "NOLA.com",
+          "title": "N.Y. Lottery: Staten Island store sells winning Take 5 ticket; single upstate 7-Eleven sells 10 more",
+          "source": "SILive.com",
           "snippet": ""
         },
         {
-          "title": "Tulane Hosts UT Martin for Season-Opener Monday Night",
-          "source": "Tulane University Athletics",
+          "title": "Ten winning Take 5 tickets sold at Yorkshire convenience store",
+          "source": "TheDailyNewsOnline.com",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "9344b86c2f6b66d09c",
-      "title": "ethan klein hila klein",
+      "id": "729fdb44178b5a1bb5",
+      "title": "baylor basketball",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
       "score": 47.3,
-      "published_at": "2026-11-03T03:30:00Z",
+      "published_at": "2026-11-03T04:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "H3 Podcaster Hila Klein divorcing husband Ethan in wake of bombshell cheating scandal",
-          "source": "Page Six",
+          "title": "5 Predictions for Baylor Basketball: All-Big 12 Teams, Tournament Projections, NBA Draft",
+          "source": "SicEm365",
           "snippet": ""
         },
         {
-          "title": "What’s Happening With the ‘H3’ Podcast? Hila & Ethan Klein’s Separation, Crew Response & Ethan’s Latest Move",
-          "source": "IMDb",
+          "title": "Look Ahead: Baylor Basketball Opens 2026-27 Season With Two Home Games",
+          "source": "Yahoo Sports",
           "snippet": ""
         },
         {
-          "title": "'Get That IDF Cuck Wife Off My Timeline': Mia Khalifa Sparks Speculation About Hila Klein Amid Marriage Drama",
-          "source": "Fashion Times UK",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "f212dae8215d385014",
-      "title": "steve buscemi",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-03T03:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Steve Buscemi on being the bad guy: ‘You have to care about these characters’",
-          "source": "Financial Times",
-          "snippet": ""
-        },
-        {
-          "title": "Steve Buscemi-Produced Documentary Gives ‘Unprecedented Access’ to Paramedics’ Lives: See the Trailer (Exclusive)",
-          "source": "People.com",
-          "snippet": ""
-        },
-        {
-          "title": "Special Film Screening Takes You Behind The Scenes with Paramedics",
-          "source": "News Channel 3-12",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "a824bff5363ff02d79",
-      "title": "montana vs oregon",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.0,
-      "published_at": "2026-11-03T03:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Inside Oregon basketball — What to expect from a roster full of unknowns",
-          "source": "247Sports",
-          "snippet": ""
-        },
-        {
-          "title": "How to Watch Montana vs. Oregon: TV Channel, Live Stream, Time",
+          "title": "Baylor hosts Northwestern State to tip off season",
           "source": "FOX Sports",
           "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "a8bc7d80e5235ab16d",
+      "title": "nba power rankings",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-03T04:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "NBA Power Rankings: Early title favorites, rising contenders and relegation zone candidates",
+          "source": "Yahoo Sports",
+          "snippet": ""
         },
         {
-          "title": "Oregon Basketball Game Threads: 11/2/26",
+          "title": "NBA's biggest winners and losers of the week: Last unbeaten team is ... the Grizzlies? Plus a crisis in OKC",
+          "source": "CBS Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Power Rankings: Undefeated Grizzlies surge into Top 5",
+          "source": "NBA.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "aff353f0744768ae34",
+      "title": "lakers vs heat",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 46.6,
+      "published_at": "2026-11-03T04:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Luka Doncic matchup gives Giannis perfect stage to make an MVP statement",
+          "source": "All U Can Heat",
+          "snippet": ""
+        },
+        {
+          "title": "“It has to be a whole lot more effort, focus …",
+          "source": "HoopsHype",
+          "snippet": ""
+        },
+        {
+          "title": "TST Best Bets: November 2, 2026",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "027a0fc5cf64f68d84",
+      "title": "warriors vs suns",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 46.0,
+      "published_at": "2026-11-03T03:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Preview: Warriors take on Suns in Chase Center with Curry, Green back",
+          "source": "Golden State Of Mind",
+          "snippet": ""
+        },
+        {
+          "title": "null",
+          "source": "VAVEL.com",
+          "snippet": ""
+        },
+        {
+          "title": "GSW injury report: Gui Santos, Al Horford and more ahead of game vs. Suns",
           "source": "Yahoo Sports",
           "snippet": ""
         }
@@ -380,7 +443,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 47.0,
+      "score": 45.0,
       "published_at": "2026-11-02T22:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -391,13 +454,13 @@
           "snippet": ""
         },
         {
-          "title": "Everton beat Newcastle to pile pressure on Jaissle",
-          "source": "France 24",
+          "title": "Newcastle United player ratings vs Everton: Lukas Hornicek and Jacob Ramsey endure nightmare nights in damaging defeat",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "Premier League - Newcastle United v Everton",
-          "source": "Reuters Connect",
+          "title": "Everton beat Newcastle to pile pressure on Jaissle",
+          "source": "RFI",
           "snippet": ""
         }
       ],
@@ -409,7 +472,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 46.7,
+      "score": 44.6,
       "published_at": "2026-11-02T22:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -433,12 +496,94 @@
       "alert": false
     },
     {
+      "id": "6aeb12caf2a01316c5",
+      "title": "kobe sanders",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 44.3,
+      "published_at": "2026-11-03T04:30:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Clippers' Kobe Sanders: Drawing start Monday",
+          "source": "CBS Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Kobe Sanders News: Shifts back to bench",
+          "source": "RotoWire",
+          "snippet": ""
+        },
+        {
+          "title": "Kobe Sanders News: Drawing start Monday",
+          "source": "RotoWire",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "0334484d1131556802",
+      "title": "jon stewart",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 44.3,
+      "published_at": "2026-11-03T04:30:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "'The Daily Show' Behind the Scenes Video: Jon Stewart in Writers' Room",
+          "source": "Variety",
+          "snippet": ""
+        },
+        {
+          "title": "A Day in the Life at ‘The Daily Show’: Jon Stewart Hypes Up Writers’ Room in Behind-the-Scenes Video (Exclusive)",
+          "source": "IMDb",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "cae37800af3382fb31",
+      "title": "عريس",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 44.0,
+      "published_at": "2026-11-03T02:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "عريس مجهول ونجوم يهنئون.. آيدا القصي تحتفي بزفافها في الرياض",
+          "source": "عكاظ",
+          "snippet": ""
+        },
+        {
+          "title": "زفاف آيدا القصي... فستانها الأبيض البرّاق يخطف الأنظار بتفاصيله",
+          "source": "مجلة لها",
+          "snippet": ""
+        },
+        {
+          "title": "آيدا القصي تعلن زواجها.. وشقيقتها عائشة كاي تبارك لها",
+          "source": "مجلة سيدتي",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "f9bffd47553fe02203",
       "title": "76ers vs bulls",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 45.7,
+      "score": 43.6,
       "published_at": "2026-11-03T02:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -467,16 +612,11 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 45.7,
+      "score": 43.6,
       "published_at": "2026-11-03T02:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
-        {
-          "title": "\"تارجت للاستثمار\": الذهب قد يتجاوز 4200 دولار مع أي انفراجة جيوسياسية",
-          "source": "العربية",
-          "snippet": ""
-        },
         {
           "title": "انهيار الذهب والفضة فرصة العمر.. سيناريو 2008 سيتكرر؟ رأي خبير",
           "source": "Investing.com",
@@ -485,6 +625,11 @@
         {
           "title": "الذهب يرتد مع تراجع النفط... والأسواق تترقب إشارات «الفيدرالي»",
           "source": "الشرق الأوسط",
+          "snippet": ""
+        },
+        {
+          "title": "خسائر الذهب: المعدن النفيس قد ينهي 2026 بخسائر رغم توافر عوامل دعم",
+          "source": "BBC",
           "snippet": ""
         }
       ],
@@ -496,7 +641,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 45.0,
+      "score": 43.0,
       "published_at": "2026-11-03T02:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -507,8 +652,8 @@
           "snippet": ""
         },
         {
-          "title": "US midterms 2026 live: Supreme Court rejects Trump’s California ballot bid",
-          "source": "Al Jazeera",
+          "title": "US midterms 2026 live: Final day of campaigning - follow latest",
+          "source": "BBC",
           "snippet": ""
         },
         {
@@ -520,29 +665,29 @@
       "alert": false
     },
     {
-      "id": "9177b1e688c57434d7",
-      "title": "العراق",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.3,
-      "published_at": "2026-11-03T02:00:00Z",
+      "id": "2c53c915c55660598c",
+      "title": "طائر",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.3,
+      "published_at": "2026-11-03T03:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "أهم عناوين شفقنا العراق ليوم الاثنين 2 نوفمبر 2026 | شفقنا العربي | الوكالة الشيعية الدولية للأخبار والتحليلات",
-          "source": "شفقنا العربي",
+          "title": "طائر ضخم يلاحق رجلا منذ 9 أشهر.. لماذا ترفض السلطات التدخل؟",
+          "source": "الجزيرة نت",
           "snippet": ""
         },
         {
-          "title": "فيديو | العراق في دقيقة 02-11-2026#shorts",
-          "source": "هذا اليوم",
+          "title": "هل تكذب الحيوانات مثل البشر؟.. طائر أفريقي يحير العلماء",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "العراق في دقيقة 1-11-2026",
-          "source": "Alsumaria",
+          "title": "حكاية طائر أفريقي مخادع.. هل تستطيع الحيوانات الكذب مثل البشر؟",
+          "source": "بوابة أخبار اليوم الإلكترونية",
           "snippet": ""
         }
       ],
@@ -554,7 +699,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 44.0,
+      "score": 42.0,
       "published_at": "2026-11-03T03:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -578,41 +723,12 @@
       "alert": false
     },
     {
-      "id": "cae37800af3382fb31",
-      "title": "عريس",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.0,
-      "published_at": "2026-11-03T02:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "عريس مجهول ونجوم يهنئون.. آيدا القصي تحتفي بزفافها في الرياض",
-          "source": "عكاظ",
-          "snippet": ""
-        },
-        {
-          "title": "زفاف آيدا القصي... فستانها الأبيض البرّاق يخطف الأنظار بتفاصيله",
-          "source": "مجلة لها",
-          "snippet": ""
-        },
-        {
-          "title": "آيدا القصي تعلن زواجها.. وشقيقتها عائشة كاي تبارك لها",
-          "source": "مجلة سيدتي",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "506be2a7d912f74048",
       "title": "العربية الخليج",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 42.7,
+      "score": 40.6,
       "published_at": "2026-11-03T02:40:00Z",
       "source": "Google Trends",
       "source_count": 2,
@@ -636,70 +752,12 @@
       "alert": false
     },
     {
-      "id": "6aa9f7416d75098b80",
-      "title": "al-ittihad club vs al ain fc standings",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 42.7,
-      "published_at": "2026-11-02T21:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Al Ain remain perfect, beats Al Ittihad 4-1 in ACL Elite",
-          "source": "News.com.au",
-          "snippet": ""
-        },
-        {
-          "title": "Rahimi against En-Nesyri: Moroccan magic tops the line-up of Al-Ittihad and Al-Ain",
-          "source": "LiveScore",
-          "snippet": ""
-        },
-        {
-          "title": "Ronaldo-less Al Nassr overpower Pakhtakor in eight-goal thriller",
-          "source": "TribalFootball",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7f88a4dec668d073da",
-      "title": "دواجن",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 41.7,
-      "published_at": "2026-11-03T02:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "اتحاد منتجي الدواجن: المربون يبيعون بخسارة.. والأسعار تراجعت 15% رغم ارتفاع تكاليف الإنتاج",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "أسعار الفراخ اليوم الإثنين 2 نوفمبر 2026 في البورصة والأسواق",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "سعر كرتونة البيض اليوم 2/11/2026 للمستهلك في السوق المحلية",
-          "source": "جريدة المال",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "48e9b49ffd50e774e1",
       "title": "اجازة رسمية",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 40.7,
+      "score": 38.6,
       "published_at": "2026-11-03T00:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -728,7 +786,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 39.3,
+      "score": 37.3,
       "published_at": "2026-11-02T21:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -739,8 +797,8 @@
           "snippet": ""
         },
         {
-          "title": "خبير: واشنطن أمام صراع بين معسكر الدبلوماسية وخيار الحرب مع إيران",
-          "source": "اليوم السابع",
+          "title": "ترامب يتمسك بمنع إيران نووياً.. ويلمح لهدف جديد",
+          "source": "العربية",
           "snippet": ""
         },
         {
@@ -752,47 +810,18 @@
       "alert": false
     },
     {
-      "id": "5a7b81d593b7b41d7e",
-      "title": "خادم الحرمين الشريفين",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 36.4,
-      "published_at": "2026-11-02T23:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بأمر الملك سلمان.. وسام المؤسس لرئيس أركان الدفاع الوطني اليوناني",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "سياسي / سمو وزير الدفاع يجري اتصالًا هاتفيًا بوزير الدفاع الوطني في الجمهورية الهيلينية",
-          "source": "وكالة الأنباء السعودية",
-          "snippet": ""
-        },
-        {
-          "title": "إنفاذًا لأمر خادم الحرمين .. رئيس هيئة الأركان العامة يُقلِّد رئيس أركان الدفاع الوطني اليوناني وسام الملك عبدالعزيز من الدرجة الممتازة",
-          "source": "جريدة الرياض",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "b0f14ac5a06a40e645",
       "title": "جهاز مستقبل مصر",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 35.7,
+      "score": 33.7,
       "published_at": "2026-11-02T23:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "جهاز \"مستقبل مصر\": منظومة متكاملة تضمن شفافية وتكافؤ الفرص بين جميع المتقدمين للعمل بالجهاز",
+          "title": "جهاز مستقبل مصر يعلن مسابقة لتعيين دفعة جديدة من الكوادر",
           "source": "صدى البلد",
           "snippet": ""
         },
@@ -802,8 +831,8 @@
           "snippet": ""
         },
         {
-          "title": "جهاز مستقبل مصر يعلن إجراء مسابقة لتعيينات جديدة",
-          "source": "شبكة رؤية الإخبارية",
+          "title": "جهاز \"مستقبل مصر\": منظومة متكاملة تضمن شفافية وتكافؤ الفرص بين جميع المتقدمين للعمل بالجهاز",
+          "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         }
       ],
@@ -815,7 +844,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 30.0,
+      "score": 28.0,
       "published_at": "2026-11-02T21:50:00Z",
       "source": "Google Trends",
       "source_count": 2,
