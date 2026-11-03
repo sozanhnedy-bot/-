@@ -28,6 +28,7 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
       TASK_PROMPT: ${{ inputs.task }}
+
     steps:
       - name: Check out public source
         uses: actions/checkout@v4
