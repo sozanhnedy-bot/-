@@ -1,205 +1,292 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02T23:14:55.957277Z",
+  "updated_at": "2026-11-03T00:05:55.066792Z",
   "items": [
+    {
+      "id": "ebf222a0dfe1380a01",
+      "title": "pistons vs hornets",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "5000+",
+      "score": 61.1,
+      "published_at": "2026-11-02T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Pistons vs. Hornets Prediction, Odds and Best NBA Prop Bets for Monday, Nov. 2",
+          "source": "Sports Illustrated",
+          "snippet": ""
+        },
+        {
+          "title": "Hornets Reveal Injury Report For Rematch vs Pistons",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Charlotte Hornets vs Detroit Pistons: Game 8 preview and discussion",
+          "source": "At The Hive",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "57efa9247ac80ff788",
+      "title": "al-ittihad club vs al ain fc standings",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "10000+",
+      "score": 58.1,
+      "published_at": "2026-11-02T20:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Rahimi against En-Nesyri: Moroccan magic tops the line-up of Al-Ittihad and Al-Ain",
+          "source": "LiveScore",
+          "snippet": ""
+        },
+        {
+          "title": "Al-Ittihad coach after the slap from Al-Ain: we are not machines to switch at the push of a button!",
+          "source": "Yardbarker",
+          "snippet": ""
+        },
+        {
+          "title": "Today's matches (Monday) and broadcast channels: A fiery encounter between Al Ain and Al Ittihad Saudi",
+          "source": "صوت الإمارات",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "5fe701e71dc2556bd0",
+      "title": "hawks vs pacers",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 57.1,
+      "published_at": "2026-11-02T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Hawks Face Injury Woes As Johnson Listed Questionable For Indiana Clash",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Depleted Pacers seek upset of Hawks, who make decision on All-Star: Preview, Starters, Injuries, How to Watch",
+          "source": "Sports Illustrated",
+          "snippet": ""
+        },
+        {
+          "title": "Hawks vs Pacers Prediction, Picks & Best Bet for Tonight's NBA Game",
+          "source": "Covers.com",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
     {
       "id": "927c455dfe8fd901f1",
       "title": "إنترنت",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "5000+",
-      "score": 57.8,
+      "score": 56.1,
       "published_at": "2026-11-02T21:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "التطبيق بدأ من اليوم والباقة تضاعفت.. 50 جيجا إنترنت زيادة مجانا.. فيديو",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "أسعار باقات الإنترنت الأرضي في مصر بعد مضاعفة الباقة الأساسية.. تبدأ من 150 جنيها",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "تنظيم الاتصالات: 13 مليون مشترك يستفيدون من مضاعفة سعة باقة الإنترنت الأساسية",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "ae4a3fb261ad1e500a",
-      "title": "thunder vs cavaliers",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.5,
-      "published_at": "2026-11-02T23:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Thunder vs Cavaliers live updates: SGA, OKC visit Donovan Mitchell, Cleveland",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Cavs vs. Thunder: preview, odds, injury report, TV",
-          "source": "Cleveland.com",
-          "snippet": ""
-        },
-        {
-          "title": "Thunder vs. Cavaliers odds, prediction, time: 2026 NBA picks for Monday, Nov. 2, by proven model",
-          "source": "CBS Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "b1227731192c2c1f7e",
-      "title": "oakland vs michigan",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 57.5,
-      "published_at": "2026-11-02T23:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Game 1: Oakland at Michigan Preview",
-          "source": "UM Hoops.com",
-          "snippet": ""
-        },
-        {
-          "title": "Michigan hoops enters season with one focus: 'Create our own legacy'",
-          "source": "The Detroit News",
-          "snippet": ""
-        },
-        {
-          "title": "Oakland at No. 16 Michigan College Basketball Preview",
-          "source": "Maize n Brew",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "a12a5aeb4bd773d279",
-      "title": "toto wolff",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 54.2,
-      "published_at": "2026-11-02T22:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "George Russell admits his F1 season had 'more bad days than good' following Kimi Antonelli championship triumph",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "F1: George Russell on 'tough' season after Kimi Antonelli wins title",
+          "title": "هجوم يشتبه أنه قرصنة إلكترونية يعطّل ثلاجات متاجر في سبع دول أوروبية",
           "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "George Russell: Mercedes driver posts statement to 'speak from the heart' after Kimi Antonelli becomes world champion at Mexico City Grand Prix",
+          "title": "اختراق أنظمة التبريد.. هجوم إلكتروني جديد يربك متاجر أوروبا",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        },
+        {
+          "title": "هجمات إلكترونية تربك متاجر أوروبا .. والاتحاد الأوروبي يحذر من استهداف الأمن الغذائي",
+          "source": "DW.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "a1bfe7c565991d1ec8",
+      "title": "newcastle united f.c. vs everton f.c. standings",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "2000+",
+      "score": 54.8,
+      "published_at": "2026-11-02T22:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Newcastle United 0-1 Everton - reaction as Thierno Barry scores winner",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "Newcastle vs Everton LIVE! Premier League match updates, news, score, stream and highlights",
           "source": "Sky Sports",
+          "snippet": ""
+        },
+        {
+          "title": "'Newcastle are flat and boring' – Jamie Carragher warns Magpies face tough Premier League season after Everton defeat",
+          "source": "Mansfield Radio",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6e290025313fd7a361",
+      "title": "newcastle united f.c. vs everton f.c. standings",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 54.5,
+      "published_at": "2026-11-02T22:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Newcastle United 0-1 Everton - reaction as Thierno Barry scores winner",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "'Newcastle are flat and boring' – Jamie Carragher warns Magpies face tough Premier League season after Everton defeat",
+          "source": "Mansfield Radio",
+          "snippet": ""
+        },
+        {
+          "title": "Newcastle United player ratings vs Everton: Lukas Hornicek and Jacob Ramsey endure nightmare nights in damaging defeat",
+          "source": "Goal.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "81d148ba4316bf88e6",
+      "title": "energy drinks heart problems",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.1,
+      "published_at": "2026-11-02T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Energy drinks linked to higher risk of cardiac arrest in young adults, study finds",
+          "source": "NBC News",
+          "snippet": ""
+        },
+        {
+          "title": "New research links young adults who drink highly caffeinated drinks to heart attacks",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "Energy drinks, stimulant products linked to cardiac arrest, heart attack in young adults",
+          "source": "www.heart.org",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "005d455346c714e729",
-      "title": "florida basketball",
+      "id": "deb4e78a9e3ba6b073",
+      "title": "st john's basketball",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "1000+",
-      "score": 53.8,
-      "published_at": "2026-11-02T22:40:00Z",
+      "score": 54.1,
+      "published_at": "2026-11-02T23:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "College basketball picks, schedule: Predictions for Florida vs. Miami, more Top 25 games on opening day",
-          "source": "CBS Sports",
+          "title": "One Bold Prediction for St. John's Basketball in Season-Opener vs. Monmouth",
+          "source": "Sports Illustrated",
           "snippet": ""
         },
         {
-          "title": "No. 1 Florida vs No. 14 Miami (Monday, 6 pm)",
-          "source": "Florida Gators",
+          "title": "St. John's to unveil Big East title banners at Monday's season opener at Carnesecca Arena",
+          "source": "Newsday",
           "snippet": ""
         },
         {
-          "title": "No. 1 Florida returns to Tampa with deep feelings from NCAA stunner",
-          "source": "Tampa Bay Times",
+          "title": "Game thread: St. John’s men’s basketball vs. Monmouth",
+          "source": "Yahoo Sports",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "ed67c24738ed6913ea",
-      "title": "al-gharafa vs al-qadsiah fc standings",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "2000+",
-      "score": 53.2,
-      "published_at": "2026-11-02T20:50:00Z",
+      "id": "bd5ee8f1e7ec7a6a8d",
+      "title": "nebraska basketball",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 54.1,
+      "published_at": "2026-11-02T23:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Al-Gharafa vs Al Qadsiah: Where to watch, TV channel, live stream & kick-off time",
-          "source": "Goal.com",
+          "title": "Huskers Fight Past Spartans in Opener - University of Nebraska - Official Athletics Website",
+          "source": "huskers.com",
           "snippet": ""
         },
         {
-          "title": "Julián Quiñones Steals the Show as Al Qadsiah Crushes Al Gharafa in Asian Champions League",
-          "source": "Soy Futbol",
+          "title": "Britt Prince's efficient play paces Nebraska women's basketball win; Sam McKewon's 3 takes",
+          "source": "Omaha World-Herald",
           "snippet": ""
         },
         {
-          "title": "Al Gharafa face Al Qadsiah challenge",
-          "source": "Qatar Tribune",
+          "title": "How to Watch Nebraska Women’s Basketball vs. San Jose State with Preview, Breakdown, TV Channel",
+          "source": "Sports Illustrated",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "057cc01db24bfe91bf",
-      "title": "tim sweeney",
+      "id": "224e23eb7063027606",
+      "title": "abortion",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "500+",
-      "score": 51.2,
-      "published_at": "2026-11-02T22:50:00Z",
+      "score": 51.5,
+      "published_at": "2026-11-02T23:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "'No Amount of Competition Will Ever Unseat Steam' – Former Epic Games Engineer Rails Against Valve",
-          "source": "IGN",
+          "title": "Ex-West Point Cadet Sued For Forcing Abortion On Girlfriend at Academy",
+          "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "Epic Games CEO calls Steam's AI disclosure policies \"a political act\"",
-          "source": "GamesIndustry.biz",
+          "title": "West Point Cadet Drugged Pregnant Girlfriend, Forced Abortion on Her While She Was Unconscious: Complaint",
+          "source": "People.com",
           "snippet": ""
         },
         {
-          "title": "Epic CEO Tim Sweeney lambasts “abhorrent” Steam AI Disclosure Policy claiming labels double as “political statement”",
-          "source": "Notebookcheck",
+          "title": "West Point cadet drugged pregnant girlfriend with spiked shake, then forced abortion",
+          "source": "New York Post",
           "snippet": ""
         }
       ],
@@ -210,25 +297,25 @@
       "title": "bragantino vs santos",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 50.2,
+      "approx_traffic": "1000+",
+      "score": 51.5,
       "published_at": "2026-11-02T22:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "📋 Bragantino and Santos line-ups confirmed for Brasileirão round opener",
-          "source": "Yahoo Sports",
+          "title": "Red Bull Bragantino vs Santos FC live stream, TV channel and kick-off time | Serie A",
+          "source": "Goal.com",
           "snippet": ""
         },
         {
-          "title": "Arthur fit again with five matches before Santos contract ends",
+          "title": "RB Bragantino vs Santos Prediction: The hosts will end the guests' draw streak at home",
+          "source": "Telecom Asia Sport",
+          "snippet": ""
+        },
+        {
+          "title": "Santos encerra preparação para enfrentar o Red Bull Bragantino",
           "source": "OneFootball",
-          "snippet": ""
-        },
-        {
-          "title": "RB Bragantino vs Santos LIVE, Score Updates in Brasileirao Serie A Match",
-          "source": "VAVEL.com",
           "snippet": ""
         }
       ],
@@ -239,8 +326,8 @@
       "title": "حسام حسن",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 49.8,
+      "approx_traffic": "1000+",
+      "score": 51.1,
       "published_at": "2026-11-02T22:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -264,145 +351,116 @@
       "alert": false
     },
     {
-      "id": "7d5c3715626b8050d9",
-      "title": "جبل الفأس ايران",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 49.8,
-      "published_at": "2026-11-02T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ترامب يلمح لاحتمالية التوصل لاتفاق مع إيران قبل ساعات من الانتخابات | CNN Arabic | CNN",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "منشور غريب لكارلسون عن ضربة نووية محتملة لجبل الفأس",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "ترمب يبحث عن كبش فداء لحرب إيران.. هل يدفع هيغسيث أم كين الثمن؟",
-          "source": "الجزيرة نت",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7975116a5881da2ffe",
-      "title": "unc basketball schedule",
+      "id": "b27bc4ca90c8f53715",
+      "title": "zach dembo",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
       "score": 47.5,
-      "published_at": "2026-11-02T23:00:00Z",
+      "published_at": "2026-11-02T23:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Lucas: A Fast Learner",
-          "source": "University of North Carolina Athletics",
+          "title": "Kentucky district expected to be bellwether on Election Day",
+          "source": "West Kentucky Star",
           "snippet": ""
         },
         {
-          "title": "Sayon Keita's Already Got Game, And There's More To Come",
-          "source": "Tar Heel Times",
+          "title": "Beshear predicts early election night win for Democrats in heated Kentucky congressional race",
+          "source": "WHAS11",
           "snippet": ""
         },
         {
-          "title": "Clip: Sayon Keita's Elite Upside + What Still Needs Work...",
-          "source": "247Sports",
+          "title": "Turnout will decide Kentucky’s 6th District race between Dembo and Alvarado",
+          "source": "WKYT",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "66bc6533bbf2385c1d",
-      "title": "iowa state basketball",
+      "id": "6c5d87c0004a4bec3e",
+      "title": "college basketball rankings",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
       "score": 47.5,
-      "published_at": "2026-11-02T23:00:00Z",
+      "published_at": "2026-11-02T23:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Otzelberger returns to S.D. to kick off 2026-27 season",
-          "source": "KELOLAND.com",
+          "title": "College basketball rankings: Florida begins 2026-27 season as No. 1 in Top 25 And 1",
+          "source": "CBS Sports",
           "snippet": ""
         },
         {
-          "title": "Memphis Preview: Cyclones open the season against the Tigers in Sioux Falls",
-          "source": "Cyclone Fanatic",
+          "title": "CJ Ingram, Alex Lloyd Ready to Grow Behind Florida’s Stacked Roster",
+          "source": "WRUF 98.1 FM",
           "snippet": ""
         },
         {
-          "title": "How to watch Iowa State vs Memphis basketball Monday, TV, streaming",
-          "source": "The Des Moines Register",
+          "title": "Gators basketball preseason superlatives",
+          "source": "The Independent Florida Alligator",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "7938dbd4dbb5b1a2a0",
-      "title": "neil patrick harris vampire costumes 2026",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-11-02T23:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Neil Patrick Harris and Family Raise the Stakes with Vampire-Themed Halloween Costumes on Broadway’s The Lost Boys Set (Exclusive)",
-          "source": "People.com",
-          "snippet": ""
-        },
-        {
-          "title": "Neil Patrick Harris’s Kids Look So Grown Up Alongside Their Unrecognizable Dad for Family Halloween Costume",
-          "source": "InStyle",
-          "snippet": ""
-        },
-        {
-          "title": "Neil Patrick Harris and David Burtka Stun as ‘The Shining’ Twins",
-          "source": "IMDb",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "e8b1eed7c8ee46ede5",
-      "title": "uab basketball",
+      "id": "b5851d81a396190faf",
+      "title": "crown jewel 2026",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
       "score": 47.2,
-      "published_at": "2026-11-02T22:50:00Z",
+      "published_at": "2026-11-02T23:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Andy Kennedy, UAB men’s basketball back on court with nearly new roster in 2026-27",
-          "source": "AL.com",
+          "title": "Predicting WWE Crown Jewel 2026 Winners, Surprise Returns and Bold Booking Calls",
+          "source": "Bleacher Report",
           "snippet": ""
         },
         {
-          "title": "UAB Takes on McNeese to Open 2026-27 Season",
-          "source": "UAB Athletics",
+          "title": "Where to watch WWE's Crown Jewel: Time, match card, more",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "UAB Blazers vs McNeese Cowboys Prediction Nov. 2, 2026",
-          "source": "ATS.io",
+          "title": "Did CM Punk and Kevin Owens Refuse to Travel to Saudi Arabia for Crown Jewel?",
+          "source": "Yahoo Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "94c5a82bc52733c644",
+      "title": "gta 6 news",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.2,
+      "published_at": "2026-11-02T23:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Grand Theft Auto VI exclusive – The state that never sleeps",
+          "source": "GamesRadar+",
+          "snippet": ""
+        },
+        {
+          "title": "Rockstar art-directed 600,000 animations, so that GTA 6’s passers-by feel like real people",
+          "source": "Creative Bloq",
+          "snippet": ""
+        },
+        {
+          "title": "GTA 6 developer says 'you can have your life in the game' as Rockstar outlines roleplay depth",
+          "source": "TweakTown",
           "snippet": ""
         }
       ],
@@ -414,7 +472,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "500+",
-      "score": 47.2,
+      "score": 45.5,
       "published_at": "2026-11-02T20:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -425,216 +483,13 @@
           "snippet": ""
         },
         {
-          "title": "إلهام شاهين تثير الجدل برسالة غامضة: \"إذا نطق السفيه فلا تجبه\"",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
           "title": "إلهام شاهين: «لجان مأجورة تسعى لهدم الفن.. والسوشيال ميديا أكبر مصيبة في حياتنا»",
           "source": "المصري اليوم",
           "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "d2153aefa1a4c53d49",
-      "title": "جزيرة قشم",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 45.2,
-      "published_at": "2026-11-02T21:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "إيران.. دويّ انفجارات في جزيرة قشم والحرس الثوري يسيطر على مسيّرتين أمريكيتين",
-          "source": "الجزيرة نت",
-          "snippet": ""
         },
         {
-          "title": "طهران تعلن العثور على صيادَيْن فُقدا في مضيق هرمز",
-          "source": "مونت كارلو الدولية",
-          "snippet": ""
-        },
-        {
-          "title": "انفجارات تهز جزيرة قشم الإيرانية.. والسبب مجهول",
-          "source": "العربية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "96b9a8b38c4cdced4e",
-      "title": "ايران",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 44.5,
-      "published_at": "2026-11-02T21:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ترامب: إيران ترغب في تسوية ولا داعي للاستعجال بشأن قصفها",
-          "source": "سكاي نيوز عربية",
-          "snippet": ""
-        },
-        {
-          "title": "ترامب يلمح لاحتمالية التوصل لاتفاق مع إيران قبل ساعات من الانتخابات | CNN Arabic | CNN",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "تقرير: ما السيناريوهات العسكرية المحتملة للمواجهة الجديدة بين واشنطن وطهران؟",
-          "source": "مونت كارلو الدولية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "fb99b0e2d0b9365cda",
-      "title": "حسام حسن",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.5,
-      "published_at": "2026-11-02T21:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بلاغ للنائب العام ضد طليقة حسام حسن.. اتهامات بالجمع بين زوجين",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "الجمع بين زوجين واتهامات بالتزوير.. بلاغ للنائب العام ضد طليقة حسام حسن",
-          "source": "عكاظ",
-          "snippet": ""
-        },
-        {
-          "title": "محامي دان آدم: في انتظار قرار النائب العام غدًا.. واللي حصل سب وقذف",
-          "source": "القاهرة 24",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "28367375bcef68328e",
-      "title": "البنك المركزي",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.5,
-      "published_at": "2026-11-02T21:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مسؤول في «المركزي» الأوروبي: رفع أسعار الفائدة مجدداً بات ضرورياً لاحتواء التضخم",
-          "source": "الشرق الأوسط",
-          "snippet": ""
-        },
-        {
-          "title": "اليورو يستأنف مكاسبه بدعم رهانات رفع الفائدة الأوروبية بواسطة FXNEWSTODAY",
-          "source": "Investing.com",
-          "snippet": ""
-        },
-        {
-          "title": "اليورو يواصل مكاسبه بدعم من الزخم الإيجابي",
-          "source": "المتداول العربي",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "d169c66d51cfb5be73",
-      "title": "ماجد عبد الله",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 43.9,
-      "published_at": "2026-11-02T22:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "من تحدي رونالدو إلى مزاح الفراج مع ماجد عبدالله .. برامج السعودية و\"مصالحة الأساطير\" عرض مستمر!",
-          "source": "Goal.com",
-          "snippet": ""
-        },
-        {
-          "title": "\"طقطقة\".. أول تعليق من وليد الفراج حول أزمته مع ماجد عبدالله (فيديو)",
-          "source": "إرم نيوز",
-          "snippet": ""
-        },
-        {
-          "title": "ماجد عبد الله يقود أصدقاء اللاعبين",
-          "source": "جريدة الرياض",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f6a01b4dedc8d2e732",
-      "title": "بنفيكا ضد ألفيركا",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 43.2,
-      "published_at": "2026-11-02T20:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "توقعات مباراة بنفيكا ضد ألفيركا: هل سيواصل الفريق المضيف سلسلة انتصاراته؟",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        },
-        {
-          "title": "بنفيكا يتغلّب على ألفيركا ويواصل مطاردة بورتو في الدوري البرتغالي",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
-        },
-        {
-          "title": "تشكيلة مباراة بنفيكا وألفيركا | الدوري البرتغالي الممتاز · 2 نوفمبر 2026",
-          "source": "YSscores",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "4d0ce9d5fc11c03653",
-      "title": "صبا مبارك",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.9,
-      "published_at": "2026-11-02T20:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "صبا مبارك عن شخصية نادية في جريمة في الزمالك: \"اتعذبت كتير\"",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "محمد علي رزق عن أحمد العوضي: «سعيد بعودتنا للعمل معًا في رمضان 2027»",
-          "source": "بوابة أخبار اليوم الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "صبا مبارك تتصدر ترند إكس في مصر بعد عرض جريمة في الزمالك",
-          "source": "بوابة الشروق",
+          "title": "إلهام شاهين بردِ ذكي على هجوم مرتضى منصور اللاذع ضدها",
+          "source": "annahar.com",
           "snippet": ""
         }
       ],
@@ -645,8 +500,8 @@
       "title": "ديبورتيفو ضد أوساسونا",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 42.2,
+      "approx_traffic": "500+",
+      "score": 44.5,
       "published_at": "2026-11-02T20:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -670,12 +525,244 @@
       "alert": false
     },
     {
+      "id": "5a7b81d593b7b41d7e",
+      "title": "خادم الحرمين الشريفين",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 43.8,
+      "published_at": "2026-11-02T23:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بأمر الملك سلمان.. وسام المؤسس لرئيس أركان الدفاع الوطني اليوناني",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "بأمر خادم الحرمين.. وسام الملك عبدالعزيز لرئيس الأركان اليوناني",
+          "source": "جريدة الرياض",
+          "snippet": ""
+        },
+        {
+          "title": "سياسي / سمو وزير الدفاع يجري اتصالًا هاتفيًا بوزير الدفاع الوطني في الجمهورية الهيلينية",
+          "source": "وكالة الأنباء السعودية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d2153aefa1a4c53d49",
+      "title": "جزيرة قشم",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 43.5,
+      "published_at": "2026-11-02T21:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "إيران.. دويّ انفجارات في جزيرة قشم والحرس الثوري يسيطر على مسيّرتين أمريكيتين",
+          "source": "الجزيرة نت",
+          "snippet": ""
+        },
+        {
+          "title": "انفجارات \"مجهولة\" قرب مضيق هرمز جنوبي إيران",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        },
+        {
+          "title": "طهران تعلن العثور على صيادَيْن فُقدا في مضيق هرمز",
+          "source": "مونت كارلو الدولية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "96b9a8b38c4cdced4e",
+      "title": "ايران",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 42.8,
+      "published_at": "2026-11-02T21:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "ترامب يلمح لاحتمالية التوصل لاتفاق مع إيران قبل ساعات من الانتخابات | CNN Arabic | CNN",
+          "source": "CNN Arabic",
+          "snippet": ""
+        },
+        {
+          "title": "هشام الحلبي: ضربة أمريكية محتملة لـ إيران قد تنفذ خلال 3 أيام",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "خبر وتحليل - هل تستأنف الضربات الأمريكية ضد إيران بعد انتخابات التجديد النصفي؟",
+          "source": "مونت كارلو الدولية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "fb99b0e2d0b9365cda",
+      "title": "حسام حسن",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 42.8,
+      "published_at": "2026-11-02T21:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "بلاغ للنائب العام ضد طليقة حسام حسن.. اتهامات بالجمع بين زوجين",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "الجمع بين زوجين واتهامات بالتزوير.. بلاغ للنائب العام ضد طليقة حسام حسن",
+          "source": "عكاظ",
+          "snippet": ""
+        },
+        {
+          "title": "مفاجأة.. حسام حسن يرحب بمبادرة الصلح مع دان آدم",
+          "source": "إرم نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "28367375bcef68328e",
+      "title": "البنك المركزي",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 42.8,
+      "published_at": "2026-11-02T21:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "البرلمان الليبي يسمّي محافظاً جديداً للمصرف المركزي",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "«النواب» الليبي يكلّف أبو خزام محافظاً للمصرف المركزي",
+          "source": "الشرق الأوسط",
+          "snippet": ""
+        },
+        {
+          "title": "من هو فوزي أبو خزام محافظ البنك المركزي الجديد في ليبيا؟ (بروفايل)",
+          "source": "Anadolu Ajansı",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d169c66d51cfb5be73",
+      "title": "ماجد عبد الله",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 42.2,
+      "published_at": "2026-11-02T22:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "من تحدي رونالدو إلى مزاح الفراج مع ماجد عبدالله .. برامج السعودية و\"مصالحة الأساطير\" عرض مستمر!",
+          "source": "Goal.com",
+          "snippet": ""
+        },
+        {
+          "title": "\"طقطقة\".. أول تعليق من وليد الفراج حول أزمته مع ماجد عبدالله (فيديو)",
+          "source": "إرم نيوز",
+          "snippet": ""
+        },
+        {
+          "title": "ماجد عبد الله يقود أصدقاء اللاعبين",
+          "source": "جريدة الرياض",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "4d0ce9d5fc11c03653",
+      "title": "صبا مبارك",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 41.2,
+      "published_at": "2026-11-02T20:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "صبا مبارك عن شخصية نادية في جريمة في الزمالك: \"اتعذبت كتير\"",
+          "source": "Masrawy",
+          "snippet": ""
+        },
+        {
+          "title": "هل صبا مبارك شريرة أم ضحية؟.. محمد علي رزق يكشف مفاجأة عن شخصية نادية بـ«جريمة في الزمالك»",
+          "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "صبا مبارك تتصدر ترند إكس في مصر بعد عرض جريمة في الزمالك",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "80fdb0456d2264c459",
+      "title": "مصر للألومنيوم",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 40.5,
+      "published_at": "2026-11-02T21:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "البورصة تعلن نهاية حق وموعد توزيع كوبون مصر للألومنيوم",
+          "source": "معلومات مباشر",
+          "snippet": ""
+        },
+        {
+          "title": "16 نوفمبر.. نهاية حق الحصول على الكوبون النقدي لـ مصر للألومنيوم",
+          "source": "مجلة البوصلة الاقتصادية",
+          "snippet": ""
+        },
+        {
+          "title": "2000 فرصة عمل جديدة في الصعيد بإحدى شركات قطاع الأعمال العام",
+          "source": "اليوم السابع",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "e273d37fea7564c4c0",
       "title": "shabana mahmood",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 42.2,
+      "score": 40.5,
       "published_at": "2026-11-02T20:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -686,90 +773,42 @@
           "snippet": ""
         },
         {
-          "title": "Half-witted at best, a people-pleaser at worst: step forward, Chris Philp | John Crace",
+          "title": "Migration is a moral issue for Burnham – but is he trying to please everyone?",
           "source": "The Guardian",
           "snippet": ""
         },
         {
-          "title": "British government sets out tougher rules for migrants looking to settle in the UK",
-          "source": "Euronews.com",
+          "title": "Britain unveils 10-year wait for most immigrants",
+          "source": "Business Day",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "45943bf6d58896d855",
-      "title": "atalanta vs parma",
+      "id": "2fe12fd2f1a7abb219",
+      "title": "أتالانتا ضد بارما",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 42.2,
-      "published_at": "2026-11-02T20:20:00Z",
+      "approx_traffic": "100+",
+      "score": 39.8,
+      "published_at": "2026-11-02T21:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "LASK vs Slovan Bratislava betting offers: Up to £50 in free bets across nine bookmakers",
-          "source": "Squawka",
+          "title": "بارما يسقط أتالانتا.. وفيورنتينا يزيد معاناة ساسولو",
+          "source": "صحيفة الرياضية",
           "snippet": ""
         },
         {
-          "title": "Atalanta vs Parma: Lineups, Prediction, Odds & Bet Builder Tip",
-          "source": "WhoScored.com",
+          "title": "ما القنوات الناقلة لمباراة أتالانتا وبارما في الدوري الإيطالي 2026-2027؟ وكيف تشاهدها عبر الإنترنت؟",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "✅ Atalanta-Parma confirmed teams | Rowe, Pasalic, Romero and Nicolussi",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6cbbb09b0c1d3b9e16",
-      "title": "نتائج مباريات اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 41.9,
-      "published_at": "2026-11-02T20:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "نتائج مباريات كرة القدم اليوم (3 نوفمبر): فاز فريق رونالدو بنتيجة 6-2.",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        },
-        {
-          "title": "ترتيب مجموعة الأهلى بعد الفوز على المقاولون العرب فى كأس عاصمة مصر",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "سامي قمصان: محمد عبدالناصر يخضع لجراحة في القدم غدا",
-          "source": "يلاكورة",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "5a0497f907211073de",
-      "title": "chip gaines",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 41.5,
-      "published_at": "2026-11-02T23:00:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "Joanna, Chip Gaines Share Rare Photos of Son, 8, in ‘Star Wars’ Halloween Costumes",
-          "source": "People.com",
+          "title": "كيفية الحصول على تذاكر أتالانتا لموسم 2026/27: المباريات المقبلة، وأسعار تذاكر الدوري الإيطالي، ومعلومات عن ملعب نيو بالانس أرينا والمزيد",
+          "source": "Goal.com",
           "snippet": ""
         }
       ],
@@ -781,7 +820,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.5,
+      "score": 39.8,
       "published_at": "2026-11-02T21:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -805,58 +844,29 @@
       "alert": false
     },
     {
-      "id": "d9b057d62bc012e340",
-      "title": "ساما",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 39.2,
-      "published_at": "2026-11-02T20:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "طابع تذكاري احتفاءً بإطلاق رمز الريال",
-          "source": "جريدة الرياض",
-          "snippet": ""
-        },
-        {
-          "title": "«سبل» و«ساما» يُصدران طابعًا تذكاريًا احتفاءً برمز الريال السعودي",
-          "source": "صحيفة سبق الإلكترونية",
-          "snippet": ""
-        },
-        {
-          "title": "«سبل» تصدر طابعًا تذكاريًا احتفاءً بإطلاق رمز الريال السعودي",
-          "source": "صحيفة أحوال الإلكترونية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "c73ae39a18c4275ae0",
-      "title": "بلوزداد ضد الساورة",
+      "id": "f6a01b4dedc8d2e732",
+      "title": "بنفيكا ضد ألفيركا",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 38.9,
-      "published_at": "2026-11-02T20:10:00Z",
+      "approx_traffic": "200+",
+      "score": 38.5,
+      "published_at": "2026-11-02T20:50:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 2,
       "news_items": [
         {
-          "title": "الدوري الجزائري - شباب بلوزداد يهزم الساورة وينتزع صدارة الترتيب",
-          "source": "قناة ومنصة المشهد - أخبار العالم اليوم",
+          "title": "توقعات مباراة بنفيكا ضد ألفيركا: هل سيواصل الفريق المضيف سلسلة انتصاراته؟",
+          "source": "Vietnam.vn",
           "snippet": ""
         },
         {
-          "title": "نتائج مباريات اليوم في المحترف الاول",
-          "source": "دزاير تيوب",
+          "title": "تشكيلة مباراة بنفيكا وألفيركا | الدوري البرتغالي الممتاز · 2 نوفمبر 2026",
+          "source": "YSscores",
           "snippet": ""
         },
         {
-          "title": "انطلاق عملية بيع تذاكر مباراة شباب بلوزداد وشبيبة الساورة – الشروق أونلاين",
-          "source": "الشروق أونلاين",
+          "title": "ملخص المباراة بنفيكا - ألفيركا | الدوري البرتغالي الممتاز | يلا شووت",
+          "source": "YSscores",
           "snippet": ""
         }
       ],
