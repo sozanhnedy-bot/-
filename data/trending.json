@@ -1,89 +1,118 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T11:24:58.404787Z",
+  "updated_at": "2026-11-03T12:21:47.211288Z",
   "items": [
     {
-      "id": "e943406acde09cfec2",
-      "title": "learner tien",
+      "id": "11207523f9b2a67e64",
+      "title": "michigan governor race",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "5000+",
-      "score": 61.2,
-      "published_at": "2026-11-03T11:00:00Z",
+      "approx_traffic": "1000+",
+      "score": 54.3,
+      "published_at": "2026-11-03T12:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Highlights: Musetti fends off Hurkacz in nervy Paris 2026 opener",
-          "source": "ATP Tour",
+          "title": "Michigan Governor Midterm Election 2026: Live Results",
+          "source": "NBC News",
           "snippet": ""
         },
         {
-          "title": "Paris R1 previews and predictions: Musetti vs. Hurkacz, Khachanov vs. Shapovalov",
-          "source": "The Grandstand",
+          "title": "Jocelyn Benson, John James face off to be Michigan's next governor",
+          "source": "CBS News",
           "snippet": ""
         },
         {
-          "title": "ATP Paris Best Bets Including Novak Djokovic Vs Valentin Vacherot",
-          "source": "Last Word On Sports",
+          "title": "Michigan governor's race to test who voters blame for rising costs",
+          "source": "Detroit Free Press",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
-      "id": "53ebc10d8177fb1946",
-      "title": "alexandra eala",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "ad009bfd6b49f7084c",
+      "title": "اقتصاد",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 54.2,
+      "score": 52.3,
       "published_at": "2026-11-03T11:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "LIVE: Alex Eala vs Alycia Parks – Hong Kong Open Round of 32",
-          "source": "Inquirer.net",
+          "title": "رغم حرب إيران واضطرابات هرمز.. السعودية تواصل مشاريعها الكبرى",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Tennis: Alex Eala rises to world No. 17",
-          "source": "ABS-CBN",
+          "title": "القطاع الخاص في السعودية يواصل نموه للشهر السابع على التوالي",
+          "source": "عكاظ",
           "snippet": ""
         },
         {
-          "title": "Alex Eala to start Hong Kong Open bid vs. Emerson Jones as Alycia Parks withdraws with shoulder injury",
-          "source": "GMA Network",
+          "title": "متانة المركز الخارجي السعودي تدعم الاقتصاد رغم تحديات الحرب",
+          "source": "الشرق الأوسط",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "1a784a54e16bb3bcf0",
-      "title": "what do you need to bring to vote",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "ecc7ebfd106b52040e",
+      "title": "مصر",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 54.2,
-      "published_at": "2026-11-03T11:00:00Z",
+      "score": 51.6,
+      "published_at": "2026-11-03T10:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Nashville in Focus: Tennessee governor's race, the numbers you should notice",
-          "source": "WZTV",
+          "title": "طرح مصري لتخفيف أعباء ديون الأسواق الناشئة.. ماذا يتضمن؟",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Knoxville election results 2026: Get local, state and federal updates",
-          "source": "Yahoo",
+          "title": "بيانات \"بلومبرغ\": مصر تجمع 500 مليون دولار بإضافة شريحتين لسندات دولية",
+          "source": "الشرق بلومبرغ",
           "snippet": ""
         },
         {
-          "title": "What to know before you head to the polls in the Chattanooga area Tuesday",
-          "source": "Chattanooga Times Free Press",
+          "title": "مصر عادت مجددا للأسواق الدولية.. بفتح إصدارات قائمة بنصف مليار دولار بمتوسط أجل يصل 5 سنوات",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "637570b7dc6a1411cb",
+      "title": "eric dane",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 51.3,
+      "published_at": "2026-11-03T12:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Eric Dane shares regrets, hopes for his teenage daughters in emotional letter",
+          "source": "USA Today",
+          "snippet": ""
+        },
+        {
+          "title": "Eric Dane's wife wants fans to see 'beyond McSteamy' to the complicated person he was",
+          "source": "azcentral.com and The Arizona Republic",
+          "snippet": ""
+        },
+        {
+          "title": "Eric Dane detailed his ups and downs as Dr. Mark Sloan on Grey’s Anatomy in posthumous memoir",
+          "source": "Entertainment Weekly",
           "snippet": ""
         }
       ],
@@ -95,7 +124,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "2000+",
-      "score": 53.2,
+      "score": 51.3,
       "published_at": "2026-11-03T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -119,193 +148,19 @@
       "alert": false
     },
     {
-      "id": "3e8bcc8ff8789013e5",
-      "title": "dólar estadounidense",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.2,
-      "published_at": "2026-11-03T11:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Así está el dólar en México hoy: tipo de cambio y cotizaciones en bancos",
-          "source": "Dallas News",
-          "snippet": ""
-        },
-        {
-          "title": "El peso mexicano pierde fuerza ante el dólar en este inicio de noviembre; analistas esperan otra semana de pérdidas",
-          "source": "El Informador",
-          "snippet": ""
-        },
-        {
-          "title": "El Peso mexicano se recupera con fuerza tras caer a mínimos de una semana",
-          "source": "FXStreet",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "ecc7ebfd106b52040e",
-      "title": "مصر",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 50.5,
-      "published_at": "2026-11-03T10:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بدءاً من نوفمبر.. مصر تفرض ضوابط جديدة على دخول رعايا 3 دول",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "تأشيرات مسبقة واشتراطات مالية ومرافقة أسرية.. إجراءات جديدة لدخول مواطني 3 دول إلى مصر",
-          "source": "مصريون في الكويت",
-          "snippet": ""
-        },
-        {
-          "title": "السياحة تلغي تسهيلات دخول مواطني 3 دول إلى مصر وتحدد ضوابط جديدة",
-          "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "c636c40dd78a824455",
-      "title": "طليقة حسام حسن",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 50.5,
-      "published_at": "2026-11-03T09:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بلاغ للنائب العام ضد طليقة حسام حسن.. اتهامات بالجمع بين زوجين",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "هل انتهى زواجها الأول قبل ارتباطها بحسام حسن؟.. طليق دان آدم يكشف التفاصيل",
-          "source": "عكاظ",
-          "snippet": ""
-        },
-        {
-          "title": "مفاجأة.. حسام حسن يرحب بمبادرة الصلح مع دان آدم",
-          "source": "إرم نيوز",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f4227f11b7584b7ac5",
-      "title": "جزيرة قشم الايرانية",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 50.2,
-      "published_at": "2026-11-03T09:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "إسرائيل تنفي مشاركتها في ضربات أميركية على جزيرة قشم الإيرانية",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "باحث سياسي: التحركات العسكرية الأمريكية تناقض التصريحات بشأن التفاوض مع إيران",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "وساطات \"مكوكية\" لتجنب جولة حرب جديدة في المنطقة، وإيران تقول إن \"إصبعها على الزناد\"",
-          "source": "BBC",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "54f86a10d8343cc51f",
-      "title": "helen sharp",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 48.8,
-      "published_at": "2026-11-03T09:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Florida plane crash. Brother, 4, and sister, 2, among the victims",
-          "source": "The Palm Beach Post",
-          "snippet": ""
-        },
-        {
-          "title": "Learjet That Crashed in Florida Carried Texas Family and Friends on Vacation",
-          "source": "The New York Times",
-          "snippet": ""
-        },
-        {
-          "title": "Exclusive | Learjet co-pilot in fatal Florida crash ID’d as Nathalia Filgueiras, 20, who got her license in high school",
-          "source": "New York Post",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "b82c88df5d97d2761c",
-      "title": "صدى البلد",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 48.5,
-      "published_at": "2026-11-03T08:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "بعد تخطي المقاولون.. موعد مباراة الأهلي المقبلة أمام السكة الحديد",
-          "source": "يلاكورة",
-          "snippet": ""
-        },
-        {
-          "title": "الأهلى يغلق صفحة كأس عاصمة مصر ويستعد لمواجهة السكة الحديد",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "كأس مصر – موعد مباراة الأهلي ضد السكة الحديد والقناة الناقلة",
-          "source": "FilGoal",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "3234d50f81ba66cc5e",
       "title": "alexandra eala",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 47.5,
+      "approx_traffic": "500+",
+      "score": 49.6,
       "published_at": "2026-11-03T11:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "The new WTA rankings with Alex Eala, Leylah Fernandez, Harriet Dart and Victoria Mboko all moving",
-          "source": "Tennishead",
+          "title": "LIVE: Alex Eala vs Alycia Parks – Hong Kong Open Round of 32",
+          "source": "Inquirer.net",
           "snippet": ""
         },
         {
@@ -314,136 +169,107 @@
           "snippet": ""
         },
         {
-          "title": "What Alex Eala needs to finish 2026 with a career-high ranking and achieve huge Australian Open boost",
-          "source": "Yahoo",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "a8cba5475e722c0650",
-      "title": "andrey rublev",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.5,
-      "published_at": "2026-11-03T11:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Rolex Paris Masters Predictions: Tennis best bets and picks for Tuesday, November 3",
-          "source": "VSiN",
-          "snippet": ""
-        },
-        {
-          "title": "Paris R1 previews and predictions: Tien vs. Tsitsipas, Nakashima vs. Berrettini",
-          "source": "The Grandstand",
-          "snippet": ""
-        },
-        {
-          "title": "ATP Paris Day 2 Predictions Including Stefanos Tsitsipas vs Learner Tien",
-          "source": "Last Word On Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "3b163dfb0109347940",
-      "title": "تكافل وكرامة",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 47.5,
-      "published_at": "2026-11-03T07:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "صرف مساعدات تكافل وكرامة لشهر نوفمبر 2026 فى هذا الموعد",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "موعد صرف معاش تكافل وكرامة نوفمبر 2026",
-          "source": "مصريون في الكويت",
-          "snippet": ""
-        },
-        {
-          "title": "لتجنب وقف المعاش.. خطوات ورابط تحديث بيانات المستفيدين من تكافل وكرامة 2026",
-          "source": "المصري اليوم",
+          "title": "Eala climbs to 17th in WTA rankings",
+          "source": "BusinessWorld Online",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "86ae75a2685f6746f2",
-      "title": "biratnagar kings vs janakpur bolts",
+      "id": "049bbd4238d1749301",
+      "title": "ginebra vs san miguel",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 46.2,
-      "published_at": "2026-11-03T10:30:00Z",
+      "score": 47.6,
+      "published_at": "2026-11-03T12:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Live Cricket Score, Schedule, Latest News, Stats & Videos",
-          "source": "Cricbuzz",
+          "title": "Going for the killer blow | Manila Bulletin - newspaper",
+          "source": "Magzter",
           "snippet": ""
         },
         {
-          "title": "Biratnagar Kings vs Janakpur Bolts T20 Today at Tribhuvan University International Cricket Ground, Kirtipur, Nepal stadium",
-          "source": "AIMA Media",
+          "title": "AVERTING DISASTER",
+          "source": "Daily Tribune",
           "snippet": ""
         },
         {
-          "title": "Match Predictions: Nepal Premier League 2026 - 12th & 13th Match - Kings vs Bolts; Lions vs Avengers - 3rd November",
-          "source": "Cricket World",
+          "title": "Closeout in Dasma?",
+          "source": "Philstar.com",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
     },
     {
-      "id": "d0a2f4bf05ea351202",
-      "title": "علم الأرصاد الجوية",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "1000+",
-      "score": 45.5,
-      "published_at": "2026-11-03T06:40:00Z",
+      "id": "10b190f4b62b0a2b2a",
+      "title": "sirius xm",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-03T12:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "وزير الدولة للشؤون الخارجية يجتمع مع سفير قبرص",
-          "source": "جريدة الشرق",
+          "title": "SiriusXM Stock Rises On Subscriber Gains",
+          "source": "Billboard",
           "snippet": ""
         },
         {
-          "title": "طقس حار نسبيا نهارا مع سحب متفرقة في البحر",
-          "source": "مرسال قطر",
+          "title": "Sirius XM’s Q3 earnings call: our top 5 analyst questions",
+          "source": "Yahoo Finance",
           "snippet": ""
         },
         {
-          "title": "الأرصاد الجوية تحذر من رؤية أفقية متدنية على بعض مناطق الساحل الليلة",
-          "source": "شبكة تواصل الإخبارية",
+          "title": "Sirius XM: Green Shoots Confirm Bull Thesis (NASDAQ:SIRI)",
+          "source": "Seeking Alpha",
           "snippet": ""
         }
       ],
-      "alert": false
+      "alert": true
+    },
+    {
+      "id": "62678466704f930e19",
+      "title": "annie andrews",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-03T12:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Inside the Final Days of Darline Graham’s Reluctant Senate Run",
+          "source": "WSJ",
+          "snippet": ""
+        },
+        {
+          "title": "South Carolina Senate race gets unexpectedly close after Lindsey Graham's sister Darline stumbles",
+          "source": "AP News",
+          "snippet": ""
+        },
+        {
+          "title": "Could a Democrat Win the Senate Race in Deep-Red South Carolina?",
+          "source": "Time Magazine",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "ceaf7862f505387208",
       "title": "jesus de miguel",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 45.2,
+      "approx_traffic": "500+",
+      "score": 47.3,
       "published_at": "2026-11-03T10:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -459,8 +285,8 @@
           "snippet": ""
         },
         {
-          "title": "Moment of silence before the training session",
-          "source": "Real Madrid CF | Web Oficial",
+          "title": "Tenerife footballer Jesús de Miguel dies aged 30 after on-pitch collision",
+          "source": "The Guardian",
           "snippet": ""
         }
       ],
@@ -471,8 +297,8 @@
       "title": "jesus de miguel",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 45.2,
+      "approx_traffic": "500+",
+      "score": 47.3,
       "published_at": "2026-11-03T10:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -496,157 +322,128 @@
       "alert": false
     },
     {
-      "id": "faddfbeef30539a821",
-      "title": "is there mail delivery on election day",
+      "id": "51c4cf4152d0a2eeed",
+      "title": "georgia governor race",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.5,
-      "published_at": "2026-11-03T11:10:00Z",
+      "approx_traffic": "200+",
+      "score": 47.0,
+      "published_at": "2026-11-03T11:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Inside the US Postal Service sprint to deliver millions of ballots by Tuesday",
-          "source": "Reuters",
+          "title": "Live coverage of the 2026 midterms elections, Nov. 1",
+          "source": "Politico",
           "snippet": ""
         },
         {
-          "title": "Still have a mail-in ballot for this year's election? Here's what to do",
-          "source": "NBC 5 Chicago",
+          "title": "Bottoms, Collins make final campaign push before Georgia votes",
+          "source": "CBS News",
           "snippet": ""
         },
         {
-          "title": "PMG gives support for Election Mail delivery in new video",
-          "source": "USPS",
+          "title": "Final pre-election poll shows dead heat in Georgia governor race",
+          "source": "FOX 5 Atlanta",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "020abb51fae322074e",
-      "title": "tiempo de hoy",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.5,
-      "published_at": "2026-11-03T11:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Aviso por inundaciones repentinas afecta Deerfield Beach y sectores cercanos a la I-95",
-          "source": "Univision",
-          "snippet": ""
-        },
-        {
-          "title": "Alerta de tiempo para partes del condado Miami-Dade",
-          "source": "Telemundo Miami (51)",
-          "snippet": ""
-        },
-        {
-          "title": "Ron DeSantis declara estado de emergencia en Florida por las inundaciones históricas",
-          "source": "Telemundo",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "ad009bfd6b49f7084c",
-      "title": "اقتصاد",
+      "id": "54f86a10d8343cc51f",
+      "title": "helen sharp",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 44.2,
-      "published_at": "2026-11-03T11:00:00Z",
+      "approx_traffic": "500+",
+      "score": 46.9,
+      "published_at": "2026-11-03T09:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "مجلس الشؤون الاقتصادية يستعرض مؤشرات الاقتصاد السعودي وتحول القطاع الصحي",
-          "source": "صحيفة سبق الإلكترونية",
+          "title": "Jet may have broken apart before Florida crash, officials say, as family named among victims",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "الشؤون الاقتصادية: السعودية شريك موثوق وفاعل في تعزيز استقرار الاقتصاد العالمي",
-          "source": "العربية",
+          "title": "Learjet That Crashed in Florida Carried Texas Family and Friends on Vacation",
+          "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "«الشؤون الاقتصادية»: المحافظة على استقرار الأسعار رغم الضغوط العالمية",
-          "source": "جريدة المدينة",
+          "title": "Exclusive | Learjet co-pilot in fatal Florida crash ID’d as Nathalia Filgueiras, 20, who got her license in high school",
+          "source": "New York Post",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "9b1660c214669b0e9f",
-      "title": "google android botnet takedown",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.2,
-      "published_at": "2026-11-03T11:00:00Z",
+      "id": "d0a2f4bf05ea351202",
+      "title": "علم الأرصاد الجوية",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 46.6,
+      "published_at": "2026-11-03T06:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Shutting the Door on the XCPE Botnet",
-          "source": "Google Cloud",
+          "title": "لا تنخدعوا بارتفاع الحرارة.. الأرصاد تكشف مفاجآت بحالة الطقس حتى الأحد المقبل",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "One of Google’s Android partners turned 1.3 million set-top boxes into a botnet",
-          "source": "The Verge",
+          "title": "الأرصاد: انخفاض درجات الحرارة بدءا من الخميس.. وفرص لسقوط أمطار",
+          "source": "بوابة الشروق",
           "snippet": ""
         },
         {
-          "title": "Cops bust botnet of 1.3M infected Android TV boxes",
-          "source": "The Register",
+          "title": "الأرصاد: طقس اليوم الثلاثاء حار نهارًا مائل للبرودة ليلًا.. والعظمى بالقاهرة 30",
+          "source": "نجوم إف إم",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
-      "id": "6840e7bbe4e9358055",
-      "title": "cowboys media availability after cardinals",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 44.2,
-      "published_at": "2026-11-03T11:00:00Z",
+      "id": "3b163dfb0109347940",
+      "title": "تكافل وكرامة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "1000+",
+      "score": 45.6,
+      "published_at": "2026-11-03T07:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "“Whole Organization Is Rotten,” “The Team Is Cooked”: NFL Fans Rip Dak Prescott-Led Cowboys for Leaving Team Facility Before Arrival of Reporters",
-          "source": "Yahoo Sports",
+          "title": "صرف مساعدات تكافل وكرامة لشهر نوفمبر 2026 فى هذا الموعد",
+          "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "Most Cowboys players left facility on Monday before locker-room media availability",
-          "source": "NBC Sports",
+          "title": "موعد صرف معاش تكافل وكرامة نوفمبر 2026",
+          "source": "مصريون في الكويت",
           "snippet": ""
         },
         {
-          "title": "“Roster/Team/Staff/Organization Is Cooked”: Cowboys Analyst Calls Out Jerry Jones’ Team After Players Leave Facility Before Reporters Arrive",
-          "source": "AOL.com",
+          "title": "لتجنب وقف المعاش.. خطوات ورابط تحديث بيانات المستفيدين من تكافل وكرامة 2026",
+          "source": "المصري اليوم",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
     },
     {
       "id": "97b61c5184e24add1a",
       "title": "كريم فهمي",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 43.9,
+      "approx_traffic": "200+",
+      "score": 45.0,
       "published_at": "2026-11-03T10:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -670,87 +467,319 @@
       "alert": false
     },
     {
+      "id": "f65313ec8c80d83138",
+      "title": "francisco cerundolo",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 44.9,
+      "published_at": "2026-11-03T11:50:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "November 3, 2026: Seyboth Wild vs Meligeni Alves Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 4, 2026: Kobori / Plipuech vs Christie / Silva Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 4, 2026: Hontama / Uchijima vs Falkowska / Smith Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "5897e8e129282b335b",
+      "title": "voting new jersey",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.3,
+      "published_at": "2026-11-03T12:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Virginia U.S. House Election Live Results 2026",
+          "source": "AP News",
+          "snippet": ""
+        },
+        {
+          "title": "New Jersey voters casting ballot in number of races",
+          "source": "CBS News",
+          "snippet": ""
+        },
+        {
+          "title": "New Jersey U.S. House Midterm Election 2026: Live Results",
+          "source": "NBC News",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "86ae75a2685f6746f2",
+      "title": "biratnagar kings vs janakpur bolts",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 44.3,
+      "published_at": "2026-11-03T10:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Saif falls short as Janakpur lose in final-ball thriller",
+          "source": "www.daily-sun.com",
+          "snippet": ""
+        },
+        {
+          "title": "Live Cricket Score, Schedule, Latest News, Stats & Videos",
+          "source": "Cricbuzz",
+          "snippet": ""
+        },
+        {
+          "title": "Andre Russell stars as Biratnagar beat Janakpur by two runs in NPL thriller",
+          "source": "myRepublica",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d3bcc703dd5843b1c9",
+      "title": "cory booker",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.0,
+      "published_at": "2026-11-03T11:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Democratic N.J. Sen. Cory Booker faces 3 challengers for U.S. Senate seat",
+          "source": "CBS News",
+          "snippet": ""
+        },
+        {
+          "title": "NJ senate election 2026: Booker, Murphy make final pitch to New Jersey voters",
+          "source": "ABC7 New York",
+          "snippet": ""
+        },
+        {
+          "title": "Power & Politics: Vote 2026 - One-on-one with Republican candidate for U.S. Senate Justin Murphy",
+          "source": "News12 | New Jersey",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "255aa59f500069a2b6",
+      "title": "strands answers",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 44.0,
+      "published_at": "2026-11-03T11:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Today’s NYT Strands Hints, Spangram and Answers for Tuesday, Nov. 3, #975",
+          "source": "CNET",
+          "snippet": ""
+        },
+        {
+          "title": "Today's NYT Strands Puzzle: Hints and Answers for November 2",
+          "source": "India News Network",
+          "snippet": ""
+        },
+        {
+          "title": "NYT Strands Hint Today: Tuesday, November 3 Spangram And Answers",
+          "source": "Forbes",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "677f4f8831ef0f2121",
       "title": "jesús de miguel",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 42.9,
+      "approx_traffic": "200+",
+      "score": 44.0,
       "published_at": "2026-11-03T10:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Muere Jesús de Miguel",
+          "title": "Muere Jesús de Miguel, delantero del Tenerife, a los 30 años de edad",
           "source": "MARCA",
           "snippet": ""
         },
         {
-          "title": "De los campos de tierra a la gloria: la historia del delantero del Tenerife que llegó tarde y se marchó pronto",
-          "source": "Goal.com",
+          "title": "La reacción del portero del Andorra tras la durísima entrada que acabó con De Miguel saliendo en camilla",
+          "source": "Diario AS",
           "snippet": ""
         },
         {
-          "title": "Mensaje de pésame de la RFEF",
-          "source": "Mundo Deportivo",
+          "title": "Mbappé sobre la muerte de un jugador español: profunda tristeza, no hay palabras",
+          "source": "Yahoo",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "dc1a7238cbf1bd8796",
-      "title": "محمد رمضان",
+      "id": "ce6ab26867f369d962",
+      "title": "jesús de miguel",
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 41.9,
+      "score": 43.0,
+      "published_at": "2026-11-03T11:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Muere Jesús de Miguel, delantero del Tenerife, a los 30 años de edad",
+          "source": "MARCA",
+          "snippet": ""
+        },
+        {
+          "title": "Mbappé sobre la muerte de un jugador español: profunda tristeza, no hay palabras",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "Se suspende la jornada de fútbol tras el fallecimiento de Jesús de Miguel",
+          "source": "Diario AS",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "ac62bdb1efab0b5cdb",
+      "title": "نادي الدحيل الرياضي",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 41.7,
+      "published_at": "2026-11-03T10:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "نيوم يستضيف الدحيل القطري في دوري أبطال الخليج بحثاً عن الانتصار",
+          "source": "صحيفة سبق الإلكترونية",
+          "snippet": ""
+        },
+        {
+          "title": "نيوم يستضيف الدحيل في «أبطال الخليج»",
+          "source": "عكاظ",
+          "snippet": ""
+        },
+        {
+          "title": "نيوم يستضيف الدحيل القطري بحثًا عن استعادة الانتصارات في دوري أبطال الخليج",
+          "source": "عاجل",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "8e921ac96299aa9397",
+      "title": "what do you need to vote",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 41.3,
+      "published_at": "2026-11-03T12:00:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "New Yorkers can still register to vote on Election Day but won't be able to cast a ballot",
+          "source": "CBS News",
+          "snippet": ""
+        },
+        {
+          "title": "What do you need for the 2026 midterm elections in New York and New Jersey? Find what to bring with you when you vote",
+          "source": "CBS News",
+          "snippet": ""
+        },
+        {
+          "title": "How to register to vote in New York and New Jersey for the 2026 midterm elections",
+          "source": "CBS News",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "daa7308433c3c54123",
+      "title": "afc asian cup",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 40.0,
       "published_at": "2026-11-03T09:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "بعد فترة من السجال.. رمضان للعوضي: \"بالبطولات أنا أخوك الكبير\"",
-          "source": "العربية",
+          "title": "AFC Asian Cup Saudi Arabia 2027™️ to Kick Off in December 2027",
+          "source": "وكالة الأنباء السعودية",
           "snippet": ""
         },
         {
-          "title": "محمد رمضان يوجه رسالة لـ أحمد العوضي قبل منافستهما في رمضان 2027",
-          "source": "Masrawy",
+          "title": "Asian Cup postponed in wake of attacks on Saudi Arabia",
+          "source": "BBC",
           "snippet": ""
         },
         {
-          "title": "رسالة ودية من محمد رمضان لأحمد العوضي قبل معركة رمضان 2027",
-          "source": "مجلة لها",
+          "title": "Asian Football Confederation postpones 2027 Asian Cup in Saudi Arabia",
+          "source": "ESPN",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "a00275d3d2cbbf3198",
-      "title": "san antonio weather",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "12e2554cebab307fcf",
+      "title": "جافي",
+      "region": "egypt",
+      "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 41.2,
-      "published_at": "2026-11-03T11:00:00Z",
+      "score": 39.3,
+      "published_at": "2026-11-03T09:30:00Z",
       "source": "Google Trends",
-      "source_count": 2,
+      "source_count": 3,
       "news_items": [
         {
-          "title": "Quick round of showers this morning, then lower humidity",
-          "source": "KSAT",
+          "title": "قرار حاسم من برشلونة بشأن رحيل جافي",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "Muggy conditions expected on Sunday | KENS 5 Weather Impact Forecast",
-          "source": "kens5.com",
+          "title": "فليك يصفع غافي: اعرف دورك مع برشلونة",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "Muggy Sunday, but a cool front arrives Tuesday morning",
-          "source": "KSAT",
+          "title": "دوام الحال من المحال: بابلو جافي \"روح برشلونة التي دمرتها الإصابات والمشاكل\".. كل الطرق تؤدي للرحيل ولكن!",
+          "source": "Goal.com",
           "snippet": ""
         }
       ],
@@ -762,7 +791,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 40.2,
+      "score": 38.3,
       "published_at": "2026-11-03T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -786,70 +815,12 @@
       "alert": false
     },
     {
-      "id": "a8ab2092bbd60d63c2",
-      "title": "npl live",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 40.2,
-      "published_at": "2026-11-03T09:00:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "Cricket match player highlights | JAB vs POA, 9th Match, Nepal Premier League 2026",
-          "source": "Cricbuzz",
-          "snippet": ""
-        },
-        {
-          "title": "9th Match (D/N), Nepal Premier League at Kirtipur, Nov 1 2026",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Live Cricket Score, Schedule, Latest News, Stats & Videos",
-          "source": "Cricbuzz",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a475797038c63e4b69",
-      "title": "trit raj das",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 40.2,
-      "published_at": "2026-11-03T09:00:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Match Predictions: Nepal Premier League 2026 - 9th Match - Janakpur Bolts vs Pokhara Avengers - 1st November",
-          "source": "Cricket World",
-          "snippet": ""
-        },
-        {
-          "title": "Nepal Premier League Cricket: Janakpur Bolts vs Pokhara Avengers Match",
-          "source": "Ratopati",
-          "snippet": ""
-        },
-        {
-          "title": "Shakib takes three wickets but Pokhara suffer heavy defeat in NPL",
-          "source": "BDCricTime",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
       "id": "ae4c0e787d89b25339",
       "title": "علاء عوض",
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 39.9,
+      "score": 38.0,
       "published_at": "2026-11-03T07:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -867,6 +838,35 @@
         {
           "title": "الفنان علاء عوض: عمرو سعد طلب إعادة كتابة دوري من أول وجديد بمجرد توقيعي على مسلسل الأجهر",
           "source": "بوابة الشروق",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "41d04a39ef51b75308",
+      "title": "رمضان",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 37.3,
+      "published_at": "2026-11-03T07:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "وزير التعليم يفاجئ أولياء أمور ناشدوه منح الطلاب إجازة فى رمضان برد صادم",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "هل المدارس اجازة في رمضان ؟.. وزير التعليم يحسم الجدل بقرار نهائي",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "رد حاسم من وزير التعليم على اقتراح منح الطلاب إجازة في شهر رمضان",
+          "source": "Masrawy",
           "snippet": ""
         }
       ],
