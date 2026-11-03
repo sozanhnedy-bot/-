@@ -1,31 +1,89 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T05:52:06.000964Z",
+  "updated_at": "2026-11-03T07:02:03.805179Z",
   "items": [
     {
-      "id": "a3adfb44df2ae264b5",
-      "title": "warriors",
+      "id": "3da8aa9b0a2d0dafd8",
+      "title": "nba standings",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "20000+",
-      "score": 66.9,
-      "published_at": "2026-11-03T05:20:00Z",
+      "approx_traffic": "5000+",
+      "score": 59.6,
+      "published_at": "2026-11-03T05:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "3 Burning Questions Ahead of Suns' Rematch With Warriors",
+          "title": "Luka Doncic touts his improved defense, draws praise from Lakers, Raptors",
+          "source": "ESPN",
+          "snippet": ""
+        },
+        {
+          "title": "Starting 5: Luka makes history, Celtics and Warriors extend streaks",
+          "source": "NBA.com",
+          "snippet": ""
+        },
+        {
+          "title": "The Lakers 'live on a spaceship,' and Luka Dončić looks like the best damn pilot in the galaxy",
           "source": "Yahoo Sports",
           "snippet": ""
-        },
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "7b522fd0451cbe94ee",
+      "title": "تسعير",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "2000+",
+      "score": 55.6,
+      "published_at": "2026-11-03T05:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
         {
-          "title": "Is Steph Curry Playing Tonight? (Injury Update, Betting Impact for Suns vs. Warriors)",
-          "source": "Sports Illustrated",
+          "title": "رسميًا.. أسعار البنزين والسولار اليوم الثلاثاء 3 نوفمبر 2026 بعد قرار لجنة تسعير المنتجات البترولية",
+          "source": "المصري اليوم",
           "snippet": ""
         },
         {
-          "title": "Game Preview: Warriors vs. Suns - 11/2/26",
-          "source": "NBA.com",
+          "title": "أسعار البنزين والسولار فى محطات تموين السيارات اليوم الأحد 1 نوفمبر 2026",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "الحكومة تفاجئ المواطنين.. أسعار البنزين والسولار اليوم في مصر",
+          "source": "صدى البلد",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "48ff026cbc15c1e2bd",
+      "title": "brandin podziemski",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "5000+",
+      "score": 53.6,
+      "published_at": "2026-11-03T05:50:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "Devin Booker scores 26 points, fouls out late",
+          "source": "NBC Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Miles Bridges records 21/6/3/4/1 line vs. GSW",
+          "source": "NBC Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Dillon Brooks records 18 points, eight rebounds",
+          "source": "NBC Sports",
           "snippet": ""
         }
       ],
@@ -36,199 +94,54 @@
       "title": "منصه",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 59.3,
+      "approx_traffic": "2000+",
+      "score": 52.9,
       "published_at": "2026-11-03T04:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "اختراق \"باينانس\" يختبر ثقة المستثمرين.. لماذا كان رد فعل بيتكوين محدوداً؟",
+          "title": "كوريا الشمالية تنفي مسؤوليتها عن قرصنة \"بينانس\".. والمنصة تستأنف عمليات السحب",
           "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "منصة \"بينانس\".. ماذا قال ترامب عن \"أكبر عملية اختراق في العالم\"؟",
-          "source": "CNN Arabic",
           "snippet": ""
         },
         {
           "title": "بيونغيانغ تنفي اتهام واشنطن بسرقة مليارات من منصة \"بايناس\"",
           "source": "سكاي نيوز عربية",
           "snippet": ""
+        },
+        {
+          "title": "منصة \"بينانس\".. ماذا قال ترامب عن \"أكبر عملية اختراق في العالم\"؟",
+          "source": "CNN Arabic",
+          "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "c54d64ed6742fbabf3",
-      "title": "clippers",
+      "id": "a10553bef808674e78",
+      "title": "jil teichmann",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "2000+",
-      "score": 57.3,
-      "published_at": "2026-11-03T05:30:00Z",
+      "score": 50.6,
+      "published_at": "2026-11-03T06:20:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 1,
       "news_items": [
         {
-          "title": "Yaxel Lendeborg scores 37 points, most by a Warriors rookie since Stephen Curry",
-          "source": "ESPN",
+          "title": "November 4, 2026: Claire Liu vs Katie Boulter: Set 2 Winner Tennis Prediction Market",
+          "source": "Robinhood",
           "snippet": ""
         },
         {
-          "title": "Yaxel Lendeborg nets 37 in highest scoring game by Warriors rookie since Steph Curry in 2010",
-          "source": "The New York Times",
+          "title": "November 3, 2026: Maaya Rajeshwaran Revathi vs Katarzyna Kawa: Set 2 Winner Tennis Prediction Market",
+          "source": "Robinhood",
           "snippet": ""
         },
         {
-          "title": "Game Recap: Warriors 124, Clippers 112",
-          "source": "NBA.com",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "593665075a0e990f31",
-      "title": "الفجر اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 55.6,
-      "published_at": "2026-11-03T02:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "مواقيت الصلاة اليوم الثلاثاء 3 نوفمبر 2026 بمحافظات الجمهورية",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "موعد أذان وصلاة العصر اليوم الإثنين الموافق 2 نوفمبر",
-          "source": "Masrawy",
-          "snippet": ""
-        },
-        {
-          "title": "«الفجر في الإسكندرية 04.48».. جدول مواقيت الصلاة في محافظات مصر غداً الثلاثاء 3 نوفمبر 2026",
-          "source": "المصري اليوم",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "5e7d877759e865ec8b",
-      "title": "klay thompson",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.9,
-      "published_at": "2026-11-03T05:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "ASK IRA: Is the complete Klay something the Heat yet can realize?",
-          "source": "Sun Sentinel",
-          "snippet": ""
-        },
-        {
-          "title": "Klay Thompson's Struggles Addressed By Heat's Erik Spoelstra Amid 1-4 Start to NBA Season",
-          "source": "Bleacher Report",
-          "snippet": ""
-        },
-        {
-          "title": "Warriors legend Klay Thompson risks quickly wearing out Heat’s patience",
-          "source": "Blue Man Hoop",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "1b89b4cf8dc8883017",
-      "title": "austin reaves",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 53.9,
-      "published_at": "2026-11-03T05:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "JJ Redick sent a warning to his team after almost collapsing against Raptors",
-          "source": "Lakers Nation",
-          "snippet": ""
-        },
-        {
-          "title": "Lakers’ Austin Reaves forced to take headband away from fan for most understandable reason",
-          "source": "New York Post",
-          "snippet": ""
-        },
-        {
-          "title": "Lakers collapse forces star into wild fan request in bizarre late-game drama: NBA Wrap",
-          "source": "Fox Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "67c6a60d528d3d170e",
-      "title": "miles bridges",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "1000+",
-      "score": 50.9,
-      "published_at": "2026-11-03T05:20:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "“Is this sincere remorse?” - Michael Jordan and Hornets faced a difficult decision on Miles Bridges amid domestic violence charge",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Fantasy basketball: Seven preseason assumptions already being challenged",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Fantasy Basketball Waiver Wire: The Playlist for your Week 3 lineup",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "4ff966b614b88f97b1",
-      "title": "diddy",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 50.9,
-      "published_at": "2026-11-03T05:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Jailed rapper, 56, gets new release date following prison transfer",
-          "source": "Syracuse.com",
-          "snippet": ""
-        },
-        {
-          "title": "Sean 'Diddy' Comb's New Prison Release Date Revealed",
-          "source": "TMZ",
-          "snippet": ""
-        },
-        {
-          "title": "Sean ‘Diddy’ Combs’ new release date revealed after his prison transfer",
-          "source": "Page Six",
+          "title": "November 3, 2026: Talia Gibson vs Oleksandra Oliynykova: Set 1 Winner Tennis Prediction Market",
+          "source": "Robinhood",
           "snippet": ""
         }
       ],
@@ -239,14 +152,14 @@
       "title": "درجة الحرارة اليوم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 49.9,
+      "approx_traffic": "1000+",
+      "score": 50.6,
       "published_at": "2026-11-03T04:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "لا تنخدعوا بارتفاع الحرارة.. الأرصاد تكشف مفاجآت بحالة الطقس حتى الأحد المقبل",
+          "title": "الطقس اليوم.. استمرار ارتفاع الحرارة وشبورة كثيفة والعظمى بالقاهرة 30 درجة",
           "source": "اليوم السابع",
           "snippet": ""
         },
@@ -256,12 +169,128 @@
           "snippet": ""
         },
         {
-          "title": "الأرصاد: استمرار الارتفاع في درجات الحرارة على أغلب الأنحاء اليوم",
-          "source": "بوابة الأهرام",
+          "title": "«رؤية أقل من 100 متر».. تحذير عاجل من شبورة كثيفة تضرب هذه الطرق (تعرف عليها)",
+          "source": "المصري اليوم",
           "snippet": ""
         }
       ],
       "alert": false
+    },
+    {
+      "id": "fe28bf99b3c16a6837",
+      "title": "robin montgomery",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "500+",
+      "score": 49.9,
+      "published_at": "2026-11-03T06:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "How to watch the women’s Chennai Open: Streaming options for the Round of 32",
+          "source": "The New York Times",
+          "snippet": ""
+        },
+        {
+          "title": "Udvardy vs. Montgomery Prediction at the Chennai Open – Monday, November 2",
+          "source": "Bleacher Nation",
+          "snippet": ""
+        },
+        {
+          "title": "WTA Chennai Day 2 Predictions Including Panna Udvardy vs Robin Montgomery",
+          "source": "Last Word On Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "97ede88c5a328c76f6",
+      "title": "منصة",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 49.6,
+      "published_at": "2026-11-03T04:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "وزير: الإمارات ستحمي منشآت الطاقة وتستثمر في مسارات تصدير جديدة",
+          "source": "العربية",
+          "snippet": ""
+        },
+        {
+          "title": "سلطان الجابر: الاضطرابات استنزفت نحو مليار برميل من مخزونات النفط العالمية",
+          "source": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
+          "snippet": ""
+        },
+        {
+          "title": "انطلاق \"أديبك 2026\" في أبوظبي في نسخة تحطم الأرقام القياسية",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d0a2f4bf05ea351202",
+      "title": "علم الأرصاد الجوية",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-03T06:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "الأرصاد الجوية: طقس معتدل الحرارة على الساحل وبعض السحب في البحر الليلة",
+          "source": "جريدة الشرق",
+          "snippet": ""
+        },
+        {
+          "title": "الأرصاد: رؤية أفقية متدنية على بعض المناطق الليلة",
+          "source": "منصة مشيرب",
+          "snippet": ""
+        },
+        {
+          "title": "أمطار رعدية متوقعة اليوم مع رياح قوية",
+          "source": "مرسال قطر",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "09cf35e5e9737f64e7",
+      "title": "talia gibson",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 47.3,
+      "published_at": "2026-11-03T06:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Sorana Cirstea vs. Maria Timofeeva prediction, odds, picks for WTA Hong Kong Open 2026",
+          "source": "Dimers",
+          "snippet": ""
+        },
+        {
+          "title": "WTA Hong Kong Day 2 Predictions Including Sorana Cirstea vs Maria Timofeeva",
+          "source": "Last Word On Sports",
+          "snippet": ""
+        },
+        {
+          "title": "November 4, 2026: Claire Liu vs Katie Boulter: Set 2 Winner Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        }
+      ],
+      "alert": true
     },
     {
       "id": "e44eae3e59783725a9",
@@ -269,7 +298,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 49.6,
+      "score": 47.3,
       "published_at": "2026-11-03T03:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -293,29 +322,87 @@
       "alert": false
     },
     {
-      "id": "b5db0a0c86a08c56c6",
-      "title": "الشروق",
-      "region": "egypt",
-      "region_label": "مصر",
+      "id": "e3b00f23b4e813307a",
+      "title": "dead by daylight",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 46.6,
+      "published_at": "2026-11-03T06:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Dead by Daylight fans are uninstalling the game in protest — here's why",
+          "source": "Polygon.com",
+          "snippet": ""
+        },
+        {
+          "title": "Dead by Daylight Devs Address TheBurntPeanut Scandal",
+          "source": "Insider Gaming",
+          "snippet": ""
+        },
+        {
+          "title": "TheBurntPeanut’s Dead By Daylight Giveaway Controversy Explained After Developer Issues Public Apology",
+          "source": "NDTV Sports",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "aff353f0744768ae34",
+      "title": "lakers vs heat",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "500+",
-      "score": 48.6,
+      "score": 46.3,
       "published_at": "2026-11-03T04:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "علاء عوض: أحمد زكي رشحني لـ مستر كاراتيه وتلقيت منه صفعة حقيقية",
-          "source": "اليوم السابع",
+          "title": "Lakers 138-117 Heat (Nov 2, 2026) Game Recap",
+          "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "علاء عوض: تزوجت 4 مرات ولا أمانع في الزواج مجددًا إذا وجدت المرأة المناسبة",
-          "source": "المصري اليوم",
+          "title": "HEAT Drop Opening Game of West Coast Trip to Lakers, 138-117",
+          "source": "NBA.com",
           "snippet": ""
         },
         {
-          "title": "علاء عوض يكشف أسرار زيجاته الأربع: السحر سبب انفصالي وكلابي أقرب ما أملك",
-          "source": "البوابة نيوز",
+          "title": "Luka Dončić continues to achieve Lakers feats not seen since Kobe Bryant",
+          "source": "New York Post",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "027a0fc5cf64f68d84",
+      "title": "warriors vs suns",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 45.6,
+      "published_at": "2026-11-03T03:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Preview: Warriors take on Suns in Chase Center with Curry, Green back",
+          "source": "Golden State Of Mind",
+          "snippet": ""
+        },
+        {
+          "title": "Stephen Curry (knee) available Monday",
+          "source": "FantasyPros",
+          "snippet": ""
+        },
+        {
+          "title": "Game Preview: Warriors vs. Suns - 11/2/26",
+          "source": "NBA.com",
           "snippet": ""
         }
       ],
@@ -327,7 +414,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "1000+",
-      "score": 47.6,
+      "score": 45.3,
       "published_at": "2026-11-03T03:40:00Z",
       "source": "Google Trends",
       "source_count": 2,
@@ -338,8 +425,8 @@
           "snippet": ""
         },
         {
-          "title": "الجامعات الأردنية ومعادلة البقاء: حين لا تكفي الرسوم الدراسية",
-          "source": "TLB News",
+          "title": "الجامعات الأردنية تبحث عن تمويل يتجاوز الرسوم",
+          "source": "أخبار قطر",
           "snippet": ""
         },
         {
@@ -351,86 +438,28 @@
       "alert": false
     },
     {
-      "id": "db995ad1b56fa67a67",
-      "title": "tim hardaway jr.",
+      "id": "0b69bad2257321c5dd",
+      "title": "kamala harris",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-03T05:30:00Z",
+      "approx_traffic": "100+",
+      "score": 44.3,
+      "published_at": "2026-11-03T06:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Tim Hardaway Jr. has joined the Heat in Los Angeles. …",
-          "source": "Yahoo Sports",
+          "title": "Kamala Harris and Gavin Newsom, weighing 2028 runs, rally together in California",
+          "source": "The Washington Post",
           "snippet": ""
         },
         {
-          "title": "Full injury report released for Heat vs. Lakers matchup on Monday",
-          "source": "Heat Nation",
+          "title": "WATCH LIVE: Top Democrats hold 'Stop the Power Grab' rally in California",
+          "source": "Fox News",
           "snippet": ""
         },
         {
-          "title": "The Heat ruled out Tre Donaldson (G League) and Vlad …",
-          "source": "HoopsHype",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "3fbaeed7116caecbd8",
-      "title": "oso ighodaro",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-03T05:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Oso Ighodaro upgraded to available, Denver’s Cam Johnson available for return to Phoenix",
-          "source": "Arizona Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Kyrie Irving (knee) downgraded to out",
-          "source": "NBC Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Oso Ighodaro (oblique) doubtful Saturday",
-          "source": "FantasyPros",
-          "snippet": ""
-        }
-      ],
-      "alert": true
-    },
-    {
-      "id": "9f6ec381a19b1ca9e0",
-      "title": "jesus de miguel",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-03T05:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Tenerife forward Jesús De Miguel 'stable' after in-game cardiac arrest",
-          "source": "ESPN",
-          "snippet": ""
-        },
-        {
-          "title": "Tenerife striker Jesus de Miguel stable after serious head injury during Segunda Division match with Andorra",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "Tenerife’s Jesus de Miguel in ‘serious but stable’ condition in hospital as game abandoned",
+          "title": "Newsom and Harris Campaign in Los Angeles, With Little Hint of What’s to Come",
           "source": "The New York Times",
           "snippet": ""
         }
@@ -438,33 +467,62 @@
       "alert": true
     },
     {
-      "id": "90bea4a3065eac906a",
-      "title": "max strus",
+      "id": "e42d8452709f0202f1",
+      "title": "polymarket midterms",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 47.3,
-      "published_at": "2026-11-03T05:30:00Z",
+      "approx_traffic": "100+",
+      "score": 44.0,
+      "published_at": "2026-11-03T06:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Max Strus News: Cleared to return",
-          "source": "RotoWire",
+          "title": "Prediction Markets Keep Whiffing on Elections. Will They Miss on the Midterms?",
+          "source": "WSJ",
           "snippet": ""
         },
         {
-          "title": "Max Strus Set to Make Clippers Debut Monday - NBA News | Fantasy Basketball",
-          "source": "RotoBaller",
+          "title": "He Bet $1.5 Million on the Midterms. Will He Win Big?",
+          "source": "The New York Times",
           "snippet": ""
         },
         {
-          "title": "Max Strus (foot) won’t travel on upcoming trip",
-          "source": "NBC Sports",
+          "title": "Prediction market bettors are the new political pundits. Why are we listening to them? | Judith Levine",
+          "source": "The Guardian",
           "snippet": ""
         }
       ],
-      "alert": true
+      "alert": false
+    },
+    {
+      "id": "49aec477d20ca1cdfa",
+      "title": "طليقة حسام حسن",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 44.0,
+      "published_at": "2026-11-03T05:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "حرب البلاغات بين حسام حسن وطليقته واتهامات خطيرة بالجمع بين زوجين",
+          "source": "Masrawy",
+          "snippet": ""
+        },
+        {
+          "title": "أخبار الحوادث اليوم،\"الدستورية العليا\" ترفض حل الجمعيات.. ضبط 4 أطنان مخدرات بـ440 مليون جنيه.. وحسام حسن يتهم طليقته بالجمع بين زوجين",
+          "source": "فيتو",
+          "snippet": ""
+        },
+        {
+          "title": "أول رد فعل من حسام حسن بعد بلاغ ضد طليقته بـتهمة \"الجمع بين زوجين\"",
+          "source": "إرم نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": false
     },
     {
       "id": "c01c21d6051230a152",
@@ -472,7 +530,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "200+",
-      "score": 46.0,
+      "score": 43.6,
       "published_at": "2026-11-03T04:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -496,87 +554,116 @@
       "alert": false
     },
     {
-      "id": "aff353f0744768ae34",
-      "title": "lakers vs heat",
+      "id": "7855d9a4e35e4b2580",
+      "title": "كارل بوشبي",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.6,
-      "published_at": "2026-11-03T04:10:00Z",
+      "approx_traffic": "100+",
+      "score": 43.3,
+      "published_at": "2026-11-03T06:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Lakers 138-117 Heat (Nov 2, 2026) Game Recap",
-          "source": "ESPN",
+          "title": "مغامر بريطاني يختتم رحلة مشي حول العالم استمرّت 28 عاماً",
+          "source": "الشرق الأوسط",
           "snippet": ""
         },
         {
-          "title": "TST Best Bets: November 2, 2026",
-          "source": "The Sporting Tribune",
+          "title": "بريطاني مشى 28 عاماً حول العالم على قدميه.. يعود إلى منزله",
+          "source": "العربية",
           "snippet": ""
         },
         {
-          "title": "“It has to be a whole lot more effort, focus …",
-          "source": "Yahoo Sports",
+          "title": "المغامر البريطاني كارل بوشبي يعود إلى إنجلترا بعد رحلة حول العالم دامت 28 عاما سيرا على الأقدام",
+          "source": "BBC",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "42f1daf749476fa8de",
-      "title": "شيكابالا",
-      "region": "egypt",
-      "region_label": "مصر",
+      "id": "c1806a2a3d360f238a",
+      "title": "la county measure a",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "100+",
-      "score": 44.0,
-      "published_at": "2026-11-03T05:20:00Z",
+      "score": 43.3,
+      "published_at": "2026-11-03T06:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "تصريح مثير من شيكابالا بشأن مستقبل حسام حسن مع المنتخب: لهذا السبب يجب أن يستقيل فوراً",
-          "source": "الزمالك اليوم",
+          "title": "Your last-minute guide to L.A. County Charter Amendment A",
+          "source": "Los Angeles Times",
           "snippet": ""
         },
         {
-          "title": "«مش شايفين هيبتك».. شيكابالا يطالب حسام حسن بتقديم استقالته",
+          "title": "Los Angeles County considers labor measure for public safety",
+          "source": "Yahoo",
+          "snippet": ""
+        },
+        {
+          "title": "Measure to alter labor talks leads to little debate | Los Angeles Times - newspaper",
+          "source": "Magzter",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "5a53b4fb547d194875",
+      "title": "الكوبرا",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 42.6,
+      "published_at": "2026-11-03T05:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "«تبحث عن الدفء».. الحكومة تحذر من ظهور ثعبان الكوبرا في التجمعات السكنية",
           "source": "المصري اليوم",
           "snippet": ""
         },
         {
-          "title": "قدم استقالتك فوراً.. شيكابالا يوجه رسالة صادمة إلى حسام حسن (فيديو)",
-          "source": "إرم نيوز",
+          "title": "البيئة عن ظهور كوبرا بمدرسة بالفيوم: نشاط الأفاعي يرتبط بارتفاع الحرارة.. والحيوانات المفترسة لا تغير سلوكها",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "أفعى سامة من نوع \"كوبرا\" تثير الذعر بمدرسة ابتدائية في مصر",
+          "source": "العربية",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "027a0fc5cf64f68d84",
-      "title": "warriors vs suns",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 44.0,
-      "published_at": "2026-11-03T03:50:00Z",
+      "id": "1faf07d6f09f0b8b5b",
+      "title": "california lottery",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 42.6,
+      "published_at": "2026-11-03T05:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Draymond ejected after throwing Suns' Maluach to floor",
-          "source": "theScore",
+          "title": "California Lottery Powerball, Daily 3 Midday winning numbers for Oct. 28, 2026",
+          "source": "The Desert Sun",
           "snippet": ""
         },
         {
-          "title": "Watch Draymond Green, Dillon Brooks Fight in Viral Video, Warriors Star Ejected vs. Suns",
-          "source": "Bleacher Report",
+          "title": "Cabarrus County ticket scores $2 million win in Halloween Powerball drawing",
+          "source": "NC Education Lottery",
           "snippet": ""
         },
         {
-          "title": "Warriors' Draymond Green: Tossed vs. Suns",
-          "source": "CBS Sports",
+          "title": "Powerball Jackpot Soars To $835 Million—Here’s What The Winner Could Take Home",
+          "source": "Forbes",
           "snippet": ""
         }
       ],
@@ -588,7 +675,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "100+",
-      "score": 43.6,
+      "score": 41.3,
       "published_at": "2026-11-03T05:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -604,8 +691,66 @@
           "snippet": ""
         },
         {
-          "title": "كم صعدت أسعار الخضروات والفاكهة والطماطم اليوم الإثنين 2 نوفمبر 2026 في سوق العبور وللمستهلك؟",
-          "source": "جريدة المال",
+          "title": "البطاطس والطماطم تبدأ من 20 جنيها فى أسواق التجزئة اليوم الإثنين بالغربية",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2e3aa78d79fe2b21c7",
+      "title": "هطول",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 41.3,
+      "published_at": "2026-11-03T05:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "الأردن: أول كتلة هوائية باردة تصل المملكة مرفقة بتغيرات كبيرة على الطقس",
+          "source": "طقس العرب",
+          "snippet": ""
+        },
+        {
+          "title": "جهزوا الملابس الدافئة .. كتلة باردة تقترب من الأردن نهاية الأسبوع",
+          "source": "زاد الاردن",
+          "snippet": ""
+        },
+        {
+          "title": "أجواء لطيفة حتى الخميس وفرصة للأمطار الجمعة",
+          "source": "Fana News -",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6315dbc0c427bb36c3",
+      "title": "كووورة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 41.3,
+      "published_at": "2026-11-03T03:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "تداعيات كارثة كامافينجا.. برشلونة يتخذ قرارا محفوفا بالمخاطر",
+          "source": "Kooora",
+          "snippet": ""
+        },
+        {
+          "title": "بعد أزمة الكلاسيكو.. برشلونة يعيد فتح مدرج \"جول 1957\" في مواجهة أستون فيلا",
+          "source": "يلاكورة",
+          "snippet": ""
+        },
+        {
+          "title": "القبض على مشجع برشلونة المتهم بالاعتداء على كامافينجا خلال الكلاسيكو",
+          "source": "اليوم السابع",
           "snippet": ""
         }
       ],
@@ -617,7 +762,7 @@
       "region": "egypt",
       "region_label": "مصر",
       "approx_traffic": "200+",
-      "score": 43.3,
+      "score": 41.0,
       "published_at": "2026-11-03T03:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -641,58 +786,29 @@
       "alert": false
     },
     {
-      "id": "c68a218a8ea6c81efa",
-      "title": "2027",
+      "id": "bf17fe1d63af836660",
+      "title": "درجه الحراره اليوم",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 43.0,
-      "published_at": "2026-11-03T03:20:00Z",
+      "approx_traffic": "100+",
+      "score": 38.3,
+      "published_at": "2026-11-03T05:10:00Z",
       "source": "Google Trends",
-      "source_count": 3,
+      "source_count": 2,
       "news_items": [
         {
-          "title": "فاضل 97 يوما.. موعد شهر رمضان 2027 وأول أيام عيد الفطر فلكيا",
+          "title": "أجواء حارة تضرب شمال سيناء وارتفاع في درجات الحرارة بالعريش",
           "source": "اليوم السابع",
           "snippet": ""
         },
         {
-          "title": "إمساكية رمضان 2027 PDF.. اعرف مواقيت الصلاة والسحور والإفطار في القاهرة والمحافظات",
-          "source": "الوطن",
+          "title": "طقس شمال سيناء اليوم.. ارتفاع درجات الحرارة وشبورة مائية وفرص لسقوط الأمطار",
+          "source": "المصري اليوم",
           "snippet": ""
         },
         {
-          "title": "الذهاب بسعر والعودة بسعر آخر: لماذا تغلو تذاكر العودة بعد عيد الفطر 2027؟ - ويجو مدونة رحّال",
-          "source": "Wego",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "cae37800af3382fb31",
-      "title": "عريس",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 42.0,
-      "published_at": "2026-11-03T02:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "عريس مجهول ونجوم يهنئون.. آيدا القصي تحتفي بزفافها في الرياض",
-          "source": "عكاظ",
-          "snippet": ""
-        },
-        {
-          "title": "زفاف آيدا القصي... فستانها الأبيض البرّاق يخطف الأنظار بتفاصيله",
-          "source": "مجلة لها",
-          "snippet": ""
-        },
-        {
-          "title": "آيدا القصي تعلن زواجها.. وشقيقتها عائشة كاي تبارك لها",
-          "source": "مجلة سيدتي",
+          "title": "طقس خريفي حار يضرب شمال سيناء اليوم ودرجات الحرارة تلامس 28 درجة",
+          "source": "اليوم السابع",
           "snippet": ""
         }
       ],
@@ -704,7 +820,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 40.3,
+      "score": 38.0,
       "published_at": "2026-11-03T03:30:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -720,153 +836,8 @@
           "snippet": ""
         },
         {
-          "title": "Exclusive | U.S. Strikes Iran’s Qeshm Island as Trump Talks Down War Risks",
-          "source": "WSJ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a0e285a1ad7d628cca",
-      "title": "زواج",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 40.0,
-      "published_at": "2026-11-03T03:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "كيف تفاعل رواد مواقع التواصل مع قصة المصرية التي خسرت منزل أحلامها بعد 18 عاماً من الزواج؟",
-          "source": "BBC",
-          "snippet": ""
-        },
-        {
-          "title": "\"بيت الأحلام طلع مش بيتي\".. سيدة مصرية تشعل التواصل",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "«بيت الأحلام طلع مش بيتي».. قصة «انفصال» تتصدر المنصات",
-          "source": "عكاظ",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "526b93875f17574c8f",
-      "title": "karl bushby",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 39.6,
-      "published_at": "2026-11-03T03:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "In 28 years of walking, Karl Bushby has overcome jungle, desert and red tape. Now he's nearly home",
-          "source": "AP News",
-          "snippet": ""
-        },
-        {
-          "title": "‘It’s been a while’: hero’s welcome for UK man after 28-year walk across the world",
-          "source": "The Guardian",
-          "snippet": ""
-        },
-        {
-          "title": "Karl Bushby ends 28-year journey at mother's house in Hull",
-          "source": "BBC",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "506be2a7d912f74048",
-      "title": "العربية الخليج",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 38.6,
-      "published_at": "2026-11-03T02:40:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "من الإنذار المبكر إلى الإسناد المشترك.. كيف تستعد دول الخليج للطوارئ العابرة للحدود؟",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "لقد بدأنا الاستعداد للمخاطر الطارئة في الخليج العربي",
-          "source": "الجزيرة نت",
-          "snippet": ""
-        },
-        {
-          "title": "راشد محمد المري",
-          "source": "الجزيرة نت",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "6315dbc0c427bb36c3",
-      "title": "كووورة",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 37.6,
-      "published_at": "2026-11-03T03:40:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "بيان رسمي.. لجنة حكام الليجا تعترف باحتساب ركلة جزاء غير صحيحة",
-          "source": "Kooora",
-          "snippet": ""
-        },
-        {
-          "title": "تحقيق في احتمال تعطل تقنية الكرة الذكية خلال ديربي الباسك",
-          "source": "Elbotola",
-          "snippet": ""
-        },
-        {
-          "title": "تداعيات كارثة كامافينجا.. برشلونة يتخذ قرارا محفوفا بالمخاطر",
-          "source": "Kooora",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "48e9b49ffd50e774e1",
-      "title": "اجازة رسمية",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 36.6,
-      "published_at": "2026-11-03T00:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "إجازة 3 أيام متواصلة للطلاب والموظفين بالقطاعين الحكومي والخاص (تفاصيل)",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "أول إجازة رسمية في مصر 2027.. موعد عطلة عيد الميلاد وفرصة 3 أيام راحة",
-          "source": "صدى البلد",
-          "snippet": ""
-        },
-        {
-          "title": "هل يوجد إجازة خلال شهر نوفمبر 2026؟.. تعرف على أول عطلة رسمية للموظفين",
-          "source": "شبكة تواصل الإخبارية",
+          "title": "US military conducts strikes on Iran’s Qeshm Island in defensive operation, officials say",
+          "source": "CNN",
           "snippet": ""
         }
       ],
