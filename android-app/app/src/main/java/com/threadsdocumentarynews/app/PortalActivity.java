@@ -43,9 +43,9 @@ import java.util.concurrent.Executors;
 
 public final class PortalActivity extends Activity {
     private static final String SITE_URL = "https://sozanhnedy-bot.github.io/-/";
-    private static final String TRENDS_URL = SITE_URL + "data/trending.json";
+    private static final String NEWS_URL = SITE_URL + "data/news.json";
     private static final String SITE_HOST = "sozanhnedy-bot.github.io";
-    private static final String CHANNEL_ID = "trend-alerts";
+    private static final String CHANNEL_ID = "news-alerts";
     private static final int NOTIFICATION_ID = 1707;
     private static final int NOTIFICATION_PERMISSION_REQUEST = 721;
     private static final long POLL_INTERVAL_MS = 10 * 60 * 1000L;
@@ -60,11 +60,11 @@ public final class PortalActivity extends Activity {
     private boolean alertsEnabled;
     private boolean activityResumed;
 
-    private final Runnable trendPoller = new Runnable() {
+    private final Runnable newsPoller = new Runnable() {
         @Override
         public void run() {
             if (!alertsEnabled || !activityResumed) return;
-            fetchTrendsAndNotify();
+            fetchNewsAndNotify();
             mainHandler.postDelayed(this, POLL_INTERVAL_MS);
         }
     };
@@ -76,7 +76,7 @@ public final class PortalActivity extends Activity {
         getWindow().setNavigationBarColor(NAVY);
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         preferences = getSharedPreferences("owner-dashboard", MODE_PRIVATE);
-        alertsEnabled = preferences.getBoolean("trend-alerts-enabled", false);
+        alertsEnabled = preferences.getBoolean("news-alerts-enabled", false);
         createNotificationChannel();
 
         LinearLayout root = new LinearLayout(this);
@@ -158,8 +158,8 @@ public final class PortalActivity extends Activity {
     private void toggleAlerts() {
         if (alertsEnabled) {
             alertsEnabled = false;
-            preferences.edit().putBoolean("trend-alerts-enabled", false).apply();
-            mainHandler.removeCallbacks(trendPoller);
+            preferences.edit().putBoolean("news-alerts-enabled", false).apply();
+            mainHandler.removeCallbacks(newsPoller);
             updateAlertsButton();
             return;
         }
@@ -172,26 +172,26 @@ public final class PortalActivity extends Activity {
 
     private void enableAlerts() {
         alertsEnabled = true;
-        preferences.edit().putBoolean("trend-alerts-enabled", true).apply();
+        preferences.edit().putBoolean("news-alerts-enabled", true).apply();
         updateAlertsButton();
-        scheduleTrendPolling();
+        scheduleNewsPolling();
     }
 
     private void updateAlertsButton() {
-        if (alertsButton != null) alertsButton.setText(alertsEnabled ? "تنبيهات الترند: مفعّلة" : "تشغيل تنبيهات الترند");
+        if (alertsButton != null) alertsButton.setText(alertsEnabled ? "تنبيهات الأخبار: مفعّلة" : "تشغيل تنبيهات الأخبار");
     }
 
-    private void scheduleTrendPolling() {
-        mainHandler.removeCallbacks(trendPoller);
-        if (alertsEnabled && activityResumed) mainHandler.post(trendPoller);
+    private void scheduleNewsPolling() {
+        mainHandler.removeCallbacks(newsPoller);
+        if (alertsEnabled && activityResumed) mainHandler.post(newsPoller);
     }
 
-    private void fetchTrendsAndNotify() {
+    private void fetchNewsAndNotify() {
         if (executor.isShutdown()) return;
         executor.execute(() -> {
             HttpURLConnection connection = null;
             try {
-                connection = (HttpURLConnection) new URL(TRENDS_URL + "?v=" + System.currentTimeMillis()).openConnection();
+                connection = (HttpURLConnection) new URL(NEWS_URL + "?v=" + System.currentTimeMillis()).openConnection();
                 connection.setRequestMethod("GET");
                 connection.setConnectTimeout(12000);
                 connection.setReadTimeout(12000);
@@ -207,31 +207,31 @@ public final class PortalActivity extends Activity {
                 JSONObject snapshot = new JSONObject(new String(buffer.toByteArray(), StandardCharsets.UTF_8));
                 JSONArray items = snapshot.optJSONArray("items");
                 if (items == null) return;
+                boolean initialized = preferences.getBoolean("news-alerts-initialized", false);
+                Set<String> seen = new HashSet<>(preferences.getStringSet("news-alerts-seen", Collections.emptySet()));
                 LinkedHashSet<String> currentAlertIds = new LinkedHashSet<>();
                 String newTitle = null;
                 for (int i = 0; i < items.length(); i++) {
                     JSONObject item = items.optJSONObject(i);
-                    if (item == null || !item.optBoolean("alert", false)) continue;
+                    if (item == null) continue;
                     String id = item.optString("id", "");
                     if (id.isEmpty()) continue;
                     currentAlertIds.add(id);
-                    if (newTitle == null) {
+                    if (!seen.contains(id) && newTitle == null) {
                         String title = item.optString("title", "").trim();
                         if (!title.isEmpty()) newTitle = title;
                     }
                 }
-                boolean initialized = preferences.getBoolean("trend-alerts-initialized", false);
-                Set<String> seen = new HashSet<>(preferences.getStringSet("trend-alerts-seen", Collections.emptySet()));
                 if (!initialized) {
                     seen.addAll(currentAlertIds);
-                    preferences.edit().putBoolean("trend-alerts-initialized", true).putStringSet("trend-alerts-seen", seen).apply();
+                    preferences.edit().putBoolean("news-alerts-initialized", true).putStringSet("news-alerts-seen", seen).apply();
                     return;
                 }
                 boolean isNew = currentAlertIds.stream().anyMatch(id -> !seen.contains(id));
                 seen.addAll(currentAlertIds);
                 while (seen.size() > 250) seen.remove(seen.iterator().next());
-                preferences.edit().putStringSet("trend-alerts-seen", seen).apply();
-                if (isNew && newTitle != null && alertsEnabled) showTrendNotification(newTitle);
+                preferences.edit().putStringSet("news-alerts-seen", seen).apply();
+                if (isNew && newTitle != null && alertsEnabled && activityResumed) showNewsNotification(newTitle);
             } catch (Exception ignored) {
                 // A missed polling cycle is retried on the next interval.
             } finally {
@@ -240,7 +240,7 @@ public final class PortalActivity extends Activity {
         });
     }
 
-    private void showTrendNotification(String title) {
+    private void showNewsNotification(String title) {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (manager == null) return;
         Intent open = new Intent(this, PortalActivity.class);
@@ -250,9 +250,9 @@ public final class PortalActivity extends Activity {
         PendingIntent pending = PendingIntent.getActivity(this, 19, open, pendingFlags);
         Notification.Builder builder = Build.VERSION.SDK_INT >= 26
                 ? new Notification.Builder(this, CHANNEL_ID)
-                : new Notification.Builder(this).setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.trend_chime));
-        builder.setSmallIcon(R.drawable.ic_trend_bell)
-                .setContentTitle("ترند جديد يستحق المتابعة")
+                : new Notification.Builder(this).setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.news_chime));
+        builder.setSmallIcon(R.drawable.ic_news_bell)
+                .setContentTitle("خبر جديد على الموقع")
                 .setContentText(title)
                 .setStyle(new Notification.BigTextStyle().bigText(title))
                 .setContentIntent(pending)
@@ -262,13 +262,13 @@ public final class PortalActivity extends Activity {
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT < 26) return;
-        Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.trend_chime);
+        Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.news_chime);
         AudioAttributes audio = new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_NOTIFICATION)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                 .build();
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "تنبيهات الترند", NotificationManager.IMPORTANCE_DEFAULT);
-        channel.setDescription("تنبيه واحد مختصر عند رصد ترند جديد");
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "تنبيهات الأخبار", NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setDescription("تنبيه مختصر عند وصول خبر جديد إلى الموقع");
         channel.setSound(sound, audio);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (manager != null) manager.createNotificationChannel(channel);
@@ -278,13 +278,13 @@ public final class PortalActivity extends Activity {
     protected void onResume() {
         super.onResume();
         activityResumed = true;
-        scheduleTrendPolling();
+        scheduleNewsPolling();
     }
 
     @Override
     protected void onPause() {
         activityResumed = false;
-        mainHandler.removeCallbacks(trendPoller);
+        mainHandler.removeCallbacks(newsPoller);
         super.onPause();
     }
 
@@ -304,7 +304,7 @@ public final class PortalActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        mainHandler.removeCallbacks(trendPoller);
+        mainHandler.removeCallbacks(newsPoller);
         executor.shutdownNow();
         if (webView != null) webView.destroy();
         super.onDestroy();

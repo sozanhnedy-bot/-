@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Threads Documentary News",
   "short_name": "Threads News",
-  "description": "أخبار وثائقية عربية مستقلة وترندات حديثة تُحدّث دوريًا",
+  "description": "أخبار وتقارير وثائقية عربية مستقلة تُحدّث دوريًا",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "./?source=installed-app",

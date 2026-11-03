@@ -1,13 +1,14 @@
 {
-  "max_items_per_feed": 8,
+  "max_items_per_feed": 12,
   "feeds": [
-    {"name":"Google News — العالم بالعربية","region":"arab","url":"https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
-    {"name":"Google News — العالم بالإنجليزية","region":"world","url":"https://news.google.com/rss/search?q=world%20news&hl=en&gl=US&ceid=US:en","enabled":true},
-    {"name":"Google News — الشرق الأوسط","region":"arab","url":"https://news.google.com/rss/search?q=Middle%20East%20news&hl=en&gl=GB&ceid=GB:en","enabled":true},
-    {"name":"Google News — مصر","region":"egypt","url":"https://news.google.com/rss?hl=ar&gl=EG&ceid=EG:ar","enabled":true},
-    {"name":"Google News — الخليج","region":"arab","url":"https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC&hl=ar&gl=SA&ceid=SA:ar","enabled":true},
-    {"name":"Google News — الاقتصاد","region":"world","url":"https://news.google.com/rss/search?q=%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
-    {"name":"Google News — الرياضة","region":"world","url":"https://news.google.com/rss/search?q=%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
-    {"name":"Google News — التكنولوجيا بالإنجليزية","region":"world","url":"https://news.google.com/rss/search?q=technology%20news&hl=en&gl=US&ceid=US:en","enabled":true}
+    {"name":"أخبار العالم بالعربية","region":"world","category":"world","url":"https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
+    {"name":"World News","region":"world","category":"world","url":"https://news.google.com/rss/search?q=world%20news&hl=en&gl=US&ceid=US:en","enabled":true},
+    {"name":"أخبار الشرق الأوسط","region":"arab","category":"arab","url":"https://news.google.com/rss/search?q=Middle%20East%20news&hl=en&gl=GB&ceid=GB:en","enabled":true},
+    {"name":"أخبار مصر","region":"egypt","category":"egypt","url":"https://news.google.com/rss?hl=ar&gl=EG&ceid=EG:ar","enabled":true},
+    {"name":"أخبار الخليج","region":"arab","category":"arab","url":"https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC&hl=ar&gl=SA&ceid=SA:ar","enabled":true},
+    {"name":"أخبار السياسة","region":"world","category":"politics","url":"https://news.google.com/rss/search?q=politics%20news&hl=en&gl=US&ceid=US:en","enabled":true},
+    {"name":"أخبار الاقتصاد","region":"world","category":"economy","url":"https://news.google.com/rss/search?q=%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
+    {"name":"أخبار الرياضة","region":"world","category":"sports","url":"https://news.google.com/rss/search?q=%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
+    {"name":"أخبار التكنولوجيا","region":"world","category":"technology","url":"https://news.google.com/rss/search?q=technology%20news&hl=en&gl=US&ceid=US:en","enabled":true}
   ]
 }

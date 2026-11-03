@@ -1,8 +1,0 @@
-{
-  "max_items_per_feed": 30,
-  "feeds": [
-    {"region":"egypt","region_label":"مصر","url":"https://trends.google.com/trending/rss?geo=EG","enabled":true},
-    {"region":"arab","region_label":"السعودية","url":"https://trends.google.com/trending/rss?geo=SA","enabled":true},
-    {"region":"world","region_label":"العالم — الولايات المتحدة","url":"https://trends.google.com/trending/rss?geo=US","enabled":true}
-  ]
-}

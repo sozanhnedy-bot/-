@@ -1,4 +1,4 @@
-"""Publish one bounded daily report or trend digest to authorized X/Facebook accounts."""
+"""Publish one bounded daily editorial report to authorized X/Facebook accounts."""
 from __future__ import annotations
 
 import base64
@@ -16,10 +16,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://sozanhnedy-bot.github.io/-"
 REPORTS_FILE = ROOT / "data" / "reports.json"
-TRENDS_FILE = ROOT / "data" / "trending.json"
 STATE_FILE = ROOT / "data" / "social-publish-state.json"
 REPORT_ID_RE = re.compile(r"^[a-f0-9]{20,40}$")
-IMAGE_RE = re.compile(r"^assets/story-[a-z0-9-]+\.webp$")
 MAX_X_IMAGE_BYTES = 5 * 1024 * 1024
 
 
@@ -36,48 +34,15 @@ def report_content(report: dict, report_ids: list[str], today: str) -> dict:
     report_id = str(report.get("id") or "")
     if not REPORT_ID_RE.fullmatch(report_id):
         raise ValueError("invalid report id")
-    image = str(report.get("image") or "")
-    if not IMAGE_RE.fullmatch(image):
-        image = "assets/brand-mark.png"
-    else:
-        social_image = str(Path(image).with_name(Path(image).stem + "-social.jpg"))
-        if (ROOT / social_image).is_file():
-            image = social_image
+    image = "assets/brand-cover.jpg"
     caption = str(report.get("social_caption") or report.get("title") or "").strip()
     caption = f"ثريدز وثائقي | {caption}" if caption else "ثريدز وثائقي"
-    image_caption = str(report.get("image_caption") or "")
-    if "توضيحية" in image_caption or "لا تمثل" in image_caption:
-        caption += "\n(الصورة توضيحية وليست من موقع الحدث.)"
+    caption += "\n(صورة المنشور غلاف القناة؛ تفاصيل الخبر وصورته داخل التقرير.)"
     link = f"{SITE_URL}/r/{short_code(report_id, report_ids)}.html"
     return {"key": f"report:{report_id}", "report_id": report_id, "caption": caption, "url": link, "image": image}
 
 
-def trend_digest(trends_data: dict, today: str) -> dict | None:
-    items = trends_data.get("items", [])
-    if not isinstance(items, list):
-        return None
-    items = sorted(
-        (item for item in items if isinstance(item, dict) and isinstance(item.get("title"), str)),
-        key=lambda item: float(item.get("score") or 0),
-        reverse=True,
-    )
-    topics: list[str] = []
-    for item in items:
-        title = item["title"].strip()
-        if title and title not in topics:
-            topics.append(title)
-        if len(topics) == 3:
-            break
-    if not topics:
-        return None
-    caption = (
-        f"ثريدز وثائقي | أبرز الموضوعات الصاعدة اليوم ({today}): {', '.join(topics)}. "
-        "هذا ملخص لما يلقى رواجًا، وليس تأكيدًا مستقلًا لتفاصيل الخبر."
-    )
-    return {"key": f"trends:{today}", "report_id": None, "caption": caption, "url": SITE_URL + "/", "image": "assets/brand-cover.jpg"}
-
-
-def choose_content(platform_state: dict, reports: list[dict], trends_data: dict, today: str) -> dict | None:
+def choose_content(platform_state: dict, reports: list[dict], today: str) -> dict | None:
     ids = [str(item.get("id") or "") for item in reports if isinstance(item, dict)]
     posted = set(platform_state.get("posted_report_ids", []))
     for report in reports:
@@ -86,7 +51,7 @@ def choose_content(platform_state: dict, reports: list[dict], trends_data: dict,
         report_id = str(report.get("id") or "")
         if REPORT_ID_RE.fullmatch(report_id) and report_id not in posted:
             return report_content(report, ids, today)
-    return trend_digest(trends_data, today)
+    return None
 
 
 def social_text(content: dict) -> str:
@@ -164,7 +129,6 @@ def main() -> int:
         print("Social publisher is disabled; no external API calls were made.")
         return 0
     reports_data = json.loads(REPORTS_FILE.read_text(encoding="utf-8"))
-    trends_data = json.loads(TRENDS_FILE.read_text(encoding="utf-8")) if TRENDS_FILE.exists() else {"items": []}
     reports = reports_data.get("items", []) if isinstance(reports_data, dict) else []
     state = json.loads(STATE_FILE.read_text(encoding="utf-8")) if STATE_FILE.exists() else {"schema_version": 1, "platforms": {}}
     platforms = state.setdefault("platforms", {})
@@ -176,7 +140,7 @@ def main() -> int:
     if x_token:
         x_state = platforms.setdefault("x", {"posted_report_ids": []})
         if x_state.get("date") != today:
-            content = choose_content(x_state, reports, trends_data, today)
+            content = choose_content(x_state, reports, today)
             if content:
                 try:
                     post_id = post_to_x(content, x_token)
@@ -200,7 +164,7 @@ def main() -> int:
     if page_id and fb_token:
         fb_state = platforms.setdefault("facebook", {"posted_report_ids": []})
         if fb_state.get("date") != today:
-            content = choose_content(fb_state, reports, trends_data, today)
+            content = choose_content(fb_state, reports, today)
             if content:
                 version = os.environ.get("META_GRAPH_VERSION", "v26.0").strip()
                 try:

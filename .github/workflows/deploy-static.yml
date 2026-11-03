@@ -30,19 +30,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Refresh trend snapshots when authorized
-        env:
-          THREADS_USER_ACCESS_TOKEN: ${{ secrets.THREADS_USER_ACCESS_TOKEN }}
-        run: |
-          python scripts/update_trends.py
-          python scripts/update_threads_signals.py
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Build static site
+      - name: Build static news site
         run: python scripts/build_site.py --output _site
 
       - name: Upload site artifact

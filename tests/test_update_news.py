@@ -17,6 +17,7 @@ class NewsParsingTests(unittest.TestCase):
           <description><![CDATA[<p>نص <b>مهم</b> &amp; تفاصيل</p>]]></description>
           <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
           <source url='https://example.com'>وكالة المثال</source>
+          <enclosure url='https://images.example/photo.jpg' type='image/jpeg'/>
         </item></channel></rss>""".encode("utf-8")
         items = parse_feed(xml, "egypt", "اختبار", now=NOW)
         self.assertEqual(len(items), 1)
@@ -24,6 +25,7 @@ class NewsParsingTests(unittest.TestCase):
         self.assertEqual(items[0]["excerpt"], "نص مهم & تفاصيل")
         self.assertEqual(items[0]["source_name"], "وكالة المثال")
         self.assertEqual(items[0]["region"], "egypt")
+        self.assertEqual(items[0]["image_url"], "https://images.example/photo.jpg")
 
     def test_clean_text_unescapes_entities_and_collapses_whitespace(self):
         self.assertEqual(clean_text("<p>أخبار&nbsp; &amp; تفاصيل</p>"), "أخبار & تفاصيل")
@@ -43,7 +45,7 @@ class NewsParsingTests(unittest.TestCase):
 
 class NewsUpdateTests(unittest.TestCase):
     def setUp(self):
-        self.feed = {"name": "اختبار", "region": "world", "url": "https://news.google.com/rss", "enabled": True}
+        self.feed = {"name": "اختبار", "region": "world", "category": "economy", "url": "https://news.google.com/rss", "enabled": True}
         self.entries = [
             {"title": "خبر 1", "excerpt": "مقتطف 1", "url": "https://news.google.com/a", "source_name": "المصدر", "source_url": "", "region": "world", "published_at": "2026-10-31T00:00:00Z"},
             {"title": "خبر 2", "excerpt": "مقتطف 2", "url": "https://news.google.com/b", "source_name": "المصدر", "source_url": "", "region": "world", "published_at": "2026-10-30T23:00:00Z"},
@@ -65,7 +67,21 @@ class NewsUpdateTests(unittest.TestCase):
         self.assertTrue(changed)
         self.assertEqual(len(summaries), 1)
         self.assertEqual(len(data["items"]), 2)
+        self.assertEqual(data["items"][0]["category"], "economy")
         self.assertFalse(warnings)
+
+    def test_specific_feed_category_wins_over_broad_world_feed(self):
+        broad = {**self.feed, "category": "world"}
+        item = {**self.entries[0]}
+        data, changed, _ = build_update(
+            {"schema_version": 1, "items": []},
+            [broad, self.feed],
+            lambda *_: [item],
+            lambda _item: "ملخص عربي محايد",
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["category"], "economy")
 
     def test_respects_daily_summary_cap(self):
         existing = {"schema_version": 1, "updated_at": None, "items": [{"url": "https://news.google.com/old", "summary_date": "2026-10-31"}]}
@@ -104,7 +120,7 @@ class NewsUpdateTests(unittest.TestCase):
             build_update(existing, [self.feed], fail, lambda _item: "unused", now=NOW)
 
     def test_no_new_items_does_not_change_timestamp(self):
-        existing = {"schema_version": 1, "updated_at": "previous", "items": [{"url": self.entries[0]["url"], "summary_date": "2026-10-30"}]}
+        existing = {"schema_version": 1, "updated_at": "previous", "items": [{"url": self.entries[0]["url"], "region": "world", "category": "economy", "summary_date": "2026-10-30"}]}
         data, changed, _ = build_update(
             existing,
             [self.feed],
@@ -114,6 +130,19 @@ class NewsUpdateTests(unittest.TestCase):
         )
         self.assertFalse(changed)
         self.assertEqual(data["updated_at"], "previous")
+
+    def test_backfills_more_specific_category_for_existing_item(self):
+        existing = {"schema_version": 1, "updated_at": "previous", "items": [{"url": self.entries[2]["url"], "region": "world"}]}
+        data, changed, _ = build_update(
+            existing,
+            [self.feed],
+            lambda *_: [self.entries[2]],
+            lambda _item: self.fail("existing stories do not need new summaries"),
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["category"], "economy")
+        self.assertEqual(data["updated_at"], "2026-10-31T00:00:00Z")
 
     def test_ai_summaries_are_off_without_explicit_opt_in(self):
         with patch.dict("os.environ", {}, clear=True):

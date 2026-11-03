@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "reports.json"
+NEWS_DATA = ROOT / "data" / "news.json"
 SITE_URL = "https://sozanhnedy-bot.github.io/-"
 BRAND = "Threads Documentary News"
 REPORT_ID_RE = re.compile(r"^[a-f0-9]{20,40}$")
@@ -25,12 +26,8 @@ def safe_image(value: object) -> str:
     return candidate if IMAGE_RE.fullmatch(candidate) else "assets/brand-mark.png"
 
 
-def safe_social_image(value: object) -> str:
-    image_path = safe_image(value)
-    if image_path == "assets/brand-mark.png":
-        return "assets/brand-cover.jpg"
-    candidate = str(Path(image_path).with_name(Path(image_path).stem + "-social.jpg"))
-    return candidate if (ROOT / candidate).is_file() else image_path
+def safe_social_image(_value: object) -> str:
+    return "assets/brand-cover.jpg"
 
 
 def short_code(report_id: str, report_ids: list[str]) -> str:
@@ -42,7 +39,7 @@ def short_code(report_id: str, report_ids: list[str]) -> str:
     return report_id[:length]
 
 
-def render(report: dict, code: str) -> str:
+def render(report: dict, code: str, news_item: dict | None = None, related_items: list[dict] | None = None) -> str:
     title = esc(report.get("title"))
     dek = esc(report.get("dek"))
     report_id = esc(report.get("id"))
@@ -73,6 +70,20 @@ def render(report: dict, code: str) -> str:
         sections.append(f"<section class=\"article-section\"><h2>{esc(section.get('heading'))}</h2>{paragraphs}</section>")
 
     sources = "، ".join(esc(name) for name in report.get("sources", []) if isinstance(name, str))
+    published = str(report.get("published_at") or (news_item or {}).get("published_at") or "")
+    related_rows = []
+    for item in related_items or []:
+        if not isinstance(item, dict) or item.get("id") == report.get("id"):
+            continue
+        raw_related_id = str(item.get("id") or "")
+        if not re.fullmatch(r"[A-Za-z0-9_-]{1,80}", raw_related_id):
+            continue
+        related_title = str(item.get("title") or "").strip()
+        if related_title:
+            related_rows.append(f'<li><a href="../news/{esc(raw_related_id)}.html">{esc(related_title)}</a></li>')
+        if len(related_rows) >= 3:
+            break
+    related_news = f'<aside class="related-news"><h2>أخبار ذات صلة</h2><ul>{"".join(related_rows)}</ul></aside>' if related_rows else ""
     script_rows = "".join(
         f"<li><span class=\"scene-duration\">{esc(scene.get('duration'))}</span><p><b>الصورة:</b> {esc(scene.get('visual'))}</p><p><b>التعليق الصوتي:</b> {esc(scene.get('voiceover'))}</p></li>"
         for scene in report.get("video_script", []) if isinstance(scene, dict)
@@ -103,11 +114,12 @@ def render(report: dict, code: str) -> str:
 <main id="article-main" class="article-shell">
 <nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><span>تقرير مفصل</span></nav>
 <article class="full-report" data-report-id="{report_id}" data-short-url="../r/{code}.html">
-<header class="article-heading"><p class="eyebrow">تقرير إخباري</p><h1>{title}</h1><p class="article-dek">{dek}</p><div class="article-meta"><span>{BRAND}</span><span>المصادر: {sources}</span></div></header>
+<header class="article-heading"><p class="eyebrow">تقرير إخباري</p><h1>{title}</h1><p class="article-dek">{dek}</p><div class="article-meta"><span>{BRAND}</span><span>المصادر: {sources}</span>{f'<time datetime="{esc(published)}">{esc(published)}</time>' if published else ''}</div></header>
 <figure class="article-figure"><img src="../{image}" alt="{alt}" fetchpriority="high"><figcaption>{caption}</figcaption></figure>
 {video_player}
 <div class="article-copy">{''.join(sections)}</div>
-<aside class="sources-box"><b>المصادر المعتمدة</b><p>{sources}</p><small>المصادر تُذكر بأسمائها. صياغة التقرير تحريرية مستقلة، ولا توجد روابط تحويل إلى مواقع أخرى.</small></aside>
+<aside class="sources-box"><b>المصادر المعتمدة</b><p>{sources}</p><small>المصادر مذكورة بالاسم، وتبقى القراءة داخل الموقع.</small></aside>
+{related_news}
 <section class="social-approval" aria-labelledby="social-title"><div><p class="eyebrow">محتوى اجتماعي</p><h2 id="social-title">نص مشاركة مقترح</h2><p class="social-copy">{esc(report.get('social_caption'))}</p><p class="approval-note">هذا الزر يفتح مشاركة يدوية؛ لا يرسل شيئًا إلى منصة اجتماعية من تلقاء نفسه.</p><button type="button" class="article-action" data-share>مراجعة ثم مشاركة</button> <button type="button" class="article-action secondary" data-copy-short-link>نسخ الرابط المختصر</button></div></section>
 <section class="video-script" aria-labelledby="video-title"><div class="video-heading"><div><p class="eyebrow">مسودة إنتاج</p><h2 id="video-title">سكريبت فيديو مقترح</h2></div><button type="button" class="article-action secondary" data-copy-script>نسخ السكريبت</button></div><ol>{script_rows}</ol><p class="approval-note">هذا سكريبت إنتاجي للمراجعة، وليس ملف فيديو منشورًا. استخدم صورًا موثقة أو لقطات مرخصة قبل الإنتاج.</p></section>
 </article></main>
@@ -138,6 +150,7 @@ def main() -> int:
     parser.add_argument("--output", required=True, help="reports output directory")
     args = parser.parse_args()
     data = json.loads(DATA.read_text(encoding="utf-8"))
+    news_data = json.loads(NEWS_DATA.read_text(encoding="utf-8")) if NEWS_DATA.is_file() else {"items": []}
     out = Path(args.output)
     out.mkdir(parents=True, exist_ok=True)
     reports = [
@@ -147,11 +160,22 @@ def main() -> int:
         and isinstance(report.get("sections"), list) and report["sections"]
     ]
     ids = [report["id"] for report in reports]
+    news_by_id = {str(item.get("id")): item for item in news_data.get("items", []) if isinstance(item, dict)}
+    report_ids = set(ids)
     short_dir = out.parent / "r"
     short_dir.mkdir(parents=True, exist_ok=True)
     for report in reports:
         code = short_code(report["id"], ids)
-        (out / f"{report['id']}.html").write_text(render(report, code), encoding="utf-8")
+        matched_news = news_by_id.get(report["id"], {})
+        region = str(matched_news.get("region") or report.get("region") or "")
+        category = str(matched_news.get("category") or report.get("category") or "")
+        related = [
+            item for item in news_data.get("items", [])
+            if isinstance(item, dict) and str(item.get("id")) not in report_ids
+            and ((category and item.get("category") == category) or (region and item.get("region") == region))
+        ]
+        related.sort(key=lambda item: str(item.get("published_at") or ""), reverse=True)
+        (out / f"{report['id']}.html").write_text(render(report, code, matched_news, related), encoding="utf-8")
         (short_dir / f"{code}.html").write_text(render_short_link(report), encoding="utf-8")
     print(f"Rendered {len(reports)} internal report pages and short aliases.")
     return 0

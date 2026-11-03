@@ -106,6 +106,33 @@ def _iso(value: datetime | None) -> str | None:
     return value.astimezone(timezone.utc).isoformat().replace("+00:00", "Z") if value else None
 
 
+def _safe_image_url(value: str, media_type: str = "") -> str:
+    candidate = value.strip()
+    try:
+        parsed = urlsplit(candidate)
+    except ValueError:
+        return ""
+    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+        return ""
+    if parsed.hostname in {"news.google.com", "google.com", "www.google.com"}:
+        return ""
+    known_image = bool(re.search(r"\.(?:jpe?g|png|webp|avif)(?:$|\?)", candidate, re.IGNORECASE))
+    if not known_image and not media_type.lower().startswith("image/") and media_type.lower() != "image":
+        return ""
+    return candidate[:1_000]
+
+
+def _item_image_url(node: ET.Element) -> str:
+    for child in list(node):
+        if _local_name(child.tag) not in {"enclosure", "content", "thumbnail"}:
+            continue
+        url = child.attrib.get("url", "") or child.attrib.get("href", "")
+        image = _safe_image_url(url, child.attrib.get("type", "") or child.attrib.get("medium", ""))
+        if image:
+            return image
+    return ""
+
+
 def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | None = None) -> list[dict]:
     """Parse an RSS/Atom payload without following article links or executing markup."""
     if len(xml_bytes) > MAX_FEED_BYTES:
@@ -143,6 +170,7 @@ def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | No
             "source_name": source_name,
             "source_url": source_url,
             "region": region,
+            "image_url": _item_image_url(node),
             "published_at": _iso(published_dt),
         })
     return results
@@ -170,6 +198,15 @@ def _existing_urls(items: list[dict]) -> set[str]:
 
 def _summary_count_today(items: list[dict], today: str) -> int:
     return sum(1 for item in items if item.get("summary_date") == today)
+
+
+def _category_priority(category: str | None) -> int:
+    value = (category or "").strip().lower()
+    if value in {"politics", "economy", "technology", "sports"}:
+        return 2
+    if value in {"egypt", "arab", "world"}:
+        return 1
+    return 0
 
 
 def summarize_news(client, item: dict, model: str) -> str:
@@ -203,7 +240,7 @@ def build_update(
     now: datetime | None = None,
     max_per_run: int = 3,
     max_per_day: int = 30,
-    max_stored_items: int = 150,
+    max_stored_items: int = 2_000,
     summary_type: str = "ai_summary",
 ) -> tuple[dict, bool, list[str]]:
     """Return updated public data, changed flag, and non-sensitive warnings."""
@@ -214,12 +251,19 @@ def build_update(
     if not isinstance(existing_items, list):
         existing_items = []
     known_urls = _existing_urls(existing_items)
+    existing_by_url = {item.get("url"): item for item in existing_items if isinstance(item, dict) and item.get("url")}
     seen_urls: set[str] = set()
     candidates: list[dict] = []
     warnings: list[str] = []
     successful_feeds = 0
+    changed_metadata = False
 
-    for feed in feeds:
+    prioritized_feeds = sorted(
+        feeds,
+        key=lambda feed: _category_priority(feed.get("category") or feed.get("region")),
+        reverse=True,
+    )
+    for feed in prioritized_feeds:
         if not feed.get("enabled", True):
             continue
         try:
@@ -230,7 +274,17 @@ def build_update(
             continue
         for item in fetched:
             url = item.get("url", "")
-            if not url or url in known_urls or url in seen_urls:
+            if not url:
+                continue
+            category = feed.get("category") or item.get("region") or "world"
+            item.setdefault("category", category)
+            if url in known_urls:
+                existing_item = existing_by_url.get(url)
+                if existing_item and _category_priority(category) > _category_priority(existing_item.get("category")):
+                    existing_item["category"] = category
+                    changed_metadata = True
+                continue
+            if url in seen_urls:
                 continue
             if not item.get("title"):
                 continue
@@ -261,19 +315,22 @@ def build_update(
         additions.append({
             "id": _story_id(item["url"]),
             "region": item.get("region", "world"),
+            "category": item.get("category", item.get("region", "world")),
             "title": item["title"],
             "summary": summary[:MAX_SUMMARY_CHARS],
             "summary_type": item_summary_type,
             "url": item["url"],
             "source_name": item.get("source_name", "المصدر الأصلي"),
             "source_url": item.get("source_url", ""),
+            "image_url": item.get("image_url", ""),
             "published_at": item.get("published_at"),
             "created_at": now_text,
             "summary_date": today,
         })
 
     if not additions:
-        return {"schema_version": 1, "updated_at": existing.get("updated_at") if isinstance(existing, dict) else None, "items": existing_items[:max_stored_items]}, False, warnings
+        updated_at = now_text if changed_metadata else (existing.get("updated_at") if isinstance(existing, dict) else None)
+        return {"schema_version": 1, "updated_at": updated_at, "items": existing_items[:max_stored_items]}, changed_metadata, warnings
 
     merged = additions + [item for item in existing_items if item.get("url") not in {new["url"] for new in additions}]
     merged = merged[:max(1, max_stored_items)]
@@ -344,7 +401,7 @@ def main() -> int:
     existing = load_json(LOCAL_NEWS_PATH)
     max_per_run = int(os.environ.get("MAX_NEW_SUMMARIES_PER_RUN", "3"))
     max_per_day = int(os.environ.get("MAX_SUMMARIES_PER_DAY", "30"))
-    max_items = int(os.environ.get("MAX_STORED_ITEMS", "150"))
+    max_items = int(os.environ.get("MAX_STORED_ITEMS", "2000"))
     news, changed, warnings = build_update(
         existing,
         feeds,

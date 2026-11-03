@@ -1,193 +1,237 @@
-const REGION_LABELS = { world: "العالم", arab: "العالم العربي", egypt: "مصر" };
-const PUBLIC_API_BASE = "https://threadsnews-uheqs7td.manus.space";
 const REFRESH_MS = 10 * 60 * 1000;
-const state = { news: [], reports: [], trends: [], region: "all", query: "", initialLoad: true, alertEnabled: localStorage.getItem("wdw-alerts") === "on" };
-const $ = (selector) => document.querySelector(selector);
-const newsList = $("#news-list");
-const emptyState = $("#empty-state");
+const HOME_WINDOW_MS = 3 * 24 * 60 * 60 * 1000;
+const CATEGORY_LABELS = {
+  egypt: "مصر", arab: "العالم العربي", world: "العالم",
+  politics: "سياسة", economy: "اقتصاد", technology: "تكنولوجيا", sports: "رياضة",
+  reports: "تقارير ووثائقيات", videos: "فيديوهات",
+};
+const REGION_LABELS = { egypt: "مصر", arab: "العالم العربي", world: "العالم" };
+const HOME_CATEGORIES = [
+  { id: "egypt", title: "مصر" }, { id: "arab", title: "العالم العربي" }, { id: "world", title: "العالم" },
+  { id: "politics", title: "سياسة" }, { id: "economy", title: "اقتصاد" },
+  { id: "technology", title: "تكنولوجيا" }, { id: "sports", title: "رياضة" },
+];
+const state = { news: [], reports: [], query: "", region: "all", initialLoad: true };
 const reportMap = new Map();
+const $ = (selector, root = document) => root.querySelector(selector);
 
-function el(tag, className, text) {
+function el(tag, className = "", text = "") {
   const node = document.createElement(tag);
   if (className) node.className = className;
-  if (text !== undefined) node.textContent = text;
+  if (text !== "") node.textContent = text;
   return node;
 }
-function formatDate(value, options = { dateStyle: "medium", timeStyle: "short" }) {
-  if (!value) return "";
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("ar-EG", options).format(date);
+function text(value, limit = 900) { return typeof value === "string" ? value.trim().slice(0, limit) : ""; }
+function validId(value) { return /^[A-Za-z0-9_-]{1,80}$/.test(String(value || "")); }
+function normalize(value) { return String(value || "").normalize("NFKC").replace(/[\u064B-\u065F\u0670]/g, "").toLocaleLowerCase("ar"); }
+function safeImage(value) {
+  const raw = text(value, 800);
+  if (/^assets\/[A-Za-z0-9._/-]+$/.test(raw) && !raw.includes("..")) return `./${raw}`;
+  try {
+    const url = new URL(raw);
+    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && /\.(?:jpe?g|png|webp|avif)$/i.test(url.pathname)) return url.href;
+  } catch (_) { }
+  return "";
 }
-function reportUrl(id) { return `./reports/${encodeURIComponent(id)}.html`; }
-function shortReportUrl(id) {
-  const ids = state.reports.map((report) => String(report.id || ""));
-  let length = 6;
-  while (length < id.length && ids.some((other) => other !== id && other.startsWith(id.slice(0, length)))) length += 2;
-  return `./r/${encodeURIComponent(id.slice(0, length))}.html`;
+function stripSourceSuffix(titleValue, sourceValue) {
+  const title = text(titleValue, 500);
+  const source = text(sourceValue, 160);
+  if (!source) return title;
+  for (const separator of [" — ", " – ", " - ", " | ", " :: "]) {
+    const index = title.lastIndexOf(separator);
+    if (index > 0 && normalize(title.slice(index + separator.length)) === normalize(source)) return title.slice(0, index).trim();
+  }
+  return title;
 }
-function newsUrl(id) { return `./news/${encodeURIComponent(id)}.html`; }
-function imageUrl(report) { return `./${String(report.image || "").replace(/^\.\//, "")}`; }
-function sourceLine(report) { return `المصادر: ${(report.sources || []).join("، ") || "مصادر الخبر"}`; }
-function readItems() {
-  return state.news.filter((item) => reportMap.has(item.id)).sort((a, b) => new Date(b.published_at || b.created_at || 0) - new Date(a.published_at || a.created_at || 0));
+function recordFor(item) {
+  if (!item || !validId(item.id)) return null;
+  const report = reportMap.get(item.id) || null;
+  const region = text(item.region, 30).toLowerCase();
+  const category = text(report?.category || item.category, 30).toLowerCase() || region || "world";
+  const sourceName = report && Array.isArray(report.sources)
+    ? report.sources.map((value) => text(value, 160)).filter(Boolean).join("، ")
+    : text(item.source_name, 160);
+  return {
+    id: item.id,
+    report,
+    title: text(report?.title || stripSourceSuffix(item.title, item.source_name) || item.title, 500),
+    summary: text(report?.dek || item.summary, 1_200),
+    date: text(item.published_at || report?.published_at || item.created_at, 80),
+    sourceName,
+    sourceUrl: text(item.source_url || report?.source_url, 800),
+    image: safeImage(report?.image || item.image_url),
+    imageAlt: text(report?.image_alt || item.image_alt || item.title, 300),
+    imageCaption: text(report?.image_caption || item.image_caption, 300),
+    region,
+    category,
+    summaryType: report ? "editorial_report" : text(item.summary_type, 40),
+    breaking: item.breaking === true,
+    href: report ? `./reports/${item.id}.html` : `./news/${item.id}.html`,
+    youtubeId: text(report?.youtube_id, 20),
+  };
 }
-function readBriefItems() {
-  const query = state.query.trim().toLocaleLowerCase("ar");
-  return state.news.filter((item) => {
-    if (reportMap.has(item.id) || !/^[A-Za-z0-9_-]{1,80}$/.test(String(item.id || ""))) return false;
-    const text = `${item.title || ""} ${item.summary || ""}`.toLocaleLowerCase("ar");
-    return (state.region === "all" || item.region === state.region) && (!query || text.includes(query));
-  }).sort((a, b) => new Date(b.published_at || b.created_at || 0) - new Date(a.published_at || a.created_at || 0));
+function allRecords() {
+  const items = state.news.map(recordFor).filter(Boolean);
+  const ids = new Set(items.map((item) => item.id));
+  state.reports.forEach((report) => {
+    if (!report || !validId(report.id) || ids.has(report.id)) return;
+    items.push(recordFor({ ...report, region: report.region || "world", category: "reports", created_at: report.published_at || "" }));
+  });
+  return items.filter(Boolean).sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0));
 }
-function visibleItems() {
-  const query = state.query.trim().toLocaleLowerCase("ar");
-  return readItems().filter((item) => {
-    const report = reportMap.get(item.id);
-    const text = `${report.title} ${report.dek} ${(report.sections || []).flatMap((section) => section.paragraphs || []).join(" ")}`.toLocaleLowerCase("ar");
-    return (state.region === "all" || item.region === state.region) && (!query || text.includes(query));
+function recentRecords(records) {
+  const cutoff = Date.now() - HOME_WINDOW_MS;
+  return records.filter((record) => {
+    const stamp = Date.parse(record.date);
+    return Number.isFinite(stamp) && stamp >= cutoff;
   });
 }
-function makeStoryLink(item, report, className) {
-  const link = el("a", className);
-  link.href = reportUrl(report.id);
-  link.setAttribute("aria-label", `اقرأ التقرير: ${report.title}`);
-  return link;
+function formatDate(value, withTime = false) {
+  if (!value) return "التاريخ غير متاح";
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime())) return "التاريخ غير متاح";
+  return new Intl.DateTimeFormat("ar-EG", withTime ? { dateStyle: "medium", timeStyle: "short" } : { dateStyle: "medium" }).format(date);
 }
-function renderHero() {
+function addImage(container, record, className = "portal-card-image") {
+  if (!record.image) return;
+  const figure = el("figure", className);
+  const img = document.createElement("img");
+  img.src = record.image;
+  img.alt = record.imageAlt || record.title;
+  img.loading = "lazy";
+  img.decoding = "async";
+  figure.append(img);
+  if (record.imageCaption) figure.append(el("figcaption", "portal-image-caption", record.imageCaption));
+  container.append(figure);
+}
+function sourceMeta(record) {
+  const meta = el("div", "portal-card-meta");
+  const category = CATEGORY_LABELS[record.category] || REGION_LABELS[record.region] || "خبر";
+  meta.append(el("span", "portal-category-label", category));
+  meta.append(el("time", "portal-date", formatDate(record.date)));
+  if (record.sourceName) meta.append(el("span", "portal-source", `المصدر: ${record.sourceName}`));
+  return meta;
+}
+function articleCard(record, compact = false) {
+  const card = el("article", compact ? "portal-news-item" : "portal-story-card");
+  if (record.image) {
+    const linkImage = document.createElement("a");
+    linkImage.className = "portal-card-thumb-link";
+    linkImage.href = record.href;
+    linkImage.setAttribute("aria-label", `افتح: ${record.title}`);
+    addImage(linkImage, record, "portal-card-thumb");
+    card.append(linkImage);
+  }
+  const body = el("div", "portal-card-body");
+  body.append(sourceMeta(record));
+  const title = el("h3", compact ? "portal-news-title" : "portal-card-title");
+  const titleLink = document.createElement("a");
+  titleLink.href = record.href;
+  titleLink.textContent = record.title;
+  title.append(titleLink);
+  body.append(title);
+  if (record.summary) body.append(el("p", "portal-card-summary", record.summary));
+  const kind = record.report ? "تقرير تحريري" : record.summaryType === "source_notice" ? "موجز المصدر" : "موجز إخباري";
+  const foot = el("div", "portal-card-foot");
+  foot.append(el("span", "portal-content-kind", kind));
+  const open = document.createElement("a");
+  open.className = "portal-open-link";
+  open.href = record.href;
+  open.textContent = "اقرأ داخل الموقع";
+  foot.append(open);
+  body.append(foot);
+  card.append(body);
+  return card;
+}
+function renderLead(records) {
   const host = $("#top-stories");
   host.replaceChildren();
-  const items = readItems();
-  if (!items.length) { host.append(el("p", "loading-card", "لا توجد تقارير مكتملة منشورة حتى الآن.")); return; }
-  const first = items[0], report = reportMap.get(first.id);
-  const hero = makeStoryLink(first, report, "hero-story");
-  const image = document.createElement("img");
-  image.src = imageUrl(report); image.alt = report.image_alt || ""; image.loading = "eager"; image.fetchPriority = "high";
-  const copy = el("div", "hero-copy");
-  copy.append(el("p", "eyebrow", "التقرير الأبرز"));
-  copy.append(el("h2", "", report.title));
-  copy.append(el("p", "", report.dek));
-  const meta = el("div", "story-meta");
-  meta.append(el("span", "pill", REGION_LABELS[first.region] || "تقرير"));
-  meta.append(el("time", "", formatDate(first.published_at || first.created_at)));
-  meta.append(el("span", "", sourceLine(report)));
-  copy.append(meta);
-  copy.append(el("span", "hero-link", "اقرأ التقرير كاملًا"));
-  hero.append(image, copy);
-  host.append(hero);
-
-  const side = el("aside", "hero-side");
-  side.append(el("h2", "side-heading", "تقارير أخرى"));
-  for (const item of items.slice(1, 4)) {
-    const story = reportMap.get(item.id), link = makeStoryLink(item, story, "side-story");
-    const thumb = document.createElement("img"); thumb.src = imageUrl(story); thumb.alt = ""; thumb.loading = "lazy";
-    const text = document.createElement("span");
-    text.append(el("time", "", formatDate(item.published_at || item.created_at, { dateStyle: "medium" })));
-    text.append(el("h3", "", story.title));
-    link.append(thumb, text); side.append(link);
-  }
-  if (items.length < 2) side.append(el("p", "muted-label", "تُضاف التقارير الجديدة تلقائيًا بعد اكتمال تحريرها."));
-  host.append(side);
+  const lead = records[0];
+  if (!lead) { host.append(el("p", "loading-card", "لا توجد أخبار حديثة الآن. الأخبار السابقة محفوظة في الأرشيف.")); return; }
+  const card = el("article", `lead-story${lead.image ? " has-image" : " text-only"}`);
+  if (lead.image) addImage(card, lead, "lead-story-image");
+  const body = el("div", "lead-story-copy");
+  body.append(sourceMeta(lead));
+  body.append(el("h2", "lead-story-title", lead.title));
+  if (lead.summary) body.append(el("p", "lead-story-summary", lead.summary));
+  body.append(el("p", "lead-story-editorial-note", lead.report ? "تقرير تحريري كامل داخل الموقع" : "موجز من بيانات المصدر المتاحة"));
+  const link = document.createElement("a");
+  link.className = "lead-story-link";
+  link.href = lead.href;
+  link.textContent = "افتح الخبر كاملًا داخل الموقع";
+  body.append(link);
+  card.append(body);
+  host.append(card);
 }
-function trendUrl(id) { return `./trends/${encodeURIComponent(id)}.html`; }
-function renderTrends() {
-  const host = $("#trending-list"); host.replaceChildren();
-  const trends = [...state.trends].sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 9);
-  const stamp = state.trendUpdated ? formatDate(state.trendUpdated) : "";
-  $("#trend-updated").textContent = stamp ? `آخر رصد: ${stamp}` : "تُحدّث الترندات دوريًا";
-  if (!trends.length) { host.append(el("p", "loading-card", "لا توجد ترندات حديثة متاحة في آخر رصد. ستظهر العناصر الجديدة هنا تلقائيًا.")); return; }
-  for (const [index, trend] of trends.entries()) {
-    if (!/^[a-f0-9]{18}$/.test(String(trend.id || ""))) continue;
-    const item = el("article", "trend-item");
-    item.append(el("span", "trend-number", String(index + 1).padStart(2, "0")));
-    const body = document.createElement("div");
-    const report = (trend.report_id && reportMap.get(trend.report_id)) || null;
-    const destination = report ? reportUrl(report.id) : trendUrl(trend.id);
-    body.append(el("span", "trend-label", trend.alert ? "تنبيه ترند" : "ترند حديث"));
-    const heading = el("h3");
-    const title = el("a", "trend-title-link", trend.title || "موضوع رائج");
-    title.href = destination;
-    title.setAttribute("aria-label", `افتح المحتوى الداخلي: ${trend.title || "موضوع رائج"}`);
-    heading.append(title);
-    body.append(heading);
-    const rawRegion = String(trend.region_label || "").replace(/^(?:X|Google Trends)\s*[·-]\s*/i, "").trim();
-    const region = REGION_LABELS[trend.region] || rawRegion || "مصر";
-    const detail = [trend.approx_traffic ? `اهتمام تقريبي: ${trend.approx_traffic}` : "رصد جديد", region, trend.published_at ? formatDate(trend.published_at, { dateStyle: "short", timeStyle: "short" }) : ""].filter(Boolean).join(" · ");
-    body.append(el("p", "", detail));
-    const relatedTitles = [...new Set((trend.news_items || []).map((news) => String(news?.title || "").trim()).filter(Boolean))].slice(0, 2);
-    if (relatedTitles.length) body.append(el("p", "trend-related-preview", `عناوين مرتبطة: ${relatedTitles.join(" · ")}`));
-    const link = el("a", "read-link", "افتح المحتوى داخل الموقع"); link.href = destination; body.append(link);
-    item.append(body); host.append(item);
-  }
+function matches(record) {
+  if (state.region !== "all" && record.region !== state.region) return false;
+  if (!state.query) return true;
+  const haystack = normalize([record.title, record.summary, record.sourceName, record.category, record.region].join(" "));
+  return haystack.includes(state.query);
 }
-function makeCard(item, index) {
-  const report = reportMap.get(item.id);
-  const card = el("article", "news-card"); card.style.animationDelay = `${Math.min(index * 35, 210)}ms`;
-  const link = makeStoryLink(item, report, "card-report-link");
-  const image = document.createElement("img"); image.className = "card-image"; image.src = imageUrl(report); image.alt = report.image_alt || ""; image.loading = "lazy";
-  const body = el("div", "card-body");
-  const meta = el("div", "card-meta"); meta.append(el("span", "region-tag", REGION_LABELS[item.region] || "خبر")); meta.append(el("time", "", formatDate(item.published_at || item.created_at)));
-  body.append(meta, el("h3", "news-title", report.title), el("p", "news-summary", report.dek), el("p", "card-sources", sourceLine(report)));
-  const actions = el("div", "card-actions");
-  const read = el("a", "read-link", "التفاصيل داخل الموقع"); read.href = reportUrl(report.id);
-  const share = el("button", "share-button", "مراجعة المشاركة"); share.type = "button"; share.addEventListener("click", () => shareReport(report));
-  actions.append(read, share); body.append(actions); link.append(image); card.append(link, body); return card;
-}
-function renderNews() {
-  const items = visibleItems(); newsList.replaceChildren();
-  emptyState.hidden = items.length > 0;
-  $("#feed-count").textContent = `${items.length} ${items.length === 1 ? "تقرير" : "تقارير"} مكتملة`;
-  items.forEach((item, index) => newsList.append(makeCard(item, index)));
-}
-function renderBriefs() {
-  const section = $("#latest-briefs"), host = $("#briefs-list");
-  if (!section || !host) return;
-  const items = readBriefItems().slice(0, 12);
-  section.hidden = items.length === 0;
+function renderLatest(records) {
+  const filtered = records.filter(matches);
+  const host = $("#news-list");
   host.replaceChildren();
-  for (const item of items) {
-    const card = el("article", "brief-card");
-    const meta = el("p", "brief-meta", `${REGION_LABELS[item.region] || "خبر"} · ${formatDate(item.published_at || item.created_at)} · ${item.source_name || "خلاصة RSS"}`);
-    card.append(meta, el("h3", "", item.title || "خبر قيد التحرير"));
-    card.append(el("p", "brief-summary", item.summary || "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع."));
-    const read = el("a", "read-link", "اقرأ الموجز داخل الموقع");
-    read.href = newsUrl(item.id);
-    card.append(read);
-    host.append(card);
-  }
+  const leadId = state.region === "all" && !state.query ? records[0]?.id : "";
+  const recent = filtered.filter((record) => record.id !== leadId).slice(0, 12);
+  recent.forEach((record) => host.append(articleCard(record, true)));
+  $("#feed-count").textContent = `${filtered.length.toLocaleString("ar-EG")} مادة متاحة في هذا العرض`;
+  $("#empty-state").hidden = filtered.length > 0;
 }
-function render() { renderHero(); renderTrends(); renderNews(); renderBriefs(); }
-async function shareReport(report) {
-  const allowed = window.confirm("هل توافق على فتح مشاركة يدوية لهذا التقرير؟ لن يُنشر شيء من هذه النافذة تلقائيًا.");
-  if (!allowed) return;
-  const link = shortReportUrl(report.id);
-  const shareData = { title: report.title, text: `${report.social_caption}\n\n${link}`, url: new URL(link, location.href).href };
-  try {
-    if (navigator.share) await navigator.share(shareData);
-    else { await navigator.clipboard.writeText(`${shareData.title}\n${shareData.text}`); window.alert("تم نسخ نص المشاركة. اختر المنصة وانشره يدويًا."); }
-  } catch (error) { if (error.name !== "AbortError") console.warn("Share not completed", error); }
+function renderSections(records) {
+  const host = $("#category-sections");
+  host.replaceChildren();
+  HOME_CATEGORIES.forEach(({ id, title }) => {
+    const entries = records.filter((record) => (record.category === id || record.region === id) && (!state.query || matches(record))).slice(0, 3);
+    if (!entries.length) return;
+    const section = el("section", "portal-category-section");
+    section.id = `category-${id}`;
+    const heading = el("div", "portal-section-title");
+    const titleBox = el("div");
+    titleBox.append(el("p", "eyebrow", "من مصادر متعددة"), el("h2", "", title));
+    heading.append(titleBox);
+    const more = document.createElement("a");
+    more.className = "text-link";
+    more.href = `./section.html?category=${encodeURIComponent(id)}`;
+    more.textContent = "عرض القسم ←";
+    heading.append(more);
+    section.append(heading);
+    const grid = el("div", "portal-card-grid");
+    entries.forEach((record) => grid.append(articleCard(record)));
+    section.append(grid);
+    host.append(section);
+  });
 }
-function gentleChime() {
-  try {
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) return;
-    const ctx = new AudioCtx();
-    [[659.25, 0], [880, .12]].forEach(([frequency, offset]) => {
-      const osc = ctx.createOscillator(), gain = ctx.createGain();
-      osc.type = "sine"; osc.frequency.value = frequency;
-      gain.gain.setValueAtTime(.0001, ctx.currentTime + offset);
-      gain.gain.exponentialRampToValueAtTime(.045, ctx.currentTime + offset + .025);
-      gain.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + offset + .22);
-      osc.connect(gain); gain.connect(ctx.destination); osc.start(ctx.currentTime + offset); osc.stop(ctx.currentTime + offset + .23);
-    });
-    window.setTimeout(() => ctx.close(), 650);
-  } catch (error) { console.info("Audio alert is unavailable", error); }
+function renderReportsAndVideos(records) {
+  const reports = records.filter((record) => record.report);
+  const reportHost = $("#reports-list");
+  reportHost.replaceChildren();
+  reports.slice(0, 3).forEach((record) => reportHost.append(articleCard(record)));
+  $("#reports-section").hidden = reports.length === 0;
+  const videos = reports.filter((record) => /^[A-Za-z0-9_-]{11}$/.test(record.youtubeId));
+  const videoHost = $("#videos-list");
+  videoHost.replaceChildren();
+  videos.slice(0, 3).forEach((record) => videoHost.append(articleCard(record)));
+  $("#videos-section").hidden = videos.length === 0;
 }
-function notifyNewTrends(previousIds) {
-  if (state.initialLoad || !state.alertEnabled) return;
-  const fresh = state.trends.find((item) => item.alert && !previousIds.has(item.id));
-  if (!fresh) return;
-  gentleChime();
-  if ("Notification" in window && Notification.permission === "granted") new Notification("ترند جديد يستحق المتابعة", { body: fresh.title, icon: "./assets/app-icon-192.png", tag: fresh.id });
+function renderBreaking(records) {
+  const sixHoursAgo = Date.now() - 6 * 60 * 60 * 1000;
+  const item = records.find((record) => record.breaking && Date.parse(record.date) >= sixHoursAgo);
+  const strip = $("#breaking-strip");
+  if (!item || !strip) { if (strip) strip.hidden = true; return; }
+  const link = $("#breaking-link");
+  link.textContent = item.title;
+  link.href = item.href;
+  strip.hidden = false;
+}
+function render() {
+  const records = recentRecords(allRecords());
+  renderLead(records);
+  renderLatest(records);
+  renderSections(records);
+  renderReportsAndVideos(records);
+  renderBreaking(records);
 }
 async function fetchJson(path) {
   const response = await fetch(`${path}?v=${Date.now()}`, { cache: "no-store" });
@@ -195,58 +239,38 @@ async function fetchJson(path) {
   return response.json();
 }
 async function loadData() {
-  const oldTrendIds = new Set(state.trends.map((item) => item.id));
   try {
-    const [apiNewsResponse, trends] = await Promise.all([
-      fetch(`${PUBLIC_API_BASE}/api/news?v=${Date.now()}`, { cache: "no-store" }),
-      fetch(`${PUBLIC_API_BASE}/api/trends?v=${Date.now()}`, { cache: "no-store" }).then((response) => response.ok ? response.json() : { items: [] }),
-    ]);
-    if (!apiNewsResponse.ok) throw new Error(`API news: ${apiNewsResponse.status}`);
-    const apiNews = await apiNewsResponse.json();
-    state.news = Array.isArray(apiNews.items) ? apiNews.items : [];
-    state.reports = state.news.map((item) => item.report).filter((report) => report && report.id);
-    reportMap.clear(); state.reports.forEach((report) => reportMap.set(report.id, report));
-    state.trends = Array.isArray(trends.items) ? trends.items : [];
-    state.trendUpdated = trends.updated_at;
-    const updated = formatDate(apiNews.updated_at);
-    $("#update-status").textContent = updated ? `متصل بالخادم · ${updated}` : "متصل بخادم الأخبار";
-    $("#last-updated").textContent = updated ? `بيانات الأخبار: ${updated}` : "بيانات الأخبار متصلة بالخادم";
+    const [news, reports] = await Promise.all([fetchJson("./data/news.json"), fetchJson("./data/reports.json")]);
+    state.news = Array.isArray(news.items) ? news.items : [];
+    state.reports = Array.isArray(reports.items) ? reports.items : [];
+    reportMap.clear();
+    state.reports.forEach((report) => { if (report && validId(report.id)) reportMap.set(report.id, report); });
+    const updated = news.updated_at ? formatDate(news.updated_at, true) : "غير متاح";
+    $("#update-status").textContent = `تحديث بيانات الأخبار: ${updated}`;
+    $("#last-updated").textContent = `آخر استيراد للخلاصات: ${updated}`;
     $("#edition-date").textContent = new Intl.DateTimeFormat("ar-EG", { dateStyle: "full" }).format(new Date());
-    const top = state.trends.find((item) => item.alert) || state.trends[0];
-    $("#breaking-copy").textContent = top ? `${top.title} — ${top.approx_traffic || "ترند حديث"}` : "نرصد الترندات الحديثة، وتظهر هنا عند وصول بيانات جديدة.";
-    render(); notifyNewTrends(oldTrendIds); state.initialLoad = false;
-  } catch (apiError) {
-    try {
-      const [news, reports, trends] = await Promise.all([fetchJson("./data/news.json"), fetchJson("./data/reports.json"), fetchJson("./data/trending.json")]);
-      state.news = Array.isArray(news.items) ? news.items : [];
-      reportMap.clear(); state.reports = Array.isArray(reports.items) ? reports.items : []; state.reports.forEach((report) => reportMap.set(report.id, report));
-      state.trends = Array.isArray(trends.items) ? trends.items : []; state.trendUpdated = trends.updated_at;
-      const updated = formatDate(news.updated_at); $("#update-status").textContent = updated ? `وضع احتياطي · ${updated}` : "وضع احتياطي للبيانات المحلية"; $("#last-updated").textContent = updated ? `بيانات محلية: ${updated}` : "الخادم غير متاح مؤقتًا"; $("#edition-date").textContent = new Intl.DateTimeFormat("ar-EG", { dateStyle: "full" }).format(new Date());
-      const top = state.trends.find((item) => item.alert) || state.trends[0]; $("#breaking-copy").textContent = top ? `${top.title} — ${top.approx_traffic || "ترند حديث"}` : "نرصد الترندات الحديثة، وتظهر هنا عند وصول بيانات جديدة.";
-      render(); notifyNewTrends(oldTrendIds); state.initialLoad = false;
-    } catch (error) {
-      $("#update-status").textContent = "تعذر تحديث البيانات الآن";
-      if (state.initialLoad) newsList.replaceChildren(el("p", "loading-card", "تعذر تحميل الأخبار مؤقتًا. أعد المحاولة بعد قليل."));
-      console.error("Could not load portal data", apiError, error);
-    }
+    render();
+    state.initialLoad = false;
+  } catch (error) {
+    $("#update-status").textContent = "تعذر تحديث الأخبار الآن";
+    if (state.initialLoad) $("#top-stories").replaceChildren(el("p", "loading-card", "تعذر تحميل الأخبار مؤقتًا. أعد المحاولة بعد قليل."));
+    console.error("Could not load news data", error);
   }
 }
+
 document.querySelectorAll(".filter-button").forEach((button) => button.addEventListener("click", () => {
   state.region = button.dataset.region || "all";
-  document.querySelectorAll(".filter-button").forEach((candidate) => { const active = candidate === button; candidate.classList.toggle("is-active", active); candidate.setAttribute("aria-pressed", String(active)); });
-  renderNews(); renderBriefs();
+  document.querySelectorAll(".filter-button").forEach((candidate) => {
+    const active = candidate === button;
+    candidate.classList.toggle("is-active", active);
+    candidate.setAttribute("aria-pressed", String(active));
+  });
+  render();
 }));
-$("#search-input").addEventListener("input", (event) => { state.query = event.target.value; renderNews(); renderBriefs(); });
-$("#alerts-toggle").addEventListener("click", async (event) => {
-  if (state.alertEnabled) { state.alertEnabled = false; localStorage.setItem("wdw-alerts", "off"); event.currentTarget.textContent = "فعّل تنبيه الترند"; return; }
-  if ("Notification" in window && Notification.permission === "default") await Notification.requestPermission();
-  state.alertEnabled = true; localStorage.setItem("wdw-alerts", "on"); event.currentTarget.textContent = "إيقاف التنبيه"; gentleChime();
-});
-$("#alerts-toggle").textContent = state.alertEnabled ? "إيقاف التنبيه" : "فعّل تنبيه الترند";
-loadData(); window.setInterval(loadData, REFRESH_MS);
-if ("serviceWorker" in navigator && location.protocol.startsWith("http")) window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch((error) => console.warn("Offline support unavailable", error)));
-
-const threadsSignalsScript = document.createElement("script");
-threadsSignalsScript.src = "./threads-signals.js";
-threadsSignalsScript.defer = true;
-document.body.appendChild(threadsSignalsScript);
+$("#search-input").addEventListener("input", (event) => { state.query = normalize(event.target.value.trim()); render(); });
+$(".portal-search").addEventListener("submit", (event) => event.preventDefault());
+loadData();
+window.setInterval(loadData, REFRESH_MS);
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch((error) => console.warn("Offline support unavailable", error)));
+}

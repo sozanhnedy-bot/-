@@ -34,7 +34,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Publish one report or current trend digest per configured platform
+      - name: Publish one new editorial report per configured platform
         run: python scripts/publish_social.py
 
       - name: Save successful publication state

@@ -1,4 +1,4 @@
-"""Build the static Pages directory from the checked-in public data and assets."""
+"""Build the static Pages directory from the checked-in public news data."""
 from __future__ import annotations
 
 import argparse
@@ -9,21 +9,24 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = (
-    "index.html", "task-chat.html", "app.js", "article.js", "task-chat.js",
-    "threads-signals.js", "styles.css", "manifest.webmanifest", "service-worker.js",
+    "index.html", "archive.html", "section.html", "videos.html",
+    "app.js", "archive.js", "section.js", "videos.js", "article.js",
+    "styles.css", "manifest.webmanifest", "service-worker.js",
 )
-DATA_FILES = (
-    "news.json", "reports.json", "trending.json", "threads_signals.json",
-)
+DATA_FILES = ("news.json", "reports.json")
 ASSET_FILES = (
     "brand-mark.png", "app-icon-192.png", "app-icon-512.png",
     "brand-cover.jpg", "brand-logo-full.webp",
     "story-finswimming.webp", "story-morocco-stadium.webp", "story-yemen-diplomacy.webp",
-    "story-finswimming-social.jpg", "story-morocco-stadium-social.jpg", "story-yemen-diplomacy-social.jpg",
 )
 
 
 def build(output: Path) -> int:
+    output = output.resolve()
+    if output in {Path("/"), ROOT, ROOT.parent}:
+        raise ValueError("refusing to replace a critical output directory")
+    if output.exists():
+        shutil.rmtree(output)
     output.mkdir(parents=True, exist_ok=True)
     for name in ROOT_FILES:
         source = ROOT / name
@@ -49,12 +52,7 @@ def build(output: Path) -> int:
         cwd=ROOT,
         check=True,
     )
-    subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "render_trends.py"), "--output", str(output)],
-        cwd=ROOT,
-        check=True,
-    )
-    print(f"Built static site in {output}")
+    print(f"Built read-only news site in {output}")
     return 0
 
 

@@ -1,42 +1,47 @@
 # Threads Documentary News
 
-Arabic editorial news portal with internally rendered reports, scheduled RSS and trend snapshots, and an installable progressive web app. The project has its own copper-and-navy identity and is not an official Meta or Threads service.
+بوابة أخبار عربية مستقلة للقراءة فقط، باسم **Threads Documentary News — ثريدز وثائقي**. تقدم الصفحة الرئيسية الأخبار الأحدث أولًا، وتُبقي المواد السابقة في أرشيفها بتاريخ النشر. الموقع ثابت على GitHub Pages ولا يحتوي على لوحة إدارة أو مساحة مهام داخل المتصفح.
 
-## Current features
+## ما يقدمه الموقع
 
-- Arabic responsive site with original local branding, editorial images, and internal report pages generated from `data/reports.json`; readers are not redirected to source articles.
-- Original Arabic/English logo assets now provide the homepage cover, Open Graph previews, PWA icons, and the Android launcher icon. Trend-digest posts use the branded cover; report posts retain their story image and carry the channel name in the caption.
-- RSS items without a completed editorial report receive a clearly labeled internal brief page; they are not shown as full reports and do not link readers to the publisher.
-- Each report can include a validated YouTube video ID. The privacy-enhanced player loads only after the reader taps the button, and the internal short alias stays on this site.
-- GitHub Actions checks RSS and Google Trends twice hourly on a best-effort schedule. The public site's standard GitHub Pages and Actions usage is free; scheduled OpenAI summaries and X Trends API calls are explicitly disabled to avoid billable requests. GitHub may delay scheduled runs, while the last published site remains available.
-- The Android companion WebView displays the live site and offers opt-in trend notifications with a short custom chime every ten minutes while the app is open. Background alerts require a separate push service and are not enabled yet.
-- A PWA manifest and service worker enable installation from a compatible mobile browser and basic offline access.
-- The site and Android task assistant dispatch bounded code tasks to GitHub Actions. Fixed web checks and an Android build run before allowed UI changes are committed; source changes do not replace an installed APK.
-- A separate daily X/Facebook publisher is disabled unless the owner sets both `SOCIAL_AUTOPUBLISH=true` and `PAID_SOCIAL_APIS_APPROVED=true` and supplies account credentials. YouTube is not auto-published; owner approval and Google OAuth setup are still required.
+- واجهة عربية متجاوبة بهوية أصلية، بحث مباشر، أقسام مصر والعالم العربي والعالم والسياسة والاقتصاد والتكنولوجيا والرياضة والتقارير والفيديوهات.
+- تعرض الصفحة الرئيسية المواد المؤرخة خلال آخر 72 ساعة فقط، من الأحدث إلى الأقدم. ما سبق ذلك يبقى في الأرشيف، مع البحث والتصفية بالكلمات والتاريخ والمنطقة والقسم.
+- كل عنصر RSS له صفحة داخلية موجزة باسم الناشر وتاريخ النشر؛ يظل اسم المصدر نصًا فقط ولا توجد وصلة خارجية للمقال.
+- التقارير المحررة كاملة تبقى داخل الموقع وتضم صورها الخاصة، ومصادرها، وروابط داخلية لمواد ذات صلة عندما تتوفر بيانات حقيقية.
+- تُعرض صورة الخبر فقط إذا ورد رابط صورة صالح في الخلاصة أو أُضيفت صورة تحريرية موثقة للتقرير. لا نصطنع الصور أو الوقائع، ولا نحوّل مقتطف RSS إلى تقرير كامل.
+- الأرشيف يحتفظ بحد أقصى 2,000 مادة في `data/news.json`، مع بقاء الأحدث في الصفحة الرئيسية وتحويل الأقدم عمليًا إلى الأرشيف.
+- يدعم التقرير فيديو YouTube مضمّنًا بعد ضغط المشاهد؛ لا يُحمّل الإطار قبل طلب التشغيل.
+- أُزيلت واجهة المهام من المتصفح. شاشة المهام تبقى داخل تطبيق Android فقط، وتُرسل طلبها المحدود إلى GitHub Actions. وصول GitHub نفسه يتطلب رمز المالك؛ تغييرات الشيفرة لا تستبدل APK المثبت تلقائيًا.
 
-## Repository layout
+## تحديث الأخبار والتكلفة
 
-- `index.html`, `styles.css`, `app.js`: Arabic homepage and client behavior.
-- `article.js`, `scripts/render_articles.py`, `scripts/render_news.py`: internal full reports and clearly labeled RSS-only brief pages.
-- `data/`: public news, reports, trend snapshots, and configured RSS feed list.
-- `scripts/update_news.py`, `scripts/update_trends.py`, `scripts/update_threads_signals.py`: scheduled data collection.
-- `scripts/publish_social.py`: guarded daily Facebook/X publishing; disabled unless the owner enables it.
-- `scripts/build_site.py`: creates the complete static GitHub Pages directory.
-- `assets/` and `docs/brand-assets.md`: original brand masters plus optimized web/app derivatives and their intended uses.
-- `android-app/`: native Android companion source, including the in-app task workspace.
-- `.github/workflows/`: Pages deployment, scheduled refresh, daily social publishing, and guarded owner task execution.
+يعمل RSS مرتين في الساعة بجدول GitHub Actions، ويُحدَّث الموقع عند وصول مواد جديدة أو تحديث بياناتها الوصفية. التحديث الدوري لا يستدعي OpenAI ولا واجهات ترند أو نشر اجتماعي. قد تتأخر مهام GitHub؛ وتظل آخر نسخة منشورة متاحة عند التأخير. راجع [تعليمات الاستضافة](docs-hosting.md) للحدود ومراجع الفوترة.
 
-## Local checks
+خلاصات RSS قد تحتوي عنوانًا ومقتطفًا قصيرًا فقط. لا يكفي ذلك لصناعة تقرير تفصيلي موثق؛ عندما تكون البيانات ناقصة تُعرض المادة بوضوح على أنها موجز، ولا تُملأ بفقرات مختلقة. أي تلخيص مدفوع أو نشر اجتماعي يبقى منفصلًا ولا يعمل دون إعداد وموافقة صريحة.
+
+## بنية المشروع
+
+- `index.html`, `app.js`, `styles.css`: الصفحة الرئيسية والبحث وعرض الأخبار.
+- `archive.html`, `archive.js`: الأرشيف والفلاتر.
+- `section.html`, `section.js`: صفحات الأقسام.
+- `videos.html`, `videos.js`: مكتبة الفيديوهات المنشورة.
+- `scripts/update_news.py`, `data/news_sources.json`: تحديث الخلاصات وتصنيفها.
+- `scripts/build_site.py`, `scripts/render_news.py`, `scripts/render_articles.py`: إنشاء صفحات داخلية ثابتة.
+- `data/news.json`, `data/reports.json`: الأخبار المحفوظة والتقارير التحريرية.
+- `android-app/`: التطبيق الأصلي المتصل بالموقع وتنبيه الخبر الجديد ومساعد المهام.
+- `.github/workflows/`: تحديث RSS والنشر إلى GitHub Pages، مع سير اجتماعي منفصل ومغلق افتراضيًا.
+
+## الفحوصات المحلية
 
 ```bash
 python -m unittest discover -s tests -v
 node --check app.js
-node --check article.js
+node --check archive.js
+node --check section.js
+node --check videos.js
 python scripts/build_site.py --output /tmp/threads-news-site
 ```
 
-## Setup
+## الإعداد
 
-See `SETUP_AR.md` for publishing and automation settings. The website's scheduled RSS and Google Trends updates do not use an OpenAI API key. The optional code-task assistant can use OpenAI only when the owner submits a task and may incur separate API billing; X/social posting also remains opt-in and may be metered.
-
-The Android application is built from `android-app/`. A test APK is delivered separately; do not commit an APK or signing key into this public repository. Production signing and secure updates require a stable owner-controlled signing key.
+ابدأ من [`SETUP_AR.md`](SETUP_AR.md). ملف APK التجريبي يُسلّم منفصلًا ولا يُخزّن في هذا المستودع العام؛ يلزم مفتاح توقيع ثابت قبل أي إصدار إنتاجي.

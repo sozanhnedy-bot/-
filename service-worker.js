@@ -1,15 +1,18 @@
-const CACHE_NAME = "threads-doc-news-v10";
+const CACHE_NAME = "threads-doc-news-v11-news-only";
 const ROOT = new URL("./", self.location.href);
-const DATA_URLS = ["data/news.json", "data/reports.json", "data/trending.json", "data/threads_signals.json"].map((path) => new URL(path, ROOT).href);
+const DATA_URLS = ["data/news.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
 const SHELL_URLS = [
   ROOT.href,
   new URL("index.html", ROOT).href,
-  new URL("task-chat.html", ROOT).href,
-  new URL("task-chat.js", ROOT).href,
+  new URL("archive.html", ROOT).href,
+  new URL("section.html", ROOT).href,
+  new URL("videos.html", ROOT).href,
   new URL("styles.css", ROOT).href,
   new URL("app.js", ROOT).href,
+  new URL("archive.js", ROOT).href,
+  new URL("section.js", ROOT).href,
+  new URL("videos.js", ROOT).href,
   new URL("article.js", ROOT).href,
-  new URL("threads-signals.js", ROOT).href,
   new URL("manifest.webmanifest", ROOT).href,
   new URL("assets/brand-mark.png", ROOT).href,
   new URL("assets/brand-cover.jpg", ROOT).href,
@@ -19,9 +22,6 @@ const SHELL_URLS = [
   new URL("assets/story-finswimming.webp", ROOT).href,
   new URL("assets/story-morocco-stadium.webp", ROOT).href,
   new URL("assets/story-yemen-diplomacy.webp", ROOT).href,
-  new URL("assets/story-finswimming-social.jpg", ROOT).href,
-  new URL("assets/story-morocco-stadium-social.jpg", ROOT).href,
-  new URL("assets/story-yemen-diplomacy-social.jpg", ROOT).href,
   ...DATA_URLS,
 ];
 
