@@ -1,217 +1,159 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T08:15:40.838917Z",
+  "updated_at": "2026-11-03T09:24:01.513183Z",
   "items": [
     {
-      "id": "7b522fd0451cbe94ee",
-      "title": "تسعير",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 57.1,
-      "published_at": "2026-11-03T05:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "رسميًا.. سعر أنبوبة البوتاجاز اليوم الثلاثاء 3 نوفمبر 2026 بعد قرار لجنة التسعير",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "أسعار البنزين والسولار فى محطات تموين السيارات اليوم الأحد 1 نوفمبر 2026",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "الحكومة تفاجئ المواطنين.. أسعار البنزين والسولار اليوم في مصر",
-          "source": "صدى البلد",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "a03358bb5814a98db2",
-      "title": "gta6 release date",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
+      "id": "4bc5c9fbff567bf60e",
+      "title": "كأس آسيا",
+      "region": "arab",
+      "region_label": "السعودية",
       "approx_traffic": "2000+",
-      "score": 56.8,
-      "published_at": "2026-11-03T07:40:00Z",
+      "score": 54.9,
+      "published_at": "2026-11-03T07:50:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "GTA 6 File Size Revealed, And It's Massive--See How It Compares To Other Huge Games",
-          "source": "GameSpot",
+          "title": "رسميا.. تأجيل كأس آسيا في السعودية إلى ديسمبر 2027",
+          "source": "Kooora",
           "snippet": ""
         },
         {
-          "title": "How To Prepare For Grand Theft Auto VI: Release Date, Platforms, And Pre-Orders - Girls United",
-          "source": "Girls United",
+          "title": "تأجيل كأس آسيا في السعودية والكشف عن موعد البطولة الجديد",
+          "source": "CNN Arabic",
           "snippet": ""
         },
         {
-          "title": "GTA 6 is almost here, 13 years after GTA 5. Here’s what you need to know.",
-          "source": "Yahoo Tech",
+          "title": "استرداد قيمة تذاكر كأس آسيا 2027 متاح حتى 5 يناير.. والتذاكر الحالية سارية للموعد الجديد",
+          "source": "صحيفة سبق الإلكترونية",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "49aec477d20ca1cdfa",
+      "id": "c636c40dd78a824455",
       "title": "طليقة حسام حسن",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "5000+",
-      "score": 55.5,
-      "published_at": "2026-11-03T05:00:00Z",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "1000+",
+      "score": 54.5,
+      "published_at": "2026-11-03T09:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
+        {
+          "title": "بلاغ للنائب العام ضد طليقة حسام حسن.. اتهامات بالجمع بين زوجين",
+          "source": "العربية",
+          "snippet": ""
+        },
         {
           "title": "بعد اتهامهما بالجمع بين زوجين.. محامي دان آدم: سنرد على البلاغ المقدم من حسام حسن حال إحالته للتحقيق",
           "source": "بوابة الشروق",
           "snippet": ""
         },
         {
-          "title": "طليق دان آدم يكشف موقفه من بلاغ حسام حسن بجمعها بين زوجين",
-          "source": "مجلة لها",
-          "snippet": ""
-        },
-        {
-          "title": "أخبار الحوادث اليوم،\"الدستورية العليا\" ترفض حل الجمعيات.. ضبط 4 أطنان مخدرات بـ440 مليون جنيه.. وحسام حسن يتهم طليقته بالجمع بين زوجين",
-          "source": "فيتو",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "243b90e66302da8d92",
-      "title": "منصه",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "5000+",
-      "score": 54.5,
-      "published_at": "2026-11-03T04:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "كوريا الشمالية تنفي مسؤوليتها عن قرصنة \"بينانس\".. والمنصة تستأنف عمليات السحب",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "كوريا الشمالية تندد باتهامات مكتب التحقيقات الفيدرالي باختراق بينانس وتختبر صواريخ كروز",
-          "source": "Euronews.com",
-          "snippet": ""
-        },
-        {
-          "title": "بيونغيانغ تنفي اتهام واشنطن بسرقة مليارات من منصة \"بايناس\"",
-          "source": "سكاي نيوز عربية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "9c1c0e2ea49a0eaa8c",
-      "title": "جزيرة قشم الايرانية",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 53.8,
-      "published_at": "2026-11-03T07:40:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "إيران.. هجوم أمريكي على جزيرة قشم وطهران تقول إن الكرة في ملعب واشنطن لمنع الحرب",
-          "source": "الجزيرة نت",
-          "snippet": ""
-        },
-        {
-          "title": "أمريكا تقصف إيران عشية الانتخابات النصفية.. ومصدر يكشف لـCNN السبب",
-          "source": "CNN Arabic",
-          "snippet": ""
-        },
-        {
-          "title": "تقرير: الولايات المتحدة تشن هجمات سرية على إيران منذ أسابيع",
-          "source": "سكاي نيوز عربية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "886f842e8e4e846796",
-      "title": "maria timofeeva",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "2000+",
-      "score": 51.2,
-      "published_at": "2026-11-03T07:50:00Z",
-      "source": "Google Trends",
-      "source_count": 1,
-      "news_items": [
-        {
-          "title": "November 4, 2026: Claire Liu vs Katie Boulter: Set 2 Winner Tennis Prediction Market",
-          "source": "Robinhood",
-          "snippet": ""
-        },
-        {
-          "title": "November 3, 2026: Andrey Rublev vs Tomas Martin Etcheverry: Total Games Tennis Prediction Market",
-          "source": "Robinhood",
-          "snippet": ""
-        },
-        {
-          "title": "November 3, 2026: Novak Djokovic vs Valentin Vacherot: Set 1 Winner Tennis Prediction Market",
-          "source": "Robinhood",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "341bb32e5b1a3f5f6a",
-      "title": "wow forever",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "500+",
-      "score": 51.1,
-      "published_at": "2026-11-03T07:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "World of Warcraft: Forever Goes Live Globally November 4!",
-          "source": "Blizzard News",
-          "snippet": ""
-        },
-        {
-          "title": "Here's When You Can Play World of Warcraft Forever in Your Time Zone",
-          "source": "IGN",
-          "snippet": ""
-        },
-        {
-          "title": "I'm glad that WoW: Forever'll have a slower, lo-fi update schedule, because I'm not playing this thing to be in a rush",
-          "source": "PC Gamer",
+          "title": "مفاجأة.. حسام حسن يرحب بمبادرة الصلح مع دان آدم",
+          "source": "إرم نيوز",
           "snippet": ""
         }
       ],
       "alert": true
     },
     {
+      "id": "6081247e621c31427c",
+      "title": "laura bozzo",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "1000+",
+      "score": 52.5,
+      "published_at": "2026-11-03T08:10:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Hija de Laura Bozzo revela que su madre tenía solo un 10 % de posibilidades de sobrevivir tras emergencia médica",
+          "source": "El Nuevo Día",
+          "snippet": ""
+        },
+        {
+          "title": "Laura Bozzo continúa internada, en habitación privada y siendo vigilada: “Es un milagro que siga viva”",
+          "source": "Infobae",
+          "snippet": ""
+        },
+        {
+          "title": "Asistente de #LauraBozzo DESMIENTE CATEGÓRICAMENTE el fallecimiento de la conductora",
+          "source": "Univision",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "57e53d5b9822be5120",
+      "title": "محمد رمضان",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "500+",
+      "score": 51.2,
+      "published_at": "2026-11-03T09:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "محمد رمضان يتسبب في تكدس مروري بوسط القاهرة.. ماذا حدث؟",
+          "source": "عكاظ",
+          "snippet": ""
+        },
+        {
+          "title": "محمد رمضان وباسم سمرة وسط الجمهور في كواليس تصوير مسلسل «عشماوي»",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "تقدم ببلاغ رسمي.. جمال بخيت يوجه \"ضربة جديدة\" لمحمد رمضان",
+          "source": "إرم نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "91bf51321b469aee06",
+      "title": "maya joint",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "2000+",
+      "score": 49.9,
+      "published_at": "2026-11-03T08:20:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "November 4, 2026: Talia Gibson vs Aliaksandra Sasnovich: Set 1 Winner Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 3, 2026: Elena Pridankina vs Paula Badosa: Set 2 Winner Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 3, 2026: Alycia Parks vs Alexandra Eala: Set 2 Winner Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
       "id": "3b163dfb0109347940",
       "title": "تكافل وكرامة",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 46.8,
+      "approx_traffic": "500+",
+      "score": 48.5,
       "published_at": "2026-11-03T07:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -227,66 +169,153 @@
           "snippet": ""
         },
         {
-          "title": "خطوات الاستعلام بالرقم القومى.. تعرف علي موعد صرف تكافل وكرامة لشهر نوفمبر 2026. - صوت الأمة",
-          "source": "اخبارك نت",
+          "title": "«مش بس تكافل وكرامة»..مساعدات استثنائية تقدمها وزارة التضامن للمواطنين",
+          "source": "الوطن",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "682aee12443960ba2d",
-      "title": "sadie sink",
+      "id": "9c1c0e2ea49a0eaa8c",
+      "title": "جزيرة قشم الايرانية",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "500+",
+      "score": 48.5,
+      "published_at": "2026-11-03T07:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "إيران.. هجوم أمريكي على جزيرة قشم وطهران تقول إن الكرة في ملعب واشنطن لمنع الحرب",
+          "source": "الجزيرة نت",
+          "snippet": ""
+        },
+        {
+          "title": "وساطات \"مكوكية\" لتجنب جولة حرب جديدة في المنطقة، وإيران تقول إن \"إصبعها على الزناد\"",
+          "source": "BBC",
+          "snippet": ""
+        },
+        {
+          "title": "أمريكا تقصف إيران عشية الانتخابات النصفية.. ومصدر يكشف لـCNN السبب",
+          "source": "CNN Arabic",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "b21b151d8602098fff",
+      "title": "سهم بنك القاهرة",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 47.2,
+      "published_at": "2026-11-03T09:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سهم بنك القاهرة يقفز 7% في أول أيام تداوله",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        },
+        {
+          "title": "عمر رضوان: طرح بنك القاهرة استقطب أكثر من 40 ألف مستثمر وحقق تدفقات أجنبية تجاوزت 600 مليون دولار",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "عضو مجلس إدارة البورصة: المستثمرون الأفراد أصحاب اليد العليا في السوق.. وهناك قطاعات مستفيدة من الأزمات",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "120d50e0cc83db2842",
+      "title": "احمد العوضي",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "200+",
+      "score": 46.9,
+      "published_at": "2026-11-03T08:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "محمد علي رزق ضيف شرف مسلسل سلطان الديب في رمضان",
+          "source": "بوابة الشروق",
+          "snippet": ""
+        },
+        {
+          "title": "أحمد فهيم ومحمد على رزق ينضمان لمسلسل «سلطان الديب» فى رمضان 2027",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "أحمد فهيم ينضم لأبطال «سلطان الديب» مع أحمد العوضي في رمضان 2027",
+          "source": "بوابة أخبار اليوم الإلكترونية",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2bf690dc7f56bf45dd",
+      "title": "iran war",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 46.6,
+      "published_at": "2026-11-03T08:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Iran war live: US carries out ‘defensive’ strikes in Strait of Hormuz",
+          "source": "Al Jazeera",
+          "snippet": ""
+        },
+        {
+          "title": "Oil rises as peace prospects dim after US hits Iran’s Qeshm Island",
+          "source": "Arab News",
+          "snippet": ""
+        },
+        {
+          "title": "US launches strikes on Iranian island ahead of election",
+          "source": "BBC",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "66ccf351299c3a3b26",
+      "title": "美国中期选举",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "200+",
-      "score": 46.2,
-      "published_at": "2026-11-03T07:20:00Z",
+      "score": 46.6,
+      "published_at": "2026-11-03T08:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Sadie Sink Chooses Perfect Follow-Up Movie to 'Spider-Man: Brand New Day'",
-          "source": "The Direct",
+          "title": "一文读懂美国中期选举：两党各持何种立场，选情如何",
+          "source": "纽约时报中文网",
           "snippet": ""
         },
         {
-          "title": "Ben Wang Circling Iceman Role In Marvel’s ‘X-Men’",
-          "source": "Deadline",
+          "title": "明尼苏达州提前投票创纪录 选民关心什么？",
+          "source": "美国之音",
           "snippet": ""
         },
         {
-          "title": "‘X-Men’: ‘Hunger Games’ Actor Ben Wang Circling Iceman Role in Marvel’s Reboot",
-          "source": "Variety",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "42f1daf749476fa8de",
-      "title": "شيكابالا",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "500+",
-      "score": 46.1,
-      "published_at": "2026-11-03T05:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "«مش شايفين هيبتك».. شيكابالا يطالب حسام حسن بتقديم استقالته",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "«هربانة منه».. طلعت يوسف يهاجم حسام حسن...",
-          "source": "نجم الجماهير",
-          "snippet": ""
-        },
-        {
-          "title": "شيكابالا وتصريح يصدم ابراهيم فايق: حسام حسن لازم يستقيل من تدريب المنتخب",
-          "source": "الزمالك اليوم",
+          "title": "从中期选举选战看美国政治走向",
+          "source": "华尔街日报中文网",
           "snippet": ""
         }
       ],
@@ -297,344 +326,344 @@
       "title": "علم الأرصاد الجوية",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 44.8,
+      "approx_traffic": "500+",
+      "score": 46.5,
       "published_at": "2026-11-03T06:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "الأرصاد الجوية: طقس معتدل الحرارة على الساحل وبعض السحب في البحر الليلة",
+          "title": "وزير الدولة للشؤون الخارجية يجتمع مع سفير قبرص",
           "source": "جريدة الشرق",
           "snippet": ""
         },
         {
-          "title": "أمطار رعدية متوقعة اليوم مع رياح قوية",
+          "title": "طقس حار نسبيا نهارا مع سحب متفرقة في البحر",
           "source": "مرسال قطر",
           "snippet": ""
         },
         {
-          "title": "الأرصاد الجوية: طقس حار نسبيا نهارا على الساحل مع فرصة لتشكل سحب محلية قد تكون ممطرة",
-          "source": "صحيفة العرب القطرية",
+          "title": "الأرصاد الجوية تحذر من رؤية أفقية متدنية على بعض مناطق الساحل الليلة",
+          "source": "شبكة تواصل الإخبارية",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "505e95eba9232eb61e",
-      "title": "cnn",
+      "id": "52b41297d2437fbb21",
+      "title": "صحة",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "200+",
+      "score": 45.9,
+      "published_at": "2026-11-03T08:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "إطلاق جلوبال فيتنس إكسبو وتقرير قطاع الصحة واللياقة البدنية في دولة الإمارات يرسمان ملامح مرحلة جديدة لقطاع اللياقة البدنية في المنطقة",
+          "source": "Zawya",
+          "snippet": ""
+        },
+        {
+          "title": "وباء إيبولا يودى بحياة أكثر من 5300 شخص",
+          "source": "جريدة الرياض",
+          "snippet": ""
+        },
+        {
+          "title": "تفشي إيبولا في أفريقيا يقتل 5,376 شخصاً ويسجل أسرع انتشار للوباء حتى الآن",
+          "source": "Euronews.com",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "886f842e8e4e846796",
+      "title": "maria timofeeva",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 44.9,
+      "published_at": "2026-11-03T07:50:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Sports News, Transfers, Scores | Watch Live Sport",
+          "source": "Sky Sports",
+          "snippet": ""
+        },
+        {
+          "title": "WTA Hong Kong Day 2 Predictions Including Sorana Cirstea vs Maria Timofeeva",
+          "source": "Last Word On Sports",
+          "snippet": ""
+        },
+        {
+          "title": "Sorana Cirstea vs. Maria Timofeeva prediction, odds, picks for WTA Hong Kong Open 2026",
+          "source": "Dimers",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "f4227f11b7584b7ac5",
+      "title": "جزيرة قشم الايرانية",
       "region": "egypt",
       "region_label": "مصر",
-      "approx_traffic": "200+",
-      "score": 44.5,
-      "published_at": "2026-11-03T06:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "تأجيل كأس أمم آسيا إلى ديسمبر 2027",
-          "source": "سكاي نيوز عربية",
-          "snippet": ""
-        },
-        {
-          "title": "السعودية تطرح آليات استرداد قيمة تذاكر أمم آسيا بعد تأجيل البطولة",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "مصير مُعلق.. السعودية تعاين أضرار سيناريو تأجيل كأس آسيا 2027!",
-          "source": "Kooora",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "0e85f00f658ea38385",
-      "title": "matt damon",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "100+",
-      "score": 43.9,
-      "published_at": "2026-11-03T07:40:00Z",
+      "score": 44.2,
+      "published_at": "2026-11-03T09:00:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Matt Damon Gushes Over Daughter Isabella, 20, at 2026 CFDA Awards: ‘She’s a Wonderful Young Woman’ (Exclusive)",
-          "source": "People.com",
+          "title": "إيران.. هجوم أمريكي على جزيرة قشم وطهران تقول إن الكرة في ملعب واشنطن لمنع الحرب",
+          "source": "الجزيرة نت",
           "snippet": ""
         },
         {
-          "title": "Matt Damon's daughter Isabella, 20, dazzles in silver gown beside her famous dad",
-          "source": "Yahoo",
-          "snippet": ""
-        },
-        {
-          "title": "Matt Damon and His Modeling Star Daughter Isabella, 20, Are the Ultimate Red Carpet Duo",
-          "source": "Parade Magazine",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "13fcf0070cfc154fe0",
-      "title": "ca lottery",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "200+",
-      "score": 43.8,
-      "published_at": "2026-11-03T07:40:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "California Lottery Powerball, Daily 3 Midday winning numbers for Oct. 28, 2026",
-          "source": "The Desert Sun",
-          "snippet": ""
-        },
-        {
-          "title": "California Lottery Powerball, Daily 3 Midday winning numbers for Nov. 2, 2026",
-          "source": "The Desert Sun",
-          "snippet": ""
-        },
-        {
-          "title": "Cabarrus County ticket scores $2 million win in Halloween Powerball drawing",
-          "source": "NC Education Lottery",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "aff353f0744768ae34",
-      "title": "lakers vs heat",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 43.8,
-      "published_at": "2026-11-03T04:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Lakers player grades: L.A. scorches the Heat behind Luka Doncic",
-          "source": "Lakers Wire",
-          "snippet": ""
-        },
-        {
-          "title": "Luka Dončić stuffs stat sheet in 42-point night",
-          "source": "NBA.com",
-          "snippet": ""
-        },
-        {
-          "title": "Winderman’s view: If Heat are defenseless, can resurrection be a reality?",
-          "source": "Sun Sentinel",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "f53e313374e96c9aa9",
-      "title": "中期选举",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 43.2,
-      "published_at": "2026-11-03T07:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "一文读懂美国中期选举：两党各持何种立场，选情如何",
-          "source": "纽约时报中文网",
-          "snippet": ""
-        },
-        {
-          "title": "美国中选“最可能剧本”，将是美股“最危险剧本”？",
-          "source": "华尔街见闻",
-          "snippet": ""
-        },
-        {
-          "title": "美国中期选举今日投票，民调：民主党参议院候选人在七个关键州领先",
-          "source": "凤凰网",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "7bfc031b753440f1e0",
-      "title": "barcelona vs aston villa",
-      "region": "world",
-      "region_label": "العالم — الولايات المتحدة",
-      "approx_traffic": "100+",
-      "score": 43.2,
-      "published_at": "2026-11-03T07:20:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Jamie Carragher predicts 18-game Barcelona run to come to an end vs Aston Villa",
-          "source": "Yahoo Sports",
-          "snippet": ""
-        },
-        {
-          "title": "Aston Villa Football Club - The Official Club Website",
-          "source": "Aston Villa",
-          "snippet": ""
-        },
-        {
-          "title": "Barcelona vs Aston Villa: UEFA Champions League stats & head-to-head",
+          "title": "وساطات \"مكوكية\" لتجنب جولة حرب جديدة في المنطقة، وإيران تقول إن \"إصبعها على الزناد\"",
           "source": "BBC",
           "snippet": ""
+        },
+        {
+          "title": "تقرير: الولايات المتحدة تشن هجمات سرية على إيران منذ أسابيع",
+          "source": "سكاي نيوز عربية",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "a475797038c63e4b69",
+      "title": "trit raj das",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
+      "score": 44.2,
+      "published_at": "2026-11-03T09:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Match Predictions: Nepal Premier League 2026 - 9th Match - Janakpur Bolts vs Pokhara Avengers - 1st November",
+          "source": "Cricket World",
+          "snippet": ""
+        },
+        {
+          "title": "Nepal Premier League Cricket: Janakpur Bolts vs Pokhara Avengers Match Preview",
+          "source": "Ratopati",
+          "snippet": ""
+        },
+        {
+          "title": "Shakib takes three wickets but Pokhara suffer heavy defeat in NPL",
+          "source": "BDCricTime",
+          "snippet": ""
+        }
+      ],
+      "alert": true
+    },
+    {
+      "id": "af77e63c8c47fe722c",
+      "title": "البنك الاهلى",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 43.6,
+      "published_at": "2026-11-03T08:40:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "سعر الدولار أمام الجنيه الإثنين 2 نوفمبر 2026 في البنوك",
+          "source": "بوابة الأهرام",
+          "snippet": ""
+        },
+        {
+          "title": "استقرار سعر الدولار مقابل الجنيه فى بداية تعاملات اليوم الثلاثاء",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "سعر الدولار مقابل الجنيه في 10 بنوك مع بداية تعاملات الثلاثاء",
+          "source": "Masrawy",
+          "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "66f2cf5fc123e96d96",
-      "title": "seattle basketball",
+      "id": "d4b74381831b9b0d7d",
+      "title": "houston astros",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "100+",
-      "score": 43.2,
-      "published_at": "2026-11-03T07:20:00Z",
+      "score": 43.6,
+      "published_at": "2026-11-03T08:40:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Lobos Drop Season Opener to Seattle - New Mexico Lobos - Official Athletics Website",
-          "source": "New Mexico Lobos",
-          "snippet": ""
-        },
-        {
-          "title": "UNM women’s basketball falls short in Amy Eagan debut",
-          "source": "KRQE",
-          "snippet": ""
-        },
-        {
-          "title": "Seattle U vs. New Mexico TV & Stream – Nov. 2",
-          "source": "Sports Radio 93.3 KJR",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "027a0fc5cf64f68d84",
-      "title": "warriors vs suns",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "500+",
-      "score": 43.1,
-      "published_at": "2026-11-03T03:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Warriors 116-113 Suns (Nov 2, 2026) Game Recap",
+          "title": "Astros owner Jim Crane hails Randy Flores as a 'perfect fit' as team's GM",
           "source": "ESPN",
           "snippet": ""
         },
         {
-          "title": "Suns Warriors Basketball",
-          "source": "couriernews.com",
+          "title": "What new Astros GM Randy Flores said about urgency, analytics and a new manager",
+          "source": "Houston Chronicle",
           "snippet": ""
         },
         {
-          "title": "Game Preview: Warriors vs. Suns - 11/2/26",
-          "source": "NBA.com",
+          "title": "Astros Hire Randy Flores As General Manager",
+          "source": "MLB Trade Rumors",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "1363d5d5ff6b7d7269",
-      "title": "disneyland paris ride closing 2027",
+      "id": "ee4aff85a83330596c",
+      "title": "haití",
       "region": "world",
       "region_label": "العالم — الولايات المتحدة",
       "approx_traffic": "100+",
+      "score": 43.2,
+      "published_at": "2026-11-03T08:30:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Líder de pandilla haitiana escribe a la ONU pidiendo diálogo",
+          "source": "San Antonio Express-News",
+          "snippet": ""
+        },
+        {
+          "title": "Líder de pandilla haitiana dice a la AP que escribió a la ONU para proponer diálogo",
+          "source": "Norwalk Hour",
+          "snippet": ""
+        },
+        {
+          "title": "Las pandillas haitianas se enfrentan al dilema de negociar la paz o morir",
+          "source": "Listín Diario",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "6958bcf160dbe6b686",
+      "title": "gulf cooperation council",
+      "region": "arab",
+      "region_label": "السعودية",
+      "approx_traffic": "100+",
       "score": 42.9,
-      "published_at": "2026-11-03T07:10:00Z",
+      "published_at": "2026-11-03T08:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "Beloved Disney ride to close after 33 years",
-          "source": "TheStreet",
+          "title": "Why Did the ‘Makkah Alliance’ Go to Tehran?",
+          "source": "ASHARQ AL-AWSAT English",
           "snippet": ""
         },
         {
-          "title": "Disneyland’s Autopia Ride Will Switch to Electric Vehicles",
-          "source": "The New York Times",
+          "title": "Makkah pact’s first mediation effort to pause the Iran war",
+          "source": "Arab News",
           "snippet": ""
         },
         {
-          "title": "Disneyland to electrify Autopia track on classic 1955 ride, report says",
-          "source": "Orange County Register",
+          "title": "Iran’s foreign minister says talks with Saudi Arabia are ongoing; Yemen fighting intensifies",
+          "source": "The Mighty 790 KFGO",
           "snippet": ""
         }
       ],
       "alert": false
     },
     {
-      "id": "7827815c6e5de132d8",
-      "title": "وزارة التعليم",
+      "id": "ea138337c645612a3c",
+      "title": "صحه",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "1000+",
-      "score": 42.8,
-      "published_at": "2026-11-03T03:40:00Z",
-      "source": "Google Trends",
-      "source_count": 2,
-      "news_items": [
-        {
-          "title": "تُلزم وزارة التعليم والتدريب بتحصيل الرسوم الدراسية الجامعية شهرياً؛ ما هي الفوائد التي سيحصل عليها الطلاب؟",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        },
-        {
-          "title": "الجامعات الأردنية تبحث عن تمويل يتجاوز الرسوم",
-          "source": "أخبار قطر",
-          "snippet": ""
-        },
-        {
-          "title": "تضاعفت رسوم الدراسة الجامعية في عام واحد فقط.",
-          "source": "Vietnam.vn",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "2e3aa78d79fe2b21c7",
-      "title": "هطول",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 41.8,
-      "published_at": "2026-11-03T05:10:00Z",
+      "approx_traffic": "100+",
+      "score": 42.9,
+      "published_at": "2026-11-03T08:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "أمطار ورياح نشطة تضرب منطقة حائل اليوم",
+          "title": "أمانة جازان تنفذ 65 ألف جولة للصحة العامة خلال أكتوبر",
           "source": "صحيفة سبق الإلكترونية",
           "snippet": ""
         },
         {
-          "title": "حالة الطقس.. أمطار رعدية ورياح نشطة على 9 مناطق بالمملكة",
-          "source": "جريدة المدينة",
+          "title": "أمانة جازان تنفذ أكثر من 65 ألف جولة للصحة العامة في أكتوبر",
+          "source": "صحيفة أحوال الإلكترونية",
           "snippet": ""
         },
         {
-          "title": "بيئي / الأرصاد: أمطار أعلى من المعدل على أغلب مناطق المملكة خلال نوفمبر وانخفاض الحرارة في أجزاء من شمال وشرق المملكة",
-          "source": "وكالة الأنباء السعودية",
+          "title": "إطلاق جلوبال فيتنس إكسبو وتقرير قطاع الصحة واللياقة البدنية في دولة الإمارات يرسمان ملامح مرحلة جديدة لقطاع اللياقة البدنية في المنطقة",
+          "source": "Zawya",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "672001023b631caee4",
+      "title": "spacex stock price 2027 forecast",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 42.9,
+      "published_at": "2026-11-03T08:20:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "Prediction: This Will Be SpaceX’s Stock Price by the End of 2027",
+          "source": "The Motley Fool",
+          "snippet": ""
+        },
+        {
+          "title": "SpaceX Just Changed What Investors Are Really Buying (NASDAQ:SPCX)",
+          "source": "Seeking Alpha",
+          "snippet": ""
+        },
+        {
+          "title": "SpaceX Earnings: We Raise Our Fair Value Estimate on Scaling Data Centers, But Is the Stock a Buy?",
+          "source": "Morningstar",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "98da56bde4b3f3a500",
+      "title": "keith lee",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 42.2,
+      "published_at": "2026-11-03T08:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "2 Chainz Talks to Keith Lee About Bad Review He Gave His Restaurant, Celebrity Special Treatment",
+          "source": "Complex",
+          "snippet": ""
+        },
+        {
+          "title": "2 Chainz Defends Celebrity Perks – Keith Lee Stands Up for Regular Customers | WATCH the Debate",
+          "source": "EURweb",
+          "snippet": ""
+        },
+        {
+          "title": "2 Chainz Appears To Respond To Keith Lee Debate With Questions About The Illuminati",
+          "source": "HotNewHipHop",
           "snippet": ""
         }
       ],
@@ -645,24 +674,24 @@
       "title": "رابطة الدوري السعودي للمحترفين",
       "region": "arab",
       "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 41.2,
+      "approx_traffic": "200+",
+      "score": 41.9,
       "published_at": "2026-11-03T06:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "رابطة الدوري السعودي تعتمد تنظيماً إدارياً جديداً وتُعيّن قيادات تنفيذية لقطاعَي العمليات وشؤون الأندية",
-          "source": "صحيفة سبق الإلكترونية",
+          "title": "عقب تأجيل كأس آسيا 2027، تأجيل الجولة ١٣ ضمن مراجعة شاملة لروزنامة الموسم",
+          "source": "www.spl.com.sa",
           "snippet": ""
         },
         {
-          "title": "رابطة الدوري السعودي تعيد هيكلتها: الحميدي للعمليات وأرويو لشؤون الأندية",
-          "source": "شبكة تواصل الإخبارية",
+          "title": "بسبب «كأس آسيا»... رابطة الدوري السعودي تؤجل الجولة الـ13 وتعيد ترتيب الروزنامة",
+          "source": "الشرق الأوسط",
           "snippet": ""
         },
         {
-          "title": "4 تعيينات جديدة تقود «الرابطة»",
+          "title": "بعد القرار الآسيوي.. تأجيل جولة «روشن»",
           "source": "صحيفة الرياضية",
           "snippet": ""
         }
@@ -670,29 +699,116 @@
       "alert": false
     },
     {
-      "id": "c01c21d6051230a152",
-      "title": "الثلاثاء",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "200+",
-      "score": 41.2,
-      "published_at": "2026-11-03T04:50:00Z",
+      "id": "ae4c0e787d89b25339",
+      "title": "علاء عوض",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 40.9,
+      "published_at": "2026-11-03T07:20:00Z",
       "source": "Google Trends",
       "source_count": 3,
       "news_items": [
         {
-          "title": "البحث عن السيولة يرفع سعر الذهب في مصر رغم التراجع العالمي",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "ارتفاع أسعار الذهب عيار 21 اليوم الإثنين في مصر.. التفاصيل هنا",
-          "source": "alyaum",
-          "snippet": ""
-        },
-        {
-          "title": "سعر الذهب عيار 14 اليوم الثلاثاء 3 نوفمبر يصل إلى 4086 جنيهًا",
+          "title": "علاء عوض: أحمد زكي رشحني لـ مستر كاراتيه وتلقيت منه صفعة حقيقية",
           "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "علاء عوض: تزوجت 4 مرات ولا أمانع في الزواج مجددًا إذا وجدت المرأة المناسبة",
+          "source": "المصري اليوم",
+          "snippet": ""
+        },
+        {
+          "title": "علاء عوض يكشف أسرار زيجاته الأربع: السحر سبب انفصالي وكلابي أقرب ما أملك",
+          "source": "البوابة نيوز",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "d33015288665d65739",
+      "title": "am",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "100+",
+      "score": 40.6,
+      "published_at": "2026-11-03T08:40:00Z",
+      "source": "Google Trends",
+      "source_count": 2,
+      "news_items": [
+        {
+          "title": "Election Day arrives in Guadalupe County; polls open from 7 a.m. to 7 p.m.",
+          "source": "Seguin Today",
+          "snippet": ""
+        },
+        {
+          "title": "More voices need to be heard",
+          "source": "Seguin Gazette",
+          "snippet": ""
+        },
+        {
+          "title": "Guadalupe County early voting tops 52,000 as Election Day approaches",
+          "source": "Seguin Today",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "41d04a39ef51b75308",
+      "title": "رمضان",
+      "region": "egypt",
+      "region_label": "مصر",
+      "approx_traffic": "100+",
+      "score": 40.2,
+      "published_at": "2026-11-03T07:00:00Z",
+      "source": "Google Trends",
+      "source_count": 3,
+      "news_items": [
+        {
+          "title": "فاضل 97 يوما.. موعد شهر رمضان 2027 وأول أيام عيد الفطر فلكيا",
+          "source": "اليوم السابع",
+          "snippet": ""
+        },
+        {
+          "title": "موعد رمضان 2027 في مصر.. متى تبدأ التراويح وكم يومًا متبقيًا؟",
+          "source": "صدى البلد",
+          "snippet": ""
+        },
+        {
+          "title": "متى يبدأ شهر رمضان 2027 في تركيا؟ موعد أول أيام الصيام",
+          "source": "نيو ترك بوست",
+          "snippet": ""
+        }
+      ],
+      "alert": false
+    },
+    {
+      "id": "2d048b903740a67577",
+      "title": "jeline vandromme",
+      "region": "world",
+      "region_label": "العالم — الولايات المتحدة",
+      "approx_traffic": "200+",
+      "score": 39.6,
+      "published_at": "2026-11-03T08:10:00Z",
+      "source": "Google Trends",
+      "source_count": 1,
+      "news_items": [
+        {
+          "title": "November 3, 2026: Wendelken vs Andrade Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 3, 2026: Yamalapalli vs Waltert Tennis Prediction Market",
+          "source": "Robinhood",
+          "snippet": ""
+        },
+        {
+          "title": "November 3, 2026: Grenier vs Moeller Tennis Prediction Market",
+          "source": "Robinhood",
           "snippet": ""
         }
       ],
@@ -704,7 +820,7 @@
       "region": "arab",
       "region_label": "السعودية",
       "approx_traffic": "100+",
-      "score": 40.9,
+      "score": 38.6,
       "published_at": "2026-11-03T06:10:00Z",
       "source": "Google Trends",
       "source_count": 3,
@@ -721,151 +837,6 @@
         },
         {
           "title": "المغامر البريطاني كارل بوشبي يعود إلى إنجلترا بعد رحلة حول العالم دامت 28 عاما سيرا على الأقدام",
-          "source": "BBC",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "5a53b4fb547d194875",
-      "title": "الكوبرا",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 40.2,
-      "published_at": "2026-11-03T05:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "«تبحث عن الدفء».. الحكومة تحذر من ظهور ثعبان الكوبرا في التجمعات السكنية",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "البيئة عن ظهور كوبرا بمدرسة بالفيوم: نشاط الأفاعي يرتبط بارتفاع الحرارة.. والحيوانات المفترسة لا تغير سلوكها",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "أفعى سامة من نوع \"كوبرا\" تثير الذعر بمدرسة ابتدائية في مصر",
-          "source": "العربية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "40333be94dd96e2c23",
-      "title": "كولسترول",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 40.2,
-      "published_at": "2026-11-03T05:50:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "اكتشاف مسار خفي يرفع الكوليسترول الضار.. ودواء تجريبي يثير الأمل",
-          "source": "العربية",
-          "snippet": ""
-        },
-        {
-          "title": "دراسة: دهون أخرى تسبب النوبات القلبية رغم خفض الكوليسترول",
-          "source": "أخبار 24",
-          "snippet": ""
-        },
-        {
-          "title": "اكتشاف مسار بيولوجي يضعف قدرة الكبد على إزالة الكوليسترول الضار",
-          "source": "موقع كلمة الإخباري",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "637e9ceb50d3e7c41e",
-      "title": "طماطم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 38.9,
-      "published_at": "2026-11-03T05:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "أسعار الخضراوات في محافظة المنيا اليوم الاثنين.. الطماطم بـ 15 جنيها",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "الثلاثاء 3 نوفمبر 2026.. أسعار الخضروات والفاكهة بسوق العبور للجملة",
-          "source": "بوابة الشروق",
-          "snippet": ""
-        },
-        {
-          "title": "البطاطس والطماطم تبدأ من 20 جنيها فى أسواق التجزئة اليوم الإثنين بالغربية",
-          "source": "بوابة الأهرام",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "bf17fe1d63af836660",
-      "title": "درجه الحراره اليوم",
-      "region": "egypt",
-      "region_label": "مصر",
-      "approx_traffic": "100+",
-      "score": 38.9,
-      "published_at": "2026-11-03T05:10:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "أجواء حارة تضرب شمال سيناء وارتفاع في درجات الحرارة بالعريش",
-          "source": "اليوم السابع",
-          "snippet": ""
-        },
-        {
-          "title": "شبورة مائية ورياح.. تعرف على حالة الطقس اليوم الثلاثاء بشمال سيناء",
-          "source": "المصري اليوم",
-          "snippet": ""
-        },
-        {
-          "title": "طقس شمال سيناء اليوم.. ارتفاع درجات الحرارة وشبورة مائية وفرص لسقوط الأمطار",
-          "source": "شبكة تواصل الإخبارية",
-          "snippet": ""
-        }
-      ],
-      "alert": false
-    },
-    {
-      "id": "41b4831b3331e9ea12",
-      "title": "iran news",
-      "region": "arab",
-      "region_label": "السعودية",
-      "approx_traffic": "100+",
-      "score": 35.5,
-      "published_at": "2026-11-03T03:30:00Z",
-      "source": "Google Trends",
-      "source_count": 3,
-      "news_items": [
-        {
-          "title": "Iran war live: US carries out ‘defensive’ strikes in Strait of Hormuz",
-          "source": "Al Jazeera",
-          "snippet": ""
-        },
-        {
-          "title": "US has conducted defensive strikes on some Iranian targets in the Strait of Hormuz, US official says",
-          "source": "Arab News",
-          "snippet": ""
-        },
-        {
-          "title": "US launches strikes on Iranian island ahead of election",
           "source": "BBC",
           "snippet": ""
         }
