@@ -1,7 +1,307 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T13:50:20.217110Z",
+  "updated_at": "2026-11-03T14:55:25.812218Z",
   "items": [
+    {
+      "id": "c5638a9ca41d37b8e3c0",
+      "region": "world",
+      "category": "politics",
+      "title": "U.S. Senate Midterm Election Live Results 2026 - NBC News",
+      "summary": "U.S. Senate Midterm Election Live Results 2026 NBC News",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9HT01FMldrNmE3Z1pmR3lRYmxaMVhxNDN1MF9maXpIV1hiU2xLWnpuWURkeEFhXzVEMmdjR3dreFgyeWZxZDYxTVVxSWh4cUFGMkc4N3Bja2RzQm1KS2x3clhsR0I2WVR4WXVOTUNtRQ?oc=5",
+      "source_name": "NBC News",
+      "source_url": "https://www.nbcnews.com",
+      "image_url": "",
+      "published_at": "2026-11-03T14:52:52Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "ca6c58dd5abc8cf24125",
+      "region": "world",
+      "category": "world",
+      "title": "أسعار البنزين والسولار اليوم الثلاثاء 3 نوفمبر 2026 في محطات الوقود المصرية وأبرز التغيرات - جريدة آخر الأخبار",
+      "summary": "أسعار البنزين والسولار اليوم الثلاثاء 3 نوفمبر 2026 في محطات الوقود المصرية وأبرز التغيرات جريدة آخر الأخبار",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMixwJBVV95cUxQazc3NTkzUWg5WlF2emlzSHJyR29XLUtEWXJ6ZmpyTkZrR1JLZ0JMd3ZyWEQxbEhQbTJRTVI1LXd0Vk5oaXI2czEyN2s2TmJpX1V5N1h1dEtOem5lalJXZ0l5S2NtMlJDUFBrc2pFRUxFbDVpMlhKQXJqQlExM2VBMk1MY0VCQmtqQU1uanJZUkJVUGRZQmdQSHQtTXJsOS1sRTJqcThSaU92R2kyX3c5Skc5UHVlZTIwdzNBYkpVeHBOa3RXYzZDUEU1YlFKdVM3Q2R1emR2dXkxMmpESEQ2aEk2bVJVMlRIMk94N1JNZHdXVHg1YXIzSzI0dmljdmhMRHNJVFk5VkxfcVFjMFVUeUU4QVdFN19hdV9feWpPRXZCdFFveWk4NXVXYl9WTHVRWFE2SjFXd05fOWk1d2M4VkJZUDlvUWs?oc=5",
+      "source_name": "جريدة آخر الأخبار",
+      "source_url": "https://akher.news",
+      "image_url": "",
+      "published_at": "2026-11-03T14:50:51Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "d5a7334ec88bab41fe56",
+      "region": "world",
+      "category": "politics",
+      "title": "2026 elections live updates as Americans cast ballots with polls opening across the country in midterm elections - CBS News",
+      "summary": "2026 elections live updates as Americans cast ballots with polls opening across the country in midterm elections CBS News",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBmeUkyaWFmdkRxSjlFMlFtY3BBTFN0dFFfN1p0S1g1MWRHem9RYWtuT28xenRmenNxSS10LVVvVFhCYmwzVTZIdDEyR0FQOG14Y3ZOWXBXUTBPb3VDb0ZnMGN4anAydVRkTTVkSUhuSnllUQ?oc=5",
+      "source_name": "CBS News",
+      "source_url": "https://www.cbsnews.com",
+      "image_url": "",
+      "published_at": "2026-11-03T14:49:00Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "d76eeccb35dd30a0768f",
+      "region": "world",
+      "category": "politics",
+      "title": "Ballot counting issues reported in key New York swing district as midterm polls open across America - CNN",
+      "summary": "Ballot counting issues reported in key New York swing district as midterm polls open across America CNN",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPOGtONVhJM0JRaEgtRHFMT3dqa2VUYnRTRmpQLWRkY2daTzZCSGw5d3hyWk5UdzRjU3pfcF8ydFJqSDh1RndIamFaVmJ4eW9rMGFjOGM3d3N4QnA3UkRjZlRGb2x3MDdZbm5TcnJTYkJIWTZ2MVNMak9ROUhYa3c5Mg?oc=5",
+      "source_name": "CNN",
+      "source_url": "https://www.cnn.com",
+      "image_url": "",
+      "published_at": "2026-11-03T14:39:00Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "d7de1acb99ee09e89525",
+      "region": "world",
+      "category": "world",
+      "title": "تعرف على قائمة الأنشطة المستثناة من الغلق الشتوي وأوقات دوامها المختلفة - جريدة آخر الأخبار",
+      "summary": "تعرف على قائمة الأنشطة المستثناة من الغلق الشتوي وأوقات دوامها المختلفة جريدة آخر الأخبار",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMixwJBVV95cUxPSDNqV2tkdWdjR3d3UlZMVzVLajYzY3RzSXZWZ3NweW9KOXZKNWNIQlNSR19sUDZIVFlVS2FMSDRITVZSR05sZDZvSllhbW1IUXBHR29IVU9NV0tCZU9Nd1o5R3pZajdOSEd1QU5LWFhmZ0ZhNlhpUnJ1b0pUb2Q2YVpucEMwYWptc0dyZlZYRV9NV2s3X2pzbzdwNEkyTUc0U1VBdGRCU3h4Y3ktTFZIQUxRTlR4ZHE4ZFZrVi02OFJHZWVNUnRmOXlwRGZPNThKLTBPR2xSbzFDWWdhOHlMMDFXU2hCWWRYVWtfb21SbVZnb1R1LWxpUG1pRmlzQkt2TDBVbXFTRTVHeVRjQkpwdk0xZnRsSnZDYVRfMTl0QkhzMDZvMFVGRFRBOV9HWkVSdFJTS1YwZlM5MnJtYjVhT2QwSXRhZEk?oc=5",
+      "source_name": "جريدة آخر الأخبار",
+      "source_url": "https://akher.news",
+      "image_url": "",
+      "published_at": "2026-11-03T14:23:06Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "bb09913a898f466362ab",
+      "region": "world",
+      "category": "economy",
+      "title": "خطة إيطاليا لفرض “ضريبة الخروج” تثير مخاوف الأثرياء - الجزيرة نت",
+      "summary": "خطة إيطاليا لفرض “ضريبة الخروج” تثير مخاوف الأثرياء الجزيرة نت",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiyAJBVV95cUxQTEdVT0dGQzJqck5pVlh0LWRGUEJKdkMtTWx2TnVQa0dFcllYd3otcmRNM0tIQ3pfdU0yNDNVd18wS21GSnRCU2FMU2lfcDJ6WHVxSFkxWmVyaDVtblFZTHdqZG02bTNVQjZoaVNBX2xfb0Q3SHFQUHdZX2RKV3RoYnZibFp6RzJuUzZwb0ZOb0o2MkhYcU15UExkZmVkUnZtSDJxZnFnVUVMeXFqNVF4ZEdUWW1KbHRQN0NUN0FKdEY2MGpGWGRkeHQzc3RLYWVBMmNNeU9aand5S1BzRkpVNTRzR01SckRaWkpvZzlfSTNuNkxvdTZta0tzbHhSMmI2dl9ISkQ2UGpDM2hrY1pFLWZLeUU0dWtBUFVMdzhoU2JVNkJubjRJYWlyX3VrTzF0RDIza2NTcWNuUERHbXlDc01yVjUzRHZk?oc=5",
+      "source_name": "الجزيرة نت",
+      "source_url": "https://www.aljazeera.net",
+      "image_url": "",
+      "published_at": "2026-11-03T14:09:19Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "ac69b99addb04e582bf8",
+      "region": "world",
+      "category": "world",
+      "title": "Trump says US will stop $4 billion funding to Israel at end of 2026 - Reuters",
+      "summary": "Trump says US will stop $4 billion funding to Israel at end of 2026 Reuters",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQTnAzZzVDS3N1RTJJdnkxYUJPQkl1X3h4d3hZaC1MX0RwXzRHOGRybmM3QjEzR1kybkJIUmNYcnVPbkNPMkt6TFBnTEdOYWFJemJkelBhVXZsRDQ5VG4wc1lSS0Q2dlRlUmV0VHI2Y3YxNWstRWVPUV95Y2pNUVp5TUlES3pCMC1GUzNTTXVfWWlGd1JlQ3p1XzJUWmJmbzlWUmtYTFlXNDFlZw?oc=5",
+      "source_name": "Reuters",
+      "source_url": "https://www.reuters.com",
+      "image_url": "",
+      "published_at": "2026-11-03T14:07:11Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "db0ec083583fd928bdcc",
+      "region": "world",
+      "category": "sports",
+      "title": "تتواصل الإثارة في أبو قير السماد vs سيراميكا كليوباترا Abu Qir Semad vs Ceramica Cleopatra، حيث تسعى الفرق المشاركة لبسط سيطرتها في هذه المنافسة الحماسية. ومع اقترابنا من الجولتين الأخيرتين، يمتلك كل فريق في أبو قير السماد vs سيراميكا كليوباترا A - Anayasa.gov.tr",
+      "summary": "تتواصل الإثارة في أبو قير السماد vs سيراميكا كليوباترا Abu Qir Semad vs Ceramica Cleopatra، حيث تسعى الفرق المشاركة لبسط سيطرتها في هذه المنافسة الحماسية. ومع اقترابنا من الجولتين الأخيرتين، يمتلك كل فريق في أبو قير السماد vs سيراميكا كليوباترا A Anayasa.gov.tr",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMixgJBVV95cUxOR0hqUE1oWW1PakpXVE1ic3pOOUZIVXB2WUx2UUNHemRLcDdIVk1LYkh0b3pCT0FhRFo2a292cVNEZ3BsSm5kSmJxNi1XalhTdzJzbkt0RUk3b3g4V1lIVV90RjBxdG9BRzY4VFZTd0NENHhRT1hNU1RTLUpRZld2aC1VOVNrUlNCUUtKMkNYVjg5X1czT3BLNjZpOTV0Unp4X2N3NDVTNTBDNDd6MDlrODJPUC1NZWt6YVZTQ3JnT01GbTZ3b0VaNmFMT1h5XzVFWldkWnJoR1NaUlBNcXg0YjBPVjBXV2dKbVMwendFcFpoY2NQLUF4azBXdUx6bTM5bDE1WkVfZHFwMm5QWERUV196Q2h3ZFlRaUpTZ1NqaDlFbzRpWnc5X2J3eHFuZVV5aXNGb2E3QVY5U2JKVEctdjhaV2ZVUQ?oc=5",
+      "source_name": "Anayasa.gov.tr",
+      "source_url": "https://www.anayasa.gov.tr",
+      "image_url": "",
+      "published_at": "2026-11-03T14:06:21Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "bc799e71e86c15633983",
+      "region": "world",
+      "category": "economy",
+      "title": "وزير المالية.. فى الاجتماعات السنوية للمنتدى الأفريقي للإدارة الضريبية: تكاتف الإدارات الضريبية الأفريقية.. السبيل الوحيد لمواجهة التحديات الدولية - mof.gov.eg",
+      "summary": "وزير المالية.. فى الاجتماعات السنوية للمنتدى الأفريقي للإدارة الضريبية: تكاتف الإدارات الضريبية الأفريقية.. السبيل الوحيد لمواجهة التحديات الدولية mof.gov.eg",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9JN0F0Rk9udUVMUEpCSEh4RTV2aU9HZlg3WU5DcWlvSGtLMjJtcGdLdlR1WHB0M09SQlN5MmRldnExWkNva2dGV3lpNHo5NHFBbU8wWUR1TnllSjR4TWtZ?oc=5",
+      "source_name": "mof.gov.eg",
+      "source_url": "https://mof.gov.eg",
+      "image_url": "",
+      "published_at": "2026-11-03T14:03:40Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "984aceb61df94c698c53",
+      "region": "world",
+      "category": "world",
+      "title": "US to end $4 billion military aid to Israel after 2026, Trump says 'they don't need it' | World News - Hindustan Times",
+      "summary": "US to end $4 billion military aid to Israel after 2026, Trump says 'they don't need it' | World News Hindustan Times",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNMUJxQ21wT0IwNXVTd09TdzcwRGRmTTZCd0F1OEswbmhqN1pDaHdnMG9iLVY1NGo5aFdtSEZPWWtSNjQyLU1SSWUyaktEY1R1Q2Vma1BXd2VucjFEclBMcHR2VmRDT1ZxUktBOXVhM3AxMXpyR3pNV05ES1dOc0VDQTNCTERBV3BHVTRiaDJPQnliSUFnQVF4LURWYVh3bm1OdVpGcmozTV9RWEQ5S0RsY1JYRU93LXZteFBQQl9IcEF5Tk5ONnRITjNCMTJCcDhuRGQzdXctVFpXODhlMnfSAeMBQVVfeXFMTlhGeGI5enVQWmJZcUJTcmFnYWhxcjM0QkRZaDVSMmZPdmdVX0FhN1RMaGljUFE2cENPQ0VGV1dXMmh5V25MczJzZ1hZX29NakwyT1ROZDg0R01Oa0EydzlZYmlsYVFNUEdObkxzSzgtX08yNjd4SXNyazhscF95NE5DWnVuRnZ1dzdsTlp1aFZvVUJVVjRDREN5UDVNTUZUT1I2TnhPRFJjQ0E4OVJaTVhqcHIzbWE1WklHRUV0LUpGdk8wcnF5MUhXQmRVVDhzZ2I1VFV6UWxFUUIyelVHOXVwUTg?oc=5",
+      "source_name": "Hindustan Times",
+      "source_url": "https://www.hindustantimes.com",
+      "image_url": "",
+      "published_at": "2026-11-03T13:51:57Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "f3262da4b6874b356bac",
+      "region": "world",
+      "category": "world",
+      "title": "تواجه شتاءً قاسياً.. أكثر من ألف موقع للنازحين مهدد بالغرق بسبب الأمطار الغزيرة والفيضانات المتصاعدة - جريدة آخر الأخبار",
+      "summary": "تواجه شتاءً قاسياً.. أكثر من ألف موقع للنازحين مهدد بالغرق بسبب الأمطار الغزيرة والفيضانات المتصاعدة جريدة آخر الأخبار",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiwAJBVV95cUxPbXR1S2hMYl9Nbnd6X28xcTNRVUZSQXNZSU9ZZTZhRHZPU2VvWmNWZ19GMGs5b0tXR2swdmVzN3pSWGVsX0Q2U3RhMzNXTDY1VzBkc2pQNGhKTFM3UEpwd0oxN3hibXo5WFQ5Rk50R3VnWHo2UXVvVS1fcFE1MVJFcnBmZEFuVS1ZU1JGV2JNOGFzbUI0R3p4MDNidWQ0bnI1NUJPQ1hsaGtiUjEzcTdSVS04VlR5SEE1ODRTU25Lc29OUUJETVZnd3hHZXRLRW9wcV91NHU5NVZDX1I2UWl4a09WbXEtdGNCTzI1dXVsWklxYlFXSF9ockdncVBCRWNBdjRWeHpPRUpKUHdWNG1xRFQ4ZHhqaExfOGd1NGRfcjBKSlJ3TElFeUlJTC1relUwQjB2SVZKZF9PYUk2ZGlUcQ?oc=5",
+      "source_name": "جريدة آخر الأخبار",
+      "source_url": "https://akher.news",
+      "image_url": "",
+      "published_at": "2026-11-03T13:47:25Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "910b7da95ca3042c48c1",
+      "region": "world",
+      "category": "world",
+      "title": "أبرز الفعاليات والأنشطة الخارجية في قطر لموسم الشتاء 2026-2027: تجارب فريدة ومغامرات لا تُنسى - جريدة آخر الأخبار",
+      "summary": "أبرز الفعاليات والأنشطة الخارجية في قطر لموسم الشتاء 2026-2027: تجارب فريدة ومغامرات لا تُنسى جريدة آخر الأخبار",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMixgJBVV95cUxOWUwtVVVkSnMxbVBURk9ndkNub0dTeEctdGhyaGU2SHlKdlFfTFB2NmZXcUdZc1VzSHNJbndTbWw2MTQ0TU5WTjllSU5WdFd3eGhxTFdTWTRzWngwTEVPV2NkYzRiQnZiUXBMaHpxb21ZZlFBRHFQbUpueWp0M3drR194ZkhnVGJ1S0FHZTdHSlc3Z2NoSU0tYThnajFvNXBwNnR0XzFpUi0xVG9OZU5wcjJRcHZiZXVaV1dpTjdzcjF1eHVWdl95cE1LRkt6WlljMW9EamxFN19RV1pmOC1HT184bW1NSlZhaWZhVU44OVJrMWowX0JZYWVHWFZSU19pcFdvWVdOR21mRWR2UUJ6TVgtN3UxazMxRndXYUZJZWpkVEkxaWNzM0ZFYWlkcVNtU0tmSktBVjFxckdsZjBGWDZIc1JPUQ?oc=5",
+      "source_name": "جريدة آخر الأخبار",
+      "source_url": "https://akher.news",
+      "image_url": "",
+      "published_at": "2026-11-03T13:32:19Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "af89c369162dc1adb23b",
+      "region": "world",
+      "category": "world",
+      "title": "Iran War US - Post Register",
+      "summary": "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.",
+      "summary_type": "source_notice",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNd2JENVBfUjMtQVdEVHJNQkNiTGZESXF6cWlYVzhJWXhyLVU0OFoyeWtXX1hnS3Q0T3VHT3gtSlVXZTczUVJWS09wVlUwbmhxSm9NSlYySmkzeGplSzZkZzJJdzE5N080aDJaT3ZENHdTTkhNbFBDVk1sdXRnUWpIeXpwMThQM3dmejdrS01LLUtOQmNia2xxYzZSQlhkdklP?oc=5",
+      "source_name": "Post Register",
+      "source_url": "https://www.postregister.com",
+      "image_url": "",
+      "published_at": "2026-11-03T13:28:57Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "e1b3c36ed3fa99fa2e61",
+      "region": "arab",
+      "category": "arab",
+      "title": "زوهو تُحدث نقلة نوعية في تحليلات البيانات عبر منصة ذكية تُمكّن وكلاء الذكاء الاصطناعي من تحويل البيانات إلى إجراءات عملية - أخبار الخليج",
+      "summary": "زوهو تُحدث نقلة نوعية في تحليلات البيانات عبر منصة ذكية تُمكّن وكلاء الذكاء الاصطناعي من تحويل البيانات إلى إجراءات عملية أخبار الخليج",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1BQWFaRjYxRkhITmZxM3A5S2NGei1uXzY4bC1LWklwSTZWZE1nZl9KTng0TkZJMEJiVWcxbkc1Sy1xUXhpTHVnS2IyNmdtV19rMUt6bWhLSlpFczYtLWc?oc=5",
+      "source_name": "أخبار الخليج",
+      "source_url": "https://akhbar-alkhaleej.com",
+      "image_url": "",
+      "published_at": "2026-11-03T13:10:13Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "3fa050102f4534fb3554",
+      "region": "world",
+      "category": "economy",
+      "title": "مركز دبي المالي.. منظومة الذكاء الاصطناعي والتكنولوجيا المالية تتجاوز ألفي شركة - الشرق بلومبرغ",
+      "summary": "مركز دبي المالي.. منظومة الذكاء الاصطناعي والتكنولوجيا المالية تتجاوز ألفي شركة الشرق بلومبرغ",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMiiwRBVV95cUxQcWdDV0NSQjBnRTJzTWxwSGhzS2JtTE95bDBlYXpTc3VYY1cyUWRoWVhwU0VaU1k3TTJwNVh2VlJWcUIzZFRtU3cxbEZMM1I2VGZYOWFjQ3dCTFNEWWZzM1lrTjR5ODdWWDhzbmFLMHRKZ19xQkpGdEtkRXJVWl9pd0FCeXNtMHNVcEJVZVlDVEtQelBNVU5qQzdVajR5VEUwVzhGWjlfdk5jOV9nR1NCQXZWUXlKclFmYlhsUDBNeEs1T3FST2RCZFYwSlRIMnNkYUF1aHFHS210OVRNZlN4WHljM1pqTFByQ3hTU2RzbmVjRFVweE1FdEJuSFpnXzFYRXN0aU0yalk4NnY1YWFPcGlKVVpva1BPcU91WU1zLUxhaXpmZDlPaHNYQ1p6OXN1dU1tZzJDc1BFa01BVEhXWGJUU21YRjRnc3pNWS1pdDByWmVlenJtZnNxdFhiek5xSm5kNm40czNKeUFvakR5aHNwWXVmdmVlVjBoSW5VcThJWkg1VlRmZlZwSEhFcmQ0ajZMTmx0Qk5PcTJrNUY4QmJOZlhRVFp1MEJlZGlUVzdlVWZEOFBNTU5aU0doRzAydVRyLTNqOTEzY0gyTERnR05BVGQ0TVhQZkxyLWRMdHAtUjJRaEk5YkFhTkFLLTFIMFNoMTlua3BPcnB2VzRZR045OTk3aGdKQTlZ?oc=5",
+      "source_name": "الشرق بلومبرغ",
+      "source_url": "https://asharqbusiness.com",
+      "image_url": "",
+      "published_at": "2026-11-03T12:59:41Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "ca3090d53041c619536d",
+      "region": "world",
+      "category": "economy",
+      "title": "وزني: الاقتصاد يبقى العامل الرئيسي في ذهن الناخب الأميركي - سكاي نيوز عربية",
+      "summary": "وزني: الاقتصاد يبقى العامل الرئيسي في ذهن الناخب الأميركي سكاي نيوز عربية",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMi0ANBVV95cUxNVGdqMkpzYklwRkIyTjRPRVB4VkNNZXcxZ1lWVDBIYl9UZFFFQ0wtd0d1eURRbldrckNIb3g1U2twa3NOZTRkdFlmV3BpVlF2TDhUaHhhZ1lUbG1HS0RTcEtXRFFMXzlDanNUS01sTklhZmx6TGRBWmFxdHQwcmZscDYzcnFDMHFNWWZacGhUbTl6RjZNRVNHTzJqNWlwbS1zMDlXQlowVk5fSTBiY3owanZaRENiSDc1eGhQbXRMQi1GTXJvbkwtMHBIcmd6aEVBaTNSN2N1bkgwNDZyZWlKX3AxVElTSWR4cGhWY3kwMjB2SG9KZVpLYkd6ekVDR2Z4Z3ltQWtNRWo2UlRUdm9PYXBCR2RqUUFBMW1paE1FQXMtVVptYWM3eDRrZ3FrS0tGWGN4R3RVRTZBM3VrQmQ0cTZzZFQxUnZUb1BEd3h6SDZLVXcyT2c2ckx0MWxSX1Nocm1jcGpXVnpNWHhzUG91Z2swLUpxWXRvSE9lb1VDZXJUNGQ4MUhqNEI2YlJUNFZtcWFxUXRRMk51M09pLWxQRkdiYjcwREg4cGR1Wmgwck1jNWtZNFVwaDJIeTlkaTlXZXo3cnNsZV9Mc1lIN1ljTtIB1gNBVV95cUxQYnBBT3FGNWJUdGhDXzNBbFR1OHpDekRjcVZZUkROOWl2WFIzeG9tRi1KUzVqcVJHUVp1ZDFWWHh1N1dxRWxwbHFzZEF6Rkxpbm9FdTVTS3F4NnZKODI4Zlc4LUIxX0VsalFMZGoxemhCTGhEN1BjT0xCa2FVeEVNYVJlUTIxODRBbndaQ1AtXzVCUTBZSFRNX0RZdUlneUdKczZWVkgzUDQyZnRiTzE2YVRud2s4enRKTGR6U3ZBaHJkU1BUa2N3dXFJRXpkUWYyckpuUmlfektZeU5KWEFleWVvM1p2ZFVFSXJUU3lpR0wyTERyUS1lcmVSVGhlMjAyN0FLeER5YjhaVjF4Mk1jN1NlbzBpNGw1MHNUMzJLSmxOT3hPVzd5REJtWUkteWt4cGJmZllNcTE5MXBmeVpmcnVaLXdkWkRveFlvQlViWFJ4dlJzTFowZTNGSkJ4OWJic3FaN01qMXdMZ2dpOTctcjNkMmN5djNjTTVNMzQ3ZUhfRHZTUENlMm5EMmNsdF92dWxXY3l2NUFSY082RUM4eXNUanYyM3ZQZnFsejd1dGowakgzOV9FT2Z3ck5raFR5R29vWVZfT0o3dWcteVNZbElULTNXQQ?oc=5",
+      "source_name": "سكاي نيوز عربية",
+      "source_url": "https://www.skynewsarabia.com",
+      "image_url": "",
+      "published_at": "2026-11-03T12:58:56Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "951b2d50a340181f0e0f",
+      "region": "arab",
+      "category": "arab",
+      "title": "Iran war live: Trump says last night’s Iran strikes ‘minor, it wasn’t war’ - Al Jazeera",
+      "summary": "Iran war live: Trump says last night’s Iran strikes ‘minor, it wasn’t war’ Al Jazeera",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQbk92SHBjQ3VxZlRQX2ZlWVNMUHEzV3V3RXhpLW1rajNzdU90dEhrQnJiWTN5dFhmNXE2Zk5sYWg1WFBDNG9QTFpSN0RKQ2VGUnQ3UnU0b0pqLXZ6S29oTnR2Umlnc3RJLUVBYl9pOXpSU1JQdmwtTkoxTHNwYVN1b0lzQ2Z2dWc0QlpVVFJROGQ3MkQwei1KVzB5aWFhdVRIR2VOU0htR09PYkh5NkdCQjg2NFBteGFTSXhjT1Z30gHDAUFVX3lxTE5qSVpNcUtFc29tNGVRaHJqRWZ0Nk53TldzTFBKZnNFNUdPWlVWSGoyM3Y1V3diSXFUTGs4OS1BaWs1c3dJaFRGUTFSTl9fUk1EY2QyME8yRlhBT2VuVHRqOW0wSUM5LXoxWlFDMFJyaGxoMVhlUXNqLXVUQk1jcG9WSl81bUFvSUdiUG9KYVBPSEhlNmVuWmF4OW5zTm9sSzYwWnItOFhDOGR0OF9Fb3BkbFM2cWU2ejhzS1BmaVVveTViYw?oc=5",
+      "source_name": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com",
+      "image_url": "",
+      "published_at": "2026-11-03T12:56:39Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "e8c016edae8322d535fd",
+      "region": "world",
+      "category": "economy",
+      "title": "اتفاقية بين الصين وعُمان لمبادلة العملات بـ 4.5 مليارات دولار - الجزيرة نت",
+      "summary": "اتفاقية بين الصين وعُمان لمبادلة العملات بـ 4.5 مليارات دولار الجزيرة نت",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMitwJBVV95cUxNTnI0MXFFLS1zTDRMeGprOWpyTnY2STU3RnhBUmxfT0E3emVBa2xXdUxuT1JFU0lZTW85SGNXMkZ1Tjlxb3l4UzdYYThlZzlkOUZ1R2ZyZEJVQm5FanFHRW1mei03eXpVY1BrTFY4Sm1lY19NOFoyTHNjU1lCX3BBVkRqZmdOOUgyeW00WHZ4bF9YTHFVM3U4LVpfNEFCZWpzTXJ6dXBfQ3JkVTRNeWFkR1phZU5fTURRX24yTGdsZllBOC1MVEtXS2k3Q3pUeGk0bXc0Si1NWDNDQ251VzNaTFlWVWYzM2N4eXZFd1VRZC1wZVdkTnhQMG5zRWJPUDFMMldBTTNlWHp6VXNhYU1scGRWVUtnQ25EUkhvNEJjM0VicndnVjhzUFlQUkNlRHB2Qm1ydC1IWQ?oc=5",
+      "source_name": "الجزيرة نت",
+      "source_url": "https://www.aljazeera.net",
+      "image_url": "",
+      "published_at": "2026-11-03T12:44:54Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "223ff510d8b9f27df893",
+      "region": "egypt",
+      "category": "egypt",
+      "title": "فخامة الرئيس السيسى يؤكد ثقته فى ترامب لتجنيب المنطقة مزيدا من المعاناة - اليوم السابع",
+      "summary": "فخامة الرئيس السيسى يؤكد ثقته فى ترامب لتجنيب المنطقة مزيدا من المعاناة اليوم السابع نبيل فهمي يبحث مع رئيسة سلوفينيا دعم الحقوق الفلسطينية بوابة الشروق السيسي ورئيسة سلوفينيا يبحثان ربط الموانئ المصرية بميناء كوپر وتعزيز الاستثمارات - صوت الأمة اخبارك نت واردات مصر من سلوفينيا تقفز إلى 87 مليون دولار في 8 أشهر Masrawy فرحات: دعوة الرئيس السيسي لتسوية الأزمة الأمريكية الإيرانية تحرك مسؤول صدى البلد",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMi9gNBVV95cUxOSFJnbTZpQ21Jc3A3a0p4X2gxWHBpMnkwQlJyaERCZEt3aHBYaWNmaTFUak95Q2dvS2Z3bXpVRFp5eENxM2hRNUVac3VHRzU1LXdoN1QxVVIwdldxMHpyWUxJZGJ4U2FtZl84SlFzMGd5NWdmTXM5ZXI2NmtjV0xVXzZZMUdJcF9GTVBDVE1Ba1E4OTluYVBOamZfNDZ2LXBvczNVYWtvUEFkWnAwSXEtWERwVk12dkF5VVUzNzVqOTFfakg2VnNlTzJSNHBIek04T1VDQ0I2MV82cEYzclRqaE1rMFpEbG1WRTdfWlRrQXJHamt5ejVCVzZNZ0JySDhvNzVPVmJvWUtiV0x4YmNNa1lXUkpoMG1ueDFTcHhKU3Zqb2prdXoyZXBtZkZpNThiZGVjb0R3TWdBU2hMa2ZTQ0haUFUyZ3BGUWhVUzRvbFJGNm92RFZrTkxUSU9JLTBGV05nZk5LdXdUYWZoS2ktbVpWXzJsV2FRLWV5Y0Y2cHFla01tallKRjliS2V1bWE0TTJXZ0xiSFR4eExKUWpyZ2phZlZWczB5MUpYeWpmTFUwNVFIalNHTDlwcmxkbDE0dHRhcmdQelZVZHZpRHBybnVQUE5CZ3BYMkR1eU85M2thbFdxa0RsdU9TRE5SOFBJZTh6RUZ30gHwA0FVX3lxTE1PaW95MjJhTVhBMkpOVlVBWWQ4LVBFcjVPVVQyYmMtNTJEQUJvc2xQdnRESDVpSUFic2NISmllUnE2Wi1ld1hQQ1YzbENjNDFsNTZ0Nm5pYzFIN0ZnX19PZlM3Nm9MRjhnQUhZNEhSRGo2Z3FOUUt5RE9ZUy1mMUJBUVFlQzZFTDBvZlhzLW4tVHZqeVFMRFdKbFdEM1pVeXJLQ2VVa3hSd2hNS2JjZ0cyRi11T3VPR3BQY2gwNXhqRUpfeWhQQU9nY29mN0RoNjg5aHhyYmVTRlpKQ2RHaFgwVWR1dTFOMmtFYS1Ka3JpRVVBc3Fzc3MyNlNBTUg1RnZiNHJQeEQyc1g3MVRjVmRPUjV4U2o0bzNnNnpfd0RMaTV1ZFJSeWIyWFFWS2VaelNNQWtybUJ1a2lrR3hWZGxnTnJXUnUxNXQxVERVY1BTaXBzVzRhcGRxVzZHSDgtWXkzakpVNUItU0U5RHJFV1RDaGRodnhZLXBUVS03T2VuN0QwWi1jX2Q1R0l6bEtDRXQ1WjFDMmRqZGM2M25pN3FzeUprNTFEWWlrUC1GWnZrSkcxRTllN1ZlVnlRbXBoOU55SHVuT3FDekRjNmpERGRGZXpfbExTVGFYR3ZnTjZXem1tbFNTb2RkU1A2eTFoZEE?oc=5",
+      "source_name": "اليوم السابع",
+      "source_url": "https://www.youm7.com",
+      "image_url": "",
+      "published_at": "2026-11-03T12:33:00Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
+    {
+      "id": "1b48ee8c29961e299b64",
+      "region": "world",
+      "category": "technology",
+      "title": "China’s Hygreen eyes manufacturing of Elcogen’s solid oxide tech - gasworld",
+      "summary": "China’s Hygreen eyes manufacturing of Elcogen’s solid oxide tech gasworld",
+      "summary_type": "source_excerpt",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcXpXTEN1ZGcwYWtHOExVVUZGazl6MkJKOUxMS1kwLXJWaWdQRXBadUJ6TFlWbUJzbHBDV3R0VmxfMnlrbzBOVUR3VmV5RnNjemZyTjY0S0xuQzZwQlYwdWVKdlZ1RUFiN2d4VktJaUdkX2lGeGlCUEVEeXU1OUxwUW5FYXZyVFRZNnJteU5CYXRFUG1FbHQ3c3lBOFFuYVFTOEZMZ3REcmRfX3VDa0pz?oc=5",
+      "source_name": "gasworld",
+      "source_url": "https://www.gasworld.com",
+      "image_url": "",
+      "published_at": "2026-11-03T12:26:18Z",
+      "created_at": "2026-11-03T14:55:25.812218Z",
+      "summary_date": "2026-11-03"
+    },
     {
       "id": "e63a0bc5576f93f3c774",
       "region": "world",
@@ -68,7 +368,8 @@
       "source_url": "https://www.youm7.com",
       "published_at": "2026-11-03T13:29:00Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "sports"
     },
     {
       "id": "58e707fd02513b1e9792",
@@ -94,7 +395,8 @@
       "source_url": "https://www.theguardian.com",
       "published_at": "2026-11-03T13:15:00Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "b39e88e2229778cb556f",
@@ -107,7 +409,8 @@
       "source_url": "https://www.alarabiya.net",
       "published_at": "2026-11-03T13:12:00Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "sports"
     },
     {
       "id": "f5c81a5e06472c95d22d",
@@ -120,7 +423,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-03T13:05:54Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "4c1aa0bc19ec397d946a",
@@ -133,7 +437,8 @@
       "source_url": "https://www.snabusiness.com",
       "published_at": "2026-11-03T12:54:09Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "economy"
     },
     {
       "id": "7519194443559b3ede6d",
@@ -172,7 +477,8 @@
       "source_url": "https://www.masrawy.com",
       "published_at": "2026-11-03T12:11:14Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "sports"
     },
     {
       "id": "84e749df4c6a99d0a879",
@@ -185,7 +491,8 @@
       "source_url": "https://americanlaundrynews.com",
       "published_at": "2026-11-03T12:04:46Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "technology"
     },
     {
       "id": "f01d66f027b21f4cbd4b",
@@ -198,7 +505,8 @@
       "source_url": "https://alghad.com",
       "published_at": "2026-11-03T11:59:52Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "sports"
     },
     {
       "id": "e6253f98ae3e3335abe9",
@@ -224,7 +532,8 @@
       "source_url": "https://www.aljazeera.com",
       "published_at": "2026-11-03T11:36:36Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "ca053875e8bb1d63adb8",
@@ -276,7 +585,8 @@
       "source_url": "https://finance.yahoo.com",
       "published_at": "2026-11-03T11:01:15Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "technology"
     },
     {
       "id": "0e8aec069633698110eb",
@@ -328,7 +638,8 @@
       "source_url": "https://www.assabahnews.tn",
       "published_at": "2026-11-03T10:35:46Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "ef096553d92053f5ebf6",
@@ -419,7 +730,8 @@
       "source_url": "https://www.bbc.com",
       "published_at": "2026-11-03T10:02:48Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "technology"
     },
     {
       "id": "6efe35edd2d7926b487d",
@@ -432,7 +744,8 @@
       "source_url": "https://arabic.cnn.com",
       "published_at": "2026-11-03T10:02:31Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "egypt"
     },
     {
       "id": "1c675cf28c3695862ed2",
@@ -497,7 +810,8 @@
       "source_url": "https://www.ft.com",
       "published_at": "2026-11-03T09:33:30Z",
       "created_at": "2026-11-03T11:24:54.031367Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "b6a5cce8dda9433db8ad",
@@ -510,7 +824,8 @@
       "source_url": "https://www.skynewsarabia.com",
       "published_at": "2026-11-03T09:32:46Z",
       "created_at": "2026-11-03T10:27:16.851695Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "3c3e8ab3d02cabb766c1",
@@ -575,7 +890,8 @@
       "source_url": "https://www.theguardian.com",
       "published_at": "2026-11-03T09:14:00Z",
       "created_at": "2026-11-03T11:24:54.031367Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "51851777925a9686f269",
@@ -601,7 +917,8 @@
       "source_url": "https://www.youm7.com",
       "published_at": "2026-11-03T09:10:00Z",
       "created_at": "2026-11-03T11:24:54.031367Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "economy"
     },
     {
       "id": "6b76ae9bdf47c398c9e7",
@@ -627,7 +944,8 @@
       "source_url": "https://www.theguardian.com",
       "published_at": "2026-11-03T08:47:00Z",
       "created_at": "2026-11-03T13:41:59.308757Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "f67b71638149d834d699",
@@ -692,7 +1010,8 @@
       "source_url": "https://www.aljazeera.net",
       "published_at": "2026-11-03T07:39:39Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "sports"
     },
     {
       "id": "ccc82890a09d7461b641",
@@ -718,7 +1037,8 @@
       "source_url": "https://www.fnlondon.com",
       "published_at": "2026-11-03T07:34:34Z",
       "created_at": "2026-11-03T08:15:37.067584Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "761a8dbd13dc5825b968",
@@ -783,7 +1103,8 @@
       "source_url": "https://www.skynewsarabia.com",
       "published_at": "2026-11-03T07:16:36Z",
       "created_at": "2026-11-03T08:15:37.067584Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "3ce5d72e9d300300ad6b",
@@ -796,7 +1117,8 @@
       "source_url": "https://www.skynewsarabia.com",
       "published_at": "2026-11-03T07:10:31Z",
       "created_at": "2026-11-03T08:15:37.067584Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "2bbf10e1e0e65a18d4c0",
@@ -991,7 +1313,8 @@
       "source_url": "https://www.alarabiya.net",
       "published_at": "2026-11-03T05:17:00Z",
       "created_at": "2026-11-03T08:15:37.067584Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "egypt"
     },
     {
       "id": "5dd55c2943d438c48e81",
@@ -1004,7 +1327,8 @@
       "source_url": "https://www.skynewsarabia.com",
       "published_at": "2026-11-03T05:16:22Z",
       "created_at": "2026-11-03T05:52:01.863788Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "1ee469f3f1438ba707ba",
@@ -1043,7 +1367,8 @@
       "source_url": "https://understandingwar.org",
       "published_at": "2026-11-03T04:49:54Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "58fd22f948ddbb516e2d",
@@ -1056,7 +1381,8 @@
       "source_url": "https://www.bloomberg.com",
       "published_at": "2026-11-03T04:45:00Z",
       "created_at": "2026-11-03T05:52:01.863788Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "5314e6e73be303d661e0",
@@ -1095,7 +1421,8 @@
       "source_url": "https://www.bbc.co.uk",
       "published_at": "2026-11-03T03:39:08Z",
       "created_at": "2026-11-03T09:23:56.930013Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "ed1af32119ccb2117f6c",
@@ -1108,7 +1435,8 @@
       "source_url": "https://www.bbc.com",
       "published_at": "2026-11-03T03:39:08Z",
       "created_at": "2026-11-03T04:51:38.183725Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "d8dbb82aab4285876743",
@@ -1121,7 +1449,8 @@
       "source_url": "https://www.theguardian.com",
       "published_at": "2026-11-03T03:18:00Z",
       "created_at": "2026-11-03T09:23:56.930013Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "4f6a249d666017472230",
@@ -1134,7 +1463,8 @@
       "source_url": "https://arabic.cnn.com",
       "published_at": "2026-11-03T02:55:06Z",
       "created_at": "2026-11-03T04:51:38.183725Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "egypt"
     },
     {
       "id": "488a4d29f04e81ff1adc",
@@ -1160,7 +1490,8 @@
       "source_url": "https://arabic.cnn.com",
       "published_at": "2026-11-03T02:19:08Z",
       "created_at": "2026-11-03T07:01:59.857322Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "egypt"
     },
     {
       "id": "d9cc682ff8e073227081",
@@ -1238,7 +1569,8 @@
       "source_url": "https://www.reuters.com",
       "published_at": "2026-11-03T01:05:00Z",
       "created_at": "2026-11-03T02:49:00.809118Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "39d9bdf03600738ee87b",
@@ -1303,7 +1635,8 @@
       "source_url": "https://www.alarabiya.net",
       "published_at": "2026-11-02T23:23:00Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "egypt"
     },
     {
       "id": "ae0be3c7cdff7ee90174",
@@ -1316,7 +1649,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-02T23:04:52Z",
       "created_at": "2026-11-03T05:52:01.863788Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "9f66c68dcfd998945723",
@@ -1329,7 +1663,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-02T23:00:00Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "04fb37334cab96bd3e02",
@@ -1342,7 +1677,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-02T23:00:00Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "d63b025059cd9aea801e",
@@ -1355,7 +1691,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-02T23:00:00Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "d30cb3be94a89671c6c6",
@@ -1368,7 +1705,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-02T23:00:00Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "bb9b842d96382bb4f762",
@@ -1381,7 +1719,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-02T23:00:00Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "a5f0365c80b85c24ba87",
@@ -1394,7 +1733,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-02T23:00:00Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "8e95215d720c81f4ff04",
@@ -1407,7 +1747,8 @@
       "source_url": "https://akhbar-alkhaleej.com",
       "published_at": "2026-11-02T23:00:00Z",
       "created_at": "2026-11-03T12:21:42.940513Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "0d3a2682fd2f599ebe95",
@@ -1433,7 +1774,8 @@
       "source_url": "https://www.youm7.com",
       "published_at": "2026-11-02T22:00:00Z",
       "created_at": "2026-11-03T05:52:01.863788Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "egypt"
     },
     {
       "id": "fdacbe3fae3389ad5cbb",
@@ -1446,7 +1788,8 @@
       "source_url": "https://federalnewsnetwork.com",
       "published_at": "2026-11-02T21:53:25Z",
       "created_at": "2026-11-03T10:27:16.851695Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "technology"
     },
     {
       "id": "5d4c9511a83cdf0462a7",
@@ -1485,7 +1828,8 @@
       "source_url": "https://news.un.org",
       "published_at": "2026-11-02T20:45:52Z",
       "created_at": "2026-11-03T08:15:37.067584Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "99fa531e9d8f926e091b",
@@ -1511,7 +1855,8 @@
       "source_url": "https://news.mit.edu",
       "published_at": "2026-11-02T19:55:00Z",
       "created_at": "2026-11-03T10:27:16.851695Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "technology"
     },
     {
       "id": "69b08da723e7f6ff22cd",
@@ -1537,7 +1882,8 @@
       "source_url": "https://arabic.cnn.com",
       "published_at": "2026-11-02T19:08:57Z",
       "created_at": "2026-11-03T08:15:37.067584Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "economy"
     },
     {
       "id": "42c0e4b0317d60c6f601",
@@ -1550,7 +1896,8 @@
       "source_url": "https://akhbarelyom.com",
       "published_at": "2026-11-02T18:56:19Z",
       "created_at": "2026-11-03T09:23:56.930013Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "economy"
     },
     {
       "id": "a38dafc2d4465f76ff5d",
@@ -1576,7 +1923,8 @@
       "source_url": "https://www.wsj.com",
       "published_at": "2026-11-02T18:44:00Z",
       "created_at": "2026-11-03T04:51:38.183725Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "3ed0b21ccdd77c22445b",
@@ -1589,7 +1937,8 @@
       "source_url": "https://www.usnews.com",
       "published_at": "2026-11-02T18:27:29Z",
       "created_at": "2026-11-03T10:27:16.851695Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "technology"
     },
     {
       "id": "958b1a5841efc0a55bee",
@@ -1641,7 +1990,8 @@
       "source_url": "https://www.mubasher.info",
       "published_at": "2026-11-02T16:45:42Z",
       "created_at": "2026-11-03T03:50:29.586738Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "economy"
     },
     {
       "id": "6a9aeca48430f096f41e",
@@ -1680,7 +2030,8 @@
       "source_url": "https://www.aljazeera.com",
       "published_at": "2026-11-02T16:08:04Z",
       "created_at": "2026-11-03T09:23:56.930013Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "arab"
     },
     {
       "id": "a7f2740298895351eae4",
@@ -1719,7 +2070,8 @@
       "source_url": "https://www.cbsnews.com",
       "published_at": "2026-11-02T14:50:00Z",
       "created_at": "2026-11-03T03:50:29.586738Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "76d3dfa6ab00a2c45ac0",
@@ -1732,7 +2084,8 @@
       "source_url": "https://www.youm7.com",
       "published_at": "2026-11-02T14:39:00Z",
       "created_at": "2026-11-03T10:27:16.851695Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "economy"
     },
     {
       "id": "8f199517f6fd2e07a0bb",
@@ -2042,7 +2395,8 @@
       "source_url": "https://www.theguardian.com",
       "published_at": "2026-11-02T11:06:00Z",
       "created_at": "2026-11-03T03:50:29.586738Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "world"
     },
     {
       "id": "d2353711abce4650e6c0",
@@ -2631,7 +2985,8 @@
       "source_url": "https://www.youm7.com",
       "published_at": "2026-11-02T08:10:00Z",
       "created_at": "2026-11-03T09:23:56.930013Z",
-      "summary_date": "2026-11-03"
+      "summary_date": "2026-11-03",
+      "category": "egypt"
     },
     {
       "id": "594ab0ed5ce750442080",
