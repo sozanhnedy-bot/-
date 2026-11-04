@@ -84,7 +84,7 @@ public final class PortalActivity extends Activity {
         root.setBackgroundColor(PAPER);
 
         TextView heading = new TextView(this);
-        heading.setText("Threads Documentary News");
+        heading.setText("World News — أخبار العالم");
         heading.setTextColor(Color.WHITE);
         heading.setTextSize(17);
         heading.setTypeface(null, android.graphics.Typeface.BOLD);

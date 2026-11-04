@@ -117,7 +117,7 @@ object LocalAiMedia {
     }
 
     @JvmStatic
-    fun generateScript(context: Context, topic: String, duration: String, style: String): String {
+    fun generateScript(context: Context, topic: String, duration: String, style: String, platform: String, references: String): String {
         val modelFile = scriptModelFile(context)
         if (!modelFile.isFile || modelFile.length() != QWEN_SIZE) {
             throw IllegalStateException("نزّل نموذج الكتابة المحلي أولًا.")
@@ -130,7 +130,7 @@ object LocalAiMedia {
         }
         val threadCount = Runtime.getRuntime().availableProcessors().coerceIn(2, 4)
         val config = LlamaConfig(
-            contextSize = 2048,
+            contextSize = 3072,
             threads = threadCount,
             gpuLayers = 0,
             temperature = 0.65f,
@@ -144,16 +144,14 @@ object LocalAiMedia {
                 val systemPrompt = """
                     أنت كاتب مساعد لإعداد مسودات فيديو وثائقي باللغة العربية الفصحى الواضحة.
                     لا تخترع أرقامًا أو أحداثًا أو اقتباسات؛ إذا احتاج الموضوع حقائق حديثة، ضع تنبيهًا واضحًا للتحقق قبل النشر.
-                    أخرج مسودة قابلة للتحرير بهذا الترتيب: عنوان جذاب غير مضلل، الفكرة، نص الراوي، ثم 4 إلى 8 مشاهد مرقمة ولكل مشهد زمن تقريبي ووصف بصري ونص الراوي المرتبط به، ثم ملاحظات تحقق قصيرة.
+                    أخرج مسودة قابلة للتحرير بعناوين ثابتة بهذا الترتيب: «عنوان الفيديو:»، «الفكرة:»، «التعليق الصوتي الكامل:» ثم نص الراوي وحده دون عناوين أو وصف مشاهد، ثم «تقسيم المشاهد:»، ثم المشاهد المرقمة ولكل مشهد زمن تقريبي و«الوصف البصري:» ونص المشهد المقتبس من التعليق الصوتي، ثم «ملاحظات التحقق:».
+                    التزم بعدد المشاهد المطلوب للمدة. لا تكرر عناوين المشاهد في نص التعليق الصوتي ولا تضف وصفًا بصريًا إلى النص المخصص للقراءة.
                     اجعل العربية سليمة ومناسبة للمدة المحددة، وابتعد عن التكرار والمبالغة. لا تدّع أن النص تقرير موثق.
                 """.trimIndent()
-                val prompt = "الموضوع: $topic\nالمدة: $duration\nالنبرة: $style\nأعد كتابة المسودة كاملة بالعربية وبترتيب الأقسام المطلوب."
-                val maxTokens = when {
-                    duration.contains("3") -> 1200
-                    duration.contains("60") -> 850
-                    else -> 600
-                }
-                val response = Llama.complete(model, prompt, systemPrompt, maxTokens)
+                val plan = ScriptPlans.forDuration(duration)
+                val context = references.trim().take(3_000).ifBlank { "لا توجد مراجع أو معلومات إضافية مقدمة." }
+                val prompt = "الموضوع: $topic\nالمدة: $duration\nالمنصة/نسبة العرض: $platform\nالنبرة: $style\nعدد المشاهد: ${plan.sceneCount}\nحجم النص: ${plan.wordTarget}\nمعلومات أو مصادر قدمها المالك: $context\nاستخدم المعلومات المقدمة بحذر. لا تدّع مراجعة الإنترنت أو التحقق من الوقائع، وضع أي نقطة تحتاج تحققًا في قسم الملاحظات."
+                val response = Llama.complete(model, prompt, systemPrompt, plan.maxTokens)
                 response.text.trim().ifBlank { throw IllegalStateException("لم يُنتج النموذج نصًا. أعد المحاولة بصياغة أقصر.") }
             } finally {
                 Llama.releaseModel(model)
@@ -173,7 +171,7 @@ object LocalAiMedia {
             lang = "ar",
         )
         val model = OfflineTtsModelConfig(kokoro = kokoro, numThreads = 2, debug = false)
-        val config = OfflineTtsConfig(model = model, maxNumSentences = 1)
+        val config = OfflineTtsConfig(model = model, maxNumSentences = 16)
         val tts = OfflineTts(context.assets, config)
         try {
             val audio = tts.generateWithConfig(text, GenerationConfig(sid = 0, speed = 1.0f, silenceScale = 0.2f))
@@ -201,7 +199,7 @@ object LocalAiMedia {
                 connectTimeout = 20_000
                 readTimeout = 60_000
                 instanceFollowRedirects = true
-                setRequestProperty("User-Agent", "ThreadsDocumentaryNews-Android")
+                setRequestProperty("User-Agent", "WorldNews-Android")
             }
             val status = connection.responseCode
             if (status !in 200..299) throw IllegalStateException("فشل تنزيل النموذج (HTTP $status). تحقّق من الإنترنت ثم أعد المحاولة.")

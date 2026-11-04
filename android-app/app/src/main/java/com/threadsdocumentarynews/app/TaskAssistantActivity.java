@@ -32,11 +32,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.OutputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public final class TaskAssistantActivity extends Activity {
     private static final String RUNS_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/ai-task.yml";
+    private static final String ACTIONS_URL = "https://github.com/sozanhnedy-bot/-/actions";
     private static final String SOCIAL_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/publish-social.yml";
     private static final int BACKGROUND = Color.rgb(8, 9, 13);
     private static final int SURFACE = Color.rgb(20, 21, 27);
@@ -47,6 +50,7 @@ public final class TaskAssistantActivity extends Activity {
     private static final int MUTED = Color.rgb(164, 164, 171);
     private static final int LINE = Color.rgb(54, 55, 64);
     private static final int CREATE_PDF_REQUEST = 4101;
+    private static final int CREATE_AUDIO_REQUEST = 4102;
     private static final long QWEN_FILE_SIZE = 491_400_032L;
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -54,20 +58,26 @@ public final class TaskAssistantActivity extends Activity {
     private LinearLayout pageContent;
     private ScrollView scroll;
     private EditText topicInput;
+    private EditText referenceInput;
     private EditText scriptOutput;
     private EditText socialDraftInput;
     private Spinner durationSpinner;
+    private Spinner platformSpinner;
     private Spinner styleSpinner;
     private Button generateButton;
     private Button scriptModelButton;
     private Button voiceModelButton;
     private Button previewButton;
     private Button pdfButton;
+    private Button exportAudioButton;
     private TextView status;
     private TextView socialStatus;
     private MediaPlayer mediaPlayer;
     private String pendingPdfText = "";
-    private String pendingPdfTitle = "سكريبت ثريدز وثائقي";
+    private String pendingPdfTitle = "سكريبت World News";
+    private String pendingAudioPath = "";
+    private String lastVoicePath = "";
+    private String lastVoiceText = "";
     private int selectedTab;
 
     @Override
@@ -76,7 +86,7 @@ public final class TaskAssistantActivity extends Activity {
         getWindow().setStatusBarColor(BACKGROUND);
         getWindow().setNavigationBarColor(BACKGROUND);
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        setTitle("مساعد ثريدز وثائقي");
+        setTitle("World News — مساعد الإنتاج");
 
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
@@ -86,7 +96,7 @@ public final class TaskAssistantActivity extends Activity {
         header.setGravity(Gravity.CENTER_VERTICAL);
         header.setPadding(dp(20), dp(9), dp(20), dp(9));
         header.setBackgroundColor(BACKGROUND);
-        TextView brand = text("ثريدز وثائقي", 17, TEXT, true);
+        TextView brand = text("أخبار العالم  ·  World News", 17, TEXT, true);
         header.addView(brand, new LinearLayout.LayoutParams(0, dp(42), 1));
         TextView spark = text("✦", 24, GOLD, true);
         spark.setGravity(Gravity.CENTER);
@@ -126,6 +136,9 @@ public final class TaskAssistantActivity extends Activity {
     }
 
     private void showTab(int tab) {
+        if (selectedTab == 0 && topicInput != null && scriptOutput != null && !scriptOutput.getText().toString().trim().isEmpty()) {
+            saveProject(false);
+        }
         selectedTab = tab;
         pageContent.removeAllViews();
         if (tab == 0) buildAssistantPage();
@@ -138,10 +151,11 @@ public final class TaskAssistantActivity extends Activity {
         addHero();
         LinearLayout card = card();
         addText(card, "أنشئ سكريبت ومشاهد الفيديو", 21, TEXT, true, 0, 5);
-        addText(card, "اكتب الموضوع وحدد المنصة والمدة والنبرة. ينشئ النموذج مسودة عربية ومشاهد قابلة للتعديل محليًا على الهاتف.", 14, MUTED, false, 0, 12);
+        addText(card, "اكتب الفكرة وأضف مراجع إن وجدت، ثم اختر المنصة والمدة والنبرة. ينشئ النموذج سكريبتًا ومشاهد قابلة للتعديل؛ وبعد تنزيل الصوت يمكن توليد التعليق وحفظه WAV أو تصدير المشروع PDF. لا تُنشئ هذه النسخة لقطات تصوير أو ملف MP4 نهائيًا.", 14, MUTED, false, 0, 12);
 
-        addLabel(card, "المنصة");
-        addChipRow(card, new String[]{"TikTok", "Reels", "YouTube Shorts"});
+        addLabel(card, "منصة الفيديو ونسبة العرض");
+        platformSpinner = makeSpinner(new String[]{"TikTok / Reels — عمودي 9:16", "YouTube Shorts — عمودي 9:16", "فيديو أفقي — 16:9"});
+        card.addView(platformSpinner, params(-1, dp(48), 0, 0, 0, 5));
 
         addLabel(card, "مدة الفيديو");
         durationSpinner = makeSpinner(new String[]{"30 ثانية", "60 ثانية", "3 دقائق"});
@@ -164,6 +178,21 @@ public final class TaskAssistantActivity extends Activity {
         topicInput.setPadding(dp(14), dp(12), dp(14), dp(12));
         topicInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
         card.addView(topicInput, params(-1, -2, 0, 0, 0, 10));
+
+        addLabel(card, "مراجع أو معلومات تريد الالتزام بها — اختياري");
+        referenceInput = new EditText(this);
+        referenceInput.setGravity(Gravity.TOP | Gravity.RIGHT);
+        referenceInput.setTextDirection(View.TEXT_DIRECTION_RTL);
+        referenceInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        referenceInput.setHintTextColor(Color.rgb(128, 129, 137));
+        referenceInput.setTextColor(TEXT);
+        referenceInput.setHint("أضف حقائق أو مقتطفات موثوقة. النموذج محلي ولا يبحث في الإنترنت.");
+        referenceInput.setTextSize(14);
+        referenceInput.setMinLines(2);
+        referenceInput.setMaxLines(4);
+        referenceInput.setPadding(dp(14), dp(12), dp(14), dp(12));
+        referenceInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
+        card.addView(referenceInput, params(-1, -2, 0, 0, 0, 10));
 
         scriptModelButton = secondaryButton(scriptModelReady() ? "نموذج الكتابة المحلي جاهز" : "تنزيل نموذج الكتابة المفتوح (491 ميغابايت)");
         card.addView(scriptModelButton, params(-1, dp(48), 0, dp(3), 0, 4));
@@ -214,6 +243,11 @@ public final class TaskAssistantActivity extends Activity {
         outputCard.addView(previewButton, params(-1, dp(50), 0, 0, 0, 6));
         previewButton.setOnClickListener(v -> previewVoice());
 
+        exportAudioButton = secondaryButton("حفظ التعليق الصوتي WAV");
+        exportAudioButton.setEnabled(false);
+        outputCard.addView(exportAudioButton, params(-1, dp(50), 0, 0, 0, 6));
+        exportAudioButton.setOnClickListener(v -> exportAudio());
+
         pdfButton = secondaryButton("⇩  تصدير المشروع PDF");
         outputCard.addView(pdfButton, params(-1, dp(50), 0, 0, 0, 0));
         pdfButton.setOnClickListener(v -> exportPdf());
@@ -242,8 +276,8 @@ public final class TaskAssistantActivity extends Activity {
     }
 
     private void buildProjectsPage() {
-        addText(pageContent, "المشاريع المحفوظة", 22, TEXT, true, 0, 5);
-        addText(pageContent, "يُحفظ آخر سكريبت على الهاتف فقط، ويمكنك الرجوع إليه وتعديله أو تصديره.", 14, MUTED, false, 0, 15);
+        addText(pageContent, "آخر مشروع محفوظ", 22, TEXT, true, 0, 5);
+        addText(pageContent, "يُحفظ السكريبت والمراجع والإعدادات على هذا الهاتف فقط، ويمكنك الرجوع إليها وتعديلها أو تصديرها.", 14, MUTED, false, 0, 15);
         LinearLayout saved = card();
         String topic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "");
         String script = getPreferences(MODE_PRIVATE).getString("last_media_script", "");
@@ -255,11 +289,14 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.addView(saved);
 
         LinearLayout github = card();
-        addText(github, "مهام تعديل الموقع والتطبيق", 17, TEXT, true, 0, 5);
-        addText(github, "هذه مهام مختلفة عن كتابة الفيديو. إرسالها إلى GitHub يحتاج ربطًا آمنًا مرة واحدة؛ لن نطلب لصق PAT أو مفتاح في شاشة المساعد. الربط ما زال بانتظار إعداد تطبيق GitHub الخاص بالمستودع.", 13, MUTED, false, 0, 10);
-        Button runs = secondaryButton("عرض سجل المهام الحالية");
-        github.addView(runs, params(-1, dp(48), 0, dp(5), 0, 0));
-        runs.setOnClickListener(v -> openUrl(RUNS_URL, "تعذر فتح GitHub Actions."));
+        addText(github, "مهمة تعديل الموقع عبر GitHub", 17, TEXT, true, 0, 5);
+        addText(github, "هذا مسار منفصل عن كتابة الفيديو المحلية. افتح نموذج GitHub Actions وسجّل الدخول بحساب يملك صلاحية تشغيل المهام على المستودع، ثم اختر Run workflow. لا تلصق PAT أو مفتاحًا في التطبيق؛ مفتاح خدمة الموقع يبقى محفوظًا في أسرار GitHub Actions.", 13, MUTED, false, 0, 10);
+        Button dispatch = primaryButton("فتح نموذج إرسال مهمة الموقع");
+        github.addView(dispatch, params(-1, dp(50), 0, dp(5), 0, 6));
+        dispatch.setOnClickListener(v -> openUrl(RUNS_URL, "تعذر فتح نموذج GitHub Actions."));
+        Button runs = secondaryButton("عرض سجل تشغيلات GitHub Actions");
+        github.addView(runs, params(-1, dp(48), 0, 0, 0, 0));
+        runs.setOnClickListener(v -> openUrl(ACTIONS_URL, "تعذر فتح سجل GitHub Actions."));
         pageContent.addView(github, params(-1, -2, 0, dp(14), 0, 0));
     }
 
@@ -381,14 +418,33 @@ public final class TaskAssistantActivity extends Activity {
         setStatus("يكتب النموذج على الهاتف الآن… قد يستغرق دقيقة على الأجهزة المتوسطة.", GOLD);
         String duration = String.valueOf(durationSpinner.getSelectedItem());
         String style = String.valueOf(styleSpinner.getSelectedItem());
+        String platform = platformSpinner == null ? "TikTok / Reels — عمودي 9:16" : String.valueOf(platformSpinner.getSelectedItem());
+        String references = referenceInput == null ? "" : referenceInput.getText().toString().trim();
         executor.execute(() -> {
             try {
-                String result = LocalAiMedia.generateScript(this, topic, duration, style);
+                String result = LocalAiMedia.generateScript(this, topic, duration, style, platform, references);
+                String generatedVoicePath = "";
+                String voiceIssue = "";
+                if (LocalAiMedia.voiceReady(this)) {
+                    String narration = narrationForSpeech(result);
+                    try {
+                        generatedVoicePath = LocalAiMedia.synthesizeArabic(this, narration);
+                    } catch (Exception voiceError) {
+                        voiceIssue = voiceError.getMessage() == null ? "تعذر تجهيز الصوت تلقائيًا." : voiceError.getMessage();
+                    }
+                }
+                final String finalVoicePath = generatedVoicePath;
+                final String finalVoiceIssue = voiceIssue;
                 mainHandler.post(() -> {
                     scriptOutput.setText(result);
+                    lastVoiceText = finalVoicePath.isEmpty() ? "" : narrationForSpeech(result);
+                    lastVoicePath = finalVoicePath;
+                    if (exportAudioButton != null) exportAudioButton.setEnabled(!finalVoicePath.isEmpty());
                     generateButton.setEnabled(true);
                     saveProject(false);
-                    setStatus("تم إنشاء مسودة محلية. راجع المعلومات قبل استخدامها أو نشرها.", GOLD);
+                    if (!finalVoicePath.isEmpty()) setStatus("اكتمل السكريبت والمشاهد وتجهيز التعليق الصوتي. راجع المعلومات قبل النشر.", GOLD);
+                    else if (!finalVoiceIssue.isEmpty()) setStatus("اكتمل السكريبت، لكن تعذر تجهيز الصوت: " + finalVoiceIssue, Color.rgb(255, 190, 100));
+                    else setStatus("اكتمل السكريبت والمشاهد محليًا. نزّل Nabra لمعاينة التعليق الصوتي.", GOLD);
                 });
             } catch (Exception error) {
                 mainHandler.post(() -> {
@@ -412,6 +468,8 @@ public final class TaskAssistantActivity extends Activity {
                 .putString("last_media_script", script)
                 .putString("last_media_duration", String.valueOf(durationSpinner.getSelectedItem()))
                 .putString("last_media_style", String.valueOf(styleSpinner.getSelectedItem()))
+                .putString("last_media_platform", String.valueOf(platformSpinner.getSelectedItem()))
+                .putString("last_media_references", referenceInput.getText().toString().trim())
                 .apply();
         if (showMessage) setStatus("حُفظ المشروع على الهاتف فقط.", GOLD);
     }
@@ -421,10 +479,13 @@ public final class TaskAssistantActivity extends Activity {
         String script = getPreferences(MODE_PRIVATE).getString("last_media_script", "");
         if (!topic.isEmpty()) topicInput.setText(topic);
         if (!script.isEmpty()) scriptOutput.setText(script);
+        referenceInput.setText(getPreferences(MODE_PRIVATE).getString("last_media_references", ""));
         String duration = getPreferences(MODE_PRIVATE).getString("last_media_duration", "");
         String style = getPreferences(MODE_PRIVATE).getString("last_media_style", "");
+        String platform = getPreferences(MODE_PRIVATE).getString("last_media_platform", "");
         setSpinnerSelection(durationSpinner, duration);
         setSpinnerSelection(styleSpinner, style);
+        setSpinnerSelection(platformSpinner, platform);
     }
 
     private void setSpinnerSelection(Spinner spinner, String value) {
@@ -446,28 +507,31 @@ public final class TaskAssistantActivity extends Activity {
             setStatus("نزّل صوت Nabra العربي من الزر أعلاه أولًا.", Color.rgb(255, 130, 115));
             return;
         }
-        String speech = getNarrationText(scriptOutput.getText().toString());
-        if (speech.length() > 3500) speech = speech.substring(0, 3500);
+        String speech = narrationForSpeech(scriptOutput.getText().toString());
+        if (speech.length() < 20) {
+            setStatus("لم أجد نصًا كافيًا للراوي. أعد توليد السكريبت أو أضف نص التعليق الصوتي الكامل.", Color.rgb(255, 130, 115));
+            return;
+        }
         final String finalSpeech = speech;
         previewButton.setEnabled(false);
-        setStatus("يجري إنشاء معاينة صوت عربية محليًا…", GOLD);
+        if (!lastVoicePath.isEmpty() && lastVoiceText.equals(finalSpeech) && new java.io.File(lastVoicePath).isFile()) {
+            previewButton.setEnabled(true);
+            playVoice(lastVoicePath);
+            return;
+        }
+        setStatus("يجري تحويل نص الراوي فقط إلى صوت عربي محليًا…", GOLD);
         executor.execute(() -> {
             try {
                 String path = LocalAiMedia.synthesizeArabic(this, finalSpeech);
-                MediaPlayer player = new MediaPlayer();
-                player.setDataSource(path);
-                player.prepare();
                 mainHandler.post(() -> {
                     if (isFinishing() || isDestroyed()) {
-                        player.release();
                         return;
                     }
-                    if (mediaPlayer != null) mediaPlayer.release();
-                    mediaPlayer = player;
-                    mediaPlayer.setOnCompletionListener(mp -> setStatus("انتهت معاينة الصوت.", GOLD));
-                    mediaPlayer.start();
+                    lastVoicePath = path;
+                    lastVoiceText = finalSpeech;
+                    if (exportAudioButton != null) exportAudioButton.setEnabled(true);
                     previewButton.setEnabled(true);
-                    setStatus("تعمل معاينة صوت Nabra العربي دون اتصال.", GOLD);
+                    playVoice(path);
                 });
             } catch (Exception error) {
                 mainHandler.post(() -> {
@@ -478,18 +542,56 @@ public final class TaskAssistantActivity extends Activity {
         });
     }
 
-    private String getNarrationText(String script) {
-        String[] markers = {"نص الراوي:", "نص الراوي", "السكريبت:", "السكريبت"};
-        int start = -1;
-        for (String marker : markers) {
-            int at = script.indexOf(marker);
-            if (at >= 0 && (start < 0 || at < start)) start = at + marker.length();
+    private void playVoice(String path) {
+        try {
+            MediaPlayer player = new MediaPlayer();
+            player.setDataSource(path);
+            player.setOnPreparedListener(MediaPlayer::start);
+            player.setOnCompletionListener(mp -> setStatus("انتهت معاينة الصوت العربي.", GOLD));
+            player.setOnErrorListener((mp, what, extra) -> {
+                setStatus("تعذر تشغيل ملف الصوت على هذا الهاتف.", Color.rgb(255, 130, 115));
+                return true;
+            });
+            if (mediaPlayer != null) { mediaPlayer.release(); mediaPlayer = null; }
+            mediaPlayer = player;
+            player.prepareAsync();
+            setStatus("تعمل معاينة Nabra العربية؛ احفظ الملف بصيغة WAV عند الحاجة.", GOLD);
+        } catch (Exception error) {
+            setStatus("تعذر فتح معاينة الصوت.", Color.rgb(255, 130, 115));
         }
-        String result = start >= 0 ? script.substring(start) : script;
-        int scenes = result.indexOf("المشاهد");
-        if (scenes > 0) result = result.substring(0, scenes);
-        result = result.trim();
-        return result.isEmpty() ? script : result;
+    }
+
+    private void exportAudio() {
+        if (lastVoicePath.isEmpty() || !new java.io.File(lastVoicePath).isFile()) {
+            setStatus("أنشئ معاينة التعليق الصوتي أولًا، ثم يمكنك حفظ ملف WAV.", Color.rgb(255, 130, 115));
+            return;
+        }
+        String currentSpeech = narrationForSpeech(scriptOutput.getText().toString());
+        if (!lastVoiceText.equals(currentSpeech)) {
+            setStatus("تغير نص السكريبت منذ إنشاء الصوت. أعد معاينة الصوت قبل التصدير.", Color.rgb(255, 130, 115));
+            return;
+        }
+        pendingAudioPath = lastVoicePath;
+        String topic = topicInput.getText().toString().trim();
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("audio/wav");
+        intent.putExtra(Intent.EXTRA_TITLE, safeFileName(topic) + "-voiceover.wav");
+        try { startActivityForResult(intent, CREATE_AUDIO_REQUEST); }
+        catch (Exception error) { setStatus("تعذر فتح نافذة حفظ ملف الصوت.", Color.rgb(255, 130, 115)); }
+    }
+
+    private String getNarrationText(String script) {
+        return NarrationParser.extract(script);
+    }
+
+    private String narrationForSpeech(String script) {
+        String speech = getNarrationText(script).trim();
+        if (speech.length() > 3500) {
+            int end = speech.lastIndexOf(' ', 3500);
+            speech = speech.substring(0, end > 2000 ? end : 3500).trim();
+        }
+        return speech;
     }
 
     private void exportPdf() {
@@ -500,7 +602,7 @@ public final class TaskAssistantActivity extends Activity {
         saveProject(false);
         pendingPdfText = scriptOutput.getText().toString().trim();
         String topic = topicInput.getText().toString().trim();
-        pendingPdfTitle = topic.isEmpty() ? "سكريبت ثريدز وثائقي" : topic;
+        pendingPdfTitle = topic.isEmpty() ? "سكريبت World News" : topic;
         Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("application/pdf");
@@ -515,8 +617,21 @@ public final class TaskAssistantActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode != CREATE_PDF_REQUEST || resultCode != RESULT_OK || data == null || data.getData() == null) return;
+        if ((requestCode != CREATE_PDF_REQUEST && requestCode != CREATE_AUDIO_REQUEST) || resultCode != RESULT_OK || data == null || data.getData() == null) return;
         Uri uri = data.getData();
+        if (requestCode == CREATE_AUDIO_REQUEST) {
+            try (InputStream input = new FileInputStream(pendingAudioPath); OutputStream output = getContentResolver().openOutputStream(uri, "w")) {
+                if (output == null) throw new IllegalStateException("لم يمكن فتح الملف للحفظ.");
+                byte[] buffer = new byte[32 * 1024];
+                int count;
+                while ((count = input.read(buffer)) != -1) output.write(buffer, 0, count);
+                output.flush();
+                setStatus("تم حفظ التعليق الصوتي العربي بصيغة WAV.", GOLD);
+            } catch (Exception error) {
+                setStatus("تعذر حفظ ملف الصوت: " + (error.getMessage() == null ? "خطأ في الملف" : error.getMessage()), Color.rgb(255, 130, 115));
+            }
+            return;
+        }
         try (OutputStream stream = getContentResolver().openOutputStream(uri, "w")) {
             if (stream == null) throw new IllegalStateException("لم يمكن فتح الملف للحفظ.");
             writePdf(stream, pendingPdfTitle, pendingPdfText);
@@ -561,7 +676,7 @@ public final class TaskAssistantActivity extends Activity {
             brand.setColor(Color.rgb(166, 104, 26));
             brand.setTextSize(9f);
             brand.setTextAlign(Paint.Align.RIGHT);
-            canvas.drawText("ثريدز وثائقي — مسودة قابلة للتحرير والمراجعة", pageWidth - margin, 66, brand);
+            canvas.drawText("World News — مسودة قابلة للتحرير والمراجعة", pageWidth - margin, 66, brand);
             StaticLayout part = StaticLayout.Builder.obtain(body, start, end, bodyPaint, pageWidth - margin * 2)
                     .setAlignment(Layout.Alignment.ALIGN_NORMAL)
                     .setTextDirection(TextDirectionHeuristics.RTL)
@@ -581,7 +696,7 @@ public final class TaskAssistantActivity extends Activity {
     private String safeFileName(String value) {
         String cleaned = value.replaceAll("[\\\\/:*?\"<>|]", "-").trim();
         if (cleaned.length() > 45) cleaned = cleaned.substring(0, 45);
-        return cleaned.isEmpty() ? "threads-documentary-script" : cleaned;
+        return cleaned.isEmpty() ? "world-news-script" : cleaned;
     }
 
     private void makeSocialDraft() {
@@ -593,13 +708,13 @@ public final class TaskAssistantActivity extends Activity {
         }
         String intro = getNarrationText(script).replace('\n', ' ').trim();
         if (intro.length() > 220) intro = intro.substring(0, 217) + "…";
-        socialDraftInput.setText(topic + "\n\n" + intro + "\n\n#ثريدز_وثائقي");
+        socialDraftInput.setText(topic + "\n\n" + intro + "\n\n#WorldNews #أخبار_العالم");
         socialStatus.setText("هذه مسودة فقط. لم يُرسل أي منشور إلى X أو Facebook.");
     }
 
     private void copyScript() {
         if (scriptOutput == null || scriptOutput.getText().toString().trim().isEmpty()) return;
-        copyToClipboard("سكريبت ثريدز وثائقي", scriptOutput.getText().toString());
+        copyToClipboard("سكريبت World News", scriptOutput.getText().toString());
         setStatus("نُسخ السكريبت إلى الحافظة.", GOLD);
     }
 
@@ -608,7 +723,7 @@ public final class TaskAssistantActivity extends Activity {
             socialStatus.setText("أنشئ مسودة أولًا قبل نسخها.");
             return;
         }
-        copyToClipboard("مسودة منشور ثريدز وثائقي", socialDraftInput.getText().toString());
+        copyToClipboard("مسودة منشور World News", socialDraftInput.getText().toString());
         socialStatus.setText("نُسخت المسودة للمراجعة. لم يتم النشر.");
     }
 

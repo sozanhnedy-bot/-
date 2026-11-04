@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Threads Documentary News</string>
+    <string name="app_name">World News — أخبار العالم</string>
     <string name="task_workspace_title">مساحة العمل داخل التطبيق</string>
     <string name="task_submit_label">إرسال المهمة إلى ChatGPT</string>
     <string name="task_public_warning">المستودع عام، وقد يظهر نص المهمة في سجل GitHub Actions. لا ترسل كلمات مرور أو مفاتيح API أو بيانات شخصية.</string>

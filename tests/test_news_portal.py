@@ -18,8 +18,8 @@ class SocialPublisherTests(unittest.TestCase):
         result = publish_social.report_content(report, [report["id"]], "2026-11-02")
         self.assertEqual(result["url"], "https://sozanhnedy-bot.github.io/-/r/fb839c.html")
         self.assertEqual(result["image"], "assets/brand-cover.jpg")
-        self.assertIn("ثريدز وثائقي", result["caption"])
-        self.assertIn("غلاف القناة", result["caption"])
+        self.assertIn("World News", result["caption"])
+        self.assertIn("غلاف تعريفي للموقع", result["caption"])
         page = render_articles.render(report, "fb839c")
         self.assertIn("assets/brand-cover.jpg", page)
         self.assertIn("../assets/story-finswimming.webp", page)
@@ -100,10 +100,10 @@ class InternalNewsBriefTests(unittest.TestCase):
     def test_rss_page_without_valid_source_link_never_redirects(self):
         item = {"id": "c" * 20, "title": "خبر", "summary": "موجز", "source_name": "ناشر", "url": "https://publisher.example/story", "source_url": "javascript:alert(1)"}
         page = render_news.render(item)
-        self.assertIn("المصدر: ناشر", page)
+        self.assertIn("الناشر: ناشر", page)
         self.assertNotIn("href=\"https://publisher.example", page)
         self.assertNotIn("javascript:", page)
-        self.assertIn("طبيعة المادة", page)
+        self.assertIn("عن هذه المادة", page)
 
     def test_build_renders_rss_news_only_without_duplicates_for_full_reports(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -147,7 +147,7 @@ class BuildAndBrowserTests(unittest.TestCase):
         self.assertIn("home_window_ms = 3 * 24 * 60 * 60 * 1000", app)
         self.assertIn("recentrecords(allrecords())", app)
         self.assertIn("archive.html", page)
-        self.assertIn("threads documentary news", page)
+        self.assertIn("world news", page)
 
 
 if __name__ == "__main__":

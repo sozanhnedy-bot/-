@@ -43,6 +43,30 @@ function stripSourceSuffix(titleValue, sourceValue) {
   }
   return title;
 }
+function removePromotion(value) {
+  return text(value, 1_200)
+    .replace(/\s*(?:🔴\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*$/iu, "")
+    .replace(/[\s…\.]+$/u, "")
+    .trim();
+}
+function editorialTitle(value, source) {
+  return stripSourceSuffix(removePromotion(value), source) || text(value, 500);
+}
+function comparableCopy(value) {
+  return normalize(value).replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " ").trim();
+}
+function distinctSummary(value, title, source) {
+  const summary = removePromotion(value);
+  const summaryKey = comparableCopy(stripSourceSuffix(summary, source));
+  const titleKey = comparableCopy(title);
+  if (!summaryKey || summaryKey === titleKey) return "";
+  if (summaryKey.startsWith(titleKey)) {
+    const titleWords = titleKey.split(" ").filter(Boolean).length;
+    const summaryWords = summaryKey.split(" ").filter(Boolean).length;
+    if (summaryWords <= titleWords + 2 && !/\d/u.test(summary)) return "";
+  }
+  return summary;
+}
 function recordFor(item) {
   if (!item || !validId(item.id)) return null;
   const report = reportMap.get(item.id) || null;
@@ -51,11 +75,12 @@ function recordFor(item) {
   const sourceName = report && Array.isArray(report.sources)
     ? report.sources.map((value) => text(value, 160)).filter(Boolean).join("، ")
     : text(item.source_name, 160);
+  const title = editorialTitle(report?.title || item.title, sourceName);
   return {
     id: item.id,
     report,
-    title: text(report?.title || stripSourceSuffix(item.title, item.source_name) || item.title, 500),
-    summary: text(report?.dek || item.summary, 1_200),
+    title,
+    summary: distinctSummary(report?.dek || item.summary, title, sourceName),
     date: text(item.published_at || report?.published_at || item.created_at, 80),
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
@@ -131,13 +156,13 @@ function articleCard(record, compact = false) {
   title.append(titleLink);
   body.append(title);
   if (record.summary) body.append(el("p", "portal-card-summary", record.summary));
-  const kind = record.report ? "تقرير تحريري" : record.summaryType === "source_notice" ? "موجز المصدر" : "موجز إخباري";
+  const kind = record.report ? "تقرير تحريري" : "موجز من الناشر";
   const foot = el("div", "portal-card-foot");
   foot.append(el("span", "portal-content-kind", kind));
   const open = document.createElement("a");
   open.className = "portal-open-link";
   open.href = record.href;
-  open.textContent = "اقرأ داخل الموقع";
+  open.textContent = record.report ? "اقرأ التقرير" : "اقرأ موجز الخبر";
   foot.append(open);
   body.append(foot);
   card.append(body);
@@ -154,11 +179,11 @@ function renderLead(records) {
   body.append(sourceMeta(lead));
   body.append(el("h2", "lead-story-title", lead.title));
   if (lead.summary) body.append(el("p", "lead-story-summary", lead.summary));
-  body.append(el("p", "lead-story-editorial-note", lead.report ? "تقرير تحريري كامل داخل الموقع" : "موجز من بيانات المصدر المتاحة"));
+  body.append(el("p", "lead-story-editorial-note", lead.report ? "تقرير تحريري داخل World News" : "المعلومات المعروضة واردة في موجز الناشر."));
   const link = document.createElement("a");
   link.className = "lead-story-link";
   link.href = lead.href;
-  link.textContent = "افتح الخبر كاملًا داخل الموقع";
+  link.textContent = lead.report ? "اقرأ التقرير داخل الموقع" : "اقرأ موجز الخبر داخل الموقع";
   body.append(link);
   card.append(body);
   host.append(card);
@@ -176,7 +201,7 @@ function renderLatest(records) {
   const leadId = state.region === "all" && !state.query ? records[0]?.id : "";
   const recent = filtered.filter((record) => record.id !== leadId).slice(0, 12);
   recent.forEach((record) => host.append(articleCard(record, true)));
-  $("#feed-count").textContent = `${filtered.length.toLocaleString("ar-EG")} مادة متاحة في هذا العرض`;
+  $("#feed-count").textContent = `${filtered.length.toLocaleString("ar-EG")} مادة خلال آخر 72 ساعة؛ تُعرض أحدث 12 مادة في هذه القائمة.`;
   $("#empty-state").hidden = filtered.length > 0;
 }
 function renderSections(records) {
@@ -189,7 +214,7 @@ function renderSections(records) {
     section.id = `category-${id}`;
     const heading = el("div", "portal-section-title");
     const titleBox = el("div");
-    titleBox.append(el("p", "eyebrow", "من مصادر متعددة"), el("h2", "", title));
+    titleBox.append(el("p", "eyebrow", "آخر التغطيات المنشورة"), el("h2", "", title));
     heading.append(titleBox);
     const more = document.createElement("a");
     more.className = "text-link";

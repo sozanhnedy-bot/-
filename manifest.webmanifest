@@ -1,15 +1,15 @@
 {
   "id": "./",
-  "name": "Threads Documentary News",
-  "short_name": "Threads News",
-  "description": "أخبار وتقارير وثائقية عربية مستقلة تُحدّث دوريًا",
+  "name": "World News",
+  "short_name": "World News",
+  "description": "أخبار العالم: متابعة إخبارية دولية وموجزات داخلية مع مصادر معلنة",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "./?source=installed-app",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f1e9",
-  "theme_color": "#14283f",
+  "background_color": "#f4f6f8",
+  "theme_color": "#10223a",
   "icons": [
     {"src":"./assets/app-icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
     {"src":"./assets/app-icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}

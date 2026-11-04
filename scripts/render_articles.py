@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "reports.json"
 NEWS_DATA = ROOT / "data" / "news.json"
 SITE_URL = "https://sozanhnedy-bot.github.io/-"
-BRAND = "Threads Documentary News"
+BRAND = "World News"
+ARABIC_BRAND = "أخبار العالم"
 REPORT_ID_RE = re.compile(r"^[a-f0-9]{20,40}$")
 IMAGE_RE = re.compile(r"^assets/story-[a-z0-9-]+\.webp$")
 YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
@@ -23,7 +24,17 @@ def esc(value: object) -> str:
 
 def safe_image(value: object) -> str:
     candidate = str(value or "")
-    return candidate if IMAGE_RE.fullmatch(candidate) else "assets/brand-mark.png"
+    return candidate if IMAGE_RE.fullmatch(candidate) else ""
+
+
+def clean_feed_title(value: object, source: object = "") -> str:
+    title = re.sub(r"\s*(?:🔴\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*?$", "", str(value or "").strip(), flags=re.IGNORECASE).rstrip(" ….")
+    publisher = str(source or "").strip().casefold()
+    for separator in (" — ", " – ", " - ", " | ", " :: "):
+        index = title.rfind(separator)
+        if index > 0 and title[index + len(separator):].strip().casefold() == publisher:
+            return title[:index].strip()
+    return title
 
 
 def safe_social_image(_value: object) -> str:
@@ -46,8 +57,9 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
     image_path = safe_image(report.get("image"))
     image = esc(image_path)
     social_image = esc(safe_social_image(report.get("image")))
-    alt = esc(report.get("image_alt") or "صورة توضيحية")
-    caption = esc(report.get("image_caption") or "صورة توضيحية، ولا تمثل بالضرورة موقع الحدث.")
+    alt = esc(report.get("image_alt") or "صورة مرتبطة بالتقرير")
+    caption = esc(report.get("image_caption") or "صورة تحريرية مرتبطة بموضوع التقرير.")
+    image_markup = f'<figure class="article-figure"><img src="../{image}" alt="{alt}" fetchpriority="high"><figcaption>{caption}</figcaption></figure>' if image_path else ""
     candidate = str(report.get("youtube_id") or "")
     youtube_id = candidate if YOUTUBE_ID_RE.fullmatch(candidate) else ""
     video_player = ""
@@ -78,7 +90,7 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
         raw_related_id = str(item.get("id") or "")
         if not re.fullmatch(r"[A-Za-z0-9_-]{1,80}", raw_related_id):
             continue
-        related_title = str(item.get("title") or "").strip()
+        related_title = clean_feed_title(item.get("title"), item.get("source_name"))
         if related_title:
             related_rows.append(f'<li><a href="../news/{esc(raw_related_id)}.html">{esc(related_title)}</a></li>')
         if len(related_rows) >= 3:
@@ -110,12 +122,12 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
 <title>{title} | {BRAND}</title><script defer src="../article.js"></script>
 </head><body class="article-body">
 <a class="skip-link" href="#article-main">انتقل إلى التقرير</a>
-<header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>ثريدز وثائقي</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
+<header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
 <main id="article-main" class="article-shell">
 <nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><span>تقرير مفصل</span></nav>
 <article class="full-report" data-report-id="{report_id}" data-short-url="../r/{code}.html">
 <header class="article-heading"><p class="eyebrow">تقرير إخباري</p><h1>{title}</h1><p class="article-dek">{dek}</p><div class="article-meta"><span>{BRAND}</span><span>المصادر: {sources}</span>{f'<time datetime="{esc(published)}">{esc(published)}</time>' if published else ''}</div></header>
-<figure class="article-figure"><img src="../{image}" alt="{alt}" fetchpriority="high"><figcaption>{caption}</figcaption></figure>
+    {image_markup}
 {video_player}
 <div class="article-copy">{''.join(sections)}</div>
 <aside class="sources-box"><b>المصادر المعتمدة</b><p>{sources}</p><small>المصادر مذكورة بالاسم، وتبقى القراءة داخل الموقع.</small></aside>

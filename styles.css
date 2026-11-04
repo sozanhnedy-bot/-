@@ -229,7 +229,7 @@ a { color: inherit; }
   .social-approval, .video-script { padding: 14px; }
 }
 
-/* Threads Documentary News: read-only newspaper interface */
+/* World News: read-only newspaper interface */
 .portal-body { --portal-ink:#182a3d; --portal-navy:#14283f; --portal-navy-2:#203b58; --portal-copper:#a85e46; --portal-paper:#f5f3ee; --portal-card:#fff; --portal-line:#dcd8cf; --portal-muted:#69727b; margin:0; color:var(--portal-ink); background:#f0eee9; font-family:Tahoma,Arial,sans-serif; }
 .portal-body [hidden] { display:none !important; }
 .portal-header { background:var(--portal-navy); color:#fff; box-shadow:0 4px 16px rgba(20,40,63,.12); }
@@ -375,3 +375,105 @@ a { color: inherit; }
 .related-news ul { display:grid; gap:8px; margin:0; padding-inline-start:20px; }
 .related-news a { color:var(--navy); text-decoration:none; font-weight:700; }
 .related-news a:hover { color:var(--copper-dark); text-decoration:underline; }
+
+
+/* World News — international editorial identity */
+.portal-body {
+  --portal-ink:#172a3e;
+  --portal-navy:#10223a;
+  --portal-navy-2:#1d3b5b;
+  --portal-copper:#b46a50;
+  --portal-paper:#f5f7f9;
+  --portal-card:#fff;
+  --portal-line:#dce2e8;
+  --portal-muted:#667382;
+  background:#f1f4f7;
+  color:var(--portal-ink);
+  font-family:Tahoma,Arial,sans-serif;
+}
+.portal-header { background:linear-gradient(115deg,#0b1a2e 0%,#102a48 100%); border-bottom:3px solid var(--portal-copper); }
+.portal-utility { color:#d8e0e8; }
+.portal-utility a { color:#f0c0ad; }
+.portal-brand img { width:60px; height:60px; padding:3px; border-radius:50%; background:#f8fafc; box-shadow:0 3px 16px rgba(0,0,0,.22); }
+.portal-brand .portal-arabic-name { color:#e4b09b; font-size:.86rem; }
+.portal-brand strong { font-family:Arial,sans-serif; font-weight:800; letter-spacing:.015em; }
+.portal-brand small { color:#d3dde6; }
+.portal-nav { border-top:1px solid rgba(255,255,255,.14); }
+.portal-nav a { font-weight:700; }
+.portal-nav a:hover,.portal-nav a:focus-visible { border-bottom-color:#e0a284; }
+.portal-global-banner {
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  align-items:center;
+  width:min(1240px,calc(100% - 40px));
+  min-height:254px;
+  margin:20px auto 0;
+  overflow:hidden;
+  color:#fff;
+  background:#0b1c31;
+  border:1px solid rgba(13,34,58,.25);
+  box-shadow:0 10px 30px rgba(16,34,58,.14);
+}
+.portal-global-banner::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:linear-gradient(270deg,rgba(8,22,39,.97) 0%,rgba(8,22,39,.88) 38%,rgba(8,22,39,.28) 76%,rgba(8,22,39,.08) 100%);
+}
+.portal-global-banner > img { position:absolute; inset:0; z-index:-1; display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+.portal-global-banner-copy { position:relative; z-index:1; width:min(560px,65%); margin-inline-start:auto; padding:30px clamp(22px,5vw,58px); }
+.portal-global-label { display:flex; align-items:center; gap:7px; margin:0 0 9px; color:#efc2ad; font-size:.79rem; font-weight:800; letter-spacing:.07em; }
+.portal-global-banner-title { margin:0; color:#fff; font-size:clamp(1.65rem,3.5vw,2.7rem); font-weight:850; line-height:1.38; }
+.portal-global-banner-note { max-width:38rem; margin:9px 0 0; color:#e1e7ee; font-size:.92rem; line-height:1.8; }
+.portal-main { padding-top:20px; }
+.portal-edition { color:#647182; }
+.portal-edition span:first-child { color:#9d5039; }
+.portal-section-title h1,.portal-section-title h2 { letter-spacing:-.01em; }
+.portal-section-title .eyebrow { color:#99513b; }
+.text-link,.portal-open-link { color:#9d5039; }
+.lead-story { border-color:#d9e0e6; box-shadow:0 12px 30px rgba(16,34,58,.075); }
+.lead-story-copy { padding:clamp(22px,4.2vw,46px); }
+.lead-story-title { font-weight:850; }
+.lead-story-editorial-note { line-height:1.7; }
+.lead-story-link { background:#102a48; transition:background-color .18s ease; }
+.lead-story-link:hover { background:#234465; }
+.portal-news-list { border-top-color:#102a48; }
+.portal-news-item { padding-block:17px; }
+.portal-card-title,.portal-news-title { line-height:1.65; }
+.portal-category-label { color:#9d5039; }
+.portal-content-kind { color:#5c6875; }
+.portal-story-card { border-color:#dce2e8; box-shadow:0 5px 18px rgba(16,34,58,.045); }
+.portal-story-card .portal-card-body { padding:16px 17px 18px; }
+.portal-card-thumb { background:#e4e9ee; }
+.portal-about { background:#e8edf2; border-inline-start-color:#b46a50; }
+.portal-about-mark { display:block; width:48px; height:48px; padding:4px; object-fit:contain; border-radius:50%; background:#10223a; }
+.portal-about h2 { font-size:1.25rem; }
+.portal-about p:last-child { line-height:1.95; }
+.portal-footer { border-top-color:#30455a; }
+.portal-footer::before { background:linear-gradient(115deg,#0b1a2e,#102a48); }
+.portal-footer-brand { font-family:Arial,sans-serif; letter-spacing:.02em; }
+.portal-footer nav a { color:#efb79f; }
+.archive-filters { border-color:#dce2e8; box-shadow:0 4px 16px rgba(16,34,58,.035); }
+.portal-button { background:#102a48; border-color:#102a48; }
+.empty-state { border-color:#dce2e8; }
+.article-masthead { background:#10223a; border-bottom-color:#b46a50; }
+.article-brand b { font-family:Arial,sans-serif; }
+.article-source-name { color:var(--muted); font-weight:700; }
+.brief-disclosure { margin:24px 0; padding:18px 20px; background:#edf1f5; border-inline-start:4px solid #b46a50; }
+.brief-disclosure h2 { margin:0 0 8px; color:var(--navy); font-size:1.12rem; }
+.brief-disclosure p { margin:0; color:#465462; line-height:1.85; }
+@media (max-width:900px) {
+  .portal-global-banner { width:min(100% - 28px,1240px); min-height:230px; }
+}
+@media (max-width:600px) {
+  .portal-global-banner { width:calc(100% - 24px); min-height:200px; margin-top:13px; }
+  .portal-global-banner::after { background:linear-gradient(270deg,rgba(8,22,39,.96) 0%,rgba(8,22,39,.86) 55%,rgba(8,22,39,.42) 100%); }
+  .portal-global-banner-copy { width:100%; padding:20px 18px; }
+  .portal-global-banner-title { font-size:1.55rem; }
+  .portal-global-banner-note { max-width:25rem; font-size:.81rem; }
+  .portal-brand img { width:50px; height:50px; }
+  .portal-about-mark { width:40px; height:40px; }
+  .portal-story-card .portal-card-body { padding:14px 14px 16px; }
+}

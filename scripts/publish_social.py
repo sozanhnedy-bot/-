@@ -36,8 +36,8 @@ def report_content(report: dict, report_ids: list[str], today: str) -> dict:
         raise ValueError("invalid report id")
     image = "assets/brand-cover.jpg"
     caption = str(report.get("social_caption") or report.get("title") or "").strip()
-    caption = f"ثريدز وثائقي | {caption}" if caption else "ثريدز وثائقي"
-    caption += "\n(صورة المنشور غلاف القناة؛ تفاصيل الخبر وصورته داخل التقرير.)"
+    caption = f"World News | {caption}" if caption else "World News"
+    caption += "\n(الصورة غلاف تعريفي للموقع؛ تفاصيل الخبر وصورته التحريرية داخل التقرير.)"
     link = f"{SITE_URL}/r/{short_code(report_id, report_ids)}.html"
     return {"key": f"report:{report_id}", "report_id": report_id, "caption": caption, "url": link, "image": image}
 

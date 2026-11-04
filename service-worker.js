@@ -1,4 +1,4 @@
-const CACHE_NAME = "threads-doc-news-v11-news-only";
+const CACHE_NAME = "world-news-v1-editorial";
 const ROOT = new URL("./", self.location.href);
 const DATA_URLS = ["data/news.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
 const SHELL_URLS = [
@@ -16,7 +16,6 @@ const SHELL_URLS = [
   new URL("manifest.webmanifest", ROOT).href,
   new URL("assets/brand-mark.png", ROOT).href,
   new URL("assets/brand-cover.jpg", ROOT).href,
-  new URL("assets/brand-logo-full.webp", ROOT).href,
   new URL("assets/app-icon-192.png", ROOT).href,
   new URL("assets/app-icon-512.png", ROOT).href,
   new URL("assets/story-finswimming.webp", ROOT).href,

@@ -17,7 +17,9 @@ SITE_URL = "https://sozanhnedy-bot.github.io/-"
 ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,80}$")
 REGIONS = {"world": "العالم", "arab": "العالم العربي", "egypt": "مصر"}
 CATEGORIES = {"politics": "سياسة", "economy": "اقتصاد", "technology": "تكنولوجيا", "sports": "رياضة"}
-SAFE_NOTICE = "المعلومات المتاحة في خلاصة الأخبار موجزة ولا تكفي لصياغة تقرير كامل دون التحقق من تفاصيل إضافية من المصدر."
+BRAND = "World News"
+ARABIC_BRAND = "أخبار العالم"
+SAFE_NOTICE = "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)$", re.IGNORECASE)
 
 
@@ -26,7 +28,7 @@ def text(value: object, limit: int = 4_000) -> str:
 
 
 def title_without_source(title_value: object, source_value: object) -> str:
-    title = text(title_value, 500)
+    title = re.sub(r"\s*(?:🔴\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*?$", "", text(title_value, 500), flags=re.IGNORECASE).rstrip(" ….")
     source = text(source_value, 160).casefold()
     if not source:
         return title
@@ -35,6 +37,18 @@ def title_without_source(title_value: object, source_value: object) -> str:
         if index > 0 and title[index + len(separator):].strip().casefold() == source:
             return title[:index].strip()
     return title
+
+
+def concise_summary(value: object, title: str, source: str) -> str:
+    summary = re.sub(r"\s*(?:🔴\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*?$", "", text(value, 1_200), flags=re.IGNORECASE).rstrip(" ….").strip()
+    normalize = lambda item: re.sub(r"[^\w\s]", " ", item.casefold(), flags=re.UNICODE)
+    summary_key = re.sub(r"\s+", " ", normalize(title_without_source(summary, source))).strip()
+    title_key = re.sub(r"\s+", " ", normalize(title)).strip()
+    if not summary_key or summary_key == title_key:
+        return ""
+    if summary_key.startswith(title_key) and len(summary_key.split()) <= len(title_key.split()) + 2 and not re.search(r"\d", summary):
+        return ""
+    return summary
 
 
 def safe_external_url(value: object, *, image: bool = False) -> str:
@@ -64,7 +78,7 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
         raise ValueError("unsafe news ID")
     source = text(item.get("source_name"), 160) or "المصدر غير محدد"
     title = title_without_source(item.get("title"), source) or "خبر قيد التحرير"
-    summary = text(item.get("summary"), 1_200)
+    summary = concise_summary(item.get("summary"), title, source)
     if not summary or "افتح رابط المصدر" in summary or "اقرأ الخبر" in summary:
         summary = SAFE_NOTICE
     region = REGIONS.get(text(item.get("region")), "العالم")
@@ -80,7 +94,7 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
         f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="صورة مرفقة بخلاصة المصدر" loading="eager"><figcaption>الصورة مرفقة بالمصدر الأصلي، وقد تتغير إتاحتها.</figcaption></figure>'
         if image_url else ""
     )
-    source_link = f'<span class="article-source-link">المصدر: {e(source)}</span>'
+    source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
     related_items = []
     for candidate in all_items or []:
         if not isinstance(candidate, dict) or candidate.get("id") == raw_id or not ID_RE.fullmatch(text(candidate.get("id"), 80)):
@@ -103,21 +117,21 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#14283f"><meta name="description" content="{description}">
-  <meta property="og:site_name" content="Threads Documentary News"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)} | Threads Documentary News">
+  <meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)} | {BRAND}">
   <meta property="og:description" content="{description}"><meta property="og:image" content="{e(preview_image, quote=True)}">
-  <meta name="twitter:card" content="summary_large_image"><title>{e(title)} | Threads Documentary News</title>
+  <meta name="twitter:card" content="summary_large_image"><title>{e(title)} | {BRAND}</title>
   <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css">
 </head>
 <body class="article-body">
-  <header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>ثريدز وثائقي</small><b>Threads Documentary News</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header>
+  <header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header>
   <main class="article-shell"><nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><a href="../archive.html">الأرشيف</a><span aria-hidden="true">/</span><span>{e(category)}</span></nav>
     <article class="full-report brief-report"><header class="article-heading"><p class="eyebrow">{e(category)} · {e(region)}</p><h1>{e(title)}</h1>
       <p class="article-dek">{e(summary)}</p><div class="article-meta">{source_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>
     </header>
     {image_markup}
-    <section class="brief-disclosure"><h2>طبيعة المادة</h2><p>هذه قراءة داخلية لمعلومات موجزة واردة في خلاصة الأخبار. لا نضيف تفاصيل لا تؤيدها البيانات المتاحة؛ لذلك لا تُقدَّم المادة كمقال تحليلي كامل ما لم تُنشر لها مراجعة تحريرية منفصلة.</p></section>
+    <section class="brief-disclosure"><h2>عن هذه المادة</h2><p>تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر، مع ذكر اسمه ووقت النشر. لا يُقدَّم الموجز بوصفه تقريرًا تحليليًا كاملًا؛ وتُعرض التقارير التحريرية في صفحات مستقلة بعد المراجعة.</p></section>
     {related_markup}
-  </article></main><footer class="site-footer"><div class="footer-brand">Threads Documentary News</div><p>المصدر الأصلي مذكور بالاسم · تاريخ النشر محفوظ</p></footer>
+  </article></main><footer class="site-footer"><div class="footer-brand">{BRAND}</div><p>الناشر مذكور بالاسم · تاريخ النشر محفوظ · القراءة داخل الموقع</p></footer>
 </body></html>'''
 
 
