@@ -1,36 +1,41 @@
 package com.threadsdocumentarynews.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
+import android.graphics.pdf.PdfDocument;
+import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.InputType;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextDirectionHeuristics;
+import android.text.TextPaint;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
-
-import org.json.JSONObject;
+import android.widget.Toast;
 
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public final class TaskAssistantActivity extends Activity {
-    private static final String DISPATCH_URL = "https://api.github.com/repos/sozanhnedy-bot/-/actions/workflows/ai-task.yml/dispatches";
     private static final String RUNS_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/ai-task.yml";
     private static final String SOCIAL_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/publish-social.yml";
     private static final int BACKGROUND = Color.rgb(8, 9, 13);
@@ -41,17 +46,28 @@ public final class TaskAssistantActivity extends Activity {
     private static final int TEXT = Color.rgb(248, 247, 244);
     private static final int MUTED = Color.rgb(164, 164, 171);
     private static final int LINE = Color.rgb(54, 55, 64);
+    private static final int CREATE_PDF_REQUEST = 4101;
+    private static final long QWEN_FILE_SIZE = 491_400_032L;
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
-    private EditText tokenInput;
-    private EditText taskInput;
-    private CheckBox consent;
-    private Button submit;
-    private TextView status;
-    private Button runsButton;
     private LinearLayout pageContent;
     private ScrollView scroll;
+    private EditText topicInput;
+    private EditText scriptOutput;
+    private EditText socialDraftInput;
+    private Spinner durationSpinner;
+    private Spinner styleSpinner;
+    private Button generateButton;
+    private Button scriptModelButton;
+    private Button voiceModelButton;
+    private Button previewButton;
+    private Button pdfButton;
+    private TextView status;
+    private TextView socialStatus;
+    private MediaPlayer mediaPlayer;
+    private String pendingPdfText = "";
+    private String pendingPdfTitle = "سكريبت ثريدز وثائقي";
     private int selectedTab;
 
     @Override
@@ -60,7 +76,6 @@ public final class TaskAssistantActivity extends Activity {
         getWindow().setStatusBarColor(BACKGROUND);
         getWindow().setNavigationBarColor(BACKGROUND);
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        getWindow().getDecorView().setSystemUiVisibility(0);
         setTitle("مساعد ثريدز وثائقي");
 
         LinearLayout root = new LinearLayout(this);
@@ -75,8 +90,7 @@ public final class TaskAssistantActivity extends Activity {
         header.addView(brand, new LinearLayout.LayoutParams(0, dp(42), 1));
         TextView spark = text("✦", 24, GOLD, true);
         spark.setGravity(Gravity.CENTER);
-        GradientDrawable sparkBg = rounded(SURFACE_ALT, LINE, 20);
-        spark.setBackground(sparkBg);
+        spark.setBackground(rounded(SURFACE_ALT, LINE, 20));
         header.addView(spark, new LinearLayout.LayoutParams(dp(44), dp(44)));
         root.addView(header);
 
@@ -88,7 +102,6 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.setPadding(dp(18), dp(14), dp(18), dp(24));
         scroll.addView(pageContent);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
-
         root.addView(buildBottomNav());
         setContentView(root);
         showTab(0);
@@ -124,187 +137,492 @@ public final class TaskAssistantActivity extends Activity {
     private void buildAssistantPage() {
         addHero();
         LinearLayout card = card();
-        addText(card, "مساعد المهام", 21, TEXT, true, 0, 4);
-        addText(card, "اكتب طلب تعديل واضحًا للموقع أو تطبيق Android. سيراجعه المساعد، ويشغّل الفحوصات قبل نشر تغييرات الموقع.", 14, MUTED, false, 0, 14);
+        addText(card, "أنشئ سكريبت ومشاهد الفيديو", 21, TEXT, true, 0, 5);
+        addText(card, "اكتب الموضوع وحدد المنصة والمدة والنبرة. ينشئ النموذج مسودة عربية ومشاهد قابلة للتعديل محليًا على الهاتف.", 14, MUTED, false, 0, 12);
 
-        addLabel(card, "طلب التعديل (حتى 2400 حرفًا)");
-        taskInput = new EditText(this);
-        taskInput.setGravity(Gravity.TOP | Gravity.RIGHT);
-        taskInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-        taskInput.setHintTextColor(Color.rgb(128, 129, 137));
-        taskInput.setTextColor(TEXT);
-        taskInput.setHint("مثال: حسّن شاشة مساعد المهام مع الحفاظ على وظائفها الحالية.");
-        taskInput.setTextSize(15);
-        taskInput.setMinLines(4);
-        taskInput.setMaxLines(7);
-        taskInput.setPadding(dp(14), dp(12), dp(14), dp(12));
-        taskInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
-        taskInput.setSaveEnabled(false);
-        card.addView(taskInput, params(-1, -2, 0, 0, 0, 12));
+        addLabel(card, "المنصة");
+        addChipRow(card, new String[]{"TikTok", "Reels", "YouTube Shorts"});
 
-        addLabel(card, "رمز GitHub المؤقت — صلاحية Actions فقط");
-        tokenInput = new EditText(this);
-        tokenInput.setSingleLine(true);
-        tokenInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        tokenInput.setHint("github_pat_…");
-        tokenInput.setHintTextColor(Color.rgb(128, 129, 137));
-        tokenInput.setTextColor(TEXT);
-        tokenInput.setTextSize(14);
-        tokenInput.setTextDirection(View.TEXT_DIRECTION_LTR);
-        tokenInput.setPadding(dp(14), 0, dp(14), 0);
-        tokenInput.setBackground(rounded(SURFACE_ALT, LINE, 14));
-        tokenInput.setSaveEnabled(false);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) tokenInput.setAutofillHints((String[]) null);
-        card.addView(tokenInput, params(-1, dp(50), 0, 0, 0, 4));
+        addLabel(card, "مدة الفيديو");
+        durationSpinner = makeSpinner(new String[]{"30 ثانية", "60 ثانية", "3 دقائق"});
+        card.addView(durationSpinner, params(-1, dp(48), 0, 0, 0, 5));
 
-        consent = new CheckBox(this);
-        consent.setText("أوافق على إرسال الطلب إلى GitHub. قد يظهر نص المهمة في سجل Actions العام.");
-        consent.setTextColor(MUTED);
-        consent.setButtonTintList(android.content.res.ColorStateList.valueOf(GOLD));
-        consent.setTextSize(13);
-        card.addView(consent, params(-1, -2, 0, dp(7), 0, 4));
+        addLabel(card, "نبرة النص");
+        styleSpinner = makeSpinner(new String[]{"وثائقي متزن", "حماسي", "خبري مباشر", "قصصي مشوق"});
+        card.addView(styleSpinner, params(-1, dp(48), 0, 0, 0, 5));
 
-        submit = new Button(this);
-        submit.setText("إرسال المهمة إلى المساعد");
-        submit.setTextColor(Color.rgb(25, 20, 10));
-        submit.setTextSize(16);
-        submit.setTypeface(null, Typeface.BOLD);
-        submit.setAllCaps(false);
-        submit.setBackground(rounded(GOLD, GOLD_DARK, 18));
-        card.addView(submit, params(-1, dp(56), 0, dp(10), 0, 0));
-        submit.setOnClickListener(v -> dispatchTask());
+        addLabel(card, "موضوع الفيديو");
+        topicInput = new EditText(this);
+        topicInput.setGravity(Gravity.TOP | Gravity.RIGHT);
+        topicInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE | android.text.InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        topicInput.setHintTextColor(Color.rgb(128, 129, 137));
+        topicInput.setTextColor(TEXT);
+        topicInput.setHint("مثال: كيف أجهّز مشروعي على الهاتف؟");
+        topicInput.setTextSize(15);
+        topicInput.setMinLines(3);
+        topicInput.setMaxLines(5);
+        topicInput.setPadding(dp(14), dp(12), dp(14), dp(12));
+        topicInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
+        card.addView(topicInput, params(-1, -2, 0, 0, 0, 10));
 
-        status = text("", 13, GOLD, false);
-        status.setPadding(0, dp(10), 0, 0);
-        card.addView(status);
-        runsButton = new Button(this);
-        runsButton.setText("متابعة التنفيذ في GitHub");
-        runsButton.setTextColor(TEXT);
-        runsButton.setAllCaps(false);
-        runsButton.setVisibility(View.GONE);
-        runsButton.setBackground(rounded(SURFACE_ALT, LINE, 14));
-        runsButton.setOnClickListener(v -> openUrl(RUNS_URL, "تعذر فتح GitHub Actions."));
-        card.addView(runsButton, params(-1, dp(48), 0, dp(7), 0, 0));
+        scriptModelButton = secondaryButton(scriptModelReady() ? "نموذج الكتابة المحلي جاهز" : "تنزيل نموذج الكتابة المفتوح (491 ميغابايت)");
+        card.addView(scriptModelButton, params(-1, dp(48), 0, dp(3), 0, 4));
+        scriptModelButton.setOnClickListener(v -> confirmModelDownload(false));
+
+        generateButton = primaryButton("✦  توليد السكريبت والمشاهد");
+        card.addView(generateButton, params(-1, dp(58), 0, dp(8), 0, 4));
+        generateButton.setOnClickListener(v -> generateScript());
+
+        status = text("لا يرسل التطبيق موضوعك إلى خدمة ذكاء اصطناعي. نزّل النموذج مرة واحدة، وبعدها يعمل دون اتصال.", 13, GOLD, false);
+        status.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        card.addView(status, params(-1, -2, 0, dp(6), 0, 0));
         pageContent.addView(card);
 
-        addText(pageContent, "حماية حسابك", 16, TEXT, true, dp(20), 5);
-        addText(pageContent, "لا تضع كلمة مرور أو مفتاح API هنا. يُمسح رمز GitHub بعد الإرسال، ولا يُحفظ داخل التطبيق.", 13, MUTED, false, 0, 0);
+        LinearLayout outputCard = card();
+        addText(outputCard, "مسودة السكريبت وتقسيم المشاهد", 17, TEXT, true, 0, 7);
+        scriptOutput = new EditText(this);
+        scriptOutput.setGravity(Gravity.TOP | Gravity.RIGHT);
+        scriptOutput.setTextDirection(View.TEXT_DIRECTION_RTL);
+        scriptOutput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE | android.text.InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        scriptOutput.setTextColor(TEXT);
+        scriptOutput.setHintTextColor(Color.rgb(128, 129, 137));
+        scriptOutput.setHint("سيظهر هنا عنوان الفيديو، نص الراوي، وتقسيم المشاهد مع وصف بصري لكل مشهد.");
+        scriptOutput.setTextSize(14);
+        scriptOutput.setMinLines(9);
+        scriptOutput.setMaxLines(26);
+        scriptOutput.setPadding(dp(14), dp(12), dp(14), dp(12));
+        scriptOutput.setBackground(rounded(SURFACE_ALT, LINE, 16));
+        outputCard.addView(scriptOutput, params(-1, -2, 0, 0, 0, 10));
+
+        LinearLayout row = new LinearLayout(this);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        Button save = secondaryButton("حفظ المشروع");
+        row.addView(save, new LinearLayout.LayoutParams(0, dp(48), 1));
+        Button share = secondaryButton("نسخ النص");
+        LinearLayout.LayoutParams shareParams = new LinearLayout.LayoutParams(0, dp(48), 1);
+        shareParams.setMargins(dp(8), 0, 0, 0);
+        row.addView(share, shareParams);
+        outputCard.addView(row, params(-1, -2, 0, 0, 0, 8));
+        save.setOnClickListener(v -> saveProject(true));
+        share.setOnClickListener(v -> copyScript());
+
+        voiceModelButton = secondaryButton(LocalAiMedia.voiceReady(this) ? "الصوت العربي Nabra جاهز" : "تنزيل الصوت العربي المفتوح (83 ميغابايت)");
+        outputCard.addView(voiceModelButton, params(-1, dp(48), 0, 0, 0, 6));
+        voiceModelButton.setOnClickListener(v -> confirmModelDownload(true));
+
+        previewButton = secondaryButton("▷  معاينة التعليق الصوتي العربي");
+        outputCard.addView(previewButton, params(-1, dp(50), 0, 0, 0, 6));
+        previewButton.setOnClickListener(v -> previewVoice());
+
+        pdfButton = secondaryButton("⇩  تصدير المشروع PDF");
+        outputCard.addView(pdfButton, params(-1, dp(50), 0, 0, 0, 0));
+        pdfButton.setOnClickListener(v -> exportPdf());
+        pageContent.addView(outputCard, params(-1, -2, 0, dp(15), 0, 0));
+
+        loadSavedProject();
+        refreshModelButtons();
     }
 
     private void addHero() {
         LinearLayout hero = new LinearLayout(this);
         hero.setOrientation(LinearLayout.VERTICAL);
         hero.setPadding(dp(22), dp(20), dp(22), dp(20));
-        GradientDrawable bg = new GradientDrawable(GradientDrawable.Orientation.TL_BR,
+        android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable(
+                android.graphics.drawable.GradientDrawable.Orientation.TL_BR,
                 new int[]{Color.rgb(41, 31, 19), Color.rgb(24, 20, 34), Color.rgb(12, 13, 18)});
         bg.setCornerRadius(dp(26));
         bg.setStroke(dp(1), LINE);
         hero.setBackground(bg);
-        TextView chips = text("مساعد المالك     ·     مهام آمنة", 12, GOLD, true);
-        chips.setPadding(0, 0, 0, dp(14));
+        TextView chips = text("TikTok   ·   Reels   ·   فيديو وثائقي", 12, GOLD, true);
+        chips.setPadding(0, 0, 0, dp(12));
         hero.addView(chips);
-        addText(hero, "خلّي أفكارك\nتتحول لتطوير حقيقي", 25, TEXT, true, 0, 8);
-        addText(hero, "أرسل طلبك، وتابع الفحوصات والنشر من مكان واحد.", 14, MUTED, false, 0, 0);
-        LinearLayout.LayoutParams hp = params(-1, -2, 0, 0, 0, 16);
-        pageContent.addView(hero, hp);
+        addText(hero, "فكرتك تتحول\nلسكريبت ومشاهد", 25, TEXT, true, 0, 8);
+        addText(hero, "كتابة ومساعدة صوتية على الهاتف — بلا مفتاح API وبلا رسوم لكل استخدام.", 14, MUTED, false, 0, 0);
+        pageContent.addView(hero, params(-1, -2, 0, 0, 0, 16));
     }
 
     private void buildProjectsPage() {
-        addText(pageContent, "المشاريع والمهام", 22, TEXT, true, 0, 6);
-        addText(pageContent, "تابع آخر طلباتك عبر GitHub Actions. التطبيق لا يحتفظ بنصوص المهام السابقة محليًا.", 14, MUTED, false, 0, 16);
-        LinearLayout card = card();
-        addText(card, "Threads Documentary News", 18, TEXT, true, 0, 6);
-        addText(card, "الموقع الإخباري وتطبيق Android", 13, MUTED, false, 0, 12);
-        Button open = secondaryButton("فتح سجل المهام والفحوصات");
-        card.addView(open, params(-1, dp(50), 0, dp(8), 0, 0));
-        open.setOnClickListener(v -> openUrl(RUNS_URL, "تعذر فتح GitHub Actions."));
-        pageContent.addView(card);
-        addText(pageContent, "مهم", 16, GOLD, true, dp(18), 5);
-        addText(pageContent, "إرسال الطلب لا يعني أن APK المثبت سيتحدث تلقائيًا. عند تعديل التطبيق، نزّل APK الجديد وثبّته على هاتفك.", 13, MUTED, false, 0, 0);
+        addText(pageContent, "المشاريع المحفوظة", 22, TEXT, true, 0, 5);
+        addText(pageContent, "يُحفظ آخر سكريبت على الهاتف فقط، ويمكنك الرجوع إليه وتعديله أو تصديره.", 14, MUTED, false, 0, 15);
+        LinearLayout saved = card();
+        String topic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "");
+        String script = getPreferences(MODE_PRIVATE).getString("last_media_script", "");
+        addText(saved, topic.isEmpty() ? "لا توجد مشاريع محفوظة بعد" : topic, 17, TEXT, true, 0, 7);
+        addText(saved, script.isEmpty() ? "أنشئ أول سكريبت من تبويب المساعد." : "آخر مشروع محفوظ على هذا الهاتف.", 13, MUTED, false, 0, 10);
+        Button open = secondaryButton(topic.isEmpty() ? "إنشاء مشروع جديد" : "فتح آخر مشروع للتعديل");
+        saved.addView(open, params(-1, dp(50), 0, dp(5), 0, 0));
+        open.setOnClickListener(v -> showTab(0));
+        pageContent.addView(saved);
+
+        LinearLayout github = card();
+        addText(github, "مهام تعديل الموقع والتطبيق", 17, TEXT, true, 0, 5);
+        addText(github, "هذه مهام مختلفة عن كتابة الفيديو. إرسالها إلى GitHub يحتاج ربطًا آمنًا مرة واحدة؛ لن نطلب لصق PAT أو مفتاح في شاشة المساعد. الربط ما زال بانتظار إعداد تطبيق GitHub الخاص بالمستودع.", 13, MUTED, false, 0, 10);
+        Button runs = secondaryButton("عرض سجل المهام الحالية");
+        github.addView(runs, params(-1, dp(48), 0, dp(5), 0, 0));
+        runs.setOnClickListener(v -> openUrl(RUNS_URL, "تعذر فتح GitHub Actions."));
+        pageContent.addView(github, params(-1, -2, 0, dp(14), 0, 0));
     }
 
     private void buildSocialPage() {
         addText(pageContent, "النشر الاجتماعي", 22, TEXT, true, 0, 6);
-        addText(pageContent, "X وفيسبوك", 14, GOLD, true, 0, 14);
+        addText(pageContent, "X وفيسبوك — مسودة للمراجعة", 14, GOLD, true, 0, 12);
         LinearLayout card = card();
-        TextView badge = text("●  النشر التلقائي متوقف افتراضيًا", 14, GOLD, true);
-        badge.setPadding(0, 0, 0, dp(12));
-        card.addView(badge);
-        addText(card, "يوجد في المشروع مسار منفصل للنشر اليومي لتقرير تحريري على X وصفحة Facebook. لا ينشر تلقائيًا إلا بعد إعداد صلاحيات المنصتين وتفعيل موافقة API المدفوعة في GitHub.", 14, MUTED, false, 0, 10);
-        addText(card, "عنوان البريد أو كلمة مرور الحساب لا يكفيان. يلزم ربط مطوّر رسمي ورموز وصول للمنصات؛ لا تدخلها في التطبيق ولا ترسلها في المهام.", 14, MUTED, false, 0, 10);
-        Button open = secondaryButton("عرض مسار النشر وإعداده في GitHub");
-        card.addView(open, params(-1, dp(52), 0, dp(9), 0, 4));
-        open.setOnClickListener(v -> openUrl(SOCIAL_URL, "تعذر فتح صفحة إعداد النشر."));
+        addText(card, "صياغة منشور من المشروع المحفوظ", 17, TEXT, true, 0, 6);
+        socialDraftInput = new EditText(this);
+        socialDraftInput.setGravity(Gravity.TOP | Gravity.RIGHT);
+        socialDraftInput.setTextDirection(View.TEXT_DIRECTION_RTL);
+        socialDraftInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        socialDraftInput.setTextColor(TEXT);
+        socialDraftInput.setHintTextColor(Color.rgb(128, 129, 137));
+        socialDraftInput.setHint("سيظهر هنا نص المنشور للمراجعة قبل أي نشر.");
+        socialDraftInput.setTextSize(14);
+        socialDraftInput.setMinLines(5);
+        socialDraftInput.setPadding(dp(14), dp(12), dp(14), dp(12));
+        socialDraftInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
+        card.addView(socialDraftInput, params(-1, -2, 0, dp(7), 0, 9));
+        Button draft = secondaryButton("إنشاء مسودة من آخر مشروع");
+        card.addView(draft, params(-1, dp(48), 0, 0, 0, 6));
+        draft.setOnClickListener(v -> makeSocialDraft());
+        Button copy = primaryButton("نسخ للمراجعة — لم يتم النشر");
+        card.addView(copy, params(-1, dp(52), 0, 0, 0, 6));
+        copy.setOnClickListener(v -> copySocialDraft());
+        Button open = secondaryButton("عرض إعدادات مسار النشر في GitHub");
+        card.addView(open, params(-1, dp(48), 0, 0, 0, 0));
+        open.setOnClickListener(v -> openUrl(SOCIAL_URL, "تعذر فتح إعدادات مسار النشر."));
+        socialStatus = text("لا يُنشر شيء تلقائيًا. النشر الفعلي يظل متوقفًا حتى ربط الحسابات ومراجعة المنصات والتكلفة والموافقة الصريحة.", 13, MUTED, false);
+        socialStatus.setPadding(0, dp(10), 0, 0);
+        card.addView(socialStatus);
         pageContent.addView(card);
-
-        LinearLayout safety = card();
-        addText(safety, "موافقة قبل النشر", 16, TEXT, true, 0, 5);
-        addText(safety, "لم يتم إرسال أي منشور. قبل تفعيل الربط، راجع نص المنشور والتقرير والمنصات المستهدفة وأي رسوم تفرضها واجهات X أو Meta.", 13, MUTED, false, 0, 0);
-        pageContent.addView(safety, params(-1, -2, 0, dp(14), 0, 0));
     }
 
-    private void dispatchTask() {
-        String token = tokenInput.getText().toString().trim();
-        String task = taskInput.getText().toString().trim();
-        if (token.isEmpty() || task.isEmpty() || !consent.isChecked()) {
-            status.setText("أدخل الرمز والطلب، ثم وافق على التنبيه.");
-            return;
+    private Spinner makeSpinner(String[] values) {
+        Spinner spinner = new Spinner(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, values);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setBackground(rounded(SURFACE_ALT, LINE, 14));
+        return spinner;
+    }
+
+    private void addChipRow(LinearLayout parent, String[] labels) {
+        LinearLayout row = new LinearLayout(this);
+        row.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        for (String label : labels) {
+            TextView chip = text(label, 12, TEXT, true);
+            chip.setGravity(Gravity.CENTER);
+            chip.setPadding(dp(10), 0, dp(10), 0);
+            chip.setBackground(rounded(SURFACE_ALT, LINE, 20));
+            LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(-2, dp(34));
+            p.setMargins(dp(3), 0, dp(3), 0);
+            row.addView(chip, p);
         }
-        if (task.length() > 2400) {
-            status.setText("اختصر الطلب إلى 2400 حرف.");
-            return;
-        }
-        submit.setEnabled(false);
-        runsButton.setVisibility(View.GONE);
-        status.setText("جارٍ إرسال المهمة إلى GitHub…");
+        parent.addView(row, params(-1, dp(38), 0, 0, 0, 2));
+    }
+
+    private void addLabel(LinearLayout parent, String caption) {
+        addText(parent, caption, 13, TEXT, true, dp(9), 5);
+    }
+
+    private boolean scriptModelReady() {
+        java.io.File f = LocalAiMedia.scriptModelFile(this);
+        return f.isFile() && f.length() == QWEN_FILE_SIZE;
+    }
+
+    private void refreshModelButtons() {
+        if (scriptModelButton != null) scriptModelButton.setText(scriptModelReady() ? "✓ نموذج الكتابة المحلي جاهز" : "تنزيل نموذج الكتابة المفتوح (491 ميغابايت)");
+        if (voiceModelButton != null) voiceModelButton.setText(LocalAiMedia.voiceReady(this) ? "✓ الصوت العربي Nabra جاهز" : "تنزيل الصوت العربي المفتوح (83 ميغابايت)");
+    }
+
+    private void confirmModelDownload(boolean voice) {
+        String title = voice ? "تنزيل الصوت العربي" : "تنزيل نموذج الكتابة";
+        String message = voice
+                ? "سيُنزل نموذج Nabra المفتوح للصوت العربي (نحو 83 ميغابايت) مرة واحدة. سيُحفظ داخل التطبيق ويعمل دون اتصال. هل تبدأ الآن؟"
+                : "سيُنزل نموذج Qwen المفتوح للكتابة (نحو 491 ميغابايت) مرة واحدة. يحتاج مساحة وذاكرة كافية، ويعمل بعدها دون اتصال. هل تبدأ الآن؟";
+        new AlertDialog.Builder(this).setTitle(title).setMessage(message)
+                .setNegativeButton("ليس الآن", null)
+                .setPositiveButton("تنزيل", (dialog, which) -> downloadModel(voice)).show();
+    }
+
+    private void downloadModel(boolean voice) {
+        Button target = voice ? voiceModelButton : scriptModelButton;
+        if (target != null) target.setEnabled(false);
+        setStatus(voice ? "جارٍ تنزيل الصوت العربي… 0%" : "جارٍ تنزيل نموذج الكتابة… 0%", GOLD);
         executor.execute(() -> {
-            int code = -1;
-            HttpURLConnection connection = null;
             try {
-                connection = (HttpURLConnection) new URL(DISPATCH_URL).openConnection();
-                connection.setRequestMethod("POST");
-                connection.setConnectTimeout(15000);
-                connection.setReadTimeout(20000);
-                connection.setDoOutput(true);
-                connection.setRequestProperty("Accept", "application/vnd.github+json");
-                connection.setRequestProperty("Authorization", "Bearer " + token);
-                connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-                connection.setRequestProperty("X-GitHub-Api-Version", "2026-03-10");
-                JSONObject payload = new JSONObject();
-                payload.put("ref", "main");
-                JSONObject inputs = new JSONObject();
-                inputs.put("task", task);
-                payload.put("inputs", inputs);
-                byte[] bytes = payload.toString().getBytes(StandardCharsets.UTF_8);
-                try (OutputStream output = connection.getOutputStream()) { output.write(bytes); }
-                code = connection.getResponseCode();
-            } catch (Exception ignored) {
-                code = -1;
-            } finally {
-                if (connection != null) connection.disconnect();
+                LocalAiMedia.ProgressListener listener = percent -> mainHandler.post(() -> setStatus(
+                        (voice ? "جارٍ تنزيل الصوت العربي… " : "جارٍ تنزيل نموذج الكتابة… ") + percent + "%", GOLD));
+                if (voice) LocalAiMedia.downloadVoiceModel(this, listener);
+                else LocalAiMedia.downloadScriptModel(this, listener);
+                mainHandler.post(() -> {
+                    if (target != null) target.setEnabled(true);
+                    refreshModelButtons();
+                    setStatus(voice ? "اكتمل تنزيل الصوت العربي. صار متاحًا دون اتصال." : "اكتمل تنزيل نموذج الكتابة. صار متاحًا دون اتصال.", GOLD);
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> {
+                    if (target != null) target.setEnabled(true);
+                    setStatus(error.getMessage() == null ? "تعذر تنزيل النموذج." : error.getMessage(), Color.rgb(255, 130, 115));
+                });
             }
-            final int resultCode = code;
-            mainHandler.post(() -> {
-                tokenInput.setText("");
-                submit.setEnabled(true);
-                if (resultCode >= 200 && resultCode < 300) {
-                    status.setText("تم إرسال المهمة. افتح GitHub لمتابعة الفحوصات والنشر.");
-                    runsButton.setVisibility(View.VISIBLE);
-                    taskInput.setText("");
-                } else if (resultCode == 401) {
-                    status.setText("رفض GitHub الرمز؛ تأكد من صلاحيته.");
-                } else if (resultCode == 403) {
-                    status.setText("يحتاج الرمز صلاحية Actions: Read and write للمستودع الصحيح.");
-                } else if (resultCode == 404) {
-                    status.setText("لم يعثر GitHub على سير العمل. قد لا يكون قد نُشر بعد على main.");
-                } else if (resultCode == 422) {
-                    status.setText("رفض GitHub الطلب؛ تحقق من إعداد سير العمل.");
-                } else {
-                    status.setText("تعذر الاتصال بـ GitHub. أعد المحاولة بعد التحقق من الإنترنت والرمز.");
-                }
-            });
         });
-        tokenInput.setText("");
+    }
+
+    private void generateScript() {
+        String topic = topicInput.getText().toString().trim();
+        if (topic.length() < 4) {
+            setStatus("اكتب موضوعًا واضحًا قبل التوليد.", Color.rgb(255, 130, 115));
+            return;
+        }
+        if (!scriptModelReady()) {
+            setStatus("نزّل نموذج الكتابة المحلي أولًا من الزر أعلاه.", Color.rgb(255, 130, 115));
+            return;
+        }
+        generateButton.setEnabled(false);
+        setStatus("يكتب النموذج على الهاتف الآن… قد يستغرق دقيقة على الأجهزة المتوسطة.", GOLD);
+        String duration = String.valueOf(durationSpinner.getSelectedItem());
+        String style = String.valueOf(styleSpinner.getSelectedItem());
+        executor.execute(() -> {
+            try {
+                String result = LocalAiMedia.generateScript(this, topic, duration, style);
+                mainHandler.post(() -> {
+                    scriptOutput.setText(result);
+                    generateButton.setEnabled(true);
+                    saveProject(false);
+                    setStatus("تم إنشاء مسودة محلية. راجع المعلومات قبل استخدامها أو نشرها.", GOLD);
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> {
+                    generateButton.setEnabled(true);
+                    setStatus(error.getMessage() == null ? "تعذر تشغيل النموذج على هذا الهاتف." : error.getMessage(), Color.rgb(255, 130, 115));
+                });
+            }
+        });
+    }
+
+    private void saveProject(boolean showMessage) {
+        if (topicInput == null || scriptOutput == null) return;
+        String topic = topicInput.getText().toString().trim();
+        String script = scriptOutput.getText().toString().trim();
+        if (topic.isEmpty() || script.isEmpty()) {
+            setStatus("لا يوجد سكريبت لحفظه بعد.", Color.rgb(255, 130, 115));
+            return;
+        }
+        getPreferences(MODE_PRIVATE).edit()
+                .putString("last_media_topic", topic)
+                .putString("last_media_script", script)
+                .putString("last_media_duration", String.valueOf(durationSpinner.getSelectedItem()))
+                .putString("last_media_style", String.valueOf(styleSpinner.getSelectedItem()))
+                .apply();
+        if (showMessage) setStatus("حُفظ المشروع على الهاتف فقط.", GOLD);
+    }
+
+    private void loadSavedProject() {
+        String topic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "");
+        String script = getPreferences(MODE_PRIVATE).getString("last_media_script", "");
+        if (!topic.isEmpty()) topicInput.setText(topic);
+        if (!script.isEmpty()) scriptOutput.setText(script);
+        String duration = getPreferences(MODE_PRIVATE).getString("last_media_duration", "");
+        String style = getPreferences(MODE_PRIVATE).getString("last_media_style", "");
+        setSpinnerSelection(durationSpinner, duration);
+        setSpinnerSelection(styleSpinner, style);
+    }
+
+    private void setSpinnerSelection(Spinner spinner, String value) {
+        if (value == null || value.isEmpty()) return;
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (value.equals(spinner.getItemAtPosition(i).toString())) {
+                spinner.setSelection(i);
+                return;
+            }
+        }
+    }
+
+    private void previewVoice() {
+        if (scriptOutput == null || scriptOutput.getText().toString().trim().isEmpty()) {
+            setStatus("أنشئ السكريبت أو اكتبه أولًا قبل معاينة الصوت.", Color.rgb(255, 130, 115));
+            return;
+        }
+        if (!LocalAiMedia.voiceReady(this)) {
+            setStatus("نزّل صوت Nabra العربي من الزر أعلاه أولًا.", Color.rgb(255, 130, 115));
+            return;
+        }
+        String speech = getNarrationText(scriptOutput.getText().toString());
+        if (speech.length() > 3500) speech = speech.substring(0, 3500);
+        final String finalSpeech = speech;
+        previewButton.setEnabled(false);
+        setStatus("يجري إنشاء معاينة صوت عربية محليًا…", GOLD);
+        executor.execute(() -> {
+            try {
+                String path = LocalAiMedia.synthesizeArabic(this, finalSpeech);
+                MediaPlayer player = new MediaPlayer();
+                player.setDataSource(path);
+                player.prepare();
+                mainHandler.post(() -> {
+                    if (isFinishing() || isDestroyed()) {
+                        player.release();
+                        return;
+                    }
+                    if (mediaPlayer != null) mediaPlayer.release();
+                    mediaPlayer = player;
+                    mediaPlayer.setOnCompletionListener(mp -> setStatus("انتهت معاينة الصوت.", GOLD));
+                    mediaPlayer.start();
+                    previewButton.setEnabled(true);
+                    setStatus("تعمل معاينة صوت Nabra العربي دون اتصال.", GOLD);
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> {
+                    previewButton.setEnabled(true);
+                    setStatus(error.getMessage() == null ? "تعذرت معاينة الصوت." : error.getMessage(), Color.rgb(255, 130, 115));
+                });
+            }
+        });
+    }
+
+    private String getNarrationText(String script) {
+        String[] markers = {"نص الراوي:", "نص الراوي", "السكريبت:", "السكريبت"};
+        int start = -1;
+        for (String marker : markers) {
+            int at = script.indexOf(marker);
+            if (at >= 0 && (start < 0 || at < start)) start = at + marker.length();
+        }
+        String result = start >= 0 ? script.substring(start) : script;
+        int scenes = result.indexOf("المشاهد");
+        if (scenes > 0) result = result.substring(0, scenes);
+        result = result.trim();
+        return result.isEmpty() ? script : result;
+    }
+
+    private void exportPdf() {
+        if (scriptOutput == null || scriptOutput.getText().toString().trim().isEmpty()) {
+            setStatus("لا يوجد مشروع لتصديره بعد.", Color.rgb(255, 130, 115));
+            return;
+        }
+        saveProject(false);
+        pendingPdfText = scriptOutput.getText().toString().trim();
+        String topic = topicInput.getText().toString().trim();
+        pendingPdfTitle = topic.isEmpty() ? "سكريبت ثريدز وثائقي" : topic;
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("application/pdf");
+        intent.putExtra(Intent.EXTRA_TITLE, safeFileName(pendingPdfTitle) + ".pdf");
+        try {
+            startActivityForResult(intent, CREATE_PDF_REQUEST);
+        } catch (Exception error) {
+            setStatus("تعذر فتح نافذة حفظ PDF على هذا الهاتف.", Color.rgb(255, 130, 115));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != CREATE_PDF_REQUEST || resultCode != RESULT_OK || data == null || data.getData() == null) return;
+        Uri uri = data.getData();
+        try (OutputStream stream = getContentResolver().openOutputStream(uri, "w")) {
+            if (stream == null) throw new IllegalStateException("لم يمكن فتح الملف للحفظ.");
+            writePdf(stream, pendingPdfTitle, pendingPdfText);
+            setStatus("تم تصدير المشروع بصيغة PDF.", GOLD);
+        } catch (Exception error) {
+            setStatus("تعذر تصدير PDF: " + (error.getMessage() == null ? "خطأ في الملف" : error.getMessage()), Color.rgb(255, 130, 115));
+        }
+    }
+
+    private void writePdf(OutputStream stream, String title, String body) throws Exception {
+        PdfDocument document = new PdfDocument();
+        final int pageWidth = 595;
+        final int pageHeight = 842;
+        final int margin = 42;
+        TextPaint bodyPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        bodyPaint.setColor(Color.rgb(35, 39, 46));
+        bodyPaint.setTextSize(12.5f);
+        bodyPaint.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
+        StaticLayout full = StaticLayout.Builder.obtain(body, 0, body.length(), bodyPaint, pageWidth - margin * 2)
+                .setAlignment(Layout.Alignment.ALIGN_NORMAL)
+                .setTextDirection(TextDirectionHeuristics.RTL)
+                .setIncludePad(true)
+                .setLineSpacing(4f, 1f)
+                .build();
+        int lineHeight = full.getLineCount() > 0 ? Math.max(1, full.getLineBottom(0) - full.getLineTop(0)) : 20;
+        int linesPerPage = Math.max(1, (pageHeight - margin * 2 - 64) / lineHeight);
+        int pageNumber = 1;
+        for (int firstLine = 0; firstLine < full.getLineCount(); firstLine += linesPerPage) {
+            int lastLine = Math.min(full.getLineCount(), firstLine + linesPerPage);
+            int start = full.getLineStart(firstLine);
+            int end = full.getLineEnd(lastLine - 1);
+            PdfDocument.Page page = document.startPage(new PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNumber++).create());
+            Canvas canvas = page.getCanvas();
+            canvas.drawColor(Color.WHITE);
+            Paint heading = new Paint(Paint.ANTI_ALIAS_FLAG);
+            heading.setColor(Color.rgb(28, 45, 63));
+            heading.setTextSize(19f);
+            heading.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+            heading.setTextAlign(Paint.Align.RIGHT);
+            canvas.drawText(title, pageWidth - margin, 48, heading);
+            Paint brand = new Paint(Paint.ANTI_ALIAS_FLAG);
+            brand.setColor(Color.rgb(166, 104, 26));
+            brand.setTextSize(9f);
+            brand.setTextAlign(Paint.Align.RIGHT);
+            canvas.drawText("ثريدز وثائقي — مسودة قابلة للتحرير والمراجعة", pageWidth - margin, 66, brand);
+            StaticLayout part = StaticLayout.Builder.obtain(body, start, end, bodyPaint, pageWidth - margin * 2)
+                    .setAlignment(Layout.Alignment.ALIGN_NORMAL)
+                    .setTextDirection(TextDirectionHeuristics.RTL)
+                    .setIncludePad(true)
+                    .setLineSpacing(4f, 1f)
+                    .build();
+            canvas.save();
+            canvas.translate(margin, 86);
+            part.draw(canvas);
+            canvas.restore();
+            document.finishPage(page);
+        }
+        document.writeTo(stream);
+        document.close();
+    }
+
+    private String safeFileName(String value) {
+        String cleaned = value.replaceAll("[\\\\/:*?\"<>|]", "-").trim();
+        if (cleaned.length() > 45) cleaned = cleaned.substring(0, 45);
+        return cleaned.isEmpty() ? "threads-documentary-script" : cleaned;
+    }
+
+    private void makeSocialDraft() {
+        String topic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "").trim();
+        String script = getPreferences(MODE_PRIVATE).getString("last_media_script", "").trim();
+        if (topic.isEmpty() || script.isEmpty()) {
+            socialStatus.setText("احفظ مشروعًا أولًا من تبويب المساعد.");
+            return;
+        }
+        String intro = getNarrationText(script).replace('\n', ' ').trim();
+        if (intro.length() > 220) intro = intro.substring(0, 217) + "…";
+        socialDraftInput.setText(topic + "\n\n" + intro + "\n\n#ثريدز_وثائقي");
+        socialStatus.setText("هذه مسودة فقط. لم يُرسل أي منشور إلى X أو Facebook.");
+    }
+
+    private void copyScript() {
+        if (scriptOutput == null || scriptOutput.getText().toString().trim().isEmpty()) return;
+        copyToClipboard("سكريبت ثريدز وثائقي", scriptOutput.getText().toString());
+        setStatus("نُسخ السكريبت إلى الحافظة.", GOLD);
+    }
+
+    private void copySocialDraft() {
+        if (socialDraftInput == null || socialDraftInput.getText().toString().trim().isEmpty()) {
+            socialStatus.setText("أنشئ مسودة أولًا قبل نسخها.");
+            return;
+        }
+        copyToClipboard("مسودة منشور ثريدز وثائقي", socialDraftInput.getText().toString());
+        socialStatus.setText("نُسخت المسودة للمراجعة. لم يتم النشر.");
+    }
+
+    private void copyToClipboard(String label, String value) {
+        ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        if (manager != null) manager.setPrimaryClip(ClipData.newPlainText(label, value));
+        Toast.makeText(this, "تم النسخ", Toast.LENGTH_SHORT).show();
+    }
+
+    private void setStatus(String value, int color) {
+        if (status != null) {
+            status.setText(value);
+            status.setTextColor(color);
+        }
     }
 
     private LinearLayout card() {
@@ -315,6 +633,17 @@ public final class TaskAssistantActivity extends Activity {
         return layout;
     }
 
+    private Button primaryButton(String caption) {
+        Button button = new Button(this);
+        button.setText(caption);
+        button.setTextColor(Color.rgb(25, 20, 10));
+        button.setTextSize(16);
+        button.setTypeface(null, Typeface.BOLD);
+        button.setAllCaps(false);
+        button.setBackground(rounded(GOLD, GOLD_DARK, 18));
+        return button;
+    }
+
     private Button secondaryButton(String caption) {
         Button button = new Button(this);
         button.setText(caption);
@@ -323,10 +652,6 @@ public final class TaskAssistantActivity extends Activity {
         button.setAllCaps(false);
         button.setBackground(rounded(SURFACE_ALT, LINE, 16));
         return button;
-    }
-
-    private void addLabel(LinearLayout parent, String caption) {
-        addText(parent, caption, 13, TEXT, true, dp(11), 6);
     }
 
     private void addText(LinearLayout parent, String caption, int size, int color, boolean bold, int top, int bottom) {
@@ -345,8 +670,8 @@ public final class TaskAssistantActivity extends Activity {
         return view;
     }
 
-    private GradientDrawable rounded(int fill, int stroke, int radiusDp) {
-        GradientDrawable drawable = new GradientDrawable();
+    private android.graphics.drawable.GradientDrawable rounded(int fill, int stroke, int radiusDp) {
+        android.graphics.drawable.GradientDrawable drawable = new android.graphics.drawable.GradientDrawable();
         drawable.setColor(fill);
         drawable.setCornerRadius(dp(radiusDp));
         drawable.setStroke(dp(1), stroke);
@@ -361,9 +686,7 @@ public final class TaskAssistantActivity extends Activity {
 
     private void openUrl(String url, String error) {
         try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url))); }
-        catch (Exception ignored) {
-            if (status != null) status.setText(error);
-        }
+        catch (Exception ignored) { if (status != null) setStatus(error, Color.rgb(255, 130, 115)); }
     }
 
     private int dp(int value) {
@@ -373,6 +696,11 @@ public final class TaskAssistantActivity extends Activity {
     @Override
     protected void onDestroy() {
         executor.shutdownNow();
+        if (mediaPlayer != null) {
+            try { mediaPlayer.stop(); } catch (Exception ignored) { }
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
         super.onDestroy();
     }
 }

@@ -6,8 +6,10 @@ import re
 import subprocess
 import sys
 import tempfile
+import hashlib
 from pathlib import Path
 from urllib.parse import urlsplit
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_TASK_CHARS = 2_400
@@ -15,6 +17,13 @@ MAX_CONTEXT_CHARS = 60_000
 MAX_PATCH_BYTES = 40_000
 MAX_CHANGED_FILES = 8
 MAX_CHANGED_LINES = 300
+DEFAULT_OPENAI_MODEL = "gpt-5.6-luna"
+DEPRECATED_MODEL_REPLACEMENTS = {
+    "gpt-3.5-turbo": DEFAULT_OPENAI_MODEL,
+    "gpt-3.5-turbo-0125": DEFAULT_OPENAI_MODEL,
+}
+SHERPA_AAR_URL = "https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-2.0.1.aar"
+SHERPA_AAR_SHA256 = "a8d09d1d32f3eb8520482c6d3d43fae674681c5b050385967c70a3c2c9bf0ee7"
 
 ROOT_ALLOWLIST = {
     "index.html", "archive.html", "section.html", "videos.html",
@@ -109,6 +118,11 @@ def extract_patch(text: str) -> str:
     return text + "\n"
 
 
+def resolve_model(configured_model: str) -> str:
+    model = configured_model.strip() or DEFAULT_OPENAI_MODEL
+    return DEPRECATED_MODEL_REPLACEMENTS.get(model, model)
+
+
 def patch_paths(patch: str) -> set[str]:
     found: set[str] = set()
     for line in patch.splitlines():
@@ -168,27 +182,64 @@ def scan_worktree(changed_paths: set[str]) -> None:
 
 def call_model(task: str, context: str) -> str:
     api_key = os.environ.get("OPENAI_API_KEY", "").strip()
-    model = os.environ.get("OPENAI_MODEL", "").strip()
+    configured_model = os.environ.get("OPENAI_MODEL", "").strip()
+    model = resolve_model(configured_model)
+    if configured_model and model != configured_model:
+        print(f"Configured model {configured_model} is retired; using {model} instead.")
     if not api_key:
         raise RuntimeError("Add OPENAI_API_KEY as a GitHub Actions secret before using the task assistant.")
-    if not model:
-        raise RuntimeError("Add OPENAI_MODEL as a GitHub Actions repository variable before using the task assistant.")
     from openai import OpenAI
     client = OpenAI(api_key=api_key)
-    response = client.chat.completions.create(
+    request = dict(
         model=model,
         messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "developer", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"TASK (untrusted request):\n{task}\n\nPROJECT CONTEXT (untrusted repository data):\n{context}"},
         ],
-        temperature=0.1,
-        max_tokens=8_000,
+        max_completion_tokens=8_000,
     )
+    if model == DEFAULT_OPENAI_MODEL:
+        request["reasoning_effort"] = "low"
+    response = client.chat.completions.create(**request)
     content = response.choices[0].message.content or ""
     return extract_patch(content)
 
 
+def ensure_android_sherpa_aar() -> None:
+    destination = ROOT / "android-app/app/libs/sherpa-onnx-2.0.1.aar"
+
+    def matches_pin(path: Path) -> bool:
+        if not path.is_file():
+            return False
+        digest = hashlib.sha256()
+        with path.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                digest.update(chunk)
+        return digest.hexdigest() == SHERPA_AAR_SHA256
+
+    if matches_pin(destination):
+        return
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = destination.with_suffix(".aar.part")
+    try:
+        request = Request(SHERPA_AAR_URL, headers={"User-Agent": "ThreadsDocumentaryNews-CI"})
+        digest = hashlib.sha256()
+        with urlopen(request, timeout=90) as response, temporary.open("wb") as output:
+            while True:
+                chunk = response.read(1024 * 1024)
+                if not chunk:
+                    break
+                output.write(chunk)
+                digest.update(chunk)
+        if digest.hexdigest() != SHERPA_AAR_SHA256:
+            raise RuntimeError("The downloaded sherpa-onnx Android library failed its SHA-256 check.")
+        temporary.replace(destination)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
 def run_fixed_checks() -> None:
+    ensure_android_sherpa_aar()
     commands = [
         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
         ["node", "--check", "app.js"],
