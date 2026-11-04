@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14283f">
+  <meta name="description" content="معرض الصور في ثريدز وثائقي">
+  <title>معرض الصور | Threads Documentary News</title>
+
+  <link rel="icon" href="./assets/brand-mark.png" type="image/png">
+  <link rel="stylesheet" href="./styles.css">
+
+  <script defer src="./photos.js"></script>
+</head>
+
+<body class="portal-body">
+
+  <header class="portal-header">
+    <div class="portal-utility">
+      <span>معرض الصور</span>
+      <a href="./index.html">العودة للرئيسية</a>
+    </div>
+
+    <div class="portal-brand-row">
+      <a class="portal-brand" href="./index.html">
+        <img src="./assets/brand-mark.png" alt="">
+        <span>
+          <b class="portal-arabic-name">ثريدز وثائقي</b>
+          <strong>Threads Documentary News</strong>
+          <small>أخبار · تقارير · وثائقيات</small>
+        </span>
+      </a>
+    </div>
+
+    <nav class="portal-nav" aria-label="الأقسام">
+      <a href="./index.html">الرئيسية</a>
+      <a href="./archive.html">الأرشيف</a>
+      <a href="./videos.html">فيديوهات</a>
+      <a href="./photos.html">الصور</a>
+    </nav>
+  </header>
+
+  <main class="portal-main">
+
+    <section class="portal-lead">
+      <div class="portal-section-title">
+        <div>
+          <p class="eyebrow">الصور المنشورة</p>
+          <h1>معرض الصور</h1>
+          <p class="muted-label">
+            صور التقارير والأخبار المنشورة على الموقع.
+          </p>
+        </div>
+      </div>
+
+      <div class="portal-search">
+        <label class="sr-only" for="photo-search">
+          ابحث في الصور
+        </label>
+        <input
+          id="photo-search"
+          type="search"
+          placeholder="ابحث عن صورة أو تقرير..."
+          autocomplete="off"
+        >
+      </div>
+    </section>
+
+    <section class="portal-latest">
+      <div class="portal-section-title">
+        <div>
+          <h2>كل الصور</h2>
+          <p id="photos-count" class="muted-label">
+            جارٍ تحميل الصور...
+          </p>
+        </div>
+      </div>
+
+      <div
+        id="photos-gallery"
+        class="portal-card-grid"
+        aria-live="polite"
+      >
+        <p class="loading-card">جارٍ تحميل الصور...</p>
+      </div>
+
+      <div id="photos-empty" class="empty-state" hidden>
+        <h3>لا توجد صور مطابقة</h3>
+        <p>جرّب كلمة بحث مختلفة.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="portal-footer">
+    <a class="portal-footer-brand" href="./index.html">
+      Threads Documentary News
+    </a>
+    <p>ثريدز وثائقي · أخبار وتقارير وثائقية عربية</p>
+  </footer>
+
+</body>
+</html>
