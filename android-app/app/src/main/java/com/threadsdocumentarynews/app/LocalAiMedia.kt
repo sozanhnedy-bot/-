@@ -8,6 +8,8 @@ import com.k2fsa.sherpa.onnx.OfflineTts
 import com.k2fsa.sherpa.onnx.OfflineTtsConfig
 import com.k2fsa.sherpa.onnx.OfflineTtsKokoroModelConfig
 import com.k2fsa.sherpa.onnx.OfflineTtsModelConfig
+import com.github.csukuangfj.piper.phonemize.piperPhonemizeInitialize
+import com.github.csukuangfj.piper.phonemize.piperPhonemizeText
 import dev.ffmpegkit.llama.Llama
 import dev.ffmpegkit.llama.LlamaConfig
 import kotlinx.coroutines.runBlocking
@@ -33,6 +35,8 @@ object LocalAiMedia {
     private const val VOICE_URL = "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/nabra-82m-arabic-int8.tar.bz2"
     private const val QWEN_FILE = "qwen2.5-0.5b-instruct-q4_k_m.gguf"
     private const val VOICE_FOLDER = "nabra-82m-arabic-int8"
+    @Volatile private var phonemizerInitialized = false
+    private val phonemizerLock = Any()
 
     fun interface ProgressListener {
         fun onProgress(percent: Int)
@@ -162,24 +166,50 @@ object LocalAiMedia {
     @JvmStatic
     fun synthesizeArabic(context: Context, text: String): String {
         if (!voiceReady(context)) throw IllegalStateException("نزّل الصوت العربي الاحترافي أولًا.")
+        if (text.isBlank()) throw IllegalArgumentException("اكتب نص التعليق الصوتي أولًا.")
+        ensurePhonemizerInitialized(context)
         val dir = File(context.filesDir, "voice/$VOICE_FOLDER")
         val kokoro = OfflineTtsKokoroModelConfig(
             model = File(dir, "model.int8.onnx").absolutePath,
             voices = File(dir, "voices.bin").absolutePath,
             tokens = File(dir, "tokens.txt").absolutePath,
-            dataDir = File(dir, "espeak-ng-data").absolutePath,
+            dataDir = "",
             lang = "ar",
         )
         val model = OfflineTtsModelConfig(kokoro = kokoro, numThreads = 2, debug = false)
-        val config = OfflineTtsConfig(model = model, maxNumSentences = 16)
+        val config = OfflineTtsConfig(model = model, maxNumSentences = 64)
         val tts = OfflineTts(context.assets, config)
         try {
-            val audio = tts.generateWithConfig(text, GenerationConfig(sid = 0, speed = 1.0f, silenceScale = 0.2f))
-            val output = File(context.cacheDir, "arabic-voice-preview.wav")
-            if (!audio.save(output.absolutePath)) throw IllegalStateException("تعذر حفظ معاينة الصوت.")
-            return output.absolutePath
+            val language = tts.lang().ifBlank { "ar" }
+            val phonemes = piperPhonemizeText(text, language)
+                ?: throw IllegalStateException("تعذر تجهيز النطق العربي للنص.")
+            try {
+                val codepoints = Array(phonemes.numSentences) { index -> phonemes.getPhonemes(index) }
+                if (codepoints.isEmpty() || codepoints.all { it.isEmpty() }) {
+                    throw IllegalStateException("لم ينتج تجهيز النص العربي رموزًا صوتية؛ جرّب نصًا أقصر.")
+                }
+                val generation = GenerationConfig(sid = 0, speed = 1.0f, silenceScale = 0.2f)
+                generation.phonemeCodepoints = codepoints
+                val audio = tts.generateWithConfig("", generation)
+                if (audio.samples.isEmpty()) throw IllegalStateException("لم ينتج Nabra صوتًا. جرّب نصًا عربيًا أقصر وواضحًا.")
+                val output = File(context.cacheDir, "arabic-voice-preview.wav")
+                if (!audio.save(output.absolutePath)) throw IllegalStateException("تعذر حفظ معاينة الصوت.")
+                return output.absolutePath
+            } finally {
+                phonemes.close()
+            }
         } finally {
             tts.release()
+        }
+    }
+
+    private fun ensurePhonemizerInitialized(context: Context) {
+        if (phonemizerInitialized) return
+        synchronized(phonemizerLock) {
+            if (!phonemizerInitialized) {
+                piperPhonemizeInitialize(context.applicationContext)
+                phonemizerInitialized = true
+            }
         }
     }
 
