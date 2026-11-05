@@ -19,7 +19,6 @@ REGIONS = {"world": "العالم", "arab": "العالم العربي", "egypt"
 CATEGORIES = {"politics": "سياسة", "economy": "اقتصاد", "technology": "تكنولوجيا", "sports": "رياضة"}
 BRAND = "World News"
 ARABIC_BRAND = "أخبار العالم"
-SAFE_NOTICE = "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)$", re.IGNORECASE)
 
 
@@ -79,8 +78,15 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     source = text(item.get("source_name"), 160) or "المصدر غير محدد"
     title = title_without_source(item.get("title"), source) or "خبر قيد التحرير"
     summary = concise_summary(item.get("summary"), title, source)
-    if not summary or "افتح رابط المصدر" in summary or "اقرأ الخبر" in summary:
-        summary = SAFE_NOTICE
+    excerpt = concise_summary(item.get("excerpt"), title, source)
+    if text(item.get("summary_type"), 40) == "source_notice" or "افتح رابط المصدر" in summary or "اقرأ الخبر" in summary:
+        summary = ""
+    if summary in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
+        summary = ""
+    if excerpt in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
+        excerpt = ""
+    details = excerpt or summary
+    dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
     region = REGIONS.get(text(item.get("region")), "العالم")
     category_key = text(item.get("category"), 30)
     category = CATEGORIES.get(category_key, REGIONS.get(category_key, region))
@@ -88,10 +94,10 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     published_display = date_label(published)
     image_url = safe_external_url(item.get("image_url"), image=True)
     e = html.escape
-    description = e(summary[:220], quote=True)
+    description = e((dek or details or title)[:220], quote=True)
     preview_image = image_url or f"{SITE_URL}/assets/brand-cover.jpg"
     image_markup = (
-        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="صورة مرفقة بخلاصة المصدر" loading="eager"><figcaption>الصورة مرفقة بالمصدر الأصلي، وقد تتغير إتاحتها.</figcaption></figure>'
+        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة: {e(source)} · من موجز الناشر</figcaption></figure>'
         if image_url else ""
     )
     source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
@@ -126,10 +132,10 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
   <header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header>
   <main class="article-shell"><nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><a href="../archive.html">الأرشيف</a><span aria-hidden="true">/</span><span>{e(category)}</span></nav>
     <article class="full-report brief-report"><header class="article-heading"><p class="eyebrow">{e(category)} · {e(region)}</p><h1>{e(title)}</h1>
-      <p class="article-dek">{e(summary)}</p><div class="article-meta">{source_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>
+      {f'<p class="article-dek">{e(dek)}</p>' if dek else ''}<div class="article-meta">{source_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>
     </header>
     {image_markup}
-    <section class="brief-disclosure"><h2>عن هذه المادة</h2><p>تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر، مع ذكر اسمه ووقت النشر. لا يُقدَّم الموجز بوصفه تقريرًا تحليليًا كاملًا؛ وتُعرض التقارير التحريرية في صفحات مستقلة بعد المراجعة.</p></section>
+    {f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>{e(details)}</p></section>' if details else ''}
     {related_markup}
   </article></main><footer class="site-footer"><div class="footer-brand">{BRAND}</div><p>الناشر مذكور بالاسم · تاريخ النشر محفوظ · القراءة داخل الموقع</p></footer>
 </body></html>'''

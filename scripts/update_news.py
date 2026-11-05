@@ -22,10 +22,11 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES_PATH = ROOT / "data" / "news_sources.json"
 LOCAL_NEWS_PATH = ROOT / "data" / "news.json"
-USER_AGENT = "ThreadsDocumentaryNews/1.0 (+RSS summary publisher)"
+USER_AGENT = "WorldNews/1.0 (+RSS publisher)"
 MAX_FEED_BYTES = 1_500_000
 MAX_EXCERPT_CHARS = 4_000
 MAX_SUMMARY_CHARS = 600
+MAX_STORED_EXCERPT_CHARS = 1_400
 ALLOWED_FEED_HOSTS = {"news.google.com"}
 RSS_NO_DETAILS = "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط."
 
@@ -87,6 +88,67 @@ def _safe_article_url(value: str) -> str | None:
     return value.strip()
 
 
+def _publisher_key(item: dict) -> str:
+    candidate = item.get("source_url") or item.get("url") or ""
+    try:
+        host = (urlsplit(str(candidate)).hostname or "").lower().removeprefix("www.")
+    except ValueError:
+        return ""
+    if host.endswith(("bbc.com", "bbc.co.uk")):
+        return "bbc"
+    if host.endswith(("aljazeera.net", "aljazeera.com")):
+        return "aljazeera"
+    return host
+
+
+def _story_title_key(item: dict) -> str:
+    title = clean_text(item.get("title", ""))
+    source = clean_text(item.get("source_name", "")).casefold()
+    publisher = _publisher_key(item)
+    aliases = {source}
+    if publisher == "bbc":
+        aliases.update({"bbc", "bbc news", "bbc arabic", "bbc news arabic", "bbc عربي", "bbc news عربي"})
+    elif publisher == "aljazeera":
+        aliases.update({"الجزيرة", "الجزيرة نت", "al jazeera", "aljazeera"})
+    for separator in (" — ", " – ", " - ", " | ", " :: "):
+        index = title.rfind(separator)
+        if index > 0 and title[index + len(separator):].strip().casefold() in aliases:
+            title = title[:index].strip()
+            break
+    return " ".join(re.sub(r"[^\w\s]", " ", title.casefold(), flags=re.UNICODE).split())
+
+
+def _story_key(item: dict) -> tuple[str, str] | None:
+    publisher, title = _publisher_key(item), _story_title_key(item)
+    return (publisher, title) if publisher and title else None
+
+
+def newest_items(items: list[dict], limit: int) -> list[dict]:
+    def published_key(item: dict) -> float:
+        parsed = _parse_date(item.get("published_at"))
+        return parsed.timestamp() if parsed else float("-inf")
+
+    return sorted(items, key=published_key, reverse=True)[:max(0, int(limit))]
+
+
+def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
+    changed = False
+    excerpt = clean_text(incoming_item.get("excerpt", ""))[:MAX_STORED_EXCERPT_CHARS]
+    old_excerpt = clean_text(existing_item.get("excerpt", ""))
+    if len(excerpt) > len(old_excerpt):
+        existing_item["excerpt"] = excerpt
+        changed = True
+    image_url = incoming_item.get("image_url", "")
+    if image_url and not existing_item.get("image_url"):
+        existing_item["image_url"] = image_url
+        changed = True
+    for key in ("source_url", "source_name", "published_at"):
+        if incoming_item.get(key) and not existing_item.get(key):
+            existing_item[key] = incoming_item[key]
+            changed = True
+    return changed
+
+
 def _parse_date(value: str | None) -> datetime | None:
     if not value:
         return None
@@ -133,7 +195,7 @@ def _item_image_url(node: ET.Element) -> str:
     return ""
 
 
-def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | None = None) -> list[dict]:
+def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | None = None, feed_source_url: str = "") -> list[dict]:
     """Parse an RSS/Atom payload without following article links or executing markup."""
     if len(xml_bytes) > MAX_FEED_BYTES:
         raise ValueError("feed exceeds the configured byte limit")
@@ -163,6 +225,8 @@ def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | No
             if _local_name(child.tag) == "source":
                 source_url = _safe_article_url(child.attrib.get("url", "")) or ""
                 break
+        if not source_url:
+            source_url = _safe_article_url(feed_source_url) or ""
         results.append({
             "title": title,
             "excerpt": excerpt,
@@ -176,7 +240,7 @@ def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | No
     return results
 
 
-def fetch_feed(url: str, region: str, feed_name: str, timeout: int = 20) -> list[dict]:
+def fetch_feed(url: str, region: str, feed_name: str, timeout: int = 20, feed_source_url: str = "") -> list[dict]:
     parsed = urlsplit(url)
     if parsed.scheme != "https" or parsed.hostname not in ALLOWED_FEED_HOSTS:
         raise ValueError("RSS source is outside the HTTPS allowlist")
@@ -185,7 +249,7 @@ def fetch_feed(url: str, region: str, feed_name: str, timeout: int = 20) -> list
         body = response.read(MAX_FEED_BYTES + 1)
     if len(body) > MAX_FEED_BYTES:
         raise ValueError("feed exceeds the configured byte limit")
-    return parse_feed(body, region, feed_name)
+    return parse_feed(body, region, feed_name, feed_source_url=feed_source_url)
 
 
 def _story_id(url: str) -> str:
@@ -234,7 +298,7 @@ def summarize_news(client, item: dict, model: str) -> str:
 def build_update(
     existing: dict,
     feeds: list[dict],
-    fetcher: Callable[[str, str, str], list[dict]],
+    fetcher: Callable[..., list[dict]],
     summarizer: Callable[[dict], str],
     *,
     now: datetime | None = None,
@@ -252,7 +316,9 @@ def build_update(
         existing_items = []
     known_urls = _existing_urls(existing_items)
     existing_by_url = {item.get("url"): item for item in existing_items if isinstance(item, dict) and item.get("url")}
+    existing_by_story = {_story_key(item): item for item in existing_items if isinstance(item, dict) and _story_key(item)}
     seen_urls: set[str] = set()
+    seen_stories: dict[tuple[str, str], dict] = {}
     candidates: list[dict] = []
     warnings: list[str] = []
     successful_feeds = 0
@@ -267,7 +333,7 @@ def build_update(
         if not feed.get("enabled", True):
             continue
         try:
-            fetched = fetcher(feed["url"], feed["region"], feed["name"])
+            fetched = fetcher(feed["url"], feed["region"], feed["name"], feed.get("source_url", ""))
             successful_feeds += 1
         except Exception as exc:
             warnings.append(f"تعذر جلب {feed.get('name', 'مصدر RSS')}: {type(exc).__name__}")
@@ -278,10 +344,25 @@ def build_update(
                 continue
             category = feed.get("category") or item.get("region") or "world"
             item.setdefault("category", category)
+            if not item.get("source_url") and feed.get("source_url"):
+                item["source_url"] = feed["source_url"]
             if url in known_urls:
                 existing_item = existing_by_url.get(url)
                 if existing_item and _category_priority(category) > _category_priority(existing_item.get("category")):
                     existing_item["category"] = category
+                    changed_metadata = True
+                if existing_item and _merge_source_metadata(existing_item, item):
+                    changed_metadata = True
+                continue
+            story_key = _story_key(item)
+            duplicate = None
+            if story_key:
+                duplicate = existing_by_story.get(story_key) or seen_stories.get(story_key)
+            if duplicate:
+                if _category_priority(category) > _category_priority(duplicate.get("category")):
+                    duplicate["category"] = category
+                    changed_metadata = True
+                if _merge_source_metadata(duplicate, item):
                     changed_metadata = True
                 continue
             if url in seen_urls:
@@ -290,6 +371,8 @@ def build_update(
                 continue
             seen_urls.add(url)
             candidates.append(item)
+            if story_key:
+                seen_stories[story_key] = item
 
     enabled_count = sum(1 for feed in feeds if feed.get("enabled", True))
     if enabled_count and successful_feeds == 0:
@@ -302,6 +385,8 @@ def build_update(
     candidates.sort(key=sort_key, reverse=True)
     remaining_today = max(0, max_per_day - _summary_count_today(existing_items, today))
     limit = min(max(0, max_per_run), remaining_today)
+    if candidates and not limit:
+        warnings.append("بلغ الحد اليومي لنشر الأخبار؛ ستُحفظ البيانات الحالية حتى اليوم التالي.")
     additions: list[dict] = []
     for item in candidates[:limit]:
         try:
@@ -318,6 +403,7 @@ def build_update(
             "category": item.get("category", item.get("region", "world")),
             "title": item["title"],
             "summary": summary[:MAX_SUMMARY_CHARS],
+            "excerpt": clean_text(item.get("excerpt", ""))[:MAX_STORED_EXCERPT_CHARS],
             "summary_type": item_summary_type,
             "url": item["url"],
             "source_name": item.get("source_name", "المصدر الأصلي"),
@@ -369,14 +455,15 @@ def main() -> int:
         raise ValueError("news_sources.json must contain a feeds list")
     max_items_per_feed = max(1, int(config.get("max_items_per_feed", 12)))
 
-    def limited_fetch(url: str, region: str, name: str) -> list[dict]:
-        return fetch_feed(url, region, name)[:max_items_per_feed]
+    def limited_fetch(url: str, region: str, name: str, source_url: str = "") -> list[dict]:
+        items = fetch_feed(url, region, name, feed_source_url=source_url)
+        return newest_items(items, max_items_per_feed)
 
     if args.dry_run:
         total = 0
         for feed in feeds:
             if feed.get("enabled", True):
-                items = limited_fetch(feed["url"], feed["region"], feed["name"])
+                items = limited_fetch(feed["url"], feed["region"], feed["name"], feed.get("source_url", ""))
                 total += len(items)
                 print(f"{feed['name']}: {len(items)} RSS entries")
         print(f"Dry run complete; {total} entries fetched, no summaries or uploads made.")
@@ -398,7 +485,6 @@ def main() -> int:
         summarizer = summarize_rss_excerpt
         summary_type = "source_excerpt"
 
-    existing = load_json(LOCAL_NEWS_PATH)
     max_per_run = int(os.environ.get("MAX_NEW_SUMMARIES_PER_RUN", "3"))
     max_per_day = int(os.environ.get("MAX_SUMMARIES_PER_DAY", "30"))
     max_items = int(os.environ.get("MAX_STORED_ITEMS", "2000"))

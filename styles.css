@@ -461,15 +461,16 @@ a { color: inherit; }
 .article-masthead { background:#10223a; border-bottom-color:#b46a50; }
 .article-brand b { font-family:Arial,sans-serif; }
 .article-source-name { color:var(--muted); font-weight:700; }
-.brief-disclosure { margin:24px 0; padding:18px 20px; background:#edf1f5; border-inline-start:4px solid #b46a50; }
-.brief-disclosure h2 { margin:0 0 8px; color:var(--navy); font-size:1.12rem; }
-.brief-disclosure p { margin:0; color:#465462; line-height:1.85; }
+.news-detail-copy { margin:24px 0 30px; padding:20px 22px; background:#fff; border:1px solid #dce2e8; border-inline-start:4px solid #b46a50; }
+.news-detail-copy h2 { margin:0 0 9px; color:var(--navy); font-size:1.2rem; }
+.news-detail-copy p { margin:0; color:#283440; font-size:1rem; line-height:1.95; }
 @media (max-width:900px) {
   .portal-global-banner { width:min(100% - 28px,1240px); min-height:230px; }
 }
 @media (max-width:600px) {
   .portal-global-banner { width:calc(100% - 24px); min-height:200px; margin-top:13px; }
   .portal-global-banner::after { background:linear-gradient(270deg,rgba(8,22,39,.96) 0%,rgba(8,22,39,.86) 55%,rgba(8,22,39,.42) 100%); }
+  .news-detail-copy { padding:15px; }
   .portal-global-banner-copy { width:100%; padding:20px 18px; }
   .portal-global-banner-title { font-size:1.55rem; }
   .portal-global-banner-note { max-width:25rem; font-size:.81rem; }

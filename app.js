@@ -80,7 +80,7 @@ function recordFor(item) {
     id: item.id,
     report,
     title,
-    summary: distinctSummary(report?.dek || item.summary, title, sourceName),
+    summary: distinctSummary(report?.dek || (item.summary_type === "source_notice" ? item.excerpt : item.summary), title, sourceName),
     date: text(item.published_at || report?.published_at || item.created_at, 80),
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
@@ -156,13 +156,13 @@ function articleCard(record, compact = false) {
   title.append(titleLink);
   body.append(title);
   if (record.summary) body.append(el("p", "portal-card-summary", record.summary));
-  const kind = record.report ? "تقرير تحريري" : "موجز من الناشر";
+  const kind = record.report ? "تقرير تحريري" : "خبر";
   const foot = el("div", "portal-card-foot");
   foot.append(el("span", "portal-content-kind", kind));
   const open = document.createElement("a");
   open.className = "portal-open-link";
   open.href = record.href;
-  open.textContent = record.report ? "اقرأ التقرير" : "اقرأ موجز الخبر";
+  open.textContent = record.report ? "اقرأ التقرير" : "اقرأ التفاصيل";
   foot.append(open);
   body.append(foot);
   card.append(body);
@@ -179,11 +179,11 @@ function renderLead(records) {
   body.append(sourceMeta(lead));
   body.append(el("h2", "lead-story-title", lead.title));
   if (lead.summary) body.append(el("p", "lead-story-summary", lead.summary));
-  body.append(el("p", "lead-story-editorial-note", lead.report ? "تقرير تحريري داخل World News" : "المعلومات المعروضة واردة في موجز الناشر."));
+  if (lead.report) body.append(el("p", "lead-story-editorial-note", "تقرير تحريري داخل World News"));
   const link = document.createElement("a");
   link.className = "lead-story-link";
   link.href = lead.href;
-  link.textContent = lead.report ? "اقرأ التقرير داخل الموقع" : "اقرأ موجز الخبر داخل الموقع";
+  link.textContent = lead.report ? "اقرأ التقرير داخل الموقع" : "اقرأ التفاصيل داخل الموقع";
   body.append(link);
   card.append(body);
   host.append(card);

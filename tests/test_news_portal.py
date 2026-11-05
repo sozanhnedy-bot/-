@@ -85,6 +85,7 @@ class InternalNewsBriefTests(unittest.TestCase):
             "source_url": "https://publisher.example",
             "region": "world",
             "published_at": "2026-11-02T11:30:00Z",
+            "excerpt": "تفاصيل إضافية من موجز الناشر تشرح الخبر بوضوح.",
             "image_url": "https://images.example/story.jpg",
         }
         page = render_news.render(item, [{"id": "b" * 20, "title": "خبر مرتبط", "region": "world"}])
@@ -93,6 +94,10 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertNotIn("https://publisher.example", page)
         self.assertNotIn('href="https://', page)
         self.assertIn("https://images.example/story.jpg", page)
+        self.assertIn("تفاصيل الخبر", page)
+        self.assertIn("تفاصيل إضافية من موجز الناشر", page)
+        self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
+        self.assertNotIn("عن هذه المادة", page)
         self.assertNotIn("news.google.com", page)
         self.assertNotIn("<script>", page)
         self.assertIn("./" + "b" * 20 + ".html", page)
@@ -103,7 +108,8 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertIn("الناشر: ناشر", page)
         self.assertNotIn("href=\"https://publisher.example", page)
         self.assertNotIn("javascript:", page)
-        self.assertIn("عن هذه المادة", page)
+        self.assertNotIn("عن هذه المادة", page)
+        self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
 
     def test_build_renders_rss_news_only_without_duplicates_for_full_reports(self):
         with tempfile.TemporaryDirectory() as tmp:

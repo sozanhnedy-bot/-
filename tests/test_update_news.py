@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime, timezone
 from unittest.mock import patch
 
-from scripts.update_news import RSS_NO_DETAILS, ai_summarization_enabled, build_update, clean_text, parse_feed
+from scripts.update_news import RSS_NO_DETAILS, ai_summarization_enabled, build_update, clean_text, newest_items, parse_feed
 
 
 NOW = datetime(2026, 10, 31, 0, 0, tzinfo=timezone.utc)
@@ -51,6 +51,68 @@ class NewsUpdateTests(unittest.TestCase):
             {"title": "خبر 2", "excerpt": "مقتطف 2", "url": "https://news.google.com/b", "source_name": "المصدر", "source_url": "", "region": "world", "published_at": "2026-10-30T23:00:00Z"},
             {"title": "خبر موجود", "excerpt": "مقتطف", "url": "https://news.google.com/existing", "source_name": "المصدر", "source_url": "", "region": "world", "published_at": "2026-10-30T22:00:00Z"},
         ]
+
+    def test_newest_items_are_sorted_before_the_per_feed_limit(self):
+        items = [
+            {"id": "older", "published_at": "2026-10-31T10:00:00Z"},
+            {"id": "newest", "published_at": "2026-10-31T12:00:00Z"},
+            {"id": "middle", "published_at": "2026-10-31T11:00:00Z"},
+        ]
+        self.assertEqual([item["id"] for item in newest_items(items, 2)], ["newest", "middle"])
+
+    def test_new_items_preserve_source_excerpt_and_photo(self):
+        item = {
+            **self.entries[0],
+            "source_name": "وكالة المثال",
+            "source_url": "https://publisher.example",
+            "excerpt": "تفاصيل من موجز الناشر تتجاوز العنوان وتحتوي معلومات إضافية.",
+            "image_url": "https://images.example/story.jpg",
+        }
+        feed = self.feed
+        data, changed, _ = build_update(
+            {"schema_version": 1, "items": []},
+            [feed],
+            lambda *_: [item],
+            lambda _item: "ملخص من المصدر",
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["excerpt"], item["excerpt"])
+        self.assertEqual(data["items"][0]["image_url"], item["image_url"])
+
+    def test_duplicate_story_from_another_rss_query_backfills_excerpt_and_photo(self):
+        existing_item = {
+            "url": "https://news.google.com/rss/articles/source-story",
+            "title": "تطورات دولية — وكالة المثال",
+            "source_name": "وكالة المثال",
+            "source_url": "https://publisher.example",
+            "region": "world",
+            "category": "world",
+            "summary": RSS_NO_DETAILS,
+            "summary_type": "source_notice",
+            "summary_date": "2026-10-30",
+        }
+        incoming = {
+            **self.entries[0],
+            "title": "تطورات دولية",
+            "url": "https://news.google.com/rss/articles/source-story-duplicate",
+            "source_name": "وكالة المثال",
+            "source_url": "https://publisher.example",
+            "excerpt": "وصف خبري أطول بكثير من العنوان، يتضمن سياقًا أساسيًا من الناشر.",
+            "image_url": "https://images.example/story.jpg",
+        }
+        feed = self.feed
+        data, changed, _ = build_update(
+            {"schema_version": 1, "updated_at": "previous", "items": [existing_item]},
+            [feed],
+            lambda *_: [incoming],
+            lambda _item: self.fail("known story must not be summarized again"),
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(len(data["items"]), 1)
+        self.assertEqual(data["items"][0]["excerpt"], incoming["excerpt"])
+        self.assertEqual(data["items"][0]["image_url"], incoming["image_url"])
 
     def test_deduplicates_and_respects_per_run_limit(self):
         existing = {"schema_version": 1, "updated_at": None, "items": [{"url": "https://news.google.com/existing", "summary_date": "2026-10-31"}]}
@@ -120,7 +182,11 @@ class NewsUpdateTests(unittest.TestCase):
             build_update(existing, [self.feed], fail, lambda _item: "unused", now=NOW)
 
     def test_no_new_items_does_not_change_timestamp(self):
-        existing = {"schema_version": 1, "updated_at": "previous", "items": [{"url": self.entries[0]["url"], "region": "world", "category": "economy", "summary_date": "2026-10-30"}]}
+        existing = {"schema_version": 1, "updated_at": "previous", "items": [{
+            "url": self.entries[0]["url"], "region": "world", "category": "economy", "summary_date": "2026-10-30",
+            "source_name": "المصدر", "source_url": "", "published_at": "2026-10-31T00:00:00Z",
+            "excerpt": "مقتطف 1", "image_url": "",
+        }]}
         data, changed, _ = build_update(
             existing,
             [self.feed],
