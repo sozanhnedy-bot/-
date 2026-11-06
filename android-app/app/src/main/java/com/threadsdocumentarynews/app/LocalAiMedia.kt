@@ -206,11 +206,11 @@ object LocalAiMedia {
         val rawTitle = meta("og:title").ifBlank { Regex("<title[^>]*>(.*?)</title>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).find(html)?.groupValues?.get(1).orEmpty() }
         val title = android.text.Html.fromHtml(rawTitle, android.text.Html.FROM_HTML_MODE_COMPACT).toString().replace(Regex("\\s+"), " ").trim()
         val rawImage = meta("og:image").ifBlank { meta("twitter:image") }
-        val image = try { URL(finalUrl, rawImage).let { if (it.protocol == "https") it.toString() else "" } } catch (_: Exception) { "" }
+        val image = if (rawImage.isBlank()) "" else try { URL(finalUrl, rawImage).let { if (it.protocol == "https") it.toString() else "" } } catch (_: Exception) { "" }
         var body = Regex("<article\\b[^>]*>(.*?)</article>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).find(html)?.groupValues?.get(1)
         if (body.isNullOrBlank()) body = Regex("<body\\b[^>]*>(.*?)</body>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).find(html)?.groupValues?.get(1).orEmpty()
         body = body.orEmpty().replace(Regex("<(script|style|nav|footer|header|aside|svg|form)\\b[^>]*>.*?</\\1>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)), " ")
-        val articleText = android.text.Html.fromHtml(body, android.text.Html.FROM_HTML_MODE_COMPACT).toString().replace(Regex("[ \t]+"), " ").replace(Regex("\\n{3,}"), "\n\n").trim().take(12000)
+        val articleText = android.text.Html.fromHtml(body.orEmpty(), android.text.Html.FROM_HTML_MODE_COMPACT).toString().replace(Regex("[ \t]+"), " ").replace(Regex("\\n{3,}"), "\n\n").trim().take(7000)
         if (articleText.length < 300) throw IllegalStateException("المصدر لم يعرض نصًا كافيًا داخل الصفحة؛ لن نصنع تقريرًا من العنوان وحده.")
         return NewsArticleMaterial(title.ifBlank { "خبر من " + finalUrl.host }, finalUrl.host.removePrefix("www."), finalUrl.toString(), image, articleText)
     }
