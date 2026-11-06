@@ -80,6 +80,8 @@ public final class TaskAssistantActivity extends Activity {
     private TextView socialStatus;
     private TextView radarStatus;
     private LinearLayout radarItems;
+    private TextView radarStatus;
+    private LinearLayout radarItems;
     private MediaPlayer mediaPlayer;
     private String pendingPdfText = "";
     private String pendingPdfTitle = "سكريبت World News";
@@ -338,6 +340,81 @@ public final class TaskAssistantActivity extends Activity {
         socialStatus.setPadding(0, dp(10), 0, 0);
         card.addView(socialStatus);
         pageContent.addView(card);
+
+        LinearLayout radarCard = card();
+        addText(radarCard, "رادار الترندات — كل المصادر", 18, TEXT, true, 0, 5);
+        addText(radarCard, "X وتويتر · Google Trends · إشارات فيسبوك المصرح بها · الأخبار والميديا", 13, MUTED, false, 0, 8);
+        radarStatus = text("اضغط تحديث لجلب أحدث بيانات الرصد المنشورة.", 13, GOLD, false);
+        radarCard.addView(radarStatus, params(-1, -2, 0, 0, 0, 8));
+        Button refreshRadar = primaryButton("↻  تحديث رادار الترندات");
+        radarCard.addView(refreshRadar, params(-1, dp(50), 0, 0, 0, 8));
+        refreshRadar.setOnClickListener(v -> loadTrendRadar());
+        radarItems = new LinearLayout(this);
+        radarItems.setOrientation(LinearLayout.VERTICAL);
+        radarCard.addView(radarItems, params(-1, -2, 0, 0, 0, 0));
+        pageContent.addView(radarCard, params(-1, -2, 0, dp(14), 0, 0));
+    }
+
+    private void loadTrendRadar() {
+        if (radarStatus == null || radarItems == null) return;
+        radarStatus.setText("جارٍ تحميل أحدث إشارات الترند…");
+        radarItems.removeAllViews();
+        final String radarUrl = "https://raw.githubusercontent.com/sozanhnedy-bot/-/feature/loka-news-social-manager/data/trends.json";
+        executor.execute(() -> {
+            HttpURLConnection connection = null;
+            try {
+                connection = (HttpURLConnection) new URL(radarUrl).openConnection();
+                connection.setRequestMethod("GET");
+                connection.setConnectTimeout(15000);
+                connection.setReadTimeout(20000);
+                connection.setRequestProperty("Accept", "application/json");
+                connection.setRequestProperty("User-Agent", "LokaNewsroomAndroid/1.0");
+                if (connection.getResponseCode() != 200) throw new IllegalStateException("تعذر الوصول إلى ملف الرادار.");
+                StringBuilder body = new StringBuilder();
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), java.nio.charset.StandardCharsets.UTF_8))) {
+                    String line;
+                    while ((line = reader.readLine()) != null && body.length() < 1000000) body.append(line);
+                }
+                JSONObject root = new JSONObject(body.toString());
+                JSONArray items = root.optJSONArray("items");
+                String generated = root.optString("generated_at", "");
+                mainHandler.post(() -> {
+                    if (isFinishing() || isDestroyed() || radarItems == null) return;
+                    radarItems.removeAllViews();
+                    if (items == null || items.length() == 0) {
+                        radarStatus.setText("اتصل التطبيق بملف الرادار، لكن لا توجد نتائج منشورة حتى الآن.");
+                        return;
+                    }
+                    radarStatus.setText("آخر تحديث: " + generated + " · عدد النتائج: " + items.length());
+                    for (int i = 0; i < Math.min(items.length(), 25); i++) {
+                        JSONObject item = items.optJSONObject(i);
+                        if (item == null) continue;
+                        LinearLayout entry = new LinearLayout(this);
+                        entry.setOrientation(LinearLayout.VERTICAL);
+                        entry.setPadding(dp(12), dp(10), dp(12), dp(10));
+                        entry.setBackground(rounded(SURFACE_ALT, LINE, 14));
+                        addText(entry, item.optString("title", "موضوع بلا عنوان"), 15, TEXT, true, 0, 4);
+                        addText(entry, "المنطقة: " + item.optString("region", "غير محدد") + " · التقييم: " + item.optInt("score", 0) + "/100", 12, GOLD, true, 0, 3);
+                        addText(entry, "المصدر: " + item.optString("source_name", "مصدر عام") + " · " + item.optString("signal", ""), 11, MUTED, false, 0, 4);
+                        String candidateUrl = item.optString("source_url", "");
+                        if (candidateUrl.isEmpty()) candidateUrl = item.optString("url", "");
+                        final String sourceLink = candidateUrl;
+                        if (!sourceLink.isEmpty()) {
+                            TextView link = text("فتح المصدر ↗", 12, GOLD, true);
+                            link.setOnClickListener(v -> openUrl(sourceLink, "تعذر فتح المصدر."));
+                            entry.addView(link, params(-1, dp(30), 0, 0, 0, 0));
+                        }
+                        radarItems.addView(entry, params(-1, -2, 0, 0, 0, 7));
+                    }
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> {
+                    if (radarStatus != null) radarStatus.setText("تعذر تحميل الرادار. تحقق من الإنترنت أو شغّل مهمة الرصد.");
+                });
+            } finally {
+                if (connection != null) connection.disconnect();
+            }
+        });
     }
 
     private Spinner makeSpinner(String[] values) {
