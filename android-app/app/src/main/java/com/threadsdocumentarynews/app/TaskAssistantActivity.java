@@ -80,8 +80,6 @@ public final class TaskAssistantActivity extends Activity {
     private TextView socialStatus;
     private TextView radarStatus;
     private LinearLayout radarItems;
-    private TextView radarStatus;
-    private LinearLayout radarItems;
     private MediaPlayer mediaPlayer;
     private String pendingPdfText = "";
     private String pendingPdfTitle = "سكريبت World News";
