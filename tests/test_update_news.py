@@ -36,9 +36,9 @@ class NewsParsingTests(unittest.TestCase):
         xml = b"<rss><channel><item><title>X</title><link>javascript:alert(1)</link></item></channel></rss>"
         self.assertEqual(parse_feed(xml, "world", "feed", now=NOW), [])
 
-    def test_skips_entries_older_than_48_hours(self):
+    def test_skips_entries_older_than_seven_days(self):
         xml = """<rss><channel><item><title>قديم</title><link>https://example.com/old</link>
-        <description>مقتطف</description><pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+        <description>مقتطف</description><pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
         </item></channel></rss>""".encode("utf-8")
         self.assertEqual(parse_feed(xml, "world", "feed", now=NOW), [])
 
