@@ -42,7 +42,7 @@ jobs:
         env:
           MAX_NEW_SUMMARIES_PER_RUN: "20"
           MAX_SUMMARIES_PER_DAY: "1000"
-          MAX_STORED_ITEMS: "2000"
+          MAX_STORED_ITEMS: "10000"
         run: python scripts/update_news.py
 
       - name: Commit changed archive data
