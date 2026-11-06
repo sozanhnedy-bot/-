@@ -389,7 +389,7 @@ public final class TaskAssistantActivity extends Activity {
                 LocalAiMedia.NewsArticleMaterial material = LocalAiMedia.fetchArticleMaterial(articleUrl);
                 String report = LocalAiMedia.generateNewsReport(this, material);
                 mainHandler.post(() -> {
-                    newsReportOutput.setText("المصدر: " + material.sourceName + "\\nالعنوان الأصلي: " + material.title + "\\nرابط الخبر: " + material.sourceUrl + "\\nصورة المصدر: " + (material.imageUrl.isEmpty() ? "لم يعثر الموقع على صورة OG/Twitter" : material.imageUrl) + "\\n\\n" + report);
+                    newsReportOutput.setText("المصدر: " + material.getSourceName() + "\\nالعنوان الأصلي: " + material.getTitle() + "\\nرابط الخبر: " + material.getSourceUrl() + "\\nصورة المصدر: " + (material.getImageUrl().isEmpty() ? "لم يعثر الموقع على صورة OG/Twitter" : material.imageUrl) + "\\n\\n" + report);
                     newsReportStatus.setText("تم جلب نص من " + material.sourceName + ". " + (material.imageUrl.isEmpty() ? "لم تُكتشف صورة من بيانات الصفحة؛ لن نضع صورة بديلة عشوائية." : "تم العثور على رابط صورة من بيانات الصفحة، ويجب مراجعتها بصريًا وحقوقيًا."));
                     newsReportButton.setEnabled(true);
                 });
