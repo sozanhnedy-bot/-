@@ -9,6 +9,8 @@ on:
       - "scripts/editorial_safety.py"
       - "scripts/publish_social.py"
       - "tests/test_editorial_safety.py"
+      - "scripts/trend_radar.py"
+      - "tests/test_trend_radar.py"
       - ".github/workflows/editorial-safety-tests.yml"
   pull_request:
     paths:
@@ -32,4 +34,4 @@ jobs:
         with:
           python-version: "3.12"
       - name: Run editorial safety tests
-        run: python -m unittest discover -s tests -p "test_editorial_safety.py" -v
+        run: python -m unittest discover -s tests -p "test_*.py" -v
