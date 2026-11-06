@@ -488,6 +488,7 @@ def main() -> int:
     max_per_run = int(os.environ.get("MAX_NEW_SUMMARIES_PER_RUN", "3"))
     max_per_day = int(os.environ.get("MAX_SUMMARIES_PER_DAY", "30"))
     max_items = int(os.environ.get("MAX_STORED_ITEMS", "10000"))
+    existing = load_json(LOCAL_NEWS_PATH)
     news, changed, warnings = build_update(
         existing,
         feeds,
