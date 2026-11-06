@@ -61,6 +61,10 @@ public final class TaskAssistantActivity extends Activity {
     private EditText referenceInput;
     private EditText scriptOutput;
     private EditText socialDraftInput;
+    private EditText newsArticleUrlInput;
+    private EditText newsReportOutput;
+    private TextView newsReportStatus;
+    private Button newsReportButton;
     private Spinner durationSpinner;
     private Spinner platformSpinner;
     private Spinner styleSpinner;
@@ -125,6 +129,7 @@ public final class TaskAssistantActivity extends Activity {
         nav.addView(navItem("✧\nالمساعد", 0), new LinearLayout.LayoutParams(0, dp(58), 1));
         nav.addView(navItem("▱\nالمشاريع", 1), new LinearLayout.LayoutParams(0, dp(58), 1));
         nav.addView(navItem("◎\nالنشر", 2), new LinearLayout.LayoutParams(0, dp(58), 1));
+        nav.addView(navItem("▤\nالتقارير", 3), new LinearLayout.LayoutParams(0, dp(58), 1));
         return nav;
     }
 
@@ -143,7 +148,8 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.removeAllViews();
         if (tab == 0) buildAssistantPage();
         else if (tab == 1) buildProjectsPage();
-        else buildSocialPage();
+        else if (tab == 2) buildSocialPage();
+        else buildNewsReportPage();
         scroll.scrollTo(0, 0);
     }
 
@@ -332,6 +338,66 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.addView(card);
     }
 
+    private void buildNewsReportPage() {
+        addText(pageContent, "تقرير خبر من المصدر", 22, TEXT, true, 0, 6);
+        addText(pageContent, "الصق رابط الخبر الأصلي. التطبيق يحاول قراءة نص الصفحة وبيانات الصورة، ثم يشغّل Qwen الموجود على الهاتف لإعداد مسودة عربية. لا يتم النشر من هذه الصفحة.", 14, MUTED, false, 0, 12);
+        LinearLayout card = card();
+        addText(card, "رابط الخبر HTTPS", 15, TEXT, true, 0, 6);
+        newsArticleUrlInput = new EditText(this);
+        newsArticleUrlInput.setSingleLine(true);
+        newsArticleUrlInput.setTextDirection(View.TEXT_DIRECTION_LTR);
+        newsArticleUrlInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_URI);
+        newsArticleUrlInput.setTextColor(TEXT);
+        newsArticleUrlInput.setHintTextColor(MUTED);
+        newsArticleUrlInput.setHint("https://example.com/news/article");
+        newsArticleUrlInput.setPadding(dp(12), dp(12), dp(12), dp(12));
+        newsArticleUrlInput.setBackground(rounded(SURFACE_ALT, LINE, 14));
+        card.addView(newsArticleUrlInput, params(-1, dp(52), 0, dp(6), 0, 10));
+        newsReportButton = primaryButton("جلب الخبر وإنشاء تقرير بـ Qwen");
+        card.addView(newsReportButton, params(-1, dp(52), 0, 0, 0, 8));
+        newsReportStatus = text("مستعد. يلزم تنزيل نموذج Qwen أولًا إذا لم يكن موجودًا على الهاتف.", 13, MUTED, false);
+        card.addView(newsReportStatus, params(-1, -2, 0, dp(4), 0, 8));
+        pageContent.addView(card);
+        LinearLayout outputCard = card();
+        addText(outputCard, "مسودة التقرير", 18, TEXT, true, 0, 6);
+        newsReportOutput = new EditText(this);
+        newsReportOutput.setGravity(Gravity.TOP | Gravity.RIGHT);
+        newsReportOutput.setTextDirection(View.TEXT_DIRECTION_RTL);
+        newsReportOutput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        newsReportOutput.setTextColor(TEXT);
+        newsReportOutput.setHintTextColor(MUTED);
+        newsReportOutput.setHint("سيظهر التقرير هنا بعد جلب النص وتشغيل Qwen.");
+        newsReportOutput.setMinLines(12);
+        newsReportOutput.setPadding(dp(12), dp(12), dp(12), dp(12));
+        newsReportOutput.setBackground(rounded(SURFACE_ALT, LINE, 14));
+        outputCard.addView(newsReportOutput, params(-1, -2, 0, dp(6), 0, 8));
+        Button copy = secondaryButton("نسخ التقرير للمراجعة");
+        outputCard.addView(copy, params(-1, dp(48), 0, 0, 0, 0));
+        copy.setOnClickListener(v -> { String value = newsReportOutput.getText().toString().trim(); if (value.isEmpty()) newsReportStatus.setText("لا يوجد تقرير لنسخه بعد."); else { copyToClipboard("مسودة تقرير World News", value); newsReportStatus.setText("نُسخت المسودة. راجعها قبل أي نشر."); } });
+        pageContent.addView(outputCard, params(-1, -2, 0, dp(14), 0, 0));
+        newsReportButton.setOnClickListener(v -> generateNewsReportFromUrl());
+    }
+
+    private void generateNewsReportFromUrl() {
+        String articleUrl = newsArticleUrlInput == null ? "" : newsArticleUrlInput.getText().toString().trim();
+        if (!articleUrl.startsWith("https://")) { newsReportStatus.setText("اكتب رابط الخبر كاملًا ويبدأ بـ HTTPS."); return; }
+        if (!scriptModelReady()) { newsReportStatus.setText("نزّل نموذج Qwen من تبويب المساعد أولًا."); return; }
+        newsReportButton.setEnabled(false);
+        newsReportStatus.setText("يجري جلب صفحة المصدر ثم تشغيل Qwen محليًا. قد يستغرق ذلك وقتًا على الهاتف.");
+        executor.execute(() -> {
+            try {
+                LocalAiMedia.NewsArticleMaterial material = LocalAiMedia.fetchArticleMaterial(articleUrl);
+                String report = LocalAiMedia.generateNewsReport(this, material);
+                mainHandler.post(() -> {
+                    newsReportOutput.setText("المصدر: " + material.sourceName + "\\nالعنوان الأصلي: " + material.title + "\\nرابط الخبر: " + material.sourceUrl + "\\nصورة المصدر: " + (material.imageUrl.isEmpty() ? "لم يعثر الموقع على صورة OG/Twitter" : material.imageUrl) + "\\n\\n" + report);
+                    newsReportStatus.setText("تم جلب نص من " + material.sourceName + ". " + (material.imageUrl.isEmpty() ? "لم تُكتشف صورة من بيانات الصفحة؛ لن نضع صورة بديلة عشوائية." : "تم العثور على رابط صورة من بيانات الصفحة، ويجب مراجعتها بصريًا وحقوقيًا."));
+                    newsReportButton.setEnabled(true);
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> { newsReportStatus.setText(error.getMessage() == null ? "تعذر جلب الخبر أو تشغيل Qwen." : error.getMessage()); newsReportButton.setEnabled(true); });
+            }
+        });
+    }
     private Spinner makeSpinner(String[] values) {
         Spinner spinner = new Spinner(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, values);
