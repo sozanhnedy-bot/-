@@ -16,7 +16,10 @@ from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 
-from update_news import clean_text, fetch_feed, parse_feed
+try:
+    from .update_news import clean_text, fetch_feed, parse_feed
+except ImportError:
+    from update_news import clean_text, fetch_feed, parse_feed
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES_PATH = ROOT / "data" / "news_sources.json"
@@ -110,6 +113,39 @@ def fetch_x_trends(region: str, url: str) -> list[dict]:
     } for rank, title in enumerate(parser.items[:50], start=1)]
 
 
+def fetch_youtube_trending(region: str = "EG") -> list[dict]:
+    api_key = os.environ.get("YOUTUBE_DATA_API_KEY", "").strip()
+    if not api_key:
+        return []
+    params = urllib.parse.urlencode({
+        "part": "snippet,statistics",
+        "chart": "mostPopular",
+        "regionCode": region,
+        "maxResults": "30",
+        "key": api_key,
+    })
+    url = "https://www.googleapis.com/youtube/v3/videos?" + params
+    payload = json.loads(_http_get(url, {"Accept": "application/json"}).decode("utf-8"))
+    results = []
+    for rank, video in enumerate(payload.get("items", []), start=1):
+        snippet = video.get("snippet", {})
+        video_id = video.get("id", "")
+        if not video_id:
+            continue
+        results.append({
+            "title": clean_text(snippet.get("title", "")),
+            "region": region,
+            "trend_rank": rank,
+            "source_name": "YouTube Data API — mostPopular",
+            "source_url": f"https://www.youtube.com/watch?v={video_id}",
+            "url": f"https://www.youtube.com/watch?v={video_id}",
+            "signal": "youtube_most_popular_api",
+            "published_at": snippet.get("publishedAt"),
+            "views": int(video.get("statistics", {}).get("viewCount", 0) or 0),
+        })
+    return results
+
+
 def fetch_authorized_facebook_page() -> list[dict]:
     """Fetch posts only from a Page the configured token is allowed to access."""
     page_id = os.environ.get("FACEBOOK_PAGE_ID", "").strip()
@@ -168,7 +204,7 @@ def score_trend(item: dict, rank: int | None = None, corroborations: int = 0, pe
     rank_score = max(0, 50 - (int(rank) - 1))
     corroboration_score = min(25, max(0, corroborations) * 8)
     persistence_score = min(15, max(0, persistence) * 3)
-    source_score = 10 if item.get("signal") == "x_trends24_public" else 5
+    source_score = 10 if item.get("signal") in {"x_trends24_public", "youtube_most_popular_api"} else 5
     return min(100, rank_score + corroboration_score + persistence_score + source_score)
 
 
@@ -207,10 +243,10 @@ def build_radar(items: list[dict], news_items: list[dict], now: datetime | None 
         })
     results.sort(key=lambda x: (x["score"], -x["rank"]), reverse=True)
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "generated_at": now.isoformat().replace("+00:00", "Z"),
         "disclaimer": "ترندات X من مصدر عام خارجي، وGoogle Trends مؤشر اهتمام بحثي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
-        "sources_checked": [],
+        "sources_checked": [],\n        "platform_status": {"x": "public_third_party_signal", "google_trends": "rss_enabled", "facebook": "authorized_page_token_optional", "youtube": "official_api_key_optional", "tiktok": "not_connected_requires_approved_access"},
         "items": results[:100],
     }
 
