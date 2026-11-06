@@ -16,14 +16,14 @@ from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 
-from update_news import clean_text, fetch_feed
+from update_news import clean_text, fetch_feed, parse_feed
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES_PATH = ROOT / "data" / "news_sources.json"
 OUTPUT_PATH = ROOT / "data" / "trends.json"
 USER_AGENT = "Mozilla/5.0 (compatible; LokaNewsroomTrendRadar/1.0)"
 MAX_BYTES = 2_000_000
-X_TREND_PAGES = (
+GOOGLE_TREND_REGIONS = (("مصر", "EG"), ("السعودية", "SA"), ("الإمارات", "AE"), ("العالم", "US"))\nX_TREND_PAGES = (
     ("مصر", "https://trends24.in/egypt/"),
     ("السعودية", "https://trends24.in/saudi-arabia/"),
     ("العالم", "https://trends24.in/worldwide/"),
@@ -76,6 +76,18 @@ def _http_get(url: str, headers: dict | None = None) -> bytes:
     if len(payload) > MAX_BYTES:
         raise ValueError("remote response exceeded size limit")
     return payload
+
+
+def fetch_google_trends(region: str, geo: str) -> list[dict]:
+    url = "https://trends.google.com/trending/rss?" + urllib.parse.urlencode({"geo": geo})
+    payload = _http_get(url, {"Accept": "application/rss+xml, application/xml"})
+    parsed = parse_feed(payload, region, "Google Trends", feed_source_url=url)
+    return [{
+        **item,
+        "trend_rank": rank,
+        "signal": "google_trends_rss",
+        "source_name": "Google Trends",
+    } for rank, item in enumerate(parsed, start=1)]
 
 
 def fetch_x_trends(region: str, url: str) -> list[dict]:
@@ -196,7 +208,7 @@ def build_radar(items: list[dict], news_items: list[dict], now: datetime | None 
     return {
         "schema_version": 2,
         "generated_at": now.isoformat().replace("+00:00", "Z"),
-        "disclaimer": "ترندات X من مصدر عام خارجي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
+        "disclaimer": "ترندات X من مصدر عام خارجي، وGoogle Trends مؤشر اهتمام بحثي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
         "sources_checked": [],
         "items": results[:100],
     }
