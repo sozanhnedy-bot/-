@@ -1,6 +1,9 @@
 name: Refresh trend radar
 
 on:
+  push:
+    branches:
+      - feature/loka-news-social-manager
   schedule:
     - cron: "15 6,12,18 * * *"
   workflow_dispatch:
