@@ -204,7 +204,7 @@ def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | No
         raise ValueError("DTD and entity declarations are not accepted")
     root = ET.fromstring(xml_bytes)
     now = now or datetime.now(timezone.utc)
-    cutoff = now.astimezone(timezone.utc) - timedelta(hours=48)
+    cutoff = now.astimezone(timezone.utc) - timedelta(days=7)
     results: list[dict] = []
 
     for node in root.iter():
