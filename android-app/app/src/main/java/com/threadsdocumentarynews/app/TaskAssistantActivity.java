@@ -368,7 +368,7 @@ public final class TaskAssistantActivity extends Activity {
         addText(pageContent, "موضوعات البحث الرائجة من Google Trends. دي مؤشرات اهتمام وبحث، مش إثبات لصحة أي خبر.", 14, MUTED, false, 0, 12);
         LinearLayout controls = card();
         addText(controls, "المنطقة", 14, TEXT, true, 0, 6);
-        trendsCountrySpinner = makeSpinner(new String[]{"مصر", "السعودية", "الإمارات", "العالم"});
+        trendsCountrySpinner = makeSpinner(new String[]{"مصر", "السعودية", "الإمارات"});
         controls.addView(trendsCountrySpinner, params(-1, dp(48), 0, 0, 0, 8));
         Button refresh = primaryButton("تحديث الترند");
         controls.addView(refresh, params(-1, dp(50), 0, 0, 0, 8));
@@ -387,7 +387,6 @@ public final class TaskAssistantActivity extends Activity {
         switch (trendsCountrySpinner.getSelectedItemPosition()) {
             case 1: return "SA";
             case 2: return "AE";
-            case 3: return "";
             default: return "EG";
         }
     }
@@ -461,6 +460,12 @@ public final class TaskAssistantActivity extends Activity {
                             + (item.started.isEmpty() ? "" : "\\nبدأ: " + item.started);
                         addText(row, details, 12, MUTED, false, 0, 8);
                         if (!item.newsTitle.isEmpty()) addText(row, "خبر مرتبط: " + item.newsTitle + (item.newsSource.isEmpty() ? "" : " — " + item.newsSource), 13, TEXT, false, 0, 8);
+                        Button idea = secondaryButton("استخدام الترند كفكرة للسكريبت");
+                        row.addView(idea, params(-1, dp(44), 0, 0, 0, 5));
+                        idea.setOnClickListener(v -> {
+                            showTab(0);
+                            if (topicInput != null) topicInput.setText(item.title);
+                        });
                         if (!item.newsUrl.isEmpty() && item.newsUrl.startsWith("https://")) {
                             Button source = secondaryButton("فتح الخبر المرتبط من المصدر");
                             row.addView(source, params(-1, dp(44), 0, 0, 0, 5));
