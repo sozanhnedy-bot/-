@@ -1,0 +1,35 @@
+name: Editorial safety tests
+
+on:
+  push:
+    branches:
+      - main
+      - feature/loka-news-social-manager
+    paths:
+      - "scripts/editorial_safety.py"
+      - "scripts/publish_social.py"
+      - "tests/test_editorial_safety.py"
+      - ".github/workflows/editorial-safety-tests.yml"
+  pull_request:
+    paths:
+      - "scripts/editorial_safety.py"
+      - "scripts/publish_social.py"
+      - "tests/test_editorial_safety.py"
+      - ".github/workflows/editorial-safety-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  editorial-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run editorial safety tests
+        run: python -m unittest discover -s tests -p "test_editorial_safety.py" -v
