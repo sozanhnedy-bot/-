@@ -20,7 +20,7 @@ class TrendRadarTests(unittest.TestCase):
         news = [{"title": "قصة محلية مهمة في القاهرة"}]
         radar = build_radar(trends, news, datetime(2026, 11, 6, tzinfo=timezone.utc))
         self.assertEqual(len(radar["items"]), 2)
-        self.assertIn("ليست", radar["disclaimer"])
+        self.assertIn("لا تمثل", radar["disclaimer"])
         self.assertEqual(radar["items"][0]["title"], "قصة محلية مهمة")
 
 
