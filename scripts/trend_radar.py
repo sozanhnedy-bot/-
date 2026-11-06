@@ -211,35 +211,47 @@ def score_trend(item: dict, rank: int | None = None, corroborations: int = 0, pe
 def build_radar(items: list[dict], news_items: list[dict], now: datetime | None = None) -> dict:
     now = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
     news_titles = [normalize_topic(item.get("title", "")) for item in news_items]
-    seen: set[tuple[str, str]] = set()
-    results = []
+    groups: list[dict] = []
     for item in items:
         title = clean_text(item.get("title", ""))
         key = normalize_topic(title)
-        source = item.get("signal", "unknown")
-        identity = (source, key)
-        if not key or identity in seen:
+        if not key:
             continue
-        seen.add(identity)
+        tokens = set(key.split())
+        match = None
+        for group in groups:
+            other = set(group["normalized"].split())
+            union = tokens | other
+            similarity = len(tokens & other) / len(union) if union else 0
+            if key == group["normalized"] or similarity >= 0.72:
+                match = group
+                break
+        if match is None:
+            match = {"title": title, "normalized": key, "signals": []}
+            groups.append(match)
+        match["signals"].append(item)
+
+    results = []
+    for group in groups:
+        signals = group["signals"]
+        platforms = sorted({x.get("signal", "unknown") for x in signals})
+        best = min(signals, key=lambda x: int(x.get("trend_rank") or 50))
+        title, key = group["title"], group["normalized"]
         matches = sum(1 for news_title in news_titles if key in news_title or news_title in key)
-        rank = int(item.get("trend_rank") or 50)
-        score = score_trend(item, rank, matches)
+        rank = min(int(x.get("trend_rank") or 50) for x in signals)
+        score = min(100, score_trend(best, rank, matches) + min(20, (len(platforms) - 1) * 10))
         results.append({
-            "title": title,
-            "region": item.get("region", "unknown"),
-            "rank": rank,
-            "score": score,
-            "priority": "strong" if score >= 65 else "medium" if score >= 40 else "low",
-            "signal": source,
-            "corroborating_news_items": matches,
-            "source_name": item.get("source_name", "Public social signal"),
-            "source_url": item.get("source_url", ""),
-            "url": item.get("url", ""),
-            "published_at": item.get("published_at"),
-            "captured_at": item.get("captured_at"),
-            "media": item.get("media", []),
-            "rights_status": item.get("rights_status", "not_assessed"),
-            "assessment_note": "ترتيب الترند ومقارنته بعناوين الأخبار؛ ليس عدد تغريدات أو حجم بحث أو توقع مشاهدات.",
+            "title": title, "region": best.get("region", "unknown"), "rank": rank,
+            "score": score, "priority": "strong" if score >= 65 else "medium" if score >= 40 else "low",
+            "signal": best.get("signal", "unknown"), "signals": platforms, "platforms": platforms,
+            "source_count": len(signals), "corroborating_news_items": matches,
+            "source_name": best.get("source_name", "Public social signal"),
+            "source_url": best.get("source_url", ""), "url": best.get("url", ""),
+            "source_links": [{"platform": x.get("signal", "unknown"), "name": x.get("source_name", ""), "url": x.get("source_url") or x.get("url", "")} for x in signals],
+            "published_at": best.get("published_at"), "captured_at": best.get("captured_at"),
+            "media": [m for x in signals for m in x.get("media", [])],
+            "rights_status": "review_required" if any(x.get("rights_status") == "review_required" for x in signals) else "not_assessed",
+            "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات.",
         })
     results.sort(key=lambda x: (x["score"], -x["rank"]), reverse=True)
     return {
@@ -257,6 +269,25 @@ def main() -> int:
     news_items: list[dict] = []
     warnings: list[str] = []
     checked: list[str] = []
+
+    for region, geo in GOOGLE_TREND_REGIONS:
+        try:
+            found = fetch_google_trends(region, geo)
+            social_items.extend(found)
+            checked.append(f"Google Trends RSS: {region}")
+            print(f"Google Trends {region}: {len(found)} topics")
+        except Exception as exc:
+            warnings.append(f"Google Trends {region}: {type(exc).__name__}")
+            print(f"Google Trends {region} unavailable: {type(exc).__name__}", file=sys.stderr)
+
+    try:
+        youtube_items = fetch_youtube_trending("EG")
+        social_items.extend(youtube_items)
+        if youtube_items:
+            checked.append("YouTube Data API: mostPopular EG")
+            print(f"YouTube mostPopular EG: {len(youtube_items)} videos")
+        else:
+            print("YouTube Data API not configured; add YOUTUBE_DATA_API_KEY to repository secrets.")
 
     for region, url in X_TREND_PAGES:
         try:
