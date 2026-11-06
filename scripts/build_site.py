@@ -13,7 +13,7 @@ ROOT_FILES = (
     "app.js", "archive.js", "section.js", "videos.js", "article.js",
     "styles.css", "manifest.webmanifest", "service-worker.js",
 )
-DATA_FILES = ("news.json", "reports.json")
+DATA_FILES = ("news.json", "reports.json", "trends.json")
 ASSET_FILES = (
     "brand-mark.png", "app-icon-192.png", "app-icon-512.png",
     "brand-cover.jpg",
