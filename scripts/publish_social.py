@@ -42,28 +42,7 @@ def report_content(report: dict, report_ids: list[str], today: str) -> dict:
     return {"key": f"report:{report_id}", "report_id": report_id, "caption": caption, "url": link, "image": image}
 
 
-# Editorial safety policy: Egyptian presidential/government/political content is never auto-published.
-# Keep local community incidents and non-political public-interest stories eligible.
-EGYPT_POLITICS_BLOCK_TERMS = (
-    "السيسي", "عبد الفتاح السيسي", "الرئيس المصري", "رئيس الجمهورية",
-    "رئاسة الجمهورية", "الرئاسة المصرية", "الحكومة المصرية", "مجلس الوزراء",
-    "رئيس الوزراء", "رئيس الحكومة", "الوزراء المصري", "وزير مصري",
-    "وزارة الداخلية", "وزارة الدفاع", "وزارة الخارجية", "وزارة العدل",
-    "وزارة الصحة", "وزارة التعليم", "وزارة التموين", "وزارة النقل",
-    "محافظ", "محافظة", "مجلس النواب", "مجلس الشيوخ", "انتخابات مصر",
-    "حزب سياسي مصري", "السياسة في مصر", "سياسة مصر",
-    "egyptian president", "president of egypt", "egyptian government",
-    "egypt cabinet", "egyptian minister", "egyptian ministry",
-)
-
-
-def is_eligible_for_auto_publish(report: dict) -> bool:
-    """Conservative block for Egyptian political/government topics."""
-    fields = ("title", "summary", "social_caption", "category", "region", "excerpt")
-    text = " ".join(str(report.get(key) or "") for key in fields).casefold()
-    if not text.strip():
-        return False
-    return not any(term.casefold() in text for term in EGYPT_POLITICS_BLOCK_TERMS)
+from editorial_safety import is_eligible_for_auto_publish
 
 
 def choose_content(platform_state: dict, reports: list[dict], today: str) -> dict | None:
@@ -75,7 +54,7 @@ def choose_content(platform_state: dict, reports: list[dict], today: str) -> dic
         report_id = str(report.get("id") or "")
         if REPORT_ID_RE.fullmatch(report_id) and report_id not in posted:
             if not is_eligible_for_auto_publish(report):
-                print(f"Skipped by Egyptian political-content safety filter: {report_id}")
+                print(f"Skipped by editorial safety gate (missing/uncleared review): {report_id}")
                 continue
             return report_content(report, ids, today)
     return None
