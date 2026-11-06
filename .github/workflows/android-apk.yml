@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [main]
+    branches: [main, feature/loka-news-social-manager]
     paths:
       - 'android-app/**'
       - '.github/workflows/android-apk.yml'
