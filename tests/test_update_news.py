@@ -60,6 +60,22 @@ class NewsUpdateTests(unittest.TestCase):
         ]
         self.assertEqual([item["id"] for item in newest_items(items, 2)], ["newest", "middle"])
 
+    def test_existing_news_older_than_seven_days_are_removed(self):
+        existing = {"schema_version": 1, "items": [
+            {"id": "expired", "url": "https://news.google.com/expired", "published_at": "2026-10-23T23:59:59Z"},
+            {"id": "week-old", "url": "https://news.google.com/week-old", "published_at": "2026-10-24T00:00:00Z"},
+            {"id": "unknown-date", "url": "https://news.google.com/unknown", "published_at": "unknown"},
+        ]}
+        data, changed, _ = build_update(
+            existing,
+            [self.feed],
+            lambda *_: [],
+            lambda _item: "unused",
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual([item["id"] for item in data["items"]], ["week-old", "unknown-date"])
+
     def test_new_items_preserve_source_excerpt_and_photo(self):
         item = {
             **self.entries[0],

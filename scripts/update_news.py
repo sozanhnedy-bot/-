@@ -27,6 +27,7 @@ MAX_FEED_BYTES = 1_500_000
 MAX_EXCERPT_CHARS = 4_000
 MAX_SUMMARY_CHARS = 600
 MAX_STORED_EXCERPT_CHARS = 1_400
+NEWS_RETENTION_DAYS = 7
 ALLOWED_FEED_HOSTS = {"news.google.com"}
 RSS_NO_DETAILS = "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط."
 
@@ -314,6 +315,15 @@ def build_update(
     existing_items = existing.get("items", []) if isinstance(existing, dict) else []
     if not isinstance(existing_items, list):
         existing_items = []
+    cutoff = now - timedelta(days=NEWS_RETENTION_DAYS)
+    retained_items = [
+        item for item in existing_items
+        if not isinstance(item, dict)
+        or not (published := _parse_date(item.get("published_at")))
+        or published >= cutoff
+    ]
+    retention_changed = len(retained_items) != len(existing_items)
+    existing_items = retained_items
     known_urls = _existing_urls(existing_items)
     existing_by_url = {item.get("url"): item for item in existing_items if isinstance(item, dict) and item.get("url")}
     existing_by_story = {_story_key(item): item for item in existing_items if isinstance(item, dict) and _story_key(item)}
@@ -322,7 +332,7 @@ def build_update(
     candidates: list[dict] = []
     warnings: list[str] = []
     successful_feeds = 0
-    changed_metadata = False
+    changed_metadata = retention_changed
 
     prioritized_feeds = sorted(
         feeds,
