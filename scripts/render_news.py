@@ -130,7 +130,7 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
   <meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)} | {BRAND}">
   <meta property="og:description" content="{description}"><meta property="og:image" content="{e(preview_image, quote=True)}">
   <meta name="twitter:card" content="summary_large_image"><title>{e(title)} | {BRAND}</title>
-  <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css">
+  <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images">
 </head>
 <body class="article-body">
   <header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header>

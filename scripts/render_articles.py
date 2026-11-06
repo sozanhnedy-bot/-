@@ -118,8 +118,8 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
 <meta property="og:description" content="{dek}"><meta property="og:image" content="{SITE_URL}/{social_image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title} | {BRAND}"><meta name="twitter:description" content="{dek}"><meta name="twitter:image" content="{SITE_URL}/{social_image}">
 <meta property="og:url" content="{canonical}"><link rel="canonical" href="{canonical}">
-<link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css">
-<title>{title} | {BRAND}</title><script defer src="../article.js"></script>
+<link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images">
+<title>{title} | {BRAND}</title><script defer src="../article.js?v=20261107-images"></script>
 </head><body class="article-body">
 <a class="skip-link" href="#article-main">انتقل إلى التقرير</a>
 <header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
