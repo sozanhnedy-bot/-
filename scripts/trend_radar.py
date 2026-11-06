@@ -246,7 +246,8 @@ def build_radar(items: list[dict], news_items: list[dict], now: datetime | None 
         "schema_version": 3,
         "generated_at": now.isoformat().replace("+00:00", "Z"),
         "disclaimer": "ترندات X من مصدر عام خارجي، وGoogle Trends مؤشر اهتمام بحثي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
-        "sources_checked": [],\n        "platform_status": {"x": "public_third_party_signal", "google_trends": "rss_enabled", "facebook": "authorized_page_token_optional", "youtube": "official_api_key_optional", "tiktok": "not_connected_requires_approved_access"},
+        "sources_checked": [],
+        "platform_status": {"x": "public_third_party_signal", "google_trends": "rss_enabled", "facebook": "authorized_page_token_optional", "youtube": "official_api_key_optional", "tiktok": "not_connected_requires_approved_access"},
         "items": results[:100],
     }
 
