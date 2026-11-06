@@ -1,0 +1,41 @@
+name: Refresh trend radar
+
+on:
+  schedule:
+    - cron: "15 6,12,18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trend-radar
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out selected branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build public trend radar
+        run: python scripts/trend_radar.py
+      - name: Commit updated trend radar
+        run: |
+          if git diff --quiet -- data/trends.json; then
+            echo "Trend radar has no changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/trends.json
+          git commit -m "Update public trend radar"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
