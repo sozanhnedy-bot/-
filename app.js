@@ -11,7 +11,7 @@ const HOME_CATEGORIES = [
   { id: "politics", title: "سياسة" }, { id: "economy", title: "اقتصاد" },
   { id: "technology", title: "تكنولوجيا" }, { id: "sports", title: "رياضة" },
 ];
-const state = { news: [], reports: [], query: "", region: "all", initialLoad: true };
+const state = { news: [], reports: [], query: "", region: "all", initialLoad: true, featuredIds: new Set() };
 const reportMap = new Map();
 const $ = (selector, root = document) => root.querySelector(selector);
 
@@ -171,7 +171,9 @@ function articleCard(record, compact = false) {
 function renderLead(records) {
   const host = $("#top-stories");
   host.replaceChildren();
-  const lead = records[0];
+  const featured = records.slice(0, 3);
+  state.featuredIds = new Set(featured.map((record) => record.id));
+  const lead = featured[0];
   if (!lead) { host.append(el("p", "loading-card", "لا توجد أخبار حديثة الآن. الأخبار السابقة محفوظة في الأرشيف.")); return; }
   const card = el("article", `lead-story${lead.image ? " has-image" : " text-only"}`);
   if (lead.image) addImage(card, lead, "lead-story-image");
@@ -187,6 +189,17 @@ function renderLead(records) {
   body.append(link);
   card.append(body);
   host.append(card);
+  if (featured.length > 1) {
+    const rail = el("aside", "lead-story-rail");
+    rail.setAttribute("aria-label", "أبرز الأخبار الأخرى");
+    rail.append(el("h2", "lead-rail-heading", "أبرز الأخبار"));
+    featured.slice(1).forEach((record) => {
+      const item = articleCard(record, true);
+      item.classList.add("lead-rail-item");
+      rail.append(item);
+    });
+    host.append(rail);
+  }
 }
 function matches(record) {
   if (state.region !== "all" && record.region !== state.region) return false;
@@ -198,8 +211,8 @@ function renderLatest(records) {
   const filtered = records.filter(matches);
   const host = $("#news-list");
   host.replaceChildren();
-  const leadId = state.region === "all" && !state.query ? records[0]?.id : "";
-  const recent = filtered.filter((record) => record.id !== leadId).slice(0, 12);
+  const excludedIds = state.region === "all" && !state.query ? state.featuredIds : new Set();
+  const recent = filtered.filter((record) => !excludedIds.has(record.id)).slice(0, 12);
   recent.forEach((record) => host.append(articleCard(record, true)));
   $("#feed-count").textContent = `${filtered.length.toLocaleString("ar-EG")} مادة خلال آخر 72 ساعة؛ تُعرض أحدث 12 مادة في هذه القائمة.`;
   $("#empty-state").hidden = filtered.length > 0;
