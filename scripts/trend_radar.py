@@ -288,6 +288,9 @@ def main() -> int:
             print(f"YouTube mostPopular EG: {len(youtube_items)} videos")
         else:
             print("YouTube Data API not configured; add YOUTUBE_DATA_API_KEY to repository secrets.")
+    except Exception as exc:
+        warnings.append(f"YouTube: {type(exc).__name__}")
+        print(f"YouTube collection unavailable: {type(exc).__name__}", file=sys.stderr)
 
     for region, url in X_TREND_PAGES:
         try:
