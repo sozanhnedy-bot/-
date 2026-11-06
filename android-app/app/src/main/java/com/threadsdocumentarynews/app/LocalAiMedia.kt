@@ -198,8 +198,8 @@ object LocalAiMedia {
             val tags = Regex("<meta\\b[^>]*>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL))
             for (match in tags.findAll(html)) {
                 val tag = match.value
-                val name = Regex("(?:property|name)\\s*=\\s*['\\"]([^'\\"]+)['\\"]", RegexOption.IGNORE_CASE).find(tag)?.groupValues?.get(1).orEmpty()
-                if (name.equals(key, true)) return Regex("content\\s*=\\s*['\\"]([^'\\"]*)['\\"]", RegexOption.IGNORE_CASE).find(tag)?.groupValues?.get(1).orEmpty()
+                val name = Regex("""(?:property|name)\s*=\s*['"]([^'"]+)['"]""", RegexOption.IGNORE_CASE).find(tag)?.groupValues?.get(1).orEmpty()
+                if (name.equals(key, true)) return Regex("""content\s*=\s*['"]([^'"]*)['"]""", RegexOption.IGNORE_CASE).find(tag)?.groupValues?.get(1).orEmpty()
             }
             return ""
         }
