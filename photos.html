@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10223a">
+  <meta name="description" content="معرض صور الأخبار والتقارير المنشورة في World News.">
+  <meta property="og:site_name" content="World News">
+  <title>معرض الصور | World News</title>
+  <link rel="icon" href="./assets/brand-mark.png" type="image/png">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./photos.js"></script>
+</head>
+<body class="portal-body">
+  <a class="skip-link" href="#photos-main">انتقل إلى معرض الصور</a>
+  <header class="portal-header">
+    <div class="portal-utility">
+      <a href="./">الرئيسية</a>
+      <span id="photos-status" aria-live="polite">جارٍ تحميل الصور</span>
+      <a href="./archive.html">الأرشيف</a>
+    </div>
+    <div class="portal-brand-row">
+      <a class="portal-brand" href="./">
+        <img src="./assets/brand-mark.png" alt="">
+        <span><b class="portal-arabic-name">أخبار العالم</b><strong lang="en" dir="ltr">World News</strong><small>معرض الصور المنشورة</small></span>
+      </a>
+      <form id="photo-search-form" class="portal-search" role="search">
+        <label class="sr-only" for="photo-search">ابحث في الصور والتقارير</label>
+        <input id="photo-search" type="search" placeholder="ابحث عن صورة أو تقرير..." autocomplete="off">
+      </form>
+    </div>
+    <nav class="portal-nav" aria-label="التنقل">
+      <a href="./">الرئيسية</a><a href="./archive.html">الأرشيف</a><a href="./videos.html">فيديوهات</a><a href="./photos.html" aria-current="page">الصور</a>
+    </nav>
+  </header>
+  <main id="photos-main" class="portal-main">
+    <section class="portal-lead">
+      <div class="portal-section-title">
+        <div><p class="eyebrow">مكتبة الصور</p><h1>معرض الصور</h1><p class="muted-label">الصور المرتبطة بالأخبار والتقارير الموجودة في بيانات الموقع، مرتبة من الأحدث.</p></div>
+      </div>
+      <p id="photos-count" class="archive-count" aria-live="polite">جارٍ تجهيز المعرض...</p>
+      <div id="photos-gallery" class="portal-card-grid archive-grid" aria-live="polite"></div>
+      <div id="photos-empty" class="empty-state" hidden><h2>لا توجد صور مطابقة</h2><p>جرّب كلمة بحث مختلفة، أو ارجع لاحقًا عند نشر مواد تحتوي على صور.</p></div>
+    </section>
+  </main>
+  <footer class="portal-footer">
+    <a class="portal-footer-brand" href="./" lang="en" dir="ltr">World News</a>
+    <p>أخبار العالم · الصور مرتبطة بموادها المنشورة ومعلوماتها المتاحة.</p>
+    <nav aria-label="روابط إضافية"><a href="./">الرئيسية</a><a href="./archive.html">الأرشيف</a><a href="./videos.html">الفيديوهات</a></nav>
+  </footer>
+</body>
+</html>
