@@ -487,7 +487,7 @@ def main() -> int:
 
     max_per_run = int(os.environ.get("MAX_NEW_SUMMARIES_PER_RUN", "3"))
     max_per_day = int(os.environ.get("MAX_SUMMARIES_PER_DAY", "30"))
-    max_items = int(os.environ.get("MAX_STORED_ITEMS", "2000"))
+    max_items = int(os.environ.get("MAX_STORED_ITEMS", "10000"))
     news, changed, warnings = build_update(
         existing,
         feeds,
