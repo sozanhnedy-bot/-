@@ -6,6 +6,7 @@ const CATEGORY_LABELS = {
   reports: "تقارير ووثائقيات", videos: "فيديوهات",
 };
 const REGION_LABELS = { egypt: "مصر", arab: "العالم العربي", world: "العالم" };
+const ILLUSTRATION_IMAGES = { egypt: "egypt", arab: "arab", world: "world", politics: "politics", economy: "economy", technology: "technology", sports: "sports", reports: "world" };
 const HOME_CATEGORIES = [
   { id: "egypt", title: "مصر" }, { id: "arab", title: "العالم العربي" }, { id: "world", title: "العالم" },
   { id: "politics", title: "سياسة" }, { id: "economy", title: "اقتصاد" },
@@ -76,6 +77,10 @@ function recordFor(item) {
     ? report.sources.map((value) => text(value, 160)).filter(Boolean).join("، ")
     : text(item.source_name, 160);
   const title = editorialTitle(report?.title || item.title, sourceName);
+  const suppliedImage = safeImage(report?.image || item.image_url);
+  const imageKey = ILLUSTRATION_IMAGES[category] || "world";
+  const image = suppliedImage || safeImage(`assets/news-illustrations/${imageKey}.jpg`);
+  const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
     report,
@@ -84,9 +89,9 @@ function recordFor(item) {
     date: text(item.published_at || report?.published_at || item.created_at, 80),
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
-    image: safeImage(report?.image || item.image_url),
-    imageAlt: text(report?.image_alt || item.image_alt || item.title, 300),
-    imageCaption: text(report?.image_caption || item.image_caption, 300),
+    image,
+    imageAlt: suppliedImage ? text(report?.image_alt || item.image_alt || item.title, 300) : `رسم توضيحي لقسم ${categoryLabel}، وليس صورة للحدث`,
+    imageCaption: suppliedImage ? text(report?.image_caption || item.image_caption, 300) : "رسم توضيحي للقسم؛ لا يصوّر الحدث نفسه.",
     region,
     category,
     summaryType: report ? "editorial_report" : text(item.summary_type, 40),
@@ -139,7 +144,7 @@ function sourceMeta(record) {
 }
 function articleCard(record, compact = false) {
   const card = el("article", compact ? "portal-news-item" : "portal-story-card");
-  if (record.image) {
+  if (record.image && !compact) {
     const linkImage = document.createElement("a");
     linkImage.className = "portal-card-thumb-link";
     linkImage.href = record.href;

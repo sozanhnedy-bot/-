@@ -17,6 +17,7 @@ SITE_URL = "https://sozanhnedy-bot.github.io/-"
 ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,80}$")
 REGIONS = {"world": "العالم", "arab": "العالم العربي", "egypt": "مصر"}
 CATEGORIES = {"politics": "سياسة", "economy": "اقتصاد", "technology": "تكنولوجيا", "sports": "رياضة"}
+ILLUSTRATION_FILES = {"egypt": "egypt", "arab": "arab", "world": "world", "politics": "politics", "economy": "economy", "technology": "technology", "sports": "sports"}
 BRAND = "World News"
 ARABIC_BRAND = "أخبار العالم"
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)$", re.IGNORECASE)
@@ -93,12 +94,15 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
     image_url = safe_external_url(item.get("image_url"), image=True)
+    illustration_file = ILLUSTRATION_FILES.get(category_key, "world") + ".jpg"
+    image_src = image_url or f"../assets/news-illustrations/{illustration_file}"
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
-    preview_image = image_url or f"{SITE_URL}/assets/brand-cover.jpg"
+    preview_image = image_url or f"{SITE_URL}/assets/news-illustrations/{illustration_file}"
+    image_alt = title if image_url else f"رسم توضيحي لقسم {category}؛ ليس صورة للحدث"
+    image_caption = f"الصورة: {source} · من موجز الناشر" if image_url else f"رسم توضيحي لقسم {category}؛ لا يصوّر الحدث نفسه."
     image_markup = (
-        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة: {e(source)} · من موجز الناشر</figcaption></figure>'
-        if image_url else ""
+        f'<figure class="article-figure"><img src="{e(image_src, quote=True)}" alt="{e(image_alt, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>{e(image_caption)}</figcaption></figure>'
     )
     source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
     related_items = []

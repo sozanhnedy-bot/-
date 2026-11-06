@@ -106,8 +106,10 @@ class InternalNewsBriefTests(unittest.TestCase):
         item = {"id": "c" * 20, "title": "خبر", "summary": "موجز", "source_name": "ناشر", "url": "https://publisher.example/story", "source_url": "javascript:alert(1)"}
         page = render_news.render(item)
         self.assertIn("الناشر: ناشر", page)
-        self.assertNotIn("href=\"https://publisher.example", page)
+        self.assertNotIn('href="https://publisher.example', page)
         self.assertNotIn("javascript:", page)
+        self.assertIn("../assets/news-illustrations/world.jpg", page)
+        self.assertIn("رسم توضيحي لقسم العالم؛ لا يصوّر الحدث نفسه", page)
         self.assertNotIn("عن هذه المادة", page)
         self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
 
@@ -140,6 +142,7 @@ class BuildAndBrowserTests(unittest.TestCase):
                 self.assertTrue((output / name).is_file(), name)
             self.assertFalse((output / "task-chat.html").exists())
             self.assertFalse((output / "trends").exists())
+            self.assertTrue((output / "assets" / "news-illustrations" / "world.jpg").is_file())
             self.assertTrue((output / "news").is_dir())
             self.assertTrue((output / "reports").is_dir())
 

@@ -531,7 +531,8 @@ a { color: inherit; }
 .portal-card-grid { gap:18px; }
 .portal-story-card { border-radius:4px; transition:transform .2s ease,box-shadow .2s ease; }
 .portal-story-card:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(16,34,58,.11); }
-.portal-card-thumb { height:190px; }
+.portal-card-thumb { height:auto; }
+.portal-card-thumb img { height:190px; }
 .portal-card-foot { padding-top:10px; border-top:1px solid #edf0f2; }
 .portal-about { border-radius:4px; }
 

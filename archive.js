@@ -1,4 +1,5 @@
 const CATEGORY_LABELS = { egypt:"مصر", arab:"العالم العربي", world:"العالم", politics:"سياسة", economy:"اقتصاد", technology:"تكنولوجيا", sports:"رياضة", reports:"تقارير ووثائقيات", videos:"فيديوهات" };
+const ILLUSTRATION_IMAGES = { egypt:"egypt", arab:"arab", world:"world", politics:"politics", economy:"economy", technology:"technology", sports:"sports", reports:"world" };
 const $ = (selector) => document.querySelector(selector);
 const state = { items: [], query: "", from: "", to: "", region: "all", category: "all" };
 function el(tag, cls = "", text = "") { const node = document.createElement(tag); if (cls) node.className = cls; if (text) node.textContent = text; return node; }
@@ -17,15 +18,18 @@ function toRecords(news, reports, updatedAt) {
     const report = reportMap.get(item.id);
     const source = report && Array.isArray(report.sources) ? report.sources.join("، ") : (item.source_name || "");
     const title = report?.title || stripSource(item.title, item.source_name) || "خبر";
-    return { id:item.id, title, summary:report?.dek || conciseSummary(item.summary, title, source), source, region:item.region || report?.region || "world", category:report ? "reports" : (item.category || item.region || "world"), date:item.published_at || report?.published_at || item.created_at || "", image:safeImage(report?.image || item.image_url), href:report ? `./reports/${item.id}.html` : `./news/${item.id}.html`, full:Boolean(report) };
+    const category = report ? "reports" : (item.category || item.region || "world");
+    const suppliedImage = safeImage(report?.image || item.image_url);
+    const image = suppliedImage || safeImage(`assets/news-illustrations/${ILLUSTRATION_IMAGES[category] || "world"}.jpg`);
+    return { id:item.id, title, summary:report?.dek || conciseSummary(item.summary, title, source), source, region:item.region || report?.region || "world", category, date:item.published_at || report?.published_at || item.created_at || "", image, imageAlt:suppliedImage ? (report?.image_alt || title) : `رسم توضيحي لقسم ${CATEGORY_LABELS[category] || "العالم"}، وليس صورة للحدث`, illustrative:!suppliedImage, href:report ? `./reports/${item.id}.html` : `./news/${item.id}.html`, full:Boolean(report) };
   });
   const seen = new Set(rows.map((row) => row.id));
-  reports.filter((report) => report && validId(report.id) && !seen.has(report.id)).forEach((report) => { const title = report.title || "تقرير"; rows.push({ id:report.id, title, summary:report.dek || "", source:Array.isArray(report.sources)?report.sources.join("، "):"", region:report.region||"world", category:"reports", date:report.published_at||updatedAt||"", image:safeImage(report.image), href:`./reports/${report.id}.html`, full:true }); });
+  reports.filter((report) => report && validId(report.id) && !seen.has(report.id)).forEach((report) => { const title = report.title || "تقرير", suppliedImage = safeImage(report.image); rows.push({ id:report.id, title, summary:report.dek || "", source:Array.isArray(report.sources)?report.sources.join("، "):"", region:report.region||"world", category:"reports", date:report.published_at||updatedAt||"", image:suppliedImage||safeImage("assets/news-illustrations/world.jpg"), imageAlt:suppliedImage?(report.image_alt||title):"رسم توضيحي لقسم التقارير، وليس صورة للحدث", illustrative:!suppliedImage, href:`./reports/${report.id}.html`, full:true }); });
   return rows.sort((a,b) => (dateValue(b.date)?.getTime()||0) - (dateValue(a.date)?.getTime()||0));
 }
 function card(item) {
   const article = el("article", "portal-story-card archive-card");
-  if (item.image) { const link = document.createElement("a"); link.href = item.href; link.className = "portal-card-thumb-link"; const figure = el("figure", "portal-card-thumb"), image = document.createElement("img"); image.src=item.image; image.alt=item.title; image.loading="lazy"; image.decoding="async"; figure.append(image); link.append(figure); article.append(link); }
+  if (item.image) { const link = document.createElement("a"); link.href = item.href; link.className = "portal-card-thumb-link"; const figure = el("figure", "portal-card-thumb"), image = document.createElement("img"); image.src=item.image; image.alt=item.imageAlt||item.title; image.loading="lazy"; image.decoding="async"; figure.append(image); if(item.illustrative)figure.append(el("figcaption","portal-image-caption","رسم توضيحي للقسم؛ لا يصوّر الحدث نفسه.")); link.append(figure); article.append(link); }
   const body=el("div","portal-card-body"), meta=el("div","portal-card-meta"); meta.append(el("span","portal-category-label",CATEGORY_LABELS[item.category]||CATEGORY_LABELS[item.region]||"خبر"),el("time","portal-date",dateLabel(item.date))); if(item.source) meta.append(el("span","portal-source",`المصدر: ${item.source}`));
   body.append(meta); const heading=el("h2","portal-card-title"), link=document.createElement("a"); link.href=item.href; link.textContent=item.title; heading.append(link); body.append(heading); if(item.summary) body.append(el("p","portal-card-summary",item.summary)); body.append(el("span","portal-content-kind",item.full?"تقرير تحريري":"موجز من الناشر")); article.append(body); return article;
 }

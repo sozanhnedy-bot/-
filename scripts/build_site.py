@@ -40,6 +40,7 @@ def build(output: Path) -> int:
         shutil.copy2(ROOT / "data" / name, output / "data" / name)
     for name in ASSET_FILES:
         shutil.copy2(ROOT / "assets" / name, output / "assets" / name)
+    shutil.copytree(ROOT / "assets" / "news-illustrations", output / "assets" / "news-illustrations", dirs_exist_ok=True)
 
     (output / ".nojekyll").touch()
     subprocess.run(
