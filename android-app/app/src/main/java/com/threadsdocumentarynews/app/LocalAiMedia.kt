@@ -171,7 +171,7 @@ object LocalAiMedia {
         if (current.protocol != "https" || current.host.isBlank()) throw IllegalArgumentException("استخدم رابط خبر يبدأ بـ HTTPS.")
         var html = ""
         var finalUrl = current
-        repeat(4) {
+        for (attempt in 0 until 4) {
             val addresses = java.net.InetAddress.getAllByName(current.host)
             if (addresses.isEmpty() || addresses.any { it.isAnyLocalAddress || it.isLoopbackAddress || it.isLinkLocalAddress || it.isSiteLocalAddress || it.isMulticastAddress }) throw IllegalArgumentException("عنوان الموقع غير مسموح لأسباب أمنية.")
             val conn = (current.openConnection() as HttpURLConnection).apply { instanceFollowRedirects = false; connectTimeout = 12000; readTimeout = 15000; requestMethod = "GET"; setRequestProperty("User-Agent", "WorldNewsAndroid/1.0"); setRequestProperty("Accept", "text/html,application/xhtml+xml") }
@@ -189,7 +189,7 @@ object LocalAiMedia {
                     conn.inputStream.use { input -> val buffer = ByteArray(8192); var total = 0; while (true) { val n = input.read(buffer); if (n < 0) break; total += n; if (total > 2500000) throw IllegalStateException("صفحة الخبر أكبر من الحد المسموح."); out.write(buffer, 0, n) } }
                     html = out.toString("UTF-8")
                     finalUrl = current
-                    return@repeat
+                    break
                 }
             } finally { conn.disconnect() }
         }
