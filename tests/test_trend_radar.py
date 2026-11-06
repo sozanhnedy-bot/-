@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime, timezone
 
-from scripts.trend_radar import build_radar, normalize_topic, score_trend
+from scripts.trend_radar import TrendLinkParser, build_radar, normalize_topic, score_trend
 
 
 class TrendRadarTests(unittest.TestCase):
@@ -11,6 +11,11 @@ class TrendRadarTests(unittest.TestCase):
     def test_rank_and_corroboration_increase_score(self):
         item = {"trend_rank": 1, "published_at": "2026-11-06T10:00:00Z"}
         self.assertGreater(score_trend(item, 1, 2), score_trend(item, 10, 0))
+
+    def test_public_x_topic_parser(self):
+        parser = TrendLinkParser()
+        parser.feed('<a href="/topic/test/"><span>#ترند_مصر</span></a><a href="/about/">About</a>')
+        self.assertEqual(parser.items, ["#ترند_مصر"])
 
     def test_radar_is_ranked_and_contains_disclaimer(self):
         trends = [
