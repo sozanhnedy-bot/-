@@ -63,12 +63,12 @@ jobs:
           APK=android-app/app/build/outputs/apk/debug/app-debug.apk
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.threadsdocumentarynews.app' versionCode='5' versionName='1.3.1'"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.threadsdocumentarynews.app' versionCode='6' versionName='1.3.2'"
 
       - name: Upload installable APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: World-News-v1.3.1-debug
+          name: Loka-AI-Newsroom-v1.3.2-debug
           path: android-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 90
