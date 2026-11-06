@@ -23,7 +23,8 @@ SOURCES_PATH = ROOT / "data" / "news_sources.json"
 OUTPUT_PATH = ROOT / "data" / "trends.json"
 USER_AGENT = "Mozilla/5.0 (compatible; LokaNewsroomTrendRadar/1.0)"
 MAX_BYTES = 2_000_000
-GOOGLE_TREND_REGIONS = (("مصر", "EG"), ("السعودية", "SA"), ("الإمارات", "AE"), ("العالم", "US"))\nX_TREND_PAGES = (
+GOOGLE_TREND_REGIONS = (("مصر", "EG"), ("السعودية", "SA"), ("الإمارات", "AE"), ("العالم", "US"))
+X_TREND_PAGES = (
     ("مصر", "https://trends24.in/egypt/"),
     ("السعودية", "https://trends24.in/saudi-arabia/"),
     ("العالم", "https://trends24.in/worldwide/"),
