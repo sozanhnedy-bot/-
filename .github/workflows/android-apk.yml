@@ -17,7 +17,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
@@ -25,10 +25,10 @@ jobs:
       FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
     steps:
       - name: Check out source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Java 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: '21'
@@ -36,12 +36,12 @@ jobs:
           cache-dependency-path: android-app/**/*.gradle*
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
         with:
           packages: 'platforms;android-35 build-tools;35.0.0'
 
       - name: Cache sherpa-onnx Android library
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: android-app/app/libs/sherpa-onnx-2.0.1.aar
           key: sherpa-onnx-2.0.1-a8d09d1d32f3eb8520482c6d3d43fae674681c5b050385967c70a3c2c9bf0ee7
@@ -70,7 +70,7 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.threadsdocumentarynews.app' versionCode='6' versionName='1.4.0'"
 
       - name: Upload installable APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: World-News-v1.4.0-debug
           path: android-app/app/build/outputs/apk/debug/app-debug.apk
