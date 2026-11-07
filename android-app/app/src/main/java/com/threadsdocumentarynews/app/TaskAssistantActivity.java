@@ -64,6 +64,7 @@ public final class TaskAssistantActivity extends Activity {
     private Spinner durationSpinner;
     private Spinner platformSpinner;
     private Spinner styleSpinner;
+    private Button selectedTemplateButton;
     private Button generateButton;
     private Button scriptModelButton;
     private Button voiceModelButton;
@@ -153,17 +154,21 @@ public final class TaskAssistantActivity extends Activity {
         addText(card, "أنشئ سكريبت ومشاهد الفيديو", 21, TEXT, true, 0, 5);
         addText(card, "اكتب الفكرة وأضف مراجع إن وجدت، ثم اختر المنصة والمدة والنبرة. ينشئ النموذج سكريبتًا ومشاهد قابلة للتعديل؛ وبعد تنزيل الصوت يمكن توليد التعليق وحفظه WAV أو تصدير المشروع PDF. لا تُنشئ هذه النسخة لقطات تصوير أو ملف MP4 نهائيًا.", 14, MUTED, false, 0, 12);
 
+        addLabel(card, "القالب");
+        addTemplateGrid(card);
+
         addLabel(card, "منصة الفيديو ونسبة العرض");
         platformSpinner = makeSpinner(new String[]{"TikTok / Reels — عمودي 9:16", "YouTube Shorts — عمودي 9:16", "فيديو أفقي — 16:9"});
         card.addView(platformSpinner, params(-1, dp(48), 0, 0, 0, 5));
 
         addLabel(card, "مدة الفيديو");
-        durationSpinner = makeSpinner(new String[]{"30 ثانية", "60 ثانية", "3 دقائق"});
+        durationSpinner = makeSpinner(new String[]{"15 ثانية", "20 ثانية", "30 ثانية", "60 ثانية", "3 دقائق", "4 دقائق", "6 دقائق", "20 دقيقة"});
         card.addView(durationSpinner, params(-1, dp(48), 0, 0, 0, 5));
 
         addLabel(card, "نبرة النص");
         styleSpinner = makeSpinner(new String[]{"وثائقي متزن", "حماسي", "خبري مباشر", "قصصي مشوق"});
         card.addView(styleSpinner, params(-1, dp(48), 0, 0, 0, 5));
+        applyTemplate(0, selectedTemplateButton);
 
         addLabel(card, "موضوع الفيديو");
         topicInput = new EditText(this);
@@ -261,6 +266,65 @@ public final class TaskAssistantActivity extends Activity {
             setStatus("تم إدخال الموضوع من رادار الترند. راجعه ثم ولّد السكريبت.", GOLD);
         }
         refreshModelButtons();
+    }
+
+    private void addTemplateGrid(LinearLayout parent) {
+        LinearLayout grid = new LinearLayout(this);
+        grid.setOrientation(LinearLayout.VERTICAL);
+        String[][] templates = {
+                {"ريلز سريع", "5 مشاهد · 30 ثانية · إيقاع حماسي"},
+                {"شورت مكثف", "3 مشاهد · 15 ثانية · هوك في أول ثانية"},
+                {"يوتيوب طويل", "8 مشاهد · 4 دقائق · شرح متدرج"},
+                {"وثائقي", "12 مشهد · 6 دقائق · 3 فصول هادئة"},
+                {"وثائقي طويل", "24 مشهد · 20 دقيقة · 5 فصول"},
+                {"إعلان منتج", "4 مشاهد · 20 ثانية · مشكلة ثم حل"}
+        };
+        for (int row = 0; row < 3; row++) {
+            LinearLayout line = new LinearLayout(this);
+            line.setOrientation(LinearLayout.HORIZONTAL);
+            for (int column = 0; column < 2; column++) {
+                int index = row * 2 + column;
+                Button template = secondaryButton(templates[index][0] + "\n" + templates[index][1]);
+                template.setTextSize(13);
+                template.setGravity(Gravity.CENTER);
+                template.setMinHeight(dp(72));
+                template.setOnClickListener(v -> applyTemplate(index, template));
+                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(0, dp(76), 1);
+                p.setMargins(column == 0 ? 0 : dp(6), dp(3), column == 1 ? 0 : dp(6), dp(3));
+                line.addView(template, p);
+                if (index == 0) selectedTemplateButton = template;
+            }
+            grid.addView(line, params(-1, dp(82), 0, 0, 0, 0));
+        }
+        parent.addView(grid, params(-1, -2, 0, 0, 0, 8));
+        applyTemplate(0, selectedTemplateButton);
+    }
+
+    private void applyTemplate(int index, Button selected) {
+        if (selectedTemplateButton != null) selectedTemplateButton.setBackground(rounded(SURFACE_ALT, LINE, 16));
+        selectedTemplateButton = selected;
+        selectedTemplateButton.setBackground(rounded(Color.rgb(55, 42, 24), GOLD_DARK, 16));
+        if (durationSpinner == null || platformSpinner == null || styleSpinner == null) return;
+        String duration;
+        String platform;
+        String style;
+        switch (index) {
+            case 1:
+                duration = "15 ثانية"; platform = "YouTube Shorts — عمودي 9:16"; style = "خبري مباشر"; break;
+            case 2:
+                duration = "4 دقائق"; platform = "فيديو أفقي — 16:9"; style = "وثائقي متزن"; break;
+            case 3:
+                duration = "6 دقائق"; platform = "فيديو أفقي — 16:9"; style = "وثائقي متزن"; break;
+            case 4:
+                duration = "20 دقيقة"; platform = "فيديو أفقي — 16:9"; style = "وثائقي متزن"; break;
+            case 5:
+                duration = "20 ثانية"; platform = "TikTok / Reels — عمودي 9:16"; style = "خبري مباشر"; break;
+            default:
+                duration = "30 ثانية"; platform = "TikTok / Reels — عمودي 9:16"; style = "حماسي";
+        }
+        setSpinnerSelection(durationSpinner, duration);
+        setSpinnerSelection(platformSpinner, platform);
+        setSpinnerSelection(styleSpinner, style);
     }
 
     private void addHero() {
