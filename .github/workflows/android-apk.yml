@@ -67,7 +67,7 @@ jobs:
           APK=android-app/app/build/outputs/apk/debug/app-debug.apk
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.threadsdocumentarynews.app' versionCode='6' versionName='1.4.0'"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.worldnews.newsapp' versionCode='6' versionName='1.4.0'"
 
       - name: Upload installable APK artifact
         uses: actions/upload-artifact@v7

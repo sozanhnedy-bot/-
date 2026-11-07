@@ -2,7 +2,7 @@
 
 ## إصدار Android
 
-الإصدار الجاري تطويره هو `1.4.0` (`versionCode 6`) مع الاحتفاظ بمعرّف الحزمة `com.threadsdocumentarynews.app`. سير GitHub Actions يبني APK تجريبيًا باسم `World-News-v1.4.0-debug` بعد نجاح اختبارات Android. هذا APK تجريبي وليس نسخة متجر.
+الإصدار الجاري تطويره هو `1.4.0` (`versionCode 6`) ومعرّف التطبيق المثبت هو `com.worldnews.newsapp` لمطابقة تطبيق Firebase المسجل. namespace الداخلي لكود Android ما زال `com.threadsdocumentarynews.app` ولا يغيّر معرّف التطبيق المثبت. سير GitHub Actions يبني APK تجريبيًا باسم `World-News-v1.4.0-debug` بعد نجاح اختبارات Android. تغيير applicationId يجعل هذا التطبيق يُعامل كتطبيق منفصل عن الإصدارات ذات المعرّف السابق عند التثبيت والتحديث. هذا APK تجريبي وليس نسخة متجر.
 
 يتحقق سير البناء من بصمة مكتبة sherpa-onnx الرسمية، ويشغّل اختبارات JVM، ويبني التطبيق ويتحقق من توقيعه. لا تُحفظ مكتبات النماذج الكبيرة أو مفاتيح Gemini في Git.
 
@@ -16,7 +16,7 @@
 
 التكامل لا يضع مفتاح Gemini في APK. يستخدم Firebase AI Logic SDK الرسمي وApp Check. قبل استخدام التحليل:
 
-1. أنشئ مشروع Firebase، وسجّل تطبيق Android بالمعرّف `com.threadsdocumentarynews.app`.
+1. سجّل تطبيق Android بالمعرّف `com.worldnews.newsapp` داخل مشروع Firebase الحالي.
 2. من Firebase AI Logic اختر Gemini Developer API، ثم فعّل الوصول إلى نموذج Gemini المجاني. لا تربط Cloud Billing إذا كنت تريد البقاء على الطبقة المجانية.
 3. فعّل Firebase App Check لتطبيق Android. عند تجربة Debug سيظهر رمز Debug App Check في Logcat؛ أضفه إلى قائمة Debug tokens في Firebase Console. لا تضع هذا الرمز في GitHub أو APK. إصدار الإنتاج يستخدم Play Integrity ويحتاج إعداد بصمة توقيع التطبيق في Firebase.
 4. استخرج `current_key` من `client[].api_key[]`، و`mobilesdk_app_id` من إعداد العميل، و`project_id` من `project_info` في إعداد تطبيق Firebase. محليًا أضفها إلى `android-app/local.properties` (وهو مستثنى من Git):
