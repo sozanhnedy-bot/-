@@ -254,6 +254,12 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.addView(outputCard, params(-1, -2, 0, dp(15), 0, 0));
 
         loadSavedProject();
+        String incomingTrend = getIntent().getStringExtra("trend_topic");
+        if (incomingTrend != null && !incomingTrend.trim().isEmpty()) {
+            topicInput.setText(incomingTrend.trim());
+            topicInput.setSelection(topicInput.length());
+            setStatus("تم إدخال الموضوع من رادار الترند. راجعه ثم ولّد السكريبت.", GOLD);
+        }
         refreshModelButtons();
     }
 

@@ -149,6 +149,17 @@ public final class PortalActivity extends Activity {
         LinearLayout.LayoutParams assistantParams = new LinearLayout.LayoutParams(0, dp(58), 1);
         assistantParams.setMargins(dp(5), dp(3), dp(5), dp(3));
         actions.addView(assistant, assistantParams);
+
+        Button radar = new Button(this);
+        radar.setText("رادار الترند");
+        radar.setTextColor(Color.WHITE);
+        radar.setAllCaps(false);
+        radar.setTextSize(13);
+        radar.setBackgroundColor(NAVY);
+        radar.setOnClickListener(v -> startActivity(new Intent(this, RadarActivity.class)));
+        LinearLayout.LayoutParams radarParams = new LinearLayout.LayoutParams(0, dp(58), 1);
+        radarParams.setMargins(dp(5), dp(3), dp(5), dp(3));
+        actions.addView(radar, radarParams);
         root.addView(actions);
 
         setContentView(root);
