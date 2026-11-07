@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.speech.tts.TextToSpeech;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextDirectionHeuristics;
@@ -36,6 +37,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.Locale;
 
 public final class TaskAssistantActivity extends Activity {
     private static final String RUNS_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/ai-task.yml";
@@ -74,6 +76,8 @@ public final class TaskAssistantActivity extends Activity {
     private TextView status;
     private TextView socialStatus;
     private MediaPlayer mediaPlayer;
+    private TextToSpeech fallbackTts;
+    private boolean fallbackTtsReady;
     private String pendingPdfText = "";
     private String pendingPdfTitle = "سكريبت World News";
     private String pendingAudioPath = "";
@@ -115,6 +119,10 @@ public final class TaskAssistantActivity extends Activity {
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         root.addView(buildBottomNav());
         setContentView(root);
+        fallbackTts = new TextToSpeech(this, result -> {
+            fallbackTtsReady = result == TextToSpeech.SUCCESS;
+            if (fallbackTtsReady) fallbackTts.setLanguage(new Locale("ar"));
+        });
         showTab(0);
     }
 
@@ -480,19 +488,17 @@ public final class TaskAssistantActivity extends Activity {
             setStatus("اكتب موضوعًا واضحًا قبل التوليد.", Color.rgb(255, 130, 115));
             return;
         }
-        if (!scriptModelReady()) {
-            setStatus("نزّل نموذج الكتابة المحلي أولًا من الزر أعلاه.", Color.rgb(255, 130, 115));
-            return;
-        }
         generateButton.setEnabled(false);
-        setStatus("يكتب النموذج على الهاتف الآن… قد يستغرق دقيقة على الأجهزة المتوسطة.", GOLD);
+        setStatus(scriptModelReady() ? "يكتب النموذج على الهاتف الآن…" : "ينشئ مسودة تشغيل سريعة دون تنزيل نموذج…", GOLD);
         String duration = String.valueOf(durationSpinner.getSelectedItem());
         String style = String.valueOf(styleSpinner.getSelectedItem());
         String platform = platformSpinner == null ? "TikTok / Reels — عمودي 9:16" : String.valueOf(platformSpinner.getSelectedItem());
         String references = referenceInput == null ? "" : referenceInput.getText().toString().trim();
         executor.execute(() -> {
             try {
-                String result = LocalAiMedia.generateScript(this, topic, duration, style, platform, references);
+                String result = scriptModelReady()
+                        ? LocalAiMedia.generateScript(this, topic, duration, style, platform, references)
+                        : fallbackScript(topic, duration, style, platform, references);
                 String generatedVoicePath = "";
                 String voiceIssue = "";
                 if (LocalAiMedia.voiceReady(this)) {
@@ -514,7 +520,7 @@ public final class TaskAssistantActivity extends Activity {
                     saveProject(false);
                     if (!finalVoicePath.isEmpty()) setStatus("اكتمل السكريبت والمشاهد وتجهيز التعليق الصوتي. راجع المعلومات قبل النشر.", GOLD);
                     else if (!finalVoiceIssue.isEmpty()) setStatus("اكتمل السكريبت، لكن تعذر تجهيز الصوت: " + finalVoiceIssue, Color.rgb(255, 190, 100));
-                    else setStatus("اكتمل السكريبت والمشاهد محليًا. نزّل Nabra لمعاينة التعليق الصوتي.", GOLD);
+                    else setStatus("اكتمل السكريبت. يمكنك معاينة الصوت المجاني المدمج في الهاتف.", GOLD);
                 });
             } catch (Exception error) {
                 mainHandler.post(() -> {
@@ -523,6 +529,28 @@ public final class TaskAssistantActivity extends Activity {
                 });
             }
         });
+    }
+
+    private String fallbackScript(String topic, String duration, String style, String platform, String references) {
+        int scenes = duration.contains("20 دقيقة") ? 24 : duration.contains("15") ? 3 : duration.contains("20") ? 4 : duration.contains("60") ? 6 : duration.contains("4") ? 8 : duration.contains("6") ? 12 : 5;
+        StringBuilder output = new StringBuilder();
+        output.append("العنوان: ").append(topic).append("\n");
+        output.append("القالب: ").append(platform).append(" — ").append(duration).append(" — ").append(style).append("\n\n");
+        output.append("نص الراوي:\n");
+        output.append("في هذا الفيديو نقترب من موضوع ").append(topic).append(" ونشرح أهم ما يحتاج المشاهد إلى معرفته ببساطة ووضوح. ");
+        output.append("سنبدأ بالسؤال الأساسي، ثم نعرض السياق والأثر، ونختم بخلاصة عملية تساعدك على تكوين رأي واعٍ.\n\n");
+        if (!references.isEmpty()) output.append("مراجع يلتزم بها النص:\n").append(references).append("\n\n");
+        output.append("تقسيم المشاهد:\n");
+        for (int i = 1; i <= scenes; i++) {
+            output.append("مشهد ").append(i).append(":\n");
+            if (i == 1) output.append("الراوي: هل تعرف لماذا أصبح ").append(topic).append(" موضوعًا مهمًا الآن؟\n");
+            else if (i == scenes) output.append("الراوي: هذه هي الخلاصة، وتابع التطورات من مصادر موثوقة قبل اتخاذ أي موقف.\n");
+            else output.append("الراوي: نوضح هنا جانبًا أساسيًا من ").append(topic).append(" مع مثال مختصر وسياق قابل للتحقق.\n");
+            output.append("الوصف البصري: لقطة مناسبة للموضوع مع عناوين قصيرة على الشاشة.\n");
+            output.append("النص على الشاشة: ").append(i == 1 ? "لماذا يهمنا هذا الموضوع؟" : "معلومة وسياق وخلاصة").append("\n\n");
+        }
+        output.append("ملاحظة: هذه مسودة تشغيل مجانية داخل الهاتف؛ راجع الحقائق والأسماء والأرقام قبل النشر.");
+        return output.toString();
     }
 
     private void saveProject(boolean showMessage) {
@@ -574,7 +602,13 @@ public final class TaskAssistantActivity extends Activity {
             return;
         }
         if (!LocalAiMedia.voiceReady(this)) {
-            setStatus("نزّل صوت Nabra العربي من الزر أعلاه أولًا.", Color.rgb(255, 130, 115));
+            if (fallbackTtsReady) {
+                fallbackTts.setLanguage(new Locale("ar"));
+                fallbackTts.speak(narrationForSpeech(scriptOutput.getText().toString()), TextToSpeech.QUEUE_FLUSH, null, "world-news-preview");
+                setStatus("يعمل التعليق الصوتي بصوت Android المجاني. صوت Nabra اختياري لتحسين الجودة.", GOLD);
+            } else {
+                setStatus("صوت Android غير مثبت على الهاتف. ثبّت حزمة صوت عربية أو نزّل Nabra.", Color.rgb(255, 130, 115));
+            }
             return;
         }
         String speech = narrationForSpeech(scriptOutput.getText().toString());
@@ -881,6 +915,11 @@ public final class TaskAssistantActivity extends Activity {
     @Override
     protected void onDestroy() {
         executor.shutdownNow();
+        if (fallbackTts != null) {
+            fallbackTts.stop();
+            fallbackTts.shutdown();
+            fallbackTts = null;
+        }
         if (mediaPlayer != null) {
             try { mediaPlayer.stop(); } catch (Exception ignored) { }
             mediaPlayer.release();
