@@ -13,6 +13,9 @@
             android:name=".TaskAssistantActivity"
             android:exported="false" />
         <activity
+            android:name=".RadarActivity"
+            android:exported="false" />
+        <activity
             android:name=".PortalActivity"
             android:exported="true">
             <intent-filter>
