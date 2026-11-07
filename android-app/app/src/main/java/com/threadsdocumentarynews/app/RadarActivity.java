@@ -25,15 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -141,7 +133,7 @@ public final class RadarActivity extends Activity {
                 } finally {
                     connection.disconnect();
                 }
-                List<Trend> trends = score(new JSONObject(new String(buffer.toByteArray(), StandardCharsets.UTF_8)).optJSONArray("items"));
+                List<TrendScorer.Trend> trends = score(new JSONObject(new String(buffer.toByteArray(), StandardCharsets.UTF_8)).optJSONArray("items"));
                 runOnUiThread(() -> render(trends));
             } catch (Exception error) {
                 runOnUiThread(() -> {
@@ -152,32 +144,18 @@ public final class RadarActivity extends Activity {
         });
     }
 
-    private List<Trend> score(JSONArray items) {
-        Map<String, Trend> scores = new HashMap<>();
-        Set<String> stop = new HashSet<>(Arrays.asList("من", "في", "على", "إلى", "عن", "مع", "هذا", "هذه", "ذلك", "التي", "الذي", "بعد", "قبل", "بين", "أمام", "خلال", "حول", "أخبار", "خبر", "اليوم", "غدًا", "قال", "وقال", "the", "and", "for", "with"));
-        if (items == null) return Collections.emptyList();
-        for (int i = 0; i < items.length(); i++) {
-            JSONObject item = items.optJSONObject(i);
-            if (item == null) continue;
-            String title = item.optString("title", "").replaceAll("[\\p{Punct}\\p{S}]", " ").trim();
-            if (title.length() < 8) continue;
-            String[] words = title.split("\\s+");
-            Set<String> seenInTitle = new HashSet<>();
-            for (String raw : words) {
-                String word = raw.trim().toLowerCase(Locale.ROOT);
-                if (word.length() < 4 || stop.contains(word) || !seenInTitle.add(word)) continue;
-                Trend trend = scores.get(word);
-                if (trend == null) { trend = new Trend(word, 0, title); scores.put(word, trend); }
-                trend.count++;
-                if (trend.example.length() > title.length()) trend.example = title;
+    private List<TrendScorer.Trend> score(JSONArray items) {
+        List<String> titles = new ArrayList<>();
+        if (items != null) {
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject item = items.optJSONObject(i);
+                if (item != null) titles.add(item.optString("title", ""));
             }
         }
-        List<Trend> result = new ArrayList<>(scores.values());
-        result.sort(Comparator.comparingInt((Trend t) -> t.count).reversed().thenComparing(t -> t.label));
-        return result.subList(0, Math.min(12, result.size()));
+        return TrendScorer.score(titles, 12);
     }
 
-    private void render(List<Trend> trends) {
+    private void render(List<TrendScorer.Trend> trends) {
         if (progress != null) progress.setVisibility(View.GONE);
         while (list.getChildCount() > 2) list.removeViewAt(2);
         if (status != null) status.setText("تم استخراج " + trends.size() + " موضوعات من الأخبار العامة. راجعها قبل استخدامها.");
@@ -185,19 +163,19 @@ public final class RadarActivity extends Activity {
             addText(list, "لا توجد بيانات كافية حاليًا.", 14, MUTED, false, 10, 0);
             return;
         }
-        for (Trend trend : trends) {
+        for (TrendScorer.Trend trend : trends) {
             LinearLayout row = new LinearLayout(this);
             row.setGravity(Gravity.CENTER_VERTICAL);
             row.setPadding(dp(12), dp(10), dp(12), dp(10));
             row.setBackground(rounded(SURFACE_ALT, LINE, 16));
             LinearLayout copy = new LinearLayout(this);
             copy.setOrientation(LinearLayout.VERTICAL);
-            addText(copy, "#" + trend.label + "  ·  " + trend.count + " إشارات", 15, TEXT, true, 0, 4);
-            addText(copy, trend.example, 12, MUTED, false, 0, 0);
+            addText(copy, "#" + trend.getLabel() + "  ·  " + trend.getCount() + " إشارات", 15, TEXT, true, 0, 4);
+            addText(copy, trend.getExample(), 12, MUTED, false, 0, 0);
             row.addView(copy, new LinearLayout.LayoutParams(0, -2, 1));
             Button use = secondaryButton("استخدم");
             row.addView(use, new LinearLayout.LayoutParams(dp(88), dp(44)));
-            use.setOnClickListener(v -> openAssistant(trend.label));
+            use.setOnClickListener(v -> openAssistant(trend.getLabel()));
             list.addView(row, params(-1, -2, 0, dp(7), 0, 0));
         }
     }
@@ -271,10 +249,4 @@ public final class RadarActivity extends Activity {
         super.onDestroy();
     }
 
-    private static final class Trend {
-        final String label;
-        int count;
-        String example;
-        Trend(String label, int count, String example) { this.label = label; this.count = count; this.example = example; }
-    }
 }
