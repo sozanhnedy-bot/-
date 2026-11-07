@@ -30,6 +30,12 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Xml;
+import org.xmlpull.v1.XmlPullParser;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.io.OutputStream;
 import java.io.FileInputStream;
@@ -61,6 +67,13 @@ public final class TaskAssistantActivity extends Activity {
     private EditText referenceInput;
     private EditText scriptOutput;
     private EditText socialDraftInput;
+    private EditText newsArticleUrlInput;
+    private EditText newsReportOutput;
+    private TextView newsReportStatus;
+    private Button newsReportButton;
+    private TextView trendsStatus;
+    private LinearLayout trendsList;
+    private Spinner trendsCountrySpinner;
     private Spinner durationSpinner;
     private Spinner platformSpinner;
     private Spinner styleSpinner;
@@ -125,6 +138,8 @@ public final class TaskAssistantActivity extends Activity {
         nav.addView(navItem("✧\nالمساعد", 0), new LinearLayout.LayoutParams(0, dp(58), 1));
         nav.addView(navItem("▱\nالمشاريع", 1), new LinearLayout.LayoutParams(0, dp(58), 1));
         nav.addView(navItem("◎\nالنشر", 2), new LinearLayout.LayoutParams(0, dp(58), 1));
+        nav.addView(navItem("▤\nالتقارير", 3), new LinearLayout.LayoutParams(0, dp(58), 1));
+        nav.addView(navItem("↗\nالترند", 4), new LinearLayout.LayoutParams(0, dp(58), 1));
         return nav;
     }
 
@@ -143,7 +158,9 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.removeAllViews();
         if (tab == 0) buildAssistantPage();
         else if (tab == 1) buildProjectsPage();
-        else buildSocialPage();
+        else if (tab == 2) buildSocialPage();
+        else if (tab == 3) buildNewsReportPage();
+        else buildTrendsPage();
         scroll.scrollTo(0, 0);
     }
 
@@ -332,6 +349,203 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.addView(card);
     }
 
+
+    private static final class TrendItem {
+        final String title;
+        final String traffic;
+        final String started;
+        final String newsTitle;
+        final String newsUrl;
+        final String newsSource;
+        TrendItem(String title, String traffic, String started, String newsTitle, String newsUrl, String newsSource) {
+            this.title = title; this.traffic = traffic; this.started = started;
+            this.newsTitle = newsTitle; this.newsUrl = newsUrl; this.newsSource = newsSource;
+        }
+    }
+
+    private void buildTrendsPage() {
+        addText(pageContent, "الترند الآن", 23, TEXT, true, 0, 5);
+        addText(pageContent, "موضوعات البحث الرائجة من Google Trends. دي مؤشرات اهتمام وبحث، مش إثبات لصحة أي خبر.", 14, MUTED, false, 0, 12);
+        LinearLayout controls = card();
+        addText(controls, "المنطقة", 14, TEXT, true, 0, 6);
+        trendsCountrySpinner = makeSpinner(new String[]{"مصر", "السعودية", "الإمارات"});
+        controls.addView(trendsCountrySpinner, params(-1, dp(48), 0, 0, 0, 8));
+        Button refresh = primaryButton("تحديث الترند");
+        controls.addView(refresh, params(-1, dp(50), 0, 0, 0, 8));
+        trendsStatus = text("اضغط تحديث لجلب أحدث قائمة متاحة.", 13, MUTED, false);
+        controls.addView(trendsStatus, params(-1, -2, 0, dp(4), 0, 0));
+        pageContent.addView(controls);
+        trendsList = new LinearLayout(this);
+        trendsList.setOrientation(LinearLayout.VERTICAL);
+        pageContent.addView(trendsList, params(-1, -2, 0, dp(12), 0, 0));
+        refresh.setOnClickListener(v -> loadTrends());
+        loadTrends();
+    }
+
+    private String selectedTrendsGeo() {
+        if (trendsCountrySpinner == null) return "EG";
+        switch (trendsCountrySpinner.getSelectedItemPosition()) {
+            case 1: return "SA";
+            case 2: return "AE";
+            default: return "EG";
+        }
+    }
+
+    private List<TrendItem> fetchGoogleTrends(String geo) throws Exception {
+        String endpoint = "https://trends.google.com/trending/rss" + (geo.isEmpty() ? "" : "?geo=" + geo);
+        HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
+        connection.setConnectTimeout(12000);
+        connection.setReadTimeout(15000);
+        connection.setRequestProperty("User-Agent", "WorldNewsAndroid/1.0");
+        connection.setRequestProperty("Accept", "application/rss+xml, application/xml, text/xml");
+        List<TrendItem> items = new ArrayList<>();
+        try (InputStream input = connection.getInputStream()) {
+            if (connection.getResponseCode() != 200) throw new IllegalStateException("مصدر الترند غير متاح الآن.");
+            XmlPullParser parser = Xml.newPullParser();
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(input, "UTF-8");
+            boolean inItem = false;
+            String title = "", traffic = "", started = "", newsTitle = "", newsUrl = "", newsSource = "";
+            String field = "";
+            int event = parser.getEventType();
+            while (event != XmlPullParser.END_DOCUMENT) {
+                if (event == XmlPullParser.START_TAG) {
+                    String name = parser.getName();
+                    if ("item".equalsIgnoreCase(name)) {
+                        inItem = true; title = ""; traffic = ""; started = ""; newsTitle = ""; newsUrl = ""; newsSource = "";
+                    } else if (inItem) {
+                        field = name;
+                    }
+                } else if (event == XmlPullParser.TEXT && inItem) {
+                    String value = parser.getText() == null ? "" : parser.getText().trim();
+                    if (!value.isEmpty()) {
+                        if ("title".equalsIgnoreCase(field) && title.isEmpty()) title = value;
+                        else if ("ht:approx_traffic".equalsIgnoreCase(field) || "approx_traffic".equalsIgnoreCase(field)) traffic = value;
+                        else if ("pubDate".equalsIgnoreCase(field)) started = value;
+                        else if ("ht:news_item_title".equalsIgnoreCase(field) || "news_item_title".equalsIgnoreCase(field)) newsTitle = value;
+                        else if ("ht:news_item_url".equalsIgnoreCase(field) || "news_item_url".equalsIgnoreCase(field)) newsUrl = value;
+                        else if ("ht:news_item_source".equalsIgnoreCase(field) || "news_item_source".equalsIgnoreCase(field)) newsSource = value;
+                    }
+                } else if (event == XmlPullParser.END_TAG && inItem) {
+                    String name = parser.getName();
+                    if ("item".equalsIgnoreCase(name)) {
+                        if (!title.isEmpty()) items.add(new TrendItem(title, traffic, started, newsTitle, newsUrl, newsSource));
+                        inItem = false;
+                    }
+                    field = "";
+                }
+                event = parser.next();
+            }
+        } finally { connection.disconnect(); }
+        return items;
+    }
+
+    private void loadTrends() {
+        if (trendsList == null || trendsStatus == null) return;
+        trendsList.removeAllViews();
+        trendsStatus.setText("جاري تحميل قائمة الترند...");
+        final String geo = selectedTrendsGeo();
+        executor.execute(() -> {
+            try {
+                List<TrendItem> items = fetchGoogleTrends(geo);
+                mainHandler.post(() -> {
+                    if (trendsList == null || trendsStatus == null) return;
+                    if (items.isEmpty()) { trendsStatus.setText("المصدر رجّع قائمة فارغة. جرّب التحديث بعد شوية."); return; }
+                    trendsStatus.setText("آخر جلب: الآن · " + items.size() + " موضوعًا · المصدر: Google Trends RSS");
+                    for (int index = 0; index < items.size(); index++) {
+                        final TrendItem item = items.get(index);
+                        LinearLayout row = card();
+                        addText(row, (index + 1) + ". " + item.title, 17, TEXT, true, 0, 5);
+                        String details = (item.traffic.isEmpty() ? "حجم البحث غير متاح" : "حركة البحث التقريبية: " + item.traffic)
+                            + (item.started.isEmpty() ? "" : "\\nبدأ: " + item.started);
+                        addText(row, details, 12, MUTED, false, 0, 8);
+                        if (!item.newsTitle.isEmpty()) addText(row, "خبر مرتبط: " + item.newsTitle + (item.newsSource.isEmpty() ? "" : " — " + item.newsSource), 13, TEXT, false, 0, 8);
+                        Button idea = secondaryButton("استخدام الترند كفكرة للسكريبت");
+                        row.addView(idea, params(-1, dp(44), 0, 0, 0, 5));
+                        idea.setOnClickListener(v -> {
+                            showTab(0);
+                            if (topicInput != null) topicInput.setText(item.title);
+                        });
+                        if (!item.newsUrl.isEmpty() && item.newsUrl.startsWith("https://")) {
+                            Button source = secondaryButton("فتح الخبر المرتبط من المصدر");
+                            row.addView(source, params(-1, dp(44), 0, 0, 0, 5));
+                            source.setOnClickListener(v -> openUrl(item.newsUrl, "تعذر فتح رابط الخبر."));
+                            Button prepare = secondaryButton("استخدام الخبر لإعداد تقرير");
+                            row.addView(prepare, params(-1, dp(44), 0, 0, 0, 0));
+                            prepare.setOnClickListener(v -> {
+                                showTab(3);
+                                if (newsArticleUrlInput != null) newsArticleUrlInput.setText(item.newsUrl);
+                            });
+                        }
+                        trendsList.addView(row, params(-1, -2, 0, 0, 0, 10));
+                    }
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> { if (trendsStatus != null) trendsStatus.setText("تعذر جلب الترند: " + (error.getMessage() == null ? "خطأ اتصال" : error.getMessage())); });
+            }
+        });
+    }
+
+    private void buildNewsReportPage() {
+        addText(pageContent, "تقرير خبر من المصدر", 22, TEXT, true, 0, 6);
+        addText(pageContent, "الصق رابط الخبر الأصلي. التطبيق يحاول قراءة نص الصفحة وبيانات الصورة، ثم يشغّل Qwen الموجود على الهاتف لإعداد مسودة عربية. لا يتم النشر من هذه الصفحة.", 14, MUTED, false, 0, 12);
+        LinearLayout card = card();
+        addText(card, "رابط الخبر HTTPS", 15, TEXT, true, 0, 6);
+        newsArticleUrlInput = new EditText(this);
+        newsArticleUrlInput.setSingleLine(true);
+        newsArticleUrlInput.setTextDirection(View.TEXT_DIRECTION_LTR);
+        newsArticleUrlInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_URI);
+        newsArticleUrlInput.setTextColor(TEXT);
+        newsArticleUrlInput.setHintTextColor(MUTED);
+        newsArticleUrlInput.setHint("https://example.com/news/article");
+        newsArticleUrlInput.setPadding(dp(12), dp(12), dp(12), dp(12));
+        newsArticleUrlInput.setBackground(rounded(SURFACE_ALT, LINE, 14));
+        card.addView(newsArticleUrlInput, params(-1, dp(52), 0, dp(6), 0, 10));
+        newsReportButton = primaryButton("جلب الخبر وإنشاء تقرير بـ Qwen");
+        card.addView(newsReportButton, params(-1, dp(52), 0, 0, 0, 8));
+        newsReportStatus = text("مستعد. يلزم تنزيل نموذج Qwen أولًا إذا لم يكن موجودًا على الهاتف.", 13, MUTED, false);
+        card.addView(newsReportStatus, params(-1, -2, 0, dp(4), 0, 8));
+        pageContent.addView(card);
+        LinearLayout outputCard = card();
+        addText(outputCard, "مسودة التقرير", 18, TEXT, true, 0, 6);
+        newsReportOutput = new EditText(this);
+        newsReportOutput.setGravity(Gravity.TOP | Gravity.RIGHT);
+        newsReportOutput.setTextDirection(View.TEXT_DIRECTION_RTL);
+        newsReportOutput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        newsReportOutput.setTextColor(TEXT);
+        newsReportOutput.setHintTextColor(MUTED);
+        newsReportOutput.setHint("سيظهر التقرير هنا بعد جلب النص وتشغيل Qwen.");
+        newsReportOutput.setMinLines(12);
+        newsReportOutput.setPadding(dp(12), dp(12), dp(12), dp(12));
+        newsReportOutput.setBackground(rounded(SURFACE_ALT, LINE, 14));
+        outputCard.addView(newsReportOutput, params(-1, -2, 0, dp(6), 0, 8));
+        Button copy = secondaryButton("نسخ التقرير للمراجعة");
+        outputCard.addView(copy, params(-1, dp(48), 0, 0, 0, 0));
+        copy.setOnClickListener(v -> { String value = newsReportOutput.getText().toString().trim(); if (value.isEmpty()) newsReportStatus.setText("لا يوجد تقرير لنسخه بعد."); else { copyToClipboard("مسودة تقرير World News", value); newsReportStatus.setText("نُسخت المسودة. راجعها قبل أي نشر."); } });
+        pageContent.addView(outputCard, params(-1, -2, 0, dp(14), 0, 0));
+        newsReportButton.setOnClickListener(v -> generateNewsReportFromUrl());
+    }
+
+    private void generateNewsReportFromUrl() {
+        String articleUrl = newsArticleUrlInput == null ? "" : newsArticleUrlInput.getText().toString().trim();
+        if (!articleUrl.startsWith("https://")) { newsReportStatus.setText("اكتب رابط الخبر كاملًا ويبدأ بـ HTTPS."); return; }
+        if (!scriptModelReady()) { newsReportStatus.setText("نزّل نموذج Qwen من تبويب المساعد أولًا."); return; }
+        newsReportButton.setEnabled(false);
+        newsReportStatus.setText("يجري جلب صفحة المصدر ثم تشغيل Qwen محليًا. قد يستغرق ذلك وقتًا على الهاتف.");
+        executor.execute(() -> {
+            try {
+                LocalAiMedia.NewsArticleMaterial material = LocalAiMedia.fetchArticleMaterial(articleUrl);
+                String report = LocalAiMedia.generateNewsReport(this, material);
+                mainHandler.post(() -> {
+                    newsReportOutput.setText("المصدر: " + material.getSourceName() + "\nالعنوان الأصلي: " + material.getTitle() + "\nرابط الخبر: " + material.getSourceUrl() + "\nصورة المصدر: " + (material.getImageUrl().isEmpty() ? "لم يعثر الموقع على صورة OG/Twitter" : material.getImageUrl()) + "\n\n" + report);
+                    newsReportStatus.setText("تم جلب نص من " + material.getSourceName() + ". " + (material.getImageUrl().isEmpty() ? "لم تُكتشف صورة من بيانات الصفحة؛ لن نضع صورة بديلة عشوائية." : "تم العثور على رابط صورة من بيانات الصفحة، ويجب مراجعتها بصريًا وحقوقيًا."));
+                    newsReportButton.setEnabled(true);
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> { newsReportStatus.setText(error.getMessage() == null ? "تعذر جلب الخبر أو تشغيل Qwen." : error.getMessage()); newsReportButton.setEnabled(true); });
+            }
+        });
+    }
     private Spinner makeSpinner(String[] values) {
         Spinner spinner = new Spinner(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, values);

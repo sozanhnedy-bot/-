@@ -163,6 +163,77 @@ object LocalAiMedia {
         }
     }
 
+    data class NewsArticleMaterial(val title: String, val sourceName: String, val sourceUrl: String, val imageUrl: String, val articleText: String)
+
+    @JvmStatic
+    fun fetchArticleMaterial(articleUrl: String): NewsArticleMaterial {
+        var current = URL(articleUrl.trim())
+        if (current.protocol != "https" || current.host.isBlank()) throw IllegalArgumentException("استخدم رابط خبر يبدأ بـ HTTPS.")
+        var html = ""
+        var finalUrl = current
+        for (attempt in 0 until 4) {
+            val addresses = java.net.InetAddress.getAllByName(current.host)
+            if (addresses.isEmpty() || addresses.any { it.isAnyLocalAddress || it.isLoopbackAddress || it.isLinkLocalAddress || it.isSiteLocalAddress || it.isMulticastAddress }) throw IllegalArgumentException("عنوان الموقع غير مسموح لأسباب أمنية.")
+            val conn = (current.openConnection() as HttpURLConnection).apply { instanceFollowRedirects = false; connectTimeout = 12000; readTimeout = 15000; requestMethod = "GET"; setRequestProperty("User-Agent", "WorldNewsAndroid/1.0"); setRequestProperty("Accept", "text/html,application/xhtml+xml") }
+            try {
+                val code = conn.responseCode
+                if (code in 300..399) {
+                    val location = conn.getHeaderField("Location") ?: throw IllegalStateException("تحويل غير مكتمل من المصدر.")
+                    val next = URL(current, location)
+                    if (next.protocol != "https" || !next.host.equals(current.host, true)) throw IllegalStateException("تم رفض تحويل إلى نطاق مختلف حفاظًا على الأمان.")
+                    current = next
+                } else {
+                    if (code !in 200..299) throw IllegalStateException("تعذر فتح صفحة الخبر (HTTP " + code + ").")
+                    if (conn.contentLengthLong > 2500000L) throw IllegalStateException("صفحة الخبر أكبر من الحد المسموح.")
+                    val out = java.io.ByteArrayOutputStream()
+                    conn.inputStream.use { input -> val buffer = ByteArray(8192); var total = 0; while (true) { val n = input.read(buffer); if (n < 0) break; total += n; if (total > 2500000) throw IllegalStateException("صفحة الخبر أكبر من الحد المسموح."); out.write(buffer, 0, n) } }
+                    html = out.toString("UTF-8")
+                    finalUrl = current
+                    break
+                }
+            } finally { conn.disconnect() }
+        }
+        if (html.isBlank()) throw IllegalStateException("لم نتمكن من قراءة صفحة الخبر.")
+        fun meta(key: String): String {
+            val tags = Regex("<meta\\b[^>]*>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL))
+            for (match in tags.findAll(html)) {
+                val tag = match.value
+                val name = Regex("""(?:property|name)\s*=\s*['"]([^'"]+)['"]""", RegexOption.IGNORE_CASE).find(tag)?.groupValues?.get(1).orEmpty()
+                if (name.equals(key, true)) return Regex("""content\s*=\s*['"]([^'"]*)['"]""", RegexOption.IGNORE_CASE).find(tag)?.groupValues?.get(1).orEmpty()
+            }
+            return ""
+        }
+        val rawTitle = meta("og:title").ifBlank { Regex("<title[^>]*>(.*?)</title>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).find(html)?.groupValues?.get(1).orEmpty() }
+        val title = android.text.Html.fromHtml(rawTitle, android.text.Html.FROM_HTML_MODE_COMPACT).toString().replace(Regex("\\s+"), " ").trim()
+        val rawImage = meta("og:image").ifBlank { meta("twitter:image") }
+        val image = if (rawImage.isBlank()) "" else try { URL(finalUrl, rawImage).let { if (it.protocol == "https") it.toString() else "" } } catch (_: Exception) { "" }
+        var body = Regex("<article\\b[^>]*>(.*?)</article>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).find(html)?.groupValues?.get(1)
+        if (body.isNullOrBlank()) body = Regex("<body\\b[^>]*>(.*?)</body>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)).find(html)?.groupValues?.get(1).orEmpty()
+        body = body.orEmpty().replace(Regex("<(script|style|nav|footer|header|aside|svg|form)\\b[^>]*>.*?</\\1>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)), " ")
+        val articleText = android.text.Html.fromHtml(body.orEmpty(), android.text.Html.FROM_HTML_MODE_COMPACT).toString().replace(Regex("[ \t]+"), " ").replace(Regex("\\n{3,}"), "\n\n").trim().take(7000)
+        if (articleText.length < 300) throw IllegalStateException("المصدر لم يعرض نصًا كافيًا داخل الصفحة؛ لن نصنع تقريرًا من العنوان وحده.")
+        return NewsArticleMaterial(title.ifBlank { "خبر من " + finalUrl.host }, finalUrl.host.removePrefix("www."), finalUrl.toString(), image, articleText)
+    }
+
+    @JvmStatic
+    fun generateNewsReport(context: Context, material: NewsArticleMaterial): String {
+        val modelFile = scriptModelFile(context)
+        if (!modelFile.isFile || modelFile.length() != QWEN_SIZE) throw IllegalStateException("نزّل نموذج Qwen المحلي أولًا.")
+        val manager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val memory = ActivityManager.MemoryInfo()
+        manager.getMemoryInfo(memory)
+        if (memory.availMem < 850L * 1024L * 1024L) throw IllegalStateException("الذاكرة الحرة قليلة لتشغيل Qwen؛ أغلق بعض التطبيقات وحاول مجددًا.")
+        val config = LlamaConfig(contextSize = 4096, threads = Runtime.getRuntime().availableProcessors().coerceIn(2, 4), gpuLayers = 0, temperature = 0.35f, topP = 0.85f, topK = 30, seed = -1)
+        return runBlocking {
+            val model = Llama.loadModel(modelFile.absolutePath, config)
+            try {
+                val systemPrompt = "أنت محرر أخبار عربي. اكتب تقريرًا صحفيًا اعتمادًا حصريًا على نص المصدر. ممنوع اختراع أسماء أو أرقام أو تواريخ أو تصريحات أو أسباب. ميّز بين المؤكد والمنسوب للمصدر والاحتمال. اكتب عنوانًا دقيقًا ومقدمة وثلاثة عناوين فرعية وفقرات، ثم قسمًا بعنوان ما الذي نعرفه يوضح حدود المعلومات. لا تنسخ فقرات المصدر حرفيًا ولا تضف معرفة من ذاكرتك. اختم بتنبيه أن التقرير مسودة مولدة محليًا وتحتاج مراجعة بشرية قبل النشر."
+                val prompt = "عنوان المصدر: " + material.title + "\nالناشر: " + material.sourceName + "\nرابط المصدر: " + material.sourceUrl + "\n\nنص الصفحة المتاح:\n" + material.articleText
+                val response = Llama.complete(model, prompt, systemPrompt, 1200)
+                response.text.trim().ifBlank { throw IllegalStateException("لم ينتج Qwen تقريرًا؛ جرّب مصدرًا آخر.") }
+            } finally { Llama.releaseModel(model) }
+        }
+    }
     @JvmStatic
     fun synthesizeArabic(context: Context, text: String): String {
         if (!voiceReady(context)) throw IllegalStateException("نزّل الصوت العربي الاحترافي أولًا.")

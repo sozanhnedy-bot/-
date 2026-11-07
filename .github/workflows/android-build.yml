@@ -20,6 +20,21 @@ jobs:
           java-version: '17'
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
+      - name: Download and verify Sherpa ONNX AAR
+        working-directory: android-app
+        run: |
+          mkdir -p app/libs
+          curl --fail --location --retry 3 --retry-delay 2 \
+            https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-2.0.1.aar \
+            --output app/libs/sherpa-onnx-2.0.1.aar
+          echo 'a8d09d1d32f3eb8520482c6d3d43fae674681c5b050385967c70a3c2c9bf0ee7  app/libs/sherpa-onnx-2.0.1.aar' | sha256sum --check --strict
       - name: Build debug APK
         working-directory: android-app
         run: chmod +x ./gradlew && ./gradlew --no-daemon assembleDebug
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: world-news-debug-apk
+          path: android-app/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
