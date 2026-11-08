@@ -271,6 +271,11 @@ public final class TaskAssistantActivity extends Activity {
         testGeminiButton = secondaryButton("اختبار صوت Gemini الآن");
         voiceTestCard.addView(testGeminiButton, params(-1, dp(48), 0, 0, 0, 6));
         testGeminiButton.setOnClickListener(v -> confirmGeminiVoiceTest());
+        if (BuildConfig.DEBUG) {
+            Button debugTokenButton = secondaryButton("إظهار رمز App Check Debug لهذا الجهاز");
+            voiceTestCard.addView(debugTokenButton, params(-1, dp(48), 0, 0, 0, 6));
+            debugTokenButton.setOnClickListener(v -> showAppCheckDebugToken());
+        }
         testNabraButton = secondaryButton("اختبار صوت Nabra المحلي");
         voiceTestCard.addView(testNabraButton, params(-1, dp(48), 0, 0, 0, 6));
         testNabraButton.setOnClickListener(v -> testNabraVoice());
@@ -881,6 +886,30 @@ public final class TaskAssistantActivity extends Activity {
 
     private String safeMessage(Exception error) {
         return error.getMessage() == null ? "سبب غير معروف" : error.getMessage();
+    }
+
+    private void showAppCheckDebugToken() {
+        setVoiceTestResult("يجري تجهيز رمز App Check لهذا الجهاز…", GOLD);
+        FirebaseAiSetup.requestDebugToken(this, (token, error) -> mainHandler.post(() -> {
+            if (isFinishing() || isDestroyed()) return;
+            if (token == null || token.trim().isEmpty()) {
+                String detail = error == null ? "أعد فتح التطبيق وحاول مرة أخرى." : error;
+                setVoiceTestResult("تعذر قراءة رمز App Check Debug: " + detail, Color.rgb(255, 130, 115));
+                return;
+            }
+            new AlertDialog.Builder(this)
+                    .setTitle("رمز App Check Debug")
+                    .setMessage("انسخ هذا الرمز إلى خانة Debug token في Firebase Console. لا تشاركه أو ترفعه إلى GitHub.\n\n" + token)
+                    .setNegativeButton("إغلاق", null)
+                    .setPositiveButton("نسخ الرمز", (dialog, which) -> {
+                        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                        if (clipboard != null) {
+                            clipboard.setPrimaryClip(ClipData.newPlainText("App Check Debug token", token));
+                            Toast.makeText(this, "تم نسخ رمز Debug. لا تشاركه مع أحد.", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .show();
+        }));
     }
 
     private void confirmGeminiVoiceTest() {

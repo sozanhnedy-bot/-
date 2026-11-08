@@ -54,6 +54,43 @@ object FirebaseAiSetup {
         }
         return true
     }
+
+    fun interface DebugTokenCallback {
+        fun onResult(token: String?, error: String?)
+    }
+
+    /**
+     * Requests a token from the debug provider and reads its locally generated secret.
+     * The preference key is an SDK implementation detail; keep this Debug-only.
+     */
+    @JvmStatic
+    fun requestDebugToken(context: Context, callback: DebugTokenCallback) {
+        if (!BuildConfig.DEBUG) {
+            callback.onResult(null, "رمز Debug متاح في نسخة الاختبار فقط.")
+            return
+        }
+        if (!initialize(context.applicationContext)) {
+            callback.onResult(null, "Firebase غير مهيأ في هذا الإصدار من التطبيق.")
+            return
+        }
+
+        val app = FirebaseApp.getInstance()
+        FirebaseAppCheck.getInstance(app).getAppCheckToken(false).addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                callback.onResult(null, task.exception?.localizedMessage ?: "تعذر طلب رمز App Check.")
+                return@addOnCompleteListener
+            }
+            val prefsName = "com.google.firebase.appcheck.debug.store.${app.persistenceKey}"
+            val secret = context.applicationContext
+                .getSharedPreferences(prefsName, Context.MODE_PRIVATE)
+                .getString("com.google.firebase.appcheck.debug.DEBUG_SECRET", null)
+            if (secret.isNullOrBlank()) {
+                callback.onResult(null, "لم يعثر التطبيق على رمز Debug المحلي.")
+            } else {
+                callback.onResult(secret, null)
+            }
+        }
+    }
 }
 
 object GeminiNewsAnalyzer {
