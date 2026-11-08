@@ -4,7 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.media.AudioAttributes;
+import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,13 +17,10 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.OpenableColumns;
-import android.text.SpannableString;
 import android.text.Layout;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.AlignmentSpan;
-import android.text.style.BackgroundColorSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
+import android.text.TextDirectionHeuristics;
+import android.text.TextUtils;
+import android.text.StaticLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -36,11 +38,10 @@ import android.widget.VideoView;
 import androidx.annotation.Nullable;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.MimeTypes;
+import androidx.media3.common.audio.GainProcessor;
+import androidx.media3.effect.CanvasOverlay;
 import androidx.media3.effect.OverlayEffect;
 import androidx.media3.effect.Presentation;
-import androidx.media3.effect.StaticOverlaySettings;
-import androidx.media3.effect.TextOverlay;
-import androidx.media3.effect.TextureOverlay;
 import androidx.media3.transformer.Composition;
 import androidx.media3.transformer.EditedMediaItem;
 import androidx.media3.transformer.EditedMediaItemSequence;
@@ -66,6 +67,7 @@ public final class VideoStudioActivity extends Activity {
     private static final int PICK_MEDIA = 5201;
     private static final int PICK_AUDIO = 5202;
     private static final int SAVE_VIDEO = 5203;
+    private static final int PICK_MUSIC = 5204;
     private static final int GOLD = Color.rgb(255, 187, 54);
     private static final int BG = Color.rgb(8, 9, 13);
     private static final int CARD = Color.rgb(20, 21, 27);
@@ -82,15 +84,19 @@ public final class VideoStudioActivity extends Activity {
     private Spinner formatSpinner;
     private TextView mediaList;
     private TextView audioName;
+    private TextView musicName;
     private TextView status;
     private ProgressBar progress;
     private Button buildButton;
     private Button saveButton;
     private Button testAudioButton;
+    private Button testMusicButton;
+    private Spinner musicVolumeSpinner;
     private FrameLayout previewFrame;
     private VideoView videoView;
     private ImageView imageView;
     private Uri audioUri;
+    private Uri musicUri;
     private File outputFile;
     private Transformer transformer;
     private boolean exporting;
@@ -146,7 +152,7 @@ public final class VideoStudioActivity extends Activity {
         tickerInput = input("آخر التطورات | أخبار العالم");
         tickerInput.setText("آخر التطورات  |  أخبار العالم");
         form.addView(tickerInput, params(-1, dp(48), 0, 4, 0, 8));
-        addText(form, "الانتقالات المتحركة بين اللقطات غير متاحة في هذا الإصدار؛ ستبقى المقاطع متتابعة مع الرسوم الإخبارية الثابتة.", 12, MUTED, false, 0, 10);
+        addText(form, "يتضمن التصدير تلاشيًا بين اللقطات وشريطًا متحركًا. مسار الخلفية اختياري، منخفض، ولا يتجاوز طول المونتاج ولا يتكرر تلقائيًا.", 12, MUTED, false, 0, 10);
 
         Button pickMedia = button("اختيار صور وفيديوهات");
         form.addView(pickMedia, params(-1, dp(50), 0, 0, 0, 6));
@@ -174,7 +180,7 @@ public final class VideoStudioActivity extends Activity {
         formatSpinner = spinner(new String[]{"رأسي 9:16", "أفقي 16:9"});
         form.addView(formatSpinner, params(-1, dp(48), 0, 4, 0, 10));
 
-        Button pickAudio = button("اختيار ملف صوت اختياري");
+        Button pickAudio = button("اختيار تعليق الراوي (اختياري)");
         form.addView(pickAudio, params(-1, dp(50), 0, 0, 0, 6));
         pickAudio.setOnClickListener(v -> openAudioPicker());
         audioName = text("لم يُضف صوت بعد.", 13, MUTED, false);
@@ -183,6 +189,19 @@ public final class VideoStudioActivity extends Activity {
         testAudioButton.setEnabled(false);
         form.addView(testAudioButton, params(-1, dp(46), 0, 0, 0, 0));
         testAudioButton.setOnClickListener(v -> testSelectedAudio());
+        addLabel(form, "موسيقى خلفية أو مؤثر صوتي منفصل");
+        Button pickMusic = secondaryButton("اختيار موسيقى أو مؤثر صوتي");
+        form.addView(pickMusic, params(-1, dp(48), 0, dp(9), 0, 5));
+        pickMusic.setOnClickListener(v -> openMusicPicker());
+        musicName = text("اختياري — لا توجد موسيقى خلفية.", 13, MUTED, false);
+        form.addView(musicName, params(-1, -2, 0, 0, 0, 5));
+        musicVolumeSpinner = spinner(new String[]{"مستوى الخلفية 10%", "مستوى الخلفية 18%", "مستوى الخلفية 28%"});
+        musicVolumeSpinner.setSelection(1);
+        form.addView(musicVolumeSpinner, params(-1, dp(46), 0, 0, 0, 5));
+        testMusicButton = secondaryButton("اختبار صوت الخلفية");
+        testMusicButton.setEnabled(false);
+        form.addView(testMusicButton, params(-1, dp(44), 0, 0, 0, 0));
+        testMusicButton.setOnClickListener(v -> testSelectedMusic());
         content.addView(form, params(-1, -2, 0, 0, 0, 12));
 
         LinearLayout previewCard = card();
@@ -254,6 +273,14 @@ public final class VideoStudioActivity extends Activity {
         startActivityForResult(intent, PICK_AUDIO);
     }
 
+    private void openMusicPicker() {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("audio/*");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+        startActivityForResult(intent, PICK_MUSIC);
+    }
+
     @Override protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != RESULT_OK || data == null) return;
@@ -273,6 +300,15 @@ public final class VideoStudioActivity extends Activity {
                 audioName.setTextColor(GOLD);
                 testAudioButton.setEnabled(true);
                 setStatus("تم اختيار ملف الصوت. اضغط اختبار الصوت قبل إنشاء الفيديو.", GOLD);
+            }
+        } else if (requestCode == PICK_MUSIC) {
+            musicUri = data.getData();
+            if (musicUri != null) {
+                persistReadPermission(musicUri, data.getFlags());
+                musicName.setText("الخلفية: " + displayName(musicUri));
+                musicName.setTextColor(GOLD);
+                testMusicButton.setEnabled(true);
+                setStatus("تم اختيار موسيقى/مؤثر خلفي. سيتم خفضه تلقائيًا ومزجه تحت صوت الراوي.", GOLD);
             }
         } else if (requestCode == SAVE_VIDEO && data.getData() != null) {
             copyOutputTo(data.getData());
@@ -342,19 +378,31 @@ public final class VideoStudioActivity extends Activity {
             setStatus("اختر ملف صوت أولًا.", RED);
             return;
         }
+        testAudioSource(audioUri, "تعليق الراوي");
+    }
+
+    private void testSelectedMusic() {
+        if (musicUri == null) {
+            setStatus("اختر موسيقى أو مؤثرًا صوتيًا أولًا.", RED);
+            return;
+        }
+        testAudioSource(musicUri, "موسيقى الخلفية");
+    }
+
+    private void testAudioSource(Uri source, String label) {
         try {
             if (audioTester != null) { audioTester.release(); audioTester = null; }
             audioTester = new MediaPlayer();
             audioTester.setAudioAttributes(new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_MEDIA)
                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build());
-            audioTester.setDataSource(this, audioUri);
+            audioTester.setDataSource(this, source);
             audioTester.setOnPreparedListener(mp -> {
                 mp.setVolume(1f, 1f);
                 mp.start();
-                setStatus("نجح اختبار الصوت وبدأ التشغيل. ارفع صوت الوسائط إذا لم تسمعه.", GOLD);
+                setStatus("نجح اختبار " + label + " وبدأ التشغيل. ارفع صوت الوسائط إذا لم تسمعه.", GOLD);
             });
-            audioTester.setOnCompletionListener(mp -> setStatus("انتهى اختبار الصوت.", GOLD));
+            audioTester.setOnCompletionListener(mp -> setStatus("انتهى اختبار " + label + ".", GOLD));
             audioTester.setOnErrorListener((mp, what, extra) -> {
                 setStatus("فشل تشغيل الصوت. رمز المشغل: " + what + "/" + extra, RED);
                 return true;
@@ -385,11 +433,28 @@ public final class VideoStudioActivity extends Activity {
             int width = vertical ? 1080 : 1920;
             int height = vertical ? 1920 : 1080;
             ArrayList<EditedMediaItem> editedItems = new ArrayList<>();
-            ArrayList<androidx.media3.common.Effect> videoEffects = new ArrayList<>();
-            videoEffects.add(Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT_WITH_CROP));
-            List<TextureOverlay> newsOverlays = createNewsOverlays();
-            if (!newsOverlays.isEmpty()) videoEffects.add(new OverlayEffect(newsOverlays));
+            ArrayList<Long> mediaDurationsMs = new ArrayList<>();
+            long videoDurationMs = 0L;
+            boolean allDurationsKnown = true;
             for (Uri uri : mediaUris) {
+                String mime = getContentResolver().getType(uri);
+                long clipDuration = mime != null && mime.startsWith("image/")
+                        ? imageSeconds * 1000L : getMediaDurationMs(uri);
+                mediaDurationsMs.add(clipDuration);
+                if (clipDuration <= 0L) allDurationsKnown = false;
+                else videoDurationMs += clipDuration;
+            }
+            if (!allDurationsKnown) {
+                int unknownIndex = mediaDurationsMs.indexOf(0L);
+                String unknownName = unknownIndex >= 0 ? displayName(mediaUris.get(unknownIndex)) : "أحد المقاطع";
+                throw new IllegalStateException("لم أستطع قراءة مدة «" + unknownName + "»، لذلك أوقفت التصدير بدل عمل انتقالات/صوت غير متزامن. اختر ملفًا محليًا بصيغة MP4 ثم حاول مرة أخرى.");
+            }
+            final long compositionDurationMs = videoDurationMs;
+            String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 90);
+            String lowerThird = captionInput == null ? "" : compactText(captionInput.getText().toString(), 120);
+            String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 120);
+            for (int mediaIndex = 0; mediaIndex < mediaUris.size(); mediaIndex++) {
+                Uri uri = mediaUris.get(mediaIndex);
                 String type = getContentResolver().getType(uri);
                 MediaItem mediaItem;
                 EditedMediaItem.Builder edited;
@@ -400,18 +465,55 @@ public final class VideoStudioActivity extends Activity {
                     mediaItem = MediaItem.fromUri(uri);
                     edited = new EditedMediaItem.Builder(mediaItem).setRemoveAudio(true);
                 }
+                ArrayList<androidx.media3.common.Effect> videoEffects = new ArrayList<>();
+                videoEffects.add(Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT_WITH_CROP));
                 edited.setEffects(new Effects(Collections.emptyList(), videoEffects));
                 editedItems.add(edited.build());
             }
             EditedMediaItemSequence videoSequence = EditedMediaItemSequence.withVideoFrom(editedItems);
-            Composition composition;
+            ArrayList<EditedMediaItemSequence> compositionSequences = new ArrayList<>();
+            compositionSequences.add(videoSequence);
             if (audioUri != null) {
-                EditedMediaItem audioItem = new EditedMediaItem.Builder(MediaItem.fromUri(audioUri)).build();
+                MediaItem.Builder narrationBuilder = new MediaItem.Builder().setUri(audioUri);
+                if (videoDurationMs > 0L) narrationBuilder.setClippingConfiguration(
+                        new MediaItem.ClippingConfiguration.Builder().setEndPositionMs(videoDurationMs).build());
+                EditedMediaItem audioItem = new EditedMediaItem.Builder(narrationBuilder.build()).build();
                 EditedMediaItemSequence audioSequence = EditedMediaItemSequence.withAudioFrom(Collections.singletonList(audioItem)).buildUpon().setIsLooping(false).build();
-                composition = new Composition.Builder(videoSequence, audioSequence).build();
-            } else {
-                composition = new Composition.Builder(videoSequence).build();
+                compositionSequences.add(audioSequence);
             }
+            if (musicUri != null) {
+                if (videoDurationMs <= 0L) throw new IllegalStateException("تعذر تحديد مدة الفيديو لمزامنة الموسيقى. جرّب اختيار فيديو محلي بصيغة MP4 أو احذف مسار الخلفية ثم أعد التصدير.");
+                long sourceMusicDurationMs = getMediaDurationMs(musicUri);
+                if (sourceMusicDurationMs <= 0L) throw new IllegalStateException("تعذر قراءة مدة ملف الخلفية الصوتية. اختر MP3 أو WAV محليًا ثم أعد المحاولة.");
+                final long musicTrackDurationMs = Math.min(sourceMusicDurationMs, videoDurationMs);
+                MediaItem.Builder musicBuilder = new MediaItem.Builder().setUri(musicUri);
+                musicBuilder.setClippingConfiguration(
+                        new MediaItem.ClippingConfiguration.Builder().setEndPositionMs(musicTrackDurationMs).build());
+                float musicGain = selectedMusicGain();
+                GainProcessor gainProcessor = new GainProcessor(new GainProcessor.GainProvider() {
+                    @Override public float getGainFactorAtSamplePosition(long samplePosition, int sampleRate) {
+                        if (sampleRate <= 0) return musicGain;
+                        double elapsedUs = samplePosition * 1_000_000.0 / sampleRate;
+                        long totalDurationUs = musicTrackDurationMs * 1000L;
+                        return VideoTransitionMath.musicGainAt((long) elapsedUs, totalDurationUs, musicGain);
+                    }
+                    @Override public long isUnityUntil(long samplePosition, int sampleRate) {
+                        return Long.MIN_VALUE; // The background bed is always below unity gain.
+                    }
+                });
+                EditedMediaItem musicItem = new EditedMediaItem.Builder(musicBuilder.build())
+                        .setEffects(new Effects(Collections.singletonList(gainProcessor), Collections.emptyList())).build();
+                EditedMediaItemSequence musicSequence = EditedMediaItemSequence.withAudioFrom(Collections.singletonList(musicItem))
+                        .buildUpon().setIsLooping(false).build();
+                compositionSequences.add(musicSequence);
+            }
+            ArrayList<Long> clipDurationsUs = new ArrayList<>();
+            for (Long durationMs : mediaDurationsMs) clipDurationsUs.add(durationMs > 0L ? durationMs * 1000L : 0L);
+            List<androidx.media3.common.Effect> compositionEffects = Collections.singletonList(
+                    new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
+            Composition composition = new Composition.Builder(compositionSequences)
+                    .setEffects(new Effects(Collections.emptyList(), compositionEffects))
+                    .build();
             File directory = getExternalFilesDir(Environment.DIRECTORY_MOVIES);
             if (directory == null) directory = getFilesDir();
             File outputDir = new File(directory, "WorldNews");
@@ -474,35 +576,146 @@ public final class VideoStudioActivity extends Activity {
         });
     }
 
-    private List<TextureOverlay> createNewsOverlays() {
-        ArrayList<TextureOverlay> overlays = new ArrayList<>();
-        String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 72);
-        String lowerThird = captionInput == null ? "" : compactText(captionInput.getText().toString(), 100);
-        String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 100);
-        if (!headline.isEmpty()) overlays.add(newsTextOverlay("عاجل  |  " + headline, 42,
-                Color.rgb(255, 255, 255), Color.rgb(171, 32, 37), 0.82f, true));
-        if (!lowerThird.isEmpty()) overlays.add(newsTextOverlay(lowerThird, 34,
-                Color.rgb(255, 255, 255), Color.rgb(16, 35, 54), -0.62f, false));
-        if (!ticker.isEmpty()) overlays.add(newsTextOverlay("◀  " + ticker + "   |   WORLD NEWS", 30,
-                Color.rgb(255, 255, 255), Color.rgb(171, 32, 37), -0.88f, true));
-        return overlays;
+    private float selectedMusicGain() {
+        int position = musicVolumeSpinner == null ? 1 : musicVolumeSpinner.getSelectedItemPosition();
+        return position == 0 ? 0.10f : position == 2 ? 0.28f : 0.18f;
     }
 
-    private TextureOverlay newsTextOverlay(String value, int textSizeSp, int foreground, int background,
-                                           float verticalAnchor, boolean bold) {
-        String padded = "  " + value + "  ";
-        SpannableString styled = new SpannableString(padded);
-        styled.setSpan(new ForegroundColorSpan(foreground), 0, padded.length(), 0);
-        styled.setSpan(new BackgroundColorSpan(background), 0, padded.length(), 0);
-        styled.setSpan(new AbsoluteSizeSpan(textSizeSp, true), 0, padded.length(), 0);
-        styled.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), 0, padded.length(), 0);
-        if (bold) styled.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, padded.length(), 0);
-        boolean top = verticalAnchor > 0;
-        StaticOverlaySettings settings = new StaticOverlaySettings.Builder()
-                .setBackgroundFrameAnchor(0.0f, verticalAnchor)
-                .setOverlayFrameAnchor(0.0f, top ? 1.0f : -1.0f)
-                .build();
-        return TextOverlay.createStaticTextOverlay(styled, settings);
+    private long getMediaDurationMs(Uri uri) {
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        try {
+            retriever.setDataSource(this, uri);
+            String duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            return duration == null ? 0L : Math.max(0L, Long.parseLong(duration));
+        } catch (Exception ignored) {
+            return 0L;
+        } finally {
+            try { retriever.release(); } catch (Exception ignored) { }
+        }
+    }
+
+    private final class NewsroomCanvasOverlay extends CanvasOverlay {
+        private final String headline;
+        private final String lowerThird;
+        private final String ticker;
+        private final List<Long> clipDurationsUs;
+        private int canvasWidth;
+        private int canvasHeight;
+        private StaticLayout headlineLayout;
+        private StaticLayout lowerThirdLayout;
+        private final Paint shapePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint tickerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker, List<Long> clipDurationsUs) {
+            super(false);
+            this.headline = headline.isEmpty() ? "أخبار العالم" : headline;
+            this.lowerThird = lowerThird;
+            this.ticker = ticker.isEmpty() ? "آخر التطورات" : ticker;
+            this.clipDurationsUs = new ArrayList<>(clipDurationsUs);
+            tickerPaint.setColor(Color.WHITE);
+            tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+            tickerPaint.setTextAlign(Paint.Align.LEFT);
+            blackPaint.setColor(Color.BLACK);
+        }
+
+        @Override public void setCanvasSize(int width, int height) {
+            super.setCanvasSize(width, height);
+            canvasWidth = width;
+            canvasHeight = height;
+            float shortSide = Math.min(width, height);
+            headlineLayout = makeTextLayout("عاجل  |  " + headline, shortSide * 0.043f, width * 0.86f, 2);
+            lowerThirdLayout = makeTextLayout(lowerThird, shortSide * 0.034f, width * 0.82f, 2);
+            tickerPaint.setTextSize(shortSide * 0.031f);
+        }
+
+        @Override public void onDraw(Canvas canvas, long presentationTimeUs) {
+            int width = canvas.getWidth();
+            int height = canvas.getHeight();
+            if (width <= 0 || height <= 0) return;
+            canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
+            if (canvasWidth != width || canvasHeight != height || headlineLayout == null) setCanvasSize(width, height);
+            float shortSide = Math.min(width, height);
+            float margin = width * 0.045f;
+
+            RectF titleBox = new RectF(margin, height * 0.045f, width - margin, height * 0.045f + shortSide * 0.13f);
+            shapePaint.setColor(Color.rgb(182, 31, 42));
+            canvas.drawRoundRect(titleBox, shortSide * 0.018f, shortSide * 0.018f, shapePaint);
+            drawCenteredLayout(canvas, headlineLayout, titleBox);
+
+            if (!lowerThird.isEmpty()) {
+                RectF lowerBox = new RectF(width * 0.055f, height * 0.715f, width * 0.945f, height * 0.85f);
+                shapePaint.setColor(Color.argb(235, 11, 29, 47));
+                canvas.drawRoundRect(lowerBox, shortSide * 0.014f, shortSide * 0.014f, shapePaint);
+                shapePaint.setColor(Color.rgb(255, 187, 54));
+                canvas.drawRect(lowerBox.right - shortSide * 0.012f, lowerBox.top, lowerBox.right, lowerBox.bottom, shapePaint);
+                drawCenteredLayout(canvas, lowerThirdLayout, lowerBox);
+            }
+
+            float tickerTop = height * 0.905f;
+            shapePaint.setColor(Color.argb(242, 15, 27, 40));
+            canvas.drawRect(0, tickerTop, width, height, shapePaint);
+            shapePaint.setColor(Color.rgb(255, 187, 54));
+            canvas.drawRect(0, tickerTop, width, Math.max(tickerTop + shortSide * 0.005f, height * 0.909f), shapePaint);
+            String movingText = "◀  " + ticker + "   •   WORLD NEWS   •   " + ticker + "   ◀";
+            float textWidth = tickerPaint.measureText(movingText);
+            if (textWidth > 0f) {
+                float offset = VideoTransitionMath.tickerOffset(presentationTimeUs, textWidth, shortSide * 0.11f);
+                float baseline = tickerTop + (height - tickerTop) * 0.68f;
+                for (float x = width - offset; x > -textWidth; x -= textWidth) canvas.drawText(movingText, x, baseline, tickerPaint);
+            }
+
+            long localTimeUs = 0L;
+            long clipEndUs = 0L;
+            boolean hasKnownDurations = false;
+            for (Long clipDurationUs : clipDurationsUs) {
+                long durationUs = clipDurationUs == null ? 0L : clipDurationUs;
+                if (durationUs <= 0L) continue;
+                hasKnownDurations = true;
+                clipEndUs += durationUs;
+                if (presentationTimeUs <= clipEndUs) {
+                    localTimeUs = Math.max(0L, presentationTimeUs - (clipEndUs - durationUs));
+                    int alpha = VideoTransitionMath.blackAlphaAt(localTimeUs, durationUs);
+                    if (alpha > 0) {
+                        blackPaint.setAlpha(alpha);
+                        canvas.drawRect(0, 0, width, height, blackPaint);
+                        blackPaint.setAlpha(255);
+                    }
+                    break;
+                }
+            }
+            if (!hasKnownDurations) {
+                int alpha = VideoTransitionMath.blackAlphaAt(presentationTimeUs, 0L);
+                if (alpha > 0) {
+                    blackPaint.setAlpha(alpha);
+                    canvas.drawRect(0, 0, width, height, blackPaint);
+                    blackPaint.setAlpha(255);
+                }
+            }
+        }
+
+        private StaticLayout makeTextLayout(String value, float textSize, float layoutWidth, int maxLines) {
+            android.text.TextPaint paint = new android.text.TextPaint(Paint.ANTI_ALIAS_FLAG);
+            paint.setColor(Color.WHITE);
+            paint.setTextSize(textSize);
+            paint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+            return StaticLayout.Builder.obtain(value, 0, value.length(), paint, Math.max(1, (int) layoutWidth))
+                    .setAlignment(Layout.Alignment.ALIGN_CENTER)
+                    .setTextDirection(TextDirectionHeuristics.RTL)
+                    .setIncludePad(false)
+                    .setMaxLines(maxLines)
+                    .setEllipsize(TextUtils.TruncateAt.END)
+                    .build();
+        }
+
+        private void drawCenteredLayout(Canvas canvas, StaticLayout layout, RectF bounds) {
+            if (layout == null) return;
+            float y = bounds.top + Math.max(0f, (bounds.height() - layout.getHeight()) / 2f);
+            canvas.save();
+            canvas.translate(bounds.left + (bounds.width() - layout.getWidth()) / 2f, y);
+            layout.draw(canvas);
+            canvas.restore();
+        }
     }
 
     private String compactText(String raw, int maxLength) {
@@ -630,7 +843,21 @@ public final class VideoStudioActivity extends Activity {
 
     private Spinner spinner(String[] values) {
         Spinner spinner = new Spinner(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, values);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values) {
+            @Override public View getView(int position, View convertView, android.view.ViewGroup parent) {
+                TextView view = (TextView) super.getView(position, convertView, parent);
+                view.setTextColor(WHITE);
+                view.setPadding(dp(12), dp(7), dp(12), dp(7));
+                return view;
+            }
+            @Override public View getDropDownView(int position, View convertView, android.view.ViewGroup parent) {
+                TextView view = (TextView) super.getDropDownView(position, convertView, parent);
+                view.setTextColor(WHITE);
+                view.setBackgroundColor(CARD);
+                view.setPadding(dp(12), dp(10), dp(12), dp(10));
+                return view;
+            }
+        };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         return spinner;
