@@ -430,8 +430,9 @@ public final class VideoStudioActivity extends Activity {
         try {
             int imageSeconds = imageDurationSpinner.getSelectedItemPosition() + 2;
             boolean vertical = formatSpinner.getSelectedItemPosition() == 0;
-            int width = vertical ? 1080 : 1920;
-            int height = vertical ? 1920 : 1080;
+            // 720p substantially reduces GL texture memory and frame-processing load on phones.
+            int width = vertical ? 720 : 1280;
+            int height = vertical ? 1280 : 720;
             ArrayList<EditedMediaItem> editedItems = new ArrayList<>();
             ArrayList<Long> mediaDurationsMs = new ArrayList<>();
             long videoDurationMs = 0L;
@@ -460,7 +461,7 @@ public final class VideoStudioActivity extends Activity {
                 EditedMediaItem.Builder edited;
                 if (type != null && type.startsWith("image/")) {
                     mediaItem = new MediaItem.Builder().setUri(uri).setImageDurationMs(imageSeconds * 1000L).build();
-                    edited = new EditedMediaItem.Builder(mediaItem).setFrameRate(30);
+                    edited = new EditedMediaItem.Builder(mediaItem).setFrameRate(24);
                 } else {
                     mediaItem = MediaItem.fromUri(uri);
                     edited = new EditedMediaItem.Builder(mediaItem).setRemoveAudio(true);
@@ -544,7 +545,7 @@ public final class VideoStudioActivity extends Activity {
                             progress.setVisibility(View.GONE);
                             buildButton.setEnabled(true);
                             saveButton.setEnabled(false);
-                            setStatus("فشل إنشاء MP4: " + safeMessage(exception) + " — جرّب تقليل الملفات أو استخدام فيديو MP4/H.264.", RED);
+                            setStatus("فشل إنشاء MP4: " + exportErrorDetails(exception) + " — جرّب تقليل الملفات أو استخدام فيديو MP4/H.264.", RED);
                         }
                     }).build();
             transformer.start(composition, outputFile.getAbsolutePath());
@@ -787,7 +788,20 @@ public final class VideoStudioActivity extends Activity {
         return String.format(java.util.Locale.US, "%.1f ميغابايت", bytes / (1024.0 * 1024.0));
     }
 
-    private String safeMessage(Exception error) {
+    private String exportErrorDetails(ExportException error) {
+        StringBuilder details = new StringBuilder(safeMessage(error));
+        Throwable cause = error.getCause();
+        int depth = 0;
+        while (cause != null && depth < 3) {
+            String causeMessage = safeMessage(cause);
+            if (!causeMessage.isEmpty()) details.append(" ← ").append(causeMessage);
+            cause = cause.getCause();
+            depth++;
+        }
+        return details.substring(0, Math.min(700, details.length()));
+    }
+
+    private String safeMessage(Throwable error) {
         String message = error.getMessage();
         if (message == null || message.trim().isEmpty()) return error.getClass().getSimpleName();
         return message.replaceAll("(?i)(bearer\\s+)[A-Za-z0-9._-]+", "$1[محذوف]").substring(0, Math.min(350, message.length()));
