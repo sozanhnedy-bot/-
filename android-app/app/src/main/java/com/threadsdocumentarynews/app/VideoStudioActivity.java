@@ -152,7 +152,7 @@ public final class VideoStudioActivity extends Activity {
         tickerInput = input("آخر التطورات | أخبار العالم");
         tickerInput.setText("آخر التطورات  |  أخبار العالم");
         form.addView(tickerInput, params(-1, dp(48), 0, 4, 0, 8));
-        addText(form, "يتضمن التصدير تلاشيًا بين اللقطات، شريطًا متحركًا، ومزجًا اختياريًا لموسيقى خلفية منخفضة تحت صوت الراوي.", 12, MUTED, false, 0, 10);
+        addText(form, "يتضمن التصدير تلاشيًا بين اللقطات وشريطًا متحركًا. مسار الخلفية اختياري، منخفض، ولا يتجاوز طول المونتاج ولا يتكرر تلقائيًا.", 12, MUTED, false, 0, 10);
 
         Button pickMedia = button("اختيار صور وفيديوهات");
         form.addView(pickMedia, params(-1, dp(50), 0, 0, 0, 6));
@@ -445,8 +445,9 @@ public final class VideoStudioActivity extends Activity {
                 else videoDurationMs += clipDuration;
             }
             if (!allDurationsKnown) {
-                videoDurationMs = 0L;
-                for (int i = 0; i < mediaDurationsMs.size(); i++) mediaDurationsMs.set(i, 0L);
+                int unknownIndex = mediaDurationsMs.indexOf(0L);
+                String unknownName = unknownIndex >= 0 ? displayName(mediaUris.get(unknownIndex)) : "أحد المقاطع";
+                throw new IllegalStateException("لم أستطع قراءة مدة «" + unknownName + "»، لذلك أوقفت التصدير بدل عمل انتقالات/صوت غير متزامن. اختر ملفًا محليًا بصيغة MP4 ثم حاول مرة أخرى.");
             }
             final long compositionDurationMs = videoDurationMs;
             String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 90);
@@ -482,15 +483,18 @@ public final class VideoStudioActivity extends Activity {
             }
             if (musicUri != null) {
                 if (videoDurationMs <= 0L) throw new IllegalStateException("تعذر تحديد مدة الفيديو لمزامنة الموسيقى. جرّب اختيار فيديو محلي بصيغة MP4 أو احذف مسار الخلفية ثم أعد التصدير.");
+                long sourceMusicDurationMs = getMediaDurationMs(musicUri);
+                if (sourceMusicDurationMs <= 0L) throw new IllegalStateException("تعذر قراءة مدة ملف الخلفية الصوتية. اختر MP3 أو WAV محليًا ثم أعد المحاولة.");
+                final long musicTrackDurationMs = Math.min(sourceMusicDurationMs, videoDurationMs);
                 MediaItem.Builder musicBuilder = new MediaItem.Builder().setUri(musicUri);
-                if (videoDurationMs > 0L) musicBuilder.setClippingConfiguration(
-                        new MediaItem.ClippingConfiguration.Builder().setEndPositionMs(videoDurationMs).build());
+                musicBuilder.setClippingConfiguration(
+                        new MediaItem.ClippingConfiguration.Builder().setEndPositionMs(musicTrackDurationMs).build());
                 float musicGain = selectedMusicGain();
                 GainProcessor gainProcessor = new GainProcessor(new GainProcessor.GainProvider() {
                     @Override public float getGainFactorAtSamplePosition(long samplePosition, int sampleRate) {
                         if (sampleRate <= 0) return musicGain;
                         double elapsedUs = samplePosition * 1_000_000.0 / sampleRate;
-                        long totalDurationUs = compositionDurationMs > 0L ? compositionDurationMs * 1000L : 0L;
+                        long totalDurationUs = musicTrackDurationMs * 1000L;
                         return VideoTransitionMath.musicGainAt((long) elapsedUs, totalDurationUs, musicGain);
                     }
                     @Override public long isUnityUntil(long samplePosition, int sampleRate) {
@@ -500,7 +504,7 @@ public final class VideoStudioActivity extends Activity {
                 EditedMediaItem musicItem = new EditedMediaItem.Builder(musicBuilder.build())
                         .setEffects(new Effects(Collections.singletonList(gainProcessor), Collections.emptyList())).build();
                 EditedMediaItemSequence musicSequence = EditedMediaItemSequence.withAudioFrom(Collections.singletonList(musicItem))
-                        .buildUpon().setIsLooping(videoDurationMs > 0L).build();
+                        .buildUpon().setIsLooping(false).build();
                 compositionSequences.add(musicSequence);
             }
             ArrayList<Long> clipDurationsUs = new ArrayList<>();

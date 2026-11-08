@@ -17,7 +17,7 @@ class VideoTransitionMathTest {
     }
 
     @Test
-    fun clipsShorterThanTwiceTheFadeUseTheStrongerEdgeAlpha() {
+    fun clipsShorterThanTwiceTheFadeCombineBothEdgeFades() {
         assertEquals(128, VideoTransitionMath.blackAlphaAt(225_000L, 450_000L))
     }
 
