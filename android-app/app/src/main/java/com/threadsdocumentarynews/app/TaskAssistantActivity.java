@@ -694,22 +694,22 @@ public final class TaskAssistantActivity extends Activity {
     private void downloadVoiceModel() {
         if (voiceModelButton != null) voiceModelButton.setEnabled(false);
         setVoiceTestButtonsEnabled(false);
-        setStatus("جارٍ تنزيل الصوت العربي… 0%", GOLD);
+        setStatus("جارٍ تنزيل وتجهيز الصوت العربي… 0%", GOLD);
         executor.execute(() -> {
             try {
-                LocalAiMedia.ProgressListener listener = percent -> mainHandler.post(() -> setStatus("جارٍ تنزيل الصوت العربي… " + percent + "%", GOLD));
+                LocalAiMedia.ProgressListener listener = percent -> mainHandler.post(() -> setStatus("جارٍ تنزيل وتجهيز الصوت العربي… " + percent + "%", GOLD));
                 LocalAiMedia.downloadVoiceModel(this, listener);
                 mainHandler.post(() -> {
                     if (voiceModelButton != null) voiceModelButton.setEnabled(true);
                     refreshModelButtons();
                     setVoiceTestButtonsEnabled(true);
-                    setVoiceTestResult("اكتمل تنزيل Nabra. اضغط «اختبار صوت Nabra المحلي» لتجربته دون إنترنت.", GOLD);
+                    setVoiceTestResult("اكتمل تنزيل وتجهيز Nabra. اضغط «اختبار صوت Nabra المحلي» لتجربته دون إنترنت.", GOLD);
                 });
             } catch (Exception error) {
                 mainHandler.post(() -> {
                     if (voiceModelButton != null) voiceModelButton.setEnabled(true);
                     setVoiceTestButtonsEnabled(true);
-                    setVoiceTestResult(error.getMessage() == null ? "تعذر تنزيل Nabra." : error.getMessage(), Color.rgb(255, 130, 115));
+                    setVoiceTestResult(error.getMessage() == null ? "تعذر تنزيل أو تجهيز Nabra." : "تعذر تنزيل أو تجهيز Nabra: " + error.getMessage(), Color.rgb(255, 130, 115));
                 });
             }
         });
