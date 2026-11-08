@@ -12,6 +12,13 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.OpenableColumns;
+import android.text.SpannableString;
+import android.text.Layout;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.AlignmentSpan;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,7 +36,11 @@ import android.widget.VideoView;
 import androidx.annotation.Nullable;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.MimeTypes;
+import androidx.media3.effect.OverlayEffect;
 import androidx.media3.effect.Presentation;
+import androidx.media3.effect.StaticOverlaySettings;
+import androidx.media3.effect.TextOverlay;
+import androidx.media3.effect.TextureOverlay;
 import androidx.media3.transformer.Composition;
 import androidx.media3.transformer.EditedMediaItem;
 import androidx.media3.transformer.EditedMediaItemSequence;
@@ -66,6 +77,7 @@ public final class VideoStudioActivity extends Activity {
     private final Handler handler = new Handler(Looper.getMainLooper());
     private EditText titleInput;
     private EditText captionInput;
+    private EditText tickerInput;
     private Spinner imageDurationSpinner;
     private Spinner formatSpinner;
     private TextView mediaList;
@@ -121,15 +133,20 @@ public final class VideoStudioActivity extends Activity {
 
         LinearLayout form = card();
         addText(form, "مشروع MP4 جديد", 20, WHITE, true, 0, 5);
-        addText(form, "اختَر الصور والفيديوهات بالترتيب، ثم أضف صوتًا اختياريًا. المعالجة والتصدير يتمان محليًا على الهاتف.", 13, MUTED, false, 0, 10);
+        addText(form, "اختَر الصور والفيديوهات بالترتيب. سيضيف الاستوديو عنوانًا وشريط أخبار داخل الصورة، ويرفق التعليق الصوتي الذي أنشأته في المساعد.", 13, MUTED, false, 0, 10);
         addLabel(form, "عنوان الفيديو");
         titleInput = input("عنوان الخبر أو الترند");
         form.addView(titleInput, params(-1, dp(48), 0, 4, 0, 8));
         addLabel(form, "نص الخبر أو التعليق — اختياري");
-        captionInput = input("اكتب نصًا للرجوع إليه أو أضف نص الراوي لاحقًا");
+        captionInput = input("عنوان فرعي قصير يظهر داخل الفيديو");
         captionInput.setGravity(Gravity.TOP | Gravity.RIGHT);
         captionInput.setMinLines(3);
         form.addView(captionInput, params(-1, -2, 0, 4, 0, 10));
+        addLabel(form, "شريط الأخبار أسفل الفيديو");
+        tickerInput = input("آخر التطورات | أخبار العالم");
+        tickerInput.setText("آخر التطورات  |  أخبار العالم");
+        form.addView(tickerInput, params(-1, dp(48), 0, 4, 0, 8));
+        addText(form, "الانتقالات المتحركة بين اللقطات غير متاحة في هذا الإصدار؛ ستبقى المقاطع متتابعة مع الرسوم الإخبارية الثابتة.", 12, MUTED, false, 0, 10);
 
         Button pickMedia = button("اختيار صور وفيديوهات");
         form.addView(pickMedia, params(-1, dp(50), 0, 0, 0, 6));
@@ -202,7 +219,7 @@ public final class VideoStudioActivity extends Activity {
         String incomingTitle = getIntent().getStringExtra(EXTRA_TREND_TITLE);
         if (incomingTitle != null && !incomingTitle.trim().isEmpty()) titleInput.setText(incomingTitle.trim());
         String incomingScript = getIntent().getStringExtra(EXTRA_SCRIPT_TEXT);
-        if (incomingScript != null && !incomingScript.trim().isEmpty()) captionInput.setText(incomingScript.trim());
+        if (incomingScript != null && !incomingScript.trim().isEmpty()) captionInput.setText(defaultLowerThird(incomingScript));
         String incomingSource = getIntent().getStringExtra(EXTRA_TREND_SOURCE);
         String incomingAudioPath = getIntent().getStringExtra(EXTRA_AUDIO_PATH);
         if (incomingAudioPath != null && !incomingAudioPath.trim().isEmpty()) {
@@ -368,8 +385,10 @@ public final class VideoStudioActivity extends Activity {
             int width = vertical ? 1080 : 1920;
             int height = vertical ? 1920 : 1080;
             ArrayList<EditedMediaItem> editedItems = new ArrayList<>();
-            List<androidx.media3.common.Effect> videoEffects = Collections.singletonList(
-                    Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT_WITH_CROP));
+            ArrayList<androidx.media3.common.Effect> videoEffects = new ArrayList<>();
+            videoEffects.add(Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT_WITH_CROP));
+            List<TextureOverlay> newsOverlays = createNewsOverlays();
+            if (!newsOverlays.isEmpty()) videoEffects.add(new OverlayEffect(newsOverlays));
             for (Uri uri : mediaUris) {
                 String type = getContentResolver().getType(uri);
                 MediaItem mediaItem;
@@ -453,6 +472,52 @@ public final class VideoStudioActivity extends Activity {
             setStatus("تم إنشاء الملف لكن تعذرت معاينته داخل التطبيق. احفظه وجرب مشغل الهاتف. الرمز: " + what + "/" + extra, RED);
             return true;
         });
+    }
+
+    private List<TextureOverlay> createNewsOverlays() {
+        ArrayList<TextureOverlay> overlays = new ArrayList<>();
+        String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 72);
+        String lowerThird = captionInput == null ? "" : compactText(captionInput.getText().toString(), 100);
+        String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 100);
+        if (!headline.isEmpty()) overlays.add(newsTextOverlay("عاجل  |  " + headline, 42,
+                Color.rgb(255, 255, 255), Color.rgb(171, 32, 37), 0.82f, true));
+        if (!lowerThird.isEmpty()) overlays.add(newsTextOverlay(lowerThird, 34,
+                Color.rgb(255, 255, 255), Color.rgb(16, 35, 54), -0.62f, false));
+        if (!ticker.isEmpty()) overlays.add(newsTextOverlay("◀  " + ticker + "   |   WORLD NEWS", 30,
+                Color.rgb(255, 255, 255), Color.rgb(171, 32, 37), -0.88f, true));
+        return overlays;
+    }
+
+    private TextureOverlay newsTextOverlay(String value, int textSizeSp, int foreground, int background,
+                                           float verticalAnchor, boolean bold) {
+        String padded = "  " + value + "  ";
+        SpannableString styled = new SpannableString(padded);
+        styled.setSpan(new ForegroundColorSpan(foreground), 0, padded.length(), 0);
+        styled.setSpan(new BackgroundColorSpan(background), 0, padded.length(), 0);
+        styled.setSpan(new AbsoluteSizeSpan(textSizeSp, true), 0, padded.length(), 0);
+        styled.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), 0, padded.length(), 0);
+        if (bold) styled.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, padded.length(), 0);
+        boolean top = verticalAnchor > 0;
+        StaticOverlaySettings settings = new StaticOverlaySettings.Builder()
+                .setBackgroundFrameAnchor(0.0f, verticalAnchor)
+                .setOverlayFrameAnchor(0.0f, top ? 1.0f : -1.0f)
+                .build();
+        return TextOverlay.createStaticTextOverlay(styled, settings);
+    }
+
+    private String compactText(String raw, int maxLength) {
+        if (raw == null) return "";
+        String clean = raw.replaceAll("[\\r\\n\\t]+", " ").replaceAll("\\s+", " ").trim();
+        return clean.length() <= maxLength ? clean : clean.substring(0, maxLength - 1).trim() + "…";
+    }
+
+    private String defaultLowerThird(String script) {
+        String narration = script == null ? "" : script;
+        String marker = "التعليق الصوتي الكامل:";
+        int markerIndex = narration.indexOf(marker);
+        if (markerIndex >= 0) narration = narration.substring(markerIndex + marker.length()).trim();
+        String[] sentences = narration.split("[\\r\\n]+|(?<=[.!؟])\\s+", 2);
+        return compactText(sentences.length == 0 ? narration : sentences[0], 100);
     }
 
     private void saveOutput() {
