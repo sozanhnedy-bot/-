@@ -24,8 +24,8 @@ android {
         applicationId 'com.worldnews.newsapp'
         minSdk 24
         targetSdk 35
-        versionCode 6
-        versionName '1.4.0'
+        versionCode 8
+        versionName '1.6.0'
         ndk { abiFilters 'arm64-v8a' }
         buildConfigField 'String', 'FIREBASE_API_KEY', asBuildConfigString(firebaseValue('firebase.apiKey', 'FIREBASE_API_KEY'))
         buildConfigField 'String', 'FIREBASE_APP_ID', asBuildConfigString(firebaseValue('firebase.appId', 'FIREBASE_APP_ID'))
@@ -41,15 +41,17 @@ android {
 }
 
 dependencies {
-    implementation platform('com.google.firebase:firebase-bom:35.0.2')
+    implementation platform('com.google.firebase:firebase-bom:35.1.0')
     implementation 'com.google.firebase:firebase-ai'
     implementation 'com.google.firebase:firebase-appcheck'
     debugImplementation 'com.google.firebase:firebase-appcheck-debug'
     implementation 'com.google.firebase:firebase-appcheck-playintegrity'
-    implementation 'dev.ffmpegkit-maintained:llama-android:0.1.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
     implementation files('libs/sherpa-onnx-2.0.1.aar')
     implementation 'org.apache.commons:commons-compress:1.27.1'
-    implementation 'com.github.csukuangfj.piper-phonemize:piper-phonemize:v1.5.9'
+    implementation 'androidx.media3:media3-transformer:1.9.0'
+    implementation 'androidx.media3:media3-effect:1.9.0'
+    implementation 'androidx.media3:media3-common:1.9.0'
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
 }
