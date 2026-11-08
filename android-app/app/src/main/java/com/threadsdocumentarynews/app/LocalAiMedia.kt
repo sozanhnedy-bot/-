@@ -23,6 +23,8 @@ object LocalAiMedia {
     private const val VOICE_SIZE = 82_810_819L
     private const val VOICE_URL = "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/nabra-82m-arabic-int8.tar.bz2"
     private const val VOICE_FOLDER = "nabra-82m-arabic-int8"
+    // Reserve room for the archive, extracted files, and filesystem overhead.
+    private const val VOICE_SPACE_MULTIPLIER = 3L
     fun interface ProgressListener {
         fun onProgress(percent: Int)
     }
@@ -41,7 +43,8 @@ object LocalAiMedia {
             listener.onProgress(100)
             return
         }
-        ensureSpace(context.filesDir, VOICE_SIZE * 2)
+        ensureSpace(context.filesDir, VOICE_SIZE * VOICE_SPACE_MULTIPLIER)
+        ensureSpace(context.cacheDir, VOICE_SIZE)
         val voiceRoot = File(context.filesDir, "voice")
         voiceRoot.mkdirs()
         val archive = File(context.cacheDir, "nabra-82m-arabic-int8.tar.bz2.part")
@@ -151,7 +154,6 @@ object LocalAiMedia {
                 }
             }
             if (downloaded != expectedSize) throw IllegalStateException("اكتمل التنزيل بحجم غير صحيح؛ احذف الملف الجزئي وحاول مجددًا.")
-            listener.onProgress(100)
         } finally {
             connection?.disconnect()
         }
