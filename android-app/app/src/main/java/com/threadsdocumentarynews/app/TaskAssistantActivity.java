@@ -82,6 +82,8 @@ public final class TaskAssistantActivity extends Activity {
     private Button testGeminiButton;
     private Button testNabraButton;
     private Button previewButton;
+    private Button continueWithVoiceButton;
+    private Button continueWithoutVoiceButton;
     private Button pdfButton;
     private Button exportAudioButton;
     private TextView status;
@@ -90,6 +92,7 @@ public final class TaskAssistantActivity extends Activity {
     private TextView workflowStatus;
     private Button refreshWorkflowButton;
     private MediaPlayer mediaPlayer;
+    private LinearLayout scriptOutputCard;
     private String pendingPdfText = "";
     private String pendingPdfTitle = "سكريبت World News";
     private String pendingAudioPath = "";
@@ -284,6 +287,7 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.addView(voiceTestCard, params(-1, -2, 0, dp(12), 0, 0));
 
         LinearLayout outputCard = card();
+        scriptOutputCard = outputCard;
         addText(outputCard, "مسودة السكريبت وتقسيم المشاهد", 17, TEXT, true, 0, 7);
         scriptOutput = new EditText(this);
         scriptOutput.setGravity(Gravity.TOP | Gravity.RIGHT);
@@ -311,9 +315,12 @@ public final class TaskAssistantActivity extends Activity {
         save.setOnClickListener(v -> saveProject(true));
         share.setOnClickListener(v -> copyScript());
 
-        Button continueToVideo = primaryButton("متابعة إلى استوديو الفيديو");
-        outputCard.addView(continueToVideo, params(-1, dp(52), 0, 0, 0, 8));
-        continueToVideo.setOnClickListener(v -> continueToVideoStudio());
+        continueWithVoiceButton = primaryButton("إنشاء صوت الراوي ثم فتح استوديو الفيديو");
+        outputCard.addView(continueWithVoiceButton, params(-1, dp(54), 0, 0, 0, 6));
+        continueWithVoiceButton.setOnClickListener(v -> continueToVideoStudio(false));
+        continueWithoutVoiceButton = secondaryButton("فتح الاستوديو بدون تعليق صوتي");
+        outputCard.addView(continueWithoutVoiceButton, params(-1, dp(48), 0, 0, 0, 8));
+        continueWithoutVoiceButton.setOnClickListener(v -> continueToVideoStudio(true));
 
         addText(outputCard, "الصوت الذكي", 16, TEXT, true, 0, 5);
         addText(outputCard, "استخدم الاختبار المستقل أعلاه للتأكد من الصوت، أو أنشئ معاينة لنص الراوي في هذا السكريبت.", 13, MUTED, false, 0, 8);
@@ -336,25 +343,82 @@ public final class TaskAssistantActivity extends Activity {
         refreshModelButtons();
     }
 
-    private void continueToVideoStudio() {
+    private void continueToVideoStudio(boolean withoutVoice) {
         String script = scriptOutput == null ? "" : scriptOutput.getText().toString().trim();
         if (script.isEmpty()) {
             setStatus("أنشئ أو اكتب السكريبت أولًا، ثم أرسله إلى استوديو الفيديو.", Color.rgb(255, 130, 115));
             return;
         }
         String topic = topicInput == null ? "" : topicInput.getText().toString().trim();
+        if (withoutVoice) {
+            launchVideoStudio(topic, script, "");
+            return;
+        }
+        String speech = narrationForSpeech(script);
+        if (speech.length() < 20) {
+            setStatus("لا يوجد نص راوٍ كافٍ لإنشاء الصوت. أضف التعليق الصوتي الكامل أو اختر المتابعة بدون صوت.", Color.rgb(255, 130, 115));
+            return;
+        }
+        String voice = selectedGeminiVoice();
+        if (!lastVoicePath.isEmpty() && new java.io.File(lastVoicePath).isFile()
+                && lastVoiceText.equals(speech) && lastVoiceSelection.equals(voice)
+                && !lastVoiceProvider.contains("اختبار")) {
+            launchVideoStudio(topic, script, lastVoicePath);
+            return;
+        }
+        new AlertDialog.Builder(this)
+                .setTitle("إنشاء التعليق الصوتي قبل الفيديو؟")
+                .setMessage("سيُرسل نص الراوي إلى Gemini TTS، ثم يفتح التطبيق استوديو الفيديو والصوت مرفقًا تلقائيًا. لو تعذر Gemini، سيستخدم Nabra إذا كان قد تم تنزيله. يمكنك إلغاء أو اختيار «فتح الاستوديو بدون تعليق صوتي».")
+                .setNegativeButton("إلغاء", null)
+                .setPositiveButton("أنشئ الصوت وافتح الفيديو", (dialog, which) -> createVoiceThenOpenStudio(topic, script, speech, voice))
+                .show();
+    }
+
+    private void createVoiceThenOpenStudio(String topic, String script, String speech, String voice) {
+        if (continueWithVoiceButton != null) continueWithVoiceButton.setEnabled(false);
+        setStatus("يجري إنشاء التعليق الصوتي؛ سيفتح استوديو الفيديو تلقائيًا بعد نجاحه…", GOLD);
+        executor.execute(() -> {
+            try {
+                String audioPath;
+                String provider;
+                try {
+                    audioPath = GeminiSpeech.generateWavBlocking(this, speech, voice);
+                    provider = "Gemini · " + voice;
+                } catch (Exception geminiError) {
+                    if (!LocalAiMedia.voiceReady(this)) throw geminiError;
+                    mainHandler.post(() -> setStatus("Gemini لم يعمل؛ يجري استخدام Nabra المحلي…", GOLD));
+                    audioPath = LocalAiMedia.synthesizeArabic(this, speech);
+                    provider = "Nabra المحلي";
+                }
+                final String finalAudioPath = audioPath;
+                final String finalProvider = provider;
+                mainHandler.post(() -> {
+                    if (isFinishing() || isDestroyed()) return;
+                    lastVoicePath = finalAudioPath;
+                    lastVoiceText = speech;
+                    lastVoiceSelection = voice;
+                    lastVoiceProvider = finalProvider;
+                    if (exportAudioButton != null) exportAudioButton.setEnabled(true);
+                    if (continueWithVoiceButton != null) continueWithVoiceButton.setEnabled(true);
+                    launchVideoStudio(topic, script, finalAudioPath);
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> {
+                    if (continueWithVoiceButton != null) continueWithVoiceButton.setEnabled(true);
+                    setStatus("لم ينجح إنشاء الصوت، لذلك لم أفتح الفيديو بصوت ناقص: " + userFriendlyAiError(error)
+                            + (LocalAiMedia.voiceReady(this) ? "" : " — نزّل Nabra من بطاقة اختبار الصوت أو اختر فتح الاستوديو بدون تعليق صوتي."), Color.rgb(255, 130, 115));
+                });
+            }
+        });
+    }
+
+    private void launchVideoStudio(String topic, String script, String audioPath) {
         Intent intent = new Intent(this, VideoStudioActivity.class);
         intent.putExtra(VideoStudioActivity.EXTRA_TREND_TITLE, topic);
         intent.putExtra(VideoStudioActivity.EXTRA_SCRIPT_TEXT, script);
         String source = getIntent().getStringExtra(EXTRA_RADAR_SOURCE);
         if (source != null) intent.putExtra(VideoStudioActivity.EXTRA_TREND_SOURCE, source);
-        String speech = narrationForSpeech(script);
-        if (!lastVoicePath.isEmpty() && new java.io.File(lastVoicePath).isFile()
-                && lastVoiceText.equals(speech)
-                && lastVoiceSelection.equals(selectedGeminiVoice())
-                && !lastVoiceProvider.contains("اختبار")) {
-            intent.putExtra(VideoStudioActivity.EXTRA_AUDIO_PATH, lastVoicePath);
-        }
+        if (audioPath != null && !audioPath.isEmpty()) intent.putExtra(VideoStudioActivity.EXTRA_AUDIO_PATH, audioPath);
         startActivity(intent);
     }
 
@@ -574,7 +638,21 @@ public final class TaskAssistantActivity extends Activity {
 
     private Spinner makeSpinner(String[] values) {
         Spinner spinner = new Spinner(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, values);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values) {
+            @Override public View getView(int position, View convertView, android.view.ViewGroup parent) {
+                TextView view = (TextView) super.getView(position, convertView, parent);
+                view.setTextColor(TEXT);
+                view.setPadding(dp(12), dp(7), dp(12), dp(7));
+                return view;
+            }
+            @Override public View getDropDownView(int position, View convertView, android.view.ViewGroup parent) {
+                TextView view = (TextView) super.getDropDownView(position, convertView, parent);
+                view.setTextColor(TEXT);
+                view.setBackgroundColor(SURFACE_ALT);
+                view.setPadding(dp(12), dp(10), dp(12), dp(10));
+                return view;
+            }
+        };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setBackground(rounded(SURFACE_ALT, LINE, 14));
@@ -671,11 +749,12 @@ public final class TaskAssistantActivity extends Activity {
                     generateButton.setEnabled(true);
                     saveProject(false);
                     setStatus("اكتملت مسودة Gemini. اضغط زر الصوت إذا أردت إنشاء تعليق صوتي.", GOLD);
+                    if (scriptOutputCard != null) scroll.post(() -> scroll.smoothScrollTo(0, scriptOutputCard.getTop()));
                 });
             } catch (Exception error) {
                 mainHandler.post(() -> {
                     generateButton.setEnabled(true);
-                    setStatus(error.getMessage() == null ? "تعذر إكمال طلب Gemini." : error.getMessage(), Color.rgb(255, 130, 115));
+                    setStatus(userFriendlyAiError(error), Color.rgb(255, 130, 115));
                 });
             }
         });
@@ -794,7 +873,7 @@ public final class TaskAssistantActivity extends Activity {
             } catch (Exception error) {
                 mainHandler.post(() -> {
                     previewButton.setEnabled(true);
-                    setStatus(error.getMessage() == null ? "تعذر إنشاء الصوت." : error.getMessage(), Color.rgb(255, 130, 115));
+                    setStatus(userFriendlyAiError(error), Color.rgb(255, 130, 115));
                 });
             }
         });
@@ -830,7 +909,7 @@ public final class TaskAssistantActivity extends Activity {
                     playVoice(path);
                 });
             } catch (Exception error) {
-                String details = voiceErrorDetails(error);
+                String details = userFriendlyAiError(error);
                 mainHandler.post(() -> {
                     setVoiceTestButtonsEnabled(true);
                     setVoiceTestResult("فشل اختبار Gemini:\n" + details, Color.rgb(255, 130, 115));
@@ -897,6 +976,16 @@ public final class TaskAssistantActivity extends Activity {
                 .replaceAll("(?i)(api[_ -]?key|key)(\\s*[=:]\\s*)([^\\s&]+)", "$1$2[محذوف]")
                 .replaceAll("AIza[0-9A-Za-z_-]{20,}", "[مفتاح مخفي]");
         return safe.substring(0, Math.min(700, safe.length()));
+    }
+
+    private String userFriendlyAiError(Throwable error) {
+        String details = voiceErrorDetails(error);
+        String lower = details.toLowerCase(java.util.Locale.ROOT);
+        if (lower.contains("app check") || lower.contains("appcheck")) {
+            return "Firebase رفض طلب Gemini بسبب App Check. في Firebase Console افتح Security → App Check → APIs → Firebase AI Logic واجعل Baseline protection = Enforced وReplay protection = Disabled. "
+                    + "ولأن هذه نسخة Debug، سجّل رمز Debug الخاص بهذا الهاتف من Security → App Check → Apps → تطبيق World News → Manage debug tokens. لا تنشر رمز Debug ولا ترسله في المحادثة.\nالتفصيل: " + details;
+        }
+        return details.isEmpty() ? "تعذر إكمال طلب Gemini." : details;
     }
 
     private void playVoice(String path) {
