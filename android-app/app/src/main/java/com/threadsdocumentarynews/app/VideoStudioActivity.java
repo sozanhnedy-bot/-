@@ -82,6 +82,7 @@ public final class VideoStudioActivity extends Activity {
     private EditText tickerInput;
     private Spinner imageDurationSpinner;
     private Spinner formatSpinner;
+    private Spinner exportDiagnosticSpinner;
     private TextView mediaList;
     private TextView audioName;
     private TextView musicName;
@@ -179,6 +180,16 @@ public final class VideoStudioActivity extends Activity {
         addLabel(form, "اتجاه الفيديو");
         formatSpinner = spinner(new String[]{"رأسي 9:16", "أفقي 16:9"});
         form.addView(formatSpinner, params(-1, dp(48), 0, 4, 0, 10));
+        if (BuildConfig.DEBUG) {
+            addLabel(form, "تشخيص مؤثرات التصدير — للاختبار فقط");
+            exportDiagnosticSpinner = spinner(new String[]{
+                    "كامل — المقاس والعناوين",
+                    "بدون Overlay — اختبار المقاس فقط",
+                    "بدون Presentation — اختبار Overlay فقط",
+                    "بدون مؤثرات — اختبار الملف فقط"
+            });
+            form.addView(exportDiagnosticSpinner, params(-1, dp(48), 0, 4, 0, 10));
+        }
 
         Button pickAudio = button("اختيار تعليق الراوي (اختياري)");
         form.addView(pickAudio, params(-1, dp(50), 0, 0, 0, 6));
@@ -430,9 +441,11 @@ public final class VideoStudioActivity extends Activity {
         try {
             int imageSeconds = imageDurationSpinner.getSelectedItemPosition() + 2;
             boolean vertical = formatSpinner.getSelectedItemPosition() == 0;
-            // 720p substantially reduces GL texture memory and frame-processing load on phones.
-            int width = vertical ? 720 : 1280;
-            int height = vertical ? 1280 : 720;
+            int width = vertical ? 1080 : 1920;
+            int height = vertical ? 1920 : 1080;
+            int diagnosticMode = exportDiagnosticSpinner == null ? 0 : exportDiagnosticSpinner.getSelectedItemPosition();
+            boolean applyPresentation = diagnosticMode != 2 && diagnosticMode != 3;
+            boolean applyOverlay = diagnosticMode != 1 && diagnosticMode != 3;
             ArrayList<EditedMediaItem> editedItems = new ArrayList<>();
             ArrayList<Long> mediaDurationsMs = new ArrayList<>();
             long videoDurationMs = 0L;
@@ -461,14 +474,16 @@ public final class VideoStudioActivity extends Activity {
                 EditedMediaItem.Builder edited;
                 if (type != null && type.startsWith("image/")) {
                     mediaItem = new MediaItem.Builder().setUri(uri).setImageDurationMs(imageSeconds * 1000L).build();
-                    edited = new EditedMediaItem.Builder(mediaItem).setFrameRate(24);
+                    edited = new EditedMediaItem.Builder(mediaItem).setFrameRate(30);
                 } else {
                     mediaItem = MediaItem.fromUri(uri);
                     edited = new EditedMediaItem.Builder(mediaItem).setRemoveAudio(true);
                 }
                 ArrayList<androidx.media3.common.Effect> videoEffects = new ArrayList<>();
-                videoEffects.add(Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT_WITH_CROP));
-                edited.setEffects(new Effects(Collections.emptyList(), videoEffects));
+                if (applyPresentation) {
+                    videoEffects.add(Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT_WITH_CROP));
+                }
+                if (!videoEffects.isEmpty()) edited.setEffects(new Effects(Collections.emptyList(), videoEffects));
                 editedItems.add(edited.build());
             }
             EditedMediaItemSequence videoSequence = EditedMediaItemSequence.withVideoFrom(editedItems);
@@ -512,9 +527,9 @@ public final class VideoStudioActivity extends Activity {
             for (Long durationMs : mediaDurationsMs) clipDurationsUs.add(durationMs > 0L ? durationMs * 1000L : 0L);
             List<androidx.media3.common.Effect> compositionEffects = Collections.singletonList(
                     new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
-            Composition composition = new Composition.Builder(compositionSequences)
-                    .setEffects(new Effects(Collections.emptyList(), compositionEffects))
-                    .build();
+            Composition.Builder compositionBuilder = new Composition.Builder(compositionSequences);
+            if (applyOverlay) compositionBuilder.setEffects(new Effects(Collections.emptyList(), compositionEffects));
+            Composition composition = compositionBuilder.build();
             File directory = getExternalFilesDir(Environment.DIRECTORY_MOVIES);
             if (directory == null) directory = getFilesDir();
             File outputDir = new File(directory, "WorldNews");
