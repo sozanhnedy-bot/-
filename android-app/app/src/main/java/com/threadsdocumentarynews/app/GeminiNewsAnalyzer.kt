@@ -76,18 +76,16 @@ object FirebaseAiSetup {
 
         val app = FirebaseApp.getInstance()
         FirebaseAppCheck.getInstance(app).getAppCheckToken(false).addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                callback.onResult(null, task.exception?.localizedMessage ?: "تعذر طلب رمز App Check.")
-                return@addOnCompleteListener
-            }
             val prefsName = "com.google.firebase.appcheck.debug.store.${app.persistenceKey}"
             val secret = context.applicationContext
                 .getSharedPreferences(prefsName, Context.MODE_PRIVATE)
                 .getString("com.google.firebase.appcheck.debug.DEBUG_SECRET", null)
-            if (secret.isNullOrBlank()) {
-                callback.onResult(null, "لم يعثر التطبيق على رمز Debug المحلي.")
-            } else {
+            if (!secret.isNullOrBlank()) {
                 callback.onResult(secret, null)
+            } else if (!task.isSuccessful) {
+                callback.onResult(null, task.exception?.localizedMessage ?: "تعذر طلب رمز App Check.")
+            } else {
+                callback.onResult(null, "لم يعثر التطبيق على رمز Debug المحلي.")
             }
         }
     }
