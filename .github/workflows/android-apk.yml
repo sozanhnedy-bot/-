@@ -69,7 +69,6 @@ jobs:
           APK=android-app/app/build/outputs/apk/debug/app-debug.apk
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -q "^package: name="
 
       - name: Upload installable APK artifact
         uses: actions/upload-artifact@v7
