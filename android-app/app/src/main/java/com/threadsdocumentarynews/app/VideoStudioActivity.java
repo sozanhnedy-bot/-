@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
@@ -52,6 +54,7 @@ import androidx.media3.transformer.ProgressHolder;
 import androidx.media3.transformer.Transformer;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -258,8 +261,9 @@ public final class VideoStudioActivity extends Activity {
     private void openMediaPicker() {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
+        // Ask the document provider for all files; MIME metadata is often missing or generic.
+        // Actual media type is resolved from both the provider MIME type and the filename.
         intent.setType("*/*");
-        intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"image/*", "video/*"});
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
         startActivityForResult(intent, PICK_MEDIA);
@@ -318,7 +322,10 @@ public final class VideoStudioActivity extends Activity {
     private void addPickedUri(Uri uri, int flags) {
         if (uri == null || mediaUris.contains(uri)) return;
         String type = getContentResolver().getType(uri);
-        if (type == null || (!type.startsWith("image/") && !type.startsWith("video/"))) return;
+        if (!isSupportedMedia(uri, type)) {
+            setStatus("الملف ليس صورة أو فيديو معروفًا. جرّب اختيار ملف وسائط آخر.", RED);
+            return;
+        }
         persistReadPermission(uri, flags);
         mediaUris.add(uri);
     }
@@ -352,7 +359,7 @@ public final class VideoStudioActivity extends Activity {
         Uri uri = mediaUris.get(0);
         String type = getContentResolver().getType(uri);
         stopVideo();
-        if (type != null && type.startsWith("image/")) {
+        if (isImageMedia(uri, type)) {
             videoView.setVisibility(View.GONE);
             imageView.setVisibility(View.VISIBLE);
             imageView.setImageURI(uri);
@@ -430,15 +437,17 @@ public final class VideoStudioActivity extends Activity {
         try {
             int imageSeconds = imageDurationSpinner.getSelectedItemPosition() + 2;
             boolean vertical = formatSpinner.getSelectedItemPosition() == 0;
-            int width = vertical ? 1080 : 1920;
-            int height = vertical ? 1920 : 1080;
+            // The composition output is explicitly sized (and encoder-safe) before overlays are rendered.
+            int width = evenAtLeastTwo(vertical ? 1080 : 1920);
+            int height = evenAtLeastTwo(vertical ? 1920 : 1080);
+            if (width <= 0 || height <= 0) throw new IllegalStateException("مقاس إخراج الفيديو غير صالح.");
             ArrayList<EditedMediaItem> editedItems = new ArrayList<>();
             ArrayList<Long> mediaDurationsMs = new ArrayList<>();
             long videoDurationMs = 0L;
             boolean allDurationsKnown = true;
             for (Uri uri : mediaUris) {
                 String mime = getContentResolver().getType(uri);
-                long clipDuration = mime != null && mime.startsWith("image/")
+                long clipDuration = isImageMedia(uri, mime)
                         ? imageSeconds * 1000L : getMediaDurationMs(uri);
                 mediaDurationsMs.add(clipDuration);
                 if (clipDuration <= 0L) allDurationsKnown = false;
@@ -458,16 +467,18 @@ public final class VideoStudioActivity extends Activity {
                 String type = getContentResolver().getType(uri);
                 MediaItem mediaItem;
                 EditedMediaItem.Builder edited;
-                if (type != null && type.startsWith("image/")) {
-                    mediaItem = new MediaItem.Builder().setUri(uri).setImageDurationMs(imageSeconds * 1000L).build();
+                if (isImageMedia(uri, type)) {
+                    // Decode and normalize every still image to a known PNG stream before Media3.
+                    // This removes dependence on provider MIME labels and unusual image extensions.
+                    Uri normalizedImage = normalizeImageForExport(uri);
+                    mediaItem = new MediaItem.Builder().setUri(normalizedImage).setImageDurationMs(imageSeconds * 1000L).build();
                     edited = new EditedMediaItem.Builder(mediaItem).setFrameRate(30);
                 } else {
                     mediaItem = MediaItem.fromUri(uri);
                     edited = new EditedMediaItem.Builder(mediaItem).setRemoveAudio(true);
                 }
-                ArrayList<androidx.media3.common.Effect> videoEffects = new ArrayList<>();
-                videoEffects.add(Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT_WITH_CROP));
-                edited.setEffects(new Effects(Collections.emptyList(), videoEffects));
+                // Keep source items untouched here. The composition-level Presentation below
+                // establishes one concrete output canvas for every item before CanvasOverlay runs.
                 editedItems.add(edited.build());
             }
             EditedMediaItemSequence videoSequence = EditedMediaItemSequence.withVideoFrom(editedItems);
@@ -509,10 +520,17 @@ public final class VideoStudioActivity extends Activity {
             }
             ArrayList<Long> clipDurationsUs = new ArrayList<>();
             for (Long durationMs : mediaDurationsMs) clipDurationsUs.add(durationMs > 0L ? durationMs * 1000L : 0L);
-            List<androidx.media3.common.Effect> compositionEffects = Collections.singletonList(
-                    new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
+            ArrayList<androidx.media3.common.Effect> compositionVideoEffects = new ArrayList<>();
+            // ROOT FIX: Composition overlays otherwise may receive an UNSET frame size when
+            // the first source is a still image or a provider-backed video with incomplete metadata.
+            // Force a valid, even output canvas BEFORE drawing the newsroom overlay.
+            compositionVideoEffects.add(Presentation.createForWidthAndHeight(
+                    width, height, Presentation.LAYOUT_SCALE_TO_FIT));
+            compositionVideoEffects.add(new OverlayEffect(Collections.singletonList(
+                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
+            Effects compositionEffects = new Effects(Collections.emptyList(), compositionVideoEffects);
             Composition composition = new Composition.Builder(compositionSequences)
-                    .setEffects(new Effects(Collections.emptyList(), compositionEffects))
+                    .setEffects(compositionEffects)
                     .build();
             File directory = getExternalFilesDir(Environment.DIRECTORY_MOVIES);
             if (directory == null) directory = getFilesDir();
@@ -579,6 +597,92 @@ public final class VideoStudioActivity extends Activity {
     private float selectedMusicGain() {
         int position = musicVolumeSpinner == null ? 1 : musicVolumeSpinner.getSelectedItemPosition();
         return position == 0 ? 0.10f : position == 2 ? 0.28f : 0.18f;
+    }
+
+
+    private int evenAtLeastTwo(int value) {
+        int safe = Math.max(2, value);
+        return (safe & 1) == 0 ? safe : safe - 1;
+    }
+
+    private String fileExtension(Uri uri) {
+        String name = displayName(uri);
+        int dot = name == null ? -1 : name.lastIndexOf('.');
+        return dot < 0 ? "" : name.substring(dot + 1).toLowerCase(java.util.Locale.ROOT);
+    }
+
+    private boolean isImageMedia(Uri uri, String mime) {
+        if (mime != null && mime.toLowerCase(java.util.Locale.ROOT).startsWith("image/")) return true;
+        String ext = fileExtension(uri);
+        return "jpg".equals(ext) || "jpeg".equals(ext) || "jpe".equals(ext)
+                || "png".equals(ext) || "webp".equals(ext) || "gif".equals(ext)
+                || "bmp".equals(ext) || "dib".equals(ext) || "heic".equals(ext)
+                || "heif".equals(ext) || "avif".equals(ext) || "tif".equals(ext)
+                || "tiff".equals(ext);
+    }
+
+    private boolean isVideoMedia(Uri uri, String mime) {
+        if (mime != null && mime.toLowerCase(java.util.Locale.ROOT).startsWith("video/")) return true;
+        String ext = fileExtension(uri);
+        return "mp4".equals(ext) || "m4v".equals(ext) || "mov".equals(ext)
+                || "3gp".equals(ext) || "3gpp".equals(ext) || "3g2".equals(ext)
+                || "mkv".equals(ext) || "webm".equals(ext) || "avi".equals(ext)
+                || "ts".equals(ext) || "mts".equals(ext) || "m2ts".equals(ext)
+                || "mpg".equals(ext) || "mpeg".equals(ext) || "ogv".equals(ext)
+                || "mxf".equals(ext);
+    }
+
+    private boolean isSupportedMedia(Uri uri, String mime) {
+        return isImageMedia(uri, mime) || isVideoMedia(uri, mime);
+    }
+
+    /**
+     * Convert still images to a bounded PNG in the app cache. Android's BitmapFactory
+     * uses the platform decoders (including supported WebP/HEIF variants), while Media3
+     * receives one predictable image format and valid dimensions.
+     */
+    private Uri normalizeImageForExport(Uri source) throws Exception {
+        BitmapFactory.Options bounds = new BitmapFactory.Options();
+        bounds.inJustDecodeBounds = true;
+        try (InputStream input = getContentResolver().openInputStream(source)) {
+            if (input == null) throw new IllegalStateException("تعذر فتح الصورة المحددة.");
+            BitmapFactory.decodeStream(input, null, bounds);
+        }
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) {
+            throw new IllegalStateException("تعذر قراءة أبعاد الصورة «" + displayName(source)
+                    + "». قد يكون تنسيق الصورة غير مدعوم على إصدار Android هذا.");
+        }
+        int sample = 1;
+        int largest = Math.max(bounds.outWidth, bounds.outHeight);
+        while (largest / sample > 4096) sample *= 2;
+        BitmapFactory.Options decode = new BitmapFactory.Options();
+        decode.inSampleSize = sample;
+        decode.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap;
+        try (InputStream input = getContentResolver().openInputStream(source)) {
+            if (input == null) throw new IllegalStateException("تعذر إعادة فتح الصورة المحددة.");
+            bitmap = BitmapFactory.decodeStream(input, null, decode);
+        }
+        if (bitmap == null || bitmap.getWidth() <= 0 || bitmap.getHeight() <= 0) {
+            if (bitmap != null) bitmap.recycle();
+            throw new IllegalStateException("الصورة «" + displayName(source)
+                    + "» لا يمكن فك ترميزها على هذا الجهاز.");
+        }
+        File normalizedDir = new File(getCacheDir(), "normalized-media");
+        if (!normalizedDir.exists() && !normalizedDir.mkdirs()) {
+            bitmap.recycle();
+            throw new IllegalStateException("تعذر تجهيز مساحة مؤقتة لمعالجة الصور.");
+        }
+        File normalized = new File(normalizedDir, "image-" + System.nanoTime() + ".png");
+        try (FileOutputStream output = new FileOutputStream(normalized)) {
+            if (!bitmap.compress(Bitmap.CompressFormat.PNG, 100, output)) {
+                throw new IllegalStateException("فشل تحويل الصورة إلى PNG.");
+            }
+            output.flush();
+        } finally {
+            bitmap.recycle();
+        }
+        return Uri.fromFile(normalized);
     }
 
     private long getMediaDurationMs(Uri uri) {
