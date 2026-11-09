@@ -3,6 +3,8 @@ package com.threadsdocumentarynews.app;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -443,16 +445,27 @@ public final class VideoStudioActivity extends Activity {
             boolean vertical = formatSpinner.getSelectedItemPosition() == 0;
             int width = vertical ? 1080 : 1920;
             int height = vertical ? 1920 : 1080;
+            if (width <= 0 || height <= 0) {
+                throw new IllegalStateException("أبعاد إخراج الفيديو غير صالحة: " + width + "×" + height);
+            }
             int diagnosticMode = exportDiagnosticSpinner == null ? 0 : exportDiagnosticSpinner.getSelectedItemPosition();
             boolean applyPresentation = diagnosticMode != 2 && diagnosticMode != 3;
             boolean applyOverlay = diagnosticMode != 1 && diagnosticMode != 3;
             ArrayList<EditedMediaItem> editedItems = new ArrayList<>();
             ArrayList<Long> mediaDurationsMs = new ArrayList<>();
+            ArrayList<Boolean> imageMedia = new ArrayList<>();
             long videoDurationMs = 0L;
             boolean allDurationsKnown = true;
+            setStatus("يفحص أبعاد الوسائط ويجهّز الإطار الأول قبل بدء التصدير…", GOLD);
             for (Uri uri : mediaUris) {
                 String mime = getContentResolver().getType(uri);
-                long clipDuration = mime != null && mime.startsWith("image/")
+                boolean isImage = isImageMedia(uri, mime);
+                FrameDimensions sourceDimensions = prepareFirstFrame(uri, isImage, width, height);
+                if (sourceDimensions.width <= 0 || sourceDimensions.height <= 0) {
+                    throw new IllegalStateException("أبعاد الإطار الأول غير صالحة للملف «" + displayName(uri) + "».");
+                }
+                imageMedia.add(isImage);
+                long clipDuration = isImage
                         ? imageSeconds * 1000L : getMediaDurationMs(uri);
                 mediaDurationsMs.add(clipDuration);
                 if (clipDuration <= 0L) allDurationsKnown = false;
@@ -469,10 +482,9 @@ public final class VideoStudioActivity extends Activity {
             String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 120);
             for (int mediaIndex = 0; mediaIndex < mediaUris.size(); mediaIndex++) {
                 Uri uri = mediaUris.get(mediaIndex);
-                String type = getContentResolver().getType(uri);
                 MediaItem mediaItem;
                 EditedMediaItem.Builder edited;
-                if (type != null && type.startsWith("image/")) {
+                if (imageMedia.get(mediaIndex)) {
                     mediaItem = new MediaItem.Builder().setUri(uri).setImageDurationMs(imageSeconds * 1000L).build();
                     edited = new EditedMediaItem.Builder(mediaItem).setFrameRate(30);
                 } else {
@@ -526,7 +538,7 @@ public final class VideoStudioActivity extends Activity {
             ArrayList<Long> clipDurationsUs = new ArrayList<>();
             for (Long durationMs : mediaDurationsMs) clipDurationsUs.add(durationMs > 0L ? durationMs * 1000L : 0L);
             List<androidx.media3.common.Effect> compositionEffects = Collections.singletonList(
-                    new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
+                    new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs, width, height))));
             Composition.Builder compositionBuilder = new Composition.Builder(compositionSequences);
             if (applyOverlay) compositionBuilder.setEffects(new Effects(Collections.emptyList(), compositionEffects));
             Composition composition = compositionBuilder.build();
@@ -597,6 +609,90 @@ public final class VideoStudioActivity extends Activity {
         return position == 0 ? 0.10f : position == 2 ? 0.28f : 0.18f;
     }
 
+    private static final class FrameDimensions {
+        final int width;
+        final int height;
+        FrameDimensions(int width, int height) { this.width = width; this.height = height; }
+    }
+
+    private boolean isImageMedia(Uri uri, String mime) {
+        if (mime != null && mime.toLowerCase(java.util.Locale.ROOT).startsWith("image/")) return true;
+        String name = displayName(uri).toLowerCase(java.util.Locale.ROOT);
+        return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png")
+                || name.endsWith(".webp") || name.endsWith(".gif") || name.endsWith(".bmp")
+                || name.endsWith(".heic") || name.endsWith(".heif");
+    }
+
+    private int parseDimension(String value) {
+        try { return value == null ? 0 : Integer.parseInt(value); }
+        catch (NumberFormatException ignored) { return 0; }
+    }
+
+    /** Decodes a small image probe or the video's first frame before Media3 starts export. */
+    private FrameDimensions prepareFirstFrame(Uri uri, boolean image, int fallbackWidth, int fallbackHeight) throws Exception {
+        if (image) {
+            BitmapFactory.Options bounds = new BitmapFactory.Options();
+            bounds.inJustDecodeBounds = true;
+            try (InputStream input = getContentResolver().openInputStream(uri)) {
+                if (input == null) throw new IllegalStateException("تعذر فتح ملف الصورة.");
+                BitmapFactory.decodeStream(input, null, bounds);
+            }
+            int sourceWidth = bounds.outWidth;
+            int sourceHeight = bounds.outHeight;
+            int sampleSize = 1;
+            if (sourceWidth <= 0 || sourceHeight <= 0) {
+                sampleSize = 4;
+            } else {
+                while (Math.max(sourceWidth / sampleSize, sourceHeight / sampleSize) > 1024) sampleSize *= 2;
+            }
+            BitmapFactory.Options decodeOptions = new BitmapFactory.Options();
+            decodeOptions.inSampleSize = sampleSize;
+            Bitmap probe;
+            try (InputStream input = getContentResolver().openInputStream(uri)) {
+                if (input == null) throw new IllegalStateException("تعذر إعادة فتح ملف الصورة لفحص الإطار الأول.");
+                probe = BitmapFactory.decodeStream(input, null, decodeOptions);
+            }
+            if (probe == null || probe.getWidth() <= 0 || probe.getHeight() <= 0) {
+                if (probe != null) probe.recycle();
+                throw new IllegalStateException("تعذر فك الإطار الأول للصورة «" + displayName(uri) + "».");
+            }
+            if (sourceWidth <= 0) sourceWidth = probe.getWidth();
+            if (sourceHeight <= 0) sourceHeight = probe.getHeight();
+            probe.recycle();
+            if (sourceWidth <= 0) sourceWidth = fallbackWidth;
+            if (sourceHeight <= 0) sourceHeight = fallbackHeight;
+            return new FrameDimensions(sourceWidth, sourceHeight);
+        }
+
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        Bitmap firstFrame = null;
+        try {
+            retriever.setDataSource(this, uri);
+            int sourceWidth = parseDimension(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH));
+            int sourceHeight = parseDimension(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
+            int rotation = parseDimension(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION));
+            firstFrame = retriever.getFrameAtTime(0L, MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
+            if (firstFrame == null || firstFrame.getWidth() <= 0 || firstFrame.getHeight() <= 0) {
+                throw new IllegalStateException("تعذر فك الإطار الأول للفيديو «" + displayName(uri) + "».");
+            }
+            if (sourceWidth <= 0) sourceWidth = firstFrame.getWidth();
+            if (sourceHeight <= 0) sourceHeight = firstFrame.getHeight();
+            if (rotation == 90 || rotation == 270) {
+                int swap = sourceWidth;
+                sourceWidth = sourceHeight;
+                sourceHeight = swap;
+            }
+            if (sourceWidth <= 0) sourceWidth = fallbackWidth;
+            if (sourceHeight <= 0) sourceHeight = fallbackHeight;
+            return new FrameDimensions(sourceWidth, sourceHeight);
+        } catch (Exception error) {
+            throw new IllegalStateException("فشل تجهيز أول إطار من «" + displayName(uri) + "»: " + safeMessage(error), error);
+        } finally {
+            if (firstFrame != null && !firstFrame.isRecycled()) firstFrame.recycle();
+            try { retriever.release(); } catch (Exception ignored) { }
+        }
+    }
+
     private long getMediaDurationMs(Uri uri) {
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         try {
@@ -615,6 +711,8 @@ public final class VideoStudioActivity extends Activity {
         private final String lowerThird;
         private final String ticker;
         private final List<Long> clipDurationsUs;
+        private final int fallbackCanvasWidth;
+        private final int fallbackCanvasHeight;
         private int canvasWidth;
         private int canvasHeight;
         private StaticLayout headlineLayout;
@@ -623,12 +721,15 @@ public final class VideoStudioActivity extends Activity {
         private final Paint tickerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker, List<Long> clipDurationsUs) {
+        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker, List<Long> clipDurationsUs,
+                              int fallbackCanvasWidth, int fallbackCanvasHeight) {
             super(false);
             this.headline = headline.isEmpty() ? "أخبار العالم" : headline;
             this.lowerThird = lowerThird;
             this.ticker = ticker.isEmpty() ? "آخر التطورات" : ticker;
             this.clipDurationsUs = new ArrayList<>(clipDurationsUs);
+            this.fallbackCanvasWidth = Math.max(1, fallbackCanvasWidth);
+            this.fallbackCanvasHeight = Math.max(1, fallbackCanvasHeight);
             tickerPaint.setColor(Color.WHITE);
             tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             tickerPaint.setTextAlign(Paint.Align.LEFT);
@@ -636,12 +737,15 @@ public final class VideoStudioActivity extends Activity {
         }
 
         @Override public void setCanvasSize(int width, int height) {
-            super.setCanvasSize(width, height);
-            canvasWidth = width;
-            canvasHeight = height;
-            float shortSide = Math.min(width, height);
-            headlineLayout = makeTextLayout("عاجل  |  " + headline, shortSide * 0.043f, width * 0.86f, 2);
-            lowerThirdLayout = makeTextLayout(lowerThird, shortSide * 0.034f, width * 0.82f, 2);
+            int safeWidth = width > 0 ? width : fallbackCanvasWidth;
+            int safeHeight = height > 0 ? height : fallbackCanvasHeight;
+            if (safeWidth <= 0 || safeHeight <= 0) throw new IllegalArgumentException("CanvasOverlay dimensions must be positive: " + width + "×" + height);
+            super.setCanvasSize(safeWidth, safeHeight);
+            canvasWidth = safeWidth;
+            canvasHeight = safeHeight;
+            float shortSide = Math.min(safeWidth, safeHeight);
+            headlineLayout = makeTextLayout("عاجل  |  " + headline, shortSide * 0.043f, safeWidth * 0.86f, 2);
+            lowerThirdLayout = makeTextLayout(lowerThird, shortSide * 0.034f, safeWidth * 0.82f, 2);
             tickerPaint.setTextSize(shortSide * 0.031f);
         }
 
