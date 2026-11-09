@@ -437,8 +437,10 @@ public final class VideoStudioActivity extends Activity {
         try {
             int imageSeconds = imageDurationSpinner.getSelectedItemPosition() + 2;
             boolean vertical = formatSpinner.getSelectedItemPosition() == 0;
-            int width = vertical ? 1080 : 1920;
-            int height = vertical ? 1920 : 1080;
+            // The composition output is explicitly sized (and encoder-safe) before overlays are rendered.
+            int width = evenAtLeastTwo(vertical ? 1080 : 1920);
+            int height = evenAtLeastTwo(vertical ? 1920 : 1080);
+            if (width <= 0 || height <= 0) throw new IllegalStateException("مقاس إخراج الفيديو غير صالح.");
             ArrayList<EditedMediaItem> editedItems = new ArrayList<>();
             ArrayList<Long> mediaDurationsMs = new ArrayList<>();
             long videoDurationMs = 0L;
@@ -475,10 +477,8 @@ public final class VideoStudioActivity extends Activity {
                     mediaItem = MediaItem.fromUri(uri);
                     edited = new EditedMediaItem.Builder(mediaItem).setRemoveAudio(true);
                 }
-                ArrayList<androidx.media3.common.Effect> videoEffects = new ArrayList<>();
-                // Fit the whole source frame inside the selected canvas; never crop portrait/landscape media.
-                videoEffects.add(Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT));
-                edited.setEffects(new Effects(Collections.emptyList(), videoEffects));
+                // Keep source items untouched here. The composition-level Presentation below
+                // establishes one concrete output canvas for every item before CanvasOverlay runs.
                 editedItems.add(edited.build());
             }
             EditedMediaItemSequence videoSequence = EditedMediaItemSequence.withVideoFrom(editedItems);
@@ -520,10 +520,17 @@ public final class VideoStudioActivity extends Activity {
             }
             ArrayList<Long> clipDurationsUs = new ArrayList<>();
             for (Long durationMs : mediaDurationsMs) clipDurationsUs.add(durationMs > 0L ? durationMs * 1000L : 0L);
-            List<androidx.media3.common.Effect> compositionEffects = Collections.singletonList(
-                    new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
+            ArrayList<androidx.media3.common.Effect> compositionVideoEffects = new ArrayList<>();
+            // ROOT FIX: Composition overlays otherwise may receive an UNSET frame size when
+            // the first source is a still image or a provider-backed video with incomplete metadata.
+            // Force a valid, even output canvas BEFORE drawing the newsroom overlay.
+            compositionVideoEffects.add(Presentation.createForWidthAndHeight(
+                    width, height, Presentation.LAYOUT_SCALE_TO_FIT));
+            compositionVideoEffects.add(new OverlayEffect(Collections.singletonList(
+                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
+            Effects compositionEffects = new Effects(Collections.emptyList(), compositionVideoEffects);
             Composition composition = new Composition.Builder(compositionSequences)
-                    .setEffects(new Effects(Collections.emptyList(), compositionEffects))
+                    .setEffects(compositionEffects)
                     .build();
             File directory = getExternalFilesDir(Environment.DIRECTORY_MOVIES);
             if (directory == null) directory = getFilesDir();
@@ -592,6 +599,11 @@ public final class VideoStudioActivity extends Activity {
         return position == 0 ? 0.10f : position == 2 ? 0.28f : 0.18f;
     }
 
+
+    private int evenAtLeastTwo(int value) {
+        int safe = Math.max(2, value);
+        return (safe & 1) == 0 ? safe : safe - 1;
+    }
 
     private String fileExtension(Uri uri) {
         String name = displayName(uri);
