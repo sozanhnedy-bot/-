@@ -6,26 +6,36 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.media.AudioAttributes;
+import android.media.ExifInterface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -50,7 +60,6 @@ public final class TaskAssistantActivity extends Activity {
     public static final String EXTRA_RADAR_CONTEXT = "com.threadsdocumentarynews.app.RADAR_CONTEXT";
     private static final String RUNS_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/ai-task.yml";
     private static final String ACTIONS_URL = "https://github.com/sozanhnedy-bot/-/actions";
-    private static final String SOCIAL_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/publish-social.yml";
     private static final int BACKGROUND = Color.rgb(8, 9, 13);
     private static final int SURFACE = Color.rgb(20, 21, 27);
     private static final int SURFACE_ALT = Color.rgb(27, 28, 35);
@@ -61,6 +70,8 @@ public final class TaskAssistantActivity extends Activity {
     private static final int LINE = Color.rgb(54, 55, 64);
     private static final int CREATE_PDF_REQUEST = 4101;
     private static final int CREATE_AUDIO_REQUEST = 4102;
+    private static final int PICK_SOCIAL_IMAGE_REQUEST = 4103;
+    private static final int SAVE_SOCIAL_IMAGE_REQUEST = 4104;
     private static final String TEST_VOICE_TEXT = "مرحبًا، هذا اختبار للصوت العربي في تطبيق أخبار العالم.";
     private static final String[] TTS_VOICE_IDS = {"Zephyr", "Kore", "Aoede", "Achernar", "Achird", "Charon", "Puck", "Rasalgethi"};
     private static final String[] TTS_VOICE_LABELS = {"Zephyr — نسائي، مشرق", "Kore — نسائي، ثابت", "Aoede — نسائي، هادئ", "Achernar — نسائي، ناعم", "Achird — رجالي، ودود", "Charon — رجالي، إخباري", "Puck — رجالي، حيوي", "Rasalgethi — رجالي، واضح"};
@@ -73,6 +84,7 @@ public final class TaskAssistantActivity extends Activity {
     private EditText referenceInput;
     private EditText scriptOutput;
     private EditText socialDraftInput;
+    private EditText socialHeadlineInput;
     private Spinner durationSpinner;
     private Spinner platformSpinner;
     private Spinner styleSpinner;
@@ -86,9 +98,14 @@ public final class TaskAssistantActivity extends Activity {
     private Button continueWithoutVoiceButton;
     private Button pdfButton;
     private Button exportAudioButton;
+    private Button generateSocialPostButton;
+    private Button renderSocialImageButton;
+    private Button saveSocialImageButton;
+    private Button shareSocialPostButton;
     private TextView status;
     private TextView voiceTestStatus;
     private TextView socialStatus;
+    private ImageView socialImagePreview;
     private TextView workflowStatus;
     private Button refreshWorkflowButton;
     private MediaPlayer mediaPlayer;
@@ -100,6 +117,11 @@ public final class TaskAssistantActivity extends Activity {
     private String lastVoiceText = "";
     private String lastVoiceSelection = "";
     private String lastVoiceProvider = "";
+    private Uri socialPhotoUri;
+    private Uri savedSocialImageUri;
+    private Uri renderedSocialPhotoUri;
+    private String renderedSocialHeadline = "";
+    private Bitmap socialPostBitmap;
     private int selectedTab;
 
     @Override
@@ -610,32 +632,93 @@ public final class TaskAssistantActivity extends Activity {
     }
 
     private void buildSocialPage() {
-        addText(pageContent, "النشر الاجتماعي", 22, TEXT, true, 0, 6);
-        addText(pageContent, "X وفيسبوك — مسودة للمراجعة", 14, GOLD, true, 0, 12);
+        addText(pageContent, "منشور الخبر", 22, TEXT, true, 0, 6);
+        addText(pageContent, "مسودة مناسبة لـ X وفيسبوك — بدون نشر تلقائي", 14, GOLD, true, 0, 12);
         LinearLayout card = card();
-        addText(card, "صياغة منشور من المشروع المحفوظ", 17, TEXT, true, 0, 6);
+        addText(card, "1. اكتب الخبر والهاشتاجات", 17, TEXT, true, 0, 6);
+        addText(card, "سيصوغ Gemini من آخر مشروع محفوظ فقط؛ لا يبحث على الإنترنت ولا يتحقق من المصادر. راجع الخبر قبل المشاركة.", 13, MUTED, false, 0, 8);
+
+        String savedTopic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "").trim();
+        socialHeadlineInput = new EditText(this);
+        socialHeadlineInput.setGravity(Gravity.TOP | Gravity.RIGHT);
+        socialHeadlineInput.setTextDirection(View.TEXT_DIRECTION_RTL);
+        socialHeadlineInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE | android.text.InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        socialHeadlineInput.setTextColor(TEXT);
+        socialHeadlineInput.setHintTextColor(Color.rgb(128, 129, 137));
+        socialHeadlineInput.setHint("عنوان قصير يظهر على صورة البوست");
+        socialHeadlineInput.setTextSize(16);
+        socialHeadlineInput.setMinLines(2);
+        socialHeadlineInput.setMaxLines(3);
+        socialHeadlineInput.setPadding(dp(14), dp(12), dp(14), dp(12));
+        socialHeadlineInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
+        socialHeadlineInput.setText(savedTopic);
+        socialHeadlineInput.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().trim().equals(renderedSocialHeadline)) {
+                    savedSocialImageUri = null;
+                    if (shareSocialPostButton != null) shareSocialPostButton.setEnabled(false);
+                    if (saveSocialImageButton != null) saveSocialImageButton.setEnabled(false);
+                }
+            }
+            @Override public void afterTextChanged(Editable editable) { }
+        });
+        card.addView(socialHeadlineInput, params(-1, -2, 0, dp(4), 0, 8));
+
         socialDraftInput = new EditText(this);
         socialDraftInput.setGravity(Gravity.TOP | Gravity.RIGHT);
         socialDraftInput.setTextDirection(View.TEXT_DIRECTION_RTL);
         socialDraftInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         socialDraftInput.setTextColor(TEXT);
         socialDraftInput.setHintTextColor(Color.rgb(128, 129, 137));
-        socialDraftInput.setHint("سيظهر هنا نص المنشور للمراجعة قبل أي نشر.");
+        socialDraftInput.setHint("سيظهر هنا نص المنشور والهاشتاجات للمراجعة والتعديل.");
         socialDraftInput.setTextSize(14);
         socialDraftInput.setMinLines(5);
         socialDraftInput.setPadding(dp(14), dp(12), dp(14), dp(12));
         socialDraftInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
-        card.addView(socialDraftInput, params(-1, -2, 0, dp(7), 0, 9));
-        Button draft = secondaryButton("إنشاء مسودة من آخر مشروع");
-        card.addView(draft, params(-1, dp(48), 0, 0, 0, 6));
-        draft.setOnClickListener(v -> makeSocialDraft());
-        Button copy = primaryButton("نسخ للمراجعة — لم يتم النشر");
-        card.addView(copy, params(-1, dp(52), 0, 0, 0, 6));
+        socialDraftInput.setText(getPreferences(MODE_PRIVATE).getString("last_social_draft", ""));
+        socialDraftInput.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            @Override public void afterTextChanged(Editable editable) {
+                getPreferences(MODE_PRIVATE).edit().putString("last_social_draft", editable.toString()).apply();
+            }
+        });
+        card.addView(socialDraftInput, params(-1, -2, 0, 0, 0, 8));
+
+        generateSocialPostButton = primaryButton("كتابة بوست الخبر والهاشتاجات");
+        card.addView(generateSocialPostButton, params(-1, dp(52), 0, 0, 0, 6));
+        generateSocialPostButton.setOnClickListener(v -> makeSocialDraft());
+        Button copy = secondaryButton("نسخ نص البوست للمراجعة");
+        card.addView(copy, params(-1, dp(46), 0, 0, 0, dp(18)));
         copy.setOnClickListener(v -> copySocialDraft());
-        Button open = secondaryButton("عرض إعدادات مسار النشر في GitHub");
-        card.addView(open, params(-1, dp(48), 0, 0, 0, 0));
-        open.setOnClickListener(v -> openUrl(SOCIAL_URL, "تعذر فتح إعدادات مسار النشر."));
-        socialStatus = text("لا يُنشر شيء تلقائيًا. النشر الفعلي يظل متوقفًا حتى ربط الحسابات ومراجعة المنصات والتكلفة والموافقة الصريحة.", 13, MUTED, false);
+
+        addText(card, "2. جهّز صورة الخبر", 17, TEXT, true, 0, 5);
+        addText(card, "اختر صورة تملك حق استخدامها. سيضع التطبيق العنوان عليها بقالب World News، مع الحفاظ على الصورة كاملة دون قصّها.", 13, MUTED, false, 0, 8);
+        Button choosePhoto = secondaryButton("اختيار صورة الخبر من الهاتف");
+        card.addView(choosePhoto, params(-1, dp(48), 0, 0, 0, 6));
+        choosePhoto.setOnClickListener(v -> pickSocialPhoto());
+
+        socialImagePreview = new ImageView(this);
+        socialImagePreview.setAdjustViewBounds(true);
+        socialImagePreview.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        socialImagePreview.setBackgroundColor(Color.rgb(9, 13, 21));
+        if (socialPostBitmap != null && !socialPostBitmap.isRecycled()) socialImagePreview.setImageBitmap(socialPostBitmap);
+        card.addView(socialImagePreview, params(-1, dp(210), 0, 0, 0, 7));
+
+        renderSocialImageButton = secondaryButton("تحديث التصميم من العنوان والصورة");
+        card.addView(renderSocialImageButton, params(-1, dp(46), 0, 0, 0, 6));
+        renderSocialImageButton.setOnClickListener(v -> renderSocialPostImage());
+        saveSocialImageButton = primaryButton("حفظ صورة البوست JPEG");
+        saveSocialImageButton.setEnabled(socialPostBitmap != null && !socialPostBitmap.isRecycled());
+        card.addView(saveSocialImageButton, params(-1, dp(50), 0, 0, 0, 6));
+        saveSocialImageButton.setOnClickListener(v -> saveSocialPostImage());
+        shareSocialPostButton = secondaryButton("مشاركة الصورة والنص يدويًا");
+        shareSocialPostButton.setEnabled(savedSocialImageUri != null && !socialDraftInput.getText().toString().trim().isEmpty());
+        card.addView(shareSocialPostButton, params(-1, dp(48), 0, 0, 0, 0));
+        shareSocialPostButton.setOnClickListener(v -> shareSocialPost());
+
+        socialStatus = text("لا يوجد نشر مباشر الآن. أنشئ المسودة، اختر صورة، راجعها، ثم احفظها أو شاركها بنفسك. ربط النشر المباشر لـ X وفيسبوك مرحلة لاحقة.", 13, MUTED, false);
         socialStatus.setPadding(0, dp(10), 0, 0);
         card.addView(socialStatus);
         pageContent.addView(card);
@@ -1103,8 +1186,37 @@ public final class TaskAssistantActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if ((requestCode != CREATE_PDF_REQUEST && requestCode != CREATE_AUDIO_REQUEST) || resultCode != RESULT_OK || data == null || data.getData() == null) return;
+        if (resultCode != RESULT_OK || data == null || data.getData() == null) return;
         Uri uri = data.getData();
+        if (requestCode == PICK_SOCIAL_IMAGE_REQUEST) {
+            persistSocialImagePermission(uri, data.getFlags());
+            socialPhotoUri = uri;
+            savedSocialImageUri = null;
+            if (shareSocialPostButton != null) shareSocialPostButton.setEnabled(false);
+            renderSocialPostImage();
+            return;
+        }
+        if (requestCode == SAVE_SOCIAL_IMAGE_REQUEST) {
+            if (!isSocialPostImageCurrent()) {
+                socialStatus.setText("تغيّر العنوان أو الصورة قبل اكتمال الحفظ. حدّث التصميم ثم احفظه مرة أخرى.");
+                return;
+            }
+            try (OutputStream output = getContentResolver().openOutputStream(uri, "w")) {
+                if (output == null) throw new IllegalStateException("لم يمكن فتح ملف الصورة للحفظ.");
+                if (socialPostBitmap == null || socialPostBitmap.isRecycled()
+                        || !socialPostBitmap.compress(Bitmap.CompressFormat.JPEG, 94, output)) {
+                    throw new IllegalStateException("تعذر تحويل تصميم البوست إلى JPEG.");
+                }
+                output.flush();
+                savedSocialImageUri = uri;
+                if (shareSocialPostButton != null) shareSocialPostButton.setEnabled(socialDraftInput != null && !socialDraftInput.getText().toString().trim().isEmpty());
+                socialStatus.setText("تم حفظ صورة البوست. يمكنك الآن مشاركة الصورة والنص يدويًا بعد المراجعة.");
+            } catch (Exception error) {
+                socialStatus.setText("تعذر حفظ صورة البوست: " + (error.getLocalizedMessage() == null ? "خطأ في الملف." : error.getLocalizedMessage()));
+            }
+            return;
+        }
+        if (requestCode != CREATE_PDF_REQUEST && requestCode != CREATE_AUDIO_REQUEST) return;
         if (requestCode == CREATE_AUDIO_REQUEST) {
             try (InputStream input = new FileInputStream(pendingAudioPath); OutputStream output = getContentResolver().openOutputStream(uri, "w")) {
                 if (output == null) throw new IllegalStateException("لم يمكن فتح الملف للحفظ.");
@@ -1188,14 +1300,317 @@ public final class TaskAssistantActivity extends Activity {
     private void makeSocialDraft() {
         String topic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "").trim();
         String script = getPreferences(MODE_PRIVATE).getString("last_media_script", "").trim();
+        String references = getPreferences(MODE_PRIVATE).getString("last_media_references", "").trim();
         if (topic.isEmpty() || script.isEmpty()) {
-            socialStatus.setText("احفظ مشروعًا أولًا من تبويب المساعد.");
+            socialStatus.setText("أنشئ واحفظ مشروع الخبر والسكريبت أولًا من تبويب المساعد.");
             return;
         }
-        String intro = getNarrationText(script).replace('\n', ' ').trim();
-        if (intro.length() > 220) intro = intro.substring(0, 217) + "…";
-        socialDraftInput.setText(topic + "\n\n" + intro + "\n\n#WorldNews #أخبار_العالم");
-        socialStatus.setText("هذه مسودة فقط. لم يُرسل أي منشور إلى X أو Facebook.");
+        new AlertDialog.Builder(this)
+                .setTitle("إرسال المشروع إلى Gemini لصياغة بوست؟")
+                .setMessage("سيُرسل عنوان المشروع والسكريبت والمراجع التي أضفتها إلى Google Gemini عبر Firebase لصياغة مسودة وهاشتاجات. لن يُرسل شيء إلى X أو Facebook. لا تضع معلومات سرية. هل توافق على الإرسال لهذه المرة؟")
+                .setNegativeButton("إلغاء", null)
+                .setPositiveButton("موافق، اكتب المسودة", (dialog, which) -> generateSocialPostWithGemini(topic, script, references))
+                .show();
+    }
+
+    private void generateSocialPostWithGemini(String topic, String script, String references) {
+        if (generateSocialPostButton != null) generateSocialPostButton.setEnabled(false);
+        socialStatus.setText("جارٍ إعداد نص موجز وهاشتاجات من معلومات المشروع فقط…");
+        executor.execute(() -> {
+            try {
+                String result = GeminiNewsAnalyzer.generateSocialPostBlocking(this, topic, script, references);
+                mainHandler.post(() -> {
+                    if (isFinishing() || isDestroyed()) return;
+                    if (generateSocialPostButton != null) generateSocialPostButton.setEnabled(true);
+                    String caption = socialPostSection(result, "نص المنشور:");
+                    String hashtags = socialPostSection(result, "الهاشتاجات:");
+                    String readyDraft = caption.isEmpty() || hashtags.isEmpty()
+                            ? result : caption + "\n\n" + hashtags;
+                    socialDraftInput.setText(readyDraft);
+                    getPreferences(MODE_PRIVATE).edit().putString("last_social_draft", readyDraft).apply();
+                    socialHeadlineInput.setText(socialImageHeadline(result, topic));
+                    if (shareSocialPostButton != null) shareSocialPostButton.setEnabled(savedSocialImageUri != null);
+                    if (socialPhotoUri != null) renderSocialPostImage();
+                    else socialStatus.setText("اكتملت المسودة. اختر صورة الخبر ليجهز التطبيق بطاقة الصورة؛ لم يتم النشر.");
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> {
+                    if (generateSocialPostButton != null) generateSocialPostButton.setEnabled(true);
+                    socialStatus.setText("تعذر إنشاء المسودة: " + (error.getLocalizedMessage() == null ? "تحقق من الاتصال وإعداد Gemini." : error.getLocalizedMessage()));
+                });
+            }
+        });
+    }
+
+    private String socialPostSection(String generated, String prefix) {
+        for (String line : generated.split("\\r?\\n")) {
+            String cleaned = line.trim();
+            if (cleaned.startsWith(prefix)) return cleaned.substring(prefix.length()).trim();
+        }
+        return "";
+    }
+
+    private String socialImageHeadline(String generated, String fallback) {
+        for (String line : generated.split("\\r?\\n")) {
+            String cleaned = line.trim();
+            if (cleaned.startsWith("عنوان الصورة:")) {
+                String value = cleaned.substring("عنوان الصورة:".length()).trim();
+                if (!value.isEmpty()) return value;
+            }
+        }
+        return fallback;
+    }
+
+    private void pickSocialPhoto() {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+        try {
+            startActivityForResult(intent, PICK_SOCIAL_IMAGE_REQUEST);
+        } catch (Exception error) {
+            socialStatus.setText("تعذر فتح اختيار الصور على هذا الهاتف.");
+        }
+    }
+
+    private void persistSocialImagePermission(Uri uri, int flags) {
+        try {
+            int required = Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
+            if ((flags & required) == required) getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } catch (SecurityException ignored) { }
+    }
+
+    private void renderSocialPostImage() {
+        if (socialPhotoUri == null) {
+            socialStatus.setText("اختر صورة الخبر من الهاتف أولًا.");
+            return;
+        }
+        String headline = socialHeadlineInput == null ? "" : socialHeadlineInput.getText().toString().trim();
+        if (headline.isEmpty()) headline = getPreferences(MODE_PRIVATE).getString("last_media_topic", "").trim();
+        if (headline.isEmpty()) {
+            socialStatus.setText("اكتب عنوانًا قصيرًا قبل تجهيز صورة البوست.");
+            return;
+        }
+        final String finalHeadline = headline;
+        final Uri photo = socialPhotoUri;
+        savedSocialImageUri = null;
+        if (shareSocialPostButton != null) shareSocialPostButton.setEnabled(false);
+        if (saveSocialImageButton != null) saveSocialImageButton.setEnabled(false);
+        if (renderSocialImageButton != null) renderSocialImageButton.setEnabled(false);
+        socialStatus.setText("جارٍ تجهيز صورة 1200×675 مع الحفاظ على الصورة كاملة…");
+        executor.execute(() -> {
+            Bitmap source = null;
+            Bitmap rendered = null;
+            String failure = null;
+            try {
+                source = decodeSocialPhoto(photo);
+                rendered = createSocialPostBitmap(source, finalHeadline);
+            } catch (Exception error) {
+                failure = error.getLocalizedMessage() == null ? "تعذر قراءة الصورة المحددة." : error.getLocalizedMessage();
+            } finally {
+                if (source != null && !source.isRecycled()) source.recycle();
+            }
+            final Bitmap result = rendered;
+            final String errorText = failure;
+            mainHandler.post(() -> {
+                if (renderSocialImageButton != null) renderSocialImageButton.setEnabled(true);
+                if (isFinishing() || isDestroyed()) {
+                    if (result != null && !result.isRecycled()) result.recycle();
+                    return;
+                }
+                if (result == null) {
+                    if (saveSocialImageButton != null) saveSocialImageButton.setEnabled(isSocialPostImageCurrent());
+                    socialStatus.setText("تعذر تجهيز الصورة: " + errorText);
+                    return;
+                }
+                if (socialPostBitmap != null && !socialPostBitmap.isRecycled()) socialPostBitmap.recycle();
+                socialPostBitmap = result;
+                renderedSocialHeadline = finalHeadline;
+                renderedSocialPhotoUri = photo;
+                if (socialImagePreview != null) socialImagePreview.setImageBitmap(result);
+                savedSocialImageUri = null;
+                if (saveSocialImageButton != null) saveSocialImageButton.setEnabled(true);
+                if (shareSocialPostButton != null) shareSocialPostButton.setEnabled(false);
+                socialStatus.setText("تم تجهيز معاينة الصورة. احفظها أولًا ثم يمكنك مشاركة الصورة والنص يدويًا؛ لم يتم النشر.");
+            });
+        });
+    }
+
+    private Bitmap decodeSocialPhoto(Uri uri) throws Exception {
+        BitmapFactory.Options bounds = new BitmapFactory.Options();
+        bounds.inJustDecodeBounds = true;
+        try (InputStream input = getContentResolver().openInputStream(uri)) {
+            if (input == null) throw new IllegalStateException("لم يمنح مدير الملفات صلاحية قراءة الصورة.");
+            BitmapFactory.decodeStream(input, null, bounds);
+        }
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) throw new IllegalStateException("الملف المحدد ليس صورة قابلة للقراءة.");
+        int sample = 1;
+        while (Math.max(bounds.outWidth / sample, bounds.outHeight / sample) > 2400) sample *= 2;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = sample;
+        options.inPreferredConfig = Bitmap.Config.RGB_565;
+        int rotation = socialPhotoRotation(uri);
+        try (InputStream input = getContentResolver().openInputStream(uri)) {
+            if (input == null) throw new IllegalStateException("تعذر إعادة فتح الصورة.");
+            Bitmap bitmap = BitmapFactory.decodeStream(input, null, options);
+            if (bitmap == null) throw new IllegalStateException("تعذر فك الصورة المحددة.");
+            if (rotation == 0) return bitmap;
+            Matrix matrix = new Matrix();
+            matrix.postRotate(rotation);
+            Bitmap oriented = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+            if (oriented != bitmap) bitmap.recycle();
+            return oriented;
+        }
+    }
+
+    private int socialPhotoRotation(Uri uri) {
+        try (InputStream input = getContentResolver().openInputStream(uri)) {
+            if (input == null) return 0;
+            ExifInterface exif = new ExifInterface(input);
+            int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_90) return 90;
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_180) return 180;
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_270) return 270;
+        } catch (Exception ignored) { }
+        return 0;
+    }
+
+    private Bitmap createSocialPostBitmap(Bitmap source, String headline) {
+        final int width = 1200;
+        final int height = 675;
+        Bitmap output = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+        canvas.drawColor(Color.rgb(9, 14, 24));
+
+        float scale = Math.min((width - 72f) / source.getWidth(), (height - 72f) / source.getHeight());
+        float imageWidth = source.getWidth() * scale;
+        float imageHeight = source.getHeight() * scale;
+        RectF destination = new RectF((width - imageWidth) / 2f, (height - imageHeight) / 2f,
+                (width + imageWidth) / 2f, (height + imageHeight) / 2f);
+        Paint imagePaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+        canvas.drawBitmap(source, null, destination, imagePaint);
+
+        Paint shade = new Paint(Paint.ANTI_ALIAS_FLAG);
+        shade.setShader(new LinearGradient(0, height * 0.42f, 0, height,
+                new int[]{0x00101828, 0xE90A101A}, null, Shader.TileMode.CLAMP));
+        canvas.drawRect(0, height * 0.36f, width, height, shade);
+
+        Paint accent = new Paint(Paint.ANTI_ALIAS_FLAG);
+        accent.setColor(GOLD);
+        canvas.drawRoundRect(new RectF(width - 82, 48, width - 70, 112), 6, 6, accent);
+
+        TextPaint brandPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        brandPaint.setColor(TEXT);
+        brandPaint.setTextSize(28f);
+        brandPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+        StaticLayout brand = StaticLayout.Builder.obtain("أخبار العالم  |  WORLD NEWS", 0,
+                        "أخبار العالم  |  WORLD NEWS".length(), brandPaint, 490)
+                .setAlignment(Layout.Alignment.ALIGN_OPPOSITE)
+                .setTextDirection(TextDirectionHeuristics.RTL)
+                .setIncludePad(false)
+                .build();
+        canvas.save();
+        canvas.translate(width - 100 - 490, 54);
+        brand.draw(canvas);
+        canvas.restore();
+
+        TextPaint labelPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        labelPaint.setColor(GOLD);
+        labelPaint.setTextSize(24f);
+        labelPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+        String label = "ملخص الخبر";
+        StaticLayout labelLayout = StaticLayout.Builder.obtain(label, 0, label.length(), labelPaint, width - 120)
+                .setAlignment(Layout.Alignment.ALIGN_OPPOSITE)
+                .setTextDirection(TextDirectionHeuristics.RTL)
+                .setIncludePad(false)
+                .setMaxLines(1)
+                .build();
+        canvas.save();
+        canvas.translate(60, 425);
+        labelLayout.draw(canvas);
+        canvas.restore();
+
+        String title = headline.replace('\n', ' ').trim();
+        if (title.length() > 80) title = title.substring(0, 79).trim() + "…";
+        TextPaint titlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG | Paint.SUBPIXEL_TEXT_FLAG);
+        titlePaint.setColor(Color.WHITE);
+        titlePaint.setTextSize(54f);
+        titlePaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+        titlePaint.setShadowLayer(3f, 0f, 2f, Color.BLACK);
+        StaticLayout titleLayout = StaticLayout.Builder.obtain(title, 0, title.length(), titlePaint, width - 120)
+                .setAlignment(Layout.Alignment.ALIGN_OPPOSITE)
+                .setTextDirection(TextDirectionHeuristics.RTL)
+                .setIncludePad(false)
+                .setMaxLines(3)
+                .build();
+        canvas.save();
+        canvas.translate(60, 470);
+        titleLayout.draw(canvas);
+        canvas.restore();
+
+        Paint rule = new Paint(Paint.ANTI_ALIAS_FLAG);
+        rule.setColor(GOLD);
+        canvas.drawRect(60, 642, width - 60, 648, rule);
+        return output;
+    }
+
+    private void saveSocialPostImage() {
+        if (!isSocialPostImageCurrent()) {
+            socialStatus.setText("حدّث تصميم الصورة بعد تعديل العنوان أو اختيار صورة مختلفة.");
+            return;
+        }
+        String topic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "world-news");
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/jpeg");
+        intent.putExtra(Intent.EXTRA_TITLE, safeFileName(topic) + "-world-news-post.jpg");
+        try {
+            startActivityForResult(intent, SAVE_SOCIAL_IMAGE_REQUEST);
+        } catch (Exception error) {
+            socialStatus.setText("تعذر فتح نافذة حفظ صورة البوست.");
+        }
+    }
+
+    private void shareSocialPost() {
+        String draft = socialDraftInput == null ? "" : socialDraftInput.getText().toString().trim();
+        if (draft.isEmpty()) {
+            socialStatus.setText("اكتب نص البوست أولًا.");
+            return;
+        }
+        if (savedSocialImageUri == null) {
+            socialStatus.setText("احفظ صورة البوست أولًا، ثم شارك النص والصورة يدويًا.");
+            return;
+        }
+        if (!isSocialPostImageCurrent()) {
+            savedSocialImageUri = null;
+            if (shareSocialPostButton != null) shareSocialPostButton.setEnabled(false);
+            socialStatus.setText("تغيّر العنوان أو الصورة بعد التصميم. حدّث الصورة واحفظها من جديد قبل المشاركة.");
+            return;
+        }
+        int characterCount = draft.codePointCount(0, draft.length());
+        if (characterCount > 280) {
+            socialStatus.setText("المسودة أطول من 280 حرفًا تقريبًا (" + characterCount + "). اختصرها قبل المشاركة إلى X.");
+            return;
+        }
+        getPreferences(MODE_PRIVATE).edit().putString("last_social_draft", draft).apply();
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("image/jpeg");
+        share.putExtra(Intent.EXTRA_TEXT, draft);
+        share.putExtra(Intent.EXTRA_STREAM, savedSocialImageUri);
+        share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        share.setClipData(ClipData.newUri(getContentResolver(), "World News post image", savedSocialImageUri));
+        try {
+            startActivity(Intent.createChooser(share, "مشاركة مسودة البوست يدويًا"));
+            socialStatus.setText("اختر التطبيق وراجع المنشور قبل إرساله. لم يحدث نشر تلقائي.");
+        } catch (Exception error) {
+            socialStatus.setText("تعذرت مشاركة المسودة من هذا الهاتف.");
+        }
+    }
+
+    private boolean isSocialPostImageCurrent() {
+        if (socialPostBitmap == null || socialPostBitmap.isRecycled() || socialPhotoUri == null || renderedSocialPhotoUri == null) return false;
+        String currentHeadline = socialHeadlineInput == null ? "" : socialHeadlineInput.getText().toString().trim();
+        return socialPhotoUri.equals(renderedSocialPhotoUri) && currentHeadline.equals(renderedSocialHeadline);
     }
 
     private void copyScript() {
@@ -1209,7 +1624,9 @@ public final class TaskAssistantActivity extends Activity {
             socialStatus.setText("أنشئ مسودة أولًا قبل نسخها.");
             return;
         }
-        copyToClipboard("مسودة منشور World News", socialDraftInput.getText().toString());
+        String draft = socialDraftInput.getText().toString().trim();
+        getPreferences(MODE_PRIVATE).edit().putString("last_social_draft", draft).apply();
+        copyToClipboard("مسودة منشور World News", draft);
         socialStatus.setText("نُسخت المسودة للمراجعة. لم يتم النشر.");
     }
 
@@ -1297,6 +1714,10 @@ public final class TaskAssistantActivity extends Activity {
     @Override
     protected void onDestroy() {
         executor.shutdownNow();
+        if (socialPostBitmap != null && !socialPostBitmap.isRecycled()) {
+            socialPostBitmap.recycle();
+            socialPostBitmap = null;
+        }
         if (mediaPlayer != null) {
             try { mediaPlayer.stop(); } catch (Exception ignored) { }
             mediaPlayer.release();
