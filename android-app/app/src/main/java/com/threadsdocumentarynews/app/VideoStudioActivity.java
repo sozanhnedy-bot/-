@@ -14,6 +14,7 @@ import android.media.AudioAttributes;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -54,11 +55,15 @@ import androidx.media3.transformer.ProgressHolder;
 import androidx.media3.transformer.Transformer;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /** Local Android equivalent of the supplied media-studio workflow. */
 public final class VideoStudioActivity extends Activity {
@@ -78,7 +83,12 @@ public final class VideoStudioActivity extends Activity {
     private static final int RED = Color.rgb(255, 130, 115);
 
     private final ArrayList<Uri> mediaUris = new ArrayList<>();
+    private final ArrayList<Boolean> mediaIsImage = new ArrayList<>();
+    private final ArrayList<String> mediaDisplayNames = new ArrayList<>();
+    private final ArrayList<Long> mediaFileSizes = new ArrayList<>();
+    private final ArrayList<String> mediaDimensions = new ArrayList<>();
     private final Handler handler = new Handler(Looper.getMainLooper());
+    private final ExecutorService mediaImportExecutor = Executors.newSingleThreadExecutor();
     private EditText titleInput;
     private EditText captionInput;
     private EditText tickerInput;
@@ -92,6 +102,7 @@ public final class VideoStudioActivity extends Activity {
     private ProgressBar progress;
     private Button buildButton;
     private Button saveButton;
+    private Button pickMediaButton;
     private Button testAudioButton;
     private Button testMusicButton;
     private Spinner musicVolumeSpinner;
@@ -103,6 +114,7 @@ public final class VideoStudioActivity extends Activity {
     private File outputFile;
     private Transformer transformer;
     private boolean exporting;
+    private boolean mediaImporting;
     private MediaPlayer audioTester;
     private final ProgressHolder progressHolder = new ProgressHolder();
     private final Runnable progressPoller = new Runnable() {
@@ -157,13 +169,22 @@ public final class VideoStudioActivity extends Activity {
         form.addView(tickerInput, params(-1, dp(48), 0, 4, 0, 8));
         addText(form, "يتضمن التصدير تلاشيًا بين اللقطات وشريطًا متحركًا. مسار الخلفية اختياري، منخفض، ولا يتجاوز طول المونتاج ولا يتكرر تلقائيًا.", 12, MUTED, false, 0, 10);
 
-        Button pickMedia = button("اختيار صور وفيديوهات");
-        form.addView(pickMedia, params(-1, dp(50), 0, 0, 0, 6));
-        pickMedia.setOnClickListener(v -> openMediaPicker());
+        pickMediaButton = button("اختيار صور وفيديوهات");
+        form.addView(pickMediaButton, params(-1, dp(50), 0, 0, 0, 6));
+        pickMediaButton.setOnClickListener(v -> openMediaPicker());
         Button clearMedia = secondaryButton("مسح قائمة الوسائط");
         form.addView(clearMedia, params(-1, dp(44), 0, 0, 0, 6));
         clearMedia.setOnClickListener(v -> {
+            if (mediaImporting) {
+                setStatus("انتظر حتى ينتهي فحص الملفات التي اخترتها.", GOLD);
+                return;
+            }
+            clearImportedMedia();
             mediaUris.clear();
+            mediaIsImage.clear();
+            mediaDisplayNames.clear();
+            mediaFileSizes.clear();
+            mediaDimensions.clear();
             updateMediaList();
             clearPreview();
             setStatus("تم مسح الوسائط المحددة.", MUTED);
@@ -272,7 +293,6 @@ public final class VideoStudioActivity extends Activity {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("*/*");
-        intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"image/*", "video/*"});
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
         startActivityForResult(intent, PICK_MEDIA);
@@ -299,12 +319,13 @@ public final class VideoStudioActivity extends Activity {
         if (resultCode != RESULT_OK || data == null) return;
         if (requestCode == PICK_MEDIA) {
             int flags = data.getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+            ArrayList<Uri> selected = new ArrayList<>();
             if (data.getClipData() != null) {
-                for (int i = 0; i < data.getClipData().getItemCount(); i++) addPickedUri(data.getClipData().getItemAt(i).getUri(), flags);
+                for (int i = 0; i < data.getClipData().getItemCount(); i++) selected.add(data.getClipData().getItemAt(i).getUri());
             } else if (data.getData() != null) {
-                addPickedUri(data.getData(), flags);
+                selected.add(data.getData());
             }
-            updateMediaList();
+            importSelectedMedia(selected, flags);
         } else if (requestCode == PICK_AUDIO) {
             audioUri = data.getData();
             if (audioUri != null) {
@@ -328,17 +349,62 @@ public final class VideoStudioActivity extends Activity {
         }
     }
 
-    private void addPickedUri(Uri uri, int flags) {
-        if (uri == null || mediaUris.contains(uri)) return;
-        String type = getContentResolver().getType(uri);
-        if (type == null || (!type.startsWith("image/") && !type.startsWith("video/"))) return;
-        persistReadPermission(uri, flags);
-        mediaUris.add(uri);
+    private void importSelectedMedia(List<Uri> selected, int flags) {
+        if (selected == null || selected.isEmpty()) return;
+        if (mediaImporting) {
+            setStatus("انتظر انتهاء فحص الملفات الحالية قبل اختيار ملفات أخرى.", GOLD);
+            return;
+        }
+        mediaImporting = true;
+        if (pickMediaButton != null) pickMediaButton.setEnabled(false);
+        setStatus("جارٍ فحص الملفات ونسخها بأمان إلى مساحة التطبيق لقراءة الحجم والأبعاد…", GOLD);
+        mediaImportExecutor.execute(() -> {
+            ArrayList<ImportedMedia> imported = new ArrayList<>();
+            ArrayList<String> failures = new ArrayList<>();
+            for (Uri source : selected) {
+                if (source == null) continue;
+                File cached = null;
+                try {
+                    persistReadPermission(source, flags);
+                    String sourceName = displayName(source);
+                    cached = copyToMediaCache(source, sourceName);
+                    ImportedMedia info = inspectImportedMedia(cached, sourceName);
+                    imported.add(info);
+                } catch (Exception error) {
+                    if (cached != null) cached.delete();
+                    failures.add(displayName(source) + ": " + safeMessage(error));
+                }
+            }
+            handler.post(() -> {
+                mediaImporting = false;
+                if (pickMediaButton != null) pickMediaButton.setEnabled(true);
+                if (isFinishing() || isDestroyed()) {
+                    for (ImportedMedia item : imported) item.file.delete();
+                    return;
+                }
+                for (ImportedMedia item : imported) {
+                    mediaUris.add(Uri.fromFile(item.file));
+                    mediaIsImage.add(item.image);
+                    mediaDisplayNames.add(item.displayName);
+                    mediaFileSizes.add(item.file.length());
+                    mediaDimensions.add(item.width + "×" + item.height);
+                }
+                updateMediaList();
+                if (failures.isEmpty()) {
+                    setStatus("تم التعرف على " + imported.size() + " ملف/ملفات. الحجم والأبعاد تم التحقق منهما.", GOLD);
+                } else {
+                    String details = failures.get(0);
+                    if (failures.size() > 1) details += " (وهناك " + (failures.size() - 1) + " ملف/ملفات أخرى لم تُقبل).";
+                    setStatus("تم قبول " + imported.size() + " ملف/ملفات. تعذر قراءة: " + details, RED);
+                }
+            });
+        });
     }
 
     private void persistReadPermission(Uri uri, int flags) {
         try {
-            if ((flags & Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION) != 0)
+            int requiredFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
+            if ((flags & requiredFlags) == requiredFlags)
                 getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
         } catch (SecurityException ignored) { }
     }
@@ -351,7 +417,10 @@ public final class VideoStudioActivity extends Activity {
         }
         StringBuilder names = new StringBuilder("الملفات المختارة بالترتيب:\n");
         for (int i = 0; i < mediaUris.size(); i++) {
-            names.append(i + 1).append(". ").append(displayName(mediaUris.get(i))).append('\n');
+            String kind = mediaIsImage.get(i) ? "صورة" : "فيديو";
+            names.append(i + 1).append(". ").append(mediaDisplayNames.get(i))
+                    .append(" — ").append(kind).append(" — ").append(mediaDimensions.get(i))
+                    .append(" — ").append(humanSize(mediaFileSizes.get(i))).append('\n');
         }
         mediaList.setText(names.toString().trim());
         mediaList.setTextColor(WHITE);
@@ -363,9 +432,8 @@ public final class VideoStudioActivity extends Activity {
             return;
         }
         Uri uri = mediaUris.get(0);
-        String type = getContentResolver().getType(uri);
         stopVideo();
-        if (type != null && type.startsWith("image/")) {
+        if (mediaIsImage.get(0)) {
             videoView.setVisibility(View.GONE);
             imageView.setVisibility(View.VISIBLE);
             imageView.setImageURI(uri);
@@ -428,6 +496,10 @@ public final class VideoStudioActivity extends Activity {
     }
 
     private void buildVideo() {
+        if (mediaImporting) {
+            setStatus("انتظر حتى ينتهي فحص ونسخ الملفات المختارة.", RED);
+            return;
+        }
         if (exporting) return;
         if (mediaUris.isEmpty()) {
             setStatus("اختر صورة أو فيديو واحدًا على الأقل.", RED);
@@ -457,9 +529,9 @@ public final class VideoStudioActivity extends Activity {
             long videoDurationMs = 0L;
             boolean allDurationsKnown = true;
             setStatus("يفحص أبعاد الوسائط ويجهّز الإطار الأول قبل بدء التصدير…", GOLD);
-            for (Uri uri : mediaUris) {
-                String mime = getContentResolver().getType(uri);
-                boolean isImage = isImageMedia(uri, mime);
+            for (int mediaIndex = 0; mediaIndex < mediaUris.size(); mediaIndex++) {
+                Uri uri = mediaUris.get(mediaIndex);
+                boolean isImage = mediaIsImage.get(mediaIndex);
                 FrameDimensions sourceDimensions = prepareFirstFrame(uri, isImage, width, height);
                 if (sourceDimensions.width <= 0 || sourceDimensions.height <= 0) {
                     throw new IllegalStateException("أبعاد الإطار الأول غير صالحة للملف «" + displayName(uri) + "».");
@@ -615,12 +687,117 @@ public final class VideoStudioActivity extends Activity {
         FrameDimensions(int width, int height) { this.width = width; this.height = height; }
     }
 
-    private boolean isImageMedia(Uri uri, String mime) {
-        if (mime != null && mime.toLowerCase(java.util.Locale.ROOT).startsWith("image/")) return true;
-        String name = displayName(uri).toLowerCase(java.util.Locale.ROOT);
-        return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png")
-                || name.endsWith(".webp") || name.endsWith(".gif") || name.endsWith(".bmp")
-                || name.endsWith(".heic") || name.endsWith(".heif");
+    private static final class ImportedMedia {
+        final File file;
+        final boolean image;
+        final String displayName;
+        final int width;
+        final int height;
+        ImportedMedia(File file, boolean image, String displayName, int width, int height) {
+            this.file = file;
+            this.image = image;
+            this.displayName = displayName;
+            this.width = width;
+            this.height = height;
+        }
+    }
+
+    private File copyToMediaCache(Uri source, String originalName) throws Exception {
+        File directory = new File(getCacheDir(), "media-import");
+        if (!directory.exists() && !directory.mkdirs()) throw new IllegalStateException("تعذر تجهيز مساحة مؤقتة لاستيراد الوسائط.");
+        String cleanName = originalName == null ? "media" : originalName.replaceAll("[/\\\\\\p{Cntrl}]", "_").trim();
+        if (cleanName.isEmpty()) cleanName = "media";
+        if (cleanName.length() > 100) cleanName = cleanName.substring(cleanName.length() - 100);
+        int dot = cleanName.lastIndexOf('.');
+        if (dot > 0 && dot < cleanName.length() - 1 && !cleanName.substring(dot).matches("\\.[A-Za-z0-9]{1,12}")) {
+            cleanName = cleanName.substring(0, dot);
+        }
+        File partial = new File(directory, UUID.randomUUID() + ".part");
+        File target = new File(directory, UUID.randomUUID() + "-" + cleanName);
+        try (InputStream input = getContentResolver().openInputStream(source);
+             OutputStream output = new FileOutputStream(partial)) {
+            if (input == null) throw new IllegalStateException("مدير الملفات لم يمنح التطبيق صلاحية قراءة الملف المحدد.");
+            byte[] buffer = new byte[128 * 1024];
+            int count;
+            while ((count = input.read(buffer)) != -1) output.write(buffer, 0, count);
+            output.flush();
+        } catch (Exception error) {
+            partial.delete();
+            throw error;
+        }
+        if (!partial.isFile() || partial.length() <= 0L) {
+            partial.delete();
+            throw new IllegalStateException("الملف فارغ أو لم يمكن حساب حجمه أثناء القراءة.");
+        }
+        if (!partial.renameTo(target)) {
+            partial.delete();
+            throw new IllegalStateException("تعذر حفظ نسخة محلية من الملف لبدء معالجته.");
+        }
+        return target;
+    }
+
+    private ImportedMedia inspectImportedMedia(File file, String originalName) throws Exception {
+        BitmapFactory.Options bounds = new BitmapFactory.Options();
+        bounds.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(file.getAbsolutePath(), bounds);
+        if (bounds.outWidth > 0 && bounds.outHeight > 0) {
+            int sampleSize = 1;
+            while (Math.max(bounds.outWidth / sampleSize, bounds.outHeight / sampleSize) > 1024) sampleSize *= 2;
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = sampleSize;
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
+            if (bitmap != null && bitmap.getWidth() > 0 && bitmap.getHeight() > 0) {
+                int width = bounds.outWidth;
+                int height = bounds.outHeight;
+                bitmap.recycle();
+                return new ImportedMedia(file, true, originalName, width, height);
+            }
+            if (bitmap != null) bitmap.recycle();
+        }
+
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        Bitmap firstFrame = null;
+        try {
+            retriever.setDataSource(file.getAbsolutePath());
+            int width = parseDimension(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH));
+            int height = parseDimension(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
+            int rotation = parseDimension(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION));
+            long duration = 0L;
+            try { duration = Long.parseLong(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)); }
+            catch (Exception ignored) { }
+            if (Build.VERSION.SDK_INT >= 27) {
+                firstFrame = retriever.getScaledFrameAtTime(0L, MediaMetadataRetriever.OPTION_CLOSEST_SYNC, 640, 640);
+            } else {
+                firstFrame = retriever.getFrameAtTime(0L, MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
+            }
+            if (firstFrame == null || firstFrame.getWidth() <= 0 || firstFrame.getHeight() <= 0) {
+                throw new IllegalStateException("Android لم يستطع فك أول إطار. جرّب MP4 بترميز فيديو H.264.");
+            }
+            if (width <= 0) width = firstFrame.getWidth();
+            if (height <= 0) height = firstFrame.getHeight();
+            if (rotation == 90 || rotation == 270) {
+                int swap = width;
+                width = height;
+                height = swap;
+            }
+            if (width <= 0 || height <= 0) throw new IllegalStateException("لم يمكن قراءة أبعاد الفيديو أو إطاره الأول.");
+            if (duration <= 0L) throw new IllegalStateException("تم فك الفيديو لكن Android لم يتمكن من تحديد مدته؛ جرّب نسخة MP4 سليمة.");
+            return new ImportedMedia(file, false, originalName, width, height);
+        } catch (Exception error) {
+            file.delete();
+            throw new IllegalStateException("«" + originalName + "» ليس صورة قابلة للفك أو فيديو يدعمه الهاتف. للفيديو جرّب MP4/H.264. السبب: " + safeMessage(error), error);
+        } finally {
+            if (firstFrame != null && !firstFrame.isRecycled()) firstFrame.recycle();
+            try { retriever.release(); } catch (Exception ignored) { }
+        }
+    }
+
+    private void clearImportedMedia() {
+        File directory = new File(getCacheDir(), "media-import");
+        File[] cached = directory.listFiles();
+        if (cached != null) for (File file : cached) {
+            try { file.delete(); } catch (Exception ignored) { }
+        }
     }
 
     private int parseDimension(String value) {
@@ -1024,6 +1201,7 @@ public final class VideoStudioActivity extends Activity {
 
     @Override protected void onDestroy() {
         handler.removeCallbacks(progressPoller);
+        mediaImportExecutor.shutdownNow();
         if (exporting && transformer != null) {
             try { transformer.cancel(); } catch (Exception ignored) { }
         }
