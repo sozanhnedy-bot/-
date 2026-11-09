@@ -1002,3 +1002,4 @@ public final class VideoStudioActivity extends Activity {
         if (audioTester != null) { audioTester.release(); audioTester = null; }
         super.onDestroy();
     }
+}
