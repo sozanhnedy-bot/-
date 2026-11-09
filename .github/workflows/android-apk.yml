@@ -1,5 +1,7 @@
 name: Build Android APK
 
+# Triggered from the repair branch to produce a downloadable debug APK.
+
 on:
   push:
     branches: [main, fix/universal-media-import]
