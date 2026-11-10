@@ -125,6 +125,15 @@ public final class PortalActivity extends Activity {
         });
         root.addView(webView, new LinearLayout.LayoutParams(-1, 0, 1));
 
+        Button socialSetup = new Button(this);
+        socialSetup.setText("حسابات النشر — يدوي / تلقائي");
+        socialSetup.setTextColor(Color.WHITE);
+        socialSetup.setAllCaps(false);
+        socialSetup.setTextSize(14);
+        socialSetup.setBackgroundColor(NAVY);
+        socialSetup.setOnClickListener(v -> startActivity(new Intent(this, SocialAccountsActivity.class)));
+        root.addView(socialSetup, new LinearLayout.LayoutParams(-1, dp(48)));
+
         LinearLayout actions = new LinearLayout(this);
         actions.setOrientation(LinearLayout.HORIZONTAL);
         actions.setBackgroundColor(PAPER);

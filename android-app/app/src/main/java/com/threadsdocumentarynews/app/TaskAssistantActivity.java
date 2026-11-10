@@ -608,6 +608,9 @@ public final class TaskAssistantActivity extends Activity {
     private void buildSocialPage() {
         addText(pageContent, "النشر الاجتماعي", 22, TEXT, true, 0, 6);
         addText(pageContent, "إعداد الحسابات والمنصات", 14, GOLD, true, 0, 12);
+        Button setup = primaryButton("فتح صفحة إعداد الحسابات والوضع اليدوي / التلقائي");
+        pageContent.addView(setup, params(-1, dp(52), 0, 0, 0, 10));
+        setup.setOnClickListener(v -> startActivity(new Intent(this, SocialAccountsActivity.class)));
         LinearLayout card = card();
         addText(card, "صياغة منشور من المشروع المحفوظ", 17, TEXT, true, 0, 6);
         socialDraftInput = new EditText(this);
