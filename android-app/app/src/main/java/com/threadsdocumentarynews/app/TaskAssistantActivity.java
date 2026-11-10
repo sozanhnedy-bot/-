@@ -473,6 +473,15 @@ public final class TaskAssistantActivity extends Activity {
         addText(health, "جاهزية هذا الهاتف", 17, TEXT, true, 0, 8);
         boolean firebaseConfigured = !BuildConfig.FIREBASE_API_KEY.isBlank() && !BuildConfig.FIREBASE_APP_ID.isBlank() && !BuildConfig.FIREBASE_PROJECT_ID.isBlank();
         addText(health, (firebaseConfigured ? "✓" : "○") + "  كتابة السكريبت: Gemini عبر Firebase" + (firebaseConfigured ? " — الإعداد موجود" : " — إعداد Firebase ناقص"), 14, firebaseConfigured ? GOLD : MUTED, false, 0, 6);
+        String debugToken = BuildConfig.FIREBASE_DEBUG_TOKEN.trim();
+        if (!debugToken.isEmpty()) {
+            addText(health, "✓  Debug App Check token مضمّن في نسخة الاختبار", 14, GOLD, false, 0, 5);
+            Button copyDebugToken = secondaryButton("نسخ Debug App Check token");
+            health.addView(copyDebugToken, params(-1, dp(48), 0, 0, 0, 6));
+            copyDebugToken.setOnClickListener(v -> copyToClipboard("Firebase Debug App Check token", debugToken));
+        } else {
+            addText(health, "○  Debug App Check token غير مضاف — أضف FIREBASE_DEBUG_TOKEN في GitHub Secrets", 13, MUTED, false, 0, 6);
+        }
         addText(health, (LocalAiMedia.voiceReady(this) ? "✓" : "○") + "  Nabra الاحتياطي: " + (LocalAiMedia.voiceReady(this) ? "جاهز دون إنترنت" : "غير منزّل؛ Gemini هو المسار الأول"), 14, LocalAiMedia.voiceReady(this) ? GOLD : MUTED, false, 0, 6);
         String savedTopic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "");
         addText(health, (savedTopic.isEmpty() ? "○ لا يوجد مشروع محفوظ" : "✓ آخر مشروع محفوظ: " + savedTopic), 14, savedTopic.isEmpty() ? MUTED : GOLD, false, 0, 0);
