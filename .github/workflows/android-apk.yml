@@ -23,6 +23,7 @@ jobs:
       FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
       FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
       FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+      FIREBASE_DEBUG_TOKEN: ${{ secrets.FIREBASE_DEBUG_TOKEN }}
     steps:
       - name: Check out source
         uses: actions/checkout@v7
@@ -67,12 +68,12 @@ jobs:
           APK=android-app/app/build/outputs/apk/debug/app-debug.apk
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.worldnews.newsapp' versionCode='10' versionName='1.6.2'"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.worldnews.newsapp' versionCode='11' versionName='1.6.3'"
 
       - name: Upload installable APK artifact
         uses: actions/upload-artifact@v7
         with:
-          name: World-News-v1.6.2-debug
+          name: World-News-v1.6.3-debug
           path: android-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 90

@@ -30,6 +30,9 @@ android {
         buildConfigField 'String', 'FIREBASE_API_KEY', asBuildConfigString(firebaseValue('firebase.apiKey', 'FIREBASE_API_KEY'))
         buildConfigField 'String', 'FIREBASE_APP_ID', asBuildConfigString(firebaseValue('firebase.appId', 'FIREBASE_APP_ID'))
         buildConfigField 'String', 'FIREBASE_PROJECT_ID', asBuildConfigString(firebaseValue('firebase.projectId', 'FIREBASE_PROJECT_ID'))
+        manifestPlaceholders = [
+            firebaseAppCheckDebugToken: firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN')
+        ]
     }
 
     compileOptions {
