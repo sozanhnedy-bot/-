@@ -479,6 +479,29 @@ public final class TaskAssistantActivity extends Activity {
         addText(health, (savedTopic.isEmpty() ? "○ لا يوجد مشروع محفوظ" : "✓ آخر مشروع محفوظ: " + savedTopic), 14, savedTopic.isEmpty() ? MUTED : GOLD, false, 0, 0);
         pageContent.addView(health, params(-1, -2, 0, 0, 0, 12));
 
+        LinearLayout firebaseKeyCard = card();
+        addText(firebaseKeyCard, "مفتاح Firebase API لهذا البناء", 17, TEXT, true, 0, 6);
+        boolean hasFirebaseKey = !BuildConfig.FIREBASE_API_KEY.isBlank();
+        TextView firebaseKeyValue = text(hasFirebaseKey ? BuildConfig.FIREBASE_API_KEY : "المفتاح غير موجود في هذا البناء", 12, hasFirebaseKey ? TEXT : MUTED, false);
+        firebaseKeyValue.setTextDirection(View.TEXT_DIRECTION_LTR);
+        firebaseKeyValue.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+        firebaseKeyValue.setTextIsSelectable(true);
+        firebaseKeyValue.setPadding(dp(12), dp(11), dp(12), dp(11));
+        firebaseKeyValue.setBackground(rounded(SURFACE_ALT, LINE, 12));
+        firebaseKeyCard.addView(firebaseKeyValue, params(-1, -2, 0, 0, 0, 8));
+        Button copyFirebaseKey = primaryButton("نسخ مفتاح Firebase");
+        copyFirebaseKey.setEnabled(hasFirebaseKey);
+        copyFirebaseKey.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            if (clipboard != null) {
+                clipboard.setPrimaryClip(ClipData.newPlainText("Firebase API key", BuildConfig.FIREBASE_API_KEY));
+                Toast.makeText(this, "تم نسخ مفتاح Firebase لهذا البناء.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        firebaseKeyCard.addView(copyFirebaseKey, params(-1, dp(48), 0, 0, 0, 8));
+        addText(firebaseKeyCard, "هذا مفتاح Firebase API المضمّن في APK. لا تضعه في خانة App Check Debug token؛ تلك الخانة تطلب رمز UUID منفصلًا.", 12, MUTED, false, 0, 0);
+        pageContent.addView(firebaseKeyCard, params(-1, -2, 0, 0, 0, 12));
+
         LinearLayout runs = card();
         addText(runs, "بناء التطبيق على GitHub", 17, TEXT, true, 0, 6);
         addText(runs, "تُعرض حالة آخر تشغيل وخطوة الفشل إن وجدت. هذه قراءة فقط؛ لا تُرسل بيانات دخول GitHub من الهاتف.", 13, MUTED, false, 0, 10);
