@@ -139,7 +139,7 @@ public final class VideoStudioActivity extends Activity {
 
         LinearLayout form = card();
         addText(form, "مشروع MP4 جديد", 20, WHITE, true, 0, 5);
-        addText(form, "اختَر الصور والفيديوهات بالترتيب. سيضيف الاستوديو عنوانًا وشريط أخبار داخل الصورة، ويرفق التعليق الصوتي الذي أنشأته في المساعد.", 13, MUTED, false, 0, 10);
+        addText(form, "قالب الأخبار العاجلة ثابت: WORLD NEWS في منتصف الإطار الأزرق، بلوك أحمر كبير، دوائر نبضية متحركة، شارة عاجل، وعنوان الخبر. الصوت الخلفي والمؤثرات تُضاف كمسارات اختيارية.", 13, MUTED, false, 0, 10);
         addLabel(form, "عنوان الفيديو");
         titleInput = input("عنوان الخبر أو الترند");
         form.addView(titleInput, params(-1, dp(48), 0, 4, 0, 8));
@@ -624,7 +624,7 @@ public final class VideoStudioActivity extends Activity {
             canvasWidth = width;
             canvasHeight = height;
             float shortSide = Math.min(width, height);
-            headlineLayout = makeTextLayout("عاجل  |  " + headline, shortSide * 0.043f, width * 0.86f, 2);
+            headlineLayout = makeTextLayout(headline, shortSide * 0.043f, width * 0.82f, 2);
             lowerThirdLayout = makeTextLayout(lowerThird, shortSide * 0.034f, width * 0.82f, 2);
             tickerPaint.setTextSize(shortSide * 0.031f);
         }
@@ -638,10 +638,28 @@ public final class VideoStudioActivity extends Activity {
             float shortSide = Math.min(width, height);
             float margin = width * 0.045f;
 
-            RectF titleBox = new RectF(margin, height * 0.045f, width - margin, height * 0.045f + shortSide * 0.13f);
-            shapePaint.setColor(Color.rgb(182, 31, 42));
-            canvas.drawRoundRect(titleBox, shortSide * 0.018f, shortSide * 0.018f, shapePaint);
-            drawCenteredLayout(canvas, headlineLayout, titleBox);
+            RectF brandBox = new RectF(margin, height * 0.035f, width - margin, height * 0.035f + shortSide * 0.065f);
+            shapePaint.setColor(Color.rgb(11, 29, 47));
+            canvas.drawRoundRect(brandBox, shortSide * 0.012f, shortSide * 0.012f, shapePaint);
+            tickerPaint.setColor(GOLD);
+            tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+            tickerPaint.setTextAlign(Paint.Align.CENTER);
+            tickerPaint.setTextSize(shortSide * 0.032f);
+            canvas.drawText("WORLD NEWS", brandBox.centerX(), brandBox.centerY() + shortSide * 0.010f, tickerPaint);
+
+            RectF redBlock = new RectF(0, height * 0.27f, width, height * 0.905f);
+            shapePaint.setColor(Color.rgb(215, 25, 32));
+            canvas.drawRect(redBlock, shapePaint);
+            drawPulseCircles(canvas, presentationTimeUs, redBlock, shortSide);
+            RectF badge = new RectF(margin, height * 0.30f, margin + shortSide * 0.18f, height * 0.30f + shortSide * 0.065f);
+            shapePaint.setColor(GOLD);
+            canvas.drawRoundRect(badge, shortSide * 0.010f, shortSide * 0.010f, shapePaint);
+            tickerPaint.setColor(Color.rgb(11, 29, 47));
+            tickerPaint.setTextSize(shortSide * 0.030f);
+            canvas.drawText("عاجل", badge.centerX(), badge.centerY() + shortSide * 0.010f, tickerPaint);
+            drawCenteredLayout(canvas, headlineLayout, new RectF(margin, height * 0.39f, width - margin, height * 0.56f));
+            tickerPaint.setTextAlign(Paint.Align.LEFT);
+            tickerPaint.setColor(WHITE);
 
             if (!lowerThird.isEmpty()) {
                 RectF lowerBox = new RectF(width * 0.055f, height * 0.715f, width * 0.945f, height * 0.85f);
@@ -657,7 +675,7 @@ public final class VideoStudioActivity extends Activity {
             canvas.drawRect(0, tickerTop, width, height, shapePaint);
             shapePaint.setColor(Color.rgb(255, 187, 54));
             canvas.drawRect(0, tickerTop, width, Math.max(tickerTop + shortSide * 0.005f, height * 0.909f), shapePaint);
-            String movingText = "◀  " + ticker + "   •   WORLD NEWS   •   " + ticker + "   ◀";
+            String movingText = "  " + ticker + "   -   WORLD NEWS   -   " + ticker + "  ";
             float textWidth = tickerPaint.measureText(movingText);
             if (textWidth > 0f) {
                 float offset = VideoTransitionMath.tickerOffset(presentationTimeUs, textWidth, shortSide * 0.11f);
@@ -693,6 +711,26 @@ public final class VideoStudioActivity extends Activity {
                 }
             }
         }
+
+        private void drawPulseCircles(Canvas canvas, long timeUs, RectF block, float shortSide) {
+            Paint pulse = new Paint(Paint.ANTI_ALIAS_FLAG);
+            pulse.setStyle(Paint.Style.STROKE);
+            pulse.setStrokeWidth(Math.max(2f, shortSide * 0.004f));
+            float time = (timeUs / 1_000_000f) % 2.6f;
+            float[] centers = {widthOf(block) * 0.78f, widthOf(block) * 0.20f, widthOf(block) * 0.62f};
+            float[] y = {block.top + shortSide * 0.27f, block.top + shortSide * 0.58f, block.top + shortSide * 0.53f};
+            float[] phase = {0f, 0.8f, 1.5f};
+            for (int i = 0; i < centers.length; i++) {
+                float p = (time + phase[i]) % 2.6f;
+                float radius = shortSide * (0.035f + 0.34f * p / 2.6f);
+                pulse.setColor(Color.argb((int) (125f * (1f - p / 2.6f)), 255, 150, 150));
+                canvas.drawCircle(centers[i], y[i], radius, pulse);
+                pulse.setColor(Color.argb((int) (80f * (1f - p / 2.6f)), 255, 220, 180));
+                canvas.drawCircle(centers[i], y[i], radius * 0.52f, pulse);
+            }
+        }
+
+        private float widthOf(RectF value) { return value.right; }
 
         private StaticLayout makeTextLayout(String value, float textSize, float layoutWidth, int maxLines) {
             android.text.TextPaint paint = new android.text.TextPaint(Paint.ANTI_ALIAS_FLAG);
