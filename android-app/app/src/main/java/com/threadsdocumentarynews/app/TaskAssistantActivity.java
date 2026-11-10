@@ -25,6 +25,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -606,7 +607,7 @@ public final class TaskAssistantActivity extends Activity {
 
     private void buildSocialPage() {
         addText(pageContent, "النشر الاجتماعي", 22, TEXT, true, 0, 6);
-        addText(pageContent, "X وفيسبوك — مسودة للمراجعة", 14, GOLD, true, 0, 12);
+        addText(pageContent, "إعداد الحسابات والمنصات", 14, GOLD, true, 0, 12);
         LinearLayout card = card();
         addText(card, "صياغة منشور من المشروع المحفوظ", 17, TEXT, true, 0, 6);
         socialDraftInput = new EditText(this);
@@ -627,13 +628,66 @@ public final class TaskAssistantActivity extends Activity {
         Button copy = primaryButton("نسخ للمراجعة — لم يتم النشر");
         card.addView(copy, params(-1, dp(52), 0, 0, 0, 6));
         copy.setOnClickListener(v -> copySocialDraft());
-        Button open = secondaryButton("عرض إعدادات مسار النشر في GitHub");
-        card.addView(open, params(-1, dp(48), 0, 0, 0, 0));
-        open.setOnClickListener(v -> openUrl(SOCIAL_URL, "تعذر فتح إعدادات مسار النشر."));
-        socialStatus = text("لا يُنشر شيء تلقائيًا. النشر الفعلي يظل متوقفًا حتى ربط الحسابات ومراجعة المنصات والتكلفة والموافقة الصريحة.", 13, MUTED, false);
+        socialStatus = text("هذه النسخة تجهّز اختياراتك وتفتح المواقع الرسمية فقط؛ لم يتم ربط الحسابات أو تفعيل النشر عبر API بعد. بعد إعداد OAuth والخدمة الآمنة، سيبقى نشر كل منشور متوقفًا حتى معاينته وموافقتك.", 13, MUTED, false);
         socialStatus.setPadding(0, dp(10), 0, 0);
         card.addView(socialStatus);
         pageContent.addView(card);
+
+        addSocialPlatformCard("x", "X", "نصوص وصور وفيديوهات", "https://x.com/login", "https://developer.x.com/en/portal/dashboard");
+        addSocialPlatformCard("facebook", "Facebook Pages", "النشر إلى صفحة Facebook تملك صلاحية إدارتها", "https://www.facebook.com/login", "https://developers.facebook.com/apps/");
+        addSocialPlatformCard("instagram", "Instagram", "يتطلب حسابًا احترافيًا Creator أو Business للنشر عبر API", "https://www.instagram.com/accounts/login/", "https://developers.facebook.com/apps/");
+        addSocialPlatformCard("youtube", "YouTube", "رفع الفيديوهات إلى القناة بعد التفويض", "https://studio.youtube.com/", "https://console.cloud.google.com/apis/credentials");
+        addSocialPlatformCard("tiktok", "TikTok", "ستظهر معاينة وموافقة داخل مسار النشر قبل الإرسال", "https://www.tiktok.com/login", "https://developers.tiktok.com/");
+
+        Button actions = secondaryButton("فتح مسار النشر في GitHub Actions");
+        pageContent.addView(actions, params(-1, dp(48), 0, 0, 0, 10));
+        actions.setOnClickListener(v -> openUrl(SOCIAL_URL, "تعذر فتح إعدادات مسار النشر."));
+    }
+
+    private void addSocialPlatformCard(String key, String title, String detail, String accountUrl, String developerUrl) {
+        LinearLayout platformCard = card();
+        addText(platformCard, title, 17, TEXT, true, 0, 4);
+        addText(platformCard, detail, 12, MUTED, false, 0, 7);
+        EditText accountName = new EditText(this);
+        accountName.setSingleLine(true);
+        accountName.setTextColor(TEXT);
+        accountName.setHintTextColor(Color.rgb(128, 129, 137));
+        accountName.setTextSize(14);
+        accountName.setHint("اسم الحساب أو القناة — للتعريف فقط");
+        accountName.setText(getPreferences(MODE_PRIVATE).getString("social_account_" + key, ""));
+        accountName.setPadding(dp(12), dp(8), dp(12), dp(8));
+        accountName.setBackground(rounded(SURFACE_ALT, LINE, 14));
+        accountName.addTextChangedListener(new android.text.TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                getPreferences(MODE_PRIVATE).edit().putString("social_account_" + key, s == null ? "" : s.toString().trim()).apply();
+            }
+            @Override public void afterTextChanged(android.text.Editable s) { }
+        });
+        platformCard.addView(accountName, params(-1, dp(46), 0, 0, 0, 6));
+        CheckBox selected = new CheckBox(this);
+        selected.setText("اختيار هذه المنصة للنشر بعد إكمال الربط");
+        selected.setTextColor(MUTED);
+        selected.setTextSize(13);
+        selected.setButtonTintList(android.content.res.ColorStateList.valueOf(GOLD));
+        selected.setChecked(getPreferences(MODE_PRIVATE).getBoolean("social_selected_" + key, false));
+        selected.setOnCheckedChangeListener((button, checked) -> {
+            getPreferences(MODE_PRIVATE).edit().putBoolean("social_selected_" + key, checked).apply();
+            if (socialStatus != null) socialStatus.setText("حُفظ اختيارك على هذا الجهاز فقط. لا يبدأ النشر حتى إعداد OAuth والخدمة الآمنة؛ وبعد الربط سيظل كل منشور متوقفًا حتى معاينته وموافقتك.");
+        });
+        platformCard.addView(selected, params(-1, -2, 0, 0, 0, 6));
+        LinearLayout buttons = new LinearLayout(this);
+        buttons.setOrientation(LinearLayout.HORIZONTAL);
+        Button openAccount = secondaryButton("فتح المنصة");
+        Button openSetup = secondaryButton("إعداد المطور");
+        buttons.addView(openAccount, new LinearLayout.LayoutParams(0, dp(44), 1));
+        buttons.addView(openSetup, params(0, dp(44), 6, 0, 0, 0));
+        ((LinearLayout.LayoutParams) buttons.getChildAt(1).getLayoutParams()).weight = 1;
+        openAccount.setOnClickListener(v -> openUrl(accountUrl, "تعذر فتح المنصة."));
+        openSetup.setOnClickListener(v -> openUrl(developerUrl, "تعذر فتح بوابة المطور."));
+        platformCard.addView(buttons);
+        addText(platformCard, "الحالة: غير موصول عبر OAuth. الاسم المحفوظ لا يعني أن الحساب تم ربطه أو تفويض النشر.", 11, MUTED, false, 0, 0);
+        pageContent.addView(platformCard, params(-1, -2, 0, 0, 0, 10));
     }
 
     private Spinner makeSpinner(String[] values) {

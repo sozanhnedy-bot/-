@@ -18,9 +18,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.OpenableColumns;
 import android.text.Layout;
+import android.text.Editable;
 import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
 import android.text.StaticLayout;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -78,6 +80,7 @@ public final class VideoStudioActivity extends Activity {
     private final ArrayList<Uri> mediaUris = new ArrayList<>();
     private final Handler handler = new Handler(Looper.getMainLooper());
     private EditText titleInput;
+    private EditText brandInput;
     private EditText captionInput;
     private EditText tickerInput;
     private Spinner imageDurationSpinner;
@@ -140,6 +143,19 @@ public final class VideoStudioActivity extends Activity {
         LinearLayout form = card();
         addText(form, "مشروع MP4 جديد", 20, WHITE, true, 0, 5);
         addText(form, "اختَر الصور والفيديوهات بالترتيب. سيضيف الاستوديو عنوانًا وشريط أخبار داخل الصورة، ويرفق التعليق الصوتي الذي أنشأته في المساعد.", 13, MUTED, false, 0, 10);
+        addLabel(form, "اسم القناة أو الشعار النصي");
+        brandInput = input("اسم القناة");
+        brandInput.setText(getSharedPreferences("editorial_identity", MODE_PRIVATE).getString("brand_name", "World News"));
+        brandInput.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String value = compactText(s == null ? "" : s.toString(), 40);
+                getSharedPreferences("editorial_identity", MODE_PRIVATE).edit().putString("brand_name", value).apply();
+            }
+            @Override public void afterTextChanged(Editable s) { }
+        });
+        form.addView(brandInput, params(-1, dp(48), 0, 4, 0, 8));
+        addText(form, "سيظهر الاسم بدل WORLD NEWS في شريط الفيديو المتحرك. اتركه فارغًا لاستخدام World News.", 12, MUTED, false, 0, 8);
         addLabel(form, "عنوان الفيديو");
         titleInput = input("عنوان الخبر أو الترند");
         form.addView(titleInput, params(-1, dp(48), 0, 4, 0, 8));
@@ -453,6 +469,8 @@ public final class VideoStudioActivity extends Activity {
             String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 90);
             String lowerThird = captionInput == null ? "" : compactText(captionInput.getText().toString(), 120);
             String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 120);
+            String brandName = brandInput == null ? "World News" : compactText(brandInput.getText().toString(), 40);
+            if (brandName.isEmpty()) brandName = "World News";
             for (int mediaIndex = 0; mediaIndex < mediaUris.size(); mediaIndex++) {
                 Uri uri = mediaUris.get(mediaIndex);
                 String type = getContentResolver().getType(uri);
@@ -510,7 +528,7 @@ public final class VideoStudioActivity extends Activity {
             ArrayList<Long> clipDurationsUs = new ArrayList<>();
             for (Long durationMs : mediaDurationsMs) clipDurationsUs.add(durationMs > 0L ? durationMs * 1000L : 0L);
             List<androidx.media3.common.Effect> compositionEffects = Collections.singletonList(
-                    new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
+                    new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, brandName, clipDurationsUs))));
             Composition composition = new Composition.Builder(compositionSequences)
                     .setEffects(new Effects(Collections.emptyList(), compositionEffects))
                     .build();
@@ -598,6 +616,7 @@ public final class VideoStudioActivity extends Activity {
         private final String headline;
         private final String lowerThird;
         private final String ticker;
+        private final String brandName;
         private final List<Long> clipDurationsUs;
         private int canvasWidth;
         private int canvasHeight;
@@ -607,11 +626,12 @@ public final class VideoStudioActivity extends Activity {
         private final Paint tickerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker, List<Long> clipDurationsUs) {
+        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker, String brandName, List<Long> clipDurationsUs) {
             super(false);
             this.headline = headline.isEmpty() ? "أخبار العالم" : headline;
             this.lowerThird = lowerThird;
             this.ticker = ticker.isEmpty() ? "آخر التطورات" : ticker;
+            this.brandName = brandName == null || brandName.trim().isEmpty() ? "World News" : brandName.trim();
             this.clipDurationsUs = new ArrayList<>(clipDurationsUs);
             tickerPaint.setColor(Color.WHITE);
             tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
@@ -657,7 +677,7 @@ public final class VideoStudioActivity extends Activity {
             canvas.drawRect(0, tickerTop, width, height, shapePaint);
             shapePaint.setColor(Color.rgb(255, 187, 54));
             canvas.drawRect(0, tickerTop, width, Math.max(tickerTop + shortSide * 0.005f, height * 0.909f), shapePaint);
-            String movingText = "◀  " + ticker + "   •   WORLD NEWS   •   " + ticker + "   ◀";
+            String movingText = "◀  " + ticker + "   •   " + brandName + "   •   " + ticker + "   ◀";
             float textWidth = tickerPaint.measureText(movingText);
             if (textWidth > 0f) {
                 float offset = VideoTransitionMath.tickerOffset(presentationTimeUs, textWidth, shortSide * 0.11f);
