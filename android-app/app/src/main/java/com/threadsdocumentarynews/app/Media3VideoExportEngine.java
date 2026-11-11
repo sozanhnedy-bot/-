@@ -12,6 +12,7 @@ import androidx.media3.common.MimeTypes;
 import androidx.media3.common.audio.GainProcessor;
 import androidx.media3.effect.OverlayEffect;
 import androidx.media3.effect.Presentation;
+import androidx.media3.effect.TextureOverlay;
 import androidx.media3.transformer.Composition;
 import androidx.media3.transformer.EditedMediaItem;
 import androidx.media3.transformer.EditedMediaItemSequence;
@@ -29,7 +30,7 @@ import java.util.List;
 /** Media3 implementation of the app's local video export contract. */
 public final class Media3VideoExportEngine implements VideoExportEngine {
     public interface OverlayFactory {
-        Effect create(List<Long> clipDurationsUs);
+        TextureOverlay create(List<Long> clipDurationsUs);
     }
 
     private final Context context;
@@ -135,7 +136,7 @@ public final class Media3VideoExportEngine implements VideoExportEngine {
 
             ArrayList<Long> durationsUs = new ArrayList<>();
             for (Long duration : durationsMs) durationsUs.add(duration * 1000L);
-            Effect overlay = overlayFactory.create(Collections.unmodifiableList(durationsUs));
+            TextureOverlay overlay = overlayFactory.create(Collections.unmodifiableList(durationsUs));
             Composition composition = new Composition.Builder(sequences)
                     .setEffects(new Effects(Collections.emptyList(),
                             Collections.singletonList(new OverlayEffect(Collections.singletonList(overlay)))))
