@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
@@ -48,6 +49,8 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
     private final Handler main = new Handler(Looper.getMainLooper());
     private final ExecutorService worker = Executors.newSingleThreadExecutor();
     private final AtomicBoolean cancelled = new AtomicBoolean(false);
+    // SAF URLs are reused by FFprobe and multiple FFmpeg commands during one export.
+    private final List<String> registeredSafUrls = Collections.synchronizedList(new ArrayList<>());
     private volatile boolean running;
     private volatile Listener listener;
 
@@ -63,6 +66,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
         }
         running = true;
         cancelled.set(false);
+        registeredSafUrls.clear();
         listener = callback;
         worker.execute(() -> runExport(request, callback));
     }
@@ -208,6 +212,12 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             else finish(callback, null, error);
         } finally {
             deleteRecursively(work);
+            synchronized (registeredSafUrls) {
+                for (String safUrl : registeredSafUrls) {
+                    try { FFmpegKitConfig.unregisterSafProtocolUrl(safUrl); } catch (Exception ignored) { }
+                }
+                registeredSafUrls.clear();
+            }
         }
     }
 
@@ -228,8 +238,9 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
     private String readablePath(Uri uri) {
         if (uri == null) throw new IllegalArgumentException("Media URI is missing.");
         if (ContentResolver.SCHEME_CONTENT.equals(uri.getScheme())) {
-            String path = FFmpegKitConfig.getSafParameterForRead(context, uri);
+            String path = FFmpegKitConfig.getSafParameterForRead(context, uri, true);
             if (path == null || path.trim().isEmpty()) throw new IllegalStateException("Android could not open the selected media URI.");
+            registeredSafUrls.add(path);
             return path;
         }
         if (ContentResolver.SCHEME_FILE.equals(uri.getScheme())) return uri.getPath();
