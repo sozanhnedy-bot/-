@@ -193,7 +193,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             command.append("-filter_complex ").append(q(graph.toString()))
                     .append(" -map ").append(q("[vout]"))
                     .append(" -map ").append(q("[aout]"))
-                    .append(" -c:v h264_mediacodec -b:v 6M -r ").append(FPS)
+                    .append(" -c:v libx264 -preset veryfast -tune zerolatency -b:v 6M -r ").append(FPS)
                     .append(" -pix_fmt yuv420p -c:a aac -b:a 192k -ar 48000 -ac 2")
                     .append(" -movflags +faststart -shortest ").append(q(stagedOutput.getAbsolutePath()));
             execute(command.toString(), "final MP4 mux");
@@ -229,7 +229,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
         command.append("-vf ").append(q("scale=" + request.getWidth() + ":" + request.getHeight()
                 + ":force_original_aspect_ratio=increase,crop=" + request.getWidth() + ":" + request.getHeight()
                 + ",setsar=1,fps=" + FPS + ",format=yuv420p"))
-                .append(" -an -c:v h264_mediacodec -b:v 6M -r ").append(FPS)
+                .append(" -an -c:v libx264 -preset veryfast -tune zerolatency -b:v 6M -r ").append(FPS)
                 .append(" -t ").append(seconds(input.durationMs))
                 .append(" -movflags +faststart ").append(q(output.getAbsolutePath()));
         return command.toString();

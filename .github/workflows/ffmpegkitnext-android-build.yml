@@ -44,7 +44,8 @@ jobs:
             --disable-arch-arm-v7a-neon \
             --disable-arch-x86 \
             --disable-arch-x86-64 \
-            --enable-lib-android-media-codec
+            --enable-gpl \
+            --enable-lib-x264
 
       - name: Verify generated AAR and native ABI
         shell: bash

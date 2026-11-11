@@ -2,7 +2,7 @@
 
 The Android app builds and integrates the official **FFmpegKitNext v9.0.2** source from https://github.com/arthenica/ffmpeg-kit-next. FFmpegKitNext does not publish ready-made Android packages; this repository's GitHub Actions workflow builds the Android AAR locally from the pinned `v9.0.2` tag for `arm64-v8a`, then exposes its generated Maven repository to Gradle.
 
-The upstream project is licensed under **LGPL-3.0 by default** and becomes GPL-licensed when GPL libraries are enabled. The current Android build workflow does not pass `--enable-gpl`; it enables Android MediaCodec support and the app requests H.264 through `h264_mediacodec`, not `libx264`. This describes the configured build, not a substitute for checking the exact generated AAR and every bundled component notice.
+The Android build workflow explicitly enables GPL and x264 with `--enable-gpl --enable-lib-x264`. The app requests H.264 through FFmpeg's `libx264` encoder in both segment preparation and final MP4 output; it does not use `h264_mediacodec` or Android MediaCodec for video encoding. The resulting FFmpegKitNext AAR and distributed application are therefore subject to the applicable GPLv3 obligations, in addition to the notices and obligations of all other bundled components. Verify the exact generated AAR and every bundled component notice before distribution.
 
 Keep the generated AAR's license and component notices with any distributed APK. Before public distribution, inspect the exact AAR produced by the pinned workflow, verify its enabled libraries and notices, and satisfy the applicable LGPL source/relinking and attribution obligations, along with any codec patent requirements in the distribution territories.
 
