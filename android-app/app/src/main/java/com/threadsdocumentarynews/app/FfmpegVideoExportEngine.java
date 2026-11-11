@@ -179,6 +179,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                         .append(seconds(totalMs)).append("[music]");
                 audioLabels.add("[music]");
             }
+            graph.append(';');
             for (String label : audioLabels) graph.append(label);
             graph.append("amix=inputs=").append(audioLabels.size())
                     .append(":duration=longest:dropout_transition=0,alimiter=limit=0.95,aresample=48000[aout]");
