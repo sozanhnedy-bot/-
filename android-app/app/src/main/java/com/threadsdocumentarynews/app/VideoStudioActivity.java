@@ -35,7 +35,6 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
-import androidx.media3.effect.CanvasOverlay;
 
 import java.io.File;
 import java.io.InputStream;
@@ -450,10 +449,7 @@ public final class VideoStudioActivity extends Activity {
                     mediaUris, audioUri, musicUri, headline, lowerThird, ticker,
                     outputFile, width, height, imageSeconds, selectedMusicGain(), breakingNews);
 
-            VideoExportEngine media3Fallback = new Media3VideoExportEngine(this, durationsUs ->
-                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, durationsUs, breakingNews));
-            exportEngine = new VideoExportEngineCoordinator(
-                    new FfmpegVideoExportEngine(this), media3Fallback);
+            exportEngine = new FfmpegVideoExportEngine(this);
             exportEngine.export(request, new VideoExportEngine.Listener() {
                 @Override public void onProgress(int percent) {
                     if (isFinishing() || isDestroyed()) return;
@@ -536,171 +532,6 @@ public final class VideoStudioActivity extends Activity {
             return 0L;
         } finally {
             try { retriever.release(); } catch (Exception ignored) { }
-        }
-    }
-
-    private final class NewsroomCanvasOverlay extends CanvasOverlay {
-        private final String headline;
-        private final String lowerThird;
-        private final String ticker;
-        private final List<Long> clipDurationsUs;
-        private final boolean breakingNews;
-        private int canvasWidth;
-        private int canvasHeight;
-        private StaticLayout headlineLayout;
-        private StaticLayout lowerThirdLayout;
-        private final Paint shapePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint tickerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker,
-                List<Long> clipDurationsUs, boolean breakingNews) {
-            super(false);
-            this.headline = headline.isEmpty() ? "أخبار العالم" : headline;
-            this.lowerThird = lowerThird;
-            this.ticker = ticker.isEmpty() ? "آخر التطورات" : ticker;
-            this.clipDurationsUs = new ArrayList<>(clipDurationsUs);
-            this.breakingNews = breakingNews;
-            tickerPaint.setColor(Color.WHITE);
-            tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-            tickerPaint.setTextAlign(Paint.Align.LEFT);
-            blackPaint.setColor(Color.BLACK);
-        }
-
-        @Override public void setCanvasSize(int width, int height) {
-            super.setCanvasSize(width, height);
-            canvasWidth = width;
-            canvasHeight = height;
-            float shortSide = Math.min(width, height);
-            headlineLayout = makeTextLayout(headline, shortSide * 0.043f, width * 0.82f, 2);
-            lowerThirdLayout = makeTextLayout(lowerThird, shortSide * 0.034f, width * 0.82f, 2);
-            tickerPaint.setTextSize(shortSide * 0.031f);
-        }
-
-        @Override public void onDraw(Canvas canvas, long presentationTimeUs) {
-            int width = canvas.getWidth();
-            int height = canvas.getHeight();
-            if (width <= 0 || height <= 0) return;
-            canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
-            if (canvasWidth != width || canvasHeight != height || headlineLayout == null) setCanvasSize(width, height);
-            float shortSide = Math.min(width, height);
-            float margin = width * 0.045f;
-
-            RectF brandBox = new RectF(margin, height * 0.035f, width - margin, height * 0.035f + shortSide * 0.065f);
-            shapePaint.setColor(Color.rgb(11, 29, 47));
-            canvas.drawRoundRect(brandBox, shortSide * 0.012f, shortSide * 0.012f, shapePaint);
-            tickerPaint.setColor(GOLD);
-            tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-            tickerPaint.setTextAlign(Paint.Align.CENTER);
-            tickerPaint.setTextSize(shortSide * 0.032f);
-            canvas.drawText("WORLD NEWS", brandBox.centerX(), brandBox.centerY() + shortSide * 0.010f, tickerPaint);
-
-            RectF redBlock = new RectF(0, height * 0.27f, width, height * 0.905f);
-            shapePaint.setColor(Color.rgb(215, 25, 32));
-            canvas.drawRect(redBlock, shapePaint);
-            drawPulseCircles(canvas, presentationTimeUs, redBlock, shortSide);
-            RectF badge = new RectF(margin, height * 0.30f, margin + shortSide * 0.18f, height * 0.30f + shortSide * 0.065f);
-            shapePaint.setColor(GOLD);
-            canvas.drawRoundRect(badge, shortSide * 0.010f, shortSide * 0.010f, shapePaint);
-            tickerPaint.setColor(Color.rgb(11, 29, 47));
-            tickerPaint.setTextSize(shortSide * 0.030f);
-            canvas.drawText(breakingNews ? "عاجل" : "أخبار", badge.centerX(), badge.centerY() + shortSide * 0.010f, tickerPaint);
-            drawCenteredLayout(canvas, headlineLayout, new RectF(margin, height * 0.39f, width - margin, height * 0.56f));
-            tickerPaint.setTextAlign(Paint.Align.LEFT);
-            tickerPaint.setColor(WHITE);
-
-            if (!lowerThird.isEmpty()) {
-                RectF lowerBox = new RectF(width * 0.055f, height * 0.715f, width * 0.945f, height * 0.85f);
-                shapePaint.setColor(Color.argb(235, 11, 29, 47));
-                canvas.drawRoundRect(lowerBox, shortSide * 0.014f, shortSide * 0.014f, shapePaint);
-                shapePaint.setColor(Color.rgb(255, 187, 54));
-                canvas.drawRect(lowerBox.right - shortSide * 0.012f, lowerBox.top, lowerBox.right, lowerBox.bottom, shapePaint);
-                drawCenteredLayout(canvas, lowerThirdLayout, lowerBox);
-            }
-
-            float tickerTop = height * 0.905f;
-            shapePaint.setColor(Color.argb(242, 15, 27, 40));
-            canvas.drawRect(0, tickerTop, width, height, shapePaint);
-            shapePaint.setColor(Color.rgb(255, 187, 54));
-            canvas.drawRect(0, tickerTop, width, Math.max(tickerTop + shortSide * 0.005f, height * 0.909f), shapePaint);
-            String movingText = "  " + ticker + "   -   WORLD NEWS   -   " + ticker + "  ";
-            float textWidth = tickerPaint.measureText(movingText);
-            if (textWidth > 0f) {
-                float offset = VideoTransitionMath.tickerOffset(presentationTimeUs, textWidth, shortSide * 0.11f);
-                float baseline = tickerTop + (height - tickerTop) * 0.68f;
-                for (float x = width - offset; x > -textWidth; x -= textWidth) canvas.drawText(movingText, x, baseline, tickerPaint);
-            }
-
-            long localTimeUs = 0L;
-            long clipEndUs = 0L;
-            boolean hasKnownDurations = false;
-            for (Long clipDurationUs : clipDurationsUs) {
-                long durationUs = clipDurationUs == null ? 0L : clipDurationUs;
-                if (durationUs <= 0L) continue;
-                hasKnownDurations = true;
-                clipEndUs += durationUs;
-                if (presentationTimeUs <= clipEndUs) {
-                    localTimeUs = Math.max(0L, presentationTimeUs - (clipEndUs - durationUs));
-                    int alpha = VideoTransitionMath.blackAlphaAt(localTimeUs, durationUs);
-                    if (alpha > 0) {
-                        blackPaint.setAlpha(alpha);
-                        canvas.drawRect(0, 0, width, height, blackPaint);
-                        blackPaint.setAlpha(255);
-                    }
-                    break;
-                }
-            }
-            if (!hasKnownDurations) {
-                int alpha = VideoTransitionMath.blackAlphaAt(presentationTimeUs, 0L);
-                if (alpha > 0) {
-                    blackPaint.setAlpha(alpha);
-                    canvas.drawRect(0, 0, width, height, blackPaint);
-                    blackPaint.setAlpha(255);
-                }
-            }
-        }
-
-        private void drawPulseCircles(Canvas canvas, long timeUs, RectF block, float shortSide) {
-            Paint pulse = new Paint(Paint.ANTI_ALIAS_FLAG);
-            pulse.setStyle(Paint.Style.STROKE);
-            pulse.setStrokeWidth(Math.max(2f, shortSide * 0.004f));
-            float time = (timeUs / 1_000_000f) % 2.6f;
-            float[] centers = {widthOf(block) * 0.78f, widthOf(block) * 0.20f, widthOf(block) * 0.62f};
-            float[] y = {block.top + shortSide * 0.27f, block.top + shortSide * 0.58f, block.top + shortSide * 0.53f};
-            float[] phase = {0f, 0.8f, 1.5f};
-            for (int i = 0; i < centers.length; i++) {
-                float p = (time + phase[i]) % 2.6f;
-                float radius = shortSide * (0.035f + 0.34f * p / 2.6f);
-                pulse.setColor(Color.argb((int) (125f * (1f - p / 2.6f)), 255, 150, 150));
-                canvas.drawCircle(centers[i], y[i], radius, pulse);
-                pulse.setColor(Color.argb((int) (80f * (1f - p / 2.6f)), 255, 220, 180));
-                canvas.drawCircle(centers[i], y[i], radius * 0.52f, pulse);
-            }
-        }
-
-        private float widthOf(RectF value) { return value.right; }
-
-        private StaticLayout makeTextLayout(String value, float textSize, float layoutWidth, int maxLines) {
-            android.text.TextPaint paint = new android.text.TextPaint(Paint.ANTI_ALIAS_FLAG);
-            paint.setColor(Color.WHITE);
-            paint.setTextSize(textSize);
-            paint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-            return StaticLayout.Builder.obtain(value, 0, value.length(), paint, Math.max(1, (int) layoutWidth))
-                    .setAlignment(Layout.Alignment.ALIGN_CENTER)
-                    .setTextDirection(TextDirectionHeuristics.RTL)
-                    .setIncludePad(false)
-                    .setMaxLines(maxLines)
-                    .setEllipsize(TextUtils.TruncateAt.END)
-                    .build();
-        }
-
-        private void drawCenteredLayout(Canvas canvas, StaticLayout layout, RectF bounds) {
-            if (layout == null) return;
-            float y = bounds.top + Math.max(0f, (bounds.height() - layout.getHeight()) / 2f);
-            canvas.save();
-            canvas.translate(bounds.left + (bounds.width() - layout.getWidth()) / 2f, y);
-            layout.draw(canvas);
-            canvas.restore();
         }
     }
 
