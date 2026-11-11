@@ -202,11 +202,11 @@ class _ArticleTextExtractor(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag.lower() in self.BLOCK_TAGS:
-            self.parts.append("\\n")
+            self.parts.append("\n")
 
     def handle_endtag(self, tag: str) -> None:
         if tag.lower() in self.BLOCK_TAGS:
-            self.parts.append("\\n")
+            self.parts.append("\n")
 
     def handle_data(self, data: str) -> None:
         self.parts.append(data)
@@ -222,8 +222,8 @@ def clean_article_content(value: str | None) -> str:
         raw = "".join(parser.parts)
     except Exception:
         raw = re.sub(r"<[^>]*>", " ", value)
-    paragraphs = [re.sub(r"\\s+", " ", part).strip() for part in raw.splitlines()]
-    return "\\n".join(part for part in paragraphs if part)[:MAX_STORED_ARTICLE_CHARS]
+    paragraphs = [re.sub(r"\s+", " ", part).strip() for part in raw.splitlines()]
+    return "\n".join(part for part in paragraphs if part)[:MAX_STORED_ARTICLE_CHARS]
 
 
 def _item_article_content(node: ET.Element) -> str:
