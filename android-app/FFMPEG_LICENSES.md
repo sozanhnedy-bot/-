@@ -1,16 +1,18 @@
-# FFmpeg Native runtime and licenses
+# FFmpeg native runtime and licenses
 
-The Android editor pins `dev.ffmpegkit-maintained:ffmpeg-kit-full:8.1.7`. This is an independently maintained Android fork; it is **not** the retired upstream `FFmpegKit` repository and is **not** the original author's source-only `FFmpegKitNext`. The selected `full` artifact is the fork's LGPL-3.0 variant. Do not change it to a `-gpl` artifact or an unpinned `+` version without review and approval.
+The Android app builds and integrates the official **FFmpegKitNext v9.0.2** source from https://github.com/arthenica/ffmpeg-kit-next. FFmpegKitNext does not publish ready-made Android packages; this repository's GitHub Actions workflow builds the Android AAR locally from the pinned `v9.0.2` tag for `arm64-v8a`, then exposes its generated Maven repository to Gradle.
 
-The app requests H.264 output through Android's `MediaCodec` encoder (`h264_mediacodec`) and AAC audio through FFmpeg; it does not request the GPL `libx264` encoder. The AAR contains the component license notices as Android raw resources. Keep those resources in the packaged APK and retain the in-app licensing notice.
+The upstream project is licensed under **LGPL-3.0 by default** and becomes GPL-licensed when GPL libraries are enabled. The current Android build workflow does not pass `--enable-gpl`; it enables Android MediaCodec support and the app requests H.264 through `h264_mediacodec`, not `libx264`. This describes the configured build, not a substitute for checking the exact generated AAR and every bundled component notice.
 
-The FFmpeg export and media probing run on the device. Input media is not sent to an application server. Maven Central access is needed only when building the app to resolve the dependency.
+Keep the generated AAR's license and component notices with any distributed APK. Before public distribution, inspect the exact AAR produced by the pinned workflow, verify its enabled libraries and notices, and satisfy the applicable LGPL source/relinking and attribution obligations, along with any codec patent requirements in the distribution territories.
 
-Sources:
+FFmpeg and FFprobe execute locally on the device. Input media is not sent to an application server. Maven repository access is required at build time to resolve the locally generated AAR.
 
-- Artifact and maintainer documentation: https://github.com/ffmpegkit-maintained/ffmpeg-kit
-- Pinned artifact: https://central.sonatype.com/artifact/dev.ffmpegkit-maintained/ffmpeg-kit-full/8.1.7
-- FFmpegKitNext (official source-only continuation): https://github.com/arthenica/ffmpeg-kit-next
-- FFmpeg license and patent notes: https://ffmpeg.org/legal.html
+## Pinned sources
 
-This file is a dependency record, not legal advice. Before distributing the application, review the LGPL-3.0 terms and the individual notices bundled in the AAR for the exact build, as well as any codec patent obligations applicable in the distribution territories.
+- Official FFmpegKitNext source: https://github.com/arthenica/ffmpeg-kit-next
+- Pinned release: https://github.com/arthenica/ffmpeg-kit-next/releases/tag/v9.0.2
+- Android build and integration instructions: https://github.com/arthenica/ffmpeg-kit-next/blob/v9.0.2/android/README.md
+- FFmpeg legal information: https://ffmpeg.org/legal.html
+
+This file records the configured dependency and is not legal advice.
