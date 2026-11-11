@@ -56,6 +56,8 @@ dependencies {
     implementation 'org.apache.commons:commons-compress:1.27.1'
     // Native FFmpeg runtime, LGPL variant only (no GPL codecs such as libx264).
     implementation 'dev.ffmpegkit-maintained:ffmpeg-kit-full:8.1.7'
+    // FFmpegKit 8.1.7 references this runtime library but omits it from its published POM.
+    implementation 'com.arthenica:smart-exception-java:0.2.1'
     implementation 'androidx.media3:media3-transformer:1.9.0'
     implementation 'androidx.media3:media3-effect:1.9.0'
     implementation 'androidx.media3:media3-common:1.9.0'
