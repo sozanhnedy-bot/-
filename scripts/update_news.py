@@ -185,14 +185,57 @@ def _safe_image_url(value: str, media_type: str = "") -> str:
     return candidate[:1_000]
 
 
+class _ImageExtractor(HTMLParser):
+    """Extract explicit image URLs embedded in RSS description HTML."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.urls: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "img":
+            return
+        values = {key.lower(): (value or "").strip() for key, value in attrs}
+        candidate = values.get("src") or values.get("data-src") or ""
+        if not candidate and values.get("srcset"):
+            candidate = values["srcset"].split(",", 1)[0].strip().split(" ", 1)[0]
+        if candidate:
+            self.urls.append(candidate)
+
+
 def _item_image_url(node: ET.Element) -> str:
-    for child in list(node):
-        if _local_name(child.tag) not in {"enclosure", "content", "thumbnail"}:
+    # Prefer explicitly typed RSS/Media RSS image attachments.
+    for child in node.iter():
+        name = _local_name(child.tag)
+        if name in {"enclosure", "content", "thumbnail"}:
+            url = child.attrib.get("url", "") or child.attrib.get("href", "")
+            media_type = child.attrib.get("type", "") or child.attrib.get("medium", "")
+            image = _safe_image_url(url, media_type)
+            if image:
+                return image
+        # Atom feeds may expose image attachments as link elements.
+        if name == "link" and child.attrib.get("rel", "").lower() == "enclosure":
+            image = _safe_image_url(child.attrib.get("href", ""), child.attrib.get("type", ""))
+            if image:
+                return image
+
+    # Some publishers put the article's lead image inside description/content HTML.
+    for child in node.iter():
+        if _local_name(child.tag) not in {"description", "summary", "content", "encoded"}:
             continue
-        url = child.attrib.get("url", "") or child.attrib.get("href", "")
-        image = _safe_image_url(url, child.attrib.get("type", "") or child.attrib.get("medium", ""))
-        if image:
-            return image
+        markup = child.text or ""
+        if not markup or "<img" not in markup.lower():
+            continue
+        extractor = _ImageExtractor()
+        try:
+            extractor.feed(markup)
+            extractor.close()
+        except Exception:
+            continue
+        for candidate in extractor.urls:
+            image = _safe_image_url(candidate, "image")
+            if image:
+                return image
     return ""
 
 
