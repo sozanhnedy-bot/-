@@ -275,5 +275,14 @@ class NewsUpdateTests(unittest.TestCase):
             self.assertTrue(ai_summarization_enabled())
 
 
+class MetaImageExtractorTests(unittest.TestCase):
+    def test_reads_open_graph_image_without_file_extension(self):
+        from scripts.update_news import _MetaImageExtractor
+        parser = _MetaImageExtractor()
+        parser.feed('<html><meta property="og:image" content="https://cdn.example.com/photo?id=42"></html>')
+        parser.close()
+        self.assertEqual(parser.urls, ["https://cdn.example.com/photo?id=42"])
+
+
 if __name__ == "__main__":
     unittest.main()
