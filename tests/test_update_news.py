@@ -27,6 +27,18 @@ class NewsParsingTests(unittest.TestCase):
         self.assertEqual(items[0]["region"], "egypt")
         self.assertEqual(items[0]["image_url"], "https://images.example/photo.jpg")
 
+    def test_parse_rss_preserves_full_article_paragraphs(self):
+        xml = """<rss><channel><item>
+          <title>تقرير مفصل</title><link>https://example.com/news/full</link>
+          <description><![CDATA[<p>الفقرة الأولى بتفاصيل الحدث.</p><p>الفقرة الثانية وتطورات جديدة.</p>]]></description>
+          <content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[<h2>الخلفية</h2><p>هذه خلفية موسعة للخبر.</p><p>وهذه تفاصيل إضافية مهمة.</p>]]></content:encoded>
+          <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+        </item></channel></rss>""".encode("utf-8")
+        items = parse_feed(xml, "world", "اختبار", now=NOW)
+        self.assertIn("الخلفية", items[0]["article_content"])
+        self.assertIn("\n", items[0]["article_content"])
+        self.assertIn("تفاصيل إضافية", items[0]["article_content"])
+
     def test_parse_rss_extracts_lead_image_from_description_html(self):
         xml = """<rss><channel><item>
           <title>خبر بصورة</title><link>https://example.com/news/photo</link>
@@ -113,6 +125,18 @@ class NewsUpdateTests(unittest.TestCase):
         self.assertTrue(changed)
         self.assertEqual(data["items"][0]["excerpt"], item["excerpt"])
         self.assertEqual(data["items"][0]["image_url"], item["image_url"])
+
+    def test_new_items_store_full_article_content(self):
+        item = {**self.entries[0], "article_content": "الفقرة الأولى\nالفقرة الثانية"}
+        data, changed, _ = build_update(
+            {"schema_version": 1, "items": []},
+            [self.feed],
+            lambda *_: [item],
+            lambda _item: "ملخص عربي",
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["article_content"], item["article_content"])
 
     def test_duplicate_story_from_another_rss_query_backfills_excerpt_and_photo(self):
         existing_item = {
