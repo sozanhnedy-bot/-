@@ -7,9 +7,14 @@ on:
       - 'android-app/**'
       - '.github/workflows/android-apk.yml'
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Build FFmpegKitNext Android AAR"]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
+  actions: read
 
 env:
   ANDROID_HOME: /usr/local/lib/android/sdk
@@ -17,6 +22,7 @@ env:
 
 jobs:
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
@@ -54,6 +60,28 @@ jobs:
             https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-2.0.1.aar \
             --output sherpa-onnx-2.0.1.aar
           echo 'a8d09d1d32f3eb8520482c6d3d43fae674681c5b050385967c70a3c2c9bf0ee7  sherpa-onnx-2.0.1.aar' | sha256sum --check
+
+      - name: Restore FFmpegKitNext Maven repository
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: ffmpegkitnext-android-build.yml
+          workflow_conclusion: success
+          branch: main
+          name: ffmpeg-kit-next-9.0.2-android-arm64
+          path: android-app/ffmpegkitnext-maven
+          if_no_artifact_found: fail
+
+      - name: Verify FFmpegKitNext Maven repository
+        run: |
+          set -euo pipefail
+          REPO=android-app/ffmpegkitnext-maven/bundle-android-aar-24-maven
+          POM="$REPO/com/arthenica/ffmpeg-kit-next/9.0.2/ffmpeg-kit-next-9.0.2.pom"
+          AAR="$REPO/com/arthenica/ffmpeg-kit-next/9.0.2/ffmpeg-kit-next-9.0.2.aar"
+          test -s "$POM"
+          test -s "$AAR"
+          echo "Verified FFmpegKitNext Maven POM and AAR."
+          ls -lh "$POM" "$AAR"
 
       - name: Run assistant pipeline unit tests
         working-directory: android-app
