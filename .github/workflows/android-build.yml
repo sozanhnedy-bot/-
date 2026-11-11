@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 env:
   ANDROID_HOME: /usr/local/lib/android/sdk
@@ -26,6 +27,15 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v7
+
+      - name: Download FFmpegKitNext Maven repository
+        uses: actions/download-artifact@v4
+        with:
+          name: ffmpeg-kit-next-9.0.2-android-arm64
+          path: android-app/ffmpegkitnext-maven
+          repository: ${{ github.repository }}
+          run-id: 43064503988
+          github-token: ${{ github.token }}
 
       - name: Set up Java 21
         uses: actions/setup-java@v6
