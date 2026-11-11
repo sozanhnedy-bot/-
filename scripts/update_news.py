@@ -27,6 +27,7 @@ MAX_FEED_BYTES = 1_500_000
 MAX_EXCERPT_CHARS = 4_000
 MAX_SUMMARY_CHARS = 600
 MAX_STORED_EXCERPT_CHARS = 1_400
+MAX_STORED_ARTICLE_CHARS = 8_000
 NEWS_RETENTION_DAYS = 7
 ALLOWED_FEED_HOSTS = {"news.google.com"}
 RSS_NO_DETAILS = "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط."
@@ -139,6 +140,11 @@ def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
     if len(excerpt) > len(old_excerpt):
         existing_item["excerpt"] = excerpt
         changed = True
+    article_content = clean_article_content(incoming_item.get("article_content", ""))[:MAX_STORED_ARTICLE_CHARS]
+    old_article_content = clean_article_content(existing_item.get("article_content", ""))
+    if len(article_content) > len(old_article_content):
+        existing_item["article_content"] = article_content
+        changed = True
     image_url = incoming_item.get("image_url", "")
     if image_url and not existing_item.get("image_url"):
         existing_item["image_url"] = image_url
@@ -185,14 +191,103 @@ def _safe_image_url(value: str, media_type: str = "") -> str:
     return candidate[:1_000]
 
 
-def _item_image_url(node: ET.Element) -> str:
-    for child in list(node):
-        if _local_name(child.tag) not in {"enclosure", "content", "thumbnail"}:
+class _ArticleTextExtractor(HTMLParser):
+    """Extract readable article text while preserving paragraph boundaries."""
+
+    BLOCK_TAGS = {"p", "div", "br", "li", "h1", "h2", "h3", "h4", "blockquote"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() in self.BLOCK_TAGS:
+            self.parts.append("\n")
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() in self.BLOCK_TAGS:
+            self.parts.append("\n")
+
+    def handle_data(self, data: str) -> None:
+        self.parts.append(data)
+
+
+def clean_article_content(value: str | None) -> str:
+    if not value:
+        return ""
+    parser = _ArticleTextExtractor()
+    try:
+        parser.feed(value)
+        parser.close()
+        raw = "".join(parser.parts)
+    except Exception:
+        raw = re.sub(r"<[^>]*>", " ", value)
+    paragraphs = [re.sub(r"\s+", " ", part).strip() for part in raw.splitlines()]
+    return "\n".join(part for part in paragraphs if part)[:MAX_STORED_ARTICLE_CHARS]
+
+
+def _item_article_content(node: ET.Element) -> str:
+    candidates: list[str] = []
+    for child in node.iter():
+        if _local_name(child.tag) not in {"description", "summary", "content", "encoded"}:
             continue
-        url = child.attrib.get("url", "") or child.attrib.get("href", "")
-        image = _safe_image_url(url, child.attrib.get("type", "") or child.attrib.get("medium", ""))
-        if image:
-            return image
+        value = clean_article_content(child.text or "")
+        if value and value not in candidates:
+            candidates.append(value)
+    return max(candidates, key=len, default="")[:MAX_STORED_ARTICLE_CHARS]
+
+
+class _ImageExtractor(HTMLParser):
+    """Extract explicit image URLs embedded in RSS description HTML."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.urls: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "img":
+            return
+        values = {key.lower(): (value or "").strip() for key, value in attrs}
+        candidate = values.get("src") or values.get("data-src") or ""
+        if not candidate and values.get("srcset"):
+            candidate = values["srcset"].split(",", 1)[0].strip().split(" ", 1)[0]
+        if candidate:
+            self.urls.append(candidate)
+
+
+def _item_image_url(node: ET.Element) -> str:
+    # Prefer explicitly typed RSS/Media RSS image attachments.
+    for child in node.iter():
+        name = _local_name(child.tag)
+        if name in {"enclosure", "content", "thumbnail"}:
+            url = child.attrib.get("url", "") or child.attrib.get("href", "")
+            media_type = child.attrib.get("type", "") or child.attrib.get("medium", "")
+            image = _safe_image_url(url, media_type)
+            if image:
+                return image
+        # Atom feeds may expose image attachments as link elements.
+        if name == "link" and child.attrib.get("rel", "").lower() == "enclosure":
+            image = _safe_image_url(child.attrib.get("href", ""), child.attrib.get("type", ""))
+            if image:
+                return image
+
+    # Some publishers put the article's lead image inside description/content HTML.
+    for child in node.iter():
+        if _local_name(child.tag) not in {"description", "summary", "content", "encoded"}:
+            continue
+        markup = child.text or ""
+        if not markup or "<img" not in markup.lower():
+            continue
+        extractor = _ImageExtractor()
+        try:
+            extractor.feed(markup)
+            extractor.close()
+        except Exception:
+            continue
+        for candidate in extractor.urls:
+            image = _safe_image_url(candidate, "image")
+            if image:
+                return image
     return ""
 
 
@@ -231,6 +326,7 @@ def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | No
         results.append({
             "title": title,
             "excerpt": excerpt,
+            "article_content": _item_article_content(node),
             "url": link,
             "source_name": source_name,
             "source_url": source_url,
@@ -414,6 +510,7 @@ def build_update(
             "title": item["title"],
             "summary": summary[:MAX_SUMMARY_CHARS],
             "excerpt": clean_text(item.get("excerpt", ""))[:MAX_STORED_EXCERPT_CHARS],
+            "article_content": clean_article_content(item.get("article_content", ""))[:MAX_STORED_ARTICLE_CHARS],
             "summary_type": item_summary_type,
             "url": item["url"],
             "source_name": item.get("source_name", "المصدر الأصلي"),

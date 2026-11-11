@@ -6,7 +6,6 @@ const CATEGORY_LABELS = {
   reports: "تقارير ووثائقيات", videos: "فيديوهات",
 };
 const REGION_LABELS = { egypt: "مصر", arab: "العالم العربي", world: "العالم" };
-const ILLUSTRATION_IMAGES = { egypt: "egypt", arab: "arab", world: "world", politics: "politics", economy: "economy", technology: "technology", sports: "sports", reports: "world" };
 const HOME_CATEGORIES = [
   { id: "egypt", title: "مصر" }, { id: "arab", title: "العالم العربي" }, { id: "world", title: "العالم" },
   { id: "politics", title: "سياسة" }, { id: "economy", title: "اقتصاد" },
@@ -77,9 +76,10 @@ function recordFor(item) {
     ? report.sources.map((value) => text(value, 160)).filter(Boolean).join("، ")
     : text(item.source_name, 160);
   const title = editorialTitle(report?.title || item.title, sourceName);
+  // Never present a section illustration as if it were a photograph of this story.
+  // Show an image only when the source/report supplied a real image URL.
   const suppliedImage = safeImage(report?.image || item.image_url);
-  const imageKey = ILLUSTRATION_IMAGES[category] || "world";
-  const image = suppliedImage || safeImage(`assets/news-illustrations/${imageKey}.jpg`);
+  const image = suppliedImage;
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
@@ -90,8 +90,8 @@ function recordFor(item) {
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
     image,
-    imageAlt: suppliedImage ? text(report?.image_alt || item.image_alt || item.title, 300) : `رسم توضيحي لقسم ${categoryLabel}، وليس صورة للحدث`,
-    imageCaption: suppliedImage ? text(report?.image_caption || item.image_caption, 300) : "رسم توضيحي للقسم؛ لا يصوّر الحدث نفسه.",
+    imageAlt: suppliedImage ? text(report?.image_alt || item.image_alt || item.title, 300) : "",
+    imageCaption: suppliedImage ? text(report?.image_caption || item.image_caption, 300) : "",
     region,
     category,
     summaryType: report ? "editorial_report" : text(item.summary_type, 40),

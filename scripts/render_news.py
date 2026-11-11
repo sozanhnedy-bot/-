@@ -17,7 +17,6 @@ SITE_URL = "https://sozanhnedy-bot.github.io/-"
 ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,80}$")
 REGIONS = {"world": "العالم", "arab": "العالم العربي", "egypt": "مصر"}
 CATEGORIES = {"politics": "سياسة", "economy": "اقتصاد", "technology": "تكنولوجيا", "sports": "رياضة"}
-ILLUSTRATION_FILES = {"egypt": "egypt", "arab": "arab", "world": "world", "politics": "politics", "economy": "economy", "technology": "technology", "sports": "sports"}
 BRAND = "World News"
 ARABIC_BRAND = "أخبار العالم"
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)$", re.IGNORECASE)
@@ -86,7 +85,7 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
         summary = ""
     if excerpt in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
         excerpt = ""
-    details = excerpt or summary
+    details = text(item.get("article_content"), 8_000) or excerpt or summary
     dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
     region = REGIONS.get(text(item.get("region")), "العالم")
     category_key = text(item.get("category"), 30)
@@ -94,15 +93,20 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
     image_url = safe_external_url(item.get("image_url"), image=True)
-    illustration_file = ILLUSTRATION_FILES.get(category_key, "world") + ".jpg"
-    image_src = image_url or f"../assets/news-illustrations/{illustration_file}"
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
-    preview_image = image_url or f"{SITE_URL}/assets/news-illustrations/{illustration_file}"
-    image_alt = title if image_url else f"رسم توضيحي لقسم {category}؛ ليس صورة للحدث"
-    image_caption = f"الصورة: {source} · من موجز الناشر" if image_url else f"رسم توضيحي لقسم {category}؛ لا يصوّر الحدث نفسه."
+    preview_image = image_url
     image_markup = (
-        f'<figure class="article-figure"><img src="{e(image_src, quote=True)}" alt="{e(image_alt, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>{e(image_caption)}</figcaption></figure>'
+        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة المرفقة من مصدر الخبر: {e(source)}</figcaption></figure>'
+        if image_url else ""
+    )
+    detail_paragraphs = "".join(f"<p>{e(part)}</p>" for part in details.splitlines() if part.strip())
+    source_url = safe_external_url(item.get("url"))
+    source_action = f'<p class="source-original-link"><a href="{e(source_url, quote=True)}" target="_blank" rel="noopener noreferrer">افتح الخبر من المصدر الأصلي</a></p>' if source_url else ""
+    details_markup = (
+        f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2>{detail_paragraphs}</section>'
+        if detail_paragraphs else
+        '<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>المصدر لم يرفق تفاصيل كافية داخل موجز الأخبار حتى الآن. يمكنك فتح الخبر من المصدر الأصلي للاطلاع على النص الكامل.</p></section>'
     )
     source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
     related_items = []
@@ -128,7 +132,7 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#14283f"><meta name="description" content="{description}">
   <meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)} | {BRAND}">
-  <meta property="og:description" content="{description}"><meta property="og:image" content="{e(preview_image, quote=True)}">
+  <meta property="og:description" content="{description}">{f'<meta property="og:image" content="{e(preview_image, quote=True)}">' if preview_image else ''}
   <meta name="twitter:card" content="summary_large_image"><title>{e(title)} | {BRAND}</title>
   <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images">
 </head>
@@ -139,7 +143,8 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
       {f'<p class="article-dek">{e(dek)}</p>' if dek else ''}<div class="article-meta">{source_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>
     </header>
     {image_markup}
-    {f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>{e(details)}</p></section>' if details else ''}
+    {details_markup}
+    {source_action}
     {related_markup}
   </article></main><footer class="site-footer"><div class="footer-brand">{BRAND}</div><p>الناشر مذكور بالاسم · تاريخ النشر محفوظ · القراءة داخل الموقع</p></footer>
 </body></html>'''
