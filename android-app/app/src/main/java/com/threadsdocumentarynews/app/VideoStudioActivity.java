@@ -450,8 +450,10 @@ public final class VideoStudioActivity extends Activity {
                     mediaUris, audioUri, musicUri, headline, lowerThird, ticker,
                     outputFile, width, height, imageSeconds, selectedMusicGain(), breakingNews);
 
-            exportEngine = new Media3VideoExportEngine(this, durationsUs ->
+            VideoExportEngine media3Fallback = new Media3VideoExportEngine(this, durationsUs ->
                     new NewsroomCanvasOverlay(headline, lowerThird, ticker, durationsUs, breakingNews));
+            exportEngine = new VideoExportEngineCoordinator(
+                    new FfmpegVideoExportEngine(this), media3Fallback);
             exportEngine.export(request, new VideoExportEngine.Listener() {
                 @Override public void onProgress(int percent) {
                     if (isFinishing() || isDestroyed()) return;
