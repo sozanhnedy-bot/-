@@ -98,21 +98,8 @@ public final class VideoStudioActivity extends Activity {
     private Uri audioUri;
     private Uri musicUri;
     private File outputFile;
-    private Transformer transformer;
     private boolean exporting;
     private MediaPlayer audioTester;
-    private final ProgressHolder progressHolder = new ProgressHolder();
-    private final Runnable progressPoller = new Runnable() {
-        @Override public void run() {
-            if (!exporting || transformer == null) return;
-            int state = transformer.getProgress(progressHolder);
-            if (state == Transformer.PROGRESS_STATE_AVAILABLE) {
-                progress.setProgress(progressHolder.progress);
-                status.setText("جارٍ إنشاء MP4 على الجهاز… " + progressHolder.progress + "%");
-            }
-            if (exporting) handler.postDelayed(this, 500);
-        }
-    };
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -414,6 +401,8 @@ public final class VideoStudioActivity extends Activity {
         }
     }
 
+    private VideoExportEngine exportEngine;
+
     private void buildVideo() {
         if (exporting) return;
         if (mediaUris.isEmpty()) {
@@ -432,128 +421,60 @@ public final class VideoStudioActivity extends Activity {
             boolean vertical = formatSpinner.getSelectedItemPosition() == 0;
             int width = vertical ? 1080 : 1920;
             int height = vertical ? 1920 : 1080;
-            ArrayList<EditedMediaItem> editedItems = new ArrayList<>();
-            ArrayList<Long> mediaDurationsMs = new ArrayList<>();
-            long videoDurationMs = 0L;
-            boolean allDurationsKnown = true;
-            for (Uri uri : mediaUris) {
-                String mime = getContentResolver().getType(uri);
-                long clipDuration = mime != null && mime.startsWith("image/")
-                        ? imageSeconds * 1000L : getMediaDurationMs(uri);
-                mediaDurationsMs.add(clipDuration);
-                if (clipDuration <= 0L) allDurationsKnown = false;
-                else videoDurationMs += clipDuration;
-            }
-            if (!allDurationsKnown) {
-                int unknownIndex = mediaDurationsMs.indexOf(0L);
-                String unknownName = unknownIndex >= 0 ? displayName(mediaUris.get(unknownIndex)) : "أحد المقاطع";
-                throw new IllegalStateException("لم أستطع قراءة مدة «" + unknownName + "»، لذلك أوقفت التصدير بدل عمل انتقالات/صوت غير متزامن. اختر ملفًا محليًا بصيغة MP4 ثم حاول مرة أخرى.");
-            }
-            final long compositionDurationMs = videoDurationMs;
             String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 90);
             String lowerThird = captionInput == null ? "" : compactText(captionInput.getText().toString(), 120);
             String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 120);
-            for (int mediaIndex = 0; mediaIndex < mediaUris.size(); mediaIndex++) {
-                Uri uri = mediaUris.get(mediaIndex);
-                String type = getContentResolver().getType(uri);
-                MediaItem mediaItem;
-                EditedMediaItem.Builder edited;
-                if (type != null && type.startsWith("image/")) {
-                    mediaItem = new MediaItem.Builder().setUri(uri).setImageDurationMs(imageSeconds * 1000L).build();
-                    edited = new EditedMediaItem.Builder(mediaItem).setFrameRate(30);
-                } else {
-                    mediaItem = MediaItem.fromUri(uri);
-                    edited = new EditedMediaItem.Builder(mediaItem).setRemoveAudio(true);
-                }
-                ArrayList<androidx.media3.common.Effect> videoEffects = new ArrayList<>();
-                videoEffects.add(Presentation.createForWidthAndHeight(width, height, Presentation.LAYOUT_SCALE_TO_FIT_WITH_CROP));
-                edited.setEffects(new Effects(Collections.emptyList(), videoEffects));
-                editedItems.add(edited.build());
-            }
-            EditedMediaItemSequence videoSequence = EditedMediaItemSequence.withVideoFrom(editedItems);
-            ArrayList<EditedMediaItemSequence> compositionSequences = new ArrayList<>();
-            compositionSequences.add(videoSequence);
-            if (audioUri != null) {
-                MediaItem.Builder narrationBuilder = new MediaItem.Builder().setUri(audioUri);
-                if (videoDurationMs > 0L) narrationBuilder.setClippingConfiguration(
-                        new MediaItem.ClippingConfiguration.Builder().setEndPositionMs(videoDurationMs).build());
-                EditedMediaItem audioItem = new EditedMediaItem.Builder(narrationBuilder.build()).build();
-                EditedMediaItemSequence audioSequence = EditedMediaItemSequence.withAudioFrom(Collections.singletonList(audioItem)).buildUpon().setIsLooping(false).build();
-                compositionSequences.add(audioSequence);
-            }
-            if (musicUri != null) {
-                if (videoDurationMs <= 0L) throw new IllegalStateException("تعذر تحديد مدة الفيديو لمزامنة الموسيقى. جرّب اختيار فيديو محلي بصيغة MP4 أو احذف مسار الخلفية ثم أعد التصدير.");
-                long sourceMusicDurationMs = getMediaDurationMs(musicUri);
-                if (sourceMusicDurationMs <= 0L) throw new IllegalStateException("تعذر قراءة مدة ملف الخلفية الصوتية. اختر MP3 أو WAV محليًا ثم أعد المحاولة.");
-                final long musicTrackDurationMs = Math.min(sourceMusicDurationMs, videoDurationMs);
-                MediaItem.Builder musicBuilder = new MediaItem.Builder().setUri(musicUri);
-                musicBuilder.setClippingConfiguration(
-                        new MediaItem.ClippingConfiguration.Builder().setEndPositionMs(musicTrackDurationMs).build());
-                float musicGain = selectedMusicGain();
-                GainProcessor gainProcessor = new GainProcessor(new GainProcessor.GainProvider() {
-                    @Override public float getGainFactorAtSamplePosition(long samplePosition, int sampleRate) {
-                        if (sampleRate <= 0) return musicGain;
-                        double elapsedUs = samplePosition * 1_000_000.0 / sampleRate;
-                        long totalDurationUs = musicTrackDurationMs * 1000L;
-                        return VideoTransitionMath.musicGainAt((long) elapsedUs, totalDurationUs, musicGain);
-                    }
-                    @Override public long isUnityUntil(long samplePosition, int sampleRate) {
-                        return Long.MIN_VALUE; // The background bed is always below unity gain.
-                    }
-                });
-                EditedMediaItem musicItem = new EditedMediaItem.Builder(musicBuilder.build())
-                        .setEffects(new Effects(Collections.singletonList(gainProcessor), Collections.emptyList())).build();
-                EditedMediaItemSequence musicSequence = EditedMediaItemSequence.withAudioFrom(Collections.singletonList(musicItem))
-                        .buildUpon().setIsLooping(false).build();
-                compositionSequences.add(musicSequence);
-            }
-            ArrayList<Long> clipDurationsUs = new ArrayList<>();
-            for (Long durationMs : mediaDurationsMs) clipDurationsUs.add(durationMs > 0L ? durationMs * 1000L : 0L);
-            List<androidx.media3.common.Effect> compositionEffects = Collections.singletonList(
-                    new OverlayEffect(Collections.singletonList(new NewsroomCanvasOverlay(headline, lowerThird, ticker, clipDurationsUs))));
-            Composition composition = new Composition.Builder(compositionSequences)
-                    .setEffects(new Effects(Collections.emptyList(), compositionEffects))
-                    .build();
+
             File directory = getExternalFilesDir(Environment.DIRECTORY_MOVIES);
             if (directory == null) directory = getFilesDir();
             File outputDir = new File(directory, "WorldNews");
-            if (!outputDir.exists() && !outputDir.mkdirs()) throw new IllegalStateException("تعذر تجهيز مجلد الفيديو على الهاتف.");
-            String safeName = "world-news-" + System.currentTimeMillis() + ".mp4";
-            outputFile = new File(outputDir, safeName);
-            transformer = new Transformer.Builder(this)
-                    .setVideoMimeType(MimeTypes.VIDEO_H264)
-                    .setAudioMimeType(MimeTypes.AUDIO_AAC)
-                    .addListener(new Transformer.Listener() {
-                        @Override public void onCompleted(Composition finishedComposition, ExportResult result) {
-                            exporting = false;
-                            handler.removeCallbacks(progressPoller);
-                            progress.setProgress(100);
-                            progress.setVisibility(View.GONE);
-                            buildButton.setEnabled(true);
-                            saveButton.setEnabled(outputFile != null && outputFile.isFile() && outputFile.length() > 0);
-                            if (saveButton.isEnabled()) {
-                                setStatus("اكتمل إنشاء MP4 محليًا (" + humanSize(outputFile.length()) + "). شغّل المعاينة أو احفظه على الجهاز.", GOLD);
-                                playOutput();
-                            } else {
-                                setStatus("انتهى التصدير لكن ملف MP4 غير موجود.", RED);
-                            }
-                        }
-                        @Override public void onError(Composition failedComposition, ExportResult result, ExportException exception) {
-                            exporting = false;
-                            handler.removeCallbacks(progressPoller);
-                            progress.setVisibility(View.GONE);
-                            buildButton.setEnabled(true);
-                            saveButton.setEnabled(false);
-                            setStatus("فشل إنشاء MP4: " + safeMessage(exception) + " — جرّب تقليل الملفات أو استخدام فيديو MP4/H.264.", RED);
-                        }
-                    }).build();
-            transformer.start(composition, outputFile.getAbsolutePath());
+            if (!outputDir.exists() && !outputDir.mkdirs()) {
+                throw new IllegalStateException("تعذر تجهيز مجلد الفيديو على الهاتف.");
+            }
+            outputFile = new File(outputDir, "world-news-" + System.currentTimeMillis() + ".mp4");
+
+            VideoExportRequest request = new VideoExportRequest(
+                    mediaUris, audioUri, musicUri, headline, lowerThird, ticker,
+                    outputFile, width, height, imageSeconds, selectedMusicGain());
+
+            exportEngine = new Media3VideoExportEngine(this, durationsUs ->
+                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, durationsUs));
+            exportEngine.export(request, new VideoExportEngine.Listener() {
+                @Override public void onProgress(int percent) {
+                    if (isFinishing() || isDestroyed()) return;
+                    progress.setProgress(percent);
+                    status.setText("جارٍ إنشاء MP4 على الجهاز… " + percent + "%");
+                }
+
+                @Override public void onCompleted(File file) {
+                    if (isFinishing() || isDestroyed()) return;
+                    exporting = false;
+                    progress.setProgress(100);
+                    progress.setVisibility(View.GONE);
+                    buildButton.setEnabled(true);
+                    saveButton.setEnabled(file != null && file.isFile() && file.length() > 0L);
+                    if (saveButton.isEnabled()) {
+                        outputFile = file;
+                        setStatus("اكتمل إنشاء MP4 محليًا (" + humanSize(file.length()) + "). شغّل المعاينة أو احفظه على الجهاز.", GOLD);
+                        playOutput();
+                    } else {
+                        setStatus("انتهى التصدير لكن ملف MP4 غير موجود.", RED);
+                    }
+                }
+
+                @Override public void onError(Exception error) {
+                    if (isFinishing() || isDestroyed()) return;
+                    exporting = false;
+                    progress.setVisibility(View.GONE);
+                    buildButton.setEnabled(true);
+                    saveButton.setEnabled(false);
+                    setStatus("فشل إنشاء MP4: " + safeMessage(error) + " — جرّب تقليل الملفات أو استخدام فيديو MP4/H.264.", RED);
+                }
+            });
             status.setText("بدأ إنشاء الفيديو على الجهاز…");
             status.setTextColor(GOLD);
-            handler.postDelayed(progressPoller, 500);
         } catch (Exception error) {
             exporting = false;
-            handler.removeCallbacks(progressPoller);
             progress.setVisibility(View.GONE);
             buildButton.setEnabled(true);
             saveButton.setEnabled(false);
@@ -928,9 +849,8 @@ public final class VideoStudioActivity extends Activity {
     private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
 
     @Override protected void onDestroy() {
-        handler.removeCallbacks(progressPoller);
-        if (exporting && transformer != null) {
-            try { transformer.cancel(); } catch (Exception ignored) { }
+        if (exporting && exportEngine != null) {
+            try { exportEngine.cancel(); } catch (Exception ignored) { }
         }
         stopVideo();
         if (audioTester != null) { audioTester.release(); audioTester = null; }
