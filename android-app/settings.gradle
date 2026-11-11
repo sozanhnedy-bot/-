@@ -11,6 +11,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        // FFmpegKitNext arm64 Maven repository downloaded by the Android CI workflow.
+        maven { url uri("$rootDir/ffmpegkitnext-maven/bundle-android-aar-24-maven") }
     }
 }
 rootProject.name = "ThreadsDocumentaryNews"

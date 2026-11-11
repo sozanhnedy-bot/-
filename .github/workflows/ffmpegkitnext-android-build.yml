@@ -1,0 +1,65 @@
+name: Build FFmpegKitNext Android AAR
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/ffmpegkitnext-android-build.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-android-aar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - name: Checkout app repository
+        uses: actions/checkout@v4
+
+      - name: Checkout FFmpegKitNext v9.0.2
+        uses: actions/checkout@v4
+        with:
+          repository: arthenica/ffmpeg-kit-next
+          ref: v9.0.2
+          path: ffmpeg-kit-next
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            max-jobs = auto
+            cores = 2
+
+      - name: Build Android AAR for arm64-v8a
+        working-directory: ffmpeg-kit-next
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./nix-android.sh -p android-r27d \
+            --disable-arch-arm-v7a \
+            --disable-arch-arm-v7a-neon \
+            --disable-arch-x86 \
+            --disable-arch-x86-64 \
+            --enable-lib-android-media-codec
+
+      - name: Verify generated AAR and native ABI
+        shell: bash
+        run: |
+          set -euo pipefail
+          AAR="$(find ffmpeg-kit-next/prebuilt -type f -name 'ffmpeg-kit-next-9.0.2.aar' -print -quit)"
+          test -n "$AAR"
+          unzip -l "$AAR" | grep -q 'jni/arm64-v8a/'
+          echo "FFmpegKitNext AAR: $AAR"
+          echo "Verified arm64-v8a native payload."
+
+      - name: Upload AAR and Maven repository
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-kit-next-9.0.2-android-arm64
+          path: |
+            ffmpeg-kit-next/prebuilt/bundle-android-aar-*-maven/
+          if-no-files-found: error
+          retention-days: 14
