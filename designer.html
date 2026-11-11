@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#14283f"><title>استوديو تصميم الأخبار</title>
+<style>
+:root{font-family:Tahoma,Arial,system-ui,sans-serif;color:#172333;background:#f2f4f7}*{box-sizing:border-box}body{margin:0}.top{background:#14283f;color:white;padding:18px max(18px,calc((100% - 1200px)/2));display:flex;justify-content:space-between;align-items:center;gap:12px}.top a{color:#fff;text-decoration:none}.wrap{max-width:1200px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:minmax(280px,390px) 1fr;gap:22px}.panel,.stage{background:white;border:1px solid #e0e5eb;border-radius:18px;padding:18px;box-shadow:0 8px 26px #15283d0d}.panel h1{font-size:22px;margin:0 0 6px}.hint{color:#687586;font-size:13px;margin:0 0 18px}.field{margin:13px 0}.field label,.legend{display:block;font-size:13px;font-weight:800;margin-bottom:6px}.field input[type=text],.field textarea,.field select{width:100%;border:1px solid #ccd4de;border-radius:10px;padding:10px;font:inherit;background:#fff}.field textarea{min-height:84px;resize:vertical}.field input[type=color]{width:48px;height:38px;border:0;background:none}.field input[type=range]{width:100%}.inline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px}.checks label{font-size:13px;display:flex;align-items:center;gap:7px}.stage{display:flex;flex-direction:column;align-items:center;gap:15px;min-width:0}.stage-head{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px}.stage-head strong{font-size:17px}.preview{position:relative;width:min(100%,540px);aspect-ratio:1/1;overflow:hidden;border-radius:5px;background:linear-gradient(145deg,#a70e18,#e1282b 55%,#74111d);color:white;padding:9%;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;box-shadow:0 16px 40px #0002}.preview:before,.preview:after{content:"";position:absolute;border:2px solid #ffffff20;border-radius:50%;width:65%;aspect-ratio:1;top:-23%;left:-15%;z-index:-1}.preview:after{width:45%;top:10%;left:62%;border-color:#ffffff16}.decor-line{position:absolute;right:0;top:0;bottom:0;width:9px;background:#f3c744}.deco-frame{position:absolute;inset:4%;border:2px solid #ffffff40;pointer-events:none}.eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:900;font-size:clamp(15px,2.2vw,24px);margin-bottom:18px}.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#f3c744}.headline{font-weight:900;font-size:clamp(25px,5vw,52px);line-height:1.35;margin:0 0 14px;text-shadow:0 3px 12px #0004;overflow-wrap:anywhere}.summary{font-size:clamp(14px,2vw,21px);line-height:1.8;margin:0;max-width:95%;color:#fff}.channel{font-size:clamp(12px,1.7vw,18px);font-weight:800;margin-top:25px;padding-top:12px;border-top:1px solid #ffffff55;display:none}.channel.visible{display:block}.source{font-size:12px;color:#ffffffc9;margin-top:12px}.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.btn{border:0;border-radius:11px;padding:11px 16px;font:inherit;font-weight:800;cursor:pointer;background:#14283f;color:#fff}.btn.alt{background:#e9edf2;color:#172333}.note{font-size:12px;color:#667386;text-align:center}.range-value{font-size:12px;color:#677487}.hidden{display:none!important}@media(max-width:850px){.wrap{grid-template-columns:1fr}.stage{grid-row:1}.preview{width:min(100%,470px)}}
+</style></head><body>
+<header class="top"><strong>استوديو تصميم الأخبار</strong><a href="./">العودة للموقع ←</a></header>
+<main class="wrap"><section class="panel" aria-label="إعدادات التصميم">
+<h1>خصص تصميمك</h1><p class="hint">اسم القناة اختياري. غيّر الخط والألوان والزخارف وشاهد النتيجة فورًا.</p>
+<div class="field"><label for="template">نوع القالب</label><select id="template"><option value="breaking">خبر عاجل</option><option value="normal">خبر عادي</option><option value="report">تقرير وثائقي</option></select></div>
+<div class="field"><label for="headlineInput">عنوان الخبر</label><textarea id="headlineInput">تطورات جديدة في المشهد الإقليمي</textarea></div>
+<div class="field"><label for="summaryInput">نص مختصر</label><textarea id="summaryInput">تابع التفاصيل والتحديثات من المصادر الموثوقة، وسنوافيكم بكل جديد.</textarea></div>
+<div class="field"><label for="channelInput">اسم القناة (اختياري)</label><input id="channelInput" type="text" placeholder="اكتب اسم القناة أو اتركه فارغًا"></div>
+<div class="field inline"><label><input id="showChannel" type="checkbox"> إظهار اسم القناة</label><label><input id="showBadge" type="checkbox" checked> إظهار شارة عاجل</label></div>
+<div class="field"><label for="font">نوع الخط</label><select id="font"><option value="Tahoma,Arial,sans-serif">Tahoma — واضح</option><option value="Arial,sans-serif">Arial — بسيط</option><option value="system-ui,sans-serif">System — حديث</option><option value="Georgia,serif">Georgia — كلاسيكي</option><option value="monospace">Monospace — تقني</option></select></div>
+<div class="field"><label for="weight">سُمك الخط</label><select id="weight"><option value="900">تخين جدًا</option><option value="800">عريض</option><option value="700">ثقيل</option><option value="500">متوسط</option></select></div>
+<div class="field"><label for="textStyle">شكل العنوان</label><select id="textStyle"><option value="shadow">ظل واضح</option><option value="plain">بدون مؤثر</option><option value="outline">حد خارجي خفيف</option></select></div>
+<div class="field"><label>ألوان التصميم</label><div class="inline"><span>الخلفية</span><input id="bgColor" type="color" value="#b91420"><span>اللمسة</span><input id="accentColor" type="color" value="#f3c744"><span>النص</span><input id="textColor" type="color" value="#ffffff"></div></div>
+<div class="field"><label for="ratio">مقاس المنشور</label><select id="ratio"><option value="1">مربع 1:1</option><option value="1.25">رأسي 4:5</option><option value="1.7778">قصة / ريلز 9:16</option></select></div>
+<div class="field"><span class="legend">الزخارف</span><div class="checks"><label><input id="circles" type="checkbox" checked> دوائر خلفية</label><label><input id="frame" type="checkbox"> إطار</label><label><input id="sideLine" type="checkbox" checked> خط جانبي</label><label><input id="yellowDot" type="checkbox" checked> نقطة ملونة</label></div></div>
+<div class="field"><label for="decoOpacity">شفافية الزخارف <span class="range-value" id="opacityValue">25%</span></label><input id="decoOpacity" type="range" min="5" max="70" value="25"></div>
+<div class="field"><label for="fontSize">حجم العنوان <span class="range-value" id="sizeValue">52</span></label><input id="fontSize" type="range" min="28" max="76" value="52"></div>
+<div class="actions"><button class="btn" id="download">حفظ التصميم PNG</button><button class="btn alt" id="reset">إعادة الضبط</button></div>
+</section>
+<section class="stage"><div class="stage-head"><strong>معاينة مباشرة</strong><span class="note">تتغير مع كل اختيار</span></div>
+<div class="preview" id="preview" dir="rtl"><div class="decor-line" id="previewLine"></div><div class="deco-frame hidden" id="previewFrame"></div><div class="eyebrow" id="previewBadge"><span class="dot" id="previewDot"></span><span>عاجل</span></div><h2 class="headline" id="previewHeadline">تطورات جديدة في المشهد الإقليمي</h2><p class="summary" id="previewSummary">تابع التفاصيل والتحديثات من المصادر الموثوقة، وسنوافيكم بكل جديد.</p><div class="channel" id="previewChannel"></div><div class="source">المصدر: يضاف اسم المصدر وتاريخ النشر</div></div>
+<p class="note">تقدر تسيب اسم القناة فاضي؛ مش هيظهر على التصميم.</p></section></main>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const ids=['template','headlineInput','summaryInput','channelInput','showChannel','showBadge','font','weight','textStyle','bgColor','accentColor','textColor','ratio','circles','frame','sideLine','yellowDot','decoOpacity','fontSize'];
+const defaults={template:'breaking',headlineInput:'تطورات جديدة في المشهد الإقليمي',summaryInput:'تابع التفاصيل والتحديثات من المصادر الموثوقة، وسنوافيكم بكل جديد.',channelInput:'',showChannel:false,showBadge:true,font:'Tahoma,Arial,sans-serif',weight:'900',textStyle:'shadow',bgColor:'#b91420',accentColor:'#f3c744',textColor:'#ffffff',ratio:'1',circles:true,frame:false,sideLine:true,yellowDot:true,decoOpacity:25,fontSize:52};
+function val(id){const e=$(id);return e.type==='checkbox'?e.checked:e.type==='range'?Number(e.value):e.value}
+function render(){
+const v=Object.fromEntries(ids.map(id=>[id,val(id)])),p=$('preview');
+p.className='preview '+(v.template==='normal'?'normal':v.template==='report'?'report':'');
+p.style.aspectRatio='1 / '+v.ratio;p.style.fontFamily=v.font;p.style.color=v.textColor;
+p.style.background=v.template==='breaking'?'linear-gradient(145deg,'+v.bgColor+',#e1282b 55%,#74111d)':v.template==='normal'?'linear-gradient(145deg,#14283f,#294e6c 70%,#0d1a2a)':'linear-gradient(145deg,#152b3b,#40556a 65%,#101b27)';
+$('previewHeadline').textContent=v.headlineInput;$('previewHeadline').style.fontWeight=v.weight;$('previewHeadline').style.fontSize='clamp(22px,'+(v.fontSize/10)+'vw,'+v.fontSize+'px)';$('previewHeadline').style.textShadow=v.textStyle==='shadow'?'0 3px 12px #0008':v.textStyle==='outline'?'0 1px 2px #000,1px 0 #000':'none';
+$('previewSummary').textContent=v.summaryInput;$('previewChannel').textContent=v.channelInput;$('previewChannel').classList.toggle('visible',v.showChannel&&!!v.channelInput.trim());
+$('previewBadge').classList.toggle('hidden',!v.showBadge||v.template!=='breaking');$('previewDot').style.background=v.accentColor;$('previewDot').classList.toggle('hidden',!v.yellowDot);
+$('previewLine').classList.toggle('hidden',!v.sideLine);$('previewLine').style.background=v.accentColor;$('previewFrame').classList.toggle('hidden',!v.frame);
+p.style.backgroundImage=v.circles?'radial-gradient(circle at 12% 8%,#ffffff40 0 1px,transparent 1.5px),radial-gradient(circle at 82% 28%,#ffffff30 0 1px,transparent 1.5px),'+p.style.background:'none';
+$('opacityValue').textContent=v.decoOpacity+'%';$('sizeValue').textContent=v.fontSize;
+try{localStorage.setItem('socialDesignerSettings',JSON.stringify(v))}catch(e){}
+}
+function load(){try{const saved=JSON.parse(localStorage.getItem('socialDesignerSettings')||'{}');ids.forEach(id=>{if(saved[id]!==undefined){const e=$(id);if(e.type==='checkbox')e.checked=saved[id];else e.value=saved[id]}})}catch(e){}render()}
+ids.forEach(id=>$(id).addEventListener('input',render));
+$('reset').addEventListener('click',()=>{ids.forEach(id=>{const e=$(id),v=defaults[id];if(e.type==='checkbox')e.checked=v;else e.value=v});render()});
+function wrap(ctx,txt,maxWidth){const words=(txt||'').split(/\s+/);let lines=[],line='';for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}if(line)lines.push(line);return lines}
+$('download').addEventListener('click',()=>{
+const v=Object.fromEntries(ids.map(id=>[id,val(id)])),canvas=document.createElement('canvas'),w=1080,h=Math.round(w*Number(v.ratio));canvas.width=w;canvas.height=h;const c=canvas.getContext('2d');
+const grad=c.createLinearGradient(0,0,w,h);grad.addColorStop(0,v.template==='breaking'?v.bgColor:'#14283f');grad.addColorStop(.58,v.template==='breaking'?'#e1282b':'#294e6c');grad.addColorStop(1,'#101b27');c.fillStyle=grad;c.fillRect(0,0,w,h);
+if(v.circles){c.strokeStyle='#ffffff';c.globalAlpha=v.decoOpacity/100;c.lineWidth=4;c.beginPath();c.arc(80,50,350,0,Math.PI*2);c.stroke();c.beginPath();c.arc(w-40,h*.25,230,0,Math.PI*2);c.stroke();c.globalAlpha=1}
+if(v.sideLine){c.fillStyle=v.accentColor;c.fillRect(w-16,0,16,h)}
+if(v.frame){c.strokeStyle='#ffffff66';c.lineWidth=5;c.strokeRect(42,42,w-84,h-84)}
+const pad=95,max=w-pad*2;let y=h*.55;
+if(v.template==='breaking'&&v.showBadge){c.fillStyle=v.textColor;c.font='900 48px Tahoma,Arial';c.textAlign='right';c.direction='rtl';c.fillText('عاجل',w-pad,y);if(v.yellowDot){c.fillStyle=v.accentColor;c.beginPath();c.arc(w-pad-125,y-18,11,0,Math.PI*2);c.fill()}y+=85}
+const size=Math.min(Number(v.fontSize)*1.55,100);c.font=v.weight+' '+size+'px '+(v.font.indexOf('Tahoma')===0?'Tahoma':v.font.indexOf('Arial')===0?'Arial':'sans-serif');c.fillStyle=v.textColor;c.textAlign='right';c.direction='rtl';c.shadowColor=v.textStyle==='shadow'?'#0009':'transparent';c.shadowBlur=v.textStyle==='shadow'?14:0;c.shadowOffsetY=5;
+const headlineLines=wrap(c,v.headlineInput,max);headlineLines.forEach(line=>{c.fillText(line,w-pad,y);y+=size*1.45});c.shadowColor='transparent';c.shadowBlur=0;c.shadowOffsetY=0;y+=22;
+c.font='500 37px Tahoma,Arial';const summaryLines=wrap(c,v.summaryInput,max);summaryLines.slice(0,5).forEach(line=>{c.fillText(line,w-pad,y);y+=58});
+if(v.showChannel&&v.channelInput.trim()){y=Math.min(y+55,h-130);c.strokeStyle='#ffffff66';c.beginPath();c.moveTo(pad,y-24);c.lineTo(w-pad,y-24);c.stroke();c.font='800 30px Tahoma,Arial';c.fillText(v.channelInput,w-pad,y+25)}
+canvas.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='news-design.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)},'image/png');
+});
+load();
+})();
+</script></body></html>
