@@ -29,7 +29,7 @@ function safeImage(value) {
   if (/^assets\/[A-Za-z0-9._/-]+$/.test(raw) && !raw.includes("..")) return `./${raw}`;
   try {
     const url = new URL(raw);
-    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && /\.(?:jpe?g|png|webp|avif)$/i.test(url.pathname)) return url.href;
+    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password) return url.href;
   } catch (_) { }
   return "";
 }
