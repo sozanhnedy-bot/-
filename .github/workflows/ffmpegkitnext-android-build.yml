@@ -3,6 +3,7 @@ name: Build FFmpegKitNext Android AAR
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/ffmpegkitnext-android-build.yml"
 
@@ -62,4 +63,4 @@ jobs:
           path: |
             ffmpeg-kit-next/prebuilt/bundle-android-aar-*-maven/
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 90
