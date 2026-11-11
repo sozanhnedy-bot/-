@@ -14,8 +14,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
 import android.provider.OpenableColumns;
 import android.text.Layout;
 import android.text.TextDirectionHeuristics;
@@ -36,20 +34,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
-import androidx.media3.common.MediaItem;
-import androidx.media3.common.MimeTypes;
-import androidx.media3.common.audio.GainProcessor;
 import androidx.media3.effect.CanvasOverlay;
-import androidx.media3.effect.OverlayEffect;
-import androidx.media3.effect.Presentation;
-import androidx.media3.transformer.Composition;
-import androidx.media3.transformer.EditedMediaItem;
-import androidx.media3.transformer.EditedMediaItemSequence;
-import androidx.media3.transformer.Effects;
-import androidx.media3.transformer.ExportException;
-import androidx.media3.transformer.ExportResult;
-import androidx.media3.transformer.ProgressHolder;
-import androidx.media3.transformer.Transformer;
 
 import java.io.File;
 import java.io.InputStream;
@@ -76,7 +61,6 @@ public final class VideoStudioActivity extends Activity {
     private static final int RED = Color.rgb(255, 130, 115);
 
     private final ArrayList<Uri> mediaUris = new ArrayList<>();
-    private final Handler handler = new Handler(Looper.getMainLooper());
     private EditText titleInput;
     private EditText captionInput;
     private EditText tickerInput;
