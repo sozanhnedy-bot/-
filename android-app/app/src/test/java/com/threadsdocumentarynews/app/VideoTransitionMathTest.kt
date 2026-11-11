@@ -1,6 +1,8 @@
 package com.threadsdocumentarynews.app
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class VideoTransitionMathTest {
@@ -33,5 +35,24 @@ class VideoTransitionMathTest {
         assertEquals(0f, VideoTransitionMath.musicGainAt(0L, 5_000_000L, 0.18f), 0.001f)
         assertEquals(0.18f, VideoTransitionMath.musicGainAt(1_000_000L, 5_000_000L, 0.18f), 0.001f)
         assertEquals(0f, VideoTransitionMath.musicGainAt(5_000_000L, 5_000_000L, 0.18f), 0.001f)
+    }
+
+    @Test
+    fun exportRequestRejectsNonFiniteMusicGain() {
+        assertTrue(VideoExportRequest.isValidMusicGain(0f))
+        assertTrue(VideoExportRequest.isValidMusicGain(1f))
+        assertFalse(VideoExportRequest.isValidMusicGain(Float.NaN))
+        assertFalse(VideoExportRequest.isValidMusicGain(Float.POSITIVE_INFINITY))
+        assertFalse(VideoExportRequest.isValidMusicGain(-0.01f))
+        assertFalse(VideoExportRequest.isValidMusicGain(1.01f))
+    }
+
+    @Test
+    fun exportRequestRequiresEvenPositiveYuv420pDimensions() {
+        assertTrue(VideoExportRequest.isValidOutputSize(1080, 1920))
+        assertTrue(VideoExportRequest.isValidOutputSize(1280, 720))
+        assertFalse(VideoExportRequest.isValidOutputSize(0, 1080))
+        assertFalse(VideoExportRequest.isValidOutputSize(1081, 1920))
+        assertFalse(VideoExportRequest.isValidOutputSize(1280, 721))
     }
 }

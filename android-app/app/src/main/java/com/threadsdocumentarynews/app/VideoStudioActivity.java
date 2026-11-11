@@ -1,6 +1,7 @@
 package com.threadsdocumentarynews.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -42,6 +43,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CancellationException;
 
 /** Local Android equivalent of the supplied media-studio workflow. */
 public final class VideoStudioActivity extends Activity {
@@ -66,6 +68,8 @@ public final class VideoStudioActivity extends Activity {
     private EditText tickerInput;
     private Spinner imageDurationSpinner;
     private Spinner formatSpinner;
+    private Spinner templateModeSpinner;
+    private Spinner resolutionSpinner;
     private TextView mediaList;
     private TextView audioName;
     private TextView musicName;
@@ -73,6 +77,7 @@ public final class VideoStudioActivity extends Activity {
     private ProgressBar progress;
     private Button buildButton;
     private Button saveButton;
+    private Button cancelExportButton;
     private Button testAudioButton;
     private Button testMusicButton;
     private Spinner musicVolumeSpinner;
@@ -110,7 +115,13 @@ public final class VideoStudioActivity extends Activity {
 
         LinearLayout form = card();
         addText(form, "مشروع MP4 جديد", 20, WHITE, true, 0, 5);
-        addText(form, "قالب الأخبار العاجلة ثابت: WORLD NEWS في منتصف الإطار الأزرق، بلوك أحمر كبير، دوائر نبضية متحركة، شارة عاجل، وعنوان الخبر. الصوت الخلفي والمؤثرات تُضاف كمسارات اختيارية.", 13, MUTED, false, 0, 10);
+        addText(form, "قالب World News ثابت؛ اختر نسخة عاجلة أو عادية بنفس الهوية، ثم أضف الصور أو الفيديو والصوت الاختياري.", 13, MUTED, false, 0, 10);
+        Button licenseButton = secondaryButton("تراخيص محرّك التصدير");
+        form.addView(licenseButton, params(-1, dp(42), 0, 0, 0, 8));
+        licenseButton.setOnClickListener(v -> showFfmpegLicenseNotice());
+        addLabel(form, "نوع النشرة");
+        templateModeSpinner = spinner(new String[]{"أخبار عاجلة", "أخبار عادية"});
+        form.addView(templateModeSpinner, params(-1, dp(48), 0, 4, 0, 8));
         addLabel(form, "عنوان الفيديو");
         titleInput = input("عنوان الخبر أو الترند");
         form.addView(titleInput, params(-1, dp(48), 0, 4, 0, 8));
@@ -150,6 +161,10 @@ public final class VideoStudioActivity extends Activity {
         addLabel(form, "اتجاه الفيديو");
         formatSpinner = spinner(new String[]{"رأسي 9:16", "أفقي 16:9"});
         form.addView(formatSpinner, params(-1, dp(48), 0, 4, 0, 10));
+        addLabel(form, "دقة التصدير");
+        resolutionSpinner = spinner(new String[]{"720p", "1080p"});
+        resolutionSpinner.setSelection(1);
+        form.addView(resolutionSpinner, params(-1, dp(48), 0, 4, 0, 10));
 
         Button pickAudio = button("اختيار تعليق الراوي (اختياري)");
         form.addView(pickAudio, params(-1, dp(50), 0, 0, 0, 6));
@@ -195,6 +210,16 @@ public final class VideoStudioActivity extends Activity {
         progress.setProgress(0);
         progress.setVisibility(View.GONE);
         previewCard.addView(progress, params(-1, dp(8), 0, 0, 0, 6));
+        cancelExportButton = secondaryButton("إلغاء التصدير");
+        cancelExportButton.setVisibility(View.GONE);
+        previewCard.addView(cancelExportButton, params(-1, dp(44), 0, 0, 0, 6));
+        cancelExportButton.setOnClickListener(v -> {
+            if (exporting && exportEngine != null) {
+                cancelExportButton.setEnabled(false);
+                setStatus("جارٍ إلغاء التصدير وتنظيف الملف المؤقت…", MUTED);
+                exportEngine.cancel();
+            }
+        });
         status = text("جاهز. اختر الوسائط لاختبارها أو إنشاء الفيديو.", 13, MUTED, false);
         previewCard.addView(status, params(-1, -2, 0, 0, 0, 8));
         buildButton = button("إنشاء الفيديو MP4");
@@ -399,12 +424,16 @@ public final class VideoStudioActivity extends Activity {
         saveButton.setEnabled(false);
         progress.setProgress(0);
         progress.setVisibility(View.VISIBLE);
+        cancelExportButton.setVisibility(View.VISIBLE);
+        cancelExportButton.setEnabled(true);
         exporting = true;
         try {
             int imageSeconds = imageDurationSpinner.getSelectedItemPosition() + 2;
             boolean vertical = formatSpinner.getSelectedItemPosition() == 0;
-            int width = vertical ? 1080 : 1920;
-            int height = vertical ? 1920 : 1080;
+            boolean output720p = resolutionSpinner.getSelectedItemPosition() == 0;
+            boolean breakingNews = templateModeSpinner.getSelectedItemPosition() == 0;
+            int width = vertical ? (output720p ? 720 : 1080) : (output720p ? 1280 : 1920);
+            int height = vertical ? (output720p ? 1280 : 1920) : (output720p ? 720 : 1080);
             String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 90);
             String lowerThird = captionInput == null ? "" : compactText(captionInput.getText().toString(), 120);
             String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 120);
@@ -419,10 +448,10 @@ public final class VideoStudioActivity extends Activity {
 
             VideoExportRequest request = new VideoExportRequest(
                     mediaUris, audioUri, musicUri, headline, lowerThird, ticker,
-                    outputFile, width, height, imageSeconds, selectedMusicGain());
+                    outputFile, width, height, imageSeconds, selectedMusicGain(), breakingNews);
 
             exportEngine = new Media3VideoExportEngine(this, durationsUs ->
-                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, durationsUs));
+                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, durationsUs, breakingNews));
             exportEngine.export(request, new VideoExportEngine.Listener() {
                 @Override public void onProgress(int percent) {
                     if (isFinishing() || isDestroyed()) return;
@@ -435,6 +464,7 @@ public final class VideoStudioActivity extends Activity {
                     exporting = false;
                     progress.setProgress(100);
                     progress.setVisibility(View.GONE);
+                    cancelExportButton.setVisibility(View.GONE);
                     buildButton.setEnabled(true);
                     saveButton.setEnabled(file != null && file.isFile() && file.length() > 0L);
                     if (saveButton.isEnabled()) {
@@ -450,9 +480,15 @@ public final class VideoStudioActivity extends Activity {
                     if (isFinishing() || isDestroyed()) return;
                     exporting = false;
                     progress.setVisibility(View.GONE);
+                    cancelExportButton.setVisibility(View.GONE);
+                    cancelExportButton.setEnabled(true);
                     buildButton.setEnabled(true);
                     saveButton.setEnabled(false);
-                    setStatus("فشل إنشاء MP4: " + safeMessage(error) + " — جرّب تقليل الملفات أو استخدام فيديو MP4/H.264.", RED);
+                    if (error instanceof CancellationException) {
+                        setStatus("تم إلغاء التصدير وتنظيف الملف المؤقت.", MUTED);
+                    } else {
+                        setStatus("فشل إنشاء MP4: " + safeMessage(error) + " — جرّب تقليل الملفات أو استخدام فيديو MP4/H.264.", RED);
+                    }
                 }
             });
             status.setText("بدأ إنشاء الفيديو على الجهاز…");
@@ -460,6 +496,8 @@ public final class VideoStudioActivity extends Activity {
         } catch (Exception error) {
             exporting = false;
             progress.setVisibility(View.GONE);
+            cancelExportButton.setVisibility(View.GONE);
+            cancelExportButton.setEnabled(true);
             buildButton.setEnabled(true);
             saveButton.setEnabled(false);
             setStatus("تعذر بدء إنشاء الفيديو: " + safeMessage(error), RED);
@@ -504,6 +542,7 @@ public final class VideoStudioActivity extends Activity {
         private final String lowerThird;
         private final String ticker;
         private final List<Long> clipDurationsUs;
+        private final boolean breakingNews;
         private int canvasWidth;
         private int canvasHeight;
         private StaticLayout headlineLayout;
@@ -512,12 +551,14 @@ public final class VideoStudioActivity extends Activity {
         private final Paint tickerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker, List<Long> clipDurationsUs) {
+        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker,
+                List<Long> clipDurationsUs, boolean breakingNews) {
             super(false);
             this.headline = headline.isEmpty() ? "أخبار العالم" : headline;
             this.lowerThird = lowerThird;
             this.ticker = ticker.isEmpty() ? "آخر التطورات" : ticker;
             this.clipDurationsUs = new ArrayList<>(clipDurationsUs);
+            this.breakingNews = breakingNews;
             tickerPaint.setColor(Color.WHITE);
             tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             tickerPaint.setTextAlign(Paint.Align.LEFT);
@@ -561,7 +602,7 @@ public final class VideoStudioActivity extends Activity {
             canvas.drawRoundRect(badge, shortSide * 0.010f, shortSide * 0.010f, shapePaint);
             tickerPaint.setColor(Color.rgb(11, 29, 47));
             tickerPaint.setTextSize(shortSide * 0.030f);
-            canvas.drawText("عاجل", badge.centerX(), badge.centerY() + shortSide * 0.010f, tickerPaint);
+            canvas.drawText(breakingNews ? "عاجل" : "أخبار", badge.centerX(), badge.centerY() + shortSide * 0.010f, tickerPaint);
             drawCenteredLayout(canvas, headlineLayout, new RectF(margin, height * 0.39f, width - margin, height * 0.56f));
             tickerPaint.setTextAlign(Paint.Align.LEFT);
             tickerPaint.setColor(WHITE);
@@ -674,6 +715,20 @@ public final class VideoStudioActivity extends Activity {
         if (markerIndex >= 0) narration = narration.substring(markerIndex + marker.length()).trim();
         String[] sentences = narration.split("[\\r\\n]+|(?<=[.!؟])\\s+", 2);
         return compactText(sentences.length == 0 ? narration : sentences[0], 100);
+    }
+
+    private void showFfmpegLicenseNotice() {
+        String notice = "يتضمن التطبيق مكتبة FFmpeg Native عبر "
+                + "dev.ffmpegkit-maintained:ffmpeg-kit-full:8.1.7، وهي نسخة LGPL-3.0 غير GPL. "
+                + "يستخدم تصدير H.264 ترميز Android MediaCodec؛ ولا تُضمّن نسخة GPL من x264.\n\n"
+                + "إشعارات المكونات ونصوص تراخيصها مضمّنة مع المكتبة. هذا الملخص للتعريف فقط "
+                + "ولا يستبدل نصوص التراخيص الأصلية. راجع android-app/FFMPEG_LICENSES.md "
+                + "في مستودع التطبيق للتفاصيل وروابط المصدر.";
+        new AlertDialog.Builder(this)
+                .setTitle("تراخيص محرّك الفيديو")
+                .setMessage(notice)
+                .setPositiveButton("حسنًا", null)
+                .show();
     }
 
     private void saveOutput() {

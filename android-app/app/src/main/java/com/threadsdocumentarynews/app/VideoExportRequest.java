@@ -20,17 +20,30 @@ public final class VideoExportRequest {
     private final int height;
     private final int imageDurationSeconds;
     private final float musicGain;
+    private final boolean breakingNews;
 
     public VideoExportRequest(List<Uri> mediaUris, Uri narrationUri, Uri musicUri,
             String headline, String lowerThird, String ticker, File outputFile,
             int width, int height, int imageDurationSeconds, float musicGain) {
+        this(mediaUris, narrationUri, musicUri, headline, lowerThird, ticker, outputFile,
+                width, height, imageDurationSeconds, musicGain, true);
+    }
+
+    public VideoExportRequest(List<Uri> mediaUris, Uri narrationUri, Uri musicUri,
+            String headline, String lowerThird, String ticker, File outputFile,
+            int width, int height, int imageDurationSeconds, float musicGain,
+            boolean breakingNews) {
         if (mediaUris == null || mediaUris.isEmpty()) {
             throw new IllegalArgumentException("At least one image or video is required.");
         }
         if (outputFile == null) throw new IllegalArgumentException("An output file is required.");
-        if (width <= 0 || height <= 0) throw new IllegalArgumentException("Output dimensions must be positive.");
+        if (!isValidOutputSize(width, height)) {
+            throw new IllegalArgumentException("Output dimensions must be positive, even, and suitable for yuv420p.");
+        }
         if (imageDurationSeconds <= 0) throw new IllegalArgumentException("Image duration must be positive.");
-        if (musicGain < 0f || musicGain > 1f) throw new IllegalArgumentException("Music gain must be between 0 and 1.");
+        if (!isValidMusicGain(musicGain)) {
+            throw new IllegalArgumentException("Music gain must be finite and between 0 and 1.");
+        }
 
         ArrayList<Uri> copy = new ArrayList<>(mediaUris.size());
         for (Uri uri : mediaUris) {
@@ -48,6 +61,15 @@ public final class VideoExportRequest {
         this.height = height;
         this.imageDurationSeconds = imageDurationSeconds;
         this.musicGain = musicGain;
+        this.breakingNews = breakingNews;
+    }
+
+    static boolean isValidMusicGain(float gain) {
+        return !Float.isNaN(gain) && !Float.isInfinite(gain) && gain >= 0f && gain <= 1f;
+    }
+
+    static boolean isValidOutputSize(int width, int height) {
+        return width > 0 && height > 0 && width % 2 == 0 && height % 2 == 0;
     }
 
     public List<Uri> getMediaUris() { return mediaUris; }
@@ -61,4 +83,11 @@ public final class VideoExportRequest {
     public int getHeight() { return height; }
     public int getImageDurationSeconds() { return imageDurationSeconds; }
     public float getMusicGain() { return musicGain; }
+    public boolean isBreakingNews() { return breakingNews; }
+
+    public VideoExportRequest withOutputFile(File replacementOutputFile) {
+        return new VideoExportRequest(mediaUris, narrationUri, musicUri, headline, lowerThird,
+                ticker, replacementOutputFile, width, height, imageDurationSeconds,
+                musicGain, breakingNews);
+    }
 }
