@@ -720,12 +720,12 @@ public final class VideoStudioActivity extends Activity {
     }
 
     private void showFfmpegLicenseNotice() {
-        String notice = "يتضمن التطبيق مكتبة FFmpeg Native عبر "
-                + "dev.ffmpegkit-maintained:ffmpeg-kit-full:8.1.7، وهي نسخة LGPL-3.0 غير GPL. "
-                + "يستخدم تصدير H.264 ترميز Android MediaCodec؛ ولا تُضمّن نسخة GPL من x264.\n\n"
-                + "إشعارات المكونات ونصوص تراخيصها مضمّنة مع المكتبة. هذا الملخص للتعريف فقط "
-                + "ولا يستبدل نصوص التراخيص الأصلية. راجع android-app/FFMPEG_LICENSES.md "
-                + "في مستودع التطبيق للتفاصيل وروابط المصدر.";
+        String notice = "يستخدم التطبيق FFmpegKitNext الرسمي إصدار 9.0.2، "
+                + "ويُبنى محليًا من المصدر للأجهزة arm64-v8a. إعداد البناء الحالي لا يفعّل مكتبات GPL "
+                + "ويستخدم Android MediaCodec لترميز H.264 بدل libx264.\n\n"
+                + "الترخيص الافتراضي للمشروع LGPL-3.0، ويجب مراجعة إشعارات المكونات داخل نسخة AAR "
+                + "الفعلية قبل توزيع التطبيق. هذا الملخص للتعريف فقط ولا يستبدل نصوص التراخيص الأصلية. "
+                + "راجع android-app/FFMPEG_LICENSES.md في مستودع التطبيق للتفاصيل وروابط المصدر.";
         new AlertDialog.Builder(this)
                 .setTitle("تراخيص محرّك الفيديو")
                 .setMessage(notice)
