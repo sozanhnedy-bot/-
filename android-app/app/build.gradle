@@ -36,9 +36,11 @@ android {
     buildTypes {
         debug {
             buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', asBuildConfigString(firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN'))
+            manifestPlaceholders = [firebaseAppCheckDebugToken: firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN')]
         }
         release {
             buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', '\"\"'
+            manifestPlaceholders = [firebaseAppCheckDebugToken: '']
         }
     }
 
