@@ -168,7 +168,7 @@ public final class PortalActivity extends Activity {
 
         if (BuildConfig.DEBUG && !BuildConfig.FIREBASE_DEBUG_TOKEN.isEmpty()) {
             Button copyToken = new Button(this);
-            copyToken.setText(\"نسخ Firebase Debug Token\");
+            copyToken.setText("نسخ Firebase Debug Token");
             copyToken.setAllCaps(false);
             copyToken.setTextColor(Color.WHITE);
             copyToken.setBackgroundColor(NAVY);
@@ -186,11 +186,11 @@ public final class PortalActivity extends Activity {
         if (!BuildConfig.DEBUG || BuildConfig.FIREBASE_DEBUG_TOKEN.isEmpty()) return;
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null) {
-            Toast.makeText(this, \"تعذر فتح الحافظة\", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "تعذر فتح الحافظة", Toast.LENGTH_SHORT).show();
             return;
         }
-        clipboard.setPrimaryClip(ClipData.newPlainText(\"Firebase App Check Debug Token\", BuildConfig.FIREBASE_DEBUG_TOKEN));
-        Toast.makeText(this, \"تم نسخ Firebase Debug Token\", Toast.LENGTH_SHORT).show();
+        clipboard.setPrimaryClip(ClipData.newPlainText("Firebase App Check Debug Token", BuildConfig.FIREBASE_DEBUG_TOKEN));
+        Toast.makeText(this, "تم نسخ Firebase Debug Token", Toast.LENGTH_SHORT).show();
     }
 
     private void toggleAlerts() {
