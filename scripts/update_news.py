@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import ipaddress
 import html
 import json
 import os
 import re
+import socket
 import sys
 import urllib.error
 import urllib.request
@@ -17,7 +19,7 @@ from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Callable, Iterable
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES_PATH = ROOT / "data" / "news_sources.json"
@@ -253,6 +255,75 @@ class _ImageExtractor(HTMLParser):
             candidate = values["srcset"].split(",", 1)[0].strip().split(" ", 1)[0]
         if candidate:
             self.urls.append(candidate)
+
+
+class _MetaImageExtractor(HTMLParser):
+    """Read publisher-declared lead images from article metadata."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.urls: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "meta":
+            return
+        values = {key.lower(): (value or "").strip() for key, value in attrs}
+        key = (values.get("property") or values.get("name") or "").lower()
+        if key in {"og:image", "og:image:url", "twitter:image", "twitter:image:src"}:
+            value = values.get("content", "")
+            if value:
+                self.urls.append(value)
+
+
+def _validate_public_https_url(value: str) -> bool:
+    """Reject non-HTTPS, credentialed, localhost, and private-network destinations."""
+    try:
+        parsed = urlsplit(value)
+        if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+            return False
+        addresses = {entry[4][0] for entry in socket.getaddrinfo(parsed.hostname, None, type=socket.SOCK_STREAM)}
+        return bool(addresses) and all(ipaddress.ip_address(address).is_global for address in addresses)
+    except (OSError, ValueError):
+        return False
+
+
+class _PublicHttpsRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if not _validate_public_https_url(newurl):
+            raise ValueError("article redirect is not a public HTTPS destination")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def _fetch_article_image(article_url: str, timeout: int = 8) -> str:
+    """Fetch only publisher HTML metadata; never execute page content or accept unsafe URLs."""
+    if not _validate_public_https_url(article_url):
+        return ""
+    request = urllib.request.Request(
+        article_url,
+        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
+    )
+    opener = urllib.request.build_opener(_PublicHttpsRedirectHandler())
+    try:
+        with opener.open(request, timeout=timeout) as response:
+            final_url = response.geturl()
+            if not _validate_public_https_url(final_url):
+                return ""
+            content_type = response.headers.get("Content-Type", "").lower()
+            if "html" not in content_type:
+                return ""
+            body = response.read(2_000_001)
+        if len(body) > 2_000_000:
+            return ""
+        parser = _MetaImageExtractor()
+        parser.feed(body.decode("utf-8", errors="replace"))
+        parser.close()
+        for candidate in parser.urls:
+            image = _safe_image_url(urljoin(final_url, candidate), "image")
+            if image:
+                return image
+    except (OSError, ValueError, urllib.error.URLError, TimeoutError):
+        return ""
+    return ""
 
 
 def _item_image_url(node: ET.Element) -> str:
@@ -562,9 +633,24 @@ def main() -> int:
         raise ValueError("news_sources.json must contain a feeds list")
     max_items_per_feed = max(1, int(config.get("max_items_per_feed", 12)))
 
+    image_lookup_count = 0
+    image_lookup_urls: set[str] = set()
+
     def limited_fetch(url: str, region: str, name: str, source_url: str = "") -> list[dict]:
-        items = fetch_feed(url, region, name, feed_source_url=source_url)
-        return newest_items(items, max_items_per_feed)
+        nonlocal image_lookup_count
+        items = newest_items(fetch_feed(url, region, name, feed_source_url=source_url), max_items_per_feed)
+        # Google News RSS often omits media:content entirely. Recover only the
+        # publisher-declared lead image, with a strict per-run request budget.
+        for item in items:
+            article_url = item.get("url", "")
+            if item.get("image_url") or not article_url or article_url in image_lookup_urls:
+                continue
+            image_lookup_urls.add(article_url)
+            if image_lookup_count >= 20:
+                break
+            image_lookup_count += 1
+            item["image_url"] = _fetch_article_image(article_url)
+        return items
 
     if args.dry_run:
         total = 0
