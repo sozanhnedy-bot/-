@@ -3,6 +3,7 @@ package com.threadsdocumentarynews.app;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -28,6 +29,9 @@ import com.arthenica.ffmpegkit.FFprobeSession;
 import com.arthenica.ffmpegkit.ReturnCode;
 
 import java.io.BufferedWriter;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -95,8 +99,14 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             int index = 0;
             for (Uri uri : request.getMediaUris()) {
                 checkCancelled();
-                String path = readablePath(uri);
                 boolean image = isImage(uri);
+                String path;
+                if (image) {
+                    File rgbaFrame = new File(work, "image-" + index + ".rgba");
+                    path = prepareImageRgba(uri, rgbaFrame, request.getWidth(), request.getHeight());
+                } else {
+                    path = readablePath(uri);
+                }
                 long durationMs = image ? request.getImageDurationSeconds() * 1000L : probeDurationMs(path);
                 if (durationMs <= 0L) throw new IllegalStateException("Could not determine media duration: " + uri);
                 boolean hasAudio = !image && hasAudio(path);
@@ -162,13 +172,16 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                 args.add("-i"); args.add(readablePath(request.getMusicUri()));
             }
             int overlayIndex = nextInput;
+            args.add("-f"); args.add("rawvideo");
+            args.add("-pixel_format"); args.add("rgba");
+            args.add("-video_size"); args.add(request.getWidth() + "x" + request.getHeight());
             args.add("-framerate"); args.add("10");
-            args.add("-stream_loop"); args.add("-1");
-            args.add("-i"); args.add(new File(overlayDirectory, "overlay-%03d.png").getAbsolutePath());
+            args.add("-i"); args.add(new File(overlayDirectory, "overlay.rgba").getAbsolutePath());
 
             StringBuilder graph = new StringBuilder();
-            graph.append("[0:v][").append(overlayIndex)
-                    .append(":v]overlay=0:0:shortest=1,format=yuv420p[vout];");
+            graph.append("[").append(overlayIndex)
+                    .append(":v]loop=loop=-1:size=20:start=0[ov];")
+                    .append("[0:v][ov]overlay=0:0:shortest=1,format=yuv420p[vout];");
             List<String> audioLabels = new ArrayList<>();
             graph.append("[1:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,apad,atrim=duration=")
                     .append(seconds(totalMs)).append("[src]");
@@ -228,12 +241,18 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
 
     private String segmentCommand(MediaInput input, VideoExportRequest request, File output) {
         StringBuilder command = new StringBuilder("-y ");
-        if (input.image) command.append("-loop 1 -framerate ").append(FPS).append(" -t ")
-                .append(seconds(input.durationMs)).append(" -i ").append(q(input.path)).append(' ');
-        else command.append("-i ").append(q(input.path)).append(" -t ").append(seconds(input.durationMs)).append(' ');
-        command.append("-vf ").append(q("scale=" + request.getWidth() + ":" + request.getHeight()
+        String scaleFilter = "scale=" + request.getWidth() + ":" + request.getHeight()
                 + ":force_original_aspect_ratio=increase,crop=" + request.getWidth() + ":" + request.getHeight()
-                + ",setsar=1,fps=" + FPS + ",format=yuv420p"))
+                + ",setsar=1,fps=" + FPS + ",format=yuv420p";
+        if (input.image) {
+            command.append("-f rawvideo -pixel_format rgba -video_size ")
+                    .append(request.getWidth()).append("x").append(request.getHeight())
+                    .append(" -framerate 1 -i ").append(q(input.path)).append(' ');
+            scaleFilter = "loop=loop=-1:size=1:start=0," + scaleFilter;
+        } else {
+            command.append("-i ").append(q(input.path)).append(" -t ").append(seconds(input.durationMs)).append(' ');
+        }
+        command.append("-vf ").append(q(scaleFilter))
                 .append(" -an -c:v libx264 -preset ultrafast -b:v 6M -r ").append(FPS)
                 .append(" -t ").append(seconds(input.durationMs))
                 .append(" -movflags +faststart ").append(q(output.getAbsolutePath()));
@@ -288,15 +307,18 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
 
     private void renderOverlayFrames(File directory, VideoExportRequest request) throws Exception {
         if (!directory.exists() && !directory.mkdirs()) throw new IllegalStateException("Cannot create overlay frame directory.");
-        final int frameCount = 20;
-        for (int frame = 0; frame < frameCount; frame++) {
-            checkCancelled();
-            File output = new File(directory, String.format(Locale.US, "overlay-%03d.png", frame));
-            renderOverlayFrame(output, request, frame / 10f);
+        File rawFrames = new File(directory, "overlay.rgba");
+        try (OutputStream out = new BufferedOutputStream(new FileOutputStream(rawFrames))) {
+            final int frameCount = 20;
+            for (int frame = 0; frame < frameCount; frame++) {
+                checkCancelled();
+                renderOverlayFrame(out, request, frame / 10f);
+            }
+            out.flush();
         }
     }
 
-    private void renderOverlayFrame(File file, VideoExportRequest request, float timeSeconds) throws Exception {
+    private void renderOverlayFrame(OutputStream out, VideoExportRequest request, float timeSeconds) throws Exception {
         int width = request.getWidth(), height = request.getHeight();
         float shortSide = Math.min(width, height);
         OverlayPalette palette = OverlayPalette.from(request.getColorPalette());
@@ -363,12 +385,72 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             for (float x = card.right - offset; x > card.left - textWidth; x -= textWidth) canvas.drawText(moving, x, baseline, text);
             canvas.restore();
 
-            try (FileOutputStream out = new FileOutputStream(file)) {
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            writeBitmapRgba(bitmap, out);
+        } finally {
+            bitmap.recycle();
+        }
+    }
+
+    /**
+     * Decode still images with Android and stage one tightly packed RGBA frame.
+     * FFmpeg no longer needs an image decoder for PNG, JPEG, or WebP still inputs.
+     */
+    private String prepareImageRgba(Uri uri, File output, int width, int height) throws Exception {
+        BitmapFactory.Options bounds = new BitmapFactory.Options();
+        bounds.inJustDecodeBounds = true;
+        try (InputStream in = context.getContentResolver().openInputStream(uri)) {
+            if (in == null) throw new IllegalStateException("Cannot open selected image: " + uri);
+            BitmapFactory.decodeStream(in, null, bounds);
+        }
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) {
+            throw new IllegalStateException("Android could not decode the selected image: " + uri);
+        }
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        int sample = 1;
+        while (bounds.outWidth / (sample * 2) >= width && bounds.outHeight / (sample * 2) >= height) sample *= 2;
+        options.inSampleSize = sample;
+        Bitmap source;
+        try (InputStream in = context.getContentResolver().openInputStream(uri)) {
+            if (in == null) throw new IllegalStateException("Cannot reopen selected image: " + uri);
+            source = BitmapFactory.decodeStream(in, null, options);
+        }
+        if (source == null) throw new IllegalStateException("Android failed to decode the selected image: " + uri);
+        Bitmap frame = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        try {
+            Canvas canvas = new Canvas(frame);
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+            float scale = Math.max(width / (float) source.getWidth(), height / (float) source.getHeight());
+            float drawWidth = source.getWidth() * scale;
+            float drawHeight = source.getHeight() * scale;
+            float left = (width - drawWidth) / 2f;
+            float top = (height - drawHeight) / 2f;
+            canvas.drawBitmap(source, null, new RectF(left, top, left + drawWidth, top + drawHeight), paint);
+            try (OutputStream out = new BufferedOutputStream(new FileOutputStream(output))) {
+                writeBitmapRgba(frame, out);
                 out.flush();
             }
         } finally {
-            bitmap.recycle();
+            frame.recycle();
+            source.recycle();
+        }
+        return output.getAbsolutePath();
+    }
+
+    /** Write explicit R,G,B,A bytes rather than Android's platform-specific packed-int order. */
+    private void writeBitmapRgba(Bitmap bitmap, OutputStream out) throws Exception {
+        int width = bitmap.getWidth();
+        int[] row = new int[width];
+        byte[] rgba = new byte[width * 4];
+        for (int y = 0; y < bitmap.getHeight(); y++) {
+            bitmap.getPixels(row, 0, width, 0, y, width, 1);
+            for (int x = 0, p = 0; x < width; x++) {
+                int color = row[x];
+                rgba[p++] = (byte) ((color >> 16) & 0xff);
+                rgba[p++] = (byte) ((color >> 8) & 0xff);
+                rgba[p++] = (byte) (color & 0xff);
+                rgba[p++] = (byte) ((color >>> 24) & 0xff);
+            }
+            out.write(rgba);
         }
     }
 
