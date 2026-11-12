@@ -46,7 +46,7 @@ jobs:
             --disable-arch-x86-64 \
             --enable-gpl \
             --enable-lib-x264 \
-            --disable-mediacodec
+            --disable-arch-mediacodec
 
       - name: Verify generated AAR and native ABI
         shell: bash
