@@ -26,6 +26,56 @@ jobs:
           path: ffmpeg-kit-next
           persist-credentials: false
 
+      - name: Explicitly enable the built-in PNG decoder
+        working-directory: ffmpeg-kit-next
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(grep -c '^CONFIGURE_POSTFIX=""        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            max-jobs = auto
+            cores = 2
+
+      - name: Build Android AAR for arm64-v8a
+        working-directory: ffmpeg-kit-next
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./nix-android.sh -p android-r27d \
+            --disable-arch-arm-v7a \
+            --disable-arch-arm-v7a-neon \
+            --disable-arch-x86 \
+            --disable-arch-x86-64 \
+            --enable-gpl \
+            --enable-lib-x264
+
+      - name: Verify generated AAR and native ABI
+        shell: bash
+        run: |
+          set -euo pipefail
+          AAR="$(find ffmpeg-kit-next/prebuilt -type f -name 'ffmpeg-kit-next-9.0.2.aar' -print -quit)"
+          test -n "$AAR"
+          unzip -l "$AAR" | grep -q 'jni/arm64-v8a/'
+          unzip -p "$AAR" jni/arm64-v8a/libavcodec.so > /tmp/ffmpeg-libavcodec.so
+          strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--enable-libx264'
+          strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--disable-mediacodec'
+          echo "FFmpegKitNext AAR: $AAR"
+          echo "Verified arm64-v8a, libx264 enabled, and MediaCodec disabled."
+
+      - name: Upload AAR and Maven repository
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-kit-next-9.0.2-android-arm64
+          path: |
+            ffmpeg-kit-next/prebuilt/bundle-android-aar-*-maven/
+          if-no-files-found: error
+          retention-days: 90
+ scripts/android/ffmpeg.sh)" -eq 1
+          sed -i '/^CONFIGURE_POSTFIX=""$/a CONFIGURE_POSTFIX+=" --enable-decoder=png"' scripts/android/ffmpeg.sh
+          grep -Fq 'CONFIGURE_POSTFIX+=" --enable-decoder=png"' scripts/android/ffmpeg.sh
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
