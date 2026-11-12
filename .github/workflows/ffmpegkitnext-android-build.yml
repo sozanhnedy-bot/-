@@ -44,7 +44,9 @@ jobs:
             --disable-arch-arm-v7a-neon \
             --disable-arch-x86 \
             --disable-arch-x86-64 \
-            --enable-lib-android-media-codec
+            --enable-gpl \
+            --enable-lib-x264 \
+            --disable-mediacodec
 
       - name: Verify generated AAR and native ABI
         shell: bash
@@ -53,8 +55,11 @@ jobs:
           AAR="$(find ffmpeg-kit-next/prebuilt -type f -name 'ffmpeg-kit-next-9.0.2.aar' -print -quit)"
           test -n "$AAR"
           unzip -l "$AAR" | grep -q 'jni/arm64-v8a/'
+          unzip -p "$AAR" jni/arm64-v8a/libavcodec.so > /tmp/ffmpeg-libavcodec.so
+          strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--enable-libx264'
+          strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--disable-mediacodec'
           echo "FFmpegKitNext AAR: $AAR"
-          echo "Verified arm64-v8a native payload."
+          echo "Verified arm64-v8a, libx264 enabled, and MediaCodec disabled."
 
       - name: Upload AAR and Maven repository
         uses: actions/upload-artifact@v4
