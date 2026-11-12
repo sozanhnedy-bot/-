@@ -30,11 +30,18 @@ android {
         buildConfigField 'String', 'FIREBASE_API_KEY', asBuildConfigString(firebaseValue('firebase.apiKey', 'FIREBASE_API_KEY'))
         buildConfigField 'String', 'FIREBASE_APP_ID', asBuildConfigString(firebaseValue('firebase.appId', 'FIREBASE_APP_ID'))
         buildConfigField 'String', 'FIREBASE_PROJECT_ID', asBuildConfigString(firebaseValue('firebase.projectId', 'FIREBASE_PROJECT_ID'))
-        buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', asBuildConfigString(firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN'))
-        resValue 'string', 'firebase_app_check_debug_token', firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN')
-        manifestPlaceholders = [
-            firebaseAppCheckDebugToken: firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN')
-        ]
+        buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', '""'
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', asBuildConfigString(firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN'))
+            manifestPlaceholders = [firebaseAppCheckDebugToken: firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN')]
+        }
+        release {
+            buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', '""'
+            manifestPlaceholders = [firebaseAppCheckDebugToken: '']
+        }
     }
 
     compileOptions {
@@ -57,9 +64,6 @@ dependencies {
     // FFmpegKitNext 9.0.2, built for arm64-v8a with Android MediaCodec support.
     implementation 'com.arthenica:ffmpeg-kit-next:9.0.2'
     implementation 'com.arthenica:smart-exception-java:0.2.1'
-    implementation 'androidx.media3:media3-transformer:1.9.0'
-    implementation 'androidx.media3:media3-effect:1.9.0'
-    implementation 'androidx.media3:media3-common:1.9.0'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.json:json:20240303'
 }
