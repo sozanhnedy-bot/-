@@ -21,18 +21,27 @@ public final class VideoExportRequest {
     private final int imageDurationSeconds;
     private final float musicGain;
     private final boolean breakingNews;
+    private final int colorPalette;
 
     public VideoExportRequest(List<Uri> mediaUris, Uri narrationUri, Uri musicUri,
             String headline, String lowerThird, String ticker, File outputFile,
             int width, int height, int imageDurationSeconds, float musicGain) {
         this(mediaUris, narrationUri, musicUri, headline, lowerThird, ticker, outputFile,
-                width, height, imageDurationSeconds, musicGain, true);
+                width, height, imageDurationSeconds, musicGain, true, 0);
     }
 
     public VideoExportRequest(List<Uri> mediaUris, Uri narrationUri, Uri musicUri,
             String headline, String lowerThird, String ticker, File outputFile,
             int width, int height, int imageDurationSeconds, float musicGain,
             boolean breakingNews) {
+        this(mediaUris, narrationUri, musicUri, headline, lowerThird, ticker, outputFile,
+                width, height, imageDurationSeconds, musicGain, breakingNews, 0);
+    }
+
+    public VideoExportRequest(List<Uri> mediaUris, Uri narrationUri, Uri musicUri,
+            String headline, String lowerThird, String ticker, File outputFile,
+            int width, int height, int imageDurationSeconds, float musicGain,
+            boolean breakingNews, int colorPalette) {
         if (mediaUris == null || mediaUris.isEmpty()) {
             throw new IllegalArgumentException("At least one image or video is required.");
         }
@@ -43,6 +52,9 @@ public final class VideoExportRequest {
         if (imageDurationSeconds <= 0) throw new IllegalArgumentException("Image duration must be positive.");
         if (!isValidMusicGain(musicGain)) {
             throw new IllegalArgumentException("Music gain must be finite and between 0 and 1.");
+        }
+        if (!isValidColorPalette(colorPalette)) {
+            throw new IllegalArgumentException("Color palette must be between 0 and 3.");
         }
 
         ArrayList<Uri> copy = new ArrayList<>(mediaUris.size());
@@ -62,10 +74,15 @@ public final class VideoExportRequest {
         this.imageDurationSeconds = imageDurationSeconds;
         this.musicGain = musicGain;
         this.breakingNews = breakingNews;
+        this.colorPalette = colorPalette;
     }
 
     static boolean isValidMusicGain(float gain) {
         return !Float.isNaN(gain) && !Float.isInfinite(gain) && gain >= 0f && gain <= 1f;
+    }
+
+    static boolean isValidColorPalette(int palette) {
+        return palette >= 0 && palette <= 3;
     }
 
     static boolean isValidOutputSize(int width, int height) {
@@ -84,10 +101,11 @@ public final class VideoExportRequest {
     public int getImageDurationSeconds() { return imageDurationSeconds; }
     public float getMusicGain() { return musicGain; }
     public boolean isBreakingNews() { return breakingNews; }
+    public int getColorPalette() { return colorPalette; }
 
     public VideoExportRequest withOutputFile(File replacementOutputFile) {
         return new VideoExportRequest(mediaUris, narrationUri, musicUri, headline, lowerThird,
                 ticker, replacementOutputFile, width, height, imageDurationSeconds,
-                musicGain, breakingNews);
+                musicGain, breakingNews, colorPalette);
     }
 }

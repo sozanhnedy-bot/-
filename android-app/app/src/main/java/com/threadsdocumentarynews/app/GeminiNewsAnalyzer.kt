@@ -7,11 +7,13 @@ import com.google.firebase.FirebaseOptions
 import com.google.firebase.ai.type.GenerativeBackend
 import com.google.firebase.ai.ai
 import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.debug.internal.StorageHelper
 import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
 import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import java.util.concurrent.TimeUnit
 
 /** Input intentionally limited to public headline metadata and the user's optional focus. */
 data class NewsHeadline(
@@ -53,6 +55,29 @@ object FirebaseAiSetup {
             initialized = true
         }
         return true
+    }
+
+    /** Returns this debug install's Firebase App Check secret for manual console allowlisting. */
+    @JvmStatic
+    fun debugTokenBlocking(context: Context): String {
+        check(BuildConfig.DEBUG) { "رمز Debug App Check متاح في نسخة الاختبار فقط." }
+        BuildConfig.FIREBASE_DEBUG_TOKEN.trim().takeIf { it.isNotEmpty() }?.let { return it }
+        val appContext = context.applicationContext
+        check(initialize(appContext)) { "إعداد Firebase ناقص؛ لا يمكن إنشاء رمز Debug قبل إعداد التطبيق." }
+
+        val app = FirebaseApp.getInstance()
+        val storage = StorageHelper(appContext, app.persistenceKey)
+        storage.retrieveDebugSecret()?.trim()?.takeIf { it.isNotEmpty() }?.let { return it }
+
+        // Creating the App Check token initializes the Debug provider, which generates and stores
+        // its per-install secret before attempting the network exchange.
+        FirebaseAppCheck.getInstance(app).getAppCheckToken(false)
+        val deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(10)
+        while (System.nanoTime() < deadline) {
+            storage.retrieveDebugSecret()?.trim()?.takeIf { it.isNotEmpty() }?.let { return it }
+            Thread.sleep(100)
+        }
+        throw IllegalStateException("لم ينشئ Firebase رمز Debug بعد. تأكد من اتصال الهاتف وأعد المحاولة.")
     }
 }
 

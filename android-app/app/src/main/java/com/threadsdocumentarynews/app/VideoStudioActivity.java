@@ -7,6 +7,9 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.AudioAttributes;
@@ -69,6 +72,7 @@ public final class VideoStudioActivity extends Activity {
     private Spinner imageDurationSpinner;
     private Spinner formatSpinner;
     private Spinner templateModeSpinner;
+    private Spinner colorPaletteSpinner;
     private Spinner resolutionSpinner;
     private TextView mediaList;
     private TextView audioName;
@@ -115,13 +119,22 @@ public final class VideoStudioActivity extends Activity {
 
         LinearLayout form = card();
         addText(form, "مشروع MP4 جديد", 20, WHITE, true, 0, 5);
-        addText(form, "قالب World News ثابت؛ اختر نسخة عاجلة أو عادية بنفس الهوية، ثم أضف الصور أو الفيديو والصوت الاختياري.", 13, MUTED, false, 0, 10);
+        addText(form, "قالب أخبار احترافي: الصورة في الأعلى والخبر أسفلها. اختر الألوان من مساحة العمل ثم أضف الصور أو الفيديو والصوت الاختياري.", 13, MUTED, false, 0, 10);
         Button licenseButton = secondaryButton("تراخيص محرّك التصدير");
         form.addView(licenseButton, params(-1, dp(42), 0, 0, 0, 8));
         licenseButton.setOnClickListener(v -> showFfmpegLicenseNotice());
         addLabel(form, "نوع النشرة");
         templateModeSpinner = spinner(new String[]{"أخبار عاجلة", "أخبار عادية"});
         form.addView(templateModeSpinner, params(-1, dp(48), 0, 4, 0, 8));
+        addLabel(form, "ألوان القالب");
+        colorPaletteSpinner = spinner(new String[]{
+                "أحمر + أبيض + كحلي — مثل الصورة المرجعية",
+                "كحلي + أبيض + أحمر",
+                "أسود + أبيض + ذهبي",
+                "أخضر + أبيض + كحلي"
+        });
+        colorPaletteSpinner.setSelection(0);
+        form.addView(colorPaletteSpinner, params(-1, dp(48), 0, 4, 0, 8));
         addLabel(form, "عنوان الفيديو");
         titleInput = input("عنوان الخبر أو الترند");
         form.addView(titleInput, params(-1, dp(48), 0, 4, 0, 8));
@@ -437,6 +450,7 @@ public final class VideoStudioActivity extends Activity {
             String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 90);
             String lowerThird = captionInput == null ? "" : compactText(captionInput.getText().toString(), 120);
             String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 120);
+            int colorPalette = colorPaletteSpinner == null ? 0 : colorPaletteSpinner.getSelectedItemPosition();
 
             File directory = getExternalFilesDir(Environment.DIRECTORY_MOVIES);
             if (directory == null) directory = getFilesDir();
@@ -448,10 +462,10 @@ public final class VideoStudioActivity extends Activity {
 
             VideoExportRequest request = new VideoExportRequest(
                     mediaUris, audioUri, musicUri, headline, lowerThird, ticker,
-                    outputFile, width, height, imageSeconds, selectedMusicGain(), breakingNews);
+                    outputFile, width, height, imageSeconds, selectedMusicGain(), breakingNews, colorPalette);
 
             VideoExportEngine media3Fallback = new Media3VideoExportEngine(this, durationsUs ->
-                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, durationsUs, breakingNews));
+                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, durationsUs, breakingNews, colorPalette));
             exportEngine = new VideoExportEngineCoordinator(
                     new FfmpegVideoExportEngine(this), media3Fallback);
             exportEngine.export(request, new VideoExportEngine.Listener() {
@@ -539,12 +553,40 @@ public final class VideoStudioActivity extends Activity {
         }
     }
 
+    private static final class ShortPalette {
+        final int background;
+        final int card;
+        final int ink;
+        final int accent;
+        final int footer;
+        final int softPanel;
+
+        private ShortPalette(int background, int card, int ink, int accent, int footer, int softPanel) {
+            this.background = background;
+            this.card = card;
+            this.ink = ink;
+            this.accent = accent;
+            this.footer = footer;
+            this.softPanel = softPanel;
+        }
+
+        static ShortPalette from(int index) {
+            switch (index) {
+                case 1: return new ShortPalette(Color.rgb(17, 43, 78), Color.WHITE, Color.rgb(16, 37, 67), Color.rgb(220, 28, 40), Color.rgb(16, 37, 67), Color.rgb(239, 243, 248));
+                case 2: return new ShortPalette(Color.rgb(25, 26, 31), Color.rgb(250, 249, 246), Color.rgb(28, 31, 39), Color.rgb(230, 167, 45), Color.rgb(28, 31, 39), Color.rgb(239, 237, 232));
+                case 3: return new ShortPalette(Color.rgb(7, 105, 84), Color.WHITE, Color.rgb(16, 55, 55), Color.rgb(244, 188, 54), Color.rgb(16, 55, 55), Color.rgb(232, 244, 238));
+                default: return new ShortPalette(Color.rgb(220, 16, 27), Color.WHITE, Color.rgb(20, 35, 67), Color.rgb(220, 16, 27), Color.rgb(20, 35, 67), Color.rgb(245, 246, 249));
+            }
+        }
+    }
+
     private final class NewsroomCanvasOverlay extends CanvasOverlay {
         private final String headline;
         private final String lowerThird;
         private final String ticker;
         private final List<Long> clipDurationsUs;
         private final boolean breakingNews;
+        private final ShortPalette palette;
         private int canvasWidth;
         private int canvasHeight;
         private StaticLayout headlineLayout;
@@ -552,19 +594,22 @@ public final class VideoStudioActivity extends Activity {
         private final Paint shapePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint tickerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint photoClearPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         NewsroomCanvasOverlay(String headline, String lowerThird, String ticker,
-                List<Long> clipDurationsUs, boolean breakingNews) {
+                List<Long> clipDurationsUs, boolean breakingNews, int paletteIndex) {
             super(false);
             this.headline = headline.isEmpty() ? "أخبار العالم" : headline;
             this.lowerThird = lowerThird;
             this.ticker = ticker.isEmpty() ? "آخر التطورات" : ticker;
             this.clipDurationsUs = new ArrayList<>(clipDurationsUs);
             this.breakingNews = breakingNews;
-            tickerPaint.setColor(Color.WHITE);
+            this.palette = ShortPalette.from(paletteIndex);
+            tickerPaint.setColor(palette.card);
             tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             tickerPaint.setTextAlign(Paint.Align.LEFT);
             blackPaint.setColor(Color.BLACK);
+            photoClearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         }
 
         @Override public void setCanvasSize(int width, int height) {
@@ -572,64 +617,79 @@ public final class VideoStudioActivity extends Activity {
             canvasWidth = width;
             canvasHeight = height;
             float shortSide = Math.min(width, height);
-            headlineLayout = makeTextLayout(headline, shortSide * 0.043f, width * 0.82f, 2);
-            lowerThirdLayout = makeTextLayout(lowerThird, shortSide * 0.034f, width * 0.82f, 2);
-            tickerPaint.setTextSize(shortSide * 0.031f);
+            headlineLayout = makeTextLayout(headline, shortSide * 0.052f, width * 0.74f, 3, palette.ink);
+            lowerThirdLayout = makeTextLayout(lowerThird, shortSide * 0.029f, width * 0.74f, 2, palette.ink);
+            tickerPaint.setTextSize(shortSide * 0.026f);
         }
 
         @Override public void onDraw(Canvas canvas, long presentationTimeUs) {
             int width = canvas.getWidth();
             int height = canvas.getHeight();
             if (width <= 0 || height <= 0) return;
-            canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR);
+            canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             if (canvasWidth != width || canvasHeight != height || headlineLayout == null) setCanvasSize(width, height);
             float shortSide = Math.min(width, height);
-            float margin = width * 0.045f;
 
-            RectF brandBox = new RectF(margin, height * 0.035f, width - margin, height * 0.035f + shortSide * 0.065f);
-            shapePaint.setColor(Color.rgb(11, 29, 47));
-            canvas.drawRoundRect(brandBox, shortSide * 0.012f, shortSide * 0.012f, shapePaint);
-            tickerPaint.setColor(GOLD);
+            canvas.drawColor(palette.background);
+            drawPulseCircles(canvas, presentationTimeUs, new RectF(0, 0, width, height), shortSide);
+            RectF card = new RectF(width * 0.075f, height * 0.105f, width * 0.925f, height * 0.89f);
+            shapePaint.setColor(Color.argb(58, 0, 0, 0));
+            canvas.drawRoundRect(new RectF(card.left, card.top + shortSide * 0.018f, card.right, card.bottom + shortSide * 0.018f), shortSide * 0.045f, shortSide * 0.045f, shapePaint);
+            shapePaint.setColor(palette.card);
+            canvas.drawRoundRect(card, shortSide * 0.045f, shortSide * 0.045f, shapePaint);
+
+            RectF brandBox = new RectF(width * 0.15f, height * 0.14f, width * 0.85f, height * 0.198f);
+            shapePaint.setColor(palette.softPanel);
+            canvas.drawRoundRect(brandBox, shortSide * 0.018f, shortSide * 0.018f, shapePaint);
+            tickerPaint.setColor(palette.ink);
             tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             tickerPaint.setTextAlign(Paint.Align.CENTER);
-            tickerPaint.setTextSize(shortSide * 0.032f);
-            canvas.drawText("WORLD NEWS", brandBox.centerX(), brandBox.centerY() + shortSide * 0.010f, tickerPaint);
+            tickerPaint.setTextSize(shortSide * 0.028f);
+            canvas.drawText("WORLD NEWS  •  أخبار العالم", brandBox.centerX(), brandBox.centerY() + shortSide * 0.010f, tickerPaint);
 
-            RectF redBlock = new RectF(0, height * 0.27f, width, height * 0.905f);
-            shapePaint.setColor(Color.rgb(215, 25, 32));
-            canvas.drawRect(redBlock, shapePaint);
-            drawPulseCircles(canvas, presentationTimeUs, redBlock, shortSide);
-            RectF badge = new RectF(margin, height * 0.30f, margin + shortSide * 0.18f, height * 0.30f + shortSide * 0.065f);
-            shapePaint.setColor(GOLD);
-            canvas.drawRoundRect(badge, shortSide * 0.010f, shortSide * 0.010f, shapePaint);
-            tickerPaint.setColor(Color.rgb(11, 29, 47));
-            tickerPaint.setTextSize(shortSide * 0.030f);
-            canvas.drawText(breakingNews ? "عاجل" : "أخبار", badge.centerX(), badge.centerY() + shortSide * 0.010f, tickerPaint);
-            drawCenteredLayout(canvas, headlineLayout, new RectF(margin, height * 0.39f, width - margin, height * 0.56f));
-            tickerPaint.setTextAlign(Paint.Align.LEFT);
-            tickerPaint.setColor(WHITE);
+            RectF photo = new RectF(width * 0.145f, height * 0.218f, width * 0.855f, height * 0.493f);
+            canvas.drawRoundRect(photo, shortSide * 0.027f, shortSide * 0.027f, photoClearPaint);
+            shapePaint.setColor(palette.accent);
+            canvas.drawRoundRect(new RectF(photo.left, photo.top, photo.right, photo.top + shortSide * 0.010f), shortSide * 0.005f, shortSide * 0.005f, shapePaint);
 
+            RectF badge = new RectF(width * 0.395f, height * 0.468f, width * 0.605f, height * 0.525f);
+            shapePaint.setColor(Color.argb(38, 0, 0, 0));
+            canvas.drawRoundRect(new RectF(badge.left, badge.top + shortSide * 0.006f, badge.right, badge.bottom + shortSide * 0.006f), shortSide * 0.03f, shortSide * 0.03f, shapePaint);
+            shapePaint.setColor(palette.card);
+            canvas.drawRoundRect(badge, shortSide * 0.03f, shortSide * 0.03f, shapePaint);
+            tickerPaint.setColor(palette.ink);
+            tickerPaint.setTextSize(shortSide * 0.033f);
+            canvas.drawText(breakingNews ? "عاجل" : "الآن", badge.centerX(), badge.centerY() + shortSide * 0.011f, tickerPaint);
+
+            drawCenteredLayout(canvas, headlineLayout, new RectF(width * 0.13f, height * 0.545f, width * 0.87f, height * 0.738f));
             if (!lowerThird.isEmpty()) {
-                RectF lowerBox = new RectF(width * 0.055f, height * 0.715f, width * 0.945f, height * 0.85f);
-                shapePaint.setColor(Color.argb(235, 11, 29, 47));
-                canvas.drawRoundRect(lowerBox, shortSide * 0.014f, shortSide * 0.014f, shapePaint);
-                shapePaint.setColor(Color.rgb(255, 187, 54));
-                canvas.drawRect(lowerBox.right - shortSide * 0.012f, lowerBox.top, lowerBox.right, lowerBox.bottom, shapePaint);
-                drawCenteredLayout(canvas, lowerThirdLayout, lowerBox);
+                RectF captionBounds = new RectF(width * 0.15f, height * 0.742f, width * 0.85f, height * 0.822f);
+                drawCenteredLayout(canvas, lowerThirdLayout, captionBounds);
             }
 
-            float tickerTop = height * 0.905f;
-            shapePaint.setColor(Color.argb(242, 15, 27, 40));
-            canvas.drawRect(0, tickerTop, width, height, shapePaint);
-            shapePaint.setColor(Color.rgb(255, 187, 54));
-            canvas.drawRect(0, tickerTop, width, Math.max(tickerTop + shortSide * 0.005f, height * 0.909f), shapePaint);
-            String movingText = "  " + ticker + "   -   WORLD NEWS   -   " + ticker + "  ";
+            float footerTop = height * 0.848f;
+            Path cardClip = new Path();
+            cardClip.addRoundRect(card, shortSide * 0.045f, shortSide * 0.045f, Path.Direction.CW);
+            canvas.save();
+            canvas.clipPath(cardClip);
+            shapePaint.setColor(palette.footer);
+            canvas.drawRect(card.left, footerTop, card.right, card.bottom, shapePaint);
+            shapePaint.setColor(palette.accent);
+            canvas.drawRect(card.left, footerTop, card.right, footerTop + shortSide * 0.007f, shapePaint);
+            tickerPaint.setTextAlign(Paint.Align.LEFT);
+            tickerPaint.setColor(palette.card);
+            tickerPaint.setTextSize(shortSide * 0.026f);
+            String movingText = "  " + ticker + "   •   WORLD NEWS   •   " + ticker + "  ";
             float textWidth = tickerPaint.measureText(movingText);
+            canvas.save();
+            canvas.clipRect(card.left, footerTop, card.right, card.bottom);
             if (textWidth > 0f) {
-                float offset = VideoTransitionMath.tickerOffset(presentationTimeUs, textWidth, shortSide * 0.11f);
-                float baseline = tickerTop + (height - tickerTop) * 0.68f;
-                for (float x = width - offset; x > -textWidth; x -= textWidth) canvas.drawText(movingText, x, baseline, tickerPaint);
+                float offset = VideoTransitionMath.tickerOffset(presentationTimeUs, textWidth, shortSide * 0.09f);
+                float baseline = footerTop + (card.bottom - footerTop) * 0.68f;
+                for (float x = card.right - offset; x > card.left - textWidth; x -= textWidth) canvas.drawText(movingText, x, baseline, tickerPaint);
             }
+            canvas.restore();
+            canvas.restore();
 
             long localTimeUs = 0L;
             long clipEndUs = 0L;
@@ -680,9 +740,9 @@ public final class VideoStudioActivity extends Activity {
 
         private float widthOf(RectF value) { return value.right; }
 
-        private StaticLayout makeTextLayout(String value, float textSize, float layoutWidth, int maxLines) {
+        private StaticLayout makeTextLayout(String value, float textSize, float layoutWidth, int maxLines, int textColor) {
             android.text.TextPaint paint = new android.text.TextPaint(Paint.ANTI_ALIAS_FLAG);
-            paint.setColor(Color.WHITE);
+            paint.setColor(textColor);
             paint.setTextSize(textSize);
             paint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             return StaticLayout.Builder.obtain(value, 0, value.length(), paint, Math.max(1, (int) layoutWidth))
@@ -720,12 +780,11 @@ public final class VideoStudioActivity extends Activity {
     }
 
     private void showFfmpegLicenseNotice() {
-        String notice = "يستخدم التطبيق FFmpegKitNext الرسمي إصدار 9.0.2، "
-                + "ويُبنى محليًا من المصدر للأجهزة arm64-v8a. إعداد البناء الحالي لا يفعّل مكتبات GPL "
-                + "ويستخدم Android MediaCodec لترميز H.264 بدل libx264.\n\n"
-                + "الترخيص الافتراضي للمشروع LGPL-3.0، ويجب مراجعة إشعارات المكونات داخل نسخة AAR "
-                + "الفعلية قبل توزيع التطبيق. هذا الملخص للتعريف فقط ولا يستبدل نصوص التراخيص الأصلية. "
-                + "راجع android-app/FFMPEG_LICENSES.md في مستودع التطبيق للتفاصيل وروابط المصدر.";
+        String notice = "يستخدم التطبيق FFmpegKitNext 9.0.2 المبني محليًا لمعمارية arm64-v8a، "
+                + "مع ترميز H.264 بواسطة libx264 وإعداد GPL مفعّل.\n\n"
+                + "مكتبة FFmpeg ذات libx264 هنا مشمولة بمتطلبات GPL، وليس LGPL فقط. قبل توزيع APK "
+                + "عام يجب مراجعة الالتزامات القانونية ومصدر المكتبة وإشعارات مكوناتها؛ لا توزّع هذه النسخة "
+                + "قبل إتمام المراجعة. راجع android-app/FFMPEG_LICENSES.md. هذا تنبيه تعريفي وليس استشارة قانونية.";
         new AlertDialog.Builder(this)
                 .setTitle("تراخيص محرّك الفيديو")
                 .setMessage(notice)

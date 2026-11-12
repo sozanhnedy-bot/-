@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -136,8 +139,8 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                     + " -c copy -movflags +faststart " + q(joinedVideo.getAbsolutePath()), "join video segments");
             progress(callback, 65);
 
-            File overlay = new File(work, "news-overlay.png");
-            renderOverlay(overlay, request);
+            File overlayDirectory = new File(work, "news-overlays");
+            renderOverlayFrames(overlayDirectory, request);
             File audioList = new File(work, "audio-list.txt");
             writeConcatList(audioList, audioSegments);
             File joinedAudio = new File(work, "joined-audio.wav");
@@ -159,7 +162,9 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                 args.add("-i"); args.add(readablePath(request.getMusicUri()));
             }
             int overlayIndex = nextInput;
-            args.add("-loop"); args.add("1"); args.add("-i"); args.add(overlay.getAbsolutePath());
+            args.add("-framerate"); args.add("10");
+            args.add("-stream_loop"); args.add("-1");
+            args.add("-i"); args.add(new File(overlayDirectory, "overlay-%03d.png").getAbsolutePath());
 
             StringBuilder graph = new StringBuilder();
             graph.append("[0:v][").append(overlayIndex)
@@ -193,7 +198,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             command.append("-filter_complex ").append(q(graph.toString()))
                     .append(" -map ").append(q("[vout]"))
                     .append(" -map ").append(q("[aout]"))
-                    .append(" -c:v h264_mediacodec -b:v 6M -r ").append(FPS)
+                    .append(" -c:v libx264 -preset ultrafast -b:v 6M -r ").append(FPS)
                     .append(" -pix_fmt yuv420p -c:a aac -b:a 192k -ar 48000 -ac 2")
                     .append(" -movflags +faststart -shortest ").append(q(stagedOutput.getAbsolutePath()));
             execute(command.toString(), "final MP4 mux");
@@ -229,7 +234,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
         command.append("-vf ").append(q("scale=" + request.getWidth() + ":" + request.getHeight()
                 + ":force_original_aspect_ratio=increase,crop=" + request.getWidth() + ":" + request.getHeight()
                 + ",setsar=1,fps=" + FPS + ",format=yuv420p"))
-                .append(" -an -c:v h264_mediacodec -b:v 6M -r ").append(FPS)
+                .append(" -an -c:v libx264 -preset ultrafast -b:v 6M -r ").append(FPS)
                 .append(" -t ").append(seconds(input.durationMs))
                 .append(" -movflags +faststart ").append(q(output.getAbsolutePath()));
         return command.toString();
@@ -281,37 +286,120 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
         }
     }
 
-    private void renderOverlay(File file, VideoExportRequest request) throws Exception {
+    private void renderOverlayFrames(File directory, VideoExportRequest request) throws Exception {
+        if (!directory.exists() && !directory.mkdirs()) throw new IllegalStateException("Cannot create overlay frame directory.");
+        final int frameCount = 20;
+        for (int frame = 0; frame < frameCount; frame++) {
+            checkCancelled();
+            File output = new File(directory, String.format(Locale.US, "overlay-%03d.png", frame));
+            renderOverlayFrame(output, request, frame / 10f);
+        }
+    }
+
+    private void renderOverlayFrame(File file, VideoExportRequest request, float timeSeconds) throws Exception {
         int width = request.getWidth(), height = request.getHeight();
+        float shortSide = Math.min(width, height);
+        OverlayPalette palette = OverlayPalette.from(request.getColorPalette());
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        float scale = width / 720f;
-        paint.setColor(Color.argb(220, 10, 13, 20));
-        canvas.drawRect(0, 0, width, height * 0.16f, paint);
-        paint.setColor(request.isBreakingNews() ? Color.rgb(195, 30, 35) : Color.rgb(22, 53, 82));
-        canvas.drawRect(0, height * 0.16f, width, height * 0.165f, paint);
-        drawText(canvas, "WORLD NEWS", width * 0.06f, height * 0.045f, width * 0.88f, 34f * scale, 1, Color.WHITE);
-        if (!request.getHeadline().trim().isEmpty()) {
-            paint.setColor(Color.argb(205, 5, 8, 14));
-            canvas.drawRoundRect(new RectF(width * 0.05f, height * 0.70f, width * 0.95f, height * 0.84f),
-                    14f * scale, 14f * scale, paint);
-            drawText(canvas, request.getHeadline(), width * 0.08f, height * 0.715f, width * 0.84f,
-                    30f * scale, 2, Color.WHITE);
-        }
-        if (!request.getLowerThird().trim().isEmpty()) {
-            drawText(canvas, request.getLowerThird(), width * 0.08f, height * 0.845f, width * 0.84f,
-                    19f * scale, 2, Color.rgb(255, 211, 115));
-        }
-        paint.setColor(request.isBreakingNews() ? Color.rgb(180, 20, 26) : Color.rgb(18, 42, 65));
-        canvas.drawRect(0, height * 0.925f, width, height, paint);
-        drawText(canvas, request.getTicker(), width * 0.04f, height * 0.94f, width * 0.92f,
-                18f * scale, 1, Color.WHITE);
-        try (FileOutputStream out = new FileOutputStream(file)) {
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-            out.flush();
+        try {
+            Canvas canvas = new Canvas(bitmap);
+            Paint shape = new Paint(Paint.ANTI_ALIAS_FLAG);
+            Paint text = new Paint(Paint.ANTI_ALIAS_FLAG);
+            canvas.drawColor(palette.background);
+            drawPulseCircles(canvas, timeSeconds, width, height, shortSide);
+
+            RectF card = new RectF(width * 0.075f, height * 0.105f, width * 0.925f, height * 0.89f);
+            shape.setColor(Color.argb(58, 0, 0, 0));
+            canvas.drawRoundRect(new RectF(card.left, card.top + shortSide * 0.018f, card.right, card.bottom + shortSide * 0.018f), shortSide * 0.045f, shortSide * 0.045f, shape);
+            shape.setColor(palette.card);
+            canvas.drawRoundRect(card, shortSide * 0.045f, shortSide * 0.045f, shape);
+
+            RectF brand = new RectF(width * 0.15f, height * 0.14f, width * 0.85f, height * 0.198f);
+            shape.setColor(palette.softPanel);
+            canvas.drawRoundRect(brand, shortSide * 0.018f, shortSide * 0.018f, shape);
+            drawText(canvas, "WORLD NEWS  •  أخبار العالم", brand.left, brand.top + shortSide * 0.009f,
+                    brand.width(), shortSide * 0.028f, 1, palette.ink);
+
+            RectF photo = new RectF(width * 0.145f, height * 0.218f, width * 0.855f, height * 0.493f);
+            Paint clear = new Paint(Paint.ANTI_ALIAS_FLAG);
+            clear.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+            canvas.drawRoundRect(photo, shortSide * 0.027f, shortSide * 0.027f, clear);
+            shape.setColor(palette.accent);
+            canvas.drawRoundRect(new RectF(photo.left, photo.top, photo.right, photo.top + shortSide * 0.010f), shortSide * 0.005f, shortSide * 0.005f, shape);
+
+            RectF badge = new RectF(width * 0.395f, height * 0.468f, width * 0.605f, height * 0.525f);
+            shape.setColor(Color.argb(38, 0, 0, 0));
+            canvas.drawRoundRect(new RectF(badge.left, badge.top + shortSide * 0.006f, badge.right, badge.bottom + shortSide * 0.006f), shortSide * 0.03f, shortSide * 0.03f, shape);
+            shape.setColor(palette.card);
+            canvas.drawRoundRect(badge, shortSide * 0.03f, shortSide * 0.03f, shape);
+            drawText(canvas, request.isBreakingNews() ? "عاجل" : "الآن", badge.left, badge.top + shortSide * 0.010f,
+                    badge.width(), shortSide * 0.033f, 1, palette.ink);
+
+            drawText(canvas, request.getHeadline().trim().isEmpty() ? "أخبار العالم" : request.getHeadline(),
+                    width * 0.13f, height * 0.565f, width * 0.74f, shortSide * 0.052f, 3, palette.ink);
+            if (!request.getLowerThird().trim().isEmpty()) {
+                drawText(canvas, request.getLowerThird(), width * 0.15f, height * 0.755f,
+                        width * 0.70f, shortSide * 0.029f, 2, palette.ink);
+            }
+
+            float footerTop = height * 0.848f;
+            Path cardClip = new Path();
+            cardClip.addRoundRect(card, shortSide * 0.045f, shortSide * 0.045f, Path.Direction.CW);
+            canvas.save();
+            canvas.clipPath(cardClip);
+            shape.setColor(palette.footer);
+            canvas.drawRect(card.left, footerTop, card.right, card.bottom, shape);
+            shape.setColor(palette.accent);
+            canvas.drawRect(card.left, footerTop, card.right, footerTop + shortSide * 0.007f, shape);
+
+            text.setColor(palette.card);
+            text.setTextSize(shortSide * 0.026f);
+            text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+            String ticker = request.getTicker().trim().isEmpty() ? "آخر التطورات" : request.getTicker().trim();
+            String moving = "  " + ticker + "   •   WORLD NEWS   •   " + ticker + "  ";
+            float textWidth = text.measureText(moving);
+            float offset = VideoTransitionMath.tickerOffset((long) (timeSeconds * 1_000_000L), textWidth, shortSide * 0.09f);
+            float baseline = footerTop + (card.bottom - footerTop) * 0.68f;
+            for (float x = card.right - offset; x > card.left - textWidth; x -= textWidth) canvas.drawText(moving, x, baseline, text);
+            canvas.restore();
+
+            try (FileOutputStream out = new FileOutputStream(file)) {
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                out.flush();
+            }
         } finally {
             bitmap.recycle();
+        }
+    }
+
+    private void drawPulseCircles(Canvas canvas, float timeSeconds, int width, int height, float shortSide) {
+        Paint pulse = new Paint(Paint.ANTI_ALIAS_FLAG);
+        pulse.setStyle(Paint.Style.STROKE);
+        pulse.setStrokeWidth(Math.max(2f, shortSide * 0.003f));
+        float[] centersX = {width * 0.78f, width * 0.20f, width * 0.62f};
+        float[] centersY = {height * 0.27f, height * 0.58f, height * 0.53f};
+        float[] phases = {0f, 0.8f, 1.5f};
+        for (int i = 0; i < centersX.length; i++) {
+            float phase = (timeSeconds + phases[i]) % 2.6f;
+            float radius = shortSide * (0.035f + 0.28f * phase / 2.6f);
+            pulse.setColor(Color.argb((int) (55f * (1f - phase / 2.6f)), 255, 150, 150));
+            canvas.drawCircle(centersX[i], centersY[i], radius, pulse);
+        }
+    }
+
+    private static final class OverlayPalette {
+        final int background, card, ink, accent, footer, softPanel;
+        private OverlayPalette(int background, int card, int ink, int accent, int footer, int softPanel) {
+            this.background = background; this.card = card; this.ink = ink;
+            this.accent = accent; this.footer = footer; this.softPanel = softPanel;
+        }
+        static OverlayPalette from(int index) {
+            switch (index) {
+                case 1: return new OverlayPalette(Color.rgb(17, 43, 78), Color.WHITE, Color.rgb(16, 37, 67), Color.rgb(220, 28, 40), Color.rgb(16, 37, 67), Color.rgb(239, 243, 248));
+                case 2: return new OverlayPalette(Color.rgb(25, 26, 31), Color.rgb(250, 249, 246), Color.rgb(28, 31, 39), Color.rgb(230, 167, 45), Color.rgb(28, 31, 39), Color.rgb(239, 237, 232));
+                case 3: return new OverlayPalette(Color.rgb(7, 105, 84), Color.WHITE, Color.rgb(16, 55, 55), Color.rgb(244, 188, 54), Color.rgb(16, 55, 55), Color.rgb(232, 244, 238));
+                default: return new OverlayPalette(Color.rgb(220, 16, 27), Color.WHITE, Color.rgb(20, 35, 67), Color.rgb(220, 16, 27), Color.rgb(20, 35, 67), Color.rgb(245, 246, 249));
+            }
         }
     }
 

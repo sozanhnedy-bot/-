@@ -473,14 +473,49 @@ public final class TaskAssistantActivity extends Activity {
         addText(health, "جاهزية هذا الهاتف", 17, TEXT, true, 0, 8);
         boolean firebaseConfigured = !BuildConfig.FIREBASE_API_KEY.isBlank() && !BuildConfig.FIREBASE_APP_ID.isBlank() && !BuildConfig.FIREBASE_PROJECT_ID.isBlank();
         addText(health, (firebaseConfigured ? "✓" : "○") + "  كتابة السكريبت: Gemini عبر Firebase" + (firebaseConfigured ? " — الإعداد موجود" : " — إعداد Firebase ناقص"), 14, firebaseConfigured ? GOLD : MUTED, false, 0, 6);
-        String debugToken = BuildConfig.FIREBASE_DEBUG_TOKEN.trim();
-        if (!debugToken.isEmpty()) {
-            addText(health, "✓  Debug App Check token مضمّن في نسخة الاختبار", 14, GOLD, false, 0, 5);
-            Button copyDebugToken = secondaryButton("نسخ Debug App Check token");
-            health.addView(copyDebugToken, params(-1, dp(48), 0, 0, 0, 6));
-            copyDebugToken.setOnClickListener(v -> copyToClipboard("Firebase Debug App Check token", debugToken));
+        if (BuildConfig.DEBUG) {
+            addText(health, "رمز Debug App Check خاص بهذا التثبيت. أنشئه هنا ثم سجّله في Firebase Console → App Check → Manage debug tokens.", 13, MUTED, false, 0, 6);
+            Button debugTokenButton = secondaryButton(BuildConfig.FIREBASE_DEBUG_TOKEN.trim().isEmpty()
+                    ? "إنشاء ونسخ رمز Debug لهذا الهاتف"
+                    : "عرض ونسخ رمز Debug لهذا الهاتف");
+            health.addView(debugTokenButton, params(-1, dp(48), 0, 0, 0, 6));
+            debugTokenButton.setOnClickListener(v -> {
+                debugTokenButton.setEnabled(false);
+                debugTokenButton.setText("جارٍ تجهيز الرمز…");
+                executor.execute(() -> {
+                    try {
+                        String token = FirebaseAiSetup.debugTokenBlocking(getApplicationContext());
+                        mainHandler.post(() -> {
+                            debugTokenButton.setEnabled(true);
+                            debugTokenButton.setText("إنشاء ونسخ رمز Debug لهذا الهاتف");
+                            EditText tokenField = new EditText(this);
+                            tokenField.setText(token);
+                            tokenField.setTextIsSelectable(true);
+                            tokenField.setKeyListener(null);
+                            tokenField.setPadding(dp(14), dp(10), dp(14), dp(10));
+                            new AlertDialog.Builder(this)
+                                    .setTitle("رمز Debug لهذا الهاتف")
+                                    .setMessage("انسخ الرمز وأضفه في Firebase Console ضمن App Check → Manage debug tokens. هذا رمز سري للاختبار فقط؛ لا تنشره ولا تضعه في GitHub أو APK إصدار الإنتاج.")
+                                    .setView(tokenField)
+                                    .setPositiveButton("نسخ الرمز", (dialog, which) -> copyToClipboard("Firebase Debug App Check token", token))
+                                    .setNegativeButton("إغلاق", null)
+                                    .show();
+                        });
+                    } catch (Exception error) {
+                        mainHandler.post(() -> {
+                            debugTokenButton.setEnabled(true);
+                            debugTokenButton.setText("إنشاء ونسخ رمز Debug لهذا الهاتف");
+                            new AlertDialog.Builder(this)
+                                    .setTitle("تعذر تجهيز رمز Debug")
+                                    .setMessage(error.getMessage() == null ? "تحقق من إعداد Firebase ثم أعد المحاولة." : error.getMessage())
+                                    .setPositiveButton("حسنًا", null)
+                                    .show();
+                        });
+                    }
+                });
+            });
         } else {
-            addText(health, "○  Debug App Check token غير مضاف — أضف FIREBASE_DEBUG_TOKEN في GitHub Secrets", 13, MUTED, false, 0, 6);
+            addText(health, "نسخة الإنتاج تستخدم Play Integrity بدل Debug App Check.", 13, MUTED, false, 0, 6);
         }
         addText(health, (LocalAiMedia.voiceReady(this) ? "✓" : "○") + "  Nabra الاحتياطي: " + (LocalAiMedia.voiceReady(this) ? "جاهز دون إنترنت" : "غير منزّل؛ Gemini هو المسار الأول"), 14, LocalAiMedia.voiceReady(this) ? GOLD : MUTED, false, 0, 6);
         String savedTopic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "");
