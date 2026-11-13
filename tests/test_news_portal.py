@@ -113,6 +113,16 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertNotIn("عن هذه المادة", page)
         self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
 
+    def test_rss_page_renders_trusted_google_news_thumbnail_only(self):
+        item = {"id": "d" * 20, "title": "خبر", "source_name": "ناشر", "region": "world",
+                "image_url": "https://lh3.googleusercontent.com/news-photo=s0-w300"}
+        page = render_news.render(item)
+        self.assertIn('src="https://lh3.googleusercontent.com/news-photo=s0-w300"', page)
+        item["image_url"] = "https://untrusted.googleusercontent.com/photo.jpg"
+        page = render_news.render(item)
+        self.assertNotIn("untrusted.googleusercontent.com", page)
+        self.assertIn("../assets/news-illustrations/world.jpg", page)
+
     def test_build_renders_rss_news_only_without_duplicates_for_full_reports(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

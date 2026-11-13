@@ -32,7 +32,8 @@ function safeImage(value) {
     const host = url.hostname.toLowerCase().replace(/^www\./, "");
     const googleImage = host === "google.com" || host.endsWith(".google.com")
       || host.endsWith(".googleusercontent.com") || host.endsWith(".gstatic.com");
-    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && !googleImage) return url.href;
+    const trustedNewsThumbnail = host === "lh3.googleusercontent.com";
+    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && (!googleImage || trustedNewsThumbnail)) return url.href;
   } catch (_) { }
   return "";
 }
@@ -79,6 +80,12 @@ function recordFor(item) {
     ? report.sources.map((value) => text(value, 160)).filter(Boolean).join("، ")
     : text(item.source_name, 160);
   const title = editorialTitle(report?.title || item.title, sourceName);
+  const primarySummary = distinctSummary(
+    report?.dek || (item.summary_type === "source_notice" ? item.excerpt : item.summary),
+    title,
+    sourceName,
+  );
+  const articleSummary = !report ? distinctSummary(item.article_content, title, sourceName) : "";
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
   const suppliedImage = safeImage(report?.image || item.image_url);
@@ -88,7 +95,7 @@ function recordFor(item) {
     id: item.id,
     report,
     title,
-    summary: distinctSummary(report?.dek || (item.summary_type === "source_notice" ? item.excerpt : item.summary), title, sourceName),
+    summary: primarySummary || articleSummary,
     date: text(item.published_at || report?.published_at || item.created_at, 80),
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),

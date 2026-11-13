@@ -59,7 +59,8 @@ def safe_external_url(value: object, *, image: bool = False) -> str:
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
     host = parsed.hostname.lower().removeprefix("www.")
-    if image and (host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com"))):
+    trusted_news_thumbnail = host == "lh3.googleusercontent.com"
+    if image and not trusted_news_thumbnail and (host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com"))):
         return ""
     return candidate
 

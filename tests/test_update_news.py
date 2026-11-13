@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime, timezone
 from unittest.mock import patch
 
-from scripts.update_news import RSS_NO_DETAILS, ai_summarization_enabled, build_update, clean_text, newest_items, parse_feed
+from scripts.update_news import RSS_NO_DETAILS, ai_summarization_enabled, build_update, clean_text, newest_items, parse_feed, summarize_rss_excerpt
 
 
 NOW = datetime(2026, 10, 31, 0, 0, tzinfo=timezone.utc)
@@ -56,6 +56,17 @@ class NewsParsingTests(unittest.TestCase):
         </entry></feed>""".encode("utf-8")
         items = parse_feed(xml, "world", "اختبار", now=NOW)
         self.assertEqual(items[0]["image_url"], "https://cdn.example.com/atom.jpg")
+
+    def test_parse_rss_accepts_google_news_thumbnail_but_not_other_google_images(self):
+        xml = """<rss><channel><item>
+          <title>خبر بصورة</title><link>https://example.com/news/photo</link>
+          <description><![CDATA[<img src="https://lh3.googleusercontent.com/news-photo=s0-w300">]]></description>
+          <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+        </item></channel></rss>""".encode("utf-8")
+        items = parse_feed(xml, "world", "اختبار", now=NOW)
+        self.assertEqual(items[0]["image_url"], "https://lh3.googleusercontent.com/news-photo=s0-w300")
+        from scripts.update_news import _safe_image_url
+        self.assertEqual(_safe_image_url("https://untrusted.googleusercontent.com/photo.jpg", "image"), "")
 
     def test_clean_text_unescapes_entities_and_collapses_whitespace(self):
         self.assertEqual(clean_text("<p>أخبار&nbsp; &amp; تفاصيل</p>"), "أخبار & تفاصيل")
@@ -273,6 +284,17 @@ class NewsUpdateTests(unittest.TestCase):
             self.assertFalse(ai_summarization_enabled())
         with patch.dict("os.environ", {"AI_SUMMARIZATION_ENABLED": "true"}, clear=True):
             self.assertTrue(ai_summarization_enabled())
+
+    def test_rss_summary_uses_publisher_article_text_when_excerpt_is_title_only(self):
+        title = "عنوان الخبر"
+        article = "الفقرة الأولى من الخبر تشرح الحدث بتفاصيل أتاحها الناشر.\nالفقرة الثانية تضيف سياقًا وتطورات مؤكدة."
+        item = {
+            "title": title,
+            "source_name": "المصدر",
+            "excerpt": f"{title} - المصدر",
+            "article_content": article,
+        }
+        self.assertEqual(summarize_rss_excerpt(item), article.replace("\n", " ")[:600])
 
 
 
