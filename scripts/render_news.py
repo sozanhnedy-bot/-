@@ -96,14 +96,17 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     image_url = safe_external_url(item.get("image_url"), image=True)
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
-    preview_image = image_url
+    illustration_key = category_key if category_key in {"politics", "economy", "technology", "sports"} else text(item.get("region"), 30)
+    if illustration_key not in {"world", "arab", "egypt", "politics", "economy", "technology", "sports"}:
+        illustration_key = "world"
+    illustration_path = f"../assets/news-illustrations/{illustration_key}.jpg"
+    preview_image = image_url or f"{SITE_URL}/assets/news-illustrations/{illustration_key}.jpg"
     image_markup = (
         f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة المرفقة من مصدر الخبر: {e(source)}</figcaption></figure>'
-        if image_url else ""
+        if image_url else
+        f'<figure class="article-figure"><img src="{e(illustration_path, quote=True)}" alt="{e(category, quote=True)}" loading="lazy"><figcaption>رسم توضيحي لقسم {e(region)}؛ لا يصوّر الحدث نفسه</figcaption></figure>'
     )
     detail_paragraphs = "".join(f"<p>{e(part)}</p>" for part in details.splitlines() if part.strip())
-    source_url = safe_external_url(item.get("url"))
-    source_action = f'<p class="source-original-link"><a href="{e(source_url, quote=True)}" target="_blank" rel="noopener noreferrer">افتح الخبر من المصدر الأصلي</a></p>' if source_url else ""
     details_markup = (
         f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2>{detail_paragraphs}</section>'
         if detail_paragraphs else
@@ -145,7 +148,6 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     </header>
     {image_markup}
     {details_markup}
-    {source_action}
     {related_markup}
   </article></main><footer class="site-footer"><div class="footer-brand">{BRAND}</div><p>الناشر مذكور بالاسم · تاريخ النشر محفوظ · القراءة داخل الموقع</p></footer>
 </body></html>'''
