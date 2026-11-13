@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [main]
+    branches: [main, world-news-sync]
     paths:
       - 'android-app/**'
       - '.github/workflows/android-apk.yml'
@@ -10,7 +10,7 @@ on:
   workflow_run:
     workflows: ["Build FFmpegKitNext Android AAR"]
     types: [completed]
-    branches: [main]
+    branches: [main, world-news-sync]
 
 permissions:
   contents: read
@@ -67,7 +67,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow: ffmpegkitnext-android-build.yml
           workflow_conclusion: success
-          branch: main
+          branch: ${{ github.ref_name }}
           name: ffmpeg-kit-next-9.0.2-android-arm64
           path: android-app/ffmpegkitnext-maven
           if_no_artifact_found: fail

@@ -28,7 +28,9 @@ import com.arthenica.ffmpegkit.FFprobeSession;
 import com.arthenica.ffmpegkit.ReturnCode;
 
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
@@ -162,7 +164,11 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                 args.add("-i"); args.add(readablePath(request.getMusicUri()));
             }
             int overlayIndex = nextInput;
+            args.add("-f"); args.add("image2");
             args.add("-framerate"); args.add("10");
+            args.add("-start_number"); args.add("0");
+            args.add("-probesize"); args.add("5000000");
+            args.add("-analyzeduration"); args.add("5000000");
             args.add("-stream_loop"); args.add("-1");
             args.add("-i"); args.add(new File(overlayDirectory, "overlay-%03d.png").getAbsolutePath());
 
@@ -293,6 +299,32 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             checkCancelled();
             File output = new File(directory, String.format(Locale.US, "overlay-%03d.png", frame));
             renderOverlayFrame(output, request, frame / 10f);
+            validatePngFrame(output, request.getWidth(), request.getHeight());
+        }
+    }
+
+    private static void validatePngFrame(File file, int expectedWidth, int expectedHeight) throws Exception {
+        if (!file.isFile() || file.length() < 33L) {
+            throw new IllegalStateException("News overlay PNG is missing or incomplete: " + file.getName());
+        }
+        try (DataInputStream input = new DataInputStream(new FileInputStream(file))) {
+            byte[] signature = new byte[8];
+            input.readFully(signature);
+            byte[] expectedSignature = {(byte) 0x89, 'P', 'N', 'G', 13, 10, 26, 10};
+            for (int i = 0; i < expectedSignature.length; i++) {
+                if (signature[i] != expectedSignature[i]) {
+                    throw new IllegalStateException("News overlay is not a valid PNG: " + file.getName());
+                }
+            }
+            if (input.readInt() != 13 || input.readInt() != 0x49484452) {
+                throw new IllegalStateException("News overlay PNG has an invalid IHDR header: " + file.getName());
+            }
+            int width = input.readInt();
+            int height = input.readInt();
+            if (width != expectedWidth || height != expectedHeight) {
+                throw new IllegalStateException("News overlay PNG has unexpected dimensions: "
+                        + width + "x" + height + ", expected " + expectedWidth + "x" + expectedHeight);
+            }
         }
     }
 
@@ -364,8 +396,11 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             canvas.restore();
 
             try (FileOutputStream out = new FileOutputStream(file)) {
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                if (!bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)) {
+                    throw new IllegalStateException("Android could not encode the news overlay PNG: " + file.getName());
+                }
                 out.flush();
+                out.getFD().sync();
             }
         } finally {
             bitmap.recycle();
