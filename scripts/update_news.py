@@ -239,6 +239,56 @@ def _item_article_content(node: ET.Element) -> str:
     return max(candidates, key=len, default="")[:MAX_STORED_ARTICLE_CHARS]
 
 
+class _PublisherArticleExtractor(HTMLParser):
+    """Extract article paragraphs while ignoring page chrome and executable markup."""
+
+    SKIP_TAGS = {"script", "style", "nav", "footer", "header", "aside", "form", "noscript", "svg", "iframe"}
+    TEXT_TAGS = {"p", "h1", "h2", "h3", "h4", "blockquote"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+        self.skip_depth = 0
+        self.capture_depth = 0
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        tag = tag.lower()
+        if tag in self.SKIP_TAGS:
+            self.skip_depth += 1
+            return
+        if self.skip_depth:
+            return
+        if tag in self.TEXT_TAGS:
+            self.parts.append("\\n")
+            self.capture_depth += 1
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if tag in self.SKIP_TAGS and self.skip_depth:
+            self.skip_depth -= 1
+            return
+        if not self.skip_depth and tag in self.TEXT_TAGS and self.capture_depth:
+            self.parts.append("\\n")
+            self.capture_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if not self.skip_depth and self.capture_depth:
+            self.parts.append(data)
+
+
+def extract_publisher_article(value: str) -> str:
+    """Return readable publisher paragraphs, never scripts, menus, or page chrome."""
+    parser = _PublisherArticleExtractor()
+    try:
+        parser.feed(value)
+        parser.close()
+    except Exception:
+        return ""
+    paragraphs = [re.sub(r"\\s+", " ", part).strip() for part in "".join(parser.parts).splitlines()]
+    content = "\\n".join(part for part in paragraphs if len(part) >= 25)
+    return content[:MAX_STORED_ARTICLE_CHARS]
+
+
 class _ImageExtractor(HTMLParser):
     """Extract explicit image URLs embedded in RSS description HTML."""
 
@@ -324,6 +374,31 @@ def _fetch_article_image(article_url: str, timeout: int = 8) -> str:
     except (OSError, ValueError, urllib.error.URLError, TimeoutError):
         return ""
     return ""
+
+
+def _fetch_article_content(article_url: str, timeout: int = 8) -> str:
+    """Fetch readable text from a publisher page over validated public HTTPS only."""
+    if not _validate_public_https_url(article_url):
+        return ""
+    request = urllib.request.Request(
+        article_url,
+        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
+    )
+    opener = urllib.request.build_opener(_PublicHttpsRedirectHandler())
+    try:
+        with opener.open(request, timeout=timeout) as response:
+            final_url = response.geturl()
+            if not _validate_public_https_url(final_url):
+                return ""
+            if "html" not in response.headers.get("Content-Type", "").lower():
+                return ""
+            body = response.read(2_000_001)
+        if len(body) > 2_000_000:
+            return ""
+        content = extract_publisher_article(body.decode("utf-8", errors="replace"))
+        return content if len(content) >= 250 else ""
+    except (OSError, ValueError, urllib.error.URLError, TimeoutError):
+        return ""
 
 
 def _item_image_url(node: ET.Element) -> str:
@@ -635,6 +710,8 @@ def main() -> int:
 
     image_lookup_count = 0
     image_lookup_urls: set[str] = set()
+    article_lookup_count = 0
+    article_lookup_urls: set[str] = set()
 
     def limited_fetch(url: str, region: str, name: str, source_url: str = "") -> list[dict]:
         nonlocal image_lookup_count
@@ -643,13 +720,18 @@ def main() -> int:
         # publisher-declared lead image, with a strict per-run request budget.
         for item in items:
             article_url = item.get("url", "")
-            if item.get("image_url") or not article_url or article_url in image_lookup_urls:
+            if not article_url:
                 continue
-            image_lookup_urls.add(article_url)
-            if image_lookup_count >= 20:
-                break
-            image_lookup_count += 1
-            item["image_url"] = _fetch_article_image(article_url)
+            if not item.get("image_url") and article_url not in image_lookup_urls:
+                image_lookup_urls.add(article_url)
+                if image_lookup_count < 20:
+                    image_lookup_count += 1
+                    item["image_url"] = _fetch_article_image(article_url)
+            if len(clean_article_content(item.get("article_content", ""))) < 250 and article_url not in article_lookup_urls:
+                article_lookup_urls.add(article_url)
+                if article_lookup_count < 12:
+                    article_lookup_count += 1
+                    item["article_content"] = _fetch_article_content(article_url)
         return items
 
     if args.dry_run:
