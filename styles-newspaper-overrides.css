@@ -76,6 +76,12 @@
 .portal-story-card .portal-card-summary { font-family:Tahoma,Arial,sans-serif; font-size:.72rem; }
 .portal-about { display:none; }
 .portal-featured-video { margin-top:34px; padding:22px 24px 25px; color:#fff; background:var(--portal-navy); }
+.portal-video-section { margin-top:34px; padding:22px 24px 25px; color:#fff; background:var(--portal-navy); }
+.portal-video-section .portal-section-title { border-bottom-color:#344257; }
+.portal-video-section .portal-section-title h2 { color:#fff; }
+.portal-video-section .portal-video-grid { padding-top:17px; }
+.portal-video-section .text-link { color:#e5a99a; }
+.video-placeholder { cursor:pointer; }
 .portal-featured-heading { display:flex; align-items:end; justify-content:space-between; gap:16px; padding-bottom:15px; border-bottom:1px solid #344257; }
 .portal-featured-heading h2 { margin:0; font:700 1.35rem/1.3 Georgia,serif; }
 .portal-featured-heading .eyebrow { margin:0 0 5px; color:#e2a18e; font:700 .65rem/1.2 Tahoma,Arial,sans-serif; }

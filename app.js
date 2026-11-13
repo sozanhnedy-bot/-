@@ -288,11 +288,24 @@ function renderReportsAndVideos(records) {
   reportHost.replaceChildren();
   reports.slice(0, 3).forEach((record) => reportHost.append(articleCard(record)));
   $("#reports-section").hidden = reports.length === 0;
-  const videos = reports.filter((record) => /^[A-Za-z0-9_-]{11}$/.test(record.youtubeId));
   const videoHost = $("#videos-list");
   videoHost.replaceChildren();
-  videos.slice(0, 3).forEach((record) => videoHost.append(articleCard(record)));
-  $("#videos-section").hidden = videos.length === 0;
+  const videoSources = [
+    ["./assets/news-illustrations/world.jpg", "أبرز أخبار العالم"],
+    ["./assets/news-illustrations/technology.jpg", "التكنولوجيا من حولنا"],
+    ["./assets/news-illustrations/economy.jpg", "أسواق العالم"],
+  ];
+  videoSources.forEach(([image, title]) => {
+    const card = el("a", "portal-video-card video-placeholder");
+    card.href = "./videos.html";
+    const picture = document.createElement("img");
+    picture.src = image;
+    picture.alt = title;
+    picture.loading = "lazy";
+    card.append(picture, el("span", "portal-play", "▶"), el("strong", "", title));
+    videoHost.append(card);
+  });
+  $("#videos-section").hidden = false;
 }
 function renderBreaking(records) {
   const sixHoursAgo = Date.now() - 6 * 60 * 60 * 1000;
