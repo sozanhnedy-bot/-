@@ -95,7 +95,8 @@ function recordFor(item) {
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
   const suppliedImage = safeImage(report?.image || item.image_url);
-  const image = suppliedImage || REFERENCE_IMAGES[category] || REFERENCE_IMAGES[region] || "./assets/reference-lead.jpg";
+  const fallbackImage = REFERENCE_IMAGES[category] || REFERENCE_IMAGES[region] || "./assets/reference-lead.jpg";
+  const image = suppliedImage || fallbackImage;
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
@@ -106,6 +107,7 @@ function recordFor(item) {
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
     image,
+    fallbackImage,
     imageAlt: suppliedImage ? text(report?.image_alt || item.image_alt || item.title, 300) : "",
     imageCaption: suppliedImage ? text(report?.image_caption || item.image_caption, 300) : "",
     region,
@@ -157,7 +159,10 @@ function addImage(container, record, className = "portal-card-image") {
   img.alt = record.imageAlt || record.title;
   img.loading = className === "lead-story-image" ? "eager" : "lazy";
   img.decoding = "async";
-  img.addEventListener("error", () => figure.remove(), { once: true });
+  img.addEventListener("error", () => {
+    if (record.fallbackImage && img.src !== new URL(record.fallbackImage, location.href).href) img.src = record.fallbackImage;
+    else figure.remove();
+  }, { once: true });
   figure.append(img);
   if (record.imageCaption) figure.append(el("figcaption", "portal-image-caption", record.imageCaption));
   container.append(figure);
