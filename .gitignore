@@ -9,6 +9,7 @@ venv/
 android-app/.gradle/
 android-app/build/
 android-app/app/build/
+android-app/ffmpegkitnext-maven/
 android-app/local.properties
 *.apk
 *.jks

@@ -229,14 +229,20 @@ def clean_article_content(value: str | None) -> str:
 
 
 def _item_article_content(node: ET.Element) -> str:
-    candidates: list[str] = []
+    candidates: list[tuple[int, str]] = []
+    seen: set[str] = set()
     for child in node.iter():
-        if _local_name(child.tag) not in {"description", "summary", "content", "encoded"}:
+        name = _local_name(child.tag)
+        if name not in {"description", "summary", "content", "encoded"}:
             continue
         value = clean_article_content(child.text or "")
-        if value and value not in candidates:
-            candidates.append(value)
-    return max(candidates, key=len, default="")[:MAX_STORED_ARTICLE_CHARS]
+        if value and value not in seen:
+            seen.add(value)
+            # RSS content:encoded/content is intended to carry the article body;
+            # do not let a longer short-description displace it.
+            priority = 1 if name in {"content", "encoded"} else 0
+            candidates.append((priority, value))
+    return max(candidates, key=lambda candidate: (candidate[0], len(candidate[1])), default=(0, ""))[1][:MAX_STORED_ARTICLE_CHARS]
 
 
 class _ImageExtractor(HTMLParser):

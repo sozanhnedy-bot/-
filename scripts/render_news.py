@@ -17,6 +17,10 @@ SITE_URL = "https://sozanhnedy-bot.github.io/-"
 ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,80}$")
 REGIONS = {"world": "العالم", "arab": "العالم العربي", "egypt": "مصر"}
 CATEGORIES = {"politics": "سياسة", "economy": "اقتصاد", "technology": "تكنولوجيا", "sports": "رياضة"}
+ILLUSTRATION_ASSETS = {
+    "politics": "politics.jpg", "economy": "economy.jpg", "technology": "technology.jpg", "sports": "sports.jpg",
+    "egypt": "egypt.jpg", "arab": "arab.jpg", "world": "world.jpg",
+}
 BRAND = "World News"
 ARABIC_BRAND = "أخبار العالم"
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)$", re.IGNORECASE)
@@ -87,26 +91,28 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
         excerpt = ""
     details = text(item.get("article_content"), 8_000) or excerpt or summary
     dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
-    region = REGIONS.get(text(item.get("region")), "العالم")
+    region_key = text(item.get("region"), 30)
+    region = REGIONS.get(region_key, "العالم")
     category_key = text(item.get("category"), 30)
     category = CATEGORIES.get(category_key, REGIONS.get(category_key, region))
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
     image_url = safe_external_url(item.get("image_url"), image=True)
+    illustration_file = ILLUSTRATION_ASSETS.get(category_key) or ILLUSTRATION_ASSETS.get(region_key) or "world.jpg"
+    illustration_url = f"../assets/news-illustrations/{illustration_file}"
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
     preview_image = image_url
     image_markup = (
         f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة المرفقة من مصدر الخبر: {e(source)}</figcaption></figure>'
-        if image_url else ""
+        if image_url else
+        f'<figure class="article-figure"><img src="{e(illustration_url, quote=True)}" alt="رسم توضيحي لقسم {e(category, quote=True)}" loading="eager"><figcaption>رسم توضيحي لقسم {e(category)}؛ لا يصوّر الحدث نفسه</figcaption></figure>'
     )
     detail_paragraphs = "".join(f"<p>{e(part)}</p>" for part in details.splitlines() if part.strip())
-    source_url = safe_external_url(item.get("url"))
-    source_action = f'<p class="source-original-link"><a href="{e(source_url, quote=True)}" target="_blank" rel="noopener noreferrer">افتح الخبر من المصدر الأصلي</a></p>' if source_url else ""
     details_markup = (
         f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2>{detail_paragraphs}</section>'
         if detail_paragraphs else
-        '<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>المصدر لم يرفق تفاصيل كافية داخل موجز الأخبار حتى الآن. يمكنك فتح الخبر من المصدر الأصلي للاطلاع على النص الكامل.</p></section>'
+        '<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>لم يرفق موجز المصدر تفاصيل إضافية لهذا الخبر.</p></section>'
     )
     source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
     related_items = []
@@ -144,7 +150,6 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     </header>
     {image_markup}
     {details_markup}
-    {source_action}
     {related_markup}
   </article></main><footer class="site-footer"><div class="footer-brand">{BRAND}</div><p>الناشر مذكور بالاسم · تاريخ النشر محفوظ · القراءة داخل الموقع</p></footer>
 </body></html>'''

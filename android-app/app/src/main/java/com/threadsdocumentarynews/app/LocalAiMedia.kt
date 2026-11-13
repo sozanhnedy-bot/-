@@ -51,7 +51,7 @@ object LocalAiMedia {
             BufferedInputStream(FileInputStream(archive)).use { buffered ->
                 BZip2CompressorInputStream(buffered).use { bz ->
                     TarArchiveInputStream(bz).use { tar ->
-                        var entry = tar.nextTarEntry
+                        var entry = tar.nextEntry
                         while (entry != null) {
                             if (entry.isSymbolicLink || entry.isLink || entry.isSparse) {
                                 throw IllegalStateException("ملف الصوت يحتوي على مسار غير آمن.")
@@ -66,7 +66,7 @@ object LocalAiMedia {
                                 out.parentFile?.mkdirs()
                                 FileOutputStream(out).use { output -> tar.copyTo(output) }
                             }
-                            entry = tar.nextTarEntry
+                            entry = tar.nextEntry
                         }
                     }
                 }
