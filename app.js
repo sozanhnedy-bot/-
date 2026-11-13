@@ -144,7 +144,7 @@ function sourceMeta(record) {
 }
 function articleCard(record, compact = false) {
   const card = el("article", compact ? "portal-news-item" : "portal-story-card");
-  if (record.image && !compact) {
+  if (record.image) {
     const linkImage = document.createElement("a");
     linkImage.className = "portal-card-thumb-link";
     linkImage.href = record.href;
