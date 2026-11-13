@@ -34,7 +34,7 @@ jobs:
             max-jobs = auto
             cores = 2
 
-      - name: Explicitly enable the PNG decoder in FFmpeg
+      - name: Explicitly enable the PNG decoder and zlib in FFmpeg
         working-directory: ffmpeg-kit-next
         shell: bash
         run: |
@@ -62,7 +62,8 @@ jobs:
             --disable-arch-x86 \
             --disable-arch-x86-64 \
             --enable-gpl \
-            --enable-lib-x264
+            --enable-lib-x264 \
+            --enable-lib-android-zlib
 
       - name: Verify generated AAR and native ABI
         shell: bash
@@ -74,9 +75,15 @@ jobs:
           unzip -l "$AAR" | grep -q 'jni/arm64-v8a/'
           unzip -p "$AAR" jni/arm64-v8a/libavcodec.so > /tmp/ffmpeg-libavcodec.so
           strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--enable-libx264'
+          strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--enable-decoder=png'
+          strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--enable-zlib'
+          if strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--disable-zlib'; then
+            echo "FFmpeg was built without zlib; PNG decoder cannot be used." >&2
+            exit 1
+          fi
           strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--disable-mediacodec'
           echo "FFmpegKitNext AAR: $AAR"
-          echo "Verified arm64-v8a AAR built with explicit PNG decoder and libx264 options, and MediaCodec disabled."
+          echo "Verified arm64-v8a AAR with PNG decoder and zlib enabled, libx264 enabled, and MediaCodec disabled."
 
       - name: Upload AAR and Maven repository
         uses: actions/upload-artifact@v4
