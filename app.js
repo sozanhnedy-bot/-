@@ -12,10 +12,19 @@ const HOME_CATEGORIES = [
   { id: "technology", title: "تكنولوجيا" }, { id: "sports", title: "رياضة" },
 ];
 const REFERENCE_IMAGES = {
-  world: "./assets/reference-lead.jpg", arab: "./assets/reference-lead.jpg", egypt: "./assets/reference-lead.jpg",
-  technology: "./assets/reference-technology.jpg", politics: "./assets/reference-lead.jpg",
-  sports: "./assets/reference-sports.jpg", economy: "./assets/reference-market.jpg",
+  world: ["./assets/reference-lead.jpg", "./assets/reference-wildfire.jpg", "./assets/reference-entertainment.jpg", "./assets/reference-market.jpg"],
+  arab: ["./assets/reference-entertainment.jpg", "./assets/reference-market.jpg", "./assets/reference-sports.jpg"],
+  egypt: ["./assets/reference-market.jpg", "./assets/reference-technology.jpg", "./assets/reference-sports.jpg"],
+  politics: ["./assets/reference-lead.jpg", "./assets/reference-entertainment.jpg", "./assets/reference-technology.jpg"],
+  economy: ["./assets/reference-market.jpg", "./assets/reference-technology.jpg", "./assets/reference-wildfire.jpg"],
+  technology: ["./assets/reference-technology.jpg", "./assets/reference-market.jpg", "./assets/reference-lead.jpg"],
+  sports: ["./assets/reference-sports.jpg", "./assets/reference-wildfire.jpg", "./assets/reference-entertainment.jpg"],
 };
+function referenceImage(category, region, id = "") {
+  const list = REFERENCE_IMAGES[category] || REFERENCE_IMAGES[region] || REFERENCE_IMAGES.world;
+  const seed = [...String(id)].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  return list[seed % list.length];
+}
 const state = { news: [], reports: [], query: "", region: "all", initialLoad: true, featuredIds: new Set() };
 const reportMap = new Map();
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -95,7 +104,7 @@ function recordFor(item) {
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
   const suppliedImage = safeImage(report?.image || item.image_url);
-  const fallbackImage = REFERENCE_IMAGES[category] || REFERENCE_IMAGES[region] || "./assets/reference-lead.jpg";
+  const fallbackImage = referenceImage(category, region, item.id);
   const image = suppliedImage || fallbackImage;
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
