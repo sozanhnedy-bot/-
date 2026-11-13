@@ -157,10 +157,10 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
   <meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)} | {BRAND}">
   <meta property="og:description" content="{description}">{f'<meta property="og:image" content="{e(preview_image, quote=True)}">' if preview_image else ''}
   <meta name="twitter:card" content="summary_large_image"><title>{e(title)} | {BRAND}</title>
-  <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images">
+  <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images"><link rel="stylesheet" href="../styles-newspaper-overrides.css?v=20261114-global">
 </head>
 <body class="article-body">
-  <header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header>
+  <header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header><section class="portal-interface-cover article-interface-cover" aria-label="واجهة World News"><img src="../assets/portal-interface-cover.webp" alt="واجهة World News الإخبارية" fetchpriority="high"></section>
   <main class="article-shell"><nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><a href="../archive.html">الأرشيف</a><span aria-hidden="true">/</span><span>{e(category)}</span></nav>
     <article class="full-report brief-report"><header class="article-heading"><p class="eyebrow">{e(category)} · {e(region)}</p><h1>{e(title)}</h1>
       {f'<p class="article-dek">{e(dek)}</p>' if dek else ''}<div class="article-meta">{source_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>

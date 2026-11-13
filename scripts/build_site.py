@@ -17,6 +17,7 @@ DATA_FILES = ("news.json", "reports.json")
 ASSET_FILES = (
     "brand-mark.png", "app-icon-192.png", "app-icon-512.png",
     "brand-cover.jpg",
+    "portal-interface-cover.webp",
     "story-finswimming.webp", "story-morocco-stadium.webp", "story-yemen-diplomacy.webp",
 )
 

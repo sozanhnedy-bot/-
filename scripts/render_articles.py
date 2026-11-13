@@ -118,11 +118,11 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
 <meta property="og:description" content="{dek}"><meta property="og:image" content="{SITE_URL}/{social_image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title} | {BRAND}"><meta name="twitter:description" content="{dek}"><meta name="twitter:image" content="{SITE_URL}/{social_image}">
 <meta property="og:url" content="{canonical}"><link rel="canonical" href="{canonical}">
-<link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images">
+  <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images"><link rel="stylesheet" href="../styles-newspaper-overrides.css?v=20261114-global">
 <title>{title} | {BRAND}</title><script defer src="../article.js?v=20261107-images"></script>
 </head><body class="article-body">
 <a class="skip-link" href="#article-main">انتقل إلى التقرير</a>
-<header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
+<header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header><section class="portal-interface-cover article-interface-cover" aria-label="واجهة World News"><img src="../assets/portal-interface-cover.webp" alt="واجهة World News الإخبارية" fetchpriority="high"></section>
 <main id="article-main" class="article-shell">
 <nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><span>تقرير مفصل</span></nav>
 <article class="full-report" data-report-id="{report_id}" data-short-url="../r/{code}.html">
