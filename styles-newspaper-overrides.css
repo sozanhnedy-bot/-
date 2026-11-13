@@ -163,14 +163,16 @@
 .portal-interface-wordmark {
   position:absolute;
   inset:0;
-  display:grid;
-  place-content:center;
+  display:block;
+  padding-top:clamp(48px,7vw,78px);
   text-align:center;
   color:#fff;
   text-shadow:0 2px 12px rgba(0,0,0,.45);
   font:700 clamp(2rem,6vw,4.5rem)/.95 Georgia,serif;
   letter-spacing:-.04em;
 }
+.portal-interface-wordmark b,
+.portal-interface-wordmark strong { display:inline; }
 .portal-interface-wordmark strong { color:#fff; }
 .portal-interface-wordmark small {
   display:block;
