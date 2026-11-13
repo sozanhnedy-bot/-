@@ -241,14 +241,19 @@ def clean_article_content(value: str | None) -> str:
 
 
 def _item_article_content(node: ET.Element) -> str:
-    candidates: list[str] = []
+    # Prefer the publisher's full content:encoded body over the shorter RSS
+    # description/summary. Preserve paragraph breaks after cleaning markup.
+    priorities = {"encoded": 4, "content": 3, "summary": 2, "description": 1}
+    candidates: list[tuple[int, int, str]] = []
     for child in node.iter():
-        if _local_name(child.tag) not in {"description", "summary", "content", "encoded"}:
+        name = _local_name(child.tag)
+        priority = priorities.get(name, 0)
+        if not priority:
             continue
         value = clean_article_content(child.text or "")
-        if value and value not in candidates:
-            candidates.append(value)
-    return max(candidates, key=len, default="")[:MAX_STORED_ARTICLE_CHARS]
+        if value:
+            candidates.append((priority, len(value), value))
+    return max(candidates, default=(0, 0, ""))[2][:MAX_STORED_ARTICLE_CHARS]
 
 
 class _PublisherArticleExtractor(HTMLParser):
