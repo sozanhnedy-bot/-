@@ -29,7 +29,10 @@ function safeImage(value) {
   if (/^assets\/[A-Za-z0-9._/-]+$/.test(raw) && !raw.includes("..")) return `./${raw}`;
   try {
     const url = new URL(raw);
-    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password) return url.href;
+    const host = url.hostname.toLowerCase().replace(/^www\./, "");
+    const googleImage = host === "google.com" || host.endsWith(".google.com")
+      || host.endsWith(".googleusercontent.com") || host.endsWith(".gstatic.com");
+    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && !googleImage) return url.href;
   } catch (_) { }
   return "";
 }
@@ -130,6 +133,7 @@ function addImage(container, record, className = "portal-card-image") {
   img.alt = record.imageAlt || record.title;
   img.loading = "lazy";
   img.decoding = "async";
+  img.addEventListener("error", () => figure.remove(), { once: true });
   figure.append(img);
   if (record.imageCaption) figure.append(el("figcaption", "portal-image-caption", record.imageCaption));
   container.append(figure);
