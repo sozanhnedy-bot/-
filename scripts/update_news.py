@@ -386,6 +386,32 @@ def _fetch_article_image(article_url: str, timeout: int = 8) -> str:
     return ""
 
 
+def repair_existing_images(news: dict, *, max_lookups: int = 20) -> int:
+    """Backfill only missing or Google-hosted images from each story's publisher page."""
+    items = news.get("items", []) if isinstance(news, dict) else []
+    repaired = 0
+    attempted: set[str] = set()
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        current = str(item.get("image_url", "") or "")
+        if current and not _is_google_image_url(current):
+            continue
+        article_url = str(item.get("url", "") or "")
+        publisher_url = str(item.get("source_url", "") or "")
+        candidates = [value for value in (article_url, publisher_url) if value and value not in attempted]
+        for candidate in candidates:
+            if len(attempted) >= max(0, max_lookups):
+                return repaired
+            attempted.add(candidate)
+            image = _fetch_article_image(candidate)
+            if image and not _is_google_image_url(image):
+                item["image_url"] = image
+                repaired += 1
+                break
+    return repaired
+
+
 def _fetch_article_content(article_url: str, timeout: int = 8) -> str:
     """Fetch readable text from a publisher page over validated public HTTPS only."""
     if not _validate_public_https_url(article_url):
@@ -774,16 +800,26 @@ def main() -> int:
     max_per_day = int(os.environ.get("MAX_SUMMARIES_PER_DAY", "30"))
     max_items = int(os.environ.get("MAX_STORED_ITEMS", "10000"))
     existing = load_json(LOCAL_NEWS_PATH)
-    news, changed, warnings = build_update(
-        existing,
-        feeds,
-        limited_fetch,
-        summarizer,
-        max_per_run=max_per_run,
-        max_per_day=max_per_day,
-        max_stored_items=max_items,
-        summary_type=summary_type,
-    )
+    try:
+        news, changed, warnings = build_update(
+            existing,
+            feeds,
+            limited_fetch,
+            summarizer,
+            max_per_run=max_per_run,
+            max_per_day=max_per_day,
+            max_stored_items=max_items,
+            summary_type=summary_type,
+        )
+    except RuntimeError as exc:
+        # Keep the last good archive and still attempt the independent image repair pass.
+        news = existing
+        changed = False
+        warnings = [str(exc)]
+    repaired_images = repair_existing_images(news, max_lookups=20)
+    if repaired_images:
+        changed = True
+        print(f"Repaired {repaired_images} existing publisher images.")
     for warning in warnings:
         print(warning, file=sys.stderr)
     if not changed:
