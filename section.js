@@ -1,5 +1,13 @@
 const CATEGORY_LABELS = { egypt:"مصر", arab:"العالم العربي", world:"العالم", politics:"سياسة", economy:"اقتصاد", technology:"تكنولوجيا", sports:"رياضة", reports:"تقارير ووثائقيات", videos:"فيديوهات" };
-const REFERENCE_IMAGES = { world:"assets/reference-lead.jpg", arab:"assets/reference-lead.jpg", egypt:"assets/reference-lead.jpg", politics:"assets/reference-lead.jpg", economy:"assets/reference-market.jpg", technology:"assets/reference-technology.jpg", sports:"assets/reference-sports.jpg" };
+const REFERENCE_IMAGES = {
+  world:["assets/reference-lead.jpg","assets/reference-wildfire.jpg","assets/reference-entertainment.jpg","assets/reference-market.jpg"],
+  arab:["assets/reference-entertainment.jpg","assets/reference-market.jpg","assets/reference-sports.jpg"],
+  egypt:["assets/reference-market.jpg","assets/reference-technology.jpg","assets/reference-sports.jpg"],
+  politics:["assets/reference-lead.jpg","assets/reference-entertainment.jpg","assets/reference-technology.jpg"],
+  economy:["assets/reference-market.jpg","assets/reference-technology.jpg","assets/reference-wildfire.jpg"],
+  technology:["assets/reference-technology.jpg","assets/reference-market.jpg","assets/reference-lead.jpg"],
+  sports:["assets/reference-sports.jpg","assets/reference-wildfire.jpg","assets/reference-entertainment.jpg"]
+};
 const $=(selector)=>document.querySelector(selector);
 function el(tag,cls="",text=""){const node=document.createElement(tag);if(cls)node.className=cls;if(text)node.textContent=text;return node;}
 function validId(value){return /^[A-Za-z0-9_-]{1,80}$/.test(String(value||""));}
@@ -10,9 +18,13 @@ function removePromotion(value){return String(value||"").trim().replace(/\s*(?:�
 function stripSource(value,publisher){const title=removePromotion(value),source=normalized(publisher);for(const separator of [" — "," – "," - "," | "," :: "]){const index=title.lastIndexOf(separator);if(index>0&&normalized(title.slice(index+separator.length))===source)return title.slice(0,index).trim();}return title;}
 function conciseSummary(value,title,publisher){const summary=removePromotion(value),summaryKey=comparable(stripSource(summary,publisher)),titleKey=comparable(title);if(!summaryKey||summaryKey===titleKey)return"";if(summaryKey.startsWith(titleKey)&&summaryKey.split(" ").length<=titleKey.split(" ").length+2&&!/\d/u.test(summary))return"";return summary;}
 function safeImage(value){const candidate=String(value||"");if(/^assets\/[A-Za-z0-9._/-]+$/.test(candidate)&&!candidate.includes(".."))return`./${candidate}`;try{const url=new URL(candidate);if(url.protocol==="https:"&&url.hostname.includes(".")&&!url.username&&!url.password)return url.href;}catch(_){}return"";}
-function referenceImage(category,region){return `./${REFERENCE_IMAGES[category]||REFERENCE_IMAGES[region]||REFERENCE_IMAGES.world}`;}
+function referenceImage(category,region,id=""){
+  const list=REFERENCE_IMAGES[category]||REFERENCE_IMAGES[region]||REFERENCE_IMAGES.world;
+  const seed=[...String(id)].reduce((sum,char)=>sum+char.charCodeAt(0),0);
+  return `./${list[seed%list.length]}`;
+}
 function makeCard(item,report){
-  const card=el("article","portal-story-card"),region=item.region||"world",category=report?"reports":(item.category||region),image=safeImage(report?.image||item.image_url)||referenceImage(category,region);
+  const card=el("article","portal-story-card"),region=item.region||"world",category=report?"reports":(item.category||region),image=safeImage(report?.image||item.image_url)||referenceImage(category,region,item.id);
   if(image){const link=document.createElement("a");link.href=report?`./reports/${item.id}.html`:`./news/${item.id}.html`;link.className="portal-card-thumb-link";const figure=el("figure","portal-card-thumb"),img=document.createElement("img");img.src=image;img.alt=report?.image_alt||item.title;img.loading="lazy";img.decoding="async";figure.append(img);link.append(figure);card.append(link);}
   const body=el("div","portal-card-body"),meta=el("div","portal-card-meta"),publisher=report&&Array.isArray(report.sources)?report.sources.join("، "):item.source_name,title=report?.title||stripSource(item.title,item.source_name)||"خبر";
   meta.append(el("span","portal-category-label",CATEGORY_LABELS[category]||CATEGORY_LABELS[region]||"خبر"),el("time","portal-date",formatDate(item.published_at||report?.published_at||item.created_at)));if(publisher)meta.append(el("span","portal-source",`المصدر: ${publisher}`));body.append(meta);
