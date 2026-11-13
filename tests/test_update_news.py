@@ -275,6 +275,27 @@ class NewsUpdateTests(unittest.TestCase):
             self.assertTrue(ai_summarization_enabled())
 
 
+
+class PublisherArticleExtractorTests(unittest.TestCase):
+    def test_extracts_article_paragraphs_and_ignores_navigation_and_scripts(self):
+        from scripts.update_news import extract_publisher_article
+        page = """<html><body>
+          <nav><p>قائمة التنقل لا يجب أن تظهر في التقرير.</p></nav>
+          <article><h1>عنوان التقرير</h1>
+            <p>هذه الفقرة الأولى من التقرير وتحتوي على تفاصيل الحدث ومعلوماته الأساسية.</p>
+            <p>هذه الفقرة الثانية تشرح التطورات والسياق الذي نشره الموقع الأصلي.</p>
+            <script>نص برمجي لا يجب أن يظهر</script>
+          </article>
+          <footer><p>روابط وتذييل الموقع لا تدخل في التقرير.</p></footer>
+        </body></html>"""
+        content = extract_publisher_article(page)
+        self.assertIn("عنوان التقرير", content)
+        self.assertIn("الفقرة الأولى", content)
+        self.assertNotIn("قائمة التنقل", content)
+        self.assertNotIn("نص برمجي", content)
+        self.assertNotIn("روابط وتذييل", content)
+
+
 class MetaImageExtractorTests(unittest.TestCase):
     def test_reads_open_graph_image_without_file_extension(self):
         from scripts.update_news import _MetaImageExtractor
