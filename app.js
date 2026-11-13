@@ -305,9 +305,8 @@ function renderBreaking(records) {
   strip.hidden = false;
 }
 function render() {
-  const all = allRecords();
-  const recent = recentRecords(all);
-  const records = recent.length ? recent : all;
+  const recent = recentRecords(allRecords());
+  const records = recent.length ? recent : allRecords();
   renderLead(records);
   renderLatest(records);
   renderSections(records);
