@@ -135,6 +135,14 @@ def newest_items(items: list[dict], limit: int) -> list[dict]:
     return sorted(items, key=published_key, reverse=True)[:max(0, int(limit))]
 
 
+def _is_google_image_url(value: str) -> bool:
+    try:
+        host = (urlsplit(str(value or "")).hostname or "").lower().removeprefix("www.")
+    except ValueError:
+        return False
+    return host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com"))
+
+
 def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
     changed = False
     excerpt = clean_text(incoming_item.get("excerpt", ""))[:MAX_STORED_EXCERPT_CHARS]
@@ -147,8 +155,9 @@ def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
     if len(article_content) > len(old_article_content):
         existing_item["article_content"] = article_content
         changed = True
-    image_url = incoming_item.get("image_url", "")
-    if image_url and not existing_item.get("image_url"):
+    image_url = _safe_image_url(incoming_item.get("image_url", ""), "image")
+    old_image_url = str(existing_item.get("image_url", "") or "")
+    if image_url and (not old_image_url or _is_google_image_url(old_image_url)):
         existing_item["image_url"] = image_url
         changed = True
     for key in ("source_url", "source_name", "published_at"):
@@ -185,7 +194,8 @@ def _safe_image_url(value: str, media_type: str = "") -> str:
         return ""
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
-    if parsed.hostname in {"news.google.com", "google.com", "www.google.com"}:
+    host = parsed.hostname.lower().removeprefix("www.")
+    if host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com")):
         return ""
     known_image = bool(re.search(r"\.(?:jpe?g|png|webp|avif)(?:$|\?)", candidate, re.IGNORECASE))
     if not known_image and not media_type.lower().startswith("image/") and media_type.lower() != "image":
@@ -722,7 +732,7 @@ def main() -> int:
             article_url = item.get("url", "")
             if not article_url:
                 continue
-            if not item.get("image_url") and article_url not in image_lookup_urls:
+            if (not item.get("image_url") or _is_google_image_url(item.get("image_url", ""))) and article_url not in image_lookup_urls:
                 image_lookup_urls.add(article_url)
                 if image_lookup_count < 20:
                     image_lookup_count += 1
