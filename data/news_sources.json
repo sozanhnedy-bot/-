@@ -2,6 +2,46 @@
   "max_items_per_feed": 12,
   "feeds": [
     {
+      "name": "BBC News",
+      "region": "arab",
+      "category": "arab",
+      "url": "https://feeds.bbci.co.uk/arabic/rss.xml",
+      "source_url": "https://www.bbc.com/arabic",
+      "enabled": true
+    },
+    {
+      "name": "BBC News",
+      "region": "world",
+      "category": "world",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "source_url": "https://www.bbc.com/news",
+      "enabled": true
+    },
+    {
+      "name": "الجزيرة نت",
+      "region": "arab",
+      "category": "arab",
+      "url": "https://www.aljazeera.net/aljazeerarss/a7c186be-1baa-4bd4-9d80-a84db769f779/73d0e1b4-532f-45ef-b135-bfdff8b8cab9",
+      "source_url": "https://www.aljazeera.net",
+      "enabled": true
+    },
+    {
+      "name": "Daily News Egypt",
+      "region": "egypt",
+      "category": "egypt",
+      "url": "https://dailynewsegypt.com/feed/",
+      "source_url": "https://dailynewsegypt.com",
+      "enabled": true
+    },
+    {
+      "name": "Egypt Independent",
+      "region": "egypt",
+      "category": "egypt",
+      "url": "https://www.egyptindependent.com/feed/",
+      "source_url": "https://www.egyptindependent.com",
+      "enabled": true
+    },
+    {
       "name": "أخبار العالم بالعربية",
       "region": "world",
       "category": "world",

@@ -31,7 +31,14 @@ MAX_SUMMARY_CHARS = 600
 MAX_STORED_EXCERPT_CHARS = 1_400
 MAX_STORED_ARTICLE_CHARS = 8_000
 NEWS_RETENTION_DAYS = 7
-ALLOWED_FEED_HOSTS = {"news.google.com"}
+ALLOWED_FEED_HOSTS = {
+    "news.google.com",
+    "feeds.bbci.co.uk",
+    "www.aljazeera.net",
+    "dailynewsegypt.com",
+    "www.egyptindependent.com",
+}
+GENERIC_IMAGE_PATH_MARKERS = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "gemini_generated_image", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-")
 RSS_NO_DETAILS = "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط."
 
 
@@ -145,6 +152,15 @@ def _is_google_image_url(value: str) -> bool:
     return host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com"))
 
 
+def _is_generic_image_url(value: str) -> bool:
+    try:
+        parsed = urlsplit(str(value or ""))
+    except ValueError:
+        return True
+    path = parsed.path.lower()
+    return _is_google_image_url(value) or any(marker in path for marker in GENERIC_IMAGE_PATH_MARKERS)
+
+
 def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
     changed = False
     excerpt = clean_text(incoming_item.get("excerpt", ""))[:MAX_STORED_EXCERPT_CHARS]
@@ -159,7 +175,7 @@ def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
         changed = True
     image_url = _safe_image_url(incoming_item.get("image_url", ""), "image")
     old_image_url = str(existing_item.get("image_url", "") or "")
-    if image_url and image_url != old_image_url and (not old_image_url or _is_google_image_url(old_image_url)):
+    if image_url and image_url != old_image_url and (not old_image_url or _is_generic_image_url(old_image_url)):
         existing_item["image_url"] = image_url
         changed = True
     for key in ("source_url", "source_name", "published_at"):
@@ -197,8 +213,7 @@ def _safe_image_url(value: str, media_type: str = "") -> str:
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
     host = parsed.hostname.lower().removeprefix("www.")
-    generic_path_markers = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/")
-    if any(marker in parsed.path.lower() for marker in generic_path_markers):
+    if any(marker in parsed.path.lower() for marker in GENERIC_IMAGE_PATH_MARKERS):
         return ""
     if host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com")):
         return ""
@@ -364,6 +379,14 @@ class _PublicHttpsRedirectHandler(urllib.request.HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
+class _AllowedFeedRedirectHandler(_PublicHttpsRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        parsed = urlsplit(newurl)
+        if parsed.hostname not in ALLOWED_FEED_HOSTS:
+            raise ValueError("RSS redirect is outside the configured publisher allowlist")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def _fetch_article_image(article_url: str, timeout: int = 8) -> str:
     """Fetch only publisher HTML metadata; never execute page content or accept unsafe URLs."""
     if not _validate_public_https_url(article_url):
@@ -397,25 +420,33 @@ def _fetch_article_image(article_url: str, timeout: int = 8) -> str:
 
 
 def repair_existing_images(news: dict, *, max_lookups: int = 20) -> int:
-    """Backfill only missing or Google-hosted images from each story's publisher page."""
+    """Remove generic placeholders and backfill only publisher-declared story images."""
     items = news.get("items", []) if isinstance(news, dict) else []
     repaired = 0
+    for item in items:
+        if isinstance(item, dict) and _is_generic_image_url(str(item.get("image_url", "") or "")):
+            item["image_url"] = ""
+            repaired += 1
     attempted: set[str] = set()
     for item in items:
         if not isinstance(item, dict):
             continue
         current = str(item.get("image_url", "") or "")
-        if current and not _is_google_image_url(current):
+        if current:
             continue
         article_url = str(item.get("url", "") or "")
         publisher_url = str(item.get("source_url", "") or "")
+        publisher_path = urlsplit(publisher_url).path.strip("/") if publisher_url else ""
         candidates = [value for value in (article_url, publisher_url) if value and value not in attempted]
+        candidates = [value for value in candidates if not _is_google_image_url(value)]
+        if publisher_url and not publisher_path:
+            candidates = [value for value in candidates if value != publisher_url]
         for candidate in candidates:
             if len(attempted) >= max(0, max_lookups):
                 return repaired
             attempted.add(candidate)
             image = _fetch_article_image(candidate)
-            if image and not _is_google_image_url(image):
+            if image and not _is_generic_image_url(image):
                 item["image_url"] = image
                 repaired += 1
                 break
@@ -531,10 +562,15 @@ def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | No
 
 def fetch_feed(url: str, region: str, feed_name: str, timeout: int = 20, feed_source_url: str = "") -> list[dict]:
     parsed = urlsplit(url)
-    if parsed.scheme != "https" or parsed.hostname not in ALLOWED_FEED_HOSTS:
+    if parsed.scheme != "https" or parsed.hostname not in ALLOWED_FEED_HOSTS or parsed.username or parsed.password:
         raise ValueError("RSS source is outside the HTTPS allowlist")
+    if not _validate_public_https_url(url):
+        raise ValueError("RSS source is not a public HTTPS destination")
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/rss+xml, application/xml, text/xml"})
-    with urllib.request.urlopen(request, timeout=timeout) as response:
+    opener = urllib.request.build_opener(_AllowedFeedRedirectHandler())
+    with opener.open(request, timeout=timeout) as response:
+        if urlsplit(response.geturl()).hostname not in ALLOWED_FEED_HOSTS:
+            raise ValueError("RSS response is outside the configured publisher allowlist")
         body = response.read(MAX_FEED_BYTES + 1)
     if len(body) > MAX_FEED_BYTES:
         raise ValueError("feed exceeds the configured byte limit")
@@ -773,7 +809,7 @@ def main() -> int:
     article_lookup_urls: set[str] = set()
 
     def limited_fetch(url: str, region: str, name: str, source_url: str = "") -> list[dict]:
-        nonlocal image_lookup_count
+        nonlocal image_lookup_count, article_lookup_count
         items = newest_items(fetch_feed(url, region, name, feed_source_url=source_url), max_items_per_feed)
         # Google News RSS often omits media:content entirely. Recover only the
         # publisher-declared lead image, with a strict per-run request budget.
@@ -844,7 +880,7 @@ def main() -> int:
     repaired_images = repair_existing_images(news, max_lookups=20)
     if repaired_images:
         changed = True
-        print(f"Repaired {repaired_images} existing publisher images.")
+        print(f"Updated {repaired_images} image records (removed generic placeholders and backfilled publisher images).")
     for warning in warnings:
         print(warning, file=sys.stderr)
     if not changed:

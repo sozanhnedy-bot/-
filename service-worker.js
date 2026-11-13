@@ -1,4 +1,4 @@
-const CACHE_NAME = "world-news-v6-verified-image-filter";
+const CACHE_NAME = "world-news-v8-publisher-photos";
 const ROOT = new URL("./", self.location.href);
 const DATA_URLS = ["data/news.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
 const SHELL_URLS = [
