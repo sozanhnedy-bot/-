@@ -24,7 +24,7 @@ function referenceImage(category,region,id=""){
   return `./${list[seed%list.length]}`;
 }
 function makeCard(item,report){
-  const card=el("article","portal-story-card"),region=item.region||"world",category=report?"reports":(item.category||region),image=safeImage(report?.image||item.image_url)||referenceImage(category,region,item.id);
+  const card=el("article","portal-story-card"),region=item.region||"world",category=report?"reports":(item.category||region),image=referenceImage(category,region,item.id);
   if(image){const link=document.createElement("a");link.href=report?`./reports/${item.id}.html`:`./news/${item.id}.html`;link.className="portal-card-thumb-link";const figure=el("figure","portal-card-thumb"),img=document.createElement("img");img.src=image;img.alt=report?.image_alt||item.title;img.loading="lazy";img.decoding="async";figure.append(img);link.append(figure);card.append(link);}
   const body=el("div","portal-card-body"),meta=el("div","portal-card-meta"),publisher=report&&Array.isArray(report.sources)?report.sources.join("، "):item.source_name,title=report?.title||stripSource(item.title,item.source_name)||"خبر";
   meta.append(el("span","portal-category-label",CATEGORY_LABELS[category]||CATEGORY_LABELS[region]||"خبر"),el("time","portal-date",formatDate(item.published_at||report?.published_at||item.created_at)));if(publisher)meta.append(el("span","portal-source",`المصدر: ${publisher}`));body.append(meta);

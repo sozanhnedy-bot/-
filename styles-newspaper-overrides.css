@@ -213,3 +213,13 @@
   .portal-interface-cover { min-height:120px; padding:7px 0; }
   .portal-interface-cover img { height:150px; }
 }
+
+/* Reference video shelf: navy canvas with three image-first cards. */
+.portal-video-page { max-width:none; width:100%; padding-inline:max(20px,calc((100% - 1240px) / 2)); padding-top:24px; padding-bottom:42px; color:#fff; background:var(--portal-navy); }
+.portal-video-page .portal-section-title { border-bottom-color:#344257; }
+.portal-video-page .portal-section-title h1, .portal-video-page .portal-section-title .muted-label { color:#fff; }
+.portal-video-page .portal-section-title .muted-label { color:#b9c4d0; }
+.portal-video-page .portal-video-grid { max-width:1240px; margin:0 auto; }
+.portal-video-page .portal-video-card { min-height:230px; }
+.portal-video-page .portal-video-card strong { font-size:.9rem; }
+@media (max-width:600px) { .portal-video-page { padding-inline:14px; } }
