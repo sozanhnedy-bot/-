@@ -58,8 +58,6 @@ def safe_external_url(value: object, *, image: bool = False) -> str:
         return ""
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
-    if image and not IMAGE_EXT_RE.search(parsed.path):
-        return ""
     return candidate
 
 
