@@ -5,13 +5,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Path;
-import android.graphics.RectF;
-import android.graphics.Typeface;
 import android.media.AudioAttributes;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
@@ -19,10 +12,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.OpenableColumns;
-import android.text.Layout;
-import android.text.TextDirectionHeuristics;
-import android.text.TextUtils;
-import android.text.StaticLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -38,14 +27,11 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
-import androidx.media3.effect.CanvasOverlay;
 
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.CancellationException;
 
 /** Local Android equivalent of the supplied media-studio workflow. */
@@ -464,10 +450,7 @@ public final class VideoStudioActivity extends Activity {
                     mediaUris, audioUri, musicUri, headline, lowerThird, ticker,
                     outputFile, width, height, imageSeconds, selectedMusicGain(), breakingNews, colorPalette);
 
-            VideoExportEngine media3Fallback = new Media3VideoExportEngine(this, durationsUs ->
-                    new NewsroomCanvasOverlay(headline, lowerThird, ticker, durationsUs, breakingNews, colorPalette));
-            exportEngine = new VideoExportEngineCoordinator(
-                    new FfmpegVideoExportEngine(this), media3Fallback);
+            exportEngine = new FfmpegVideoExportEngine(this);
             exportEngine.export(request, new VideoExportEngine.Listener() {
                 @Override public void onProgress(int percent) {
                     if (isFinishing() || isDestroyed()) return;
@@ -503,7 +486,9 @@ public final class VideoStudioActivity extends Activity {
                     if (error instanceof CancellationException) {
                         setStatus("تم إلغاء التصدير وتنظيف الملف المؤقت.", MUTED);
                     } else {
-                        setStatus("فشل إنشاء MP4: " + safeMessage(error) + " — جرّب تقليل الملفات أو استخدام فيديو MP4/H.264.", RED);
+                        android.util.Log.e("VideoStudioActivity", "MP4 export failed", error);
+                        setStatus("فشل إنشاء MP4: " + safeMessage(error) + " — افتح تقرير التشخيص لنسخ التفاصيل الكاملة.", RED);
+                        showExportErrorDetails(error);
                     }
                 }
             });
@@ -550,217 +535,6 @@ public final class VideoStudioActivity extends Activity {
             return 0L;
         } finally {
             try { retriever.release(); } catch (Exception ignored) { }
-        }
-    }
-
-    private static final class ShortPalette {
-        final int background;
-        final int card;
-        final int ink;
-        final int accent;
-        final int footer;
-        final int softPanel;
-
-        private ShortPalette(int background, int card, int ink, int accent, int footer, int softPanel) {
-            this.background = background;
-            this.card = card;
-            this.ink = ink;
-            this.accent = accent;
-            this.footer = footer;
-            this.softPanel = softPanel;
-        }
-
-        static ShortPalette from(int index) {
-            switch (index) {
-                case 1: return new ShortPalette(Color.rgb(17, 43, 78), Color.WHITE, Color.rgb(16, 37, 67), Color.rgb(220, 28, 40), Color.rgb(16, 37, 67), Color.rgb(239, 243, 248));
-                case 2: return new ShortPalette(Color.rgb(25, 26, 31), Color.rgb(250, 249, 246), Color.rgb(28, 31, 39), Color.rgb(230, 167, 45), Color.rgb(28, 31, 39), Color.rgb(239, 237, 232));
-                case 3: return new ShortPalette(Color.rgb(7, 105, 84), Color.WHITE, Color.rgb(16, 55, 55), Color.rgb(244, 188, 54), Color.rgb(16, 55, 55), Color.rgb(232, 244, 238));
-                default: return new ShortPalette(Color.rgb(220, 16, 27), Color.WHITE, Color.rgb(20, 35, 67), Color.rgb(220, 16, 27), Color.rgb(20, 35, 67), Color.rgb(245, 246, 249));
-            }
-        }
-    }
-
-    private final class NewsroomCanvasOverlay extends CanvasOverlay {
-        private final String headline;
-        private final String lowerThird;
-        private final String ticker;
-        private final List<Long> clipDurationsUs;
-        private final boolean breakingNews;
-        private final ShortPalette palette;
-        private int canvasWidth;
-        private int canvasHeight;
-        private StaticLayout headlineLayout;
-        private StaticLayout lowerThirdLayout;
-        private final Paint shapePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint tickerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint photoClearPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-        NewsroomCanvasOverlay(String headline, String lowerThird, String ticker,
-                List<Long> clipDurationsUs, boolean breakingNews, int paletteIndex) {
-            super(false);
-            this.headline = headline.isEmpty() ? "أخبار العالم" : headline;
-            this.lowerThird = lowerThird;
-            this.ticker = ticker.isEmpty() ? "آخر التطورات" : ticker;
-            this.clipDurationsUs = new ArrayList<>(clipDurationsUs);
-            this.breakingNews = breakingNews;
-            this.palette = ShortPalette.from(paletteIndex);
-            tickerPaint.setColor(palette.card);
-            tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-            tickerPaint.setTextAlign(Paint.Align.LEFT);
-            blackPaint.setColor(Color.BLACK);
-            photoClearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        }
-
-        @Override public void setCanvasSize(int width, int height) {
-            super.setCanvasSize(width, height);
-            canvasWidth = width;
-            canvasHeight = height;
-            float shortSide = Math.min(width, height);
-            headlineLayout = makeTextLayout(headline, shortSide * 0.052f, width * 0.74f, 3, palette.ink);
-            lowerThirdLayout = makeTextLayout(lowerThird, shortSide * 0.029f, width * 0.74f, 2, palette.ink);
-            tickerPaint.setTextSize(shortSide * 0.026f);
-        }
-
-        @Override public void onDraw(Canvas canvas, long presentationTimeUs) {
-            int width = canvas.getWidth();
-            int height = canvas.getHeight();
-            if (width <= 0 || height <= 0) return;
-            canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-            if (canvasWidth != width || canvasHeight != height || headlineLayout == null) setCanvasSize(width, height);
-            float shortSide = Math.min(width, height);
-
-            canvas.drawColor(palette.background);
-            drawPulseCircles(canvas, presentationTimeUs, new RectF(0, 0, width, height), shortSide);
-            RectF card = new RectF(width * 0.075f, height * 0.105f, width * 0.925f, height * 0.89f);
-            shapePaint.setColor(Color.argb(58, 0, 0, 0));
-            canvas.drawRoundRect(new RectF(card.left, card.top + shortSide * 0.018f, card.right, card.bottom + shortSide * 0.018f), shortSide * 0.045f, shortSide * 0.045f, shapePaint);
-            shapePaint.setColor(palette.card);
-            canvas.drawRoundRect(card, shortSide * 0.045f, shortSide * 0.045f, shapePaint);
-
-            RectF brandBox = new RectF(width * 0.15f, height * 0.14f, width * 0.85f, height * 0.198f);
-            shapePaint.setColor(palette.softPanel);
-            canvas.drawRoundRect(brandBox, shortSide * 0.018f, shortSide * 0.018f, shapePaint);
-            tickerPaint.setColor(palette.ink);
-            tickerPaint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-            tickerPaint.setTextAlign(Paint.Align.CENTER);
-            tickerPaint.setTextSize(shortSide * 0.028f);
-            canvas.drawText("WORLD NEWS  •  أخبار العالم", brandBox.centerX(), brandBox.centerY() + shortSide * 0.010f, tickerPaint);
-
-            RectF photo = new RectF(width * 0.145f, height * 0.218f, width * 0.855f, height * 0.493f);
-            canvas.drawRoundRect(photo, shortSide * 0.027f, shortSide * 0.027f, photoClearPaint);
-            shapePaint.setColor(palette.accent);
-            canvas.drawRoundRect(new RectF(photo.left, photo.top, photo.right, photo.top + shortSide * 0.010f), shortSide * 0.005f, shortSide * 0.005f, shapePaint);
-
-            RectF badge = new RectF(width * 0.395f, height * 0.468f, width * 0.605f, height * 0.525f);
-            shapePaint.setColor(Color.argb(38, 0, 0, 0));
-            canvas.drawRoundRect(new RectF(badge.left, badge.top + shortSide * 0.006f, badge.right, badge.bottom + shortSide * 0.006f), shortSide * 0.03f, shortSide * 0.03f, shapePaint);
-            shapePaint.setColor(palette.card);
-            canvas.drawRoundRect(badge, shortSide * 0.03f, shortSide * 0.03f, shapePaint);
-            tickerPaint.setColor(palette.ink);
-            tickerPaint.setTextSize(shortSide * 0.033f);
-            canvas.drawText(breakingNews ? "عاجل" : "الآن", badge.centerX(), badge.centerY() + shortSide * 0.011f, tickerPaint);
-
-            drawCenteredLayout(canvas, headlineLayout, new RectF(width * 0.13f, height * 0.545f, width * 0.87f, height * 0.738f));
-            if (!lowerThird.isEmpty()) {
-                RectF captionBounds = new RectF(width * 0.15f, height * 0.742f, width * 0.85f, height * 0.822f);
-                drawCenteredLayout(canvas, lowerThirdLayout, captionBounds);
-            }
-
-            float footerTop = height * 0.848f;
-            Path cardClip = new Path();
-            cardClip.addRoundRect(card, shortSide * 0.045f, shortSide * 0.045f, Path.Direction.CW);
-            canvas.save();
-            canvas.clipPath(cardClip);
-            shapePaint.setColor(palette.footer);
-            canvas.drawRect(card.left, footerTop, card.right, card.bottom, shapePaint);
-            shapePaint.setColor(palette.accent);
-            canvas.drawRect(card.left, footerTop, card.right, footerTop + shortSide * 0.007f, shapePaint);
-            tickerPaint.setTextAlign(Paint.Align.LEFT);
-            tickerPaint.setColor(palette.card);
-            tickerPaint.setTextSize(shortSide * 0.026f);
-            String movingText = "  " + ticker + "   •   WORLD NEWS   •   " + ticker + "  ";
-            float textWidth = tickerPaint.measureText(movingText);
-            canvas.save();
-            canvas.clipRect(card.left, footerTop, card.right, card.bottom);
-            if (textWidth > 0f) {
-                float offset = VideoTransitionMath.tickerOffset(presentationTimeUs, textWidth, shortSide * 0.09f);
-                float baseline = footerTop + (card.bottom - footerTop) * 0.68f;
-                for (float x = card.right - offset; x > card.left - textWidth; x -= textWidth) canvas.drawText(movingText, x, baseline, tickerPaint);
-            }
-            canvas.restore();
-            canvas.restore();
-
-            long localTimeUs = 0L;
-            long clipEndUs = 0L;
-            boolean hasKnownDurations = false;
-            for (Long clipDurationUs : clipDurationsUs) {
-                long durationUs = clipDurationUs == null ? 0L : clipDurationUs;
-                if (durationUs <= 0L) continue;
-                hasKnownDurations = true;
-                clipEndUs += durationUs;
-                if (presentationTimeUs <= clipEndUs) {
-                    localTimeUs = Math.max(0L, presentationTimeUs - (clipEndUs - durationUs));
-                    int alpha = VideoTransitionMath.blackAlphaAt(localTimeUs, durationUs);
-                    if (alpha > 0) {
-                        blackPaint.setAlpha(alpha);
-                        canvas.drawRect(0, 0, width, height, blackPaint);
-                        blackPaint.setAlpha(255);
-                    }
-                    break;
-                }
-            }
-            if (!hasKnownDurations) {
-                int alpha = VideoTransitionMath.blackAlphaAt(presentationTimeUs, 0L);
-                if (alpha > 0) {
-                    blackPaint.setAlpha(alpha);
-                    canvas.drawRect(0, 0, width, height, blackPaint);
-                    blackPaint.setAlpha(255);
-                }
-            }
-        }
-
-        private void drawPulseCircles(Canvas canvas, long timeUs, RectF block, float shortSide) {
-            Paint pulse = new Paint(Paint.ANTI_ALIAS_FLAG);
-            pulse.setStyle(Paint.Style.STROKE);
-            pulse.setStrokeWidth(Math.max(2f, shortSide * 0.004f));
-            float time = (timeUs / 1_000_000f) % 2.6f;
-            float[] centers = {widthOf(block) * 0.78f, widthOf(block) * 0.20f, widthOf(block) * 0.62f};
-            float[] y = {block.top + shortSide * 0.27f, block.top + shortSide * 0.58f, block.top + shortSide * 0.53f};
-            float[] phase = {0f, 0.8f, 1.5f};
-            for (int i = 0; i < centers.length; i++) {
-                float p = (time + phase[i]) % 2.6f;
-                float radius = shortSide * (0.035f + 0.34f * p / 2.6f);
-                pulse.setColor(Color.argb((int) (125f * (1f - p / 2.6f)), 255, 150, 150));
-                canvas.drawCircle(centers[i], y[i], radius, pulse);
-                pulse.setColor(Color.argb((int) (80f * (1f - p / 2.6f)), 255, 220, 180));
-                canvas.drawCircle(centers[i], y[i], radius * 0.52f, pulse);
-            }
-        }
-
-        private float widthOf(RectF value) { return value.right; }
-
-        private StaticLayout makeTextLayout(String value, float textSize, float layoutWidth, int maxLines, int textColor) {
-            android.text.TextPaint paint = new android.text.TextPaint(Paint.ANTI_ALIAS_FLAG);
-            paint.setColor(textColor);
-            paint.setTextSize(textSize);
-            paint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-            return StaticLayout.Builder.obtain(value, 0, value.length(), paint, Math.max(1, (int) layoutWidth))
-                    .setAlignment(Layout.Alignment.ALIGN_CENTER)
-                    .setTextDirection(TextDirectionHeuristics.RTL)
-                    .setIncludePad(false)
-                    .setMaxLines(maxLines)
-                    .setEllipsize(TextUtils.TruncateAt.END)
-                    .build();
-        }
-
-        private void drawCenteredLayout(Canvas canvas, StaticLayout layout, RectF bounds) {
-            if (layout == null) return;
-            float y = bounds.top + Math.max(0f, (bounds.height() - layout.getHeight()) / 2f);
-            canvas.save();
-            canvas.translate(bounds.left + (bounds.width() - layout.getWidth()) / 2f, y);
-            layout.draw(canvas);
-            canvas.restore();
         }
     }
 
@@ -844,6 +618,43 @@ public final class VideoStudioActivity extends Activity {
     private String humanSize(long bytes) {
         if (bytes < 1024L * 1024L) return (bytes / 1024L) + " كيلوبايت";
         return String.format(java.util.Locale.US, "%.1f ميغابايت", bytes / (1024.0 * 1024.0));
+    }
+
+    private void showExportErrorDetails(Exception error) {
+        String details = "نسخة التطبيق: " + BuildConfig.VERSION_NAME
+                + "\nإصدار Android: " + android.os.Build.VERSION.RELEASE
+                + " (API " + android.os.Build.VERSION.SDK_INT + ")"
+                + "\nعدد ملفات الوسائط: " + mediaUris.size()
+                + "\nتعليق صوتي: " + (audioUri == null ? "لا" : "نعم")
+                + "\nموسيقى خلفية: " + (musicUri == null ? "لا" : "نعم")
+                + "\n\n" + VideoExportDiagnostics.format(error);
+        TextView body = text(details, 12, WHITE, false);
+        body.setTextIsSelectable(true);
+        body.setTextDirection(View.TEXT_DIRECTION_LTR);
+        body.setGravity(Gravity.LEFT);
+        body.setPadding(dp(10), dp(8), dp(10), dp(8));
+        ScrollView scroll = new ScrollView(this);
+        scroll.setFillViewport(false);
+        scroll.addView(body);
+        LinearLayout panel = new LinearLayout(this);
+        panel.setOrientation(LinearLayout.VERTICAL);
+        panel.setPadding(dp(8), dp(4), dp(8), dp(4));
+        panel.addView(scroll, new LinearLayout.LayoutParams(-1, dp(360)));
+        new AlertDialog.Builder(this)
+                .setTitle("تفاصيل خطأ إنشاء MP4")
+                .setView(panel)
+                .setPositiveButton("نسخ التقرير", (dialog, which) -> {
+                    android.content.ClipboardManager clipboard = (android.content.ClipboardManager)
+                            getSystemService(CLIPBOARD_SERVICE);
+                    if (clipboard != null) {
+                        clipboard.setPrimaryClip(android.content.ClipData.newPlainText(
+                                "World News video export diagnostics", details));
+                        android.widget.Toast.makeText(this, "تم نسخ تقرير الخطأ.",
+                                android.widget.Toast.LENGTH_LONG).show();
+                    }
+                })
+                .setNegativeButton("إغلاق", null)
+                .show();
     }
 
     private String safeMessage(Exception error) {

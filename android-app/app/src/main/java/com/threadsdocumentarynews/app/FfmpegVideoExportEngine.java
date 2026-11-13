@@ -43,8 +43,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * On-device FFmpeg export backend. Media is read through Android SAF and all
- * intermediate files stay in the app cache. Media3 remains a coordinator fallback.
+ * On-device FFmpeg-only export backend. Media is read through Android SAF and all
+ * intermediate files stay in the app cache.
  */
 public final class FfmpegVideoExportEngine implements VideoExportEngine {
     private static final int FPS = 30;

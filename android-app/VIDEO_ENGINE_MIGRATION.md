@@ -1,28 +1,18 @@
-# Video engine migration plan
+# Video export architecture — World News 1.6.5
 
-## Verified baseline (2026-11-11)
+## Current implementation
 
-- Android Gradle Plugin 8.9.0, Gradle 8.11.1, Kotlin 2.1.20.
-- VideoStudioActivity currently contains both the screen UI and the Media3 export pipeline.
-- The existing exporter assembles images and video clips, crops to portrait 9:16 or landscape 16:9, draws the headline/lower-third/ticker overlay, optionally adds narration and a lower-volume music track, and writes H.264/AAC MP4 locally.
-- Media3 dependencies are declared in the app module.
-- Existing unit tests cover transition, ticker, and music-gain calculations. No export-engine integration tests were found.
-- No FFmpeg native engine or native FFmpeg libraries are currently integrated.
+- FFmpegKitNext 9.0.2 is the app's only video-export engine. `VideoStudioActivity` invokes `FfmpegVideoExportEngine` directly.
+- The Media3 exporter, fallback coordinator, and Media3 Gradle dependencies have been removed. A failed export now reports the FFmpeg error directly rather than switching to another backend.
+- The in-app diagnostic dialog displays the exception chain, Android/app version, selected-media count, and optional-audio flags. It can copy a bounded, credential-redacted report to the clipboard.
+- FFmpegKitNext is built for `arm64-v8a` with `libx264`; the APK workflow restores the verified AAR artifact, runs Android unit tests, builds the debug APK, verifies its signature and package version, and uploads the APK artifact.
 
-## Safety rules
+## Validation boundaries
 
-1. Keep the current Media3 exporter intact as a fallback until the replacement passes real-device tests.
-2. Extract an export request/progress/result contract so the Activity handles UI only.
-3. Add FFmpeg as a separate backend rather than rewriting the Activity in place.
-4. Test URI access, codec compatibility, durations, portrait and landscape output, Arabic text, audio mixing, cancellation, low-storage failures, and playback.
-5. Do not remove Media3 until FFmpeg has passed device tests and the fallback decision is explicit.
-6. Review native binary provenance, ABI coverage, LGPL/GPL configuration, and redistribution obligations before bundling FFmpeg.
+CI verifies dependency resolution, unit tests, APK assembly, package metadata, and APK signing. These checks do not prove that every user-selected source file can be decoded or that MP4 export works on a physical phone.
 
-## Staged implementation
+The owner has reported an on-device MP4 export failure. The diagnostic report is intended to capture the exact FFmpeg stage and native error so that the failing input or operation can be corrected. Until that phone-level export succeeds, do not describe MP4 runtime export as verified.
 
-- Stage 1: extract a stable export-engine contract while preserving current behavior.
-- Stage 2: implement the FFmpeg native backend behind that contract.
-- Stage 3: compare output and failure handling on real Android devices; retain Media3 fallback.
-- Stage 4: switch the default only after tests pass; remove unused dependencies only in a later cleanup.
+## Distribution note
 
-This file records the migration plan only. It does not claim FFmpeg has been integrated or that an APK has been built.
+The bundled FFmpeg configuration enables `libx264` and GPL components. Review the applicable license notices and distribution obligations before public distribution. Debug APKs are for owner preview, not production release.
