@@ -38,7 +38,7 @@ ALLOWED_FEED_HOSTS = {
     "dailynewsegypt.com",
     "www.egyptindependent.com",
 }
-GENERIC_IMAGE_PATH_MARKERS = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "gemini_generated_image", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-")
+GENERIC_IMAGE_PATH_MARKERS = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-")
 RSS_NO_DETAILS = "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط."
 
 

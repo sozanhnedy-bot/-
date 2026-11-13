@@ -60,7 +60,7 @@ def safe_external_url(value: object, *, image: bool = False) -> str:
         return ""
     host = parsed.hostname.lower().removeprefix("www.")
     if image:
-        generic_path_markers = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "gemini_generated_image", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-")
+        generic_path_markers = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-")
         if any(marker in parsed.path.lower() for marker in generic_path_markers):
             return ""
         if host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com")):

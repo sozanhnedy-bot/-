@@ -116,12 +116,15 @@ class NewsParsingTests(unittest.TestCase):
             "https://www.ewtnnews.com/EWTNNewsLogo.png",
             "https://techreviewafrica.com/assets/images/seo/633592b1b61361664455345.jpeg",
             "https://www.aljazeera.net/images/aljazeera-arabic-social-preview-v2.jpg",
-            "https://amayei.nyc3.digitaloceanspaces.com/2026/11/Gemini_Generated_Image_example.jpeg",
             "https://www.business-standard.com/assets/web-assets/images/Business_Standard_1_685x385.jpg",
             "https://alghad.com/App_Images/default.jpg",
             "https://ewscripps.brightspotcdn.com/x/poster-image-2026-04-24t163310-389.jpg",
         ):
             self.assertEqual(_safe_image_url(url, "image"), "", url)
+        self.assertEqual(
+            _safe_image_url("https://amayei.nyc3.digitaloceanspaces.com/2026/11/Gemini_Generated_Image_example.jpeg", "image"),
+            "https://amayei.nyc3.digitaloceanspaces.com/2026/11/Gemini_Generated_Image_example.jpeg",
+        )
 
     def test_clean_text_unescapes_entities_and_collapses_whitespace(self):
         self.assertEqual(clean_text("<p>أخبار&nbsp; &amp; تفاصيل</p>"), "أخبار & تفاصيل")

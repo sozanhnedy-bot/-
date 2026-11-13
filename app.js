@@ -33,7 +33,7 @@ function safeImage(value) {
     const googleImage = host === "google.com" || host.endsWith(".google.com")
       || host.endsWith(".googleusercontent.com") || host.endsWith(".gstatic.com");
     const path = decodeURIComponent(url.pathname).toLowerCase();
-    const genericImage = ["logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "gemini_generated_image", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-"].some((marker) => path.includes(marker));
+    const genericImage = ["logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-"].some((marker) => path.includes(marker));
     if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && !googleImage && !genericImage) return url.href;
   } catch (_) { }
   return "";

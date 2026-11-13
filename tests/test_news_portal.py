@@ -171,8 +171,8 @@ class BuildAndBrowserTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         page = (root / "index.html").read_text(encoding="utf-8")
         worker = (root / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn("app.js?v=20261113-publisher-photos-v2", page)
-        self.assertIn('const CACHE_NAME = "world-news-v8-publisher-photos";', worker)
+        self.assertIn("app.js?v=20261113-publisher-photos-v3", page)
+        self.assertIn('const CACHE_NAME = "world-news-v9-publisher-photos";', worker)
 
     def test_homepage_has_no_browser_task_link_or_trend_monitor(self):
         root = Path(__file__).resolve().parents[1]
