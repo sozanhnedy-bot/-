@@ -59,7 +59,9 @@ def clean_text(value: str | None) -> str:
 
 
 def _local_name(tag: str) -> str:
-    return tag.rsplit("}", 1)[-1].lower()
+    # ElementTree expands declared namespaces to {uri}name, while some feeds
+    # and test fixtures may retain a literal prefix. Support both forms.
+    return tag.rsplit("}", 1)[-1].rsplit(":", 1)[-1].lower()
 
 
 def _child_text(node: ET.Element, names: Iterable[str]) -> str:
