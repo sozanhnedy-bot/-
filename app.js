@@ -11,6 +11,11 @@ const HOME_CATEGORIES = [
   { id: "politics", title: "سياسة" }, { id: "economy", title: "اقتصاد" },
   { id: "technology", title: "تكنولوجيا" }, { id: "sports", title: "رياضة" },
 ];
+const CATEGORY_ICON_IMAGES = {
+  egypt: "./assets/reference-technology.jpg", arab: "./assets/reference-entertainment.jpg", world: "./assets/reference-lead.jpg",
+  politics: "./assets/reference-wildfire.jpg", economy: "./assets/reference-market.jpg", technology: "./assets/reference-technology.jpg",
+  sports: "./assets/reference-sports.jpg",
+};
 const REFERENCE_IMAGES = {
   world: ["./assets/reference-lead.jpg", "./assets/reference-wildfire.jpg", "./assets/reference-entertainment.jpg", "./assets/reference-market.jpg"],
   arab: ["./assets/reference-entertainment.jpg", "./assets/reference-market.jpg", "./assets/reference-sports.jpg"],
@@ -280,26 +285,22 @@ function renderLatest(records) {
 function renderSections(records) {
   const host = $("#category-sections");
   host.replaceChildren();
+  const section = el("section", "portal-category-section");
+  const heading = el("div", "portal-section-title");
+  heading.append(el("div", "", ""));
+  heading.firstChild.append(el("p", "eyebrow", "تصفح الأقسام"), el("h2", "", "أقسام World News"));
+  section.append(heading);
+  const list = el("div", "portal-category-icon-list");
   HOME_CATEGORIES.forEach(({ id, title }) => {
-    const entries = records.filter((record) => (record.category === id || record.region === id) && (!state.query || matches(record))).slice(0, 3);
-    if (!entries.length) return;
-    const section = el("section", "portal-category-section");
-    section.id = `category-${id}`;
-    const heading = el("div", "portal-section-title");
-    const titleBox = el("div");
-    titleBox.append(el("p", "eyebrow", "آخر التغطيات المنشورة"), el("h2", "", title));
-    heading.append(titleBox);
-    const more = document.createElement("a");
-    more.className = "text-link";
-    more.href = `./section.html?category=${encodeURIComponent(id)}`;
-    more.textContent = "عرض القسم ←";
-    heading.append(more);
-    section.append(heading);
-    const grid = el("div", "portal-card-grid");
-    entries.forEach((record) => grid.append(articleCard(record)));
-    section.append(grid);
-    host.append(section);
+    const count = records.filter((record) => record.category === id || record.region === id).length;
+    const link = el("a", "portal-category-icon");
+    link.href = `./section.html?category=${encodeURIComponent(id)}`;
+    const image = document.createElement("img");
+    image.src = CATEGORY_ICON_IMAGES[id]; image.alt = `صورة قسم ${title}`; image.loading = "lazy";
+    link.append(image, el("span", "portal-category-icon-copy", title), el("small", "portal-category-icon-count", `${count.toLocaleString("ar-EG")} أخبار`));
+    list.append(link);
   });
+  section.append(list); host.append(section);
 }
 function renderReportsAndVideos(records) {
   const reports = records.filter((record) => record.report);
