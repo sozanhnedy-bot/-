@@ -58,6 +58,9 @@ def safe_external_url(value: object, *, image: bool = False) -> str:
         return ""
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
+    host = parsed.hostname.lower().removeprefix("www.")
+    if image and (host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com"))):
+        return ""
     return candidate
 
 
