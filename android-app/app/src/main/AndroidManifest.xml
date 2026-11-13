@@ -9,8 +9,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false">
+        <meta-data
+            android:name="firebase_app_check_debug_token"
+            android:value="${firebaseAppCheckDebugToken}" />
+        <activity
+            android:name=".VideoStudioActivity"
+            android:exported="false" />
         <activity
             android:name=".TaskAssistantActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RadarActivity"
             android:exported="false" />
         <activity
             android:name=".PortalActivity"

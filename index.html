@@ -20,7 +20,7 @@
   <link rel="icon" href="./assets/brand-mark.png" type="image/png">
   <link rel="stylesheet" href="./styles.css?v=20261107-images">
   <link rel="stylesheet" href="./styles-newspaper-overrides.css?v=20261114-newspaper">
-  <script defer src="./app.js?v=20261107-images"></script>
+  <script defer src="./app.js?v=20261113-publisher-photos-v3"></script>
 </head>
 <body class="portal-body">
   <a class="skip-link" href="#main">انتقل إلى الأخبار</a>
@@ -65,11 +65,7 @@
       <nav class="portal-region-filters" aria-label="تصفية حسب المنطقة"><button class="filter-button is-active" type="button" data-region="all" aria-pressed="true">كل المناطق</button><button class="filter-button" type="button" data-region="egypt" aria-pressed="false">مصر</button><button class="filter-button" type="button" data-region="arab" aria-pressed="false">العالم العربي</button><button class="filter-button" type="button" data-region="world" aria-pressed="false">العالم</button></nav>
       <div class="portal-latest-layout">
         <div id="news-list" class="portal-news-list" aria-live="polite"></div>
-        <aside class="portal-most-read" aria-labelledby="most-read-heading">
-          <h3 id="most-read-heading">الأكثر قراءة</h3>
-          <ol id="most-read-list"></ol>
-          <div class="portal-market-box"><strong>لقطة السوق</strong><span>متابعة مختصرة للمؤشرات والأخبار الاقتصادية.</span><b>آخر تحديث: مباشر</b></div>
-        </aside>
+        <aside class="portal-most-read" aria-labelledby="most-read-heading"><h3 id="most-read-heading">الأكثر قراءة</h3><ol id="most-read-list"></ol><div class="portal-market-box"><strong>لقطة السوق</strong><span>متابعة مختصرة للمؤشرات والأخبار الاقتصادية.</span><b>آخر تحديث: مباشر</b></div></aside>
       </div>
       <div id="empty-state" class="empty-state" hidden><h3>لا توجد أخبار حديثة مطابقة</h3><p>عدّل كلمة البحث أو المنطقة، أو راجع الأرشيف للاطلاع على المواد السابقة.</p></div>
     </section>
@@ -79,15 +75,7 @@
     <section id="reports-section" class="portal-extra-section" aria-labelledby="reports-heading" hidden><div class="portal-section-title"><div><p class="eyebrow">تحرير ومراجعة</p><h2 id="reports-heading">تقارير ووثائقيات</h2></div><a class="text-link" href="./section.html?category=reports">جميع التقارير <span aria-hidden="true">←</span></a></div><div id="reports-list" class="portal-card-grid"></div></section>
     <section id="videos-section" class="portal-extra-section" aria-labelledby="videos-heading" hidden><div class="portal-section-title"><div><p class="eyebrow">محتوى مرئي</p><h2 id="videos-heading">فيديوهات</h2></div><a class="text-link" href="./videos.html">مكتبة الفيديو <span aria-hidden="true">←</span></a></div><div id="videos-list" class="portal-card-grid"></div></section>
 
-    <section class="portal-featured-video" aria-labelledby="featured-video-heading">
-      <div class="portal-featured-heading"><div><p class="eyebrow">شاهد World News</p><h2 id="featured-video-heading">فيديو مميز</h2></div><p>وثائقيات وموجزات مختارة من غرفة الأخبار.</p></div>
-      <div class="portal-video-grid">
-        <a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/world.jpg" alt="مشهد من العالم" loading="lazy"><span class="portal-play">▶</span><strong>قراءة سريعة لأبرز أخبار العالم اليوم</strong></a>
-        <a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/technology.jpg" alt="مشهد تقني" loading="lazy"><span class="portal-play">▶</span><strong>كيف تغيّر التكنولوجيا طريقة عملنا؟</strong></a>
-        <a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/economy.jpg" alt="مشهد اقتصادي" loading="lazy"><span class="portal-play">▶</span><strong>أسواق العالم وما وراء الأرقام</strong></a>
-      </div>
-    </section>
-
+    <section class="portal-featured-video" aria-labelledby="featured-video-heading"><div class="portal-featured-heading"><div><p class="eyebrow">شاهد World News</p><h2 id="featured-video-heading">فيديو مميز</h2></div><p>وثائقيات وموجزات مختارة من غرفة الأخبار.</p></div><div class="portal-video-grid"><a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/world.jpg" alt="مشهد من العالم" loading="lazy"><span class="portal-play">▶</span><strong>قراءة سريعة لأبرز أخبار العالم اليوم</strong></a><a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/technology.jpg" alt="مشهد تقني" loading="lazy"><span class="portal-play">▶</span><strong>كيف تغيّر التكنولوجيا طريقة عملنا؟</strong></a><a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/economy.jpg" alt="مشهد اقتصادي" loading="lazy"><span class="portal-play">▶</span><strong>أسواق العالم وما وراء الأرقام</strong></a></div></section>
     <section class="portal-newsletter" aria-labelledby="newsletter-heading"><p class="eyebrow">الموجز الصباحي</p><h2 id="newsletter-heading">ابقَ على اطلاع</h2><p>ملخص واحد واضح لأهم القصص التي تستحق وقتك.</p><form onsubmit="return false"><input type="email" aria-label="بريدك الإلكتروني" placeholder="بريدك الإلكتروني"><button type="submit">اشترك</button></form><small>لا رسائل مزعجة · إلغاء الاشتراك في أي وقت</small></section>
 
     <section class="portal-about" aria-label="المنهج التحريري"><img class="portal-about-mark" src="./assets/brand-mark.png" alt=""><div><p class="eyebrow">المعايير التحريرية</p><h2>المعلومة ومصدرها في المقدمة</h2><p>نرتب المواد بحسب تاريخ النشر ونذكر اسم الناشر عند توفره. يظل موجز RSS موجزًا ولا يُعرض كتقرير تحليلي كامل؛ أما التقارير التحريرية فتُنشر داخل الموقع مع الإشارة إلى مصادرها. لا نضيف تفاصيل أو صورًا لا تسندها البيانات المتاحة.</p></div></section>

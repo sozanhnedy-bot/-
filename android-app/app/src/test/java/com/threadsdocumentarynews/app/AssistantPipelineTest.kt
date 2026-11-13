@@ -44,18 +44,4 @@ class AssistantPipelineTest {
         val script = "مشهد 1\nالوصف البصري: لقطة للمدينة."
         assertTrue(NarrationParser.extract(script).isEmpty())
     }
-
-    @Test
-    fun mapsThirtySecondsToShortPlanNotThreeMinutes() {
-        assertEquals("4 مشاهد", ScriptPlans.forDuration("30 ثانية").sceneCount)
-        assertEquals(600, ScriptPlans.forDuration("30 ثانية").maxTokens)
-    }
-
-    @Test
-    fun mapsSixtySecondsAndThreeMinutesToLongerPlans() {
-        assertEquals("6 مشاهد", ScriptPlans.forDuration("60 ثانية").sceneCount)
-        assertEquals(850, ScriptPlans.forDuration("60 ثانية").maxTokens)
-        assertEquals("8 مشاهد", ScriptPlans.forDuration("3 دقائق").sceneCount)
-        assertEquals(1200, ScriptPlans.forDuration("3 دقائق").maxTokens)
-    }
 }

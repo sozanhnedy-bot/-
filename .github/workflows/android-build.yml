@@ -1,25 +1,67 @@
-name: Android APK build
+name: Android pull request checks
+
 on:
   pull_request:
     paths:
       - 'android-app/**'
       - '.github/workflows/android-build.yml'
   workflow_dispatch:
+
 permissions:
   contents: read
+  actions: read
+
+env:
+  ANDROID_HOME: /usr/local/lib/android/sdk
+  ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+
 jobs:
-  assemble-debug:
-    runs-on: ubuntu-latest
+  test-and-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+      FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+      FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+      FIREBASE_DEBUG_TOKEN: ${{ secrets.FIREBASE_DEBUG_TOKEN }}
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-      - name: Set up Java 17
-        uses: actions/setup-java@v4
+      - name: Check out source
+        uses: actions/checkout@v7
+
+      - name: Download FFmpegKitNext Maven repository
+        uses: actions/download-artifact@v4
+        with:
+          name: ffmpeg-kit-next-9.0.2-android-arm64
+          path: android-app/ffmpegkitnext-maven
+          repository: ${{ github.repository }}
+          run-id: 43064503988
+          github-token: ${{ github.token }}
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: '17'
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
-      - name: Build debug APK
+          java-version: '21'
+          cache: gradle
+          cache-dependency-path: android-app/**/*.gradle*
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platforms;android-35 build-tools;35.0.0'
+
+      - name: Download pinned sherpa-onnx AAR
+        working-directory: android-app/app/libs
+        run: |
+          curl --fail --location --retry 3 \
+            https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-2.0.1.aar \
+            --output sherpa-onnx-2.0.1.aar
+          echo 'a8d09d1d32f3eb8520482c6d3d43fae674681c5b050385967c70a3c2c9bf0ee7  sherpa-onnx-2.0.1.aar' | sha256sum --check
+
+      - name: Run Android JVM unit tests
         working-directory: android-app
-        run: chmod +x ./gradlew && ./gradlew --no-daemon assembleDebug
+        run: ./gradlew --no-daemon testDebugUnitTest
+
+      - name: Assemble debug APK for compile verification
+        working-directory: android-app
+        run: ./gradlew --no-daemon assembleDebug

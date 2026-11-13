@@ -1,14 +1,115 @@
 {
   "max_items_per_feed": 12,
   "feeds": [
-    {"name":"أخبار العالم بالعربية","region":"world","category":"world","url":"https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
-    {"name":"World News","region":"world","category":"world","url":"https://news.google.com/rss/search?q=world%20news&hl=en&gl=US&ceid=US:en","enabled":true},
-    {"name":"أخبار الشرق الأوسط","region":"arab","category":"arab","url":"https://news.google.com/rss/search?q=Middle%20East%20news&hl=en&gl=GB&ceid=GB:en","enabled":true},
-    {"name":"أخبار مصر","region":"egypt","category":"egypt","url":"https://news.google.com/rss?hl=ar&gl=EG&ceid=EG:ar","enabled":true},
-    {"name":"أخبار الخليج","region":"arab","category":"arab","url":"https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC&hl=ar&gl=SA&ceid=SA:ar","enabled":true},
-    {"name":"أخبار السياسة","region":"world","category":"politics","url":"https://news.google.com/rss/search?q=politics%20news&hl=en&gl=US&ceid=US:en","enabled":true},
-    {"name":"أخبار الاقتصاد","region":"world","category":"economy","url":"https://news.google.com/rss/search?q=%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
-    {"name":"أخبار الرياضة","region":"world","category":"sports","url":"https://news.google.com/rss/search?q=%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9&hl=ar&gl=EG&ceid=EG:ar","enabled":true},
-    {"name":"أخبار التكنولوجيا","region":"world","category":"technology","url":"https://news.google.com/rss/search?q=technology%20news&hl=en&gl=US&ceid=US:en","enabled":true}
+    {
+      "name": "BBC News",
+      "region": "arab",
+      "category": "arab",
+      "url": "https://feeds.bbci.co.uk/arabic/rss.xml",
+      "source_url": "https://www.bbc.com/arabic",
+      "enabled": true
+    },
+    {
+      "name": "BBC News",
+      "region": "world",
+      "category": "world",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "source_url": "https://www.bbc.com/news",
+      "enabled": true
+    },
+    {
+      "name": "الجزيرة نت",
+      "region": "arab",
+      "category": "arab",
+      "url": "https://www.aljazeera.net/aljazeerarss/a7c186be-1baa-4bd4-9d80-a84db769f779/73d0e1b4-532f-45ef-b135-bfdff8b8cab9",
+      "source_url": "https://www.aljazeera.net",
+      "enabled": true
+    },
+    {
+      "name": "Daily News Egypt",
+      "region": "egypt",
+      "category": "egypt",
+      "url": "https://dailynewsegypt.com/feed/",
+      "source_url": "https://dailynewsegypt.com",
+      "enabled": true
+    },
+    {
+      "name": "Egypt Independent",
+      "region": "egypt",
+      "category": "egypt",
+      "url": "https://www.egyptindependent.com/feed/",
+      "source_url": "https://www.egyptindependent.com",
+      "enabled": true
+    },
+    {
+      "name": "أخبار العالم بالعربية",
+      "region": "world",
+      "category": "world",
+      "url": "https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85&hl=ar&gl=EG&ceid=EG:ar",
+      "enabled": true
+    },
+    {
+      "name": "World News",
+      "region": "world",
+      "category": "world",
+      "url": "https://news.google.com/rss/search?q=world%20news&hl=en&gl=US&ceid=US:en",
+      "enabled": true
+    },
+    {
+      "name": "أخبار الشرق الأوسط",
+      "region": "arab",
+      "category": "arab",
+      "url": "https://news.google.com/rss/search?q=Middle%20East%20news&hl=en&gl=GB&ceid=GB:en",
+      "enabled": true
+    },
+    {
+      "name": "أخبار مصر من المصادر المحلية",
+      "region": "egypt",
+      "category": "egypt",
+      "url": "https://news.google.com/rss/search?q=%28site%3Ayoum7.com%20OR%20site%3Amasrawy.com%20OR%20site%3Aalmasryalyoum.com%20OR%20site%3Aahram.org.eg%20OR%20site%3Ashorouknews.com%20OR%20site%3Agate.ahram.org.eg%29%20%28%D9%85%D8%B5%D8%B1%20OR%20%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9%20OR%20%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9%20OR%20%D8%A7%D9%84%D8%A8%D8%B1%D9%84%D9%85%D8%A7%D9%86%20OR%20%D8%A7%D9%84%D8%A8%D9%86%D9%83%20%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A%29&hl=ar&gl=EG&ceid=EG:ar",
+      "enabled": true
+    },
+    {
+      "name": "أخبار مصر الرسمية والمحلية",
+      "region": "egypt",
+      "category": "egypt",
+      "url": "https://news.google.com/rss/search?q=%22%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9%20%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A9%22%20OR%20%22%D8%A7%D9%84%D8%A8%D8%B1%D9%84%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%22%20OR%20%22%D8%A7%D9%84%D8%A8%D9%86%D9%83%20%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A%20%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%22%20OR%20%22%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9%20%D9%81%D9%8A%20%D9%85%D8%B5%D8%B1%22&hl=ar&gl=EG&ceid=EG:ar",
+      "enabled": true
+    },
+    {
+      "name": "أخبار الخليج",
+      "region": "arab",
+      "category": "arab",
+      "url": "https://news.google.com/rss/search?q=%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC&hl=ar&gl=SA&ceid=SA:ar",
+      "enabled": true
+    },
+    {
+      "name": "أخبار السياسة",
+      "region": "world",
+      "category": "politics",
+      "url": "https://news.google.com/rss/search?q=politics%20news&hl=en&gl=US&ceid=US:en",
+      "enabled": true
+    },
+    {
+      "name": "أخبار الاقتصاد",
+      "region": "world",
+      "category": "economy",
+      "url": "https://news.google.com/rss/search?q=%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF&hl=ar&gl=EG&ceid=EG:ar",
+      "enabled": true
+    },
+    {
+      "name": "أخبار الرياضة",
+      "region": "world",
+      "category": "sports",
+      "url": "https://news.google.com/rss/search?q=%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9&hl=ar&gl=EG&ceid=EG:ar",
+      "enabled": true
+    },
+    {
+      "name": "أخبار التكنولوجيا",
+      "region": "world",
+      "category": "technology",
+      "url": "https://news.google.com/rss/search?q=technology%20news&hl=en&gl=US&ceid=US:en",
+      "enabled": true
+    }
   ]
 }

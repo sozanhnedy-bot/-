@@ -17,7 +17,6 @@ SITE_URL = "https://sozanhnedy-bot.github.io/-"
 ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,80}$")
 REGIONS = {"world": "العالم", "arab": "العالم العربي", "egypt": "مصر"}
 CATEGORIES = {"politics": "سياسة", "economy": "اقتصاد", "technology": "تكنولوجيا", "sports": "رياضة"}
-ILLUSTRATION_FILES = {"egypt": "egypt", "arab": "arab", "world": "world", "politics": "politics", "economy": "economy", "technology": "technology", "sports": "sports"}
 BRAND = "World News"
 ARABIC_BRAND = "أخبار العالم"
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)$", re.IGNORECASE)
@@ -59,9 +58,25 @@ def safe_external_url(value: object, *, image: bool = False) -> str:
         return ""
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
-    if image and not IMAGE_EXT_RE.search(parsed.path):
-        return ""
+    host = parsed.hostname.lower().removeprefix("www.")
+    if image:
+        generic_path_markers = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-")
+        if any(marker in parsed.path.lower() for marker in generic_path_markers):
+            return ""
+        if host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com")):
+            return ""
     return candidate
+
+
+def _reused_image_urls(items: list[dict]) -> set[str]:
+    counts: dict[str, int] = {}
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        url = safe_external_url(item.get("image_url"), image=True)
+        if url:
+            counts[url] = counts.get(url, 0) + 1
+    return {url for url, count in counts.items() if count >= 3}
 
 
 def date_label(value: str) -> str:
@@ -72,7 +87,7 @@ def date_label(value: str) -> str:
         return ""
 
 
-def render(item: dict, all_items: list[dict] | None = None) -> str:
+def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: set[str] | None = None) -> str:
     raw_id = text(item.get("id"), 80)
     if not ID_RE.fullmatch(raw_id):
         raise ValueError("unsafe news ID")
@@ -86,7 +101,7 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
         summary = ""
     if excerpt in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
         excerpt = ""
-    details = excerpt or summary
+    details = text(item.get("article_content"), 8_000) or excerpt or summary
     dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
     region = REGIONS.get(text(item.get("region")), "العالم")
     category_key = text(item.get("category"), 30)
@@ -94,15 +109,27 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
     image_url = safe_external_url(item.get("image_url"), image=True)
-    illustration_file = ILLUSTRATION_FILES.get(category_key, "world") + ".jpg"
-    image_src = image_url or f"../assets/news-illustrations/{illustration_file}"
+    if shared_image_urls is None and all_items:
+        shared_image_urls = _reused_image_urls(all_items)
+    if image_url and image_url in (shared_image_urls or set()):
+        image_url = ""
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
-    preview_image = image_url or f"{SITE_URL}/assets/news-illustrations/{illustration_file}"
-    image_alt = title if image_url else f"رسم توضيحي لقسم {category}؛ ليس صورة للحدث"
-    image_caption = f"الصورة: {source} · من موجز الناشر" if image_url else f"رسم توضيحي لقسم {category}؛ لا يصوّر الحدث نفسه."
+    illustration_key = category_key if category_key in {"politics", "economy", "technology", "sports"} else text(item.get("region"), 30)
+    if illustration_key not in {"world", "arab", "egypt", "politics", "economy", "technology", "sports"}:
+        illustration_key = "world"
+    illustration_path = f"../assets/news-illustrations/{illustration_key}.jpg"
+    preview_image = image_url or f"{SITE_URL}/assets/news-illustrations/{illustration_key}.jpg"
     image_markup = (
-        f'<figure class="article-figure"><img src="{e(image_src, quote=True)}" alt="{e(image_alt, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>{e(image_caption)}</figcaption></figure>'
+        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة المرفقة من مصدر الخبر: {e(source)}</figcaption></figure>'
+        if image_url else
+        f'<figure class="article-figure"><img src="{e(illustration_path, quote=True)}" alt="{e(category, quote=True)}" loading="lazy"><figcaption>رسم توضيحي لقسم {e(region)}؛ لا يصوّر الحدث نفسه</figcaption></figure>'
+    )
+    detail_paragraphs = "".join(f"<p>{e(part)}</p>" for part in details.splitlines() if part.strip())
+    details_markup = (
+        f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2>{detail_paragraphs}</section>'
+        if detail_paragraphs else
+        '<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>المصدر لم يرفق تفاصيل كافية داخل موجز الأخبار حتى الآن. يمكنك فتح الخبر من المصدر الأصلي للاطلاع على النص الكامل.</p></section>'
     )
     source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
     related_items = []
@@ -128,7 +155,7 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#14283f"><meta name="description" content="{description}">
   <meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)} | {BRAND}">
-  <meta property="og:description" content="{description}"><meta property="og:image" content="{e(preview_image, quote=True)}">
+  <meta property="og:description" content="{description}">{f'<meta property="og:image" content="{e(preview_image, quote=True)}">' if preview_image else ''}
   <meta name="twitter:card" content="summary_large_image"><title>{e(title)} | {BRAND}</title>
   <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images">
 </head>
@@ -139,7 +166,7 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
       {f'<p class="article-dek">{e(dek)}</p>' if dek else ''}<div class="article-meta">{source_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>
     </header>
     {image_markup}
-    {f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>{e(details)}</p></section>' if details else ''}
+    {details_markup}
     {related_markup}
   </article></main><footer class="site-footer"><div class="footer-brand">{BRAND}</div><p>الناشر مذكور بالاسم · تاريخ النشر محفوظ · القراءة داخل الموقع</p></footer>
 </body></html>'''
@@ -155,13 +182,14 @@ def build(output: Path) -> int:
         shutil.rmtree(target)
     target.mkdir(parents=True, exist_ok=True)
     rendered = 0
+    shared_image_urls = _reused_image_urls(items)
     for item in items:
         if not isinstance(item, dict) or str(item.get("id", "")) in report_ids:
             continue
         raw_id = text(item.get("id"), 80)
         if not ID_RE.fullmatch(raw_id):
             continue
-        (target / f"{raw_id}.html").write_text(render(item, items), encoding="utf-8")
+        (target / f"{raw_id}.html").write_text(render(item, items, shared_image_urls), encoding="utf-8")
         rendered += 1
     print(f"Rendered {rendered} internal news pages.")
     return rendered

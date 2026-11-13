@@ -6,7 +6,6 @@ const CATEGORY_LABELS = {
   reports: "تقارير ووثائقيات", videos: "فيديوهات",
 };
 const REGION_LABELS = { egypt: "مصر", arab: "العالم العربي", world: "العالم" };
-const ILLUSTRATION_IMAGES = { egypt: "egypt", arab: "arab", world: "world", politics: "politics", economy: "economy", technology: "technology", sports: "sports", reports: "world" };
 const HOME_CATEGORIES = [
   { id: "egypt", title: "مصر" }, { id: "arab", title: "العالم العربي" }, { id: "world", title: "العالم" },
   { id: "politics", title: "سياسة" }, { id: "economy", title: "اقتصاد" },
@@ -30,7 +29,12 @@ function safeImage(value) {
   if (/^assets\/[A-Za-z0-9._/-]+$/.test(raw) && !raw.includes("..")) return `./${raw}`;
   try {
     const url = new URL(raw);
-    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && /\.(?:jpe?g|png|webp|avif)$/i.test(url.pathname)) return url.href;
+    const host = url.hostname.toLowerCase().replace(/^www\./, "");
+    const googleImage = host === "google.com" || host.endsWith(".google.com")
+      || host.endsWith(".googleusercontent.com") || host.endsWith(".gstatic.com");
+    const path = decodeURIComponent(url.pathname).toLowerCase();
+    const genericImage = ["logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-"].some((marker) => path.includes(marker));
+    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && !googleImage && !genericImage) return url.href;
   } catch (_) { }
   return "";
 }
@@ -77,21 +81,28 @@ function recordFor(item) {
     ? report.sources.map((value) => text(value, 160)).filter(Boolean).join("، ")
     : text(item.source_name, 160);
   const title = editorialTitle(report?.title || item.title, sourceName);
+  const primarySummary = distinctSummary(
+    report?.dek || (item.summary_type === "source_notice" ? item.excerpt : item.summary),
+    title,
+    sourceName,
+  );
+  const articleSummary = !report ? distinctSummary(item.article_content, title, sourceName) : "";
+  // Never present a section illustration as if it were a photograph of this story.
+  // Show an image only when the source/report supplied a real image URL.
   const suppliedImage = safeImage(report?.image || item.image_url);
-  const imageKey = ILLUSTRATION_IMAGES[category] || "world";
-  const image = suppliedImage || `./assets/news-illustrations/${imageKey}.jpg`;
+  const image = suppliedImage;
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
     report,
     title,
-    summary: distinctSummary(report?.dek || (item.summary_type === "source_notice" ? item.excerpt : item.summary), title, sourceName),
+    summary: primarySummary || articleSummary,
     date: text(item.published_at || report?.published_at || item.created_at, 80),
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
     image,
-    imageAlt: suppliedImage ? text(report?.image_alt || item.image_alt || item.title, 300) : `رسم توضيحي لقسم ${categoryLabel}، وليس صورة للحدث`,
-    imageCaption: suppliedImage ? text(report?.image_caption || item.image_caption, 300) : "رسم توضيحي للقسم؛ لا يصوّر الحدث نفسه.",
+    imageAlt: suppliedImage ? text(report?.image_alt || item.image_alt || item.title, 300) : "",
+    imageCaption: suppliedImage ? text(report?.image_caption || item.image_caption, 300) : "",
     region,
     category,
     summaryType: report ? "editorial_report" : text(item.summary_type, 40),
@@ -102,6 +113,17 @@ function recordFor(item) {
 }
 function allRecords() {
   const items = state.news.map(recordFor).filter(Boolean);
+  const imageUses = new Map();
+  items.forEach((item) => {
+    if (item.image && !item.report) imageUses.set(item.image, (imageUses.get(item.image) || 0) + 1);
+  });
+  items.forEach((item) => {
+    if (!item.report && item.image && imageUses.get(item.image) >= 3) {
+      item.image = "";
+      item.imageAlt = "";
+      item.imageCaption = "";
+    }
+  });
   const ids = new Set(items.map((item) => item.id));
   state.reports.forEach((report) => {
     if (!report || !validId(report.id) || ids.has(report.id)) return;
@@ -130,6 +152,7 @@ function addImage(container, record, className = "portal-card-image") {
   img.alt = record.imageAlt || record.title;
   img.loading = className === "lead-story-image" ? "eager" : "lazy";
   img.decoding = "async";
+  img.addEventListener("error", () => figure.remove(), { once: true });
   figure.append(img);
   if (record.imageCaption) figure.append(el("figcaption", "portal-image-caption", record.imageCaption));
   container.append(figure);
@@ -144,7 +167,7 @@ function sourceMeta(record) {
 }
 function articleCard(record, compact = false) {
   const card = el("article", compact ? "portal-news-item" : "portal-story-card");
-  if (record.image && !compact) {
+  if (record.image) {
     const linkImage = document.createElement("a");
     linkImage.className = "portal-card-thumb-link";
     linkImage.href = record.href;

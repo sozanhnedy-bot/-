@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,7 +31,13 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.io.OutputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -38,6 +45,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public final class TaskAssistantActivity extends Activity {
+    public static final String EXTRA_RADAR_TOPIC = "com.threadsdocumentarynews.app.RADAR_TOPIC";
+    public static final String EXTRA_RADAR_SOURCE = "com.threadsdocumentarynews.app.RADAR_SOURCE";
+    public static final String EXTRA_RADAR_CONTEXT = "com.threadsdocumentarynews.app.RADAR_CONTEXT";
     private static final String RUNS_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/ai-task.yml";
     private static final String ACTIONS_URL = "https://github.com/sozanhnedy-bot/-/actions";
     private static final String SOCIAL_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/publish-social.yml";
@@ -51,7 +61,9 @@ public final class TaskAssistantActivity extends Activity {
     private static final int LINE = Color.rgb(54, 55, 64);
     private static final int CREATE_PDF_REQUEST = 4101;
     private static final int CREATE_AUDIO_REQUEST = 4102;
-    private static final long QWEN_FILE_SIZE = 491_400_032L;
+    private static final String TEST_VOICE_TEXT = "مرحبًا، هذا اختبار للصوت العربي في تطبيق أخبار العالم.";
+    private static final String[] TTS_VOICE_IDS = {"Zephyr", "Kore", "Aoede", "Achernar", "Achird", "Charon", "Puck", "Rasalgethi"};
+    private static final String[] TTS_VOICE_LABELS = {"Zephyr — نسائي، مشرق", "Kore — نسائي، ثابت", "Aoede — نسائي، هادئ", "Achernar — نسائي، ناعم", "Achird — رجالي، ودود", "Charon — رجالي، إخباري", "Puck — رجالي، حيوي", "Rasalgethi — رجالي، واضح"};
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -64,20 +76,30 @@ public final class TaskAssistantActivity extends Activity {
     private Spinner durationSpinner;
     private Spinner platformSpinner;
     private Spinner styleSpinner;
+    private Spinner voiceSpinner;
     private Button generateButton;
-    private Button scriptModelButton;
     private Button voiceModelButton;
+    private Button testGeminiButton;
+    private Button testNabraButton;
     private Button previewButton;
+    private Button continueWithVoiceButton;
+    private Button continueWithoutVoiceButton;
     private Button pdfButton;
     private Button exportAudioButton;
     private TextView status;
+    private TextView voiceTestStatus;
     private TextView socialStatus;
+    private TextView workflowStatus;
+    private Button refreshWorkflowButton;
     private MediaPlayer mediaPlayer;
+    private LinearLayout scriptOutputCard;
     private String pendingPdfText = "";
     private String pendingPdfTitle = "سكريبت World News";
     private String pendingAudioPath = "";
     private String lastVoicePath = "";
     private String lastVoiceText = "";
+    private String lastVoiceSelection = "";
+    private String lastVoiceProvider = "";
     private int selectedTab;
 
     @Override
@@ -115,6 +137,25 @@ public final class TaskAssistantActivity extends Activity {
         root.addView(buildBottomNav());
         setContentView(root);
         showTab(0);
+        String radarTopic = getIntent().getStringExtra(EXTRA_RADAR_TOPIC);
+        if (radarTopic != null && !radarTopic.trim().isEmpty() && topicInput != null) {
+            topicInput.setText(radarTopic.trim());
+            if (scriptOutput != null) scriptOutput.setText("");
+            lastVoicePath = "";
+            lastVoiceText = "";
+            lastVoiceSelection = "";
+            lastVoiceProvider = "";
+            if (exportAudioButton != null) exportAudioButton.setEnabled(false);
+            String source = getIntent().getStringExtra(EXTRA_RADAR_SOURCE);
+            status.setText("أُدرج موضوع من الرادار" + (source == null ? "" : " — " + source) + ". راجعه ثم اضغط إنشاء مسودة السكريبت.");
+            status.setTextColor(GOLD);
+            String context = getIntent().getStringExtra(EXTRA_RADAR_CONTEXT);
+            if (referenceInput != null && ((source != null && !source.isEmpty()) || (context != null && !context.isEmpty()))) {
+                referenceInput.setText("مصدر الموضوع: " + (source == null ? "الرادار" : source)
+                        + (context == null || context.isEmpty() ? "" : "\n" + context)
+                        + "\nهذه بيانات سياق أولية وليست تحققًا مستقلًا من الوقائع.");
+            }
+        }
     }
 
     private LinearLayout buildBottomNav() {
@@ -124,14 +165,19 @@ public final class TaskAssistantActivity extends Activity {
         nav.setPadding(dp(8), dp(7), dp(8), dp(7));
         nav.addView(navItem("✧\nالمساعد", 0), new LinearLayout.LayoutParams(0, dp(58), 1));
         nav.addView(navItem("▱\nالمشاريع", 1), new LinearLayout.LayoutParams(0, dp(58), 1));
-        nav.addView(navItem("◎\nالنشر", 2), new LinearLayout.LayoutParams(0, dp(58), 1));
+        nav.addView(navItem("◷\nالحالة", 2), new LinearLayout.LayoutParams(0, dp(58), 1));
+        nav.addView(navItem("◎\nالنشر", 3), new LinearLayout.LayoutParams(0, dp(58), 1));
+        nav.addView(navItem("▷\nالفيديو", 4), new LinearLayout.LayoutParams(0, dp(58), 1));
         return nav;
     }
 
     private TextView navItem(String caption, int tab) {
         TextView item = text(caption, 12, selectedTab == tab ? GOLD : MUTED, selectedTab == tab);
         item.setGravity(Gravity.CENTER);
-        item.setOnClickListener(v -> showTab(tab));
+        item.setOnClickListener(v -> {
+            if (tab == 4) startActivity(new Intent(this, VideoStudioActivity.class));
+            else showTab(tab);
+        });
         return item;
     }
 
@@ -143,6 +189,7 @@ public final class TaskAssistantActivity extends Activity {
         pageContent.removeAllViews();
         if (tab == 0) buildAssistantPage();
         else if (tab == 1) buildProjectsPage();
+        else if (tab == 2) buildWorkflowStatusPage();
         else buildSocialPage();
         scroll.scrollTo(0, 0);
     }
@@ -150,64 +197,97 @@ public final class TaskAssistantActivity extends Activity {
     private void buildAssistantPage() {
         addHero();
         LinearLayout card = card();
-        addText(card, "أنشئ سكريبت ومشاهد الفيديو", 21, TEXT, true, 0, 5);
-        addText(card, "اكتب الفكرة وأضف مراجع إن وجدت، ثم اختر المنصة والمدة والنبرة. ينشئ النموذج سكريبتًا ومشاهد قابلة للتعديل؛ وبعد تنزيل الصوت يمكن توليد التعليق وحفظه WAV أو تصدير المشروع PDF. لا تُنشئ هذه النسخة لقطات تصوير أو ملف MP4 نهائيًا.", 14, MUTED, false, 0, 12);
+        addText(card, "ابدأ بفكرة الفيديو", 21, TEXT, true, 0, 5);
+        addText(card, "اكتب الفكرة واضغط إنشاء. التفاصيل الأخرى اختيارية وتقدر تغيّرها وقت ما تحتاج.", 14, MUTED, false, 0, 12);
 
-        addLabel(card, "منصة الفيديو ونسبة العرض");
-        platformSpinner = makeSpinner(new String[]{"TikTok / Reels — عمودي 9:16", "YouTube Shorts — عمودي 9:16", "فيديو أفقي — 16:9"});
-        card.addView(platformSpinner, params(-1, dp(48), 0, 0, 0, 5));
-
-        addLabel(card, "مدة الفيديو");
-        durationSpinner = makeSpinner(new String[]{"30 ثانية", "60 ثانية", "3 دقائق"});
-        card.addView(durationSpinner, params(-1, dp(48), 0, 0, 0, 5));
-
-        addLabel(card, "نبرة النص");
-        styleSpinner = makeSpinner(new String[]{"وثائقي متزن", "حماسي", "خبري مباشر", "قصصي مشوق"});
-        card.addView(styleSpinner, params(-1, dp(48), 0, 0, 0, 5));
-
-        addLabel(card, "موضوع الفيديو");
+        addLabel(card, "عن إيه الفيديو؟");
         topicInput = new EditText(this);
         topicInput.setGravity(Gravity.TOP | Gravity.RIGHT);
+        topicInput.setTextDirection(View.TEXT_DIRECTION_RTL);
         topicInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE | android.text.InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         topicInput.setHintTextColor(Color.rgb(128, 129, 137));
         topicInput.setTextColor(TEXT);
-        topicInput.setHint("مثال: كيف أجهّز مشروعي على الهاتف؟");
-        topicInput.setTextSize(15);
+        topicInput.setHint("اكتب فكرتك بكلمات بسيطة…");
+        topicInput.setTextSize(16);
         topicInput.setMinLines(3);
         topicInput.setMaxLines(5);
-        topicInput.setPadding(dp(14), dp(12), dp(14), dp(12));
+        topicInput.setPadding(dp(14), dp(14), dp(14), dp(14));
         topicInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
         card.addView(topicInput, params(-1, -2, 0, 0, 0, 10));
 
-        addLabel(card, "مراجع أو معلومات تريد الالتزام بها — اختياري");
+        Button optionsToggle = secondaryButton("إعدادات إضافية  ·  المدة والمنصة والنبرة");
+        card.addView(optionsToggle, params(-1, dp(46), 0, 0, 0, 6));
+        LinearLayout advancedOptions = new LinearLayout(this);
+        advancedOptions.setOrientation(LinearLayout.VERTICAL);
+        advancedOptions.setVisibility(View.GONE);
+        optionsToggle.setOnClickListener(v -> {
+            boolean opening = advancedOptions.getVisibility() != View.VISIBLE;
+            advancedOptions.setVisibility(opening ? View.VISIBLE : View.GONE);
+            optionsToggle.setText(opening ? "إخفاء الإعدادات الإضافية" : "إعدادات إضافية  ·  المدة والمنصة والنبرة");
+        });
+
+        addLabel(advancedOptions, "منصة الفيديو ونسبة العرض");
+        platformSpinner = makeSpinner(new String[]{"TikTok / Reels — عمودي 9:16", "YouTube Shorts — عمودي 9:16", "فيديو أفقي — 16:9"});
+        advancedOptions.addView(platformSpinner, params(-1, dp(48), 0, 0, 0, 5));
+
+        addLabel(advancedOptions, "مدة الفيديو");
+        durationSpinner = makeSpinner(new String[]{"30 ثانية", "60 ثانية", "3 دقائق"});
+        advancedOptions.addView(durationSpinner, params(-1, dp(48), 0, 0, 0, 5));
+
+        addLabel(advancedOptions, "نبرة النص");
+        styleSpinner = makeSpinner(new String[]{"وثائقي متزن", "حماسي", "خبري مباشر", "قصصي مشوق"});
+        advancedOptions.addView(styleSpinner, params(-1, dp(48), 0, 0, 0, 5));
+
+        addLabel(advancedOptions, "مراجع أو معلومات — اختياري");
         referenceInput = new EditText(this);
         referenceInput.setGravity(Gravity.TOP | Gravity.RIGHT);
         referenceInput.setTextDirection(View.TEXT_DIRECTION_RTL);
         referenceInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         referenceInput.setHintTextColor(Color.rgb(128, 129, 137));
         referenceInput.setTextColor(TEXT);
-        referenceInput.setHint("أضف حقائق أو مقتطفات موثوقة. النموذج محلي ولا يبحث في الإنترنت.");
+        referenceInput.setHint("أضف حقائق أو مقتطفات تريد أن يلتزم بها Gemini.");
         referenceInput.setTextSize(14);
         referenceInput.setMinLines(2);
         referenceInput.setMaxLines(4);
         referenceInput.setPadding(dp(14), dp(12), dp(14), dp(12));
         referenceInput.setBackground(rounded(SURFACE_ALT, LINE, 16));
-        card.addView(referenceInput, params(-1, -2, 0, 0, 0, 10));
+        advancedOptions.addView(referenceInput, params(-1, -2, 0, 0, 0, 10));
+        card.addView(advancedOptions, params(-1, -2, 0, 0, 0, 5));
 
-        scriptModelButton = secondaryButton(scriptModelReady() ? "نموذج الكتابة المحلي جاهز" : "تنزيل نموذج الكتابة المفتوح (491 ميغابايت)");
-        card.addView(scriptModelButton, params(-1, dp(48), 0, dp(3), 0, 4));
-        scriptModelButton.setOnClickListener(v -> confirmModelDownload(false));
-
-        generateButton = primaryButton("✦  توليد السكريبت والمشاهد");
+        generateButton = primaryButton("إنشاء مسودة السكريبت");
         card.addView(generateButton, params(-1, dp(58), 0, dp(8), 0, 4));
         generateButton.setOnClickListener(v -> generateScript());
 
-        status = text("لا يرسل التطبيق موضوعك إلى خدمة ذكاء اصطناعي. نزّل النموذج مرة واحدة، وبعدها يعمل دون اتصال.", 13, GOLD, false);
+        status = text("سيطلب التطبيق موافقتك قبل إرسال الفكرة إلى Gemini.", 13, GOLD, false);
         status.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
         card.addView(status, params(-1, -2, 0, dp(6), 0, 0));
         pageContent.addView(card);
 
+        LinearLayout voiceTestCard = card();
+        addText(voiceTestCard, "اختبار الصوت", 19, TEXT, true, 0, 5);
+        addText(voiceTestCard, "اختبر الصوت قبل كتابة أي سكريبت. يستخدم الاختبار عبارة قصيرة ويشغّلها فعليًا.", 13, MUTED, false, 0, 8);
+        voiceSpinner = makeSpinner(TTS_VOICE_LABELS);
+        voiceTestCard.addView(voiceSpinner, params(-1, dp(48), 0, 0, 0, 7));
+        testGeminiButton = secondaryButton("اختبار صوت Gemini الآن");
+        voiceTestCard.addView(testGeminiButton, params(-1, dp(48), 0, 0, 0, 6));
+        testGeminiButton.setOnClickListener(v -> confirmGeminiVoiceTest());
+        testNabraButton = secondaryButton("اختبار صوت Nabra المحلي");
+        voiceTestCard.addView(testNabraButton, params(-1, dp(48), 0, 0, 0, 6));
+        testNabraButton.setOnClickListener(v -> testNabraVoice());
+        voiceModelButton = secondaryButton(LocalAiMedia.voiceReady(this) ? "Nabra جاهز — محلي ومجاني" : "تنزيل Nabra الاحتياطي المجاني (نحو 83 ميغابايت)");
+        voiceTestCard.addView(voiceModelButton, params(-1, dp(48), 0, 0, 0, 7));
+        voiceModelButton.setOnClickListener(v -> {
+            if (LocalAiMedia.voiceReady(this)) setVoiceTestResult("Nabra جاهز للاختبار المحلي دون إنترنت.", GOLD);
+            else confirmVoiceDownload();
+        });
+        voiceTestStatus = text("لم يبدأ الاختبار بعد. اختر صوتًا ثم اختبر Gemini أو Nabra.", 13, MUTED, false);
+        voiceTestStatus.setPadding(dp(12), dp(10), dp(12), dp(10));
+        voiceTestStatus.setBackground(rounded(SURFACE_ALT, LINE, 12));
+        voiceTestCard.addView(voiceTestStatus, params(-1, -2, 0, 0, 0, 0));
+        pageContent.addView(voiceTestCard, params(-1, -2, 0, dp(12), 0, 0));
+
         LinearLayout outputCard = card();
+        scriptOutputCard = outputCard;
         addText(outputCard, "مسودة السكريبت وتقسيم المشاهد", 17, TEXT, true, 0, 7);
         scriptOutput = new EditText(this);
         scriptOutput.setGravity(Gravity.TOP | Gravity.RIGHT);
@@ -235,11 +315,17 @@ public final class TaskAssistantActivity extends Activity {
         save.setOnClickListener(v -> saveProject(true));
         share.setOnClickListener(v -> copyScript());
 
-        voiceModelButton = secondaryButton(LocalAiMedia.voiceReady(this) ? "الصوت العربي Nabra جاهز" : "تنزيل الصوت العربي المفتوح (83 ميغابايت)");
-        outputCard.addView(voiceModelButton, params(-1, dp(48), 0, 0, 0, 6));
-        voiceModelButton.setOnClickListener(v -> confirmModelDownload(true));
+        continueWithVoiceButton = primaryButton("إنشاء صوت الراوي ثم فتح استوديو الفيديو");
+        outputCard.addView(continueWithVoiceButton, params(-1, dp(54), 0, 0, 0, 6));
+        continueWithVoiceButton.setOnClickListener(v -> continueToVideoStudio(false));
+        continueWithoutVoiceButton = secondaryButton("فتح الاستوديو بدون تعليق صوتي");
+        outputCard.addView(continueWithoutVoiceButton, params(-1, dp(48), 0, 0, 0, 8));
+        continueWithoutVoiceButton.setOnClickListener(v -> continueToVideoStudio(true));
 
-        previewButton = secondaryButton("▷  معاينة التعليق الصوتي العربي");
+        addText(outputCard, "الصوت الذكي", 16, TEXT, true, 0, 5);
+        addText(outputCard, "استخدم الاختبار المستقل أعلاه للتأكد من الصوت، أو أنشئ معاينة لنص الراوي في هذا السكريبت.", 13, MUTED, false, 0, 8);
+
+        previewButton = secondaryButton("▷  إنشاء ومعاينة صوت Gemini");
         outputCard.addView(previewButton, params(-1, dp(50), 0, 0, 0, 6));
         previewButton.setOnClickListener(v -> previewVoice());
 
@@ -257,6 +343,85 @@ public final class TaskAssistantActivity extends Activity {
         refreshModelButtons();
     }
 
+    private void continueToVideoStudio(boolean withoutVoice) {
+        String script = scriptOutput == null ? "" : scriptOutput.getText().toString().trim();
+        if (script.isEmpty()) {
+            setStatus("أنشئ أو اكتب السكريبت أولًا، ثم أرسله إلى استوديو الفيديو.", Color.rgb(255, 130, 115));
+            return;
+        }
+        String topic = topicInput == null ? "" : topicInput.getText().toString().trim();
+        if (withoutVoice) {
+            launchVideoStudio(topic, script, "");
+            return;
+        }
+        String speech = narrationForSpeech(script);
+        if (speech.length() < 20) {
+            setStatus("لا يوجد نص راوٍ كافٍ لإنشاء الصوت. أضف التعليق الصوتي الكامل أو اختر المتابعة بدون صوت.", Color.rgb(255, 130, 115));
+            return;
+        }
+        String voice = selectedGeminiVoice();
+        if (!lastVoicePath.isEmpty() && new java.io.File(lastVoicePath).isFile()
+                && lastVoiceText.equals(speech) && lastVoiceSelection.equals(voice)
+                && !lastVoiceProvider.contains("اختبار")) {
+            launchVideoStudio(topic, script, lastVoicePath);
+            return;
+        }
+        new AlertDialog.Builder(this)
+                .setTitle("إنشاء التعليق الصوتي قبل الفيديو؟")
+                .setMessage("سيُرسل نص الراوي إلى Gemini TTS، ثم يفتح التطبيق استوديو الفيديو والصوت مرفقًا تلقائيًا. لو تعذر Gemini، سيستخدم Nabra إذا كان قد تم تنزيله. يمكنك إلغاء أو اختيار «فتح الاستوديو بدون تعليق صوتي».")
+                .setNegativeButton("إلغاء", null)
+                .setPositiveButton("أنشئ الصوت وافتح الفيديو", (dialog, which) -> createVoiceThenOpenStudio(topic, script, speech, voice))
+                .show();
+    }
+
+    private void createVoiceThenOpenStudio(String topic, String script, String speech, String voice) {
+        if (continueWithVoiceButton != null) continueWithVoiceButton.setEnabled(false);
+        setStatus("يجري إنشاء التعليق الصوتي؛ سيفتح استوديو الفيديو تلقائيًا بعد نجاحه…", GOLD);
+        executor.execute(() -> {
+            try {
+                String audioPath;
+                String provider;
+                try {
+                    audioPath = GeminiSpeech.generateWavBlocking(this, speech, voice);
+                    provider = "Gemini · " + voice;
+                } catch (Exception geminiError) {
+                    if (!LocalAiMedia.voiceReady(this)) throw geminiError;
+                    mainHandler.post(() -> setStatus("Gemini لم يعمل؛ يجري استخدام Nabra المحلي…", GOLD));
+                    audioPath = LocalAiMedia.synthesizeArabic(this, speech);
+                    provider = "Nabra المحلي";
+                }
+                final String finalAudioPath = audioPath;
+                final String finalProvider = provider;
+                mainHandler.post(() -> {
+                    if (isFinishing() || isDestroyed()) return;
+                    lastVoicePath = finalAudioPath;
+                    lastVoiceText = speech;
+                    lastVoiceSelection = voice;
+                    lastVoiceProvider = finalProvider;
+                    if (exportAudioButton != null) exportAudioButton.setEnabled(true);
+                    if (continueWithVoiceButton != null) continueWithVoiceButton.setEnabled(true);
+                    launchVideoStudio(topic, script, finalAudioPath);
+                });
+            } catch (Exception error) {
+                mainHandler.post(() -> {
+                    if (continueWithVoiceButton != null) continueWithVoiceButton.setEnabled(true);
+                    setStatus("لم ينجح إنشاء الصوت، لذلك لم أفتح الفيديو بصوت ناقص: " + userFriendlyAiError(error)
+                            + (LocalAiMedia.voiceReady(this) ? "" : " — نزّل Nabra من بطاقة اختبار الصوت أو اختر فتح الاستوديو بدون تعليق صوتي."), Color.rgb(255, 130, 115));
+                });
+            }
+        });
+    }
+
+    private void launchVideoStudio(String topic, String script, String audioPath) {
+        Intent intent = new Intent(this, VideoStudioActivity.class);
+        intent.putExtra(VideoStudioActivity.EXTRA_TREND_TITLE, topic);
+        intent.putExtra(VideoStudioActivity.EXTRA_SCRIPT_TEXT, script);
+        String source = getIntent().getStringExtra(EXTRA_RADAR_SOURCE);
+        if (source != null) intent.putExtra(VideoStudioActivity.EXTRA_TREND_SOURCE, source);
+        if (audioPath != null && !audioPath.isEmpty()) intent.putExtra(VideoStudioActivity.EXTRA_AUDIO_PATH, audioPath);
+        startActivity(intent);
+    }
+
     private void addHero() {
         LinearLayout hero = new LinearLayout(this);
         hero.setOrientation(LinearLayout.VERTICAL);
@@ -271,7 +436,7 @@ public final class TaskAssistantActivity extends Activity {
         chips.setPadding(0, 0, 0, dp(12));
         hero.addView(chips);
         addText(hero, "فكرتك تتحول\nلسكريبت ومشاهد", 25, TEXT, true, 0, 8);
-        addText(hero, "كتابة ومساعدة صوتية على الهاتف — بلا مفتاح API وبلا رسوم لكل استخدام.", 14, MUTED, false, 0, 0);
+        addText(hero, "Gemini للكتابة والصوت، مع Nabra المحلي كبديل صوتي مجاني عند تعذر الخدمة.", 14, MUTED, false, 0, 0);
         pageContent.addView(hero, params(-1, -2, 0, 0, 0, 16));
     }
 
@@ -298,6 +463,189 @@ public final class TaskAssistantActivity extends Activity {
         github.addView(runs, params(-1, dp(48), 0, 0, 0, 0));
         runs.setOnClickListener(v -> openUrl(ACTIONS_URL, "تعذر فتح سجل GitHub Actions."));
         pageContent.addView(github, params(-1, -2, 0, dp(14), 0, 0));
+    }
+
+    private void buildWorkflowStatusPage() {
+        addText(pageContent, "حالة العمل", 24, TEXT, true, 0, 5);
+        addText(pageContent, "متابعة بناء Android والأخطاء الأخيرة من داخل التطبيق.", 14, MUTED, false, 0, 14);
+
+        LinearLayout health = card();
+        addText(health, "جاهزية هذا الهاتف", 17, TEXT, true, 0, 8);
+        boolean firebaseConfigured = !BuildConfig.FIREBASE_API_KEY.isBlank() && !BuildConfig.FIREBASE_APP_ID.isBlank() && !BuildConfig.FIREBASE_PROJECT_ID.isBlank();
+        addText(health, (firebaseConfigured ? "✓" : "○") + "  كتابة السكريبت: Gemini عبر Firebase" + (firebaseConfigured ? " — الإعداد موجود" : " — إعداد Firebase ناقص"), 14, firebaseConfigured ? GOLD : MUTED, false, 0, 6);
+        if (BuildConfig.DEBUG) {
+            addText(health, "رمز Debug App Check خاص بهذا التثبيت. أنشئه هنا ثم سجّله في Firebase Console → App Check → Manage debug tokens.", 13, MUTED, false, 0, 6);
+            Button debugTokenButton = secondaryButton(BuildConfig.FIREBASE_DEBUG_TOKEN.trim().isEmpty()
+                    ? "إنشاء ونسخ رمز Debug لهذا الهاتف"
+                    : "عرض ونسخ رمز Debug لهذا الهاتف");
+            health.addView(debugTokenButton, params(-1, dp(48), 0, 0, 0, 6));
+            debugTokenButton.setOnClickListener(v -> {
+                debugTokenButton.setEnabled(false);
+                debugTokenButton.setText("جارٍ تجهيز الرمز…");
+                executor.execute(() -> {
+                    try {
+                        String token = FirebaseAiSetup.debugTokenBlocking(getApplicationContext());
+                        mainHandler.post(() -> {
+                            debugTokenButton.setEnabled(true);
+                            debugTokenButton.setText("إنشاء ونسخ رمز Debug لهذا الهاتف");
+                            EditText tokenField = new EditText(this);
+                            tokenField.setText(token);
+                            tokenField.setTextIsSelectable(true);
+                            tokenField.setKeyListener(null);
+                            tokenField.setPadding(dp(14), dp(10), dp(14), dp(10));
+                            new AlertDialog.Builder(this)
+                                    .setTitle("رمز Debug لهذا الهاتف")
+                                    .setMessage("انسخ الرمز وأضفه في Firebase Console ضمن App Check → Manage debug tokens. هذا رمز سري للاختبار فقط؛ لا تنشره ولا تضعه في GitHub أو APK إصدار الإنتاج.")
+                                    .setView(tokenField)
+                                    .setPositiveButton("نسخ الرمز", (dialog, which) -> copyToClipboard("Firebase Debug App Check token", token))
+                                    .setNegativeButton("إغلاق", null)
+                                    .show();
+                        });
+                    } catch (Exception error) {
+                        mainHandler.post(() -> {
+                            debugTokenButton.setEnabled(true);
+                            debugTokenButton.setText("إنشاء ونسخ رمز Debug لهذا الهاتف");
+                            new AlertDialog.Builder(this)
+                                    .setTitle("تعذر تجهيز رمز Debug")
+                                    .setMessage(error.getMessage() == null ? "تحقق من إعداد Firebase ثم أعد المحاولة." : error.getMessage())
+                                    .setPositiveButton("حسنًا", null)
+                                    .show();
+                        });
+                    }
+                });
+            });
+        } else {
+            addText(health, "نسخة الإنتاج تستخدم Play Integrity بدل Debug App Check.", 13, MUTED, false, 0, 6);
+        }
+        addText(health, (LocalAiMedia.voiceReady(this) ? "✓" : "○") + "  Nabra الاحتياطي: " + (LocalAiMedia.voiceReady(this) ? "جاهز دون إنترنت" : "غير منزّل؛ Gemini هو المسار الأول"), 14, LocalAiMedia.voiceReady(this) ? GOLD : MUTED, false, 0, 6);
+        String savedTopic = getPreferences(MODE_PRIVATE).getString("last_media_topic", "");
+        addText(health, (savedTopic.isEmpty() ? "○ لا يوجد مشروع محفوظ" : "✓ آخر مشروع محفوظ: " + savedTopic), 14, savedTopic.isEmpty() ? MUTED : GOLD, false, 0, 0);
+        pageContent.addView(health, params(-1, -2, 0, 0, 0, 12));
+
+        LinearLayout runs = card();
+        addText(runs, "بناء التطبيق على GitHub", 17, TEXT, true, 0, 6);
+        addText(runs, "تُعرض حالة آخر تشغيل وخطوة الفشل إن وجدت. هذه قراءة فقط؛ لا تُرسل بيانات دخول GitHub من الهاتف.", 13, MUTED, false, 0, 10);
+        workflowStatus = text("اضغط تحديث لقراءة حالة آخر عمليات بناء Android.", 14, TEXT, false);
+        workflowStatus.setGravity(Gravity.RIGHT | Gravity.TOP);
+        workflowStatus.setPadding(dp(13), dp(13), dp(13), dp(13));
+        workflowStatus.setBackground(rounded(SURFACE_ALT, LINE, 16));
+        runs.addView(workflowStatus, params(-1, -2, 0, 0, 0, 10));
+        refreshWorkflowButton = primaryButton("تحديث حالة البناء");
+        runs.addView(refreshWorkflowButton, params(-1, dp(50), 0, 0, 0, 0));
+        refreshWorkflowButton.setOnClickListener(v -> refreshWorkflowStatus());
+        pageContent.addView(runs, params(-1, -2, 0, 0, 0, 12));
+
+        LinearLayout repair = card();
+        addText(repair, "إصلاح الأخطاء", 17, TEXT, true, 0, 6);
+        addText(repair, "كاتب السكريبت ومولد صوت Gemini يحتاجان اتصال إنترنت وحصة مجانية متاحة. عند تعذر صوت Gemini، يحاول التطبيق استخدام Nabra محليًا إذا كان منزّلًا.", 13, MUTED, false, 0, 0);
+        pageContent.addView(repair, params(-1, -2, 0, 0, 0, 0));
+        refreshWorkflowStatus();
+    }
+
+    private void refreshWorkflowStatus() {
+        if (workflowStatus == null) return;
+        workflowStatus.setText("جارٍ جلب حالة بناء Android…");
+        if (refreshWorkflowButton != null) refreshWorkflowButton.setEnabled(false);
+        executor.execute(() -> {
+            String result;
+            try {
+                String json = readGitHubJson("https://api.github.com/repos/sozanhnedy-bot/-/actions/runs?per_page=20");
+                JSONObject root = new JSONObject(json);
+                JSONArray allRuns = root.optJSONArray("workflow_runs");
+                StringBuilder out = new StringBuilder();
+                int matched = 0;
+                if (allRuns != null) {
+                    for (int i = 0; i < allRuns.length() && matched < 5; i++) {
+                        JSONObject run = allRuns.optJSONObject(i);
+                        if (run == null) continue;
+                        String path = run.optString("path", "");
+                        String name = run.optString("name", "");
+                        if (!path.endsWith("android-apk.yml") && !path.endsWith("android-build.yml") && !name.toLowerCase(java.util.Locale.ROOT).contains("android")) continue;
+                        matched++;
+                        String conclusion = run.optString("conclusion", "");
+                        String statusValue = run.optString("status", "unknown");
+                        out.append(matched).append(". ").append(name).append("\n");
+                        out.append("الحالة: ").append(arabicRunState(statusValue, conclusion)).append("\n");
+                        out.append("الفرع: ").append(run.optString("head_branch", "—")).append("  ·  ")
+                                .append(run.optString("event", "")).append("\n");
+                        out.append("بدأ: ").append(run.optString("created_at", "غير متاح")).append("\n");
+                        if ("failure".equals(conclusion)) {
+                            String failedSteps = fetchFailedSteps(run.optLong("id", 0));
+                            out.append("الخطأ: فشل التشغيل");
+                            if (!failedSteps.isEmpty()) out.append(" — ").append(failedSteps);
+                            out.append("\n");
+                        }
+                        out.append("\n");
+                    }
+                }
+                result = matched == 0 ? "لم أجد تشغيلات Android حديثة." : out.toString().trim();
+            } catch (Exception error) {
+                result = "تعذّر قراءة الحالة: " + (error.getMessage() == null ? "تحقق من اتصال الإنترنت." : error.getMessage());
+            }
+            final String display = result;
+            mainHandler.post(() -> {
+                if (workflowStatus != null) workflowStatus.setText(display);
+                if (refreshWorkflowButton != null) refreshWorkflowButton.setEnabled(true);
+            });
+        });
+    }
+
+    private String fetchFailedSteps(long runId) {
+        if (runId <= 0) return "";
+        try {
+            JSONObject response = new JSONObject(readGitHubJson("https://api.github.com/repos/sozanhnedy-bot/-/actions/runs/" + runId + "/jobs?per_page=50"));
+            JSONArray jobs = response.optJSONArray("jobs");
+            StringBuilder failed = new StringBuilder();
+            if (jobs == null) return "";
+            for (int i = 0; i < jobs.length(); i++) {
+                JSONObject job = jobs.optJSONObject(i);
+                if (job == null) continue;
+                JSONArray steps = job.optJSONArray("steps");
+                if (steps == null) continue;
+                for (int j = 0; j < steps.length(); j++) {
+                    JSONObject step = steps.optJSONObject(j);
+                    if (step != null && "failure".equals(step.optString("conclusion"))) {
+                        if (failed.length() > 0) failed.append(", ");
+                        failed.append(step.optString("name", "خطوة غير معروفة"));
+                    }
+                }
+            }
+            return failed.toString();
+        } catch (Exception ignored) {
+            return "تعذر جلب اسم خطوة الفشل";
+        }
+    }
+
+    private String readGitHubJson(String urlText) throws Exception {
+        HttpURLConnection connection = (HttpURLConnection) new URL(urlText).openConnection();
+        connection.setConnectTimeout(12000);
+        connection.setReadTimeout(15000);
+        connection.setRequestMethod("GET");
+        connection.setRequestProperty("Accept", "application/vnd.github+json");
+        connection.setRequestProperty("User-Agent", "WorldNews-Android");
+        try {
+            int code = connection.getResponseCode();
+            if (code < 200 || code >= 300) throw new IllegalStateException("GitHub أعاد HTTP " + code);
+            try (InputStream input = connection.getInputStream(); ByteArrayOutputStream bytes = new ByteArrayOutputStream()) {
+                byte[] buffer = new byte[8192];
+                int count;
+                while ((count = input.read(buffer)) != -1) {
+                    if (bytes.size() + count > 2_000_000) throw new IllegalStateException("بيانات الحالة أكبر من المتوقع.");
+                    bytes.write(buffer, 0, count);
+                }
+                return bytes.toString(StandardCharsets.UTF_8.name());
+            }
+        } finally {
+            connection.disconnect();
+        }
+    }
+
+    private String arabicRunState(String statusValue, String conclusion) {
+        if ("in_progress".equals(statusValue) || "queued".equals(statusValue)) return "جارٍ التنفيذ";
+        if ("success".equals(conclusion)) return "ناجح";
+        if ("failure".equals(conclusion)) return "فشل";
+        if ("cancelled".equals(conclusion)) return "أُلغي";
+        return "غير مكتمل";
     }
 
     private void buildSocialPage() {
@@ -334,7 +682,21 @@ public final class TaskAssistantActivity extends Activity {
 
     private Spinner makeSpinner(String[] values) {
         Spinner spinner = new Spinner(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, values);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values) {
+            @Override public View getView(int position, View convertView, android.view.ViewGroup parent) {
+                TextView view = (TextView) super.getView(position, convertView, parent);
+                view.setTextColor(TEXT);
+                view.setPadding(dp(12), dp(7), dp(12), dp(7));
+                return view;
+            }
+            @Override public View getDropDownView(int position, View convertView, android.view.ViewGroup parent) {
+                TextView view = (TextView) super.getDropDownView(position, convertView, parent);
+                view.setTextColor(TEXT);
+                view.setBackgroundColor(SURFACE_ALT);
+                view.setPadding(dp(12), dp(10), dp(12), dp(10));
+                return view;
+            }
+        };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setBackground(rounded(SURFACE_ALT, LINE, 14));
@@ -360,45 +722,38 @@ public final class TaskAssistantActivity extends Activity {
         addText(parent, caption, 13, TEXT, true, dp(9), 5);
     }
 
-    private boolean scriptModelReady() {
-        java.io.File f = LocalAiMedia.scriptModelFile(this);
-        return f.isFile() && f.length() == QWEN_FILE_SIZE;
-    }
-
     private void refreshModelButtons() {
-        if (scriptModelButton != null) scriptModelButton.setText(scriptModelReady() ? "✓ نموذج الكتابة المحلي جاهز" : "تنزيل نموذج الكتابة المفتوح (491 ميغابايت)");
-        if (voiceModelButton != null) voiceModelButton.setText(LocalAiMedia.voiceReady(this) ? "✓ الصوت العربي Nabra جاهز" : "تنزيل الصوت العربي المفتوح (83 ميغابايت)");
+        boolean ready = LocalAiMedia.voiceReady(this);
+        if (voiceModelButton != null) voiceModelButton.setText(ready ? "Nabra جاهز — محلي ومجاني" : "تنزيل Nabra الاحتياطي المجاني (نحو 83 ميغابايت)");
+        if (testNabraButton != null) testNabraButton.setText(ready ? "اختبار صوت Nabra المحلي" : "اختبار Nabra — نزّل النموذج أولًا");
     }
 
-    private void confirmModelDownload(boolean voice) {
-        String title = voice ? "تنزيل الصوت العربي" : "تنزيل نموذج الكتابة";
-        String message = voice
-                ? "سيُنزل نموذج Nabra المفتوح للصوت العربي (نحو 83 ميغابايت) مرة واحدة. سيُحفظ داخل التطبيق ويعمل دون اتصال. هل تبدأ الآن؟"
-                : "سيُنزل نموذج Qwen المفتوح للكتابة (نحو 491 ميغابايت) مرة واحدة. يحتاج مساحة وذاكرة كافية، ويعمل بعدها دون اتصال. هل تبدأ الآن؟";
-        new AlertDialog.Builder(this).setTitle(title).setMessage(message)
+    private void confirmVoiceDownload() {
+        new AlertDialog.Builder(this).setTitle("تنزيل الصوت العربي")
+                .setMessage("سيُنزل نموذج Nabra المحلي (نحو 83 ميغابايت) مرة واحدة كخيار احتياطي مجاني إذا تعذر صوت Gemini أو انتهت حصته. التنزيل يستهلك مساحة على الهاتف. هل تبدأ؟")
                 .setNegativeButton("ليس الآن", null)
-                .setPositiveButton("تنزيل", (dialog, which) -> downloadModel(voice)).show();
+                .setPositiveButton("تنزيل", (dialog, which) -> downloadVoiceModel()).show();
     }
 
-    private void downloadModel(boolean voice) {
-        Button target = voice ? voiceModelButton : scriptModelButton;
-        if (target != null) target.setEnabled(false);
-        setStatus(voice ? "جارٍ تنزيل الصوت العربي… 0%" : "جارٍ تنزيل نموذج الكتابة… 0%", GOLD);
+    private void downloadVoiceModel() {
+        if (voiceModelButton != null) voiceModelButton.setEnabled(false);
+        setVoiceTestButtonsEnabled(false);
+        setStatus("جارٍ تنزيل الصوت العربي… 0%", GOLD);
         executor.execute(() -> {
             try {
-                LocalAiMedia.ProgressListener listener = percent -> mainHandler.post(() -> setStatus(
-                        (voice ? "جارٍ تنزيل الصوت العربي… " : "جارٍ تنزيل نموذج الكتابة… ") + percent + "%", GOLD));
-                if (voice) LocalAiMedia.downloadVoiceModel(this, listener);
-                else LocalAiMedia.downloadScriptModel(this, listener);
+                LocalAiMedia.ProgressListener listener = percent -> mainHandler.post(() -> setStatus("جارٍ تنزيل الصوت العربي… " + percent + "%", GOLD));
+                LocalAiMedia.downloadVoiceModel(this, listener);
                 mainHandler.post(() -> {
-                    if (target != null) target.setEnabled(true);
+                    if (voiceModelButton != null) voiceModelButton.setEnabled(true);
                     refreshModelButtons();
-                    setStatus(voice ? "اكتمل تنزيل الصوت العربي. صار متاحًا دون اتصال." : "اكتمل تنزيل نموذج الكتابة. صار متاحًا دون اتصال.", GOLD);
+                    setVoiceTestButtonsEnabled(true);
+                    setVoiceTestResult("اكتمل تنزيل Nabra. اضغط «اختبار صوت Nabra المحلي» لتجربته دون إنترنت.", GOLD);
                 });
             } catch (Exception error) {
                 mainHandler.post(() -> {
-                    if (target != null) target.setEnabled(true);
-                    setStatus(error.getMessage() == null ? "تعذر تنزيل النموذج." : error.getMessage(), Color.rgb(255, 130, 115));
+                    if (voiceModelButton != null) voiceModelButton.setEnabled(true);
+                    setVoiceTestButtonsEnabled(true);
+                    setVoiceTestResult(error.getMessage() == null ? "تعذر تنزيل Nabra." : error.getMessage(), Color.rgb(255, 130, 115));
                 });
             }
         });
@@ -410,46 +765,40 @@ public final class TaskAssistantActivity extends Activity {
             setStatus("اكتب موضوعًا واضحًا قبل التوليد.", Color.rgb(255, 130, 115));
             return;
         }
-        if (!scriptModelReady()) {
-            setStatus("نزّل نموذج الكتابة المحلي أولًا من الزر أعلاه.", Color.rgb(255, 130, 115));
-            return;
-        }
+        new AlertDialog.Builder(this)
+                .setTitle("إرسال الفكرة إلى Gemini؟")
+                .setMessage("سيُرسل موضوع الفيديو والمدة والمنصة والنبرة والمراجع التي كتبتها إلى Google Gemini عبر Firebase لإعداد المسودة. توجد حصة مجانية محدودة؛ إذا كان مشروع Firebase مربوطًا بالفوترة فقد تُحتسب رسوم. في الطبقة المجانية قد تستخدم Google بيانات الطلب لتحسين منتجاتها. لا تضع كلمات مرور أو معلومات سرية. هل توافق على الإرسال لهذه المرة؟")
+                .setNegativeButton("إلغاء", null)
+                .setPositiveButton("موافق، اكتب المسودة", (dialog, which) -> generateScriptWithGemini(topic))
+                .show();
+    }
+
+    private void generateScriptWithGemini(String topic) {
         generateButton.setEnabled(false);
-        setStatus("يكتب النموذج على الهاتف الآن… قد يستغرق دقيقة على الأجهزة المتوسطة.", GOLD);
+        setStatus("يرسل الطلب إلى Gemini ويكتب المسودة…", GOLD);
         String duration = String.valueOf(durationSpinner.getSelectedItem());
         String style = String.valueOf(styleSpinner.getSelectedItem());
         String platform = platformSpinner == null ? "TikTok / Reels — عمودي 9:16" : String.valueOf(platformSpinner.getSelectedItem());
         String references = referenceInput == null ? "" : referenceInput.getText().toString().trim();
         executor.execute(() -> {
             try {
-                String result = LocalAiMedia.generateScript(this, topic, duration, style, platform, references);
-                String generatedVoicePath = "";
-                String voiceIssue = "";
-                if (LocalAiMedia.voiceReady(this)) {
-                    String narration = narrationForSpeech(result);
-                    try {
-                        generatedVoicePath = LocalAiMedia.synthesizeArabic(this, narration);
-                    } catch (Exception voiceError) {
-                        voiceIssue = voiceError.getMessage() == null ? "تعذر تجهيز الصوت تلقائيًا." : voiceError.getMessage();
-                    }
-                }
-                final String finalVoicePath = generatedVoicePath;
-                final String finalVoiceIssue = voiceIssue;
+                String result = GeminiNewsAnalyzer.generateScriptBlocking(this, topic, duration, style, platform, references);
                 mainHandler.post(() -> {
                     scriptOutput.setText(result);
-                    lastVoiceText = finalVoicePath.isEmpty() ? "" : narrationForSpeech(result);
-                    lastVoicePath = finalVoicePath;
-                    if (exportAudioButton != null) exportAudioButton.setEnabled(!finalVoicePath.isEmpty());
+                    lastVoiceText = "";
+                    lastVoicePath = "";
+                    lastVoiceSelection = "";
+                    lastVoiceProvider = "";
+                    if (exportAudioButton != null) exportAudioButton.setEnabled(false);
                     generateButton.setEnabled(true);
                     saveProject(false);
-                    if (!finalVoicePath.isEmpty()) setStatus("اكتمل السكريبت والمشاهد وتجهيز التعليق الصوتي. راجع المعلومات قبل النشر.", GOLD);
-                    else if (!finalVoiceIssue.isEmpty()) setStatus("اكتمل السكريبت، لكن تعذر تجهيز الصوت: " + finalVoiceIssue, Color.rgb(255, 190, 100));
-                    else setStatus("اكتمل السكريبت والمشاهد محليًا. نزّل Nabra لمعاينة التعليق الصوتي.", GOLD);
+                    setStatus("اكتملت مسودة Gemini. اضغط زر الصوت إذا أردت إنشاء تعليق صوتي.", GOLD);
+                    if (scriptOutputCard != null) scroll.post(() -> scroll.smoothScrollTo(0, scriptOutputCard.getTop()));
                 });
             } catch (Exception error) {
                 mainHandler.post(() -> {
                     generateButton.setEnabled(true);
-                    setStatus(error.getMessage() == null ? "تعذر تشغيل النموذج على هذا الهاتف." : error.getMessage(), Color.rgb(255, 130, 115));
+                    setStatus(userFriendlyAiError(error), Color.rgb(255, 130, 115));
                 });
             }
         });
@@ -503,61 +852,213 @@ public final class TaskAssistantActivity extends Activity {
             setStatus("أنشئ السكريبت أو اكتبه أولًا قبل معاينة الصوت.", Color.rgb(255, 130, 115));
             return;
         }
-        if (!LocalAiMedia.voiceReady(this)) {
-            setStatus("نزّل صوت Nabra العربي من الزر أعلاه أولًا.", Color.rgb(255, 130, 115));
-            return;
-        }
         String speech = narrationForSpeech(scriptOutput.getText().toString());
         if (speech.length() < 20) {
             setStatus("لم أجد نصًا كافيًا للراوي. أعد توليد السكريبت أو أضف نص التعليق الصوتي الكامل.", Color.rgb(255, 130, 115));
             return;
         }
         final String finalSpeech = speech;
-        previewButton.setEnabled(false);
-        if (!lastVoicePath.isEmpty() && lastVoiceText.equals(finalSpeech) && new java.io.File(lastVoicePath).isFile()) {
+        final String selectedVoice = selectedGeminiVoice();
+        if (!lastVoicePath.isEmpty() && lastVoiceText.equals(finalSpeech) && lastVoiceSelection.equals(selectedVoice) && new java.io.File(lastVoicePath).isFile()) {
             previewButton.setEnabled(true);
             playVoice(lastVoicePath);
             return;
         }
-        setStatus("يجري تحويل نص الراوي فقط إلى صوت عربي محليًا…", GOLD);
+        new AlertDialog.Builder(this)
+                .setTitle("إنشاء صوت Gemini؟")
+                .setMessage("سيُرسل نص الراوي إلى Google Gemini TTS عبر Firebase. توجد حصة مجانية محدودة؛ إذا كان مشروع Firebase مربوطًا بالفوترة فقد تُحتسب رسوم، ولا يستطيع التطبيق معرفة ذلك مسبقًا. في الطبقة المجانية قد تستخدم Google بيانات الطلب لتحسين منتجاتها. إذا رفض Gemini الطلب، يحاول التطبيق استخدام Nabra محليًا إذا كان منزّلًا. هل توافق على إرسال النص لهذه المرة؟")
+                .setNegativeButton("إلغاء", null)
+                .setPositiveButton("موافق، أنشئ الصوت", (dialog, which) -> generateVoiceWithFallback(finalSpeech, selectedVoice))
+                .show();
+    }
+
+    private String selectedGeminiVoice() {
+        int position = voiceSpinner == null ? 0 : voiceSpinner.getSelectedItemPosition();
+        return TTS_VOICE_IDS[Math.max(0, Math.min(position, TTS_VOICE_IDS.length - 1))];
+    }
+
+    private void generateVoiceWithFallback(String speech, String selectedVoice) {
+        previewButton.setEnabled(false);
+        setStatus("يجري إنشاء التعليق الصوتي عبر Gemini…", GOLD);
         executor.execute(() -> {
             try {
-                String path = LocalAiMedia.synthesizeArabic(this, finalSpeech);
+                String path;
+                String provider;
+                try {
+                    path = GeminiSpeech.generateWavBlocking(this, speech, selectedVoice);
+                    provider = "Gemini · " + selectedVoice;
+                } catch (Exception geminiError) {
+                    if (!LocalAiMedia.voiceReady(this)) {
+                        String reason = geminiError.getMessage() == null ? "Gemini غير متاح أو انتهت الحصة." : geminiError.getMessage();
+                        throw new IllegalStateException(reason + " نزّل Nabra الاحتياطي من الزر إذا أردت صوتًا محليًا دون اتصال.", geminiError);
+                    }
+                    mainHandler.post(() -> setStatus("Gemini غير متاح أو انتهت حصته؛ يجري التحويل إلى Nabra المحلي…", GOLD));
+                    try {
+                        path = LocalAiMedia.synthesizeArabic(this, speech);
+                        provider = "Nabra الاحتياطي المحلي";
+                    } catch (Exception localError) {
+                        throw new IllegalStateException("تعذر Gemini (" + safeMessage(geminiError) + ") وتعذر Nabra (" + safeMessage(localError) + ").", localError);
+                    }
+                }
+                final String finalProvider = provider;
+                final String finalPath = path;
                 mainHandler.post(() -> {
                     if (isFinishing() || isDestroyed()) {
                         return;
                     }
-                    lastVoicePath = path;
-                    lastVoiceText = finalSpeech;
+                    lastVoicePath = finalPath;
+                    lastVoiceText = speech;
+                    lastVoiceSelection = selectedVoice;
+                    lastVoiceProvider = finalProvider;
                     if (exportAudioButton != null) exportAudioButton.setEnabled(true);
                     previewButton.setEnabled(true);
-                    playVoice(path);
+                    playVoice(finalPath);
                 });
             } catch (Exception error) {
                 mainHandler.post(() -> {
                     previewButton.setEnabled(true);
-                    setStatus(error.getMessage() == null ? "تعذرت معاينة الصوت." : error.getMessage(), Color.rgb(255, 130, 115));
+                    setStatus(userFriendlyAiError(error), Color.rgb(255, 130, 115));
                 });
             }
         });
     }
 
+    private String safeMessage(Exception error) {
+        return error.getMessage() == null ? "سبب غير معروف" : error.getMessage();
+    }
+
+    private void confirmGeminiVoiceTest() {
+        String voice = selectedGeminiVoice();
+        new AlertDialog.Builder(this)
+                .setTitle("اختبار Gemini TTS")
+                .setMessage("سيُرسل التطبيق عبارة اختبار ثابتة فقط إلى Gemini عبر Firebase، وليس نص السكريبت. الحصة المجانية محدودة وقد تُحتسب رسوم إذا كان المشروع مربوطًا بالفوترة. هل توافق على الاختبار؟")
+                .setNegativeButton("إلغاء", null)
+                .setPositiveButton("اختبر Gemini", (dialog, which) -> runGeminiVoiceTest(voice))
+                .show();
+    }
+
+    private void runGeminiVoiceTest(String voice) {
+        setVoiceTestButtonsEnabled(false);
+        if (exportAudioButton != null) exportAudioButton.setEnabled(false);
+        setVoiceTestResult("جارٍ اختبار Gemini بصوت " + voice + "…", GOLD);
+        executor.execute(() -> {
+            try {
+                String path = GeminiSpeech.generateWavBlocking(this, TEST_VOICE_TEXT, voice);
+                mainHandler.post(() -> {
+                    if (isFinishing() || isDestroyed()) return;
+                    lastVoicePath = path;
+                    lastVoiceText = TEST_VOICE_TEXT;
+                    lastVoiceSelection = voice;
+                    lastVoiceProvider = "Gemini TTS اختبار · " + voice;
+                    playVoice(path);
+                });
+            } catch (Exception error) {
+                String details = userFriendlyAiError(error);
+                mainHandler.post(() -> {
+                    setVoiceTestButtonsEnabled(true);
+                    setVoiceTestResult("فشل اختبار Gemini:\n" + details, Color.rgb(255, 130, 115));
+                });
+            }
+        });
+    }
+
+    private void testNabraVoice() {
+        if (!LocalAiMedia.voiceReady(this)) {
+            setVoiceTestResult("Nabra غير منزّل. اضغط زر تنزيل Nabra في هذه البطاقة، ثم أعد الاختبار.", Color.rgb(255, 187, 54));
+            return;
+        }
+        setVoiceTestButtonsEnabled(false);
+        if (exportAudioButton != null) exportAudioButton.setEnabled(false);
+        setVoiceTestResult("جارٍ إنشاء عبارة الاختبار محليًا باستخدام Nabra…", GOLD);
+        executor.execute(() -> {
+            try {
+                String path = LocalAiMedia.synthesizeArabic(this, TEST_VOICE_TEXT);
+                mainHandler.post(() -> {
+                    if (isFinishing() || isDestroyed()) return;
+                    lastVoicePath = path;
+                    lastVoiceText = TEST_VOICE_TEXT;
+                    lastVoiceSelection = selectedGeminiVoice();
+                    lastVoiceProvider = "Nabra اختبار محلي";
+                    playVoice(path);
+                });
+            } catch (Exception error) {
+                String details = voiceErrorDetails(error);
+                mainHandler.post(() -> {
+                    setVoiceTestButtonsEnabled(true);
+                    setVoiceTestResult("فشل اختبار Nabra:\n" + details, Color.rgb(255, 130, 115));
+                });
+            }
+        });
+    }
+
+    private void setVoiceTestButtonsEnabled(boolean enabled) {
+        if (testGeminiButton != null) testGeminiButton.setEnabled(enabled);
+        if (testNabraButton != null) testNabraButton.setEnabled(enabled);
+    }
+
+    private void setVoiceTestResult(String message, int color) {
+        if (voiceTestStatus != null) {
+            voiceTestStatus.setText(message);
+            voiceTestStatus.setTextColor(color);
+        }
+        setStatus(message, color);
+    }
+
+    private String voiceErrorDetails(Throwable error) {
+        StringBuilder details = new StringBuilder();
+        Throwable current = error;
+        int depth = 0;
+        while (current != null && depth < 3) {
+            if (details.length() > 0) details.append("\nسبب إضافي: ");
+            details.append(current.getClass().getSimpleName());
+            String message = current.getMessage();
+            if (message != null && !message.trim().isEmpty()) details.append(": ").append(message.trim());
+            current = current.getCause();
+            depth++;
+        }
+        String safe = details.toString()
+                .replaceAll("(?i)(api[_ -]?key|key)(\\s*[=:]\\s*)([^\\s&]+)", "$1$2[محذوف]")
+                .replaceAll("AIza[0-9A-Za-z_-]{20,}", "[مفتاح مخفي]");
+        return safe.substring(0, Math.min(700, safe.length()));
+    }
+
+    private String userFriendlyAiError(Throwable error) {
+        String details = voiceErrorDetails(error);
+        String lower = details.toLowerCase(java.util.Locale.ROOT);
+        if (lower.contains("app check") || lower.contains("appcheck")) {
+            return "Firebase رفض طلب Gemini بسبب App Check. في Firebase Console افتح Security → App Check → APIs → Firebase AI Logic واجعل Baseline protection = Enforced وReplay protection = Disabled. "
+                    + "ولأن هذه نسخة Debug، سجّل رمز Debug الخاص بهذا الهاتف من Security → App Check → Apps → تطبيق World News → Manage debug tokens. لا تنشر رمز Debug ولا ترسله في المحادثة.\nالتفصيل: " + details;
+        }
+        return details.isEmpty() ? "تعذر إكمال طلب Gemini." : details;
+    }
+
     private void playVoice(String path) {
         try {
             MediaPlayer player = new MediaPlayer();
+            player.setAudioAttributes(new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                    .build());
             player.setDataSource(path);
-            player.setOnPreparedListener(MediaPlayer::start);
-            player.setOnCompletionListener(mp -> setStatus("انتهت معاينة الصوت العربي.", GOLD));
+            player.setOnPreparedListener(mp -> {
+                mp.setVolume(1f, 1f);
+                mp.start();
+                setVoiceTestButtonsEnabled(true);
+                setVoiceTestResult("نجح التوليد وبدأ تشغيل " + (lastVoiceProvider.isEmpty() ? "الصوت العربي" : lastVoiceProvider) + ". ارفع صوت الوسائط إذا لم تسمعه.", GOLD);
+            });
+            player.setOnCompletionListener(mp -> setVoiceTestResult("انتهى تشغيل " + (lastVoiceProvider.isEmpty() ? "الصوت العربي" : lastVoiceProvider) + ".", GOLD));
             player.setOnErrorListener((mp, what, extra) -> {
-                setStatus("تعذر تشغيل ملف الصوت على هذا الهاتف.", Color.rgb(255, 130, 115));
+                setVoiceTestButtonsEnabled(true);
+                setVoiceTestResult("تم إنشاء ملف WAV لكن تعذر تشغيله على الهاتف. رمز المشغل: " + what + "/" + extra, Color.rgb(255, 130, 115));
                 return true;
             });
             if (mediaPlayer != null) { mediaPlayer.release(); mediaPlayer = null; }
             mediaPlayer = player;
             player.prepareAsync();
-            setStatus("تعمل معاينة Nabra العربية؛ احفظ الملف بصيغة WAV عند الحاجة.", GOLD);
+            setVoiceTestResult("تم إنشاء الصوت؛ جارٍ تجهيز التشغيل…", GOLD);
         } catch (Exception error) {
-            setStatus("تعذر فتح معاينة الصوت.", Color.rgb(255, 130, 115));
+            setVoiceTestButtonsEnabled(true);
+            setVoiceTestResult("تعذر فتح معاينة الصوت: " + voiceErrorDetails(error), Color.rgb(255, 130, 115));
         }
     }
 
@@ -567,8 +1068,8 @@ public final class TaskAssistantActivity extends Activity {
             return;
         }
         String currentSpeech = narrationForSpeech(scriptOutput.getText().toString());
-        if (!lastVoiceText.equals(currentSpeech)) {
-            setStatus("تغير نص السكريبت منذ إنشاء الصوت. أعد معاينة الصوت قبل التصدير.", Color.rgb(255, 130, 115));
+        if (!lastVoiceText.equals(currentSpeech) || !lastVoiceSelection.equals(selectedGeminiVoice())) {
+            setStatus("تغير النص أو الصوت المختار منذ إنشاء الملف. أعد إنشاء المعاينة قبل التصدير.", Color.rgb(255, 130, 115));
             return;
         }
         pendingAudioPath = lastVoicePath;
