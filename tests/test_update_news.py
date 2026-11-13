@@ -57,16 +57,22 @@ class NewsParsingTests(unittest.TestCase):
         items = parse_feed(xml, "world", "اختبار", now=NOW)
         self.assertEqual(items[0]["image_url"], "https://cdn.example.com/atom.jpg")
 
-    def test_parse_rss_accepts_google_news_thumbnail_but_not_other_google_images(self):
+    def test_parse_rss_rejects_google_placeholders_and_publisher_brand_images(self):
         xml = """<rss><channel><item>
           <title>خبر بصورة</title><link>https://example.com/news/photo</link>
           <description><![CDATA[<img src="https://lh3.googleusercontent.com/news-photo=s0-w300">]]></description>
           <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
         </item></channel></rss>""".encode("utf-8")
         items = parse_feed(xml, "world", "اختبار", now=NOW)
-        self.assertEqual(items[0]["image_url"], "https://lh3.googleusercontent.com/news-photo=s0-w300")
         from scripts.update_news import _safe_image_url
-        self.assertEqual(_safe_image_url("https://untrusted.googleusercontent.com/photo.jpg", "image"), "")
+        self.assertEqual(items[0]["image_url"], "")
+        for url in (
+            "https://lh3.googleusercontent.com/news-photo=s0-w300",
+            "https://www.ewtnnews.com/EWTNNewsLogo.png",
+            "https://techreviewafrica.com/assets/images/seo/633592b1b61361664455345.jpeg",
+            "https://www.aljazeera.net/images/aljazeera-arabic-social-preview-v2.jpg",
+        ):
+            self.assertEqual(_safe_image_url(url, "image"), "", url)
 
     def test_clean_text_unescapes_entities_and_collapses_whitespace(self):
         self.assertEqual(clean_text("<p>أخبار&nbsp; &amp; تفاصيل</p>"), "أخبار & تفاصيل")

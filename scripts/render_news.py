@@ -59,10 +59,24 @@ def safe_external_url(value: object, *, image: bool = False) -> str:
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
     host = parsed.hostname.lower().removeprefix("www.")
-    trusted_news_thumbnail = host == "lh3.googleusercontent.com"
-    if image and not trusted_news_thumbnail and (host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com"))):
-        return ""
+    if image:
+        generic_path_markers = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/")
+        if any(marker in parsed.path.lower() for marker in generic_path_markers):
+            return ""
+        if host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com")):
+            return ""
     return candidate
+
+
+def _reused_image_urls(items: list[dict]) -> set[str]:
+    counts: dict[str, int] = {}
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        url = safe_external_url(item.get("image_url"), image=True)
+        if url:
+            counts[url] = counts.get(url, 0) + 1
+    return {url for url, count in counts.items() if count >= 3}
 
 
 def date_label(value: str) -> str:
@@ -73,7 +87,7 @@ def date_label(value: str) -> str:
         return ""
 
 
-def render(item: dict, all_items: list[dict] | None = None) -> str:
+def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: set[str] | None = None) -> str:
     raw_id = text(item.get("id"), 80)
     if not ID_RE.fullmatch(raw_id):
         raise ValueError("unsafe news ID")
@@ -95,6 +109,10 @@ def render(item: dict, all_items: list[dict] | None = None) -> str:
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
     image_url = safe_external_url(item.get("image_url"), image=True)
+    if shared_image_urls is None and all_items:
+        shared_image_urls = _reused_image_urls(all_items)
+    if image_url and image_url in (shared_image_urls or set()):
+        image_url = ""
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
     illustration_key = category_key if category_key in {"politics", "economy", "technology", "sports"} else text(item.get("region"), 30)
@@ -164,13 +182,14 @@ def build(output: Path) -> int:
         shutil.rmtree(target)
     target.mkdir(parents=True, exist_ok=True)
     rendered = 0
+    shared_image_urls = _reused_image_urls(items)
     for item in items:
         if not isinstance(item, dict) or str(item.get("id", "")) in report_ids:
             continue
         raw_id = text(item.get("id"), 80)
         if not ID_RE.fullmatch(raw_id):
             continue
-        (target / f"{raw_id}.html").write_text(render(item, items), encoding="utf-8")
+        (target / f"{raw_id}.html").write_text(render(item, items, shared_image_urls), encoding="utf-8")
         rendered += 1
     print(f"Rendered {rendered} internal news pages.")
     return rendered

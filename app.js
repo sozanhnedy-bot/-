@@ -32,8 +32,9 @@ function safeImage(value) {
     const host = url.hostname.toLowerCase().replace(/^www\./, "");
     const googleImage = host === "google.com" || host.endsWith(".google.com")
       || host.endsWith(".googleusercontent.com") || host.endsWith(".gstatic.com");
-    const trustedNewsThumbnail = host === "lh3.googleusercontent.com";
-    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && (!googleImage || trustedNewsThumbnail)) return url.href;
+    const path = decodeURIComponent(url.pathname).toLowerCase();
+    const genericImage = ["logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/"].some((marker) => path.includes(marker));
+    if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && !googleImage && !genericImage) return url.href;
   } catch (_) { }
   return "";
 }
@@ -112,6 +113,17 @@ function recordFor(item) {
 }
 function allRecords() {
   const items = state.news.map(recordFor).filter(Boolean);
+  const imageUses = new Map();
+  items.forEach((item) => {
+    if (item.image && !item.report) imageUses.set(item.image, (imageUses.get(item.image) || 0) + 1);
+  });
+  items.forEach((item) => {
+    if (!item.report && item.image && imageUses.get(item.image) >= 3) {
+      item.image = "";
+      item.imageAlt = "";
+      item.imageCaption = "";
+    }
+  });
   const ids = new Set(items.map((item) => item.id));
   state.reports.forEach((report) => {
     if (!report || !validId(report.id) || ids.has(report.id)) return;

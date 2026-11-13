@@ -197,8 +197,10 @@ def _safe_image_url(value: str, media_type: str = "") -> str:
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
     host = parsed.hostname.lower().removeprefix("www.")
-    is_news_thumbnail = host == "lh3.googleusercontent.com"
-    if host == "google.com" or host.endswith((".google.com", ".gstatic.com")) or (host.endswith(".googleusercontent.com") and not is_news_thumbnail):
+    generic_path_markers = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/")
+    if any(marker in parsed.path.lower() for marker in generic_path_markers):
+        return ""
+    if host == "google.com" or host.endswith((".google.com", ".googleusercontent.com", ".gstatic.com")):
         return ""
     known_image = bool(re.search(r"\.(?:jpe?g|png|webp|avif)(?:$|\?)", candidate, re.IGNORECASE))
     if not known_image and not media_type.lower().startswith("image/") and media_type.lower() != "image":

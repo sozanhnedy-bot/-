@@ -113,14 +113,25 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertNotIn("عن هذه المادة", page)
         self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
 
-    def test_rss_page_renders_trusted_google_news_thumbnail_only(self):
+    def test_rss_page_hides_google_placeholders_and_publisher_brand_images(self):
         item = {"id": "d" * 20, "title": "خبر", "source_name": "ناشر", "region": "world",
                 "image_url": "https://lh3.googleusercontent.com/news-photo=s0-w300"}
         page = render_news.render(item)
-        self.assertIn('src="https://lh3.googleusercontent.com/news-photo=s0-w300"', page)
-        item["image_url"] = "https://untrusted.googleusercontent.com/photo.jpg"
+        self.assertNotIn("lh3.googleusercontent.com", page)
+        self.assertIn("../assets/news-illustrations/world.jpg", page)
+        item["image_url"] = "https://www.ewtnnews.com/EWTNNewsLogo.png"
         page = render_news.render(item)
-        self.assertNotIn("untrusted.googleusercontent.com", page)
+        self.assertNotIn("EWTNNewsLogo.png", page)
+        self.assertIn("../assets/news-illustrations/world.jpg", page)
+
+    def test_rss_page_hides_thumbnail_reused_across_many_stories(self):
+        image = "https://images.example/generic-thumbnail.jpg"
+        items = [
+            {"id": chr(ord("d") + index) * 20, "title": f"خبر {index}", "source_name": "ناشر", "region": "world", "image_url": image}
+            for index in range(3)
+        ]
+        page = render_news.render(items[0], items)
+        self.assertNotIn(image, page)
         self.assertIn("../assets/news-illustrations/world.jpg", page)
 
     def test_build_renders_rss_news_only_without_duplicates_for_full_reports(self):
@@ -156,12 +167,12 @@ class BuildAndBrowserTests(unittest.TestCase):
             self.assertTrue((output / "news").is_dir())
             self.assertTrue((output / "reports").is_dir())
 
-    def test_rss_image_fix_bumps_app_and_service_worker_cache_versions(self):
+    def test_verified_image_filter_bumps_app_and_service_worker_cache_versions(self):
         root = Path(__file__).resolve().parents[1]
         page = (root / "index.html").read_text(encoding="utf-8")
         worker = (root / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn("app.js?v=20261113-rss-image-fix", page)
-        self.assertIn('const CACHE_NAME = "world-news-v5-rss-image-fix";', worker)
+        self.assertIn("app.js?v=20261113-verified-image-filter", page)
+        self.assertIn('const CACHE_NAME = "world-news-v6-verified-image-filter";', worker)
 
     def test_homepage_has_no_browser_task_link_or_trend_monitor(self):
         root = Path(__file__).resolve().parents[1]
