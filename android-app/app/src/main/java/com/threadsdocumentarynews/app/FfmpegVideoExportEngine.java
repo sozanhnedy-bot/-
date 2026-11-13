@@ -235,8 +235,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
 
     private String segmentCommand(MediaInput input, VideoExportRequest request, File output) {
         StringBuilder command = new StringBuilder("-y ");
-        if (input.image) command.append("-loop 1 -framerate ").append(FPS).append(" -t ")
-                .append(seconds(input.durationMs)).append(" -i ").append(q(input.path)).append(' ');
+        if (input.image) command.append(imageInputOptions(input.path, input.durationMs)).append(' ');
         else command.append("-i ").append(q(input.path)).append(" -t ").append(seconds(input.durationMs)).append(' ');
         command.append("-vf ").append(q("scale=" + request.getWidth() + ":" + request.getHeight()
                 + ":force_original_aspect_ratio=increase,crop=" + request.getWidth() + ":" + request.getHeight()
@@ -245,6 +244,12 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                 .append(" -t ").append(seconds(input.durationMs))
                 .append(" -movflags +faststart ").append(q(output.getAbsolutePath()));
         return command.toString();
+    }
+
+    static String imageInputOptions(String path, long durationMs) {
+        if (path == null || path.trim().isEmpty()) throw new IllegalArgumentException("Image path is required.");
+        if (durationMs <= 0L) throw new IllegalArgumentException("Image duration must be positive.");
+        return "-stream_loop -1 -i " + q(path) + " -t " + seconds(durationMs);
     }
 
     private String readablePath(Uri uri) {
