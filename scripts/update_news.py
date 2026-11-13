@@ -259,7 +259,7 @@ class _PublisherArticleExtractor(HTMLParser):
         if self.skip_depth:
             return
         if tag in self.TEXT_TAGS:
-            self.parts.append("\\n")
+            self.parts.append("\n")
             self.capture_depth += 1
 
     def handle_endtag(self, tag: str) -> None:
@@ -268,7 +268,7 @@ class _PublisherArticleExtractor(HTMLParser):
             self.skip_depth -= 1
             return
         if not self.skip_depth and tag in self.TEXT_TAGS and self.capture_depth:
-            self.parts.append("\\n")
+            self.parts.append("\n")
             self.capture_depth -= 1
 
     def handle_data(self, data: str) -> None:
@@ -284,8 +284,8 @@ def extract_publisher_article(value: str) -> str:
         parser.close()
     except Exception:
         return ""
-    paragraphs = [re.sub(r"\\s+", " ", part).strip() for part in "".join(parser.parts).splitlines()]
-    content = "\\n".join(part for part in paragraphs if len(part) >= 25)
+    paragraphs = [re.sub(r"\s+", " ", part).strip() for part in "".join(parser.parts).splitlines()]
+    content = "\n".join(part for part in paragraphs if len(part) >= 3)
     return content[:MAX_STORED_ARTICLE_CHARS]
 
 
