@@ -79,7 +79,7 @@ function recordFor(item) {
   const title = editorialTitle(report?.title || item.title, sourceName);
   const suppliedImage = safeImage(report?.image || item.image_url);
   const imageKey = ILLUSTRATION_IMAGES[category] || "world";
-  const image = suppliedImage || safeImage(`assets/news-illustrations/${imageKey}.jpg`);
+  const image = suppliedImage || `./assets/news-illustrations/${imageKey}.jpg`;
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
@@ -128,7 +128,7 @@ function addImage(container, record, className = "portal-card-image") {
   const img = document.createElement("img");
   img.src = record.image;
   img.alt = record.imageAlt || record.title;
-  img.loading = "lazy";
+  img.loading = className === "lead-story-image" ? "eager" : "lazy";
   img.decoding = "async";
   figure.append(img);
   if (record.imageCaption) figure.append(el("figcaption", "portal-image-caption", record.imageCaption));
@@ -219,6 +219,19 @@ function renderLatest(records) {
   const excludedIds = state.region === "all" && !state.query ? state.featuredIds : new Set();
   const recent = filtered.filter((record) => !excludedIds.has(record.id)).slice(0, 12);
   recent.forEach((record) => host.append(articleCard(record, true)));
+  const mostRead = $("#most-read-list");
+  if (mostRead) {
+    mostRead.replaceChildren();
+    filtered.slice(0, 5).forEach((record, index) => {
+      const item = el("li", "portal-most-read-item");
+      item.append(el("span", "portal-most-read-number", String(index + 1).padStart(2, "0")));
+      const link = document.createElement("a");
+      link.href = record.href;
+      link.textContent = record.title;
+      item.append(link);
+      mostRead.append(item);
+    });
+  }
   $("#feed-count").textContent = `${filtered.length.toLocaleString("ar-EG")} مادة خلال آخر 72 ساعة؛ تُعرض أحدث 12 مادة في هذه القائمة.`;
   $("#empty-state").hidden = filtered.length > 0;
 }
@@ -269,7 +282,9 @@ function renderBreaking(records) {
   strip.hidden = false;
 }
 function render() {
-  const records = recentRecords(allRecords());
+  const all = allRecords();
+  const recent = recentRecords(all);
+  const records = recent.length ? recent : all;
   renderLead(records);
   renderLatest(records);
   renderSections(records);

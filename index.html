@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="./assets/app-icon-192.png">
   <link rel="icon" href="./assets/brand-mark.png" type="image/png">
   <link rel="stylesheet" href="./styles.css?v=20261107-images">
+  <link rel="stylesheet" href="./styles-newspaper-overrides.css?v=20261114-newspaper">
   <script defer src="./app.js?v=20261107-images"></script>
 </head>
 <body class="portal-body">
@@ -60,9 +61,16 @@
     </section>
 
     <section class="portal-latest" id="latest" aria-labelledby="latest-heading">
-      <div class="portal-section-title"><div><p class="eyebrow">آخر 72 ساعة</p><h2 id="latest-heading">الأخبار الأحدث</h2><p id="feed-count" class="muted-label">تُعرض المواد بترتيب وقت النشر، مع بيانات الناشر المتاحة.</p></div><a class="text-link" href="./archive.html">بحث في الأرشيف <span aria-hidden="true">←</span></a></div>
+      <div class="portal-section-title"><div><p class="eyebrow">تغطية مستمرة</p><h2 id="latest-heading">آخر الأخبار</h2><p id="feed-count" class="muted-label">تُعرض المواد بترتيب وقت النشر، مع بيانات الناشر المتاحة.</p></div><a class="text-link" href="./archive.html">بحث في الأرشيف <span aria-hidden="true">←</span></a></div>
       <nav class="portal-region-filters" aria-label="تصفية حسب المنطقة"><button class="filter-button is-active" type="button" data-region="all" aria-pressed="true">كل المناطق</button><button class="filter-button" type="button" data-region="egypt" aria-pressed="false">مصر</button><button class="filter-button" type="button" data-region="arab" aria-pressed="false">العالم العربي</button><button class="filter-button" type="button" data-region="world" aria-pressed="false">العالم</button></nav>
-      <div id="news-list" class="portal-news-list" aria-live="polite"></div>
+      <div class="portal-latest-layout">
+        <div id="news-list" class="portal-news-list" aria-live="polite"></div>
+        <aside class="portal-most-read" aria-labelledby="most-read-heading">
+          <h3 id="most-read-heading">الأكثر قراءة</h3>
+          <ol id="most-read-list"></ol>
+          <div class="portal-market-box"><strong>لقطة السوق</strong><span>متابعة مختصرة للمؤشرات والأخبار الاقتصادية.</span><b>آخر تحديث: مباشر</b></div>
+        </aside>
+      </div>
       <div id="empty-state" class="empty-state" hidden><h3>لا توجد أخبار حديثة مطابقة</h3><p>عدّل كلمة البحث أو المنطقة، أو راجع الأرشيف للاطلاع على المواد السابقة.</p></div>
     </section>
 
@@ -71,9 +79,20 @@
     <section id="reports-section" class="portal-extra-section" aria-labelledby="reports-heading" hidden><div class="portal-section-title"><div><p class="eyebrow">تحرير ومراجعة</p><h2 id="reports-heading">تقارير ووثائقيات</h2></div><a class="text-link" href="./section.html?category=reports">جميع التقارير <span aria-hidden="true">←</span></a></div><div id="reports-list" class="portal-card-grid"></div></section>
     <section id="videos-section" class="portal-extra-section" aria-labelledby="videos-heading" hidden><div class="portal-section-title"><div><p class="eyebrow">محتوى مرئي</p><h2 id="videos-heading">فيديوهات</h2></div><a class="text-link" href="./videos.html">مكتبة الفيديو <span aria-hidden="true">←</span></a></div><div id="videos-list" class="portal-card-grid"></div></section>
 
+    <section class="portal-featured-video" aria-labelledby="featured-video-heading">
+      <div class="portal-featured-heading"><div><p class="eyebrow">شاهد World News</p><h2 id="featured-video-heading">فيديو مميز</h2></div><p>وثائقيات وموجزات مختارة من غرفة الأخبار.</p></div>
+      <div class="portal-video-grid">
+        <a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/world.jpg" alt="مشهد من العالم" loading="lazy"><span class="portal-play">▶</span><strong>قراءة سريعة لأبرز أخبار العالم اليوم</strong></a>
+        <a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/technology.jpg" alt="مشهد تقني" loading="lazy"><span class="portal-play">▶</span><strong>كيف تغيّر التكنولوجيا طريقة عملنا؟</strong></a>
+        <a class="portal-video-card" href="./videos.html"><img src="./assets/news-illustrations/economy.jpg" alt="مشهد اقتصادي" loading="lazy"><span class="portal-play">▶</span><strong>أسواق العالم وما وراء الأرقام</strong></a>
+      </div>
+    </section>
+
+    <section class="portal-newsletter" aria-labelledby="newsletter-heading"><p class="eyebrow">الموجز الصباحي</p><h2 id="newsletter-heading">ابقَ على اطلاع</h2><p>ملخص واحد واضح لأهم القصص التي تستحق وقتك.</p><form onsubmit="return false"><input type="email" aria-label="بريدك الإلكتروني" placeholder="بريدك الإلكتروني"><button type="submit">اشترك</button></form><small>لا رسائل مزعجة · إلغاء الاشتراك في أي وقت</small></section>
+
     <section class="portal-about" aria-label="المنهج التحريري"><img class="portal-about-mark" src="./assets/brand-mark.png" alt=""><div><p class="eyebrow">المعايير التحريرية</p><h2>المعلومة ومصدرها في المقدمة</h2><p>نرتب المواد بحسب تاريخ النشر ونذكر اسم الناشر عند توفره. يظل موجز RSS موجزًا ولا يُعرض كتقرير تحليلي كامل؛ أما التقارير التحريرية فتُنشر داخل الموقع مع الإشارة إلى مصادرها. لا نضيف تفاصيل أو صورًا لا تسندها البيانات المتاحة.</p></div></section>
   </main>
 
-  <footer class="portal-footer"><a class="portal-footer-brand" href="./" lang="en" dir="ltr">World News</a><p>أخبار العالم · تغطية دولية ومصادر معلنة وقراءة داخل الموقع</p><nav aria-label="روابط إضافية"><a href="./archive.html">الأرشيف</a><a href="./videos.html">الفيديوهات</a><a href="./section.html?category=reports">التقارير</a></nav></footer>
+  <footer class="portal-footer"><div class="portal-footer-grid"><div><a class="portal-footer-brand" href="./" lang="en" dir="ltr">World News</a><p>تغطية دولية مستقلة، ومصادر معلنة، وقراءة واضحة داخل الموقع.</p></div><div><strong>الأقسام</strong><nav aria-label="أقسام إضافية"><a href="./section.html?category=world">العالم</a><a href="./section.html?category=politics">سياسة</a><a href="./section.html?category=business">اقتصاد</a><a href="./section.html?category=technology">تكنولوجيا</a></nav></div><div><strong>عن الموقع</strong><nav><a href="./archive.html">الأرشيف</a><a href="./section.html?category=reports">التقارير</a><a href="./videos.html">الفيديوهات</a></nav></div><div><strong>تابعنا</strong><nav><a href="./">X / Twitter</a><a href="./">Instagram</a><a href="./">YouTube</a></nav></div></div><small class="portal-footer-copy">© 2026 World News · Trusted. Fast. Global.</small></footer>
 </body>
 </html>
