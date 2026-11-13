@@ -143,6 +143,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
 
             File overlayDirectory = new File(work, "news-overlays");
             renderOverlayFrames(overlayDirectory, request);
+            verifyPngDecoder(overlayDirectory);
             File audioList = new File(work, "audio-list.txt");
             writeConcatList(audioList, audioSegments);
             File joinedAudio = new File(work, "joined-audio.wav");
@@ -326,6 +327,12 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                         + width + "x" + height + ", expected " + expectedWidth + "x" + expectedHeight);
             }
         }
+    }
+
+    private void verifyPngDecoder(File directory) {
+        File firstFrame = new File(directory, "overlay-000.png");
+        execute("-v error -i " + q(firstFrame.getAbsolutePath())
+                + " -frames:v 1 -f null -", "PNG overlay decoder preflight");
     }
 
     private void renderOverlayFrame(File file, VideoExportRequest request, float timeSeconds) throws Exception {
