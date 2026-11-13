@@ -11,6 +11,11 @@ const HOME_CATEGORIES = [
   { id: "politics", title: "سياسة" }, { id: "economy", title: "اقتصاد" },
   { id: "technology", title: "تكنولوجيا" }, { id: "sports", title: "رياضة" },
 ];
+const REFERENCE_IMAGES = {
+  world: "./assets/reference-lead.jpg", arab: "./assets/reference-lead.jpg", egypt: "./assets/reference-lead.jpg",
+  technology: "./assets/reference-technology.jpg", politics: "./assets/reference-lead.jpg",
+  sports: "./assets/reference-sports.jpg", economy: "./assets/reference-market.jpg",
+};
 const state = { news: [], reports: [], query: "", region: "all", initialLoad: true, featuredIds: new Set() };
 const reportMap = new Map();
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -90,7 +95,7 @@ function recordFor(item) {
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
   const suppliedImage = safeImage(report?.image || item.image_url);
-  const image = suppliedImage;
+  const image = suppliedImage || REFERENCE_IMAGES[category] || REFERENCE_IMAGES[region] || "./assets/reference-lead.jpg";
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
@@ -241,7 +246,7 @@ function renderLatest(records) {
   host.replaceChildren();
   const excludedIds = state.region === "all" && !state.query ? state.featuredIds : new Set();
   const recent = filtered.filter((record) => !excludedIds.has(record.id)).slice(0, 12);
-  recent.forEach((record) => host.append(articleCard(record, true)));
+  recent.forEach((record) => host.append(articleCard(record)));
   const mostRead = $("#most-read-list");
   if (mostRead) {
     mostRead.replaceChildren();

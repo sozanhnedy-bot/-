@@ -18,6 +18,8 @@ ASSET_FILES = (
     "brand-mark.png", "app-icon-192.png", "app-icon-512.png",
     "brand-cover.jpg",
     "portal-interface-banner.jpg",
+    "reference-lead.jpg", "reference-technology.jpg", "reference-sports.jpg",
+    "reference-market.jpg", "reference-wildfire.jpg", "reference-entertainment.jpg",
     "story-finswimming.webp", "story-morocco-stadium.webp", "story-yemen-diplomacy.webp",
 )
 
