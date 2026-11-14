@@ -340,7 +340,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             completed.countDown();
         }, null, statistics -> {
             if (callback == null || expectedDurationMs <= 0L || progressEnd <= progressStart) return;
-            long elapsedMs = Math.max(0L, statistics.getTime());
+            long elapsedMs = Math.max(0L, Math.round(statistics.getTime()));
             double fraction = Math.min(1.0, elapsedMs / (double) expectedDurationMs);
             int value = progressStart + (int) Math.floor((progressEnd - progressStart) * fraction);
             progress(callback, value);
