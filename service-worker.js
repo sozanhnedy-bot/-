@@ -1,4 +1,4 @@
-const CACHE_NAME = "world-news-v10-homepage-recovery";
+const CACHE_NAME = "world-news-v11-story-image-fallbacks";
 const ROOT = new URL("./", self.location.href);
 const DATA_URLS = ["data/news.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
 const SHELL_URLS = [
@@ -21,6 +21,7 @@ const SHELL_URLS = [
   new URL("assets/story-finswimming.webp", ROOT).href,
   new URL("assets/story-morocco-stadium.webp", ROOT).href,
   new URL("assets/story-yemen-diplomacy.webp", ROOT).href,
+  ...["egypt", "arab", "world", "politics", "economy", "technology", "sports"].map((name) => new URL(`assets/news-illustrations/${name}.jpg`, ROOT).href),
   ...DATA_URLS,
 ];
 
