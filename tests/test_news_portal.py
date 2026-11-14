@@ -172,7 +172,7 @@ class BuildAndBrowserTests(unittest.TestCase):
         page = (root / "index.html").read_text(encoding="utf-8")
         worker = (root / "service-worker.js").read_text(encoding="utf-8")
         self.assertIn("app.js?v=20261114-images-reports-v5", page)
-        self.assertIn('const CACHE_NAME = "world-news-v11-story-image-fallbacks";', worker)
+        self.assertIn('const CACHE_NAME = "world-news-v12-no-generic-images";', worker)
 
     def test_homepage_has_no_browser_task_link_or_trend_monitor(self):
         root = Path(__file__).resolve().parents[1]
