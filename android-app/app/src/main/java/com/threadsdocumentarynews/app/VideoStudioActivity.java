@@ -76,6 +76,15 @@ public final class VideoStudioActivity extends Activity {
     private static final int WHITE = Color.rgb(248, 247, 244);
     private static final int MUTED = Color.rgb(164, 164, 171);
     private static final int RED = Color.rgb(255, 130, 115);
+    private static final String STATE_MEDIA_URIS = "video_studio_media_uris";
+    private static final String STATE_AUDIO_URI = "video_studio_audio_uri";
+    private static final String STATE_MUSIC_URI = "video_studio_music_uri";
+    private static final String STATE_TITLE = "video_studio_title";
+    private static final String STATE_BRAND = "video_studio_brand";
+    private static final String STATE_CAPTION = "video_studio_caption";
+    private static final String STATE_TICKER = "video_studio_ticker";
+    private static final String STATE_IMAGE_DURATION = "video_studio_image_duration";
+    private static final String STATE_FORMAT = "video_studio_format";
 
     private final ArrayList<Uri> mediaUris = new ArrayList<>();
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -269,6 +278,49 @@ public final class VideoStudioActivity extends Activity {
         if (incomingTitle != null && !incomingTitle.trim().isEmpty()) {
             setStatus("وصل موضوع من الرادار" + (incomingSource == null ? "" : " — " + incomingSource) + ". اختر الوسائط لاختبارها ثم أنشئ MP4.", GOLD);
         }
+        if (savedInstanceState != null) restoreStudioState(savedInstanceState);
+    }
+
+    @Override protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(STATE_MEDIA_URIS, new ArrayList<>(mediaUris));
+        if (audioUri != null) outState.putParcelable(STATE_AUDIO_URI, audioUri);
+        if (musicUri != null) outState.putParcelable(STATE_MUSIC_URI, musicUri);
+        if (titleInput != null) outState.putString(STATE_TITLE, titleInput.getText().toString());
+        if (brandInput != null) outState.putString(STATE_BRAND, brandInput.getText().toString());
+        if (captionInput != null) outState.putString(STATE_CAPTION, captionInput.getText().toString());
+        if (tickerInput != null) outState.putString(STATE_TICKER, tickerInput.getText().toString());
+        if (imageDurationSpinner != null) outState.putInt(STATE_IMAGE_DURATION, imageDurationSpinner.getSelectedItemPosition());
+        if (formatSpinner != null) outState.putInt(STATE_FORMAT, formatSpinner.getSelectedItemPosition());
+    }
+
+    @SuppressWarnings("deprecation")
+    private void restoreStudioState(Bundle state) {
+        ArrayList<Uri> restoredMedia = state.getParcelableArrayList(STATE_MEDIA_URIS);
+        if (restoredMedia != null) {
+            mediaUris.clear();
+            mediaUris.addAll(restoredMedia);
+            updateMediaList();
+        }
+        audioUri = state.getParcelable(STATE_AUDIO_URI);
+        if (audioUri != null) {
+            audioName.setText("الصوت المحدد: " + displayName(audioUri));
+            audioName.setTextColor(GOLD);
+            testAudioButton.setEnabled(true);
+        }
+        musicUri = state.getParcelable(STATE_MUSIC_URI);
+        if (musicUri != null) {
+            musicName.setText("الخلفية: " + displayName(musicUri));
+            musicName.setTextColor(GOLD);
+            testMusicButton.setEnabled(true);
+        }
+        titleInput.setText(state.getString(STATE_TITLE, titleInput.getText().toString()));
+        brandInput.setText(state.getString(STATE_BRAND, brandInput.getText().toString()));
+        captionInput.setText(state.getString(STATE_CAPTION, captionInput.getText().toString()));
+        tickerInput.setText(state.getString(STATE_TICKER, tickerInput.getText().toString()));
+        imageDurationSpinner.setSelection(Math.max(0, Math.min(imageDurationSpinner.getCount() - 1, state.getInt(STATE_IMAGE_DURATION, imageDurationSpinner.getSelectedItemPosition()))));
+        formatSpinner.setSelection(Math.max(0, Math.min(formatSpinner.getCount() - 1, state.getInt(STATE_FORMAT, formatSpinner.getSelectedItemPosition()))));
+        setStatus("رجعت لصفحة التصدير والتحرير؛ اختياراتك محفوظة.", GOLD);
     }
 
     private void openMediaPicker() {
@@ -278,7 +330,21 @@ public final class VideoStudioActivity extends Activity {
         intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"image/*", "video/*"});
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-        startActivityForResult(intent, PICK_MEDIA);
+        try {
+            startActivityForResult(intent, PICK_MEDIA);
+        } catch (Exception openDocumentError) {
+            Intent fallback = new Intent(Intent.ACTION_GET_CONTENT);
+            fallback.addCategory(Intent.CATEGORY_OPENABLE);
+            fallback.setType("*/*");
+            fallback.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"image/*", "video/*"});
+            fallback.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            fallback.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            try {
+                startActivityForResult(Intent.createChooser(fallback, "اختر صورًا أو فيديوهات"), PICK_MEDIA);
+            } catch (Exception fallbackError) {
+                setStatus("تعذر فتح منتقي الصور والفيديوهات. حدّث تطبيق الملفات أو أعد المحاولة.", RED);
+            }
+        }
     }
 
     private void openAudioPicker() {
@@ -299,16 +365,30 @@ public final class VideoStudioActivity extends Activity {
 
     @Override protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_OK || data == null) return;
         if (requestCode == PICK_MEDIA) {
-            int flags = data.getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-            if (data.getClipData() != null) {
-                for (int i = 0; i < data.getClipData().getItemCount(); i++) addPickedUri(data.getClipData().getItemAt(i).getUri(), flags);
-            } else if (data.getData() != null) {
-                addPickedUri(data.getData(), flags);
+            if (resultCode != RESULT_OK || data == null) {
+                setStatus("لم يتم اختيار ملف؛ ما زلت في صفحة التصدير والتحرير.", MUTED);
+                return;
             }
-            updateMediaList();
-        } else if (requestCode == PICK_AUDIO) {
+            int flags = data.getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+            try {
+                if (data.getClipData() != null) {
+                    for (int i = 0; i < data.getClipData().getItemCount(); i++) {
+                        try { addPickedUri(data.getClipData().getItemAt(i).getUri(), flags); } catch (Exception ignored) { }
+                    }
+                } else if (data.getData() != null) {
+                    addPickedUri(data.getData(), flags);
+                }
+                updateMediaList();
+                if (mediaUris.isEmpty()) setStatus("لم أستطع قراءة نوع الملف؛ اختر صورة أو فيديو من تطبيق الملفات.", RED);
+                else setStatus("تمت إضافة الوسائط إلى صفحة التصدير والتحرير.", GOLD);
+            } catch (Exception error) {
+                setStatus("تعذر قراءة الملف المحدد؛ بقيت في صفحة التصدير والتحرير. جرّب ملفًا آخر.", RED);
+            }
+            return;
+        }
+        if (resultCode != RESULT_OK || data == null) return;
+        if (requestCode == PICK_AUDIO) {
             audioUri = data.getData();
             if (audioUri != null) {
                 persistReadPermission(audioUri, data.getFlags());
@@ -333,7 +413,13 @@ public final class VideoStudioActivity extends Activity {
 
     private void addPickedUri(Uri uri, int flags) {
         if (uri == null || mediaUris.contains(uri)) return;
-        String type = getContentResolver().getType(uri);
+        String type = null;
+        try { type = getContentResolver().getType(uri); } catch (Exception ignored) { }
+        if (type == null) {
+            String name = displayName(uri).toLowerCase(java.util.Locale.ROOT);
+            if (name.matches(".*\\.(jpg|jpeg|png|gif|webp|heic|heif|bmp)$")) type = "image/unknown";
+            else if (name.matches(".*\\.(mp4|m4v|mov|mkv|webm|3gp|avi)$")) type = "video/unknown";
+        }
         if (type == null || (!type.startsWith("image/") && !type.startsWith("video/"))) return;
         persistReadPermission(uri, flags);
         mediaUris.add(uri);
