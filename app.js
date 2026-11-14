@@ -99,7 +99,7 @@ function recordFor(item) {
   const articleSummary = !report ? distinctSummary(item.article_content, title, sourceName) : "";
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
-  const image = safeImage(report?.image || item.image_url);
+  const image = (item.image_verified === true || report?.image_verified === true) ? safeImage(report?.image || item.image_url) : "";
   const illustration = illustrationFor(category, region);
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
