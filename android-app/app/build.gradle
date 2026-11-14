@@ -24,17 +24,23 @@ android {
         applicationId 'com.worldnews.newsapp'
         minSdk 24
         targetSdk 35
-        versionCode 17
-        versionName '1.6.9'
+        versionCode 18
+        versionName '1.6.10'
         ndk { abiFilters 'arm64-v8a' }
         buildConfigField 'String', 'FIREBASE_API_KEY', asBuildConfigString(firebaseValue('firebase.apiKey', 'FIREBASE_API_KEY'))
         buildConfigField 'String', 'FIREBASE_APP_ID', asBuildConfigString(firebaseValue('firebase.appId', 'FIREBASE_APP_ID'))
         buildConfigField 'String', 'FIREBASE_PROJECT_ID', asBuildConfigString(firebaseValue('firebase.projectId', 'FIREBASE_PROJECT_ID'))
-        buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', asBuildConfigString(firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN'))
-        resValue 'string', 'firebase_app_check_debug_token', firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN')
-        manifestPlaceholders = [
-            firebaseAppCheckDebugToken: firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN')
-        ]
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', asBuildConfigString(firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN'))
+            manifestPlaceholders = [firebaseAppCheckDebugToken: firebaseValue('firebase.debugToken', 'FIREBASE_DEBUG_TOKEN')]
+        }
+        release {
+            buildConfigField 'String', 'FIREBASE_DEBUG_TOKEN', '""'
+            manifestPlaceholders = [firebaseAppCheckDebugToken: '']
+        }
     }
 
     compileOptions {

@@ -16,6 +16,9 @@
             android:name=".VideoStudioActivity"
             android:exported="false" />
         <activity
+            android:name=".AppDiagnosticsActivity"
+            android:exported="false" />
+        <activity
             android:name=".SocialPostDesignerActivity"
             android:exported="false" />
         <activity

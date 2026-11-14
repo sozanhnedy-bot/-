@@ -1006,6 +1006,7 @@ public final class VideoStudioActivity extends Activity {
                     .append(' ').append(Math.round(transform.getFilterIntensity() * 100f)).append('%');
         }
         String details = report.append("\n\n").append(VideoExportDiagnostics.format(error)).toString();
+        DiagnosticStore.recordReport(this, "تصدير الفيديو", details);
         TextView body = text(details, 12, WHITE, false);
         body.setTextIsSelectable(true);
         body.setTextDirection(View.TEXT_DIRECTION_LTR);
@@ -1031,6 +1032,8 @@ public final class VideoStudioActivity extends Activity {
                                 android.widget.Toast.LENGTH_LONG).show();
                     }
                 })
+                .setNeutralButton("فتح شاشة التشخيص", (dialog, which) ->
+                        startActivity(new Intent(this, AppDiagnosticsActivity.class)))
                 .setNegativeButton("إغلاق", null)
                 .show();
     }

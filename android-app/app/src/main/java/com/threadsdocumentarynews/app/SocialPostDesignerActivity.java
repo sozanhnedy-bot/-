@@ -147,7 +147,12 @@ public final class SocialPostDesignerActivity extends Activity {
                 try {
                     Bitmap decoded = ImageAssetNormalizer.decode(getContentResolver(), uri);
                     runOnUiThread(() -> { if (sourceBitmap != null) sourceBitmap.recycle(); sourceBitmap = decoded; refreshPreview(); });
-                } catch (IOException | RuntimeException e) { runOnUiThread(() -> showError(e.getMessage() == null ? "تعذر قراءة الصورة." : e.getMessage())); }
+                } catch (IOException | RuntimeException | OutOfMemoryError e) {
+                    DiagnosticStore.record(this, "استيراد صورة للمنشور", e);
+                    runOnUiThread(() -> {
+                        if (!isFinishing()) startActivity(new Intent(this, AppDiagnosticsActivity.class));
+                    });
+                }
             }).start();
         } else if (requestCode == CREATE_IMAGE) writeExport(data.getData());
     }
@@ -194,12 +199,17 @@ public final class SocialPostDesignerActivity extends Activity {
     private void writeExport(Uri uri) {
         if (uri == null) return;
         boolean png = exportAsPng;
-        Bitmap art = renderArtwork(1080);
-        try (OutputStream stream = getContentResolver().openOutputStream(uri, "w")) {
+        Bitmap art = null;
+        try {
+            art = renderArtwork(1080);
+            try (OutputStream stream = getContentResolver().openOutputStream(uri, "w")) {
             if (stream == null || !art.compress(png ? Bitmap.CompressFormat.PNG : Bitmap.CompressFormat.JPEG, 94, stream)) throw new IOException("تعذر حفظ الصورة إلى الملف المحدد.");
+            }
             Toast.makeText(this, "تم تصدير الصورة محليًا.", Toast.LENGTH_LONG).show();
-        } catch (IOException | SecurityException e) { showError("فشل تصدير الصورة: " + (e.getMessage() == null ? "تعذر الكتابة إلى الملف." : e.getMessage())); }
-        finally { art.recycle(); }
+        } catch (IOException | RuntimeException | OutOfMemoryError e) {
+            DiagnosticStore.record(this, "تصدير صورة المنشور", e);
+            if (!isFinishing()) startActivity(new Intent(this, AppDiagnosticsActivity.class));
+        } finally { if (art != null && !art.isRecycled()) art.recycle(); }
     }
     private void saveDraft() {
         if (draftPrefs == null) return;

@@ -92,6 +92,20 @@ jobs:
           echo "Verified FFmpegKitNext Maven POM and AAR."
           ls -lh "$POM" "$AAR"
 
+      - name: Verify Release does not contain the Firebase Debug Token
+        working-directory: android-app
+        run: |
+          set -euo pipefail
+          ./gradlew --no-daemon :app:generateReleaseBuildConfig
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          files = list(Path('app/build/generated/source/buildConfig/release').rglob('BuildConfig.java'))
+          if not files or not any(re.search(r'FIREBASE_DEBUG_TOKEN\s*=\s*""', p.read_text()) for p in files):
+              raise SystemExit('Release BuildConfig must contain an empty Firebase Debug Token.')
+          print('Verified: Firebase Debug Token is empty in Release BuildConfig.')
+          PY
+
       - name: Run assistant pipeline unit tests
         working-directory: android-app
         run: ./gradlew --no-daemon testDebugUnitTest
@@ -105,12 +119,12 @@ jobs:
           APK=android-app/app/build/outputs/apk/debug/app-debug.apk
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.worldnews.newsapp' versionCode='17' versionName='1.6.9'"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.worldnews.newsapp' versionCode='18' versionName='1.6.10'"
 
       - name: Upload installable APK artifact
         uses: actions/upload-artifact@v7
         with:
-          name: World-News-v1.6.9-debug
+          name: World-News-v1.6.10-debug
           path: android-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 90

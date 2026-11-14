@@ -184,6 +184,17 @@ public final class PortalActivity extends Activity {
         actions.addView(metaAi, metaAiParams);
         root.addView(actions);
 
+        Button diagnostics = new Button(this);
+        diagnostics.setText("تشخيص أخطاء الصور والفيديو ونسخ Debug Token");
+        diagnostics.setTextColor(Color.WHITE);
+        diagnostics.setAllCaps(false);
+        diagnostics.setTextSize(13);
+        diagnostics.setBackgroundColor(NAVY);
+        diagnostics.setOnClickListener(v -> startActivity(new Intent(this, AppDiagnosticsActivity.class)));
+        LinearLayout.LayoutParams diagnosticsParams = new LinearLayout.LayoutParams(-1, dp(48));
+        diagnosticsParams.setMargins(dp(8), dp(2), dp(8), dp(5));
+        root.addView(diagnostics, diagnosticsParams);
+
         setContentView(root);
         webView.loadUrl(SITE_URL);
     }
