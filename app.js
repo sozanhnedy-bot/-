@@ -77,6 +77,11 @@ function distinctSummary(value, title, source) {
   }
   return summary;
 }
+function illustrationFor(category, region) {
+  const key = [category, region].find((value) => ["egypt", "arab", "world", "politics", "economy", "technology", "sports"].includes(value)) || "world";
+  const labels = { egypt: "مصر", arab: "العالم العربي", world: "العالم", politics: "السياسة", economy: "الاقتصاد", technology: "التكنولوجيا", sports: "الرياضة" };
+  return { src: `./assets/news-illustrations/${key}.jpg`, alt: `رسم توضيحي لقسم ${labels[key]}`, caption: `صورة توضيحية لقسم ${labels[key]}؛ لا تصوّر الحدث نفسه` };
+}
 function recordFor(item) {
   if (!item || !validId(item.id)) return null;
   const report = reportMap.get(item.id) || null;
@@ -95,6 +100,7 @@ function recordFor(item) {
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
   const image = safeImage(report?.image || item.image_url);
+  const illustration = illustrationFor(category, region);
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
@@ -105,8 +111,11 @@ function recordFor(item) {
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
     image,
-    imageAlt: image ? text(report?.image_alt || item.image_alt || item.title, 300) : "",
-    imageCaption: image ? text(report?.image_caption || item.image_caption, 300) : "",
+    fallbackImage: illustration.src,
+    fallbackAlt: illustration.alt,
+    fallbackCaption: illustration.caption,
+    imageAlt: image ? text(report?.image_alt || item.image_alt || item.title, 300) : illustration.alt,
+    imageCaption: image ? text(report?.image_caption || item.image_caption, 300) : illustration.caption,
     region,
     category,
     summaryType: report ? "editorial_report" : text(item.summary_type, 40),
@@ -149,19 +158,28 @@ function formatDate(value, withTime = false) {
   return new Intl.DateTimeFormat("ar-EG", withTime ? { dateStyle: "medium", timeStyle: "short" } : { dateStyle: "medium" }).format(date);
 }
 function addImage(container, record, className = "portal-card-image") {
-  if (!record.image) return;
+  const initialImage = record.image || record.fallbackImage;
+  if (!initialImage) return;
   const figure = el("figure", className);
   const img = document.createElement("img");
-  img.src = record.image;
-  img.alt = record.imageAlt || record.title;
+  img.src = initialImage;
+  img.alt = record.image ? (record.imageAlt || record.title) : (record.fallbackAlt || record.imageAlt || record.title);
   img.loading = className === "lead-story-image" ? "eager" : "lazy";
   img.decoding = "async";
+  const caption = record.imageCaption || record.fallbackCaption;
+  const captionNode = caption ? el("figcaption", "portal-image-caption", caption) : null;
   img.addEventListener("error", () => {
-    if (record.fallbackImage && img.src !== new URL(record.fallbackImage, location.href).href) img.src = record.fallbackImage;
-    else figure.remove();
-  }, { once: true });
+    if (record.image && record.fallbackImage && !img.dataset.fallbackApplied) {
+      img.dataset.fallbackApplied = "true";
+      img.src = record.fallbackImage;
+      img.alt = record.fallbackAlt || "صورة توضيحية للقسم";
+      if (captionNode) captionNode.textContent = record.fallbackCaption || "صورة توضيحية؛ لا تصوّر الحدث نفسه";
+      return;
+    }
+    figure.remove();
+  });
   figure.append(img);
-  if (record.imageCaption) figure.append(el("figcaption", "portal-image-caption", record.imageCaption));
+  if (captionNode) figure.append(captionNode);
   container.append(figure);
 }
 function sourceMeta(record) {
@@ -174,7 +192,7 @@ function sourceMeta(record) {
 }
 function articleCard(record, compact = false) {
   const card = el("article", compact ? "portal-news-item" : "portal-story-card");
-  if (record.image) {
+  if (record.image || record.fallbackImage) {
     const linkImage = document.createElement("a");
     linkImage.className = "portal-card-thumb-link";
     linkImage.href = record.href;
@@ -210,8 +228,8 @@ function renderLead(records) {
   state.featuredIds = new Set(featured.map((record) => record.id));
   const lead = featured[0];
   if (!lead) { host.append(el("p", "loading-card", "لا توجد أخبار حديثة الآن. الأخبار السابقة محفوظة في الأرشيف.")); return; }
-  const card = el("article", `lead-story${lead.image ? " has-image" : " text-only"}`);
-  if (lead.image) addImage(card, lead, "lead-story-image");
+  const card = el("article", `lead-story${(lead.image || lead.fallbackImage) ? " has-image" : " text-only"}`);
+  if (lead.image || lead.fallbackImage) addImage(card, lead, "lead-story-image");
   const body = el("div", "lead-story-copy");
   body.append(sourceMeta(lead));
   body.append(el("h2", "lead-story-title", lead.title));
