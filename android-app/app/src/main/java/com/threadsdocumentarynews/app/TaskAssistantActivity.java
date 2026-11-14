@@ -6,6 +6,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -32,6 +33,8 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.appcheck.FirebaseAppCheck;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -42,6 +45,7 @@ import java.nio.charset.StandardCharsets;
 import java.io.OutputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -502,6 +506,23 @@ public final class TaskAssistantActivity extends Activity {
         addText(firebaseKeyCard, "هذا مفتاح Firebase API المضمّن في APK. لا تضعه في خانة App Check Debug token؛ تلك الخانة تطلب رمز UUID منفصلًا.", 12, MUTED, false, 0, 0);
         pageContent.addView(firebaseKeyCard, params(-1, -2, 0, 0, 0, 12));
 
+        LinearLayout appCheckCard = card();
+        addText(appCheckCard, "رمز App Check Debug Token", 17, TEXT, true, 0, 6);
+        addText(appCheckCard, "هذا رمز UUID v4 خاص بهذا التثبيت التجريبي. اضغط الزر لتهيئته ونسخه، ثم سجّله في Firebase Console داخل App Check → Manage debug tokens.", 12, MUTED, false, 0, 8);
+        TextView debugTokenValue = text("اضغط «تهيئة ونسخ» للحصول على الرمز من Firebase.", 12, TEXT, false);
+        debugTokenValue.setTextDirection(View.TEXT_DIRECTION_LTR);
+        debugTokenValue.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+        debugTokenValue.setTextIsSelectable(true);
+        debugTokenValue.setPadding(dp(12), dp(11), dp(12), dp(11));
+        debugTokenValue.setBackground(rounded(SURFACE_ALT, LINE, 12));
+        appCheckCard.addView(debugTokenValue, params(-1, -2, 0, 0, 0, 8));
+        Button copyDebugToken = primaryButton("تهيئة ونسخ Debug Token");
+        copyDebugToken.setEnabled(BuildConfig.DEBUG);
+        copyDebugToken.setOnClickListener(v -> prepareAndCopyDebugToken(debugTokenValue, copyDebugToken, 12));
+        appCheckCard.addView(copyDebugToken, params(-1, dp(48), 0, 0, 0, 8));
+        addText(appCheckCard, "الرمز ليس مفتاح Firebase API. لا تنشره ولا تشارك APK التجريبي؛ ألغِ الرمز من Firebase إذا تسرّب.", 12, MUTED, false, 0, 0);
+        pageContent.addView(appCheckCard, params(-1, -2, 0, 0, 0, 12));
+
         LinearLayout runs = card();
         addText(runs, "بناء التطبيق على GitHub", 17, TEXT, true, 0, 6);
         addText(runs, "تُعرض حالة آخر تشغيل وخطوة الفشل إن وجدت. هذه قراءة فقط؛ لا تُرسل بيانات دخول GitHub من الهاتف.", 13, MUTED, false, 0, 10);
@@ -520,6 +541,86 @@ public final class TaskAssistantActivity extends Activity {
         addText(repair, "كاتب السكريبت ومولد صوت Gemini يحتاجان اتصال إنترنت وحصة مجانية متاحة. عند تعذر صوت Gemini، يحاول التطبيق استخدام Nabra محليًا إذا كان منزّلًا.", 13, MUTED, false, 0, 0);
         pageContent.addView(repair, params(-1, -2, 0, 0, 0, 0));
         refreshWorkflowStatus();
+    }
+
+    private String readStoredDebugToken() {
+        if (!BuildConfig.DEBUG) return "";
+        try {
+            if (FirebaseApp.getApps(getApplicationContext()).isEmpty()) return "";
+            FirebaseApp app = FirebaseApp.getInstance();
+            String preferencesName = "com.google.firebase.appcheck.debug.store." + app.getPersistenceKey();
+            SharedPreferences preferences = getSharedPreferences(preferencesName, MODE_PRIVATE);
+            return preferences.getString("com.google.firebase.appcheck.debug.DEBUG_SECRET", "");
+        } catch (Exception ignored) {
+            return "";
+        }
+    }
+
+    private boolean isUuidV4(String value) {
+        if (value == null || value.isEmpty()) return false;
+        try {
+            UUID parsed = UUID.fromString(value);
+            return parsed.version() == 4 && value.equalsIgnoreCase(parsed.toString());
+        } catch (IllegalArgumentException ignored) {
+            return false;
+        }
+    }
+
+    private void prepareAndCopyDebugToken(TextView tokenView, Button copyButton, int attemptsRemaining) {
+        if (!BuildConfig.DEBUG) {
+            tokenView.setText("رمز Debug متاح في نسخة الاختبار فقط.");
+            return;
+        }
+        String existingToken = readStoredDebugToken();
+        if (isUuidV4(existingToken)) {
+            tokenView.setText(existingToken);
+            copyButton.setText("نسخ Debug Token");
+            copyDebugTokenToClipboard(existingToken);
+            return;
+        }
+        try {
+            if (!FirebaseAiSetup.INSTANCE.initialize(getApplicationContext())) {
+                tokenView.setText("إعداد Firebase ناقص في هذا البناء؛ لا يمكن إنشاء الرمز.");
+                copyButton.setEnabled(true);
+                return;
+            }
+            FirebaseApp app = FirebaseApp.getInstance();
+            FirebaseAppCheck.getInstance(app).getAppCheckToken(false);
+            tokenView.setText("جارٍ تهيئة رمز UUID من Firebase…");
+            copyButton.setEnabled(false);
+            mainHandler.postDelayed(() -> pollAndCopyDebugToken(tokenView, copyButton, attemptsRemaining), 400);
+        } catch (Exception error) {
+            tokenView.setText("تعذر تهيئة رمز Debug. تحقق من إعداد Firebase ثم أعد المحاولة.");
+            copyButton.setEnabled(true);
+        }
+    }
+
+    private void pollAndCopyDebugToken(TextView tokenView, Button copyButton, int attemptsRemaining) {
+        String token = readStoredDebugToken();
+        if (isUuidV4(token)) {
+            tokenView.setText(token);
+            copyButton.setEnabled(true);
+            copyButton.setText("نسخ Debug Token");
+            copyButton.setOnClickListener(v -> copyDebugTokenToClipboard(token));
+            copyDebugTokenToClipboard(token);
+            return;
+        }
+        if (attemptsRemaining > 0) {
+            mainHandler.postDelayed(() -> pollAndCopyDebugToken(tokenView, copyButton, attemptsRemaining - 1), 400);
+        } else {
+            tokenView.setText("لم يظهر الرمز بعد. تأكد من اتصال الإنترنت وإعداد Firebase ثم أعد المحاولة.");
+            copyButton.setEnabled(true);
+            copyButton.setText("إعادة تهيئة ونسخ Debug Token");
+            copyButton.setOnClickListener(v -> prepareAndCopyDebugToken(tokenView, copyButton, 12));
+        }
+    }
+
+    private void copyDebugTokenToClipboard(String token) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null) {
+            clipboard.setPrimaryClip(ClipData.newPlainText("Firebase App Check Debug Token", token));
+            Toast.makeText(this, "تم نسخ Debug Token. سجّله في Firebase App Check.", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void refreshWorkflowStatus() {
