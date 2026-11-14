@@ -54,6 +54,15 @@ class NewsParsingTests(unittest.TestCase):
         items = parse_feed(xml, "world", "اختبار", now=NOW)
         self.assertEqual(items[0]["image_url"], "https://cdn.example.com/images/story.webp")
 
+    def test_parse_rss_resolves_relative_lead_image_urls(self):
+        xml = """<rss><channel><item>
+          <title>خبر بصورة نسبية</title><link>https://example.com/news/photo</link>
+          <description><![CDATA[<img src="/media/story-photo.jpg" alt="صورة الخبر">]]></description>
+          <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+        </item></channel></rss>""".encode("utf-8")
+        items = parse_feed(xml, "world", "اختبار", now=NOW)
+        self.assertEqual(items[0]["image_url"], "https://example.com/media/story-photo.jpg")
+
     def test_parse_atom_extracts_image_enclosure_link(self):
         xml = """<feed xmlns="http://www.w3.org/2005/Atom"><entry>
           <title>خبر ذري</title><link href="https://example.com/news/atom"/>
