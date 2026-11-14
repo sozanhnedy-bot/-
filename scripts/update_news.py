@@ -478,19 +478,20 @@ def _fetch_article_content(article_url: str, timeout: int = 8) -> str:
         return ""
 
 
-def _item_image_url(node: ET.Element) -> str:
+def _item_image_url(node: ET.Element, article_url: str = "") -> str:
     # Prefer explicitly typed RSS/Media RSS image attachments.
     for child in node.iter():
         name = _local_name(child.tag)
         if name in {"enclosure", "content", "thumbnail"}:
             url = child.attrib.get("url", "") or child.attrib.get("href", "")
             media_type = child.attrib.get("type", "") or child.attrib.get("medium", "")
-            image = _safe_image_url(url, media_type)
+            image = _safe_image_url(urljoin(article_url, url) if article_url and url else url, media_type)
             if image:
                 return image
         # Atom feeds may expose image attachments as link elements.
         if name == "link" and child.attrib.get("rel", "").lower() == "enclosure":
-            image = _safe_image_url(child.attrib.get("href", ""), child.attrib.get("type", ""))
+            href = child.attrib.get("href", "")
+            image = _safe_image_url(urljoin(article_url, href) if article_url and href else href, child.attrib.get("type", ""))
             if image:
                 return image
 
@@ -508,7 +509,7 @@ def _item_image_url(node: ET.Element) -> str:
         except Exception:
             continue
         for candidate in extractor.urls:
-            image = _safe_image_url(candidate, "image")
+            image = _safe_image_url(urljoin(article_url, candidate) if article_url and candidate else candidate, "image")
             if image:
                 return image
     return ""
@@ -554,7 +555,7 @@ def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | No
             "source_name": source_name,
             "source_url": source_url,
             "region": region,
-            "image_url": _item_image_url(node),
+            "image_url": _item_image_url(node, link),
             "published_at": _iso(published_dt),
         })
     return results
@@ -819,7 +820,7 @@ def main() -> int:
                 continue
             if (not item.get("image_url") or _is_google_image_url(item.get("image_url", ""))) and article_url not in image_lookup_urls:
                 image_lookup_urls.add(article_url)
-                if image_lookup_count < 20:
+                if image_lookup_count < 100:
                     image_lookup_count += 1
                     publisher_image = _fetch_article_image(article_url)
                     if publisher_image:
@@ -877,7 +878,7 @@ def main() -> int:
         news = existing
         changed = False
         warnings = [str(exc)]
-    repaired_images = repair_existing_images(news, max_lookups=20)
+    repaired_images = repair_existing_images(news, max_lookups=100)
     if repaired_images:
         changed = True
         print(f"Updated {repaired_images} image records (removed generic placeholders and backfilled publisher images).")
