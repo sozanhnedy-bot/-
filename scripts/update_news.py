@@ -827,7 +827,7 @@ def main() -> int:
                         item["image_url"] = publisher_image
             if len(clean_article_content(item.get("article_content", ""))) < 250 and article_url not in article_lookup_urls:
                 article_lookup_urls.add(article_url)
-                if article_lookup_count < 12:
+                if article_lookup_count < 20:
                     article_lookup_count += 1
                     item["article_content"] = _fetch_article_content(article_url)
         return items
