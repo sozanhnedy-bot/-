@@ -94,7 +94,7 @@ function recordFor(item) {
   const articleSummary = !report ? distinctSummary(item.article_content, title, sourceName) : "";
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
-  const image = (region === "egypt" && !report) || item.image_verified === true || report?.image_verified === true ? safeImage(report?.image || item.image_url) : "";
+  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : safeImage(item.image_url);
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
