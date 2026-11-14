@@ -33,7 +33,7 @@
 .portal-search span { color:var(--portal-copper); }
 .portal-nav { border-top:1px solid #e2e5e8; }
 .portal-nav a { padding:12px 17px; color:#29313a; font-family:Tahoma,Arial,sans-serif; font-size:.76rem; border-bottom:3px solid transparent; }
-.portal-nav a:first-child { background:var(--portal-copper); color:#fff; }
+.portal-nav a.is-current { background:var(--portal-copper); color:#fff; border-bottom-color:var(--portal-copper); }
 .portal-nav a:hover,.portal-nav a:focus-visible { background:#f5e9e7; color:var(--portal-copper); border-bottom-color:var(--portal-copper); }
 .portal-breaking { width:min(1240px,calc(100% - 40px)); margin:0 auto; padding:7px 12px; min-height:30px; background:var(--portal-copper); font-family:Tahoma,Arial,sans-serif; font-size:.7rem; }
 .portal-breaking strong { background:#8f1e1e; color:#fff; padding:3px 8px; }
