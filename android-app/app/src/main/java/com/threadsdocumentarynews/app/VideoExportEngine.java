@@ -14,6 +14,7 @@ public interface VideoExportEngine {
 
     interface Listener {
         void onProgress(int percent);
+        default void onStage(String message) { }
         void onCompleted(File outputFile);
         void onError(Exception error);
     }

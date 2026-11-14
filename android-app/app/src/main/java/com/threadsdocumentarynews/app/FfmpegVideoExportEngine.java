@@ -40,7 +40,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,6 +57,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
     private final Handler main = new Handler(Looper.getMainLooper());
     private final ExecutorService worker = Executors.newSingleThreadExecutor();
     private final AtomicBoolean cancelled = new AtomicBoolean(false);
+    private final AtomicInteger lastReportedProgress = new AtomicInteger(0);
     // SAF URLs are reused by FFprobe and multiple FFmpeg commands during one export.
     private final List<String> registeredSafUrls = Collections.synchronizedList(new ArrayList<>());
     private volatile boolean running;
@@ -71,6 +75,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
         }
         running = true;
         cancelled.set(false);
+        lastReportedProgress.set(0);
         registeredSafUrls.clear();
         listener = callback;
         worker.execute(() -> runExport(request, callback));
@@ -95,8 +100,10 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             List<MediaInput> inputs = new ArrayList<>();
             long totalMs = 0L;
             int index = 0;
+            stage(callback, "media scan");
             for (Uri uri : request.getMediaUris()) {
                 checkCancelled();
+                stage(callback, "media probe " + (index + 1));
                 String path = readablePath(uri);
                 boolean image = isImage(uri);
                 VideoClipTransform transform = request.getClipTransform(index);
@@ -118,9 +125,14 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             long completedDuration = 0L;
             for (MediaInput input : inputs) {
                 checkCancelled();
+                int clipProgressStart = 5 + (int) (completedDuration * 55L / totalMs);
+                int clipProgressEnd = 5 + (int) ((completedDuration + input.durationMs) * 55L / totalMs);
+                int videoProgressEnd = clipProgressStart
+                        + Math.round((clipProgressEnd - clipProgressStart) * 0.8f);
                 File video = new File(work, "video-" + input.index + ".mp4");
                 String videoCommand = segmentCommand(input, request, video);
-                execute(videoCommand, "video segment " + (input.index + 1));
+                execute(videoCommand, "video segment " + (input.index + 1), callback,
+                        clipProgressStart, videoProgressEnd, input.durationMs);
                 videoSegments.add(video);
 
                 File audio = new File(work, "audio-" + input.index + ".wav");
@@ -130,11 +142,13 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                             + seconds(input.durationMs) + " -af "
                             + q("aresample=48000, aformat=sample_fmts=s16:channel_layouts=stereo,apad,atrim=duration=" + seconds(input.durationMs))
                             + " -ac 2 -ar 48000 -c:a pcm_s16le " + q(audio.getAbsolutePath()),
-                            "source audio " + (input.index + 1));
+                            "source audio " + (input.index + 1), callback,
+                            videoProgressEnd, clipProgressEnd, input.durationMs);
                 } else {
                     execute("-y -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=48000 -t "
                             + seconds(input.durationMs) + " -c:a pcm_s16le " + q(audio.getAbsolutePath()),
-                            "silent audio " + (input.index + 1));
+                            "silent audio " + (input.index + 1), callback,
+                            videoProgressEnd, clipProgressEnd, input.durationMs);
                 }
                 audioSegments.add(audio);
                 completedDuration += input.durationMs;
@@ -149,6 +163,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             progress(callback, 65);
 
             File overlayDirectory = new File(work, "news-overlays");
+            stage(callback, "overlay rendering");
             renderOverlayFrames(overlayDirectory, request);
             verifyPngDecoder(overlayDirectory);
             File audioList = new File(work, "audio-list.txt");
@@ -216,13 +231,13 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
 
             StringBuilder command = new StringBuilder();
             for (String arg : args) command.append(q(arg)).append(' ');
-            command.append("-filter_complex ").append(q(graph.toString()))
+            command.append(" -filter_complex ").append(q(graph.toString()))
                     .append(" -map ").append(q("[vout]"))
                     .append(" -map ").append(q("[aout]"))
                     .append(" -c:v libx264 -preset ultrafast -b:v 6M -r ").append(FPS)
                     .append(" -pix_fmt yuv420p -c:a aac -b:a 192k -ar 48000 -ac 2")
                     .append(" -movflags +faststart -shortest ").append(q(stagedOutput.getAbsolutePath()));
-            execute(command.toString(), "final MP4 mux");
+            execute(command.toString(), "final MP4 mux", callback, 68, 99, totalMs);
             checkCancelled();
             if (!stagedOutput.isFile() || stagedOutput.length() < 1024L) {
                 throw new IllegalStateException("FFmpeg completed without producing a valid MP4.");
@@ -311,14 +326,56 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
     }
 
     private void execute(String command, String stage) {
+        execute(command, stage, listener, 0, 0, 0L);
+    }
+
+    private void execute(String command, String stage, Listener callback,
+            int progressStart, int progressEnd, long expectedDurationMs) {
         checkCancelled();
-        FFmpegSession session = FFmpegKit.execute(command);
+        stage(callback, stage);
+        CountDownLatch completed = new CountDownLatch(1);
+        AtomicReference<FFmpegSession> completedSession = new AtomicReference<>();
+        FFmpegKit.executeAsync(command, session -> {
+            completedSession.set(session);
+            completed.countDown();
+        }, null, statistics -> {
+            if (callback == null || expectedDurationMs <= 0L || progressEnd <= progressStart) return;
+            long elapsedMs = Math.max(0L, statistics.getTime());
+            double fraction = Math.min(1.0, elapsedMs / (double) expectedDurationMs);
+            int value = progressStart + (int) Math.floor((progressEnd - progressStart) * fraction);
+            progress(callback, value);
+        });
+        try {
+            completed.await();
+        } catch (InterruptedException interrupted) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("FFmpeg export worker was interrupted.", interrupted);
+        }
         checkCancelled();
+        FFmpegSession session = completedSession.get();
+        if (session == null) throw new IllegalStateException("FFmpeg did not return a completed session during " + stage + ".");
         if (!ReturnCode.isSuccess(session.getReturnCode())) {
             String detail = session.getOutput();
             if (detail == null || detail.trim().isEmpty()) detail = session.getFailStackTrace();
             throw new IllegalStateException("FFmpeg failed during " + stage + ": " + (detail == null ? "unknown error" : detail));
         }
+    }
+
+    private void stage(Listener callback, String stage) {
+        if (callback == null) return;
+        String label;
+        if (stage.startsWith("video segment ")) label = "معالجة الفيديو للمقطع " + stage.substring("video segment ".length());
+        else if (stage.startsWith("source audio ")) label = "معالجة الصوت للمقطع " + stage.substring("source audio ".length());
+        else if (stage.startsWith("silent audio ")) label = "تجهيز الصوت للمقطع " + stage.substring("silent audio ".length());
+        else if (stage.startsWith("media probe ")) label = "فحص الملف " + stage.substring("media probe ".length());
+        else if ("media scan".equals(stage)) label = "فحص وسائط المشروع…";
+        else if ("join video segments".equals(stage)) label = "تجميع مقاطع الفيديو…";
+        else if ("join source audio".equals(stage)) label = "تجميع مسارات الصوت…";
+        else if ("overlay rendering".equals(stage)) label = "تجهيز قالب الخبر…";
+        else if ("PNG overlay decoder preflight".equals(stage)) label = "التحقق من صورة القالب…";
+        else if ("final MP4 mux".equals(stage)) label = "ترميز الفيديو النهائي وإضافة النص والصوت…";
+        else label = "جارٍ تنفيذ " + stage + "…";
+        main.post(() -> { if (listener == callback && !cancelled.get()) callback.onStage(label); });
     }
 
     private void renderOverlayFrames(File directory, VideoExportRequest request) throws Exception {
@@ -504,7 +561,14 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
     }
 
     private void progress(Listener callback, int value) {
-        main.post(() -> { if (listener == callback && !cancelled.get()) callback.onProgress(Math.max(0, Math.min(99, value))); });
+        if (callback == null) return;
+        int bounded = Math.max(0, Math.min(99, value));
+        int previous;
+        do {
+            previous = lastReportedProgress.get();
+            if (bounded <= previous) return;
+        } while (!lastReportedProgress.compareAndSet(previous, bounded));
+        main.post(() -> { if (listener == callback && !cancelled.get()) callback.onProgress(bounded); });
     }
 
     private void finish(Listener callback, File output, Exception error) {

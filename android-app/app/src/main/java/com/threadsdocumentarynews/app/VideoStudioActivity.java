@@ -65,6 +65,7 @@ public final class VideoStudioActivity extends Activity {
     private Spinner templateModeSpinner;
     private Spinner colorPaletteSpinner;
     private Spinner resolutionSpinner;
+    private Button mediaPickerButton;
     private TextView mediaList;
     private TextView audioName;
     private TextView musicName;
@@ -103,6 +104,7 @@ public final class VideoStudioActivity extends Activity {
     private boolean exporting;
     private boolean updatingClipControls;
     private int selectedMediaIndex;
+    private String currentExportStage = "جارٍ إنشاء MP4 على الجهاز…";
     private MediaPlayer audioTester;
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -115,10 +117,12 @@ public final class VideoStudioActivity extends Activity {
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
         root.setBackgroundColor(BG);
-        TextView header = text("استوديو الفيديو", 21, WHITE, true);
-        header.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
-        header.setPadding(dp(20), dp(12), dp(20), dp(12));
-        root.addView(header, new LinearLayout.LayoutParams(-1, dp(58)));
+        LinearLayout header = new LinearLayout(this);
+        header.setGravity(Gravity.CENTER_VERTICAL);
+        header.setPadding(dp(12), dp(4), dp(12), dp(4));
+        TextView headerTitle = text("تحرير الفيديو", 18, WHITE, true);
+        headerTitle.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        header.addView(headerTitle, new LinearLayout.LayoutParams(0, -1, 1f));
 
         ScrollView scroll = new ScrollView(this);
         scroll.setFillViewport(true);
@@ -126,7 +130,6 @@ public final class VideoStudioActivity extends Activity {
         content.setOrientation(LinearLayout.VERTICAL);
         content.setPadding(dp(16), dp(12), dp(16), dp(24));
         scroll.addView(content);
-        root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
 
         LinearLayout form = card();
         addText(form, "مشروع MP4 جديد", 20, WHITE, true, 0, 5);
@@ -160,9 +163,9 @@ public final class VideoStudioActivity extends Activity {
         form.addView(tickerInput, params(-1, dp(48), 0, 4, 0, 8));
         addText(form, "تُجمع المقاطع افتراضيًا بقطع مباشر، ويمكن اختيار تلاشي مرئي للأسود عند الحدود. الموسيقى اختيارية ومنخفضة ولا تتكرر تلقائيًا.", 12, MUTED, false, 0, 10);
 
-        Button pickMedia = button("اختيار صور وفيديوهات");
-        form.addView(pickMedia, params(-1, dp(50), 0, 0, 0, 6));
-        pickMedia.setOnClickListener(v -> openMediaPicker());
+        mediaPickerButton = button("＋ إضافة صور أو فيديو");
+        form.addView(mediaPickerButton, params(-1, dp(50), 0, 0, 0, 6));
+        mediaPickerButton.setOnClickListener(v -> openMediaPicker());
         Button clearMedia = secondaryButton("مسح قائمة الوسائط");
         form.addView(clearMedia, params(-1, dp(44), 0, 0, 0, 6));
         clearMedia.setOnClickListener(v -> {
@@ -178,13 +181,14 @@ public final class VideoStudioActivity extends Activity {
         mediaList.setBackgroundColor(Color.rgb(27, 28, 35));
         form.addView(mediaList, params(-1, -2, 0, 0, 0, 10));
 
-        addLabel(form, "الخط الزمني — اضغط مقطعًا لتحديده");
+        LinearLayout timelinePanel = card();
+        addText(timelinePanel, "الخط الزمني  ·  اضغط على مقطع لتحديده", 14, WHITE, true, 0, 6);
         HorizontalScrollView timelineScroll = new HorizontalScrollView(this);
         timelineScroll.setHorizontalScrollBarEnabled(false);
         timelineTrack = new LinearLayout(this);
         timelineTrack.setOrientation(LinearLayout.HORIZONTAL);
         timelineScroll.addView(timelineTrack, new HorizontalScrollView.LayoutParams(-2, -1));
-        form.addView(timelineScroll, params(-1, dp(76), 0, 4, 0, 6));
+        timelinePanel.addView(timelineScroll, params(-1, dp(64), 0, 2, 0, 6));
         LinearLayout timelineActions = new LinearLayout(this);
         timelineActions.setOrientation(LinearLayout.HORIZONTAL);
         Button moveEarlierButton = secondaryButton("قبل");
@@ -193,7 +197,7 @@ public final class VideoStudioActivity extends Activity {
         timelineActions.addView(moveEarlierButton, new LinearLayout.LayoutParams(0, dp(42), 1f));
         timelineActions.addView(moveLaterButton, new LinearLayout.LayoutParams(0, dp(42), 1f));
         timelineActions.addView(removeClipButton, new LinearLayout.LayoutParams(0, dp(42), 1.25f));
-        form.addView(timelineActions, params(-1, dp(42), 0, 0, 0, 10));
+        timelinePanel.addView(timelineActions, params(-1, dp(42), 0, 0, 0, 0));
         moveEarlierButton.setOnClickListener(v -> moveSelectedClip(-1));
         moveLaterButton.setOnClickListener(v -> moveSelectedClip(1));
         removeClipButton.setOnClickListener(v -> removeSelectedClip());
@@ -263,8 +267,9 @@ public final class VideoStudioActivity extends Activity {
         addText(form, "اختر النسبة المناسبة؛ سيتغير إطار المعاينة ومقاس التصدير تلقائيًا.", 12, MUTED, false, 0, 8);
         addLabel(form, "دقة التصدير");
         resolutionSpinner = spinner(new String[]{"720p", "1080p"});
-        resolutionSpinner.setSelection(1);
+        resolutionSpinner.setSelection(0);
         form.addView(resolutionSpinner, params(-1, dp(48), 0, 4, 0, 10));
+        addText(form, "720p أخف وأسرع على الهاتف؛ اختر 1080p لجودة أعلى", 12, MUTED, false, 0, 8);
 
         Button pickAudio = button("اختيار تعليق الراوي (اختياري)");
         form.addView(pickAudio, params(-1, dp(50), 0, 0, 0, 6));
@@ -291,11 +296,7 @@ public final class VideoStudioActivity extends Activity {
         content.addView(form, params(-1, -2, 0, 0, 0, 12));
 
         LinearLayout previewCard = card();
-        addText(previewCard, "اختبار ومعاينة الفيديو", 18, WHITE, true, 0, 5);
-        addText(previewCard, "اختر مقطعًا للمعاينة؛ الإطار والتحويل يعكسان إعداد التصدير.", 13, MUTED, false, 0, 8);
-        Button testVideo = secondaryButton("معاينة المقطع المحدد");
-        previewCard.addView(testVideo, params(-1, dp(48), 0, 0, 0, 8));
-        testVideo.setOnClickListener(v -> previewFirstMedia());
+        addText(previewCard, "المعاينة", 14, MUTED, true, 0, 5);
         previewHost = new FrameLayout(this);
         previewHost.setBackgroundColor(Color.rgb(12, 13, 17));
         previewFrame = new FrameLayout(this);
@@ -307,17 +308,19 @@ public final class VideoStudioActivity extends Activity {
         previewFrame.addView(videoView, new FrameLayout.LayoutParams(-1, -1));
         previewFrame.addView(imageView, new FrameLayout.LayoutParams(-1, -1));
         previewHost.addView(previewFrame, new FrameLayout.LayoutParams(dp(164), dp(290), Gravity.CENTER));
-        previewCard.addView(previewHost, params(-1, dp(290), 0, 0, 0, 8));
+        int screenHeightDp = Math.round(getResources().getDisplayMetrics().heightPixels
+                / getResources().getDisplayMetrics().density);
+        int editorPreviewHeightDp = Math.max(190, Math.min(270, Math.round(screenHeightDp * 0.32f)));
+        previewCard.addView(previewHost, params(-1, dp(editorPreviewHeightDp), 0, 0, 0, 4));
         previewHost.addOnLayoutChangeListener((view, left, top, right, bottom,
                 oldLeft, oldTop, oldRight, oldBottom) -> updatePreviewAspectRatio());
         progress = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
         progress.setMax(100);
         progress.setProgress(0);
         progress.setVisibility(View.GONE);
-        previewCard.addView(progress, params(-1, dp(8), 0, 0, 0, 6));
+        progress.setIndeterminate(false);
         cancelExportButton = secondaryButton("إلغاء التصدير");
         cancelExportButton.setVisibility(View.GONE);
-        previewCard.addView(cancelExportButton, params(-1, dp(44), 0, 0, 0, 6));
         cancelExportButton.setOnClickListener(v -> {
             if (exporting && exportEngine != null) {
                 cancelExportButton.setEnabled(false);
@@ -326,15 +329,52 @@ public final class VideoStudioActivity extends Activity {
             }
         });
         status = text("جاهز. اختر الوسائط لاختبارها أو إنشاء الفيديو.", 13, MUTED, false);
-        previewCard.addView(status, params(-1, -2, 0, 0, 0, 8));
         buildButton = button("إنشاء الفيديو MP4");
-        previewCard.addView(buildButton, params(-1, dp(54), 0, 0, 0, 6));
+        buildButton.setText("تصدير");
         buildButton.setOnClickListener(v -> buildVideo());
         saveButton = secondaryButton("حفظ MP4 على الجهاز");
         saveButton.setEnabled(false);
-        previewCard.addView(saveButton, params(-1, dp(50), 0, 0, 0, 0));
+        saveButton.setText("حفظ الفيديو");
         saveButton.setOnClickListener(v -> saveOutput());
-        content.addView(previewCard, params(-1, -2, 0, 0, 0, 0));
+
+        Button backButton = secondaryButton("رجوع");
+        backButton.setTextSize(12);
+        backButton.setOnClickListener(v -> finish());
+        header.addView(backButton, params(dp(62), dp(40), 4, 0, 0, 0));
+        header.addView(buildButton, params(dp(82), dp(40), 8, 0, 0, 0));
+
+        HorizontalScrollView editorToolsScroll = new HorizontalScrollView(this);
+        editorToolsScroll.setHorizontalScrollBarEnabled(false);
+        LinearLayout editorTools = new LinearLayout(this);
+        editorTools.setGravity(Gravity.CENTER_VERTICAL);
+        editorTools.setOrientation(LinearLayout.HORIZONTAL);
+        editorToolsScroll.addView(editorTools, new HorizontalScrollView.LayoutParams(-2, -1));
+        addEditorToolTab(editorTools, "وسائط", scroll, mediaPickerButton);
+        addEditorToolTab(editorTools, "نص", scroll, titleInput);
+        addEditorToolTab(editorTools, "قص", scroll, fitModeSpinner);
+        addEditorToolTab(editorTools, "فلاتر", scroll, filterPresetSpinner);
+        addEditorToolTab(editorTools, "صوت", scroll, audioName);
+        addEditorToolTab(editorTools, "مقاس", scroll, resolutionSpinner);
+
+        LinearLayout exportFooter = new LinearLayout(this);
+        exportFooter.setOrientation(LinearLayout.VERTICAL);
+        exportFooter.setPadding(dp(12), dp(3), dp(12), dp(6));
+        exportFooter.setBackgroundColor(BG);
+        exportFooter.addView(progress, params(-1, dp(6), 0, 0, 0, 3));
+        exportFooter.addView(status, params(-1, -2, 0, 0, 0, 4));
+        LinearLayout footerActions = new LinearLayout(this);
+        footerActions.setGravity(Gravity.CENTER_VERTICAL);
+        footerActions.setOrientation(LinearLayout.HORIZONTAL);
+        footerActions.addView(saveButton, new LinearLayout.LayoutParams(0, dp(46), 1f));
+        footerActions.addView(cancelExportButton, params(dp(116), dp(46), 8, 0, 0, 0));
+        exportFooter.addView(footerActions, new LinearLayout.LayoutParams(-1, dp(46)));
+
+        root.addView(header, new LinearLayout.LayoutParams(-1, dp(52)));
+        root.addView(previewCard, params(-1, -2, 8, 2, 8, 4));
+        root.addView(timelinePanel, params(-1, -2, 8, 0, 8, 4));
+        root.addView(editorToolsScroll, new LinearLayout.LayoutParams(-1, dp(46)));
+        root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1f));
+        root.addView(exportFooter, new LinearLayout.LayoutParams(-1, -2));
         setContentView(root);
         formatSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -564,7 +604,7 @@ public final class VideoStudioActivity extends Activity {
             setStatus("اختر صورة أو فيديو واحدًا على الأقل.", RED);
             return;
         }
-        stopVideo();
+        pauseVideoForExport();
         if (audioTester != null) { audioTester.release(); audioTester = null; }
         buildButton.setEnabled(false);
         saveButton.setEnabled(false);
@@ -603,10 +643,18 @@ public final class VideoStudioActivity extends Activity {
 
             exportEngine = new FfmpegVideoExportEngine(this);
             exportEngine.export(request, new VideoExportEngine.Listener() {
+                @Override public void onStage(String message) {
+                    if (isFinishing() || isDestroyed()) return;
+                    currentExportStage = message;
+                    status.setText(message + "  " + progress.getProgress() + "%");
+                    status.setTextColor(GOLD);
+                }
+
                 @Override public void onProgress(int percent) {
                     if (isFinishing() || isDestroyed()) return;
                     progress.setProgress(percent);
-                    status.setText("جارٍ إنشاء MP4 على الجهاز… " + percent + "%");
+                    status.setText(currentExportStage + "  " + percent + "%");
+                    status.setTextColor(GOLD);
                 }
 
                 @Override public void onCompleted(File file) {
@@ -643,7 +691,8 @@ public final class VideoStudioActivity extends Activity {
                     }
                 }
             });
-            status.setText("بدأ إنشاء الفيديو على الجهاز…");
+            currentExportStage = "بدأ إنشاء الفيديو على الجهاز…";
+            status.setText(currentExportStage);
             status.setTextColor(GOLD);
         } catch (Exception error) {
             exporting = false;
@@ -753,6 +802,13 @@ public final class VideoStudioActivity extends Activity {
         if (videoView != null) {
             try { videoView.stopPlayback(); } catch (Exception ignored) { }
         }
+    }
+
+    private void pauseVideoForExport() {
+        if (videoView == null || videoView.getVisibility() != View.VISIBLE) return;
+        try {
+            if (videoView.isPlaying()) videoView.pause();
+        } catch (Exception ignored) { }
     }
 
     private String displayName(Uri uri) {
@@ -1062,6 +1118,25 @@ public final class VideoStudioActivity extends Activity {
     private void addLabel(LinearLayout parent, String label) {
         TextView view = text(label, 14, WHITE, true);
         parent.addView(view, params(-1, -2, 0, 4, 0, 2));
+    }
+
+    private void addEditorToolTab(LinearLayout parent, String label, ScrollView scroll, View target) {
+        Button tab = secondaryButton(label);
+        tab.setTextSize(12);
+        tab.setMinHeight(dp(40));
+        LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(dp(72), dp(42));
+        tabParams.setMargins(dp(3), 0, dp(3), 0);
+        parent.addView(tab, tabParams);
+        tab.setOnClickListener(v -> scrollToEditorControl(scroll, target));
+    }
+
+    private void scrollToEditorControl(ScrollView scroll, View target) {
+        if (scroll == null || target == null) return;
+        int[] controlLocation = new int[2];
+        int[] scrollLocation = new int[2];
+        target.getLocationOnScreen(controlLocation);
+        scroll.getLocationOnScreen(scrollLocation);
+        scroll.smoothScrollTo(0, Math.max(0, controlLocation[1] - scrollLocation[1] - dp(12)));
     }
 
     private void addText(LinearLayout parent, String value, int size, int color, boolean bold, int top, int bottom) {
