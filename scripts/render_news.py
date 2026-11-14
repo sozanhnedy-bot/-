@@ -118,16 +118,10 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
         image_url = ""
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
-    illustration_key = category_key if category_key in {"politics", "economy", "technology", "sports"} else text(item.get("region"), 30)
-    if illustration_key not in {"world", "arab", "egypt", "politics", "economy", "technology", "sports"}:
-        illustration_key = "world"
-    illustration_path = f"../assets/news-illustrations/{illustration_key}.jpg"
-    preview_image = image_url or f"{SITE_URL}/assets/news-illustrations/{illustration_key}.jpg"
-    fallback_caption = f"رسم توضيحي لقسم {category}؛ لا يصوّر الحدث نفسه"
+    preview_image = image_url
     image_markup = (
-        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src=\'{e(illustration_path, quote=True)}\';this.alt=\'{e(category, quote=True)}\';this.nextElementSibling.textContent=\'{e(fallback_caption, quote=True)}\';"><figcaption>الصورة المرفقة من مصدر الخبر: {e(source)}</figcaption></figure>'
-        if image_url else
-        f'<figure class="article-figure"><img src="{e(illustration_path, quote=True)}" alt="{e(category, quote=True)}" loading="lazy"><figcaption>{e(fallback_caption)}</figcaption></figure>'
+        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة المرتبطة بالخبر من المصدر: {e(source)}</figcaption></figure>'
+        if image_url else ""
     )
     detail_paragraphs = "".join(f"<p>{e(part)}</p>" for part in details.splitlines() if part.strip())
     details_markup = (
