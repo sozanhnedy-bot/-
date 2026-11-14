@@ -101,7 +101,10 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
         summary = ""
     if excerpt in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
         excerpt = ""
-    details = text(item.get("article_content"), 8_000) or excerpt or summary
+    article_content = text(item.get("article_content"), 8_000)
+    has_full_source_text = len(article_content) >= 250
+    details = (article_content if has_full_source_text else "") or excerpt or summary
+    details_label = "نص المقال المتاح من الناشر" if has_full_source_text else ("مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else ""))
     dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
     region = REGIONS.get(text(item.get("region")), "العالم")
     category_key = text(item.get("category"), 30)
@@ -128,7 +131,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     )
     detail_paragraphs = "".join(f"<p>{e(part)}</p>" for part in details.splitlines() if part.strip())
     details_markup = (
-        f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2>{detail_paragraphs}</section>'
+        f'<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p class="article-content-kind">{e(details_label)}</p>{detail_paragraphs}</section>'
         if detail_paragraphs else
         '<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>المصدر لم يرفق تفاصيل كافية داخل موجز الأخبار حتى الآن. يمكنك فتح الخبر من المصدر الأصلي للاطلاع على النص الكامل.</p></section>'
     )
