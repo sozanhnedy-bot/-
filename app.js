@@ -336,20 +336,31 @@ async function fetchJson(path) {
 }
 async function loadData() {
   try {
-    const [news, reports] = await Promise.all([fetchJson("./data/news.json"), fetchJson("./data/reports.json")]);
+    const [newsResult, reportsResult] = await Promise.allSettled([
+      fetchJson("./data/news.json"),
+      fetchJson("./data/reports.json"),
+    ]);
+    if (reportsResult.status !== "fulfilled") throw reportsResult.reason;
+    const news = newsResult.status === "fulfilled" ? newsResult.value : { items: [], updated_at: "" };
+    const reports = reportsResult.value;
     state.news = Array.isArray(news.items) ? news.items : [];
     state.reports = Array.isArray(reports.items) ? reports.items : [];
     reportMap.clear();
     state.reports.forEach((report) => { if (report && validId(report.id)) reportMap.set(report.id, report); });
     const updated = news.updated_at ? formatDate(news.updated_at, true) : "غير متاح";
-    $("#update-status").textContent = `تحديث بيانات الأخبار: ${updated}`;
-    $("#last-updated").textContent = `آخر استيراد للخلاصات: ${updated}`;
+    $("#update-status").textContent = newsResult.status === "fulfilled"
+      ? `تحديث بيانات الأخبار: ${updated}`
+      : "الأخبار الجديدة غير متاحة مؤقتًا — نعرض التقارير المتوفرة";
+    $("#last-updated").textContent = newsResult.status === "fulfilled"
+      ? `آخر استيراد للخلاصات: ${updated}`
+      : "تعذر تحميل موجز الأخبار؛ التقارير المتاحة معروضة أدناه";
     $("#edition-date").textContent = new Intl.DateTimeFormat("ar-EG", { dateStyle: "full" }).format(new Date());
     render();
     state.initialLoad = false;
+    if (newsResult.status !== "fulfilled") console.error("Could not load news feed; rendered available reports", newsResult.reason);
   } catch (error) {
-    $("#update-status").textContent = "تعذر تحديث الأخبار الآن";
-    if (state.initialLoad) $("#top-stories").replaceChildren(el("p", "loading-card", "تعذر تحميل الأخبار مؤقتًا. أعد المحاولة بعد قليل."));
+    $("#update-status").textContent = "تعذر تحديث محتوى الموقع الآن";
+    if (state.initialLoad) $("#top-stories").replaceChildren(el("p", "loading-card", "تعذر تحميل المحتوى مؤقتًا. أعد المحاولة بعد قليل."));
     console.error("Could not load news data", error);
   }
 }
