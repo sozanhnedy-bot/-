@@ -16,14 +16,27 @@ function makeCard(item,report){
   meta.append(el("span","portal-category-label",CATEGORY_LABELS[category]||CATEGORY_LABELS[region]||"خبر"),el("time","portal-date",formatDate(item.published_at||report?.published_at||item.created_at)));if(publisher)meta.append(el("span","portal-source",`المصدر: ${publisher}`));body.append(meta);
   const heading=el("h2","portal-card-title"),anchor=document.createElement("a");anchor.href=report?`./reports/${item.id}.html`:`./news/${item.id}.html`;anchor.textContent=title;heading.append(anchor);body.append(heading);const summary=report?.dek||conciseSummary(item.summary,title,publisher);if(summary)body.append(el("p","portal-card-summary",summary));body.append(el("span","portal-content-kind",report?"تقرير تحريري":"موجز من الناشر"));card.append(body);return card;
 }
+function makeVideoCard(item){
+  const card=el("article","portal-story-card portal-video-entry"),button=el("button","portal-video-card");
+  button.type="button";button.setAttribute("aria-label",`تشغيل ${item.title||"الفيديو"} داخل الموقع`);
+  const image=document.createElement("img"),raw=String(item.image||"");
+  image.src=raw.startsWith("assets/")&&!raw.includes("..")?"./"+raw:"./assets/reference-lead.jpg";
+  image.alt=item.image_alt||item.title||"فيديو";image.loading="lazy";
+  button.append(image,el("span","portal-play","▶"),el("strong","",item.title||"فيديو"));
+  const player=el("div","portal-video-player-host");
+  button.addEventListener("click",()=>{if(player.childElementCount)return;const frame=document.createElement("iframe");frame.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(item.youtube_id)}?autoplay=1&rel=0`;frame.title=item.title||"فيديو World News";frame.loading="lazy";frame.referrerPolicy="strict-origin-when-cross-origin";frame.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share";frame.allowFullscreen=true;player.append(frame);button.hidden=true;});
+  const body=el("div","portal-card-body"),meta=el("div","portal-card-meta");meta.append(el("span","portal-category-label",CATEGORY_LABELS[item.category]||"فيديو"));body.append(meta);
+  if(item.dek)body.append(el("p","portal-card-summary",item.dek));
+  card.append(button,player,body);return card;
+}
 async function start(){
   const params=new URLSearchParams(location.search),category=(params.get("category")||"world").toLowerCase(),title=CATEGORY_LABELS[category]||"الأخبار";document.querySelectorAll(".portal-nav a").forEach((link)=>{const target=new URL(link.href,location.href);const active=target.pathname.endsWith("/section.html")&&target.searchParams.get("category")===category;link.classList.toggle("is-current",active);if(active)link.setAttribute("aria-current","page");else link.removeAttribute("aria-current");});$("#section-title").textContent=title;document.title=`${title} | World News`;
   try{
     const [newsData,reportsData,videosData]=await Promise.all([fetch(`./data/news.json?v=${Date.now()}`,{cache:"no-store"}).then((response)=>response.json()),fetch(`./data/reports.json?v=${Date.now()}`,{cache:"no-store"}).then((response)=>response.json()),fetch(`./data/videos.json?v=${Date.now()}`,{cache:"no-store"}).then((response)=>response.json())]),news=Array.isArray(newsData.items)?newsData.items:[],reports=Array.isArray(reportsData.items)?reportsData.items:[],videos=Array.isArray(videosData.items)?videosData.items:[],full=new Map(reports.filter((item)=>item&&validId(item.id)).map((item)=>[item.id,item]));let rows=[];
     if(category==="reports")rows=reports.filter((item)=>item&&validId(item.id)).map((item)=>({item,report:item}));
     else if(category==="videos")rows=videos.filter((item)=>item&&item.status==="published"&&validId(item.id)&&/^[A-Za-z0-9_-]{11}$/.test(String(item.youtube_id||""))).map((item)=>({item,report:null}));
-    else rows=news.filter((item)=>item&&validId(item.id)&&(String(item.category||item.region||"world").toLowerCase()===category||String(item.region||"").toLowerCase()===category)).map((item)=>({item,report:full.get(item.id)}));
-    rows.sort((a,b)=>(Date.parse(b.item.published_at||b.report?.published_at||b.item.created_at||"")||0)-(Date.parse(a.item.published_at||a.report?.published_at||a.item.created_at||"")||0));const host=$("#section-list");host.replaceChildren();rows.forEach(({item,report})=>host.append(makeCard(item,report)));$("#section-empty").hidden=rows.length>0;$("#section-description").textContent=`${rows.length.toLocaleString("ar-EG")} مادة منشورة في قسم ${title}؛ الأحدث أولًا.`;
+    else {rows=news.filter((item)=>item&&validId(item.id)&&(String(item.category||item.region||"world").toLowerCase()===category||String(item.region||"").toLowerCase()===category)).map((item)=>({item,report:full.get(item.id)}));videos.filter((item)=>item&&item.status==="published"&&validId(item.id)&&item.category===category&&/^[A-Za-z0-9_-]{11}$/.test(String(item.youtube_id||""))).forEach((item)=>rows.push({item,report:null,video:true}));}
+    rows.sort((a,b)=>(Date.parse(b.item.published_at||b.report?.published_at||b.item.created_at||"")||0)-(Date.parse(a.item.published_at||a.report?.published_at||a.item.created_at||"")||0));const host=$("#section-list");host.replaceChildren();rows.forEach(({item,report,video})=>host.append(video?makeVideoCard(item):makeCard(item,report)));$("#section-empty").hidden=rows.length>0;$("#section-description").textContent=`${rows.length.toLocaleString("ar-EG")} مادة منشورة في قسم ${title}؛ الأحدث أولًا.`;
   }catch(_){$("#section-description").textContent="تعذر تحميل هذا القسم الآن.";$("#section-empty").hidden=false;}
 }
 start();
