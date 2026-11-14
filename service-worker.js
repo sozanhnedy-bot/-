@@ -1,6 +1,6 @@
-const CACHE_NAME = "world-news-v14-restore-publisher-images";
+const CACHE_NAME = "world-news-v15-video-library";
 const ROOT = new URL("./", self.location.href);
-const DATA_URLS = ["data/news.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
+const DATA_URLS = ["data/news.json", "data/reports.json", "data/videos.json"].map((path) => new URL(path, ROOT).href);
 const SHELL_URLS = [
   ROOT.href,
   new URL("index.html", ROOT).href,
