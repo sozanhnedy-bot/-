@@ -282,31 +282,44 @@ function renderSections(records) {
   });
   section.append(list); host.append(section);
 }
-function renderReportsAndVideos(records) {
+async function renderReportsAndVideos(records) {
   const reports = records.filter((record) => record.report);
   const reportHost = $("#reports-list");
   reportHost.replaceChildren();
   reports.slice(0, 3).forEach((record) => reportHost.append(articleCard(record)));
   $("#reports-section").hidden = reports.length === 0;
-  const videoHost = $("#videos-list");
-  videoHost.replaceChildren();
-  const videoSources = [
-    ["./assets/news-illustrations/world.jpg", "أبرز أخبار العالم"],
-    ["./assets/news-illustrations/technology.jpg", "التكنولوجيا من حولنا"],
-    ["./assets/news-illustrations/economy.jpg", "أسواق العالم"],
-  ];
-  videoSources.forEach(([image, title]) => {
-    const card = el("a", "portal-video-card video-placeholder");
-    card.href = "./videos.html";
-    const picture = document.createElement("img");
-    picture.src = image;
-    picture.alt = title;
-    picture.loading = "lazy";
-    card.append(picture, el("span", "portal-play", "▶"), el("strong", "", title));
-    videoHost.append(card);
-  });
-  $("#videos-section").hidden = false;
+  const homeHost = $("#videos-list");
+  const featuredHost = $("#featured-videos-list");
+  [homeHost, featuredHost].filter(Boolean).forEach((host) => host.replaceChildren());
+  try {
+    const data = await fetchJson("./data/videos.json");
+    const videos = (Array.isArray(data.items) ? data.items : []).filter((item) =>
+      item && item.status === "published" && /^[A-Za-z0-9_-]{11}$/.test(String(item.youtube_id || ""))
+    ).sort((a, b) => (Date.parse(b.published_at || "") || 0) - (Date.parse(a.published_at || "") || 0));
+    const addVideoCard = (host, item) => {
+      const card = el("a", "portal-video-card");
+      card.href = "./videos.html";
+      const image = document.createElement("img");
+      const rawImage = String(item.image || "");
+      const imagePath = rawImage.startsWith("assets/") && !rawImage.includes("..") ? "./" + rawImage : "./assets/reference-lead.jpg";
+      image.src = imagePath;
+      image.alt = text(item.image_alt || item.title || "فيديو World News", 300);
+      image.loading = "lazy";
+      card.append(image, el("span", "portal-play", "▶"), el("strong", "", text(item.title || "فيديو World News", 180)));
+      host.append(card);
+    };
+    if (homeHost) videos.slice(0, 6).forEach((item) => addVideoCard(homeHost, item));
+    if (featuredHost) videos.slice(0, 3).forEach((item) => addVideoCard(featuredHost, item));
+    $("#videos-section").hidden = videos.length === 0;
+    const featuredSection = $(".portal-featured-video");
+    if (featuredSection) featuredSection.hidden = videos.length === 0;
+  } catch (_) {
+    $("#videos-section").hidden = true;
+    const featuredSection = $(".portal-featured-video");
+    if (featuredSection) featuredSection.hidden = true;
+  }
 }
+
 function renderBreaking(records) {
   const sixHoursAgo = Date.now() - 6 * 60 * 60 * 1000;
   const item = records.find((record) => record.breaking && Date.parse(record.date) >= sixHoursAgo);
