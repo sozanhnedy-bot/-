@@ -160,6 +160,28 @@ public final class PortalActivity extends Activity {
         LinearLayout.LayoutParams radarParams = new LinearLayout.LayoutParams(0, dp(58), 1);
         radarParams.setMargins(dp(5), dp(3), dp(5), dp(3));
         actions.addView(radar, radarParams);
+
+        Button socialDesigner = new Button(this);
+        socialDesigner.setText("تصميم منشور");
+        socialDesigner.setTextColor(Color.WHITE);
+        socialDesigner.setAllCaps(false);
+        socialDesigner.setTextSize(12);
+        socialDesigner.setBackgroundColor(NAVY);
+        socialDesigner.setOnClickListener(v -> startActivity(new Intent(this, SocialPostDesignerActivity.class)));
+        LinearLayout.LayoutParams socialDesignerParams = new LinearLayout.LayoutParams(0, dp(58), 1);
+        socialDesignerParams.setMargins(dp(5), dp(3), dp(5), dp(3));
+        actions.addView(socialDesigner, socialDesignerParams);
+
+        Button metaAi = new Button(this);
+        metaAi.setText("Meta AI");
+        metaAi.setTextColor(Color.WHITE);
+        metaAi.setAllCaps(false);
+        metaAi.setTextSize(12);
+        metaAi.setBackgroundColor(NAVY);
+        metaAi.setOnClickListener(v -> startActivity(new Intent(this, MetaAiWebViewActivity.class)));
+        LinearLayout.LayoutParams metaAiParams = new LinearLayout.LayoutParams(0, dp(58), 1);
+        metaAiParams.setMargins(dp(5), dp(3), dp(5), dp(3));
+        actions.addView(metaAi, metaAiParams);
         root.addView(actions);
 
         setContentView(root);

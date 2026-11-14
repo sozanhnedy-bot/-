@@ -16,6 +16,12 @@
             android:name=".VideoStudioActivity"
             android:exported="false" />
         <activity
+            android:name=".SocialPostDesignerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MetaAiWebViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".TaskAssistantActivity"
             android:exported="false" />
         <activity

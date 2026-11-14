@@ -14,13 +14,17 @@ import android.os.Environment;
 import android.provider.OpenableColumns;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,6 +56,7 @@ public final class VideoStudioActivity extends Activity {
     private static final int RED = Color.rgb(255, 130, 115);
 
     private final ArrayList<Uri> mediaUris = new ArrayList<>();
+    private final ArrayList<VideoClipTransform> clipTransforms = new ArrayList<>();
     private EditText titleInput;
     private EditText captionInput;
     private EditText tickerInput;
@@ -71,6 +76,24 @@ public final class VideoStudioActivity extends Activity {
     private Button testAudioButton;
     private Button testMusicButton;
     private Spinner musicVolumeSpinner;
+    private Spinner clipSelectionSpinner;
+    private Spinner fitModeSpinner;
+    private Spinner filterPresetSpinner;
+    private Spinner transitionModeSpinner;
+    private Spinner transitionDurationSpinner;
+    private LinearLayout timelineTrack;
+    private SeekBar zoomSeekBar;
+    private SeekBar cropXSeekBar;
+    private SeekBar cropYSeekBar;
+    private SeekBar filterIntensitySeekBar;
+    private SeekBar trimStartSeekBar;
+    private SeekBar trimEndSeekBar;
+    private TextView zoomValueLabel;
+    private TextView cropPositionLabel;
+    private TextView filterIntensityLabel;
+    private TextView trimStartLabel;
+    private TextView trimEndLabel;
+    private FrameLayout previewHost;
     private FrameLayout previewFrame;
     private VideoView videoView;
     private ImageView imageView;
@@ -78,6 +101,8 @@ public final class VideoStudioActivity extends Activity {
     private Uri musicUri;
     private File outputFile;
     private boolean exporting;
+    private boolean updatingClipControls;
+    private int selectedMediaIndex;
     private MediaPlayer audioTester;
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -133,7 +158,7 @@ public final class VideoStudioActivity extends Activity {
         tickerInput = input("آخر التطورات | أخبار العالم");
         tickerInput.setText("آخر التطورات  |  أخبار العالم");
         form.addView(tickerInput, params(-1, dp(48), 0, 4, 0, 8));
-        addText(form, "يتضمن التصدير تلاشيًا بين اللقطات وشريطًا متحركًا. مسار الخلفية اختياري، منخفض، ولا يتجاوز طول المونتاج ولا يتكرر تلقائيًا.", 12, MUTED, false, 0, 10);
+        addText(form, "تُجمع المقاطع افتراضيًا بقطع مباشر، ويمكن اختيار تلاشي مرئي للأسود عند الحدود. الموسيقى اختيارية ومنخفضة ولا تتكرر تلقائيًا.", 12, MUTED, false, 0, 10);
 
         Button pickMedia = button("اختيار صور وفيديوهات");
         form.addView(pickMedia, params(-1, dp(50), 0, 0, 0, 6));
@@ -142,6 +167,8 @@ public final class VideoStudioActivity extends Activity {
         form.addView(clearMedia, params(-1, dp(44), 0, 0, 0, 6));
         clearMedia.setOnClickListener(v -> {
             mediaUris.clear();
+            clipTransforms.clear();
+            selectedMediaIndex = 0;
             updateMediaList();
             clearPreview();
             setStatus("تم مسح الوسائط المحددة.", MUTED);
@@ -151,15 +178,89 @@ public final class VideoStudioActivity extends Activity {
         mediaList.setBackgroundColor(Color.rgb(27, 28, 35));
         form.addView(mediaList, params(-1, -2, 0, 0, 0, 10));
 
+        addLabel(form, "الخط الزمني — اضغط مقطعًا لتحديده");
+        HorizontalScrollView timelineScroll = new HorizontalScrollView(this);
+        timelineScroll.setHorizontalScrollBarEnabled(false);
+        timelineTrack = new LinearLayout(this);
+        timelineTrack.setOrientation(LinearLayout.HORIZONTAL);
+        timelineScroll.addView(timelineTrack, new HorizontalScrollView.LayoutParams(-2, -1));
+        form.addView(timelineScroll, params(-1, dp(76), 0, 4, 0, 6));
+        LinearLayout timelineActions = new LinearLayout(this);
+        timelineActions.setOrientation(LinearLayout.HORIZONTAL);
+        Button moveEarlierButton = secondaryButton("قبل");
+        Button moveLaterButton = secondaryButton("بعد");
+        Button removeClipButton = secondaryButton("حذف المحدد");
+        timelineActions.addView(moveEarlierButton, new LinearLayout.LayoutParams(0, dp(42), 1f));
+        timelineActions.addView(moveLaterButton, new LinearLayout.LayoutParams(0, dp(42), 1f));
+        timelineActions.addView(removeClipButton, new LinearLayout.LayoutParams(0, dp(42), 1.25f));
+        form.addView(timelineActions, params(-1, dp(42), 0, 0, 0, 10));
+        moveEarlierButton.setOnClickListener(v -> moveSelectedClip(-1));
+        moveLaterButton.setOnClickListener(v -> moveSelectedClip(1));
+        removeClipButton.setOnClickListener(v -> removeSelectedClip());
+
+        addLabel(form, "تحرير المقطع المحدد");
+        clipSelectionSpinner = spinner(new String[]{"لا توجد وسائط بعد"});
+        clipSelectionSpinner.setEnabled(false);
+        form.addView(clipSelectionSpinner, params(-1, dp(48), 0, 4, 0, 8));
+        addLabel(form, "ملاءمة الصورة أو الفيديو داخل الإطار");
+        fitModeSpinner = spinner(new String[]{"احتواء — إظهار المصدر كاملًا", "ملء الإطار — قص الزوائد"});
+        fitModeSpinner.setSelection(1);
+        form.addView(fitModeSpinner, params(-1, dp(48), 0, 4, 0, 8));
+        zoomValueLabel = text("التكبير: 100%", 13, MUTED, false);
+        form.addView(zoomValueLabel, params(-1, -2, 0, 2, 0, 0));
+        zoomSeekBar = new SeekBar(this);
+        zoomSeekBar.setMax(150);
+        form.addView(zoomSeekBar, params(-1, dp(42), 0, 0, 0, 2));
+        cropPositionLabel = text("موضع القص: أفقي 50% · رأسي 50%", 13, MUTED, false);
+        form.addView(cropPositionLabel, params(-1, -2, 0, 0, 0, 0));
+        cropXSeekBar = new SeekBar(this);
+        cropXSeekBar.setMax(100);
+        cropXSeekBar.setProgress(50);
+        form.addView(cropXSeekBar, params(-1, dp(38), 0, 0, 0, 0));
+        cropYSeekBar = new SeekBar(this);
+        cropYSeekBar.setMax(100);
+        cropYSeekBar.setProgress(50);
+        form.addView(cropYSeekBar, params(-1, dp(38), 0, 0, 0, 8));
+        addLabel(form, "فلتر المقطع المحدد");
+        filterPresetSpinner = spinner(VideoFilterPreset.labels());
+        form.addView(filterPresetSpinner, params(-1, dp(48), 0, 4, 0, 2));
+        filterIntensityLabel = text("شدة الفلتر: 100%", 13, MUTED, false);
+        form.addView(filterIntensityLabel, params(-1, -2, 0, 2, 0, 0));
+        filterIntensitySeekBar = new SeekBar(this);
+        filterIntensitySeekBar.setMax(100);
+        filterIntensitySeekBar.setProgress(100);
+        form.addView(filterIntensitySeekBar, params(-1, dp(38), 0, 0, 0, 3));
+        addText(form, "تُطبّق الفلاتر على المقطع عند التصدير؛ المعاينة الحالية تعرض القص والتكبير فقط.", 11, MUTED, false, 0, 9);
+        addLabel(form, "قص مدة المقطع المحدد");
+        trimStartLabel = text("بداية المقطع: 0%", 13, MUTED, false);
+        form.addView(trimStartLabel, params(-1, -2, 0, 2, 0, 0));
+        trimStartSeekBar = new SeekBar(this);
+        trimStartSeekBar.setMax(95);
+        form.addView(trimStartSeekBar, params(-1, dp(38), 0, 0, 0, 1));
+        trimEndLabel = text("نهاية المقطع: 100%", 13, MUTED, false);
+        form.addView(trimEndLabel, params(-1, -2, 0, 0, 0, 0));
+        trimEndSeekBar = new SeekBar(this);
+        trimEndSeekBar.setMax(100);
+        trimEndSeekBar.setProgress(100);
+        form.addView(trimEndSeekBar, params(-1, dp(38), 0, 0, 0, 9));
+
         addLabel(form, "مدة عرض كل صورة");
         String[] durations = new String[29];
         for (int i = 0; i < durations.length; i++) durations[i] = (i + 2) + " ثانية";
         imageDurationSpinner = spinner(durations);
         imageDurationSpinner.setSelection(3); // 5 seconds, matching the supplied project.
         form.addView(imageDurationSpinner, params(-1, dp(48), 0, 4, 0, 8));
-        addLabel(form, "اتجاه الفيديو");
-        formatSpinner = spinner(new String[]{"رأسي 9:16", "أفقي 16:9"});
+        addLabel(form, "الانتقال بين المقاطع");
+        transitionModeSpinner = spinner(new String[]{"قطع مباشر", "تلاشي للأسود"});
+        transitionModeSpinner.setSelection(0);
+        form.addView(transitionModeSpinner, params(-1, dp(48), 0, 4, 0, 4));
+        transitionDurationSpinner = spinner(new String[]{"0.25 ثانية", "0.5 ثانية", "0.75 ثانية"});
+        transitionDurationSpinner.setSelection(1);
+        form.addView(transitionDurationSpinner, params(-1, dp(48), 0, 0, 0, 8));
+        addLabel(form, "مقاس الفيديو والمنصة");
+        formatSpinner = spinner(VideoCanvasPreset.labels());
         form.addView(formatSpinner, params(-1, dp(48), 0, 4, 0, 10));
+        addText(form, "اختر النسبة المناسبة؛ سيتغير إطار المعاينة ومقاس التصدير تلقائيًا.", 12, MUTED, false, 0, 8);
         addLabel(form, "دقة التصدير");
         resolutionSpinner = spinner(new String[]{"720p", "1080p"});
         resolutionSpinner.setSelection(1);
@@ -191,19 +292,24 @@ public final class VideoStudioActivity extends Activity {
 
         LinearLayout previewCard = card();
         addText(previewCard, "اختبار ومعاينة الفيديو", 18, WHITE, true, 0, 5);
-        addText(previewCard, "اختبر أول ملف محدد، ثم راجع الفيديو النهائي هنا بعد التصدير.", 13, MUTED, false, 0, 8);
-        Button testVideo = secondaryButton("معاينة أول صورة أو فيديو محدد");
+        addText(previewCard, "اختر مقطعًا للمعاينة؛ الإطار والتحويل يعكسان إعداد التصدير.", 13, MUTED, false, 0, 8);
+        Button testVideo = secondaryButton("معاينة المقطع المحدد");
         previewCard.addView(testVideo, params(-1, dp(48), 0, 0, 0, 8));
         testVideo.setOnClickListener(v -> previewFirstMedia());
+        previewHost = new FrameLayout(this);
+        previewHost.setBackgroundColor(Color.rgb(12, 13, 17));
         previewFrame = new FrameLayout(this);
         previewFrame.setBackgroundColor(Color.BLACK);
         videoView = new VideoView(this);
         imageView = new ImageView(this);
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setVisibility(View.GONE);
-        previewFrame.addView(videoView, new FrameLayout.LayoutParams(-1, dp(230)));
-        previewFrame.addView(imageView, new FrameLayout.LayoutParams(-1, dp(230)));
-        previewCard.addView(previewFrame, params(-1, dp(230), 0, 0, 0, 8));
+        previewFrame.addView(videoView, new FrameLayout.LayoutParams(-1, -1));
+        previewFrame.addView(imageView, new FrameLayout.LayoutParams(-1, -1));
+        previewHost.addView(previewFrame, new FrameLayout.LayoutParams(dp(164), dp(290), Gravity.CENTER));
+        previewCard.addView(previewHost, params(-1, dp(290), 0, 0, 0, 8));
+        previewHost.addOnLayoutChangeListener((view, left, top, right, bottom,
+                oldLeft, oldTop, oldRight, oldBottom) -> updatePreviewAspectRatio());
         progress = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
         progress.setMax(100);
         progress.setProgress(0);
@@ -230,6 +336,40 @@ public final class VideoStudioActivity extends Activity {
         saveButton.setOnClickListener(v -> saveOutput());
         content.addView(previewCard, params(-1, -2, 0, 0, 0, 0));
         setContentView(root);
+        formatSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updatePreviewAspectRatio();
+            }
+            @Override public void onNothingSelected(AdapterView<?> parent) { }
+        });
+        clipSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position < mediaUris.size()) {
+                    selectedMediaIndex = position;
+                    loadClipTransformControls();
+                    previewFirstMedia();
+                }
+            }
+            @Override public void onNothingSelected(AdapterView<?> parent) { }
+        });
+        fitModeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateSelectedClipTransform();
+            }
+            @Override public void onNothingSelected(AdapterView<?> parent) { }
+        });
+        filterPresetSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateSelectedClipTransform();
+            }
+            @Override public void onNothingSelected(AdapterView<?> parent) { }
+        });
+        bindTransformSeekBar(zoomSeekBar);
+        bindTransformSeekBar(cropXSeekBar);
+        bindTransformSeekBar(cropYSeekBar);
+        bindTransformSeekBar(filterIntensitySeekBar);
+        bindTrimSeekBars();
+        previewHost.post(() -> updatePreviewAspectRatio());
         String incomingTitle = getIntent().getStringExtra(EXTRA_TREND_TITLE);
         if (incomingTitle != null && !incomingTitle.trim().isEmpty()) titleInput.setText(incomingTitle.trim());
         String incomingScript = getIntent().getStringExtra(EXTRA_SCRIPT_TEXT);
@@ -316,6 +456,7 @@ public final class VideoStudioActivity extends Activity {
         if (type == null || (!type.startsWith("image/") && !type.startsWith("video/"))) return;
         persistReadPermission(uri, flags);
         mediaUris.add(uri);
+        clipTransforms.add(VideoClipTransform.defaultTransform());
     }
 
     private void persistReadPermission(Uri uri, int flags) {
@@ -329,6 +470,7 @@ public final class VideoStudioActivity extends Activity {
         if (mediaUris.isEmpty()) {
             mediaList.setText("لم تُختر صور أو مقاطع بعد.");
             mediaList.setTextColor(MUTED);
+            refreshClipSelector();
             return;
         }
         StringBuilder names = new StringBuilder("الملفات المختارة بالترتيب:\n");
@@ -337,6 +479,7 @@ public final class VideoStudioActivity extends Activity {
         }
         mediaList.setText(names.toString().trim());
         mediaList.setTextColor(WHITE);
+        refreshClipSelector();
     }
 
     private void previewFirstMedia() {
@@ -344,22 +487,26 @@ public final class VideoStudioActivity extends Activity {
             setStatus("اختر صورة أو فيديو أولًا لاختباره.", RED);
             return;
         }
-        Uri uri = mediaUris.get(0);
+        if (selectedMediaIndex < 0 || selectedMediaIndex >= mediaUris.size()) selectedMediaIndex = 0;
+        Uri uri = mediaUris.get(selectedMediaIndex);
         String type = getContentResolver().getType(uri);
         stopVideo();
         if (type != null && type.startsWith("image/")) {
             videoView.setVisibility(View.GONE);
             imageView.setVisibility(View.VISIBLE);
             imageView.setImageURI(uri);
-            setStatus("معاينة الصورة الأولى من الملفات المحددة.", GOLD);
+            applySelectedTransformToPreview();
+            setStatus("معاينة الصورة " + (selectedMediaIndex + 1) + " من الملفات المحددة.", GOLD);
         } else {
             imageView.setVisibility(View.GONE);
             videoView.setVisibility(View.VISIBLE);
             videoView.setVideoURI(uri);
+            applySelectedTransformToPreview();
             videoView.setOnPreparedListener(mp -> {
                 mp.setLooping(true);
+                applySelectedTransformToPreview();
                 videoView.start();
-                setStatus("معاينة الفيديو الأول من الملفات المحددة.", GOLD);
+                setStatus("معاينة الفيديو " + (selectedMediaIndex + 1) + " من الملفات المحددة.", GOLD);
             });
             videoView.setOnErrorListener((mp, what, extra) -> {
                 setStatus("تعذر تشغيل هذا المقطع على الجهاز. جرّب MP4 بترميز H.264.", RED);
@@ -428,15 +575,18 @@ public final class VideoStudioActivity extends Activity {
         exporting = true;
         try {
             int imageSeconds = imageDurationSpinner.getSelectedItemPosition() + 2;
-            boolean vertical = formatSpinner.getSelectedItemPosition() == 0;
             boolean output720p = resolutionSpinner.getSelectedItemPosition() == 0;
             boolean breakingNews = templateModeSpinner.getSelectedItemPosition() == 0;
-            int width = vertical ? (output720p ? 720 : 1080) : (output720p ? 1280 : 1920);
-            int height = vertical ? (output720p ? 1280 : 1920) : (output720p ? 720 : 1080);
+            int[] outputSize = selectedCanvasPreset().outputSize(!output720p);
+            int width = outputSize[0];
+            int height = outputSize[1];
             String headline = titleInput == null ? "" : compactText(titleInput.getText().toString(), 90);
             String lowerThird = captionInput == null ? "" : compactText(captionInput.getText().toString(), 120);
             String ticker = tickerInput == null ? "" : compactText(tickerInput.getText().toString(), 120);
             int colorPalette = colorPaletteSpinner == null ? 0 : colorPaletteSpinner.getSelectedItemPosition();
+            VideoTransition.Mode transitionMode = transitionModeSpinner.getSelectedItemPosition() == 1
+                    ? VideoTransition.Mode.FADE_TO_BLACK : VideoTransition.Mode.NONE;
+            long transitionDurationMs = (transitionDurationSpinner.getSelectedItemPosition() + 1L) * 250L;
 
             File directory = getExternalFilesDir(Environment.DIRECTORY_MOVIES);
             if (directory == null) directory = getFilesDir();
@@ -448,7 +598,8 @@ public final class VideoStudioActivity extends Activity {
 
             VideoExportRequest request = new VideoExportRequest(
                     mediaUris, audioUri, musicUri, headline, lowerThird, ticker,
-                    outputFile, width, height, imageSeconds, selectedMusicGain(), breakingNews, colorPalette);
+                    outputFile, width, height, imageSeconds, selectedMusicGain(), breakingNews, colorPalette,
+                    new ArrayList<>(clipTransforms), transitionMode, transitionDurationMs);
 
             exportEngine = new FfmpegVideoExportEngine(this);
             exportEngine.export(request, new VideoExportEngine.Listener() {
@@ -620,14 +771,241 @@ public final class VideoStudioActivity extends Activity {
         return String.format(java.util.Locale.US, "%.1f ميغابايت", bytes / (1024.0 * 1024.0));
     }
 
+    private VideoCanvasPreset selectedCanvasPreset() {
+        return VideoCanvasPreset.fromPosition(formatSpinner == null ? 0 : formatSpinner.getSelectedItemPosition());
+    }
+
+    private void bindTransformSeekBar(SeekBar seekBar) {
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override public void onProgressChanged(SeekBar bar, int progressValue, boolean fromUser) {
+                updateSelectedClipTransform();
+            }
+            @Override public void onStartTrackingTouch(SeekBar bar) { }
+            @Override public void onStopTrackingTouch(SeekBar bar) { }
+        });
+    }
+
+    private void bindTrimSeekBars() {
+        trimStartSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override public void onProgressChanged(SeekBar bar, int value, boolean fromUser) {
+                if (!fromUser || updatingClipControls) return;
+                int start = Math.min(value, 95);
+                if (start >= trimEndSeekBar.getProgress() - 5) {
+                    trimEndSeekBar.setProgress(Math.min(100, start + 5));
+                }
+                updateSelectedClipTransform();
+            }
+            @Override public void onStartTrackingTouch(SeekBar bar) { }
+            @Override public void onStopTrackingTouch(SeekBar bar) { }
+        });
+        trimEndSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override public void onProgressChanged(SeekBar bar, int value, boolean fromUser) {
+                if (!fromUser || updatingClipControls) return;
+                int end = Math.max(5, value);
+                if (value < 5) trimEndSeekBar.setProgress(5);
+                if (end <= trimStartSeekBar.getProgress() + 5) {
+                    trimStartSeekBar.setProgress(Math.max(0, end - 5));
+                }
+                updateSelectedClipTransform();
+            }
+            @Override public void onStartTrackingTouch(SeekBar bar) { }
+            @Override public void onStopTrackingTouch(SeekBar bar) { }
+        });
+    }
+
+    private void updateSelectedClipTransform() {
+        if (updatingClipControls || selectedMediaIndex < 0 || selectedMediaIndex >= clipTransforms.size()) return;
+        VideoClipTransform.FitMode mode = fitModeSpinner.getSelectedItemPosition() == 0
+                ? VideoClipTransform.FitMode.FIT : VideoClipTransform.FitMode.FILL;
+        float zoom = 1f + zoomSeekBar.getProgress() / 100f;
+        float positionX = cropXSeekBar.getProgress() / 100f;
+        float positionY = cropYSeekBar.getProgress() / 100f;
+        VideoFilterPreset filter = VideoFilterPreset.fromPosition(filterPresetSpinner.getSelectedItemPosition());
+        float filterIntensity = filterIntensitySeekBar.getProgress() / 100f;
+        float trimStart = trimStartSeekBar.getProgress() / 100f;
+        float trimEnd = trimEndSeekBar.getProgress() / 100f;
+        VideoClipTransform transform = new VideoClipTransform(mode, zoom, positionX, positionY,
+                filter, filterIntensity, trimStart, trimEnd);
+        clipTransforms.set(selectedMediaIndex, transform);
+        zoomValueLabel.setText("التكبير: " + Math.round(zoom * 100f) + "%");
+        cropPositionLabel.setText("موضع القص: أفقي " + Math.round(positionX * 100f)
+                + "% · رأسي " + Math.round(positionY * 100f) + "%");
+        filterIntensityLabel.setText("شدة الفلتر: " + Math.round(filterIntensity * 100f) + "%");
+        updateTrimLabels(trimStart, trimEnd);
+        applySelectedTransformToPreview();
+    }
+
+    private void loadClipTransformControls() {
+        if (selectedMediaIndex < 0 || selectedMediaIndex >= clipTransforms.size()) return;
+        VideoClipTransform transform = clipTransforms.get(selectedMediaIndex);
+        updatingClipControls = true;
+        fitModeSpinner.setSelection(transform.getFitMode() == VideoClipTransform.FitMode.FIT ? 0 : 1);
+        zoomSeekBar.setProgress(Math.round((transform.getZoom() - 1f) * 100f));
+        cropXSeekBar.setProgress(Math.round(transform.getPositionX() * 100f));
+        cropYSeekBar.setProgress(Math.round(transform.getPositionY() * 100f));
+        filterPresetSpinner.setSelection(transform.getFilterPreset().ordinal());
+        filterIntensitySeekBar.setProgress(Math.round(transform.getFilterIntensity() * 100f));
+        trimStartSeekBar.setProgress(Math.round(transform.getTrimStartFraction() * 100f));
+        trimEndSeekBar.setProgress(Math.round(transform.getTrimEndFraction() * 100f));
+        updatingClipControls = false;
+        zoomValueLabel.setText("التكبير: " + Math.round(transform.getZoom() * 100f) + "%");
+        cropPositionLabel.setText("موضع القص: أفقي " + Math.round(transform.getPositionX() * 100f)
+                + "% · رأسي " + Math.round(transform.getPositionY() * 100f) + "%");
+        filterIntensityLabel.setText("شدة الفلتر: " + Math.round(transform.getFilterIntensity() * 100f) + "%");
+        updateTrimLabels(transform.getTrimStartFraction(), transform.getTrimEndFraction());
+        applySelectedTransformToPreview();
+    }
+
+    private void updateTrimLabels(float start, float end) {
+        trimStartLabel.setText("بداية المقطع: " + Math.round(start * 100f) + "%");
+        trimEndLabel.setText("نهاية المقطع: " + Math.round(end * 100f) + "%");
+    }
+
+    private void applySelectedTransformToPreview() {
+        if (selectedMediaIndex < 0 || selectedMediaIndex >= clipTransforms.size()) return;
+        VideoClipTransform transform = clipTransforms.get(selectedMediaIndex);
+        ImageView.ScaleType scaleType = transform.getFitMode() == VideoClipTransform.FitMode.FIT
+                ? ImageView.ScaleType.FIT_CENTER : ImageView.ScaleType.CENTER_CROP;
+        imageView.setScaleType(scaleType);
+        float zoom = transform.getZoom();
+        float offsetX = (0.5f - transform.getPositionX()) * previewFrame.getWidth() * (zoom - 1f);
+        float offsetY = (0.5f - transform.getPositionY()) * previewFrame.getHeight() * (zoom - 1f);
+        imageView.setScaleX(zoom);
+        imageView.setScaleY(zoom);
+        imageView.setTranslationX(offsetX);
+        imageView.setTranslationY(offsetY);
+        videoView.setScaleX(zoom);
+        videoView.setScaleY(zoom);
+        videoView.setTranslationX(offsetX);
+        videoView.setTranslationY(offsetY);
+    }
+
+    private void refreshClipSelector() {
+        if (clipSelectionSpinner == null) return;
+        @SuppressWarnings("unchecked")
+        ArrayAdapter<String> adapter = (ArrayAdapter<String>) clipSelectionSpinner.getAdapter();
+        adapter.clear();
+        for (Uri uri : mediaUris) adapter.add(displayName(uri));
+        if (mediaUris.isEmpty()) {
+            adapter.add("لا توجد وسائط بعد");
+            selectedMediaIndex = 0;
+            clipSelectionSpinner.setEnabled(false);
+        } else {
+            clipSelectionSpinner.setEnabled(true);
+            if (selectedMediaIndex >= mediaUris.size()) selectedMediaIndex = mediaUris.size() - 1;
+        }
+        adapter.notifyDataSetChanged();
+        clipSelectionSpinner.setSelection(selectedMediaIndex);
+        refreshTimeline();
+        if (!mediaUris.isEmpty()) loadClipTransformControls();
+    }
+
+    private void refreshTimeline() {
+        if (timelineTrack == null) return;
+        timelineTrack.removeAllViews();
+        for (int i = 0; i < mediaUris.size(); i++) {
+            final int position = i;
+            String name = displayName(mediaUris.get(i));
+            if (name.length() > 17) name = name.substring(0, 16) + "…";
+            TextView clip = text((i + 1) + "\n" + name, 12,
+                    i == selectedMediaIndex ? BG : WHITE, true);
+            clip.setGravity(Gravity.CENTER);
+            clip.setPadding(dp(8), dp(6), dp(8), dp(6));
+            clip.setBackgroundColor(i == selectedMediaIndex ? GOLD : Color.rgb(37, 39, 47));
+            LinearLayout.LayoutParams itemParams = new LinearLayout.LayoutParams(dp(120), -1);
+            itemParams.setMargins(0, 0, dp(8), 0);
+            timelineTrack.addView(clip, itemParams);
+            clip.setOnClickListener(v -> selectTimelineClip(position));
+        }
+    }
+
+    private void selectTimelineClip(int position) {
+        if (position < 0 || position >= mediaUris.size()) return;
+        selectedMediaIndex = position;
+        clipSelectionSpinner.setSelection(position);
+        refreshTimeline();
+        loadClipTransformControls();
+        previewFirstMedia();
+    }
+
+    private void moveSelectedClip(int offset) {
+        int destination = selectedMediaIndex + offset;
+        if (selectedMediaIndex < 0 || selectedMediaIndex >= mediaUris.size()
+                || destination < 0 || destination >= mediaUris.size()) return;
+        Uri movedUri = mediaUris.get(selectedMediaIndex);
+        mediaUris.set(selectedMediaIndex, mediaUris.get(destination));
+        mediaUris.set(destination, movedUri);
+        VideoClipTransform movedTransform = clipTransforms.get(selectedMediaIndex);
+        clipTransforms.set(selectedMediaIndex, clipTransforms.get(destination));
+        clipTransforms.set(destination, movedTransform);
+        selectedMediaIndex = destination;
+        updateMediaList();
+        loadClipTransformControls();
+        previewFirstMedia();
+        setStatus("تم تغيير ترتيب المقطع في الخط الزمني.", GOLD);
+    }
+
+    private void removeSelectedClip() {
+        if (selectedMediaIndex < 0 || selectedMediaIndex >= mediaUris.size()) return;
+        stopVideo();
+        mediaUris.remove(selectedMediaIndex);
+        clipTransforms.remove(selectedMediaIndex);
+        if (selectedMediaIndex >= mediaUris.size()) selectedMediaIndex = Math.max(0, mediaUris.size() - 1);
+        updateMediaList();
+        if (mediaUris.isEmpty()) {
+            clearPreview();
+            setStatus("حُذف المقطع. أضف صورة أو فيديو للمتابعة.", MUTED);
+        } else {
+            loadClipTransformControls();
+            previewFirstMedia();
+            setStatus("تم حذف المقطع المحدد من الخط الزمني.", GOLD);
+        }
+    }
+
+    private void updatePreviewAspectRatio() {
+        if (previewHost == null || previewFrame == null) return;
+        int hostWidth = previewHost.getWidth();
+        int hostHeight = previewHost.getHeight();
+        if (hostWidth <= 0 || hostHeight <= 0) return;
+
+        float aspectRatio = selectedCanvasPreset().getAspectRatio();
+        int frameWidth;
+        int frameHeight;
+        if ((float) hostWidth / hostHeight > aspectRatio) {
+            frameHeight = hostHeight;
+            frameWidth = Math.round(frameHeight * aspectRatio);
+        } else {
+            frameWidth = hostWidth;
+            frameHeight = Math.round(frameWidth / aspectRatio);
+        }
+        ViewGroup.LayoutParams current = previewFrame.getLayoutParams();
+        if (current.width != frameWidth || current.height != frameHeight) {
+            previewFrame.setLayoutParams(new FrameLayout.LayoutParams(frameWidth, frameHeight, Gravity.CENTER));
+        }
+    }
+
     private void showExportErrorDetails(Exception error) {
-        String details = "نسخة التطبيق: " + BuildConfig.VERSION_NAME
-                + "\nإصدار Android: " + android.os.Build.VERSION.RELEASE
-                + " (API " + android.os.Build.VERSION.SDK_INT + ")"
-                + "\nعدد ملفات الوسائط: " + mediaUris.size()
-                + "\nتعليق صوتي: " + (audioUri == null ? "لا" : "نعم")
-                + "\nموسيقى خلفية: " + (musicUri == null ? "لا" : "نعم")
-                + "\n\n" + VideoExportDiagnostics.format(error);
+        boolean fullHd = resolutionSpinner != null && resolutionSpinner.getSelectedItemPosition() > 0;
+        int[] outputSize = selectedCanvasPreset().outputSize(fullHd);
+        StringBuilder report = new StringBuilder("نسخة التطبيق: ").append(BuildConfig.VERSION_NAME)
+                .append("\nإصدار Android: ").append(android.os.Build.VERSION.RELEASE)
+                .append(" (API ").append(android.os.Build.VERSION.SDK_INT).append(')')
+                .append("\nعدد ملفات الوسائط: ").append(mediaUris.size())
+                .append("\nتعليق صوتي: ").append(audioUri == null ? "لا" : "نعم")
+                .append("\nموسيقى خلفية: ").append(musicUri == null ? "لا" : "نعم");
+        report.append("\nلوحة الإخراج: ").append(selectedCanvasPreset().getLabel())
+                .append(" — ").append(outputSize[0]).append('×').append(outputSize[1]);
+        for (int i = 0; i < clipTransforms.size(); i++) {
+            VideoClipTransform transform = clipTransforms.get(i);
+            report.append("\nالمقطع ").append(i + 1).append(": ")
+                    .append(transform.getFitMode() == VideoClipTransform.FitMode.FIT ? "FIT" : "FILL")
+                    .append(", zoom=").append(Math.round(transform.getZoom() * 100f)).append('%')
+                    .append(", crop=").append(Math.round(transform.getTrimStartFraction() * 100f))
+                    .append('-').append(Math.round(transform.getTrimEndFraction() * 100f)).append('%')
+                    .append(", filter=").append(transform.getFilterPreset().getLabel())
+                    .append(' ').append(Math.round(transform.getFilterIntensity() * 100f)).append('%');
+        }
+        String details = report.append("\n\n").append(VideoExportDiagnostics.format(error)).toString();
         TextView body = text(details, 12, WHITE, false);
         body.setTextIsSelectable(true);
         body.setTextDirection(View.TEXT_DIRECTION_LTR);
@@ -713,7 +1091,7 @@ public final class VideoStudioActivity extends Activity {
 
     private Spinner spinner(String[] values) {
         Spinner spinner = new Spinner(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, MutableSpinnerItems.copyOf(values)) {
             @Override public View getView(int position, View convertView, android.view.ViewGroup parent) {
                 TextView view = (TextView) super.getView(position, convertView, parent);
                 view.setTextColor(WHITE);

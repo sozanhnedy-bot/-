@@ -29,13 +29,30 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Download FFmpegKitNext Maven repository
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v6
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: ffmpegkitnext-android-build.yml
+          workflow_conclusion: success
+          branch: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref || github.event.pull_request.base.ref || github.ref_name }}
           name: ffmpeg-kit-next-9.0.2-android-arm64
           path: android-app/ffmpegkitnext-maven
-          repository: ${{ github.repository }}
-          run-id: 43064503988
-          github-token: ${{ github.token }}
+          if_no_artifact_found: fail
+
+      - name: Verify FFmpegKitNext codec configuration
+        run: |
+          set -euo pipefail
+          AAR=android-app/ffmpegkitnext-maven/bundle-android-aar-24-maven/com/arthenica/ffmpeg-kit-next/9.0.2/ffmpeg-kit-next-9.0.2.aar
+          test -s "$AAR"
+          python3 - "$AAR" <<'PY'
+          import sys, zipfile
+          data = zipfile.ZipFile(sys.argv[1]).read('jni/arm64-v8a/libavcodec.so')
+          required = (b'--enable-libx264', b'--enable-zlib', b'--enable-decoder=png', b'--enable-filter=fade', b'--disable-mediacodec')
+          missing = [flag.decode() for flag in required if flag not in data]
+          if missing or b'--disable-zlib' in data:
+              raise SystemExit(f'FFmpeg AAR has incorrect codec flags; missing={missing}')
+          print('Verified FFmpeg AAR: libx264, zlib, PNG decoder, fade filter; MediaCodec disabled.')
+          PY
 
       - name: Set up Java 21
         uses: actions/setup-java@v6

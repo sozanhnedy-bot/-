@@ -22,6 +22,9 @@ public final class VideoExportRequest {
     private final float musicGain;
     private final boolean breakingNews;
     private final int colorPalette;
+    private final List<VideoClipTransform> clipTransforms;
+    private final VideoTransition.Mode transitionMode;
+    private final long transitionDurationMs;
 
     public VideoExportRequest(List<Uri> mediaUris, Uri narrationUri, Uri musicUri,
             String headline, String lowerThird, String ticker, File outputFile,
@@ -42,6 +45,24 @@ public final class VideoExportRequest {
             String headline, String lowerThird, String ticker, File outputFile,
             int width, int height, int imageDurationSeconds, float musicGain,
             boolean breakingNews, int colorPalette) {
+        this(mediaUris, narrationUri, musicUri, headline, lowerThird, ticker, outputFile,
+                width, height, imageDurationSeconds, musicGain, breakingNews, colorPalette, null);
+    }
+
+    public VideoExportRequest(List<Uri> mediaUris, Uri narrationUri, Uri musicUri,
+            String headline, String lowerThird, String ticker, File outputFile,
+            int width, int height, int imageDurationSeconds, float musicGain,
+            boolean breakingNews, int colorPalette, List<VideoClipTransform> clipTransforms) {
+        this(mediaUris, narrationUri, musicUri, headline, lowerThird, ticker, outputFile,
+                width, height, imageDurationSeconds, musicGain, breakingNews, colorPalette,
+                clipTransforms, VideoTransition.Mode.NONE, VideoTransition.DEFAULT_DURATION_MS);
+    }
+
+    public VideoExportRequest(List<Uri> mediaUris, Uri narrationUri, Uri musicUri,
+            String headline, String lowerThird, String ticker, File outputFile,
+            int width, int height, int imageDurationSeconds, float musicGain,
+            boolean breakingNews, int colorPalette, List<VideoClipTransform> clipTransforms,
+            VideoTransition.Mode transitionMode, long transitionDurationMs) {
         if (mediaUris == null || mediaUris.isEmpty()) {
             throw new IllegalArgumentException("At least one image or video is required.");
         }
@@ -63,6 +84,13 @@ public final class VideoExportRequest {
             copy.add(uri);
         }
         this.mediaUris = Collections.unmodifiableList(copy);
+        ArrayList<VideoClipTransform> transformCopy = new ArrayList<>(copy.size());
+        for (int i = 0; i < copy.size(); i++) {
+            VideoClipTransform transform = clipTransforms != null && i < clipTransforms.size()
+                    ? clipTransforms.get(i) : null;
+            transformCopy.add(transform == null ? VideoClipTransform.defaultTransform() : transform);
+        }
+        this.clipTransforms = Collections.unmodifiableList(transformCopy);
         this.narrationUri = narrationUri;
         this.musicUri = musicUri;
         this.headline = headline == null ? "" : headline;
@@ -75,6 +103,9 @@ public final class VideoExportRequest {
         this.musicGain = musicGain;
         this.breakingNews = breakingNews;
         this.colorPalette = colorPalette;
+        this.transitionMode = transitionMode == null ? VideoTransition.Mode.NONE : transitionMode;
+        this.transitionDurationMs = VideoTransition.isValidDurationMs(transitionDurationMs)
+                ? transitionDurationMs : VideoTransition.DEFAULT_DURATION_MS;
     }
 
     static boolean isValidMusicGain(float gain) {
@@ -102,10 +133,14 @@ public final class VideoExportRequest {
     public float getMusicGain() { return musicGain; }
     public boolean isBreakingNews() { return breakingNews; }
     public int getColorPalette() { return colorPalette; }
+    public List<VideoClipTransform> getClipTransforms() { return clipTransforms; }
+    public VideoClipTransform getClipTransform(int index) { return clipTransforms.get(index); }
+    public VideoTransition.Mode getTransitionMode() { return transitionMode; }
+    public long getTransitionDurationMs() { return transitionDurationMs; }
 
     public VideoExportRequest withOutputFile(File replacementOutputFile) {
         return new VideoExportRequest(mediaUris, narrationUri, musicUri, headline, lowerThird,
                 ticker, replacementOutputFile, width, height, imageDurationSeconds,
-                musicGain, breakingNews, colorPalette);
+                musicGain, breakingNews, colorPalette, clipTransforms, transitionMode, transitionDurationMs);
     }
 }

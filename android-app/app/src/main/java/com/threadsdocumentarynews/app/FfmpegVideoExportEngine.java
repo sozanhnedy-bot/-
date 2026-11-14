@@ -99,10 +99,16 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                 checkCancelled();
                 String path = readablePath(uri);
                 boolean image = isImage(uri);
-                long durationMs = image ? request.getImageDurationSeconds() * 1000L : probeDurationMs(path);
-                if (durationMs <= 0L) throw new IllegalStateException("Could not determine media duration: " + uri);
+                VideoClipTransform transform = request.getClipTransform(index);
+                long sourceDurationMs = image ? request.getImageDurationSeconds() * 1000L : probeDurationMs(path);
+                if (sourceDurationMs <= 0L) throw new IllegalStateException("Could not determine media duration: " + uri);
+                long startMs = image ? 0L : transform.getTrimStartMs(sourceDurationMs);
+                long endMs = image ? sourceDurationMs : transform.getTrimEndMs(sourceDurationMs);
+                long durationMs = endMs - startMs;
+                if (durationMs <= 0L) throw new IllegalStateException("The selected trim range is shorter than one millisecond: " + uri);
                 boolean hasAudio = !image && hasAudio(path);
-                inputs.add(new MediaInput(path, image, durationMs, hasAudio, index++));
+                inputs.add(new MediaInput(path, image, durationMs, hasAudio, index, transform, startMs));
+                index++;
                 totalMs += durationMs;
             }
             if (totalMs <= 0L) throw new IllegalStateException("The selected media has no duration.");
@@ -119,7 +125,8 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
 
                 File audio = new File(work, "audio-" + input.index + ".wav");
                 if (input.hasAudio) {
-                    execute("-y -i " + q(input.path) + " -map 0:a:0 -vn -t "
+                    execute("-y " + seekInputOptions(input.path, input.startMs)
+                            + " -map 0:a:0 -vn -t "
                             + seconds(input.durationMs) + " -af "
                             + q("aresample=48000, aformat=sample_fmts=s16:channel_layouts=stereo,apad,atrim=duration=" + seconds(input.durationMs))
                             + " -ac 2 -ar 48000 -c:a pcm_s16le " + q(audio.getAbsolutePath()),
@@ -175,7 +182,14 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
 
             StringBuilder graph = new StringBuilder();
             graph.append("[0:v][").append(overlayIndex)
-                    .append(":v]overlay=0:0:shortest=1,format=yuv420p[vout];");
+                    .append(":v]overlay=0:0:shortest=1,format=yuv420p");
+            List<Long> clipDurationsMs = new ArrayList<>();
+            for (MediaInput input : inputs) clipDurationsMs.add(input.durationMs);
+            for (String fadeFilter : VideoTransition.timelineFadeFilters(request.getTransitionMode(),
+                    request.getTransitionDurationMs(), clipDurationsMs)) {
+                graph.append(',').append(fadeFilter);
+            }
+            graph.append("[vout];");
             List<String> audioLabels = new ArrayList<>();
             graph.append("[1:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,apad,atrim=duration=")
                     .append(seconds(totalMs)).append("[src]");
@@ -236,20 +250,29 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
     private String segmentCommand(MediaInput input, VideoExportRequest request, File output) {
         StringBuilder command = new StringBuilder("-y ");
         if (input.image) command.append(imageInputOptions(input.path, input.durationMs)).append(' ');
-        else command.append("-i ").append(q(input.path)).append(" -t ").append(seconds(input.durationMs)).append(' ');
-        command.append("-vf ").append(q("scale=" + request.getWidth() + ":" + request.getHeight()
-                + ":force_original_aspect_ratio=increase,crop=" + request.getWidth() + ":" + request.getHeight()
-                + ",setsar=1,fps=" + FPS + ",format=yuv420p"))
+        else command.append(seekInputOptions(input.path, input.startMs))
+                .append(" -t ").append(seconds(input.durationMs)).append(' ');
+        command.append("-vf ").append(q(buildSegmentVideoFilter(request.getWidth(), request.getHeight(), input.transform)))
                 .append(" -an -c:v libx264 -preset ultrafast -b:v 6M -r ").append(FPS)
                 .append(" -t ").append(seconds(input.durationMs))
                 .append(" -movflags +faststart ").append(q(output.getAbsolutePath()));
         return command.toString();
     }
 
+    static String buildSegmentVideoFilter(int width, int height, VideoClipTransform transform) {
+        return VideoFilterCommandBuilder.buildSegmentVideoFilter(width, height, transform);
+    }
+
     static String imageInputOptions(String path, long durationMs) {
         if (path == null || path.trim().isEmpty()) throw new IllegalArgumentException("Image path is required.");
         if (durationMs <= 0L) throw new IllegalArgumentException("Image duration must be positive.");
         return "-stream_loop -1 -i " + q(path) + " -t " + seconds(durationMs);
+    }
+
+    static String seekInputOptions(String path, long startMs) {
+        if (path == null || path.trim().isEmpty()) throw new IllegalArgumentException("Media path is required.");
+        if (startMs < 0L) throw new IllegalArgumentException("Seek position cannot be negative.");
+        return "-ss " + seconds(startMs) + " -i " + q(path);
     }
 
     private String readablePath(Uri uri) {
@@ -530,9 +553,14 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
         final long durationMs;
         final boolean hasAudio;
         final int index;
-        MediaInput(String path, boolean image, long durationMs, boolean hasAudio, int index) {
+        final VideoClipTransform transform;
+        final long startMs;
+        MediaInput(String path, boolean image, long durationMs, boolean hasAudio, int index,
+                VideoClipTransform transform, long startMs) {
             this.path = path; this.image = image; this.durationMs = durationMs;
             this.hasAudio = hasAudio; this.index = index;
+            this.transform = transform == null ? VideoClipTransform.defaultTransform() : transform;
+            this.startMs = startMs;
         }
     }
 }

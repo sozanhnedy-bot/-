@@ -80,6 +80,15 @@ jobs:
           AAR="$REPO/com/arthenica/ffmpeg-kit-next/9.0.2/ffmpeg-kit-next-9.0.2.aar"
           test -s "$POM"
           test -s "$AAR"
+          python3 - "$AAR" <<'PY'
+          import sys, zipfile
+          data = zipfile.ZipFile(sys.argv[1]).read('jni/arm64-v8a/libavcodec.so')
+          required = (b'--enable-libx264', b'--enable-zlib', b'--enable-decoder=png', b'--enable-filter=fade', b'--disable-mediacodec')
+          missing = [flag.decode() for flag in required if flag not in data]
+          if missing or b'--disable-zlib' in data:
+              raise SystemExit(f'FFmpeg AAR has incorrect codec flags; missing={missing}')
+          print('Verified FFmpeg AAR: libx264, zlib, PNG decoder, fade filter; MediaCodec disabled.')
+          PY
           echo "Verified FFmpegKitNext Maven POM and AAR."
           ls -lh "$POM" "$AAR"
 
@@ -96,12 +105,12 @@ jobs:
           APK=android-app/app/build/outputs/apk/debug/app-debug.apk
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.worldnews.newsapp' versionCode='13' versionName='1.6.5'"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -E "package: name='com.worldnews.newsapp' versionCode='17' versionName='1.6.9'"
 
       - name: Upload installable APK artifact
         uses: actions/upload-artifact@v7
         with:
-          name: World-News-v1.6.5-debug
+          name: World-News-v1.6.9-debug
           path: android-app/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 90

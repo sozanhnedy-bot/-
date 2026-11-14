@@ -34,7 +34,7 @@ jobs:
             max-jobs = auto
             cores = 2
 
-      - name: Explicitly enable the PNG decoder and zlib in FFmpeg
+      - name: Explicitly enable PNG decoding and World News editor filters
         working-directory: ffmpeg-kit-next
         shell: bash
         run: |
@@ -46,10 +46,25 @@ jobs:
           marker = "  --disable-autodetect \\\n"
           if marker not in text:
               raise SystemExit("Could not locate FFmpeg Android configure options")
-          if "--enable-decoder=png" not in text:
-              path.write_text(text.replace(marker, marker + "  --enable-decoder=png \\\n", 1))
+          flags = [
+              "--enable-decoder=png",
+              "--enable-filter=scale", "--enable-filter=crop", "--enable-filter=pad",
+              "--enable-filter=setsar", "--enable-filter=fps", "--enable-filter=format",
+              "--enable-filter=overlay", "--enable-filter=eq", "--enable-filter=hue",
+              "--enable-filter=colorbalance", "--enable-filter=aresample",
+              "--enable-filter=aformat", "--enable-filter=apad", "--enable-filter=atrim",
+              "--enable-filter=amix", "--enable-filter=alimiter", "--enable-filter=volume",
+              "--enable-filter=afade", "--enable-filter=fade",
+          ]
+          missing = [flag for flag in flags if flag not in text]
+          if missing:
+              insertion = "".join(f"  {flag} \\\n" for flag in missing)
+              path.write_text(text.replace(marker, marker + insertion, 1))
           PY
           grep -Fq -- "--enable-decoder=png" scripts/android/ffmpeg.sh
+          for filter in scale crop pad setsar fps format overlay eq hue colorbalance aresample aformat apad atrim amix alimiter volume afade fade; do
+            grep -Fq -- "--enable-filter=$filter" scripts/android/ffmpeg.sh
+          done
 
       - name: Build Android AAR for arm64-v8a
         working-directory: ffmpeg-kit-next
@@ -81,9 +96,12 @@ jobs:
             echo "FFmpeg was built without zlib; PNG decoder cannot be used." >&2
             exit 1
           fi
-          strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- '--disable-mediacodec'
+          strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- "--disable-mediacodec"
+          for filter in scale crop pad setsar fps format overlay eq hue colorbalance aresample aformat apad atrim amix alimiter volume afade fade; do
+            strings /tmp/ffmpeg-libavcodec.so | grep -Fq -- "--enable-filter=$filter"
+          done
           echo "FFmpegKitNext AAR: $AAR"
-          echo "Verified arm64-v8a AAR with PNG decoder and zlib enabled, libx264 enabled, and MediaCodec disabled."
+          echo "Verified arm64-v8a AAR with PNG decoder, zlib, libx264, editor and fade filters, and no MediaCodec dependency."
 
       - name: Upload AAR and Maven repository
         uses: actions/upload-artifact@v4
