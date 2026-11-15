@@ -728,7 +728,8 @@ def build_update(
     additions: list[dict] = []
     for item in candidates[:limit]:
         try:
-            source_material = clean_text(item.get("excerpt", "")) or clean_article_content(item.get("article_content", ""))\n            summary = RSS_NO_DETAILS if not source_material else clean_text(summarizer(item))
+            source_material = clean_text(item.get("excerpt", "")) or clean_article_content(item.get("article_content", ""))
+            summary = RSS_NO_DETAILS if not source_material else clean_text(summarizer(item))
         except Exception as exc:
             warnings.append(f"تعذر تلخيص خبر: {type(exc).__name__}")
             continue
@@ -747,7 +748,8 @@ def build_update(
             "url": item["url"],
             "source_name": item.get("source_name", "المصدر الأصلي"),
             "source_url": item.get("source_url", ""),
-            "image_url": item.get("image_url", ""),\n            "image_rights_confirmed": item.get("image_rights_confirmed") is True,
+            "image_url": item.get("image_url", ""),
+            "image_rights_confirmed": item.get("image_rights_confirmed") is True,
             "published_at": item.get("published_at"),
             "created_at": now_text,
             "summary_date": today,
