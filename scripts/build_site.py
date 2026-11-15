@@ -56,6 +56,11 @@ def build(output: Path) -> int:
         cwd=ROOT,
         check=True,
     )
+    subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "render_seo.py"), "--output", str(output)],
+        cwd=ROOT,
+        check=True,
+    )
     print(f"Built read-only news site in {output}")
     return 0
 

@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts import build_site, publish_social, render_articles, render_news
+from scripts import build_site, publish_social, render_articles, render_news, render_seo
 
 
 class SocialPublisherTests(unittest.TestCase):
@@ -176,6 +176,18 @@ class InternalNewsBriefTests(unittest.TestCase):
 
 
 class BuildAndBrowserTests(unittest.TestCase):
+    def test_seo_documents_include_public_routes_and_exclude_weak_news_pages(self):
+        news = {"updated_at": "2026-11-15T00:00:00Z", "items": [
+            {"id": "a" * 20, "title": "خبر غني", "summary": "تفاصيل مستقلة", "source_name": "مصدر", "published_at": "2026-11-15T00:00:00Z"},
+            {"id": "b" * 20, "title": "عنوان فقط", "summary": "", "summary_type": "source_notice", "excerpt": "عنوان فقط", "source_name": "مصدر"},
+        ]}
+        reports = {"items": [{"id": "c" * 20, "title": "تقرير", "published_at": "2026-11-14T00:00:00Z", "sections": [{"heading": "قسم", "paragraphs": ["نص"]}]}]}
+        sitemap = render_seo.render_sitemap(news, reports)
+        self.assertIn("https://sozanhnedy-bot.github.io/-/news/" + "a" * 20 + ".html", sitemap)
+        self.assertIn("https://sozanhnedy-bot.github.io/-/reports/" + "c" * 20 + ".html", sitemap)
+        self.assertNotIn("/news/" + "b" * 20 + ".html", sitemap)
+        self.assertIn("Sitemap: https://sozanhnedy-bot.github.io/-/sitemap.xml", render_seo.render_robots())
+
     def test_clean_site_build_omits_browser_tasks_and_trend_pages(self):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "site"
@@ -191,6 +203,8 @@ class BuildAndBrowserTests(unittest.TestCase):
             self.assertTrue((output / "assets" / "news-illustrations" / "world.jpg").is_file())
             self.assertTrue((output / "news").is_dir())
             self.assertTrue((output / "reports").is_dir())
+            self.assertTrue((output / "sitemap.xml").is_file())
+            self.assertTrue((output / "robots.txt").is_file())
 
     def test_verified_image_filter_bumps_app_and_service_worker_cache_versions(self):
         root = Path(__file__).resolve().parents[1]
