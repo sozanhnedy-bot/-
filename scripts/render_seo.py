@@ -84,7 +84,7 @@ def render_sitemap(news: dict, reports: dict) -> str:
 
 
 def render_robots() -> str:
-    return f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {_url('sitemap.xml')}\n"
+    return f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /drafts/\nDisallow: /preview/\nSitemap: {_url('sitemap.xml')}\n"
 
 
 def build(output: Path) -> None:
