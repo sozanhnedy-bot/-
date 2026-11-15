@@ -335,6 +335,21 @@ class NewsUpdateTests(unittest.TestCase):
         self.assertFalse(changed)
         self.assertEqual(data["items"], existing["items"])
 
+    def test_article_text_is_used_when_rss_excerpt_is_missing(self):
+        item = {**self.entries[0], "excerpt": "", "article_content": "الجملة الأولى تحتوي على تفاصيل كافية عن الخبر. الجملة الثانية تضيف سياقًا واضحًا. الجملة الثالثة تذكر التطور الأحدث. الجملة الرابعة يجب ألا تظهر في النبذة."}
+        data, changed, _ = build_update(
+            {"schema_version": 1, "updated_at": None, "items": []},
+            [self.feed],
+            lambda *_: [item],
+            summarize_rss_excerpt,
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertIn("الجملة الأولى", data["items"][0]["summary"])
+        self.assertIn("الجملة الثالثة", data["items"][0]["summary"])
+        self.assertNotIn("الجملة الرابعة", data["items"][0]["summary"])
+        self.assertEqual(data["items"][0]["summary_type"], "source_excerpt")
+
     def test_title_only_rss_item_becomes_safe_brief_without_ai_call(self):
         item = {**self.entries[0], "excerpt": ""}
         data, changed, _ = build_update(
@@ -394,7 +409,7 @@ class NewsUpdateTests(unittest.TestCase):
 
     def test_rss_summary_uses_publisher_article_text_when_excerpt_is_title_only(self):
         title = "عنوان الخبر"
-        article = "الفقرة الأولى من الخبر تشرح الحدث بتفاصيل أتاحها الناشر.\nالفقرة الثانية تضيف سياقًا وتطورات مؤكدة."
+        article = "الفقرة الأولى من الخبر تشرح الحدث بتفاصيل أتاحها الناشر.\nالفقرة الثانية تضيف سياقًا وتطورات مؤكدة.\nالفقرة الثالثة تقدم معلومة إضافية.\nالفقرة الرابعة يجب ألا تظهر."
         item = {
             "title": title,
             "source_name": "المصدر",
