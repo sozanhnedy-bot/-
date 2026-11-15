@@ -100,7 +100,7 @@ function recordFor(item) {
   const publishable = Boolean(report || summary);
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
-  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : (sourceName && (item.source_url || item.url) ? safeImage(item.image_url) : "");
+  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : (item.image_rights_confirmed === true && sourceName && (item.source_url || item.url) ? safeImage(item.image_url) : "");
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
