@@ -346,8 +346,7 @@ class NewsUpdateTests(unittest.TestCase):
             summary_type="source_excerpt",
         )
         self.assertTrue(changed)
-        self.assertIn("الجملة الأولى", data["items"][0]["summary"])
-        self.assertIn("الجملة الثالثة", data["items"][0]["summary"])
+        self.assertEqual(data["items"][0]["summary"], "الجملة الأولى تحتوي على تفاصيل كافية عن الخبر. الجملة الثانية تضيف سياقًا واضحًا. الجملة الثالثة تذكر التطور الأحدث.")
         self.assertNotIn("الجملة الرابعة", data["items"][0]["summary"])
         self.assertEqual(data["items"][0]["summary_type"], "source_excerpt")
 
