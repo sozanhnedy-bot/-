@@ -343,6 +343,7 @@ class NewsUpdateTests(unittest.TestCase):
             lambda *_: [item],
             summarize_rss_excerpt,
             now=NOW,
+            summary_type="source_excerpt",
         )
         self.assertTrue(changed)
         self.assertIn("الجملة الأولى", data["items"][0]["summary"])
