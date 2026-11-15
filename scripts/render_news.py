@@ -50,15 +50,23 @@ def concise_summary(value: object, title: str, source: str) -> str:
     return summary
 
 
+def first_three_sentences(value: object) -> str:
+    source = text(value, 8_000)
+    sentences = [part.strip() for part in re.split(r"(?<=[.!؟?])\s+", source) if part.strip()]
+    return " ".join(sentences[:3])[:600]
+
+
 def has_public_details(item: dict) -> bool:
     """Only render a public news page when the source adds useful details."""
     source = text(item.get("source_name"), 160)
     title = title_without_source(item.get("title"), source)
     if text(item.get("summary_type"), 40) == "source_notice":
         return bool(concise_summary(item.get("excerpt"), title, source))
+    article_excerpt = first_three_sentences(item.get("article_content", ""))
     return bool(
         concise_summary(item.get("summary"), title, source)
         or concise_summary(item.get("excerpt"), title, source)
+        or concise_summary(article_excerpt, title, source)
     )
 
 
@@ -113,23 +121,23 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
         summary = ""
     if excerpt in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
         excerpt = ""
-    article_content = text(item.get("article_content"), 8_000)
-    has_full_source_text = len(article_content) >= 250
-    details = (article_content if has_full_source_text else "") or excerpt or summary
-    details_label = "نص المقال المتاح من الناشر" if has_full_source_text else ("مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else ""))
+    article_content = first_three_sentences(item.get("article_content", ""))
+    has_source_excerpt = len(article_content) >= 30
+    details = (article_content if has_source_excerpt else "") or excerpt or summary
+    details_label = "أول ثلاث جمل من نص المقال المتاح من الناشر" if has_source_excerpt else ("مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else ""))
     dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
     region = REGIONS.get(text(item.get("region")), "العالم")
     category_key = text(item.get("category"), 30)
     category = CATEGORIES.get(category_key, REGIONS.get(category_key, region))
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
-    image_url = safe_external_url(item.get("image_url"), image=True)
+    image_url = safe_external_url(item.get("image_url"), image=True) if item.get("image_rights_confirmed") is True else ""
     if shared_image_urls is None and all_items:
         shared_image_urls = _reused_image_urls(all_items)
     if image_url and image_url in (shared_image_urls or set()):
         image_url = ""
     e = html.escape
-    description = e((dek or details or title)[:220], quote=True)
+    description = e((dek or details or title)[:150], quote=True)
     preview_image = image_url
     image_markup = (
         f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة المرتبطة بالخبر من المصدر: {e(source)}</figcaption></figure>'
