@@ -149,7 +149,11 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
         if detail_paragraphs else
         '<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>المصدر لم يرفق تفاصيل كافية داخل موجز الأخبار حتى الآن. يمكنك فتح الخبر من المصدر الأصلي للاطلاع على النص الكامل.</p></section>'
     )
-    source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
+    original_url = safe_external_url(item.get("url"))
+    source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>' + (
+        f'<a class="article-source-link" href="{e(original_url, quote=True)}" target="_blank" rel="nofollow noopener">رابط المصدر الأصلي</a>'
+        if original_url else ""
+    )
     related_items = []
     for candidate in all_items or []:
         if not isinstance(candidate, dict) or candidate.get("id") == raw_id or not ID_RE.fullmatch(text(candidate.get("id"), 80)):
@@ -186,7 +190,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     {image_markup}
     {details_markup}
     {related_markup}
-  </article></main><footer class="site-footer"><div class="footer-brand">{BRAND}</div><p>الناشر مذكور بالاسم · تاريخ النشر محفوظ · القراءة داخل الموقع</p></footer>
+  </article></main><footer class="site-footer"><div class="footer-brand">{BRAND}</div><p>يُذكر الناشر ويُتاح رابط المصدر الأصلي؛ الموجز لا يغني عن قراءة المادة لدى الناشر</p></footer>
 </body></html>'''
 
 
