@@ -776,7 +776,7 @@ def first_three_sentences(value: str | None) -> str:
     text_value = clean_text(value)
     if not text_value:
         return ""
-    sentences = [part.strip() for part in re.split(r"(?<=[.!؟?])\\s+", text_value) if part.strip()]
+    sentences = [part.strip() for part in re.split(r"(?<=[.!؟?])\s+", text_value) if part.strip()]
     return " ".join(sentences[:3])[:MAX_SUMMARY_CHARS]
 
 
@@ -790,7 +790,7 @@ def summarize_rss_excerpt(item: dict) -> str:
         if not candidate:
             continue
         if title and candidate.casefold().startswith(title.casefold()):
-            candidate = candidate[len(title):].lstrip(" \\t—–-:،|\\n")
+            candidate = candidate[len(title):].lstrip(" \t—–-:،|\n")
         if source and candidate.casefold() == source.casefold():
             continue
         excerpt = first_three_sentences(candidate)
