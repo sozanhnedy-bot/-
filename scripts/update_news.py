@@ -785,18 +785,15 @@ def summarize_rss_excerpt(item: dict) -> str:
     source = clean_text(item.get("source_name", ""))
     # Prefer the actual article text; RSS descriptions are only a fallback.
     article_content = clean_article_content(item.get("article_content", ""))
-    candidates = [article_content, clean_text(item.get("excerpt", ""))]
-    for candidate in candidates:
-        if not candidate:
-            continue
-        if title and candidate.casefold().startswith(title.casefold()):
-            candidate = candidate[len(title):].lstrip(" \t—–-:،|\n")
-        if source and candidate.casefold() == source.casefold():
-            continue
-        excerpt = first_three_sentences(candidate)
-        if len(excerpt) >= 30:
-            return excerpt
-    return RSS_NO_DETAILS
+    if not article_content:
+        return RSS_NO_DETAILS
+    candidate = article_content
+    if title and candidate.casefold().startswith(title.casefold()):
+        candidate = candidate[len(title):].lstrip(" \t—–-:،|\n")
+    if source and candidate.casefold() == source.casefold():
+        return RSS_NO_DETAILS
+    excerpt = first_three_sentences(candidate)
+    return excerpt if len(excerpt) >= 30 else RSS_NO_DETAILS
 
 
 def ai_summarization_enabled() -> bool:
