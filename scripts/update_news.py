@@ -728,7 +728,7 @@ def build_update(
     additions: list[dict] = []
     for item in candidates[:limit]:
         try:
-            summary = RSS_NO_DETAILS if not clean_text(item.get("excerpt", "")) else clean_text(summarizer(item))
+            source_material = clean_text(item.get("excerpt", "")) or clean_article_content(item.get("article_content", ""))\n            summary = RSS_NO_DETAILS if not source_material else clean_text(summarizer(item))
         except Exception as exc:
             warnings.append(f"تعذر تلخيص خبر: {type(exc).__name__}")
             continue
@@ -747,7 +747,7 @@ def build_update(
             "url": item["url"],
             "source_name": item.get("source_name", "المصدر الأصلي"),
             "source_url": item.get("source_url", ""),
-            "image_url": item.get("image_url", ""),
+            "image_url": item.get("image_url", ""),\n            "image_rights_confirmed": item.get("image_rights_confirmed") is True,
             "published_at": item.get("published_at"),
             "created_at": now_text,
             "summary_date": today,
@@ -769,24 +769,31 @@ def load_json(path: Path) -> dict:
     return data
 
 
+def first_three_sentences(value: str | None) -> str:
+    """Return at most the first three source sentences without inventing text."""
+    text_value = clean_text(value)
+    if not text_value:
+        return ""
+    sentences = [part.strip() for part in re.split(r"(?<=[.!؟?])\\s+", text_value) if part.strip()]
+    return " ".join(sentences[:3])[:MAX_SUMMARY_CHARS]
+
+
 def summarize_rss_excerpt(item: dict) -> str:
-    excerpt = clean_text(item.get("excerpt", ""))
     title = clean_text(item.get("title", ""))
-    if excerpt and title and excerpt.casefold().startswith(title.casefold()):
-        excerpt = excerpt[len(title):].strip(" \t—–-:،|")
     source = clean_text(item.get("source_name", ""))
-    if excerpt and excerpt.casefold() != source.casefold() and len(excerpt) >= 30:
-        return excerpt[:MAX_SUMMARY_CHARS]
+    # Prefer the actual article text; RSS descriptions are only a fallback.
     article_content = clean_article_content(item.get("article_content", ""))
-    if article_content:
-        paragraphs = [part.strip() for part in article_content.splitlines() if part.strip()]
-        if paragraphs and title and paragraphs[0].casefold() == title.casefold():
-            paragraphs = paragraphs[1:]
-        article_excerpt = " ".join(paragraphs).strip()
-        if article_excerpt.casefold().startswith(title.casefold()):
-            article_excerpt = article_excerpt[len(title):].lstrip(" \t—–-:،|\n")
-        if len(article_excerpt) >= 30:
-            return article_excerpt[:MAX_SUMMARY_CHARS]
+    candidates = [article_content, clean_text(item.get("excerpt", ""))]
+    for candidate in candidates:
+        if not candidate:
+            continue
+        if title and candidate.casefold().startswith(title.casefold()):
+            candidate = candidate[len(title):].lstrip(" \\t—–-:،|\\n")
+        if source and candidate.casefold() == source.casefold():
+            continue
+        excerpt = first_three_sentences(candidate)
+        if len(excerpt) >= 30:
+            return excerpt
     return RSS_NO_DETAILS
 
 
