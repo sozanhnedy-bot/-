@@ -62,6 +62,10 @@ function removePromotion(value) {
 function editorialTitle(value, source) {
   return stripSourceSuffix(removePromotion(value), source) || text(value, 500);
 }
+function firstThreeSentences(value) {
+  const source = text(value, 8_000);
+  return source.split(/(?<=[.!؟?])\s+/u).filter(Boolean).slice(0, 3).join(" ").slice(0, 600);
+}
 function comparableCopy(value) {
   return normalize(value).replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " ").trim();
 }
@@ -91,12 +95,12 @@ function recordFor(item) {
     title,
     sourceName,
   );
-  const articleSummary = !report ? distinctSummary(item.article_content, title, sourceName) : "";
+  const articleSummary = !report ? distinctSummary(firstThreeSentences(item.article_content), title, sourceName) : "";
   const summary = primarySummary || articleSummary;
   const publishable = Boolean(report || summary);
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
-  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : safeImage(item.image_url);
+  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : (item.image_rights_confirmed === true ? safeImage(item.image_url) : "");
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
