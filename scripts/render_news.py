@@ -140,7 +140,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     description = e((dek or details or title)[:150], quote=True)
     preview_image = image_url
     image_markup = (
-        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة من <a href="{e(safe_external_url(item.get("url")), quote=True)}" target="_blank" rel="nofollow noopener">{e(source)}</a></figcaption></figure>'
+        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة من <a href="{e(safe_external_url(item.get("source_url") or item.get("url")), quote=True)}" target="_blank" rel="nofollow noopener">{e(source)}</a></figcaption></figure>'
         if image_url else ""
     )
     detail_paragraphs = "".join(f"<p>{e(part)}</p>" for part in details.splitlines() if part.strip())
