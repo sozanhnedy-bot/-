@@ -196,7 +196,7 @@ class BuildAndBrowserTests(unittest.TestCase):
             (output / "trends").mkdir()
             (output / "trends" / "stale.html").write_text("stale", encoding="utf-8")
             build_site.build(output)
-            for name in ["index.html", "archive.html", "section.html", "videos.html", "archive.js", "section.js", "videos.js"]:
+            for name in ["index.html", "archive.html", "section.html", "videos.html", "about.html", "privacy.html", "contact.html", "editorial-policy.html", "archive.js", "section.js", "videos.js"]:
                 self.assertTrue((output / name).is_file(), name)
             self.assertFalse((output / "task-chat.html").exists())
             self.assertFalse((output / "trends").exists())
@@ -205,6 +205,7 @@ class BuildAndBrowserTests(unittest.TestCase):
             self.assertTrue((output / "reports").is_dir())
             self.assertTrue((output / "sitemap.xml").is_file())
             self.assertTrue((output / "robots.txt").is_file())
+            self.assertIn("Alaaloka878787@GMAIL.COM", (output / "contact.html").read_text(encoding="utf-8"))
 
     def test_verified_image_filter_bumps_app_and_service_worker_cache_versions(self):
         root = Path(__file__).resolve().parents[1]

@@ -43,6 +43,10 @@ def _public_paths(news: dict, reports: dict) -> list[tuple[str, str | None]]:
         ("section.html?category=sports", None),
         ("section.html?category=reports", None),
         ("videos.html", None),
+        ("about.html", None),
+        ("privacy.html", None),
+        ("contact.html", None),
+        ("editorial-policy.html", None),
     ]
     report_items = reports.get("items", []) if isinstance(reports, dict) else []
     report_ids = {
