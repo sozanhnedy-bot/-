@@ -160,6 +160,15 @@ class NewsUpdateTests(unittest.TestCase):
             {"title": "خبر موجود", "excerpt": "مقتطف", "url": "https://news.google.com/existing", "source_name": "المصدر", "source_url": "", "region": "world", "published_at": "2026-10-30T22:00:00Z"},
         ]
 
+    def test_free_summary_uses_first_three_sentences_of_article_body_only(self):
+        body = "الجملة الأولى من نص المقال. الجملة الثانية بتفاصيل الحدث. الجملة الثالثة عن التطورات. جملة رابعة لا يجب استخدامها."
+        result = update_news.summarize_rss_excerpt({"title": "عنوان", "article_content": body, "excerpt": "مقتطف مختلف من الخلاصة."})
+        self.assertEqual(result, "الجملة الأولى من نص المقال. الجملة الثانية بتفاصيل الحدث. الجملة الثالثة عن التطورات.")
+
+    def test_free_summary_blocks_rss_excerpt_when_article_body_is_missing(self):
+        result = update_news.summarize_rss_excerpt({"title": "عنوان", "article_content": "", "excerpt": "مقتطف طويل يحتوي على تفاصيل كافية ظاهريًا لكنه ليس نص المقال."})
+        self.assertEqual(result, RSS_NO_DETAILS)
+
     def test_newest_items_are_sorted_before_the_per_feed_limit(self):
         items = [
             {"id": "older", "published_at": "2026-10-31T10:00:00Z"},
