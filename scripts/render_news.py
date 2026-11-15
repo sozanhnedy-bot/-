@@ -60,9 +60,9 @@ def has_public_details(item: dict) -> bool:
     """Only render a public news page when the source adds useful details."""
     source = text(item.get("source_name"), 160)
     title = title_without_source(item.get("title"), source)
-    if text(item.get("summary_type"), 40) == "source_notice":
-        return bool(concise_summary(item.get("excerpt"), title, source))
     article_excerpt = first_three_sentences(item.get("article_content", ""))
+    if text(item.get("summary_type"), 40) == "source_notice":
+        return len(article_excerpt) >= 30
     return bool(
         concise_summary(item.get("summary"), title, source)
         or concise_summary(item.get("excerpt"), title, source)
