@@ -100,7 +100,7 @@ function recordFor(item) {
   const publishable = Boolean(report || summary);
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
-  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : (item.image_rights_confirmed === true ? safeImage(item.image_url) : "");
+  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : (sourceName && (item.source_url || item.url) ? safeImage(item.image_url) : "");
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
@@ -113,7 +113,8 @@ function recordFor(item) {
     sourceUrl: text(item.source_url || report?.source_url, 800),
     image,
     imageAlt: image ? text(report?.image_alt || item.image_alt || item.title, 300) : "",
-    imageCaption: image ? text(report?.image_caption || item.image_caption, 300) : "",
+    imageCaption: image ? text(report?.image_caption || item.image_caption || `الصورة من ${sourceName}`, 300) : "",
+    imageSourceUrl: image ? text(item.source_url || item.url || report?.source_url, 800) : "",
     region,
     category,
     summaryType: report ? "editorial_report" : text(item.summary_type, 40),
@@ -165,7 +166,18 @@ function addImage(container, record, className = "portal-card-image") {
   img.decoding = "async";
   img.addEventListener("error", () => figure.remove(), { once: true });
   figure.append(img);
-  if (record.imageCaption) figure.append(el("figcaption", "portal-image-caption", record.imageCaption));
+  if (record.imageCaption) {
+    const caption = el("figcaption", "portal-image-caption");
+    if (record.imageSourceUrl) {
+      const sourceLink = document.createElement("a");
+      sourceLink.href = record.imageSourceUrl;
+      sourceLink.target = "_blank";
+      sourceLink.rel = "nofollow noopener";
+      sourceLink.textContent = record.imageCaption;
+      caption.append(sourceLink);
+    } else caption.textContent = record.imageCaption;
+    figure.append(caption);
+  }
   container.append(figure);
 }
 function sourceMeta(record) {
