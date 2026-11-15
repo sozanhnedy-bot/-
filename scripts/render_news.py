@@ -131,7 +131,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     category = CATEGORIES.get(category_key, REGIONS.get(category_key, region))
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
-    image_url = safe_external_url(item.get("image_url"), image=True) if source != "المصدر غير محدد" and (item.get("source_url") or item.get("url")) else ""
+    image_url = safe_external_url(item.get("image_url"), image=True) if item.get("image_rights_confirmed") is True and source != "المصدر غير محدد" and (item.get("source_url") or item.get("url")) else ""
     if shared_image_urls is None and all_items:
         shared_image_urls = _reused_image_urls(all_items)
     if image_url and image_url in (shared_image_urls or set()):
