@@ -50,6 +50,18 @@ def concise_summary(value: object, title: str, source: str) -> str:
     return summary
 
 
+def has_public_details(item: dict) -> bool:
+    """Only render a public news page when the source adds useful details."""
+    source = text(item.get("source_name"), 160)
+    title = title_without_source(item.get("title"), source)
+    if text(item.get("summary_type"), 40) == "source_notice":
+        return bool(concise_summary(item.get("excerpt"), title, source))
+    return bool(
+        concise_summary(item.get("summary"), title, source)
+        or concise_summary(item.get("excerpt"), title, source)
+    )
+
+
 def safe_external_url(value: object, *, image: bool = False) -> str:
     candidate = text(value, 1_000)
     try:
@@ -183,6 +195,8 @@ def build(output: Path) -> int:
     shared_image_urls = _reused_image_urls(items)
     for item in items:
         if not isinstance(item, dict) or str(item.get("id", "")) in report_ids:
+            continue
+        if not has_public_details(item):
             continue
         raw_id = text(item.get("id"), 80)
         if not ID_RE.fullmatch(raw_id):

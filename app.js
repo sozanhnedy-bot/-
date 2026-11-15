@@ -92,6 +92,8 @@ function recordFor(item) {
     sourceName,
   );
   const articleSummary = !report ? distinctSummary(item.article_content, title, sourceName) : "";
+  const summary = primarySummary || articleSummary;
+  const publishable = Boolean(report || summary);
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
   const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : safeImage(item.image_url);
@@ -100,7 +102,8 @@ function recordFor(item) {
     id: item.id,
     report,
     title,
-    summary: primarySummary || articleSummary,
+    summary,
+    publishable,
     date: text(item.published_at || report?.published_at || item.created_at, 80),
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
@@ -111,7 +114,7 @@ function recordFor(item) {
     category,
     summaryType: report ? "editorial_report" : text(item.summary_type, 40),
     breaking: item.breaking === true,
-    href: report ? `./reports/${item.id}.html` : `./news/${item.id}.html`,
+    href: publishable ? (report ? `./reports/${item.id}.html` : `./news/${item.id}.html`) : "",
     youtubeId: text(report?.youtube_id, 20),
   };
 }
@@ -172,20 +175,29 @@ function sourceMeta(record) {
 function articleCard(record, compact = false) {
   const card = el("article", compact ? "portal-news-item" : "portal-story-card");
   if (record.image) {
-    const linkImage = document.createElement("a");
-    linkImage.className = "portal-card-thumb-link";
-    linkImage.href = record.href;
-    linkImage.setAttribute("aria-label", `افتح: ${record.title}`);
-    addImage(linkImage, record, "portal-card-thumb");
-    card.append(linkImage);
+    if (record.href) {
+      const linkImage = document.createElement("a");
+      linkImage.className = "portal-card-thumb-link";
+      linkImage.href = record.href;
+      linkImage.setAttribute("aria-label", `افتح: ${record.title}`);
+      addImage(linkImage, record, "portal-card-thumb");
+      card.append(linkImage);
+    } else {
+      addImage(card, record, "portal-card-thumb");
+    }
+  }
   }
   const body = el("div", "portal-card-body");
   body.append(sourceMeta(record));
   const title = el("h3", compact ? "portal-news-title" : "portal-card-title");
-  const titleLink = document.createElement("a");
-  titleLink.href = record.href;
-  titleLink.textContent = record.title;
-  title.append(titleLink);
+  if (record.href) {
+    const titleLink = document.createElement("a");
+    titleLink.href = record.href;
+    titleLink.textContent = record.title;
+    title.append(titleLink);
+  } else {
+    title.textContent = record.title;
+  }
   body.append(title);
   if (record.summary) body.append(el("p", "portal-card-summary", record.summary));
   const kind = record.report ? "تقرير تحريري" : "خبر";
@@ -193,9 +205,13 @@ function articleCard(record, compact = false) {
   foot.append(el("span", "portal-content-kind", kind));
   const open = document.createElement("a");
   open.className = "portal-open-link";
-  open.href = record.href;
-  open.textContent = record.report ? "اقرأ التقرير" : "اقرأ التفاصيل";
-  foot.append(open);
+  if (record.href) {
+    open.href = record.href;
+    open.textContent = record.report ? "اقرأ التقرير" : "اقرأ التفاصيل";
+    foot.append(open);
+  } else {
+    foot.append(el("span", "portal-content-kind", "رصد أولي — لا توجد تفاصيل كافية للنشر"));
+  }
   body.append(foot);
   card.append(body);
   return card;
@@ -214,11 +230,15 @@ function renderLead(records) {
   body.append(el("h2", "lead-story-title", lead.title));
   if (lead.summary) body.append(el("p", "lead-story-summary", lead.summary));
   if (lead.report) body.append(el("p", "lead-story-editorial-note", "تقرير تحريري داخل World News"));
-  const link = document.createElement("a");
-  link.className = "lead-story-link";
-  link.href = lead.href;
-  link.textContent = lead.report ? "اقرأ التقرير داخل الموقع" : "اقرأ التفاصيل داخل الموقع";
-  body.append(link);
+  if (lead.href) {
+    const link = document.createElement("a");
+    link.className = "lead-story-link";
+    link.href = lead.href;
+    link.textContent = lead.report ? "اقرأ التقرير داخل الموقع" : "اقرأ التفاصيل داخل الموقع";
+    body.append(link);
+  } else {
+    body.append(el("p", "portal-lead-note", "رصد أولي من موجز الناشر؛ لا تتوفر تفاصيل كافية لصفحة خبر."));
+  }
   card.append(body);
   host.append(card);
   if (featured.length > 1) {

@@ -75,6 +75,17 @@ class ReportRenderingTests(unittest.TestCase):
 
 
 class InternalNewsBriefTests(unittest.TestCase):
+    def test_title_only_rss_item_is_not_publicly_rendered(self):
+        item = {
+            "id": "d" * 20,
+            "title": "عنوان فقط",
+            "summary": "",
+            "summary_type": "source_notice",
+            "excerpt": "عنوان فقط",
+            "source_name": "ناشر",
+        }
+        self.assertFalse(render_news.has_public_details(item))
+
     def test_rss_page_has_source_date_and_plain_attribution_without_external_navigation(self):
         item = {
             "id": "a" * 20,
@@ -148,6 +159,20 @@ class InternalNewsBriefTests(unittest.TestCase):
                 self.assertEqual(render_news.build(output), 1)
             self.assertTrue((output / "news" / "rss-brief.html").is_file())
             self.assertFalse((output / "news" / "full-report.html").exists())
+
+    def test_build_skips_title_only_rss_pages(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            news_path, reports_path = root / "news.json", root / "reports.json"
+            news_path.write_text(json.dumps({"items": [{
+                "id": "weak-item", "title": "عنوان فقط", "summary": "",
+                "summary_type": "source_notice", "excerpt": "عنوان فقط", "source_name": "مصدر"
+            }]}), encoding="utf-8")
+            reports_path.write_text(json.dumps({"items": []}), encoding="utf-8")
+            output = root / "site"
+            with patch.object(render_news, "NEWS_PATH", news_path), patch.object(render_news, "REPORTS_PATH", reports_path):
+                self.assertEqual(render_news.build(output), 0)
+            self.assertFalse((output / "news" / "weak-item.html").exists())
 
 
 class BuildAndBrowserTests(unittest.TestCase):
