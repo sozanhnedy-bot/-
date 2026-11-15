@@ -98,6 +98,7 @@ class InternalNewsBriefTests(unittest.TestCase):
             "published_at": "2026-11-02T11:30:00Z",
             "excerpt": "تفاصيل إضافية من موجز الناشر تشرح الخبر بوضوح.",
             "image_url": "https://images.example/story.jpg",
+            "image_rights_confirmed": True,
         }
         page = render_news.render(item, [{"id": "b" * 20, "title": "خبر مرتبط", "region": "world"}])
         self.assertIn("وكالة المثال", page)
@@ -123,6 +124,24 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertNotIn("رسم توضيحي لقسم العالم", page)
         self.assertNotIn("عن هذه المادة", page)
         self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
+
+    def test_rss_page_hides_images_without_explicit_rights_confirmation(self):
+        item = {
+            "id": "e" * 20,
+            "title": "خبر",
+            "summary": "تفاصيل موثوقة من الناشر",
+            "source_name": "وكالة المثال",
+            "source_url": "https://publisher.example",
+            "url": "https://publisher.example/story",
+            "image_url": "https://images.example/story.jpg",
+            "region": "world",
+        }
+        page = render_news.render(item)
+        self.assertNotIn("https://images.example/story.jpg", page)
+        item["image_rights_confirmed"] = True
+        page = render_news.render(item)
+        self.assertIn("https://images.example/story.jpg", page)
+        self.assertIn('href="https://publisher.example"', page)
 
     def test_rss_page_hides_google_placeholders_and_publisher_brand_images(self):
         item = {"id": "d" * 20, "title": "خبر", "source_name": "ناشر", "region": "world",
