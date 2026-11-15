@@ -119,8 +119,8 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertIn("الناشر: ناشر", page)
         self.assertNotIn('href="https://publisher.example', page)
         self.assertNotIn("javascript:", page)
-        self.assertIn("../assets/news-illustrations/world.jpg", page)
-        self.assertIn("رسم توضيحي لقسم العالم؛ لا يصوّر الحدث نفسه", page)
+        self.assertNotIn("news-illustrations/world.jpg", page)
+        self.assertNotIn("رسم توضيحي لقسم العالم", page)
         self.assertNotIn("عن هذه المادة", page)
         self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
 
@@ -129,11 +129,11 @@ class InternalNewsBriefTests(unittest.TestCase):
                 "image_url": "https://lh3.googleusercontent.com/news-photo=s0-w300"}
         page = render_news.render(item)
         self.assertNotIn("lh3.googleusercontent.com", page)
-        self.assertIn("../assets/news-illustrations/world.jpg", page)
+        self.assertNotIn("news-illustrations/world.jpg", page)
         item["image_url"] = "https://www.ewtnnews.com/EWTNNewsLogo.png"
         page = render_news.render(item)
         self.assertNotIn("EWTNNewsLogo.png", page)
-        self.assertIn("../assets/news-illustrations/world.jpg", page)
+        self.assertNotIn("news-illustrations/world.jpg", page)
 
     def test_rss_page_hides_thumbnail_reused_across_many_stories(self):
         image = "https://images.example/generic-thumbnail.jpg"
@@ -143,7 +143,7 @@ class InternalNewsBriefTests(unittest.TestCase):
         ]
         page = render_news.render(items[0], items)
         self.assertNotIn(image, page)
-        self.assertIn("../assets/news-illustrations/world.jpg", page)
+        self.assertNotIn("news-illustrations/world.jpg", page)
 
     def test_build_renders_rss_news_only_without_duplicates_for_full_reports(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -196,7 +196,7 @@ class BuildAndBrowserTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         page = (root / "index.html").read_text(encoding="utf-8")
         worker = (root / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn("app.js?v=20261114-images-reports-v5", page)
+        self.assertIn("app.js?v=20261114-no-generic-images-v7", page)
         self.assertIn('const CACHE_NAME = "world-news-v14-restore-publisher-images";', worker)
 
     def test_homepage_has_no_browser_task_link_or_trend_monitor(self):
