@@ -186,7 +186,6 @@ function articleCard(record, compact = false) {
       addImage(card, record, "portal-card-thumb");
     }
   }
-  }
   const body = el("div", "portal-card-body");
   body.append(sourceMeta(record));
   const title = el("h3", compact ? "portal-news-title" : "portal-card-title");
