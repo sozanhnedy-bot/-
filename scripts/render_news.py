@@ -20,6 +20,7 @@ CATEGORIES = {"politics": "سياسة", "economy": "اقتصاد", "technology":
 BRAND = "World News"
 ARABIC_BRAND = "أخبار العالم"
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)$", re.IGNORECASE)
+PUBLIC_SOURCE_EXCERPT_CHARS = 600
 
 
 def text(value: object, limit: int = 4_000) -> str:
@@ -62,6 +63,14 @@ def has_public_details(item: dict) -> bool:
     article = text(item.get("article_content"), 8_000)
     article_detail = concise_summary(article, title, source)
     return len(article_detail) >= 250 and len(article_detail.split()) >= 30
+
+
+def limited_source_excerpt(value: object) -> str:
+    """Keep fetched publisher text for quality checks, but never render it in full."""
+    article = text(value, 8_000)
+    if len(article) <= PUBLIC_SOURCE_EXCERPT_CHARS:
+        return article
+    return article[:PUBLIC_SOURCE_EXCERPT_CHARS].rstrip() + "…"
 
 
 def safe_external_url(value: object, *, image: bool = False) -> str:
@@ -115,10 +124,10 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
         summary = ""
     if excerpt in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
         excerpt = ""
-    article_content = text(item.get("article_content"), 8_000)
-    has_full_source_text = len(article_content) >= 250
-    details = (article_content if has_full_source_text else "") or excerpt or summary
-    details_label = "نص المقال المتاح من الناشر" if has_full_source_text else ("مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else ""))
+    article_content = limited_source_excerpt(item.get("article_content"))
+    has_source_excerpt = len(article_content) >= 250
+    details = (article_content if has_source_excerpt else "") or excerpt or summary
+    details_label = "مقتطف محدود من نص أتاحه الناشر" if has_source_excerpt else ("مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else ""))
     dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
     region = REGIONS.get(text(item.get("region")), "العالم")
     category_key = text(item.get("category"), 30)
@@ -132,6 +141,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
         image_url = ""
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
+    canonical = f"{SITE_URL}/news/{raw_id}.html"
     preview_image = image_url
     image_markup = (
         f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة المرتبطة بالخبر من المصدر: {e(source)}</figcaption></figure>'
@@ -146,7 +156,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
     related_items = []
     for candidate in all_items or []:
-        if not isinstance(candidate, dict) or candidate.get("id") == raw_id or not ID_RE.fullmatch(text(candidate.get("id"), 80)):
+        if not isinstance(candidate, dict) or candidate.get("id") == raw_id or not ID_RE.fullmatch(text(candidate.get("id"), 80)) or not has_public_details(candidate):
             continue
         same_category = text(candidate.get("category"), 30) == category_key and category_key
         same_region = text(candidate.get("region"), 30) == text(item.get("region"), 30)
@@ -167,12 +177,12 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#14283f"><meta name="description" content="{description}">
   <meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)} | {BRAND}">
-  <meta property="og:description" content="{description}">{f'<meta property="og:image" content="{e(preview_image, quote=True)}">' if preview_image else ''}
-  <meta name="twitter:card" content="summary_large_image"><title>{e(title)} | {BRAND}</title>
+  <meta property="og:description" content="{description}"><meta property="og:url" content="{canonical}">{f'<meta property="og:image" content="{e(preview_image, quote=True)}">' if preview_image else ''}
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title, quote=True)} | {BRAND}"><meta name="twitter:description" content="{description}">{f'<meta name="twitter:image" content="{e(preview_image, quote=True)}">' if preview_image else ''}<link rel="canonical" href="{canonical}"><title>{e(title)} | {BRAND}</title>
   <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images"><link rel="stylesheet" href="../styles-newspaper-overrides.css?v=20261114-global">
 </head>
 <body class="article-body">
-  <section class="portal-interface-cover article-interface-cover" aria-label="واجهة World News"><img src="../assets/portal-interface-banner.jpg" alt=""><div class="portal-interface-wordmark"><b>World</b> <strong>News</strong><small>أخبار العالم</small></div></section><header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header>
+  <section class="portal-interface-cover article-interface-cover" aria-label="واجهة World News"><img src="../assets/portal-interface-banner-optimized.jpg" alt=""><div class="portal-interface-wordmark"><b>World</b> <strong>News</strong><small>أخبار العالم</small></div></section><header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header>
   <main class="article-shell"><nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><a href="../archive.html">الأرشيف</a><span aria-hidden="true">/</span><span>{e(category)}</span></nav>
     <article class="full-report brief-report"><header class="article-heading"><p class="eyebrow">{e(category)} · {e(region)}</p><h1>{e(title)}</h1>
       {f'<p class="article-dek">{e(dek)}</p>' if dek else ''}<div class="article-meta">{source_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>
