@@ -86,6 +86,22 @@ class InternalNewsBriefTests(unittest.TestCase):
         }
         self.assertFalse(render_news.has_public_details(item))
 
+    def test_public_details_require_minimum_distinct_content(self):
+        base = {"title": "اجتماع إقليمي بشأن تطورات جديدة", "source_name": "وكالة المثال"}
+        self.assertFalse(render_news.has_public_details({
+            **base, "summary": "اجتماع إقليمي بشأن تطورات جديدة - وكالة المثال", "excerpt": "",
+        }))
+        self.assertFalse(render_news.has_public_details({**base, "summary": "تفاصيل موجزة"}))
+        self.assertTrue(render_news.has_public_details({
+            **base,
+            "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.",
+        }))
+        self.assertTrue(render_news.has_public_details({
+            **base,
+            "summary": "",
+            "article_content": " ".join(["تفصيل تحريري مستقل عن الخبر" for _ in range(35)]),
+        }))
+
     def test_rss_page_has_source_date_and_plain_attribution_without_external_navigation(self):
         item = {
             "id": "a" * 20,
@@ -151,7 +167,7 @@ class InternalNewsBriefTests(unittest.TestCase):
             news_path, reports_path = root / "news.json", root / "reports.json"
             news_path.write_text(json.dumps({"items": [
                 {"id": "full-report", "title": "مكتمل"},
-                {"id": "rss-brief", "title": "موجز", "summary": "تفاصيل موجزة", "source_name": "مصدر"},
+                {"id": "rss-brief", "title": "موجز", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر"},
             ]}, ensure_ascii=False), encoding="utf-8")
             reports_path.write_text(json.dumps({"items": [{"id": "full-report"}]}), encoding="utf-8")
             output = root / "site"
@@ -178,7 +194,7 @@ class InternalNewsBriefTests(unittest.TestCase):
 class BuildAndBrowserTests(unittest.TestCase):
     def test_seo_documents_include_public_routes_and_exclude_weak_news_pages(self):
         news = {"updated_at": "2026-11-15T00:00:00Z", "items": [
-            {"id": "a" * 20, "title": "خبر غني", "summary": "تفاصيل مستقلة", "source_name": "مصدر", "published_at": "2026-11-15T00:00:00Z"},
+            {"id": "a" * 20, "title": "خبر غني", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "published_at": "2026-11-15T00:00:00Z"},
             {"id": "b" * 20, "title": "عنوان فقط", "summary": "", "summary_type": "source_notice", "excerpt": "عنوان فقط", "source_name": "مصدر"},
         ]}
         reports = {"items": [{"id": "c" * 20, "title": "تقرير", "published_at": "2026-11-14T00:00:00Z", "sections": [{"heading": "قسم", "paragraphs": ["نص"]}]}]}
@@ -211,8 +227,8 @@ class BuildAndBrowserTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         page = (root / "index.html").read_text(encoding="utf-8")
         worker = (root / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn("app.js?v=20261114-no-generic-images-v7", page)
-        self.assertIn('const CACHE_NAME = "world-news-v14-restore-publisher-images";', worker)
+        self.assertIn("app.js?v=20261116-content-quality-v1", page)
+        self.assertIn('const CACHE_NAME = "world-news-v15-content-quality";', worker)
 
     def test_homepage_has_no_browser_task_link_or_trend_monitor(self):
         root = Path(__file__).resolve().parents[1]

@@ -51,15 +51,17 @@ def concise_summary(value: object, title: str, source: str) -> str:
 
 
 def has_public_details(item: dict) -> bool:
-    """Only render a public news page when the source adds useful details."""
+    """Require a distinct, minimally informative excerpt or a substantial source article."""
     source = text(item.get("source_name"), 160)
     title = title_without_source(item.get("title"), source)
-    if text(item.get("summary_type"), 40) == "source_notice":
-        return bool(concise_summary(item.get("excerpt"), title, source))
-    return bool(
-        concise_summary(item.get("summary"), title, source)
-        or concise_summary(item.get("excerpt"), title, source)
-    )
+    excerpt_values = (item.get("excerpt"),) if text(item.get("summary_type"), 40) == "source_notice" else (item.get("summary"), item.get("excerpt"))
+    for value in excerpt_values:
+        detail = concise_summary(value, title, source)
+        if len(detail) >= 45 and len(detail.split()) >= 7:
+            return True
+    article = text(item.get("article_content"), 8_000)
+    article_detail = concise_summary(article, title, source)
+    return len(article_detail) >= 250 and len(article_detail.split()) >= 30
 
 
 def safe_external_url(value: object, *, image: bool = False) -> str:

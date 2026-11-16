@@ -77,6 +77,11 @@ function distinctSummary(value, title, source) {
   }
   return summary;
 }
+function hasSubstantiveDetail(value) {
+  const detail = comparableCopy(value);
+  const words = detail.split(" ").filter(Boolean).length;
+  return detail.length >= 45 && words >= 7 || detail.length >= 250 && words >= 30;
+}
 function recordFor(item) {
   if (!item || !validId(item.id)) return null;
   const report = reportMap.get(item.id) || null;
@@ -93,7 +98,7 @@ function recordFor(item) {
   );
   const articleSummary = !report ? distinctSummary(item.article_content, title, sourceName) : "";
   const summary = primarySummary || articleSummary;
-  const publishable = Boolean(report || summary);
+  const publishable = Boolean(report || hasSubstantiveDetail(summary));
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
   const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : safeImage(item.image_url);
@@ -136,7 +141,7 @@ function allRecords() {
     if (!report || !validId(report.id) || ids.has(report.id)) return;
     items.push(recordFor({ ...report, region: report.region || "world", category: "reports", created_at: report.published_at || "" }));
   });
-  return items.filter(Boolean).sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0));
+  return items.filter((item) => item.report || item.publishable).sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0));
 }
 function recentRecords(records) {
   const cutoff = Date.now() - HOME_WINDOW_MS;
