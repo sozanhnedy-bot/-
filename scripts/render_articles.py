@@ -7,7 +7,10 @@ import json
 import re
 from pathlib import Path
 
-from render_news import has_public_details
+try:
+    from scripts.render_news import has_public_details
+except ModuleNotFoundError:
+    from render_news import has_public_details
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "reports.json"
