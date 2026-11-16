@@ -140,6 +140,18 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertNotIn("عن هذه المادة", page)
         self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
 
+    def test_publisher_article_text_is_rendered_as_a_limited_excerpt(self):
+        item = {
+            "id": "e" * 20,
+            "title": "خبر مفصل",
+            "source_name": "ناشر",
+            "article_content": "بداية المادة " + ("تفصيل من نص الناشر. " * 100),
+        }
+        page = render_news.render(item)
+        self.assertIn("مقتطف محدود من نص أتاحه الناشر", page)
+        self.assertIn("بداية المادة", page)
+        self.assertNotIn("تفصيل من نص الناشر. " * 80, page)
+
     def test_rss_page_hides_google_placeholders_and_publisher_brand_images(self):
         item = {"id": "d" * 20, "title": "خبر", "source_name": "ناشر", "region": "world",
                 "image_url": "https://lh3.googleusercontent.com/news-photo=s0-w300"}
