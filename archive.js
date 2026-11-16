@@ -11,6 +11,7 @@ function dateLabel(value) { const date = dateValue(value); return date ? new Int
 function removePromotion(value) { return String(value || "").trim().replace(/\s*(?:🔴\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*$/iu, "").replace(/[\s…\.]+$/u, "").trim(); }
 function stripSource(title, source) { let clean = removePromotion(title), publisher = normalized(source); for (const separator of [" — "," – "," - "," | "," :: "]) { const index = clean.lastIndexOf(separator); if (index > 0 && normalized(clean.slice(index + separator.length)) === publisher) return clean.slice(0, index).trim(); } return clean; }
 function conciseSummary(value, title, source) { const summary = removePromotion(value), summaryKey = comparable(stripSource(summary, source)), titleKey = comparable(title); if (!summaryKey || summaryKey === titleKey) return ""; if (summaryKey.startsWith(titleKey) && summaryKey.split(" ").length <= titleKey.split(" ").length + 2 && !/\d/u.test(summary)) return ""; return summary; }
+function hasSubstantiveDetail(item, title, source) { const sourceNotice = String(item.summary_type || "").trim() === "source_notice"; const values = sourceNotice ? [item.excerpt] : [item.summary, item.excerpt]; if (values.some((value) => { const detail = conciseSummary(value, title, source), words = comparable(detail).split(" ").filter(Boolean).length; return detail.length >= 45 && words >= 7; })) return true; const article = conciseSummary(item.article_content, title, source), words = comparable(article).split(" ").filter(Boolean).length; return article.length >= 250 && words >= 30; }
 function safeImage(value) { const candidate = String(value || ""); if (/^assets\/[A-Za-z0-9._/-]+$/.test(candidate) && !candidate.includes("..")) return `./${candidate}`; try { const url = new URL(candidate); if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && /\.(jpe?g|png|webp|avif)$/i.test(url.pathname)) return url.href; } catch (_) {} return ""; }
 function toRecords(news, reports, updatedAt) {
   const reportMap = new Map(reports.filter((report) => report && validId(report.id)).map((report) => [report.id, report]));
@@ -18,11 +19,12 @@ function toRecords(news, reports, updatedAt) {
     const report = reportMap.get(item.id);
     const source = report && Array.isArray(report.sources) ? report.sources.join("، ") : (item.source_name || "");
     const title = report?.title || stripSource(item.title, item.source_name) || "خبر";
+    if (!report && !hasSubstantiveDetail(item, title, source)) return null;
     const category = report ? "reports" : (item.category || item.region || "world");
     const suppliedImage = safeImage(report?.image || item.image_url);
     const image = suppliedImage || safeImage(`assets/news-illustrations/${ILLUSTRATION_IMAGES[category] || "world"}.jpg`);
     return { id:item.id, title, summary:report?.dek || conciseSummary(item.summary, title, source), source, region:item.region || report?.region || "world", category, date:item.published_at || report?.published_at || item.created_at || "", image, imageAlt:suppliedImage ? (report?.image_alt || title) : `رسم توضيحي لقسم ${CATEGORY_LABELS[category] || "العالم"}، وليس صورة للحدث`, illustrative:!suppliedImage, href:report ? `./reports/${item.id}.html` : `./news/${item.id}.html`, full:Boolean(report) };
-  });
+  }).filter(Boolean);
   const seen = new Set(rows.map((row) => row.id));
   reports.filter((report) => report && validId(report.id) && !seen.has(report.id)).forEach((report) => { const title = report.title || "تقرير", suppliedImage = safeImage(report.image); rows.push({ id:report.id, title, summary:report.dek || "", source:Array.isArray(report.sources)?report.sources.join("، "):"", region:report.region||"world", category:"reports", date:report.published_at||updatedAt||"", image:suppliedImage||safeImage("assets/news-illustrations/world.jpg"), imageAlt:suppliedImage?(report.image_alt||title):"رسم توضيحي لقسم التقارير، وليس صورة للحدث", illustrative:!suppliedImage, href:`./reports/${report.id}.html`, full:true }); });
   return rows.sort((a,b) => (dateValue(b.date)?.getTime()||0) - (dateValue(a.date)?.getTime()||0));

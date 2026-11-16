@@ -242,6 +242,14 @@ class BuildAndBrowserTests(unittest.TestCase):
         self.assertIn("archive.html", page)
         self.assertIn("world news", page)
 
+    def test_section_and_archive_apply_the_public_quality_gate(self):
+        root = Path(__file__).resolve().parents[1]
+        for filename in ("section.js", "archive.js"):
+            script = (root / filename).read_text(encoding="utf-8")
+            self.assertIn("hasSubstantiveDetail", script)
+            self.assertIn("summary_type", script)
+            self.assertIn("article_content", script)
+
 
 if __name__ == "__main__":
     unittest.main()
