@@ -68,7 +68,7 @@ class ReportRenderingTests(unittest.TestCase):
 
     def test_full_report_can_show_real_related_internal_news(self):
         report = {"id": "fb839c2fe70d9e789a03", "title": "تقرير", "sections": []}
-        page = render_articles.render(report, "fb839c", {"region": "egypt"}, [{"id": "a" * 20, "title": "خبر من مصر"}])
+        page = render_articles.render(report, "fb839c", {"region": "egypt"}, [{"id": "a" * 20, "title": "خبر من مصر", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر"}])
         self.assertIn("أخبار ذات صلة", page)
         self.assertIn("../news/" + "a" * 20 + ".html", page)
         self.assertNotIn("https://publisher.example", page)
@@ -115,11 +115,11 @@ class InternalNewsBriefTests(unittest.TestCase):
             "excerpt": "تفاصيل إضافية من موجز الناشر تشرح الخبر بوضوح.",
             "image_url": "https://images.example/story.jpg",
         }
-        page = render_news.render(item, [{"id": "b" * 20, "title": "خبر مرتبط", "region": "world"}])
+        page = render_news.render(item, [{"id": "b" * 20, "title": "خبر مرتبط", "region": "world", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر"}])
         self.assertIn("وكالة المثال", page)
         self.assertIn("2026-11-02 11:30 UTC", page)
         self.assertNotIn("https://publisher.example", page)
-        self.assertNotIn('href="https://', page)
+        self.assertNotIn('href="https://publisher.example', page)
         self.assertIn("https://images.example/story.jpg", page)
         self.assertIn("تفاصيل الخبر", page)
         self.assertIn("تفاصيل إضافية من موجز الناشر", page)
@@ -214,7 +214,21 @@ class BuildAndBrowserTests(unittest.TestCase):
         self.assertIn("https://sozanhnedy-bot.github.io/-/news/" + "a" * 20 + ".html", sitemap)
         self.assertIn("https://sozanhnedy-bot.github.io/-/reports/" + "c" * 20 + ".html", sitemap)
         self.assertNotIn("/news/" + "b" * 20 + ".html", sitemap)
+        self.assertNotIn("section.html?category=", sitemap)
+        self.assertNotIn("archive.html", sitemap)
         self.assertIn("Sitemap: https://sozanhnedy-bot.github.io/-/sitemap.xml", render_seo.render_robots())
+
+    def test_public_seo_metadata_is_present_on_static_and_generated_pages(self):
+        root = Path(__file__).resolve().parents[1]
+        for filename in ("index.html", "archive.html", "section.html", "videos.html"):
+            page = (root / filename).read_text(encoding="utf-8")
+            self.assertIn('meta property="og:url"', page)
+            self.assertIn('link rel="canonical"', page)
+        item = {"id": "f" * 20, "title": "خبر غني", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "published_at": "2026-11-15T00:00:00Z"}
+        page = render_news.render(item)
+        self.assertIn('meta property="og:url"', page)
+        self.assertIn('meta name="twitter:title"', page)
+        self.assertIn('rel="canonical"', page)
 
     def test_clean_site_build_omits_browser_tasks_and_trend_pages(self):
         with tempfile.TemporaryDirectory() as tmp:

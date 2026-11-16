@@ -7,6 +7,8 @@ import json
 import re
 from pathlib import Path
 
+from render_news import has_public_details
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "reports.json"
 NEWS_DATA = ROOT / "data" / "news.json"
@@ -85,7 +87,7 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
     published = str(report.get("published_at") or (news_item or {}).get("published_at") or "")
     related_rows = []
     for item in related_items or []:
-        if not isinstance(item, dict) or item.get("id") == report.get("id"):
+        if not isinstance(item, dict) or item.get("id") == report.get("id") or not has_public_details(item):
             continue
         raw_related_id = str(item.get("id") or "")
         if not re.fullmatch(r"[A-Za-z0-9_-]{1,80}", raw_related_id):
@@ -122,7 +124,7 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
 <title>{title} | {BRAND}</title><script defer src="../article.js?v=20261107-images"></script>
 </head><body class="article-body">
 <a class="skip-link" href="#article-main">انتقل إلى التقرير</a>
-<section class="portal-interface-cover article-interface-cover" aria-label="واجهة World News"><img src="../assets/portal-interface-banner.jpg" alt=""><div class="portal-interface-wordmark"><b>World</b> <strong>News</strong><small>أخبار العالم</small></div></section><header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
+<section class="portal-interface-cover article-interface-cover" aria-label="واجهة World News"><img src="../assets/portal-interface-banner-optimized.jpg" alt=""><div class="portal-interface-wordmark"><b>World</b> <strong>News</strong><small>أخبار العالم</small></div></section><header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
 <main id="article-main" class="article-shell">
 <nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><span>تقرير مفصل</span></nav>
 <article class="full-report" data-report-id="{report_id}" data-short-url="../r/{code}.html">
@@ -184,6 +186,7 @@ def main() -> int:
         related = [
             item for item in news_data.get("items", [])
             if isinstance(item, dict) and str(item.get("id")) not in report_ids
+            and has_public_details(item)
             and ((category and item.get("category") == category) or (region and item.get("region") == region))
         ]
         related.sort(key=lambda item: str(item.get("published_at") or ""), reverse=True)

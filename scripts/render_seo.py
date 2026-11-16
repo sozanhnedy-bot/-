@@ -33,16 +33,6 @@ def _url(path: str) -> str:
 def _public_paths(news: dict, reports: dict) -> list[tuple[str, str | None]]:
     paths: list[tuple[str, str | None]] = [
         ("", None),
-        ("archive.html", None),
-        ("section.html?category=egypt", None),
-        ("section.html?category=arab", None),
-        ("section.html?category=world", None),
-        ("section.html?category=politics", None),
-        ("section.html?category=economy", None),
-        ("section.html?category=technology", None),
-        ("section.html?category=sports", None),
-        ("section.html?category=reports", None),
-        ("videos.html", None),
         ("about.html", None),
         ("privacy.html", None),
         ("contact.html", None),
