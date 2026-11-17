@@ -1,5 +1,6 @@
 import json
 import tempfile
+from datetime import datetime, timezone
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -65,6 +66,21 @@ class ReportRenderingTests(unittest.TestCase):
         self.assertNotIn("https://publisher.example", page)
         self.assertNotIn("javascript:", page)
         self.assertNotIn("target=\"_blank\"", page)
+
+    def test_original_report_includes_news_article_structured_data(self):
+        report = {
+            "id": "a" * 20,
+            "title": "عنوان تقرير أصلي",
+            "dek": "مقدمة التقرير",
+            "published_at": "2026-11-17T10:00:00Z",
+            "sections": [{"heading": "تفاصيل", "paragraphs": ["نص أصلي"]}],
+        }
+        page = render_articles.render(report, "aaaaaa")
+        self.assertIn('type="application/ld+json"', page)
+        self.assertIn('"@type": "NewsArticle"', page)
+        self.assertIn('"datePublished": "2026-11-17T10:00:00Z"', page)
+        self.assertIn('"name": "World News"', page)
+        self.assertIn('"@id": "https://sozanhnedy-bot.github.io/-/reports/' + "a" * 20 + '.html"', page)
 
     def test_full_report_can_show_real_related_internal_news(self):
         report = {"id": "fb839c2fe70d9e789a03", "title": "تقرير", "sections": []}
@@ -236,6 +252,20 @@ class BuildAndBrowserTests(unittest.TestCase):
         self.assertNotIn("section.html?category=", sitemap)
         self.assertIn("Sitemap: https://sozanhnedy-bot.github.io/-/sitemap.xml", render_seo.render_robots())
 
+    def test_news_sitemap_only_lists_recent_original_reports(self):
+        now = datetime(2026, 11, 17, 12, 0, tzinfo=timezone.utc)
+        reports = {"items": [
+            {"id": "a" * 20, "title": "تقرير حديث", "published_at": "2026-11-17T10:00:00Z", "sections": [{"heading": "قسم"}]},
+            {"id": "b" * 20, "title": "تقرير قديم", "published_at": "2026-11-14T10:00:00Z", "sections": [{"heading": "قسم"}]},
+            {"id": "c" * 20, "title": "مسودة بلا أقسام", "published_at": "2026-11-17T11:00:00Z"},
+        ]}
+        sitemap = render_seo.render_news_sitemap(reports, now)
+        self.assertIn("xmlns:news=", sitemap)
+        self.assertIn("/reports/" + "a" * 20 + ".html", sitemap)
+        self.assertIn("تقرير حديث", sitemap)
+        self.assertNotIn("b" * 20, sitemap)
+        self.assertNotIn("c" * 20, sitemap)
+
     def test_sitemap_rejects_invalid_content_ids(self):
         news = {"items": [
             {"id": "../bad", "title": "خبر", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "source_url": "https://publisher.example"},
@@ -268,7 +298,7 @@ class BuildAndBrowserTests(unittest.TestCase):
             (output / "trends").mkdir()
             (output / "trends" / "stale.html").write_text("stale", encoding="utf-8")
             build_site.build(output)
-            for name in ["index.html", "archive.html", "section.html", "videos.html", "about.html", "privacy.html", "contact.html", "editorial-policy.html", "archive.js", "section.js", "videos.js"]:
+            for name in ["index.html", "archive.html", "section.html", "videos.html", "photos.html", "about.html", "privacy.html", "contact.html", "editorial-policy.html", "archive.js", "section.js", "videos.js", "photos.js"]:
                 self.assertTrue((output / name).is_file(), name)
             self.assertFalse((output / "task-chat.html").exists())
             self.assertFalse((output / "trends").exists())
@@ -276,6 +306,9 @@ class BuildAndBrowserTests(unittest.TestCase):
             self.assertTrue((output / "news").is_dir())
             self.assertTrue((output / "reports").is_dir())
             self.assertTrue((output / "sitemap.xml").is_file())
+            self.assertTrue((output / "news-sitemap.xml").is_file())
+            self.assertIn("news-sitemap.xml", (output / "robots.txt").read_text(encoding="utf-8"))
+            self.assertIn('name="robots" content="noindex,follow"', (output / "photos.html").read_text(encoding="utf-8"))
             self.assertTrue((output / "robots.txt").is_file())
             self.assertIn("Alaaloka878787@GMAIL.COM", (output / "contact.html").read_text(encoding="utf-8"))
 
