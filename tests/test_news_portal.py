@@ -230,9 +230,9 @@ class BuildAndBrowserTests(unittest.TestCase):
         self.assertIn("https://sozanhnedy-bot.github.io/-/news/" + "a" * 20 + ".html", sitemap)
         self.assertIn("https://sozanhnedy-bot.github.io/-/reports/" + "c" * 20 + ".html", sitemap)
         self.assertNotIn("/news/" + "b" * 20 + ".html", sitemap)
-        self.assertIn("https://sozanhnedy-bot.github.io/-/archive.html", sitemap)
-        self.assertIn("https://sozanhnedy-bot.github.io/-/section.html", sitemap)
-        self.assertIn("https://sozanhnedy-bot.github.io/-/videos.html", sitemap)
+        self.assertNotIn("archive.html", sitemap)
+        self.assertNotIn("section.html", sitemap)
+        self.assertNotIn("videos.html", sitemap)
         self.assertNotIn("section.html?category=", sitemap)
         self.assertIn("Sitemap: https://sozanhnedy-bot.github.io/-/sitemap.xml", render_seo.render_robots())
 
@@ -283,8 +283,8 @@ class BuildAndBrowserTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         page = (root / "index.html").read_text(encoding="utf-8")
         worker = (root / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn("app.js?v=20261116-content-quality-v1", page)
-        self.assertIn('const CACHE_NAME = "world-news-v15-content-quality";', worker)
+        self.assertIn("app.js?v=20261117-image-rights-v1", page)
+        self.assertIn('const CACHE_NAME = "world-news-v16-image-rights";', worker)
 
     def test_homepage_has_no_browser_task_link_or_trend_monitor(self):
         root = Path(__file__).resolve().parents[1]
