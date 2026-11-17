@@ -11,6 +11,7 @@ import os
 import re
 import socket
 import sys
+import time
 import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -247,8 +248,7 @@ def _iso(value: datetime | None) -> str | None:
 def _safe_image_url(value: str, media_type: str = "") -> str:
     candidate = value.strip()
     try:
-        parsed = urlsplit(candidate)
-    except ValueError:
+        parsed = urlsplit(candidate)    except ValueError:
         return ""
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
@@ -497,8 +497,7 @@ def _fetch_article_content(article_url: str, timeout: int = 8) -> str:
     if not _validate_public_https_url(article_url):
         return ""
     request = urllib.request.Request(
-        article_url,
-        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
+        article_url,        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
     )
     opener = urllib.request.build_opener(_PublicHttpsRedirectHandler())
     try:
@@ -747,8 +746,7 @@ def build_update(
             if url in known_urls:
                 existing_item = existing_by_url.get(url)
                 if existing_item and _category_priority(category) > _category_priority(existing_item.get("category")):
-                    existing_item["category"] = category
-                    changed_metadata = True
+                    existing_item["category"] = category                    changed_metadata = True
                 if existing_item and _merge_source_metadata(existing_item, item):
                     changed_metadata = True
                 continue
@@ -895,8 +893,8 @@ def ai_summarization_enabled() -> bool:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Refresh the public RSS news feed")
-    parser.add_argument("--dry-run", action="store_true", help="Fetch RSS only; do not call AI or upload")
+    parser = argparse.ArgumentParser(description="Refresh the public news feed from RSS and optional GDELT discovery")
+    parser.add_argument("--dry-run", action="store_true", help="Fetch configured RSS and GDELT sources only; do not call AI or write the archive")
     args = parser.parse_args()
     config = load_json(SOURCES_PATH)
     feeds = config.get("feeds", [])
@@ -1047,7 +1045,7 @@ def main() -> int:
         return 0
 
     LOCAL_NEWS_PATH.write_text(json.dumps(news, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Updated local news data with {len(news['items'])} items ({summary_type}).")
+    print(f"Updated local news data with {len(news['items'])} items ({summary_type}; RSS + GDELT discovery when enabled).")
     return 0
 
 
