@@ -48,12 +48,20 @@ def _public_paths(news: dict, reports: dict) -> list[tuple[str, str | None]]:
         for item in report_items
         if isinstance(item, dict) and isinstance(item.get("id"), str)
     }
+    news_items = news.get("items", []) if isinstance(news, dict) else []
+    news_by_id = {
+        str(item.get("id")): item
+        for item in news_items
+        if isinstance(item, dict) and item.get("id") is not None
+    }
     for report in report_items:
         if not isinstance(report, dict) or str(report.get("id")) not in report_ids:
             continue
         report_id = str(report.get("id") or "")
+        matched_news = news_by_id.get(report_id, {})
+        published = report.get("published_at") or matched_news.get("published_at") or matched_news.get("created_at")
         if report.get("sections") and re.fullmatch(r"[a-f0-9]{20,40}", report_id):
-            paths.append((f"reports/{report_id}.html", _iso_date(report.get("published_at"))))
+            paths.append((f"reports/{report_id}.html", _iso_date(published)))
 
     return paths
 
@@ -84,11 +92,17 @@ def _parse_datetime(value: object) -> datetime | None:
     return parsed.astimezone(timezone.utc)
 
 
-def render_news_sitemap(reports: dict, now: datetime | None = None) -> str:
+def render_news_sitemap(reports: dict, now: datetime | None = None, news: dict | None = None) -> str:
     """List only original editorial reports published in the last 48 hours."""
     current = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
     cutoff = current - timedelta(days=2)
     items = reports.get("items", []) if isinstance(reports, dict) else []
+    news_items = news.get("items", []) if isinstance(news, dict) else []
+    news_by_id = {
+        str(item.get("id")): item
+        for item in news_items
+        if isinstance(item, dict) and item.get("id") is not None
+    }
     eligible = []
     for report in items:
         if not isinstance(report, dict) or not report.get("sections"):
@@ -96,7 +110,10 @@ def render_news_sitemap(reports: dict, now: datetime | None = None) -> str:
         report_id = str(report.get("id") or "")
         if not re.fullmatch(r"[a-f0-9]{20,40}", report_id):
             continue
-        published = _parse_datetime(report.get("published_at"))
+        matched_news = news_by_id.get(report_id, {})
+        published = _parse_datetime(
+            report.get("published_at") or matched_news.get("published_at") or matched_news.get("created_at")
+        )
         title = str(report.get("title") or "").strip()
         if not published or not title or not cutoff <= published <= current:
             continue
@@ -132,7 +149,7 @@ def build(output: Path) -> None:
     reports = json.loads(REPORTS_PATH.read_text(encoding="utf-8"))
     output.mkdir(parents=True, exist_ok=True)
     (output / "sitemap.xml").write_text(render_sitemap(news, reports), encoding="utf-8")
-    (output / "news-sitemap.xml").write_text(render_news_sitemap(reports), encoding="utf-8")
+    (output / "news-sitemap.xml").write_text(render_news_sitemap(reports, news=news), encoding="utf-8")
     (output / "robots.txt").write_text(render_robots(), encoding="utf-8")
 
 
