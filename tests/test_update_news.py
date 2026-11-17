@@ -159,6 +159,32 @@ class NewsUpdateTests(unittest.TestCase):
         self.assertFalse(changed)
         self.assertEqual(data["items"], existing["items"])
 
+    def test_title_and_publisher_only_excerpt_is_rejected_without_ai_call(self):
+        item = {**self.entries[0], "title": "عنوان الخبر — المصدر", "source_name": "المصدر", "excerpt": "عنوان الخبر — المصدر"}
+        data, changed, _ = build_update(
+            {"schema_version": 1, "updated_at": None, "items": []},
+            [self.feed],
+            lambda *_: [item],
+            lambda _item: self.fail("title-only excerpt must not be summarized"),
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["summary_type"], "source_notice")
+        self.assertEqual(data["items"][0]["summary"], RSS_NO_DETAILS)
+
+    def test_short_or_title_like_model_output_is_rejected(self):
+        item = {**self.entries[0], "excerpt": "تفاصيل إضافية موثقة من الناشر حول تطورات الخبر وسياقه وأطرافه المعنية."}
+        data, changed, _ = build_update(
+            {"schema_version": 1, "updated_at": None, "items": []},
+            [self.feed],
+            lambda *_: [item],
+            lambda _item: "ملخص قصير",
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["summary_type"], "source_notice")
+        self.assertEqual(data["items"][0]["summary"], RSS_NO_DETAILS)
+
     def test_title_only_rss_item_becomes_safe_brief_without_ai_call(self):
         item = {**self.entries[0], "excerpt": ""}
         data, changed, _ = build_update(
