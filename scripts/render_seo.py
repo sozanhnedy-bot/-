@@ -41,6 +41,7 @@ def _public_paths(news: dict, reports: dict) -> list[tuple[str, str | None]]:
         ("privacy.html", None),
         ("contact.html", None),
         ("editorial-policy.html", None),
+        ("terms.html", None),
     ]
     report_items = reports.get("items", []) if isinstance(reports, dict) else []
     report_ids = {
