@@ -63,7 +63,7 @@ def build(output: Path) -> int:
                         else:
                             item["summary"] = "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."
                             item["summary_type"] = "source_notice"
-            (output / "data" / name).write_text(json.dumps(news, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+            (output / "data" / name).write_text(json.dumps(news, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         else:
             shutil.copy2(source, output / "data" / name)
     for name in ASSET_FILES:
