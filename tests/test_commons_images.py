@@ -47,6 +47,15 @@ class CommonsImageTests(unittest.TestCase):
         self.assertIn("creativecommons.org/licenses/by/4.0/", page)
         self.assertIn("commons.wikimedia.org/wiki/File:Story.jpg", page)
 
+    def test_subject_queries_remove_publisher_suffix_and_find_person(self):
+        queries = images.search_queries("Trump meets world leaders in Philippines - live updates - BBC")
+        self.assertIn("Trump", queries)
+        self.assertNotIn("BBC", queries)
+
+    def test_attempt_cap_is_exposed(self):
+        import inspect
+        self.assertIn("--max-attempts", inspect.getsource(images.main))
+
     def test_unrelated_file_is_rejected(self):
         page = {"title": "File:Random landscape.jpg", "imageinfo": [{
             "mime": "image/jpeg", "size": 1000, "url": "https://upload.wikimedia.org/example.jpg",
