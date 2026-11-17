@@ -117,13 +117,15 @@ class InternalNewsBriefTests(unittest.TestCase):
             news_path, reports_path = root / "news.json", root / "reports.json"
             news_path.write_text(json.dumps({"items": [
                 {"id": "full-report", "title": "مكتمل"},
-                {"id": "rss-brief", "title": "موجز", "summary": "تفاصيل موجزة", "source_name": "مصدر"},
+                {"id": "rss-brief", "title": "موجز", "summary": "تتضمن المادة تفاصيل إضافية عن الحدث وأسبابه والجهات المعنية وتطوراته الأخيرة.", "source_name": "مصدر"},
+                {"id": "weak-rss", "title": "عنوان الخبر — مصدر", "summary": "عنوان الخبر — مصدر", "source_name": "مصدر", "excerpt": "عنوان الخبر — مصدر"},
             ]}, ensure_ascii=False), encoding="utf-8")
             reports_path.write_text(json.dumps({"items": [{"id": "full-report"}]}), encoding="utf-8")
             output = root / "site"
             with patch.object(render_news, "NEWS_PATH", news_path), patch.object(render_news, "REPORTS_PATH", reports_path):
                 self.assertEqual(render_news.build(output), 1)
             self.assertTrue((output / "news" / "rss-brief.html").is_file())
+            self.assertFalse((output / "news" / "weak-rss.html").exists())
             self.assertFalse((output / "news" / "full-report.html").exists())
 
 
