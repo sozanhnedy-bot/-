@@ -210,7 +210,7 @@ def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
     if image_url and image_url != old_image_url and (not old_image_url or _is_generic_image_url(old_image_url)):
         existing_item["image_url"] = image_url
         changed = True
-    for key in ("source_url", "source_name", "published_at"):
+    for key in ("source_url", "source_name", "published_at", "discovery_source", "discovered_at"):
         if incoming_item.get(key) and not existing_item.get(key):
             existing_item[key] = incoming_item[key]
             changed = True
@@ -747,10 +747,10 @@ def build_update(
             fetched = fetcher(feed["url"], feed["region"], feed_name, feed.get("source_url", ""))
             successful_feeds += 1
             newest = max(
-                (item.get("published_at") or "" for item in fetched),
+                (item.get("published_at") or item.get("discovered_at") or "" for item in fetched),
                 default="",
             )
-            print(f"[NEWS] OK | {feed_name} | entries={len(fetched)} | newest_published_at={newest or 'unknown'}")
+            print(f"[NEWS] OK | {feed_name} | entries={len(fetched)} | newest_event_at={newest or 'unknown'}")
         except Exception as exc:
             warnings.append(f"تعذر جلب {feed_name}: {type(exc).__name__}")
             print(f"[NEWS] FAILED | {feed_name} | error={type(exc).__name__}", file=sys.stderr)
