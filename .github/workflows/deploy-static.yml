@@ -1,8 +1,7 @@
 name: Publish portal to GitHub Pages
 
 on:
-  push:
-    branches: [main]
+  # Manual fallback only; verify-and-deploy.yml owns automatic publishing.
   workflow_dispatch:
 
 permissions:
@@ -11,7 +10,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: site-publish
+  group: world-news-pages
   cancel-in-progress: false
 
 jobs:
