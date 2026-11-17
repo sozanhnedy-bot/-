@@ -10,6 +10,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 
+try:
+    from scripts.enrich_commons_images import image_matches_story
+except ModuleNotFoundError:
+    from enrich_commons_images import image_matches_story
+
 ROOT = Path(__file__).resolve().parents[1]
 NEWS_PATH = ROOT / "data" / "news.json"
 REPORTS_PATH = ROOT / "data" / "reports.json"
@@ -95,7 +100,7 @@ def has_reusable_image_rights(item: dict) -> bool:
 
 def safe_story_image(item: dict) -> str:
     """Accept a local Commons asset or an HTTPS image only with documented reuse rights."""
-    if not has_reusable_image_rights(item):
+    if not has_reusable_image_rights(item) or not image_matches_story(item):
         return ""
     candidate = text(item.get("image_url"), 1_000)
     if candidate.startswith("assets/news-images/") and ".." not in candidate.split("/") and IMAGE_EXT_RE.search(candidate):
