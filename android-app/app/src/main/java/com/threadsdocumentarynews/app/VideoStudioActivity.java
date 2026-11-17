@@ -24,6 +24,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -365,12 +366,24 @@ public final class VideoStudioActivity extends Activity {
         editorTools.setGravity(Gravity.CENTER_VERTICAL);
         editorTools.setOrientation(LinearLayout.HORIZONTAL);
         editorToolsScroll.addView(editorTools, new HorizontalScrollView.LayoutParams(-2, -1));
-        addEditorToolTab(editorTools, "وسائط", scroll, mediaPickerButton);
-        addEditorToolTab(editorTools, "نص", scroll, titleInput);
-        addEditorToolTab(editorTools, "قص", scroll, fitModeSpinner);
-        addEditorToolTab(editorTools, "فلاتر", scroll, filterPresetSpinner);
-        addEditorToolTab(editorTools, "صوت", scroll, audioName);
-        addEditorToolTab(editorTools, "مقاس", scroll, resolutionSpinner);
+        addEditorToolTab(editorTools, "وسائط", scroll,
+                new String[]{"إضافة صور أو فيديو", "قائمة الوسائط"},
+                new View[]{mediaPickerButton, mediaList});
+        addEditorToolTab(editorTools, "نص", scroll,
+                new String[]{"عنوان الفيديو", "نص الخبر والتعليق", "شريط الأخبار"},
+                new View[]{titleInput, captionInput, tickerInput});
+        addEditorToolTab(editorTools, "قص", scroll,
+                new String[]{"ملاءمة الإطار", "التكبير", "القص الأفقي", "القص الرأسي", "بداية المقطع", "نهاية المقطع"},
+                new View[]{fitModeSpinner, zoomSeekBar, cropXSeekBar, cropYSeekBar, trimStartSeekBar, trimEndSeekBar});
+        addEditorToolTab(editorTools, "فلاتر", scroll,
+                new String[]{"اختيار الفلتر", "شدة الفلتر"},
+                new View[]{filterPresetSpinner, filterIntensitySeekBar});
+        addEditorToolTab(editorTools, "صوت", scroll,
+                new String[]{"التعليق الصوتي", "الموسيقى والمؤثرات", "مستوى صوت الخلفية"},
+                new View[]{audioName, musicName, musicVolumeSpinner});
+        addEditorToolTab(editorTools, "مقاس", scroll,
+                new String[]{"مقاس الفيديو", "دقة التصدير"},
+                new View[]{formatSpinner, resolutionSpinner});
 
         LinearLayout exportFooter = new LinearLayout(this);
         exportFooter.setOrientation(LinearLayout.VERTICAL);
@@ -1219,7 +1232,8 @@ public final class VideoStudioActivity extends Activity {
         parent.addView(view, params(-1, -2, 0, 4, 0, 2));
     }
 
-    private void addEditorToolTab(LinearLayout parent, String label, ScrollView scroll, View target) {
+    private void addEditorToolTab(LinearLayout parent, String label, ScrollView scroll,
+            String[] actions, View[] targets) {
         Button tab = secondaryButton(label);
         tab.setTextSize(12);
         tab.setMinHeight(dp(40));
@@ -1240,8 +1254,36 @@ public final class VideoStudioActivity extends Activity {
                     ((Button) child).setTextColor(selected ? BG : WHITE);
                 }
             }
-            scrollToEditorControl(scroll, target);
+            showToolPopup(tab, label, actions, targets, scroll);
         });
+    }
+
+    private void showToolPopup(View anchor, String category, String[] actions, View[] targets, ScrollView scroll) {
+        LinearLayout panel = new LinearLayout(this);
+        panel.setOrientation(LinearLayout.VERTICAL);
+        panel.setPadding(dp(10), dp(9), dp(10), dp(9));
+        panel.setBackgroundColor(CARD);
+        panel.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        addText(panel, category + " — أدوات التحرير", 14, GOLD, true, 0, 6);
+        for (int i = 0; i < actions.length && i < targets.length; i++) {
+            final View target = targets[i];
+            Button action = secondaryButton("›  " + actions[i]);
+            action.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+            action.setTextSize(13);
+            action.setPadding(dp(12), 0, dp(12), 0);
+            panel.addView(action, params(-1, dp(42), 0, dp(2), 0, dp(2)));
+            action.setOnClickListener(v -> {
+                scrollToEditorControl(scroll, target);
+                Object tag = panel.getTag();
+                if (tag instanceof PopupWindow) ((PopupWindow) tag).dismiss();
+            });
+        }
+        PopupWindow popup = new PopupWindow(panel, dp(260), ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        panel.setTag(popup);
+        popup.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(CARD));
+        popup.setElevation(dp(12));
+        popup.setOutsideTouchable(true);
+        popup.showAsDropDown(anchor, 0, -dp(3), Gravity.END);
     }
 
     private void scrollToEditorControl(ScrollView scroll, View target) {
