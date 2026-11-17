@@ -1,0 +1,42 @@
+name: News pipeline tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/update_news.py"
+      - "tests/**"
+      - "data/news_sources.json"
+      - ".github/workflows/news-tests.yml"
+  pull_request:
+    paths:
+      - "scripts/update_news.py"
+      - "tests/**"
+      - "data/news_sources.json"
+      - ".github/workflows/news-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: news-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      AI_SUMMARIZATION_ENABLED: "false"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile Python files
+        run: python -m compileall -q scripts tests
+      - name: Run news pipeline tests
+        run: python -m unittest discover -s tests -v
