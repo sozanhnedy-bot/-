@@ -28,7 +28,7 @@ USER_AGENT = "WorldNews/1.0 (+RSS publisher)"
 MAX_FEED_BYTES = 1_500_000
 MAX_EXCERPT_CHARS = 4_000
 MAX_SUMMARY_CHARS = 600
-MAX_STORED_EXCERPT_CHARS = 1_400
+MAX_STORED_EXCERPT_CHARS = 300
 MAX_STORED_ARTICLE_CHARS = 8_000
 NEWS_RETENTION_DAYS = 7
 ALLOWED_FEED_HOSTS = {
@@ -167,11 +167,6 @@ def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
     old_excerpt = clean_text(existing_item.get("excerpt", ""))
     if len(excerpt) > len(old_excerpt):
         existing_item["excerpt"] = excerpt
-        changed = True
-    article_content = clean_article_content(incoming_item.get("article_content", ""))[:MAX_STORED_ARTICLE_CHARS]
-    old_article_content = clean_article_content(existing_item.get("article_content", ""))
-    if len(article_content) > len(old_article_content):
-        existing_item["article_content"] = article_content
         changed = True
     image_url = _safe_image_url(incoming_item.get("image_url", ""), "image")
     old_image_url = str(existing_item.get("image_url", "") or "")
@@ -661,6 +656,16 @@ def build_update(
     warnings: list[str] = []
     successful_feeds = 0
     changed_metadata = retention_changed
+    for stored_item in existing_items:
+        if not isinstance(stored_item, dict):
+            continue
+        if "article_content" in stored_item:
+            stored_item.pop("article_content", None)
+            changed_metadata = True
+        stored_excerpt = clean_text(stored_item.get("excerpt", ""))
+        if len(stored_excerpt) > MAX_STORED_EXCERPT_CHARS:
+            stored_item["excerpt"] = stored_excerpt[:MAX_STORED_EXCERPT_CHARS]
+            changed_metadata = True
 
     prioritized_feeds = sorted(
         feeds,
@@ -747,7 +752,6 @@ def build_update(
             "title": item["title"],
             "summary": summary[:MAX_SUMMARY_CHARS],
             "excerpt": clean_text(item.get("excerpt", ""))[:MAX_STORED_EXCERPT_CHARS],
-            "article_content": clean_article_content(item.get("article_content", ""))[:MAX_STORED_ARTICLE_CHARS],
             "summary_type": item_summary_type,
             "url": item["url"],
             "source_name": item.get("source_name", "المصدر الأصلي"),
@@ -826,13 +830,7 @@ def summarize_rss_excerpt(item: dict) -> str:
     title = clean_text(item.get("title", ""))
     source = clean_text(item.get("source_name", ""))
     if _is_substantive_copy(excerpt, title, source):
-        return excerpt[:MAX_SUMMARY_CHARS]
-    article_content = clean_article_content(item.get("article_content", ""))
-    if article_content:
-        paragraphs = [part.strip() for part in article_content.splitlines() if part.strip()]
-        article_excerpt = " ".join(paragraphs).strip()
-        if _is_substantive_copy(article_excerpt, title, source, minimum_chars=250, minimum_words=30):
-            return article_excerpt[:MAX_SUMMARY_CHARS]
+        return excerpt[:MAX_STORED_EXCERPT_CHARS]
     return RSS_NO_DETAILS
 
 
@@ -849,6 +847,11 @@ def main() -> int:
     if not isinstance(feeds, list):
         raise ValueError("news_sources.json must contain a feeds list")
     max_items_per_feed = max(1, int(config.get("max_items_per_feed", 12)))
+
+    ai_enabled = ai_summarization_enabled()
+    api_key = os.environ.get("OPENAI_API_KEY", "").strip()
+    model = os.environ.get("OPENAI_MODEL", "").strip()
+    can_fetch_article_text = bool(not args.dry_run and ai_enabled and api_key and model)
 
     image_lookup_count = 0
     image_lookup_urls: set[str] = set()
@@ -871,11 +874,13 @@ def main() -> int:
                     publisher_image = _fetch_article_image(article_url)
                     if publisher_image:
                         item["image_url"] = publisher_image
-            if len(clean_article_content(item.get("article_content", ""))) < 250 and article_url not in article_lookup_urls:
+            if can_fetch_article_text and len(clean_article_content(item.get("article_content", ""))) < 250 and article_url not in article_lookup_urls:
                 article_lookup_urls.add(article_url)
                 if article_lookup_count < 20:
                     article_lookup_count += 1
                     item["article_content"] = _fetch_article_content(article_url)
+            if not can_fetch_article_text:
+                item.pop("article_content", None)
         return items
 
     if args.dry_run:
@@ -888,10 +893,7 @@ def main() -> int:
         print(f"Dry run complete; {total} entries fetched, no summaries or uploads made.")
         return 0
 
-    api_key = os.environ.get("OPENAI_API_KEY", "").strip()
-    model = os.environ.get("OPENAI_MODEL", "").strip()
-    ai_enabled = ai_summarization_enabled()
-    if ai_enabled and api_key and model:
+    if can_fetch_article_text:
         from openai import OpenAI
         client = OpenAI(api_key=api_key)
         summarizer = lambda item: summarize_news(client, item, model)
@@ -908,6 +910,16 @@ def main() -> int:
     max_per_day = int(os.environ.get("MAX_SUMMARIES_PER_DAY", "30"))
     max_items = int(os.environ.get("MAX_STORED_ITEMS", "10000"))
     existing = load_json(LOCAL_NEWS_PATH)
+    legacy_text_removed = False
+    for stored_item in existing.get("items", []):
+        if isinstance(stored_item, dict) and "article_content" in stored_item:
+            stored_item.pop("article_content", None)
+            legacy_text_removed = True
+        if isinstance(stored_item, dict):
+            excerpt = clean_text(stored_item.get("excerpt", ""))
+            if len(excerpt) > MAX_STORED_EXCERPT_CHARS:
+                stored_item["excerpt"] = excerpt[:MAX_STORED_EXCERPT_CHARS]
+                legacy_text_removed = True
     try:
         news, changed, warnings = build_update(
             existing,
@@ -922,8 +934,9 @@ def main() -> int:
     except RuntimeError as exc:
         # Keep the last good archive and still attempt the independent image repair pass.
         news = existing
-        changed = False
+        changed = legacy_text_removed
         warnings = [str(exc)]
+    changed = changed or legacy_text_removed
     repaired_images = repair_existing_images(news, max_lookups=100)
     if repaired_images:
         changed = True
