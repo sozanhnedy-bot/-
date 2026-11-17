@@ -56,6 +56,11 @@ def image_matches_story(item: dict) -> bool:
     if alt and tokens(alt) != story_tokens:
         image_tokens.update(tokens(alt))
     source_url = clean(item.get("image_source_url", ""), 1000)
+    image_path = clean(item.get("image_url", ""), 1000)
+    if not source_url:
+        return not image_path.startswith("assets/news-images/")
+    if urllib.parse.urlsplit(source_url).hostname != "commons.wikimedia.org":
+        return True
     if source_url:
         try:
             filename = urllib.parse.unquote(urllib.parse.urlsplit(source_url).path.rsplit("/", 1)[-1])
@@ -162,6 +167,7 @@ def candidate_metadata(page: dict, story_tokens: set[str], query_tokens: set[str
     if parsed.scheme != "https" or parsed.hostname != "upload.wikimedia.org":
         return None
     source_url = "https://commons.wikimedia.org/wiki/" + urllib.parse.quote(file_title.replace(" ", "_"), safe=":/")
+    distinctive = {word for word in overlap if len(word) >= 5}
     return {
         "url": original, "extension": ext, "status": status, "license_url": license_url,
         "credit": clean(creator, 300), "description": clean(object_name or description, 300),
