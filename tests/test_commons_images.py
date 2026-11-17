@@ -65,7 +65,8 @@ class CommonsImageTests(unittest.TestCase):
             "source_url": "https://publisher.example/news", "image_url": "assets/news-images/story.jpg",
             "image_rights_status": "cc-by", "image_credit": "Photographer A",
             "image_license_url": "https://creativecommons.org/licenses/by/4.0/",
-            "image_source_url": "https://commons.wikimedia.org/wiki/File:Story.jpg",
+            "image_source_url": "https://commons.wikimedia.org/wiki/File:French_president_Cairo.jpg",
+            "image_alt": "الرئيس الفرنسي في القاهرة",
             "image_caption": "صورة توثيقية — تصوير: Photographer A",
         }
         page = render_news.render(item, [item], set())
