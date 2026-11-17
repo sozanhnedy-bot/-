@@ -51,6 +51,8 @@ public final class TaskAssistantActivity extends Activity {
     private static final String RUNS_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/ai-task.yml";
     private static final String ACTIONS_URL = "https://github.com/sozanhnedy-bot/-/actions";
     private static final String SOCIAL_URL = "https://github.com/sozanhnedy-bot/-/actions/workflows/publish-social.yml";
+    private static final String SOCIAL_SECRETS_URL = "https://github.com/sozanhnedy-bot/-/settings/secrets/actions";
+    private static final String SOCIAL_VARIABLES_URL = "https://github.com/sozanhnedy-bot/-/settings/variables/actions";
     private static final int BACKGROUND = Color.rgb(8, 9, 13);
     private static final int SURFACE = Color.rgb(20, 21, 27);
     private static final int SURFACE_ALT = Color.rgb(27, 28, 35);
@@ -68,6 +70,7 @@ public final class TaskAssistantActivity extends Activity {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private LinearLayout pageContent;
+    private LinearLayout bottomNav;
     private ScrollView scroll;
     private EditText topicInput;
     private EditText referenceInput;
@@ -160,20 +163,24 @@ public final class TaskAssistantActivity extends Activity {
 
     private LinearLayout buildBottomNav() {
         LinearLayout nav = new LinearLayout(this);
+        bottomNav = nav;
         nav.setGravity(Gravity.CENTER);
         nav.setBackgroundColor(Color.rgb(5, 6, 9));
-        nav.setPadding(dp(8), dp(7), dp(8), dp(7));
-        nav.addView(navItem("✧\nالمساعد", 0), new LinearLayout.LayoutParams(0, dp(58), 1));
-        nav.addView(navItem("▱\nالمشاريع", 1), new LinearLayout.LayoutParams(0, dp(58), 1));
-        nav.addView(navItem("◷\nالحالة", 2), new LinearLayout.LayoutParams(0, dp(58), 1));
-        nav.addView(navItem("◎\nالنشر", 3), new LinearLayout.LayoutParams(0, dp(58), 1));
-        nav.addView(navItem("▷\nالفيديو", 4), new LinearLayout.LayoutParams(0, dp(58), 1));
+        nav.setPadding(dp(6), dp(5), dp(6), dp(5));
+        nav.addView(navItem("✧\nالمساعد", 0), new LinearLayout.LayoutParams(0, dp(64), 1));
+        nav.addView(navItem("▱\nالمشاريع", 1), new LinearLayout.LayoutParams(0, dp(64), 1));
+        nav.addView(navItem("◷\nالحالة", 2), new LinearLayout.LayoutParams(0, dp(64), 1));
+        nav.addView(navItem("◎\nالنشر", 3), new LinearLayout.LayoutParams(0, dp(64), 1));
+        nav.addView(navItem("▷\nالفيديو", 4), new LinearLayout.LayoutParams(0, dp(64), 1));
+        refreshBottomNav();
         return nav;
     }
 
     private TextView navItem(String caption, int tab) {
         TextView item = text(caption, 12, selectedTab == tab ? GOLD : MUTED, selectedTab == tab);
         item.setGravity(Gravity.CENTER);
+        item.setMinHeight(dp(60));
+        item.setContentDescription(caption.replace("\n", " — "));
         item.setOnClickListener(v -> {
             if (tab == 4) startActivity(new Intent(this, VideoStudioActivity.class));
             else showTab(tab);
@@ -181,11 +188,27 @@ public final class TaskAssistantActivity extends Activity {
         return item;
     }
 
+    private void refreshBottomNav() {
+        if (bottomNav == null) return;
+        for (int i = 0; i < bottomNav.getChildCount(); i++) {
+            TextView item = (TextView) bottomNav.getChildAt(i);
+            boolean selected = i == selectedTab;
+            item.setTextColor(selected ? GOLD : MUTED);
+            item.setTypeface(null, selected ? Typeface.BOLD : Typeface.NORMAL);
+            android.graphics.drawable.GradientDrawable background = new android.graphics.drawable.GradientDrawable();
+            background.setColor(selected ? Color.rgb(48, 36, 20) : Color.TRANSPARENT);
+            background.setCornerRadius(dp(14));
+            if (selected) background.setStroke(dp(1), GOLD_DARK);
+            item.setBackground(background);
+        }
+    }
+
     private void showTab(int tab) {
         if (selectedTab == 0 && topicInput != null && scriptOutput != null && !scriptOutput.getText().toString().trim().isEmpty()) {
             saveProject(false);
         }
         selectedTab = tab;
+        refreshBottomNav();
         pageContent.removeAllViews();
         if (tab == 0) buildAssistantPage();
         else if (tab == 1) buildProjectsPage();
@@ -650,7 +673,7 @@ public final class TaskAssistantActivity extends Activity {
 
     private void buildSocialPage() {
         addText(pageContent, "النشر الاجتماعي", 22, TEXT, true, 0, 6);
-        addText(pageContent, "X وفيسبوك — مسودة للمراجعة", 14, GOLD, true, 0, 12);
+        addText(pageContent, "فيسبوك وإنستغرام وتويتر/X — مسودة للمراجعة", 14, GOLD, true, 0, 12);
         LinearLayout card = card();
         addText(card, "صياغة منشور من المشروع المحفوظ", 17, TEXT, true, 0, 6);
         socialDraftInput = new EditText(this);
@@ -674,10 +697,25 @@ public final class TaskAssistantActivity extends Activity {
         Button open = secondaryButton("عرض إعدادات مسار النشر في GitHub");
         card.addView(open, params(-1, dp(48), 0, 0, 0, 0));
         open.setOnClickListener(v -> openUrl(SOCIAL_URL, "تعذر فتح إعدادات مسار النشر."));
-        socialStatus = text("لا يُنشر شيء تلقائيًا. النشر الفعلي يظل متوقفًا حتى ربط الحسابات ومراجعة المنصات والتكلفة والموافقة الصريحة.", 13, MUTED, false);
+        socialStatus = text("المسودة هنا للنسخ والمراجعة فقط؛ النشر الآلي الحالي يخص تقارير الموقع ولا ينشر هذه المسودة. لا يُنشر شيء قبل إعداد الحسابات والموافقة، ولا تلصق مفتاح API أو رمز وصول داخل التطبيق.", 13, MUTED, false);
         socialStatus.setPadding(0, dp(10), 0, 0);
         card.addView(socialStatus);
         pageContent.addView(card);
+
+        LinearLayout setup = card();
+        addText(setup, "ربط الحسابات بأمان", 17, TEXT, true, 0, 6);
+        addText(setup, "مفاتيح الوصول لا تُخزَّن في APK لأنها قابلة للاستخراج. أضفها داخل GitHub Actions Secrets؛ التطبيق يفتح لك صفحة الإعداد الآمنة، ولا يرسلها أو يحفظها.", 13, MUTED, false, 0, 9);
+        addText(setup, "الأسرار: X_USER_ACCESS_TOKEN وFB_PAGE_ACCESS_TOKEN. ومتغيرات Actions: FB_PAGE_ID وIG_USER_ID وMETA_GRAPH_VERSION وSOCIAL_AUTOPUBLISH وPAID_SOCIAL_APIS_APPROVED. يتطلب Instagram حسابًا احترافيًا مرتبطًا بصفحة Facebook ورمز صفحة بصلاحيات النشر.", 12, MUTED, false, 0, 9);
+        Button openSecrets = secondaryButton("فتح أسرار النشر الآمنة في GitHub");
+        setup.addView(openSecrets, params(-1, dp(50), 0, 0, 0, 6));
+        openSecrets.setOnClickListener(v -> openUrl(SOCIAL_SECRETS_URL, "تعذر فتح صفحة أسرار GitHub."));
+        Button openVariables = secondaryButton("فتح متغيرات النشر والموافقة");
+        setup.addView(openVariables, params(-1, dp(50), 0, 0, 0, 6));
+        openVariables.setOnClickListener(v -> openUrl(SOCIAL_VARIABLES_URL, "تعذر فتح صفحة متغيرات GitHub."));
+        Button openWorkflow = primaryButton("فتح سير النشر اليدوي أو المجدول");
+        setup.addView(openWorkflow, params(-1, dp(50), 0, 0, 0, 0));
+        openWorkflow.setOnClickListener(v -> openUrl(SOCIAL_URL, "تعذر فتح سير النشر."));
+        pageContent.addView(setup, params(-1, -2, 0, dp(12), 0, 0));
     }
 
     private Spinner makeSpinner(String[] values) {

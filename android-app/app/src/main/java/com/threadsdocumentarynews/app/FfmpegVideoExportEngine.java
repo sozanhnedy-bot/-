@@ -38,8 +38,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -55,7 +53,6 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
     private static final int FPS = 30;
     private final Context context;
     private final Handler main = new Handler(Looper.getMainLooper());
-    private final ExecutorService worker = Executors.newSingleThreadExecutor();
     private final AtomicBoolean cancelled = new AtomicBoolean(false);
     private final AtomicInteger lastReportedProgress = new AtomicInteger(0);
     // SAF URLs are reused by FFprobe and multiple FFmpeg commands during one export.
@@ -78,12 +75,15 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
         lastReportedProgress.set(0);
         registeredSafUrls.clear();
         listener = callback;
-        worker.execute(() -> runExport(request, callback));
+        Thread exportWorker = new Thread(() -> runExport(request, callback), "VideoExportWorker");
+        exportWorker.start();
     }
 
     private void runExport(VideoExportRequest request, Listener callback) {
         File work = null;
         File stagedOutput = null;
+        File completedOutput = null;
+        Exception completionError = null;
         try {
             File cache = new File(context.getCacheDir(), "ffmpeg-video-export");
             if (!cache.exists() && !cache.mkdirs()) throw new IllegalStateException("Cannot create FFmpeg cache directory.");
@@ -171,6 +171,10 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             File joinedAudio = new File(work, "joined-audio.wav");
             execute("-y -f concat -safe 0 -i " + q(audioList.getAbsolutePath())
                     + " -c:a pcm_s16le " + q(joinedAudio.getAbsolutePath()), "join source audio");
+            for (File segment : videoSegments) delete(segment);
+            for (File segment : audioSegments) delete(segment);
+            delete(concatList);
+            delete(audioList);
 
             List<String> args = new ArrayList<>();
             args.add("-y"); args.add("-i"); args.add(joinedVideo.getAbsolutePath());
@@ -234,7 +238,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
             command.append(" -filter_complex ").append(q(graph.toString()))
                     .append(" -map ").append(q("[vout]"))
                     .append(" -map ").append(q("[aout]"))
-                    .append(" -c:v libx264 -preset ultrafast -b:v 6M -r ").append(FPS)
+                    .append(" -c:v libx264 -preset ultrafast -b:v ").append(videoBitrate(request)).append(" -r ").append(FPS)
                     .append(" -pix_fmt yuv420p -c:a aac -b:a 192k -ar 48000 -ac 2")
                     .append(" -movflags +faststart -shortest ").append(q(stagedOutput.getAbsolutePath()));
             execute(command.toString(), "final MP4 mux", callback, 68, 99, totalMs);
@@ -246,11 +250,12 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                 throw new IllegalStateException("Could not promote the completed MP4 to its output path.");
             }
             progress(callback, 100);
-            finish(callback, target, null);
+            completedOutput = target;
         } catch (Exception error) {
             delete(stagedOutput);
-            if (cancelled.get()) finish(callback, null, new java.util.concurrent.CancellationException("Video export cancelled."));
-            else finish(callback, null, error);
+            completionError = cancelled.get()
+                    ? new java.util.concurrent.CancellationException("Video export cancelled.")
+                    : error;
         } finally {
             deleteRecursively(work);
             synchronized (registeredSafUrls) {
@@ -259,6 +264,7 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
                 }
                 registeredSafUrls.clear();
             }
+            finish(callback, completedOutput, completionError);
         }
     }
 
@@ -268,10 +274,14 @@ public final class FfmpegVideoExportEngine implements VideoExportEngine {
         else command.append(seekInputOptions(input.path, input.startMs))
                 .append(" -t ").append(seconds(input.durationMs)).append(' ');
         command.append("-vf ").append(q(buildSegmentVideoFilter(request.getWidth(), request.getHeight(), input.transform)))
-                .append(" -an -c:v libx264 -preset ultrafast -b:v 6M -r ").append(FPS)
+                .append(" -an -c:v libx264 -preset ultrafast -b:v ").append(videoBitrate(request)).append(" -r ").append(FPS)
                 .append(" -t ").append(seconds(input.durationMs))
-                .append(" -movflags +faststart ").append(q(output.getAbsolutePath()));
+                .append(' ').append(q(output.getAbsolutePath()));
         return command.toString();
+    }
+
+    private static String videoBitrate(VideoExportRequest request) {
+        return Math.max(request.getWidth(), request.getHeight()) >= 1920 ? "6M" : "4M";
     }
 
     static String buildSegmentVideoFilter(int width, int height, VideoClipTransform transform) {

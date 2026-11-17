@@ -3,6 +3,13 @@ name: Daily social publishing
 on:
   schedule:
     - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs:
+      confirm_publish:
+        description: "أوافق على نشر تقرير واحد الآن على الحسابات المهيأة"
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -13,7 +20,7 @@ concurrency:
 
 jobs:
   publish:
-    if: ${{ vars.SOCIAL_AUTOPUBLISH == 'true' && vars.PAID_SOCIAL_APIS_APPROVED == 'true' }}
+    if: ${{ vars.SOCIAL_AUTOPUBLISH == 'true' && vars.PAID_SOCIAL_APIS_APPROVED == 'true' && (github.event_name == 'schedule' || inputs.confirm_publish) }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -21,6 +28,7 @@ jobs:
       X_USER_ACCESS_TOKEN: ${{ secrets.X_USER_ACCESS_TOKEN }}
       FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
       FB_PAGE_ID: ${{ vars.FB_PAGE_ID }}
+      IG_USER_ID: ${{ vars.IG_USER_ID }}
       META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
     steps:
       - name: Check out public source

@@ -413,7 +413,7 @@ public final class VideoStudioActivity extends Activity {
             LinearLayout toolsColumn = new LinearLayout(this);
             toolsColumn.setOrientation(LinearLayout.VERTICAL);
             toolsColumn.setPadding(dp(4), 0, 0, 0);
-            toolsColumn.addView(editorToolsScroll, new LinearLayout.LayoutParams(-1, dp(48)));
+            toolsColumn.addView(editorToolsScroll, new LinearLayout.LayoutParams(-1, dp(56)));
             toolsColumn.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1f));
 
             workspace.addView(previewColumn, new LinearLayout.LayoutParams(0, -1, 1.12f));
@@ -424,7 +424,7 @@ public final class VideoStudioActivity extends Activity {
             root.addView(header, new LinearLayout.LayoutParams(-1, dp(52)));
             root.addView(previewCard, params(-1, -2, 8, 2, 8, 4));
             root.addView(timelinePanel, params(-1, -2, 8, 0, 8, 4));
-            root.addView(editorToolsScroll, new LinearLayout.LayoutParams(-1, dp(46)));
+            root.addView(editorToolsScroll, new LinearLayout.LayoutParams(-1, dp(56)));
             root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1f));
             root.addView(exportFooter, new LinearLayout.LayoutParams(-1, -2));
         }
@@ -1236,9 +1236,9 @@ public final class VideoStudioActivity extends Activity {
             String[] actions, View[] targets) {
         Button tab = secondaryButton(label);
         tab.setTextSize(12);
-        tab.setMinHeight(dp(40));
-        tab.setPadding(dp(5), 0, dp(5), 0);
-        LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(dp(72), dp(42));
+        tab.setMinHeight(dp(48));
+        tab.setPadding(dp(7), 0, dp(7), 0);
+        LinearLayout.LayoutParams tabParams = new LinearLayout.LayoutParams(dp(78), dp(52));
         tabParams.setMargins(dp(3), 0, dp(3), 0);
         parent.addView(tab, tabParams);
         if (parent.getChildCount() == 1) {
@@ -1269,16 +1269,17 @@ public final class VideoStudioActivity extends Activity {
             final View target = targets[i];
             Button action = secondaryButton("›  " + actions[i]);
             action.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
-            action.setTextSize(13);
-            action.setPadding(dp(12), 0, dp(12), 0);
-            panel.addView(action, params(-1, dp(42), 0, dp(2), 0, dp(2)));
+            action.setTextSize(14);
+            action.setPadding(dp(14), 0, dp(14), 0);
+            panel.addView(action, params(-1, dp(46), 0, dp(3), 0, dp(3)));
             action.setOnClickListener(v -> {
                 scrollToEditorControl(scroll, target);
                 Object tag = panel.getTag();
                 if (tag instanceof PopupWindow) ((PopupWindow) tag).dismiss();
             });
         }
-        PopupWindow popup = new PopupWindow(panel, dp(260), ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        int popupWidth = Math.min(dp(320), getResources().getDisplayMetrics().widthPixels - dp(32));
+        PopupWindow popup = new PopupWindow(panel, popupWidth, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         panel.setTag(popup);
         popup.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(CARD));
         popup.setElevation(dp(12));

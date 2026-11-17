@@ -63,6 +63,17 @@ def social_text(content: dict) -> str:
     return caption + suffix
 
 
+def instagram_caption(content: dict) -> str:
+    suffix = " " + content["url"]
+    if len(suffix) >= 2200:
+        raise ValueError("Instagram report URL is too long for a caption")
+    caption = content["caption"].strip()
+    available = 2200 - len(suffix)
+    if len(caption) > available:
+        caption = caption[: available - 1].rstrip() + "…"
+    return caption + suffix
+
+
 def request_json(url: str, body: dict, *, token: str, method: str = "POST") -> dict:
     encoded = json.dumps(body, ensure_ascii=False).encode("utf-8")
     request = urllib.request.Request(
@@ -124,6 +135,37 @@ def post_to_facebook(content: dict, page_id: str, token: str, version: str) -> s
     return post_id
 
 
+def post_to_instagram(content: dict, instagram_user_id: str, token: str, version: str) -> str:
+    if not re.fullmatch(r"\d{1,32}", instagram_user_id):
+        raise ValueError("Instagram professional account ID must contain digits only")
+    if not re.fullmatch(r"v\d+\.0", version):
+        raise ValueError("Meta Graph API version must look like v27.0")
+    image_path = ROOT / content["image"]
+    if not image_path.is_file() or image_path.suffix.lower() not in {".jpg", ".jpeg"}:
+        raise RuntimeError("Instagram requires a published JPEG image")
+    if image_path.stat().st_size > 8 * 1024 * 1024:
+        raise RuntimeError("Instagram image exceeds 8 MB")
+    image_url = f"{SITE_URL}/{content['image'].lstrip('/')}"
+    base_url = f"https://graph.facebook.com/{version}/{urllib.parse.quote(instagram_user_id, safe='')}"
+    container = request_json(
+        f"{base_url}/media",
+        {"image_url": image_url, "caption": instagram_caption(content)},
+        token=token,
+    )
+    container_id = str(container.get("id") or "")
+    if not container_id:
+        raise RuntimeError("Instagram media container response contained no id")
+    published = request_json(
+        f"{base_url}/media_publish",
+        {"creation_id": container_id},
+        token=token,
+    )
+    post_id = str(published.get("id") or "")
+    if not post_id:
+        raise RuntimeError("Instagram publish response contained no id")
+    return post_id
+
+
 def main() -> int:
     if os.environ.get("SOCIAL_AUTOPUBLISH", "").strip().lower() != "true":
         print("Social publisher is disabled; no external API calls were made.")
@@ -137,6 +179,7 @@ def main() -> int:
     changed = False
 
     x_token = os.environ.get("X_USER_ACCESS_TOKEN", "").strip()
+    meta_version = os.environ.get("META_GRAPH_VERSION", "").strip() or "v27.0"
     if x_token:
         x_state = platforms.setdefault("x", {"posted_report_ids": []})
         if x_state.get("date") != today:
@@ -166,9 +209,8 @@ def main() -> int:
         if fb_state.get("date") != today:
             content = choose_content(fb_state, reports, today)
             if content:
-                version = os.environ.get("META_GRAPH_VERSION", "v26.0").strip()
                 try:
-                    post_id = post_to_facebook(content, page_id, fb_token, version)
+                    post_id = post_to_facebook(content, page_id, fb_token, meta_version)
                     fb_state.update({"date": today, "content_key": content["key"], "post_id": post_id})
                     if content.get("report_id"):
                         posted_ids = list(fb_state.get("posted_report_ids", []))
@@ -183,6 +225,29 @@ def main() -> int:
             print("Facebook already has a post recorded for today; skipped.")
     else:
         print("Facebook Page publishing is not configured; skipped.")
+
+    instagram_user_id = os.environ.get("IG_USER_ID", "").strip()
+    if instagram_user_id and fb_token:
+        instagram_state = platforms.setdefault("instagram", {"posted_report_ids": []})
+        if instagram_state.get("date") != today:
+            content = choose_content(instagram_state, reports, today)
+            if content:
+                try:
+                    post_id = post_to_instagram(content, instagram_user_id, fb_token, meta_version)
+                    instagram_state.update({"date": today, "content_key": content["key"], "post_id": post_id})
+                    if content.get("report_id"):
+                        posted_ids = list(instagram_state.get("posted_report_ids", []))
+                        if content["report_id"] not in posted_ids:
+                            posted_ids.append(content["report_id"])
+                        instagram_state["posted_report_ids"] = posted_ids[-500:]
+                    changed = True
+                    print("Instagram daily publication succeeded.")
+                except Exception as exc:
+                    errors.append(f"Instagram: {type(exc).__name__}")
+        else:
+            print("Instagram already has a post recorded for today; skipped.")
+    else:
+        print("Instagram publishing is not configured; skipped.")
 
     if changed:
         state["updated_at"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
