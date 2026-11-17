@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -36,6 +37,9 @@ def _url(path: str) -> str:
 def _public_paths(news: dict, reports: dict) -> list[tuple[str, str | None]]:
     paths: list[tuple[str, str | None]] = [
         ("", None),
+        ("archive.html", None),
+        ("section.html", None),
+        ("videos.html", None),
         ("about.html", None),
         ("privacy.html", None),
         ("contact.html", None),
@@ -50,15 +54,16 @@ def _public_paths(news: dict, reports: dict) -> list[tuple[str, str | None]]:
     for report in report_items:
         if not isinstance(report, dict) or str(report.get("id")) not in report_ids:
             continue
-        if report.get("sections"):
-            paths.append((f"reports/{report['id']}.html", _iso_date(report.get("published_at"))))
+        report_id = str(report.get("id") or "")
+        if report.get("sections") and re.fullmatch(r"[a-f0-9]{20,40}", report_id):
+            paths.append((f"reports/{report_id}.html", _iso_date(report.get("published_at"))))
 
     items = news.get("items", []) if isinstance(news, dict) else []
     for item in items:
         if not isinstance(item, dict) or str(item.get("id")) in report_ids:
             continue
         raw_id = str(item.get("id") or "")
-        if raw_id and has_public_details(item):
+        if re.fullmatch(r"[A-Za-z0-9_-]{1,80}", raw_id) and has_public_details(item):
             paths.append((f"news/{raw_id}.html", _iso_date(item.get("published_at"))))
     return paths
 

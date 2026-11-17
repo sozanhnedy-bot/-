@@ -230,9 +230,23 @@ class BuildAndBrowserTests(unittest.TestCase):
         self.assertIn("https://sozanhnedy-bot.github.io/-/news/" + "a" * 20 + ".html", sitemap)
         self.assertIn("https://sozanhnedy-bot.github.io/-/reports/" + "c" * 20 + ".html", sitemap)
         self.assertNotIn("/news/" + "b" * 20 + ".html", sitemap)
+        self.assertIn("https://sozanhnedy-bot.github.io/-/archive.html", sitemap)
+        self.assertIn("https://sozanhnedy-bot.github.io/-/section.html", sitemap)
+        self.assertIn("https://sozanhnedy-bot.github.io/-/videos.html", sitemap)
         self.assertNotIn("section.html?category=", sitemap)
-        self.assertNotIn("archive.html", sitemap)
         self.assertIn("Sitemap: https://sozanhnedy-bot.github.io/-/sitemap.xml", render_seo.render_robots())
+
+    def test_sitemap_rejects_invalid_content_ids(self):
+        news = {"items": [
+            {"id": "../bad", "title": "خبر", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "source_url": "https://publisher.example"},
+        ]}
+        reports = {"items": [
+            {"id": "../bad", "title": "تقرير", "sections": [{"heading": "قسم", "paragraphs": ["نص"]}]},
+        ]}
+        sitemap = render_seo.render_sitemap(news, reports)
+        self.assertNotIn("../bad", sitemap)
+        self.assertNotIn("/news/../", sitemap)
+        self.assertNotIn("/reports/../", sitemap)
 
     def test_public_seo_metadata_is_present_on_static_and_generated_pages(self):
         root = Path(__file__).resolve().parents[1]
