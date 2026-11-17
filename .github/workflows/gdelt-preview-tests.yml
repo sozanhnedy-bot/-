@@ -1,0 +1,41 @@
+name: GDELT preview safety tests
+
+on:
+  push:
+    branches:
+      - experiment/gdelt-free-pipeline
+    paths:
+      - "scripts/gdelt_discovery_preview.py"
+      - "tests/test_gdelt_discovery_preview.py"
+      - "tests/test_gdelt_rss_integration.py"
+      - "scripts/update_news.py"
+      - "data/news_sources.json"
+      - ".github/workflows/gdelt-preview-tests.yml"
+  pull_request:
+    paths:
+      - "scripts/gdelt_discovery_preview.py"
+      - "scripts/update_news.py"
+      - "data/news_sources.json"
+      - "tests/test_gdelt_discovery_preview.py"
+      - "tests/test_gdelt_rss_integration.py"
+      - ".github/workflows/gdelt-preview-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile discovery script
+        run: python -m py_compile scripts/gdelt_discovery_preview.py
+      - name: Run offline safety tests
+        run: python -m unittest discover -s tests -p "test_gdelt*.py" -v

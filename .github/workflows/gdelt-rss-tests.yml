@@ -1,0 +1,39 @@
+name: GDELT and RSS regression tests
+
+on:
+  pull_request:
+    paths:
+      - "scripts/**"
+      - "tests/**"
+      - "data/news_sources.json"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gdelt-rss-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-tests:
+    name: Python unit and integration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile Python sources
+        run: python -m compileall -q scripts tests
+
+      - name: Run regression tests
+        env:
+          AI_SUMMARIZATION_ENABLED: "false"
+        run: python -m unittest discover -s tests -v
