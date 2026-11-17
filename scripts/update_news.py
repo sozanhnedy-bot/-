@@ -248,7 +248,8 @@ def _iso(value: datetime | None) -> str | None:
 def _safe_image_url(value: str, media_type: str = "") -> str:
     candidate = value.strip()
     try:
-        parsed = urlsplit(candidate)    except ValueError:
+        parsed = urlsplit(candidate)
+    except ValueError:
         return ""
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
         return ""
@@ -497,7 +498,8 @@ def _fetch_article_content(article_url: str, timeout: int = 8) -> str:
     if not _validate_public_https_url(article_url):
         return ""
     request = urllib.request.Request(
-        article_url,        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
+        article_url,
+        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
     )
     opener = urllib.request.build_opener(_PublicHttpsRedirectHandler())
     try:
@@ -746,7 +748,8 @@ def build_update(
             if url in known_urls:
                 existing_item = existing_by_url.get(url)
                 if existing_item and _category_priority(category) > _category_priority(existing_item.get("category")):
-                    existing_item["category"] = category                    changed_metadata = True
+                    existing_item["category"] = category
+                    changed_metadata = True
                 if existing_item and _merge_source_metadata(existing_item, item):
                     changed_metadata = True
                 continue
