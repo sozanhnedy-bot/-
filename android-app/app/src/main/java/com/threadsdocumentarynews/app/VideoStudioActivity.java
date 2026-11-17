@@ -117,8 +117,6 @@ public final class VideoStudioActivity extends Activity {
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
         root.setBackgroundColor(BG);
-        boolean landscape = getResources().getConfiguration().orientation
-                == android.content.res.Configuration.ORIENTATION_LANDSCAPE;
         LinearLayout header = new LinearLayout(this);
         header.setGravity(Gravity.CENTER_VERTICAL);
         header.setPadding(dp(12), dp(4), dp(12), dp(4));
@@ -312,9 +310,7 @@ public final class VideoStudioActivity extends Activity {
         previewHost.addView(previewFrame, new FrameLayout.LayoutParams(dp(164), dp(290), Gravity.CENTER));
         int screenHeightDp = Math.round(getResources().getDisplayMetrics().heightPixels
                 / getResources().getDisplayMetrics().density);
-        int editorPreviewHeightDp = landscape
-                ? Math.max(112, Math.min(210, Math.round(screenHeightDp * 0.38f)))
-                : Math.max(190, Math.min(270, Math.round(screenHeightDp * 0.32f)));
+        int editorPreviewHeightDp = Math.max(190, Math.min(270, Math.round(screenHeightDp * 0.32f)));
         previewCard.addView(previewHost, params(-1, dp(editorPreviewHeightDp), 0, 0, 0, 4));
         previewHost.addOnLayoutChangeListener((view, left, top, right, bottom,
                 oldLeft, oldTop, oldRight, oldBottom) -> updatePreviewAspectRatio());
@@ -373,33 +369,12 @@ public final class VideoStudioActivity extends Activity {
         footerActions.addView(cancelExportButton, params(dp(116), dp(46), 8, 0, 0, 0));
         exportFooter.addView(footerActions, new LinearLayout.LayoutParams(-1, dp(46)));
 
-        if (landscape) {
-            root.addView(header, new LinearLayout.LayoutParams(-1, dp(48)));
-            LinearLayout workspace = new LinearLayout(this);
-            workspace.setOrientation(LinearLayout.HORIZONTAL);
-            workspace.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            LinearLayout previewColumn = new LinearLayout(this);
-            previewColumn.setOrientation(LinearLayout.VERTICAL);
-            previewColumn.setPadding(dp(6), dp(2), dp(4), dp(2));
-            previewColumn.addView(previewCard, new LinearLayout.LayoutParams(-1, 0, 1f));
-            previewColumn.addView(timelinePanel, params(-1, dp(112), 0, 2, 0, 2));
-            LinearLayout toolsColumn = new LinearLayout(this);
-            toolsColumn.setOrientation(LinearLayout.VERTICAL);
-            toolsColumn.setPadding(dp(4), dp(2), dp(6), dp(2));
-            toolsColumn.addView(editorToolsScroll, new LinearLayout.LayoutParams(-1, dp(46)));
-            toolsColumn.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1f));
-            workspace.addView(previewColumn, new LinearLayout.LayoutParams(0, -1, 1.12f));
-            workspace.addView(toolsColumn, new LinearLayout.LayoutParams(0, -1, 0.88f));
-            root.addView(workspace, new LinearLayout.LayoutParams(-1, 0, 1f));
-            root.addView(exportFooter, new LinearLayout.LayoutParams(-1, -2));
-        } else {
-            root.addView(header, new LinearLayout.LayoutParams(-1, dp(52)));
-            root.addView(previewCard, params(-1, -2, 8, 2, 8, 4));
-            root.addView(timelinePanel, params(-1, -2, 8, 0, 8, 4));
-            root.addView(editorToolsScroll, new LinearLayout.LayoutParams(-1, dp(46)));
-            root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1f));
-            root.addView(exportFooter, new LinearLayout.LayoutParams(-1, -2));
-        }
+        root.addView(header, new LinearLayout.LayoutParams(-1, dp(52)));
+        root.addView(previewCard, params(-1, -2, 8, 2, 8, 4));
+        root.addView(timelinePanel, params(-1, -2, 8, 0, 8, 4));
+        root.addView(editorToolsScroll, new LinearLayout.LayoutParams(-1, dp(46)));
+        root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1f));
+        root.addView(exportFooter, new LinearLayout.LayoutParams(-1, -2));
         setContentView(root);
         formatSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -435,7 +410,6 @@ public final class VideoStudioActivity extends Activity {
         bindTransformSeekBar(filterIntensitySeekBar);
         bindTrimSeekBars();
         previewHost.post(() -> updatePreviewAspectRatio());
-        if (savedInstanceState != null) restoreEditorState(savedInstanceState);
         String incomingTitle = getIntent().getStringExtra(EXTRA_TREND_TITLE);
         if (incomingTitle != null && !incomingTitle.trim().isEmpty()) titleInput.setText(incomingTitle.trim());
         String incomingScript = getIntent().getStringExtra(EXTRA_SCRIPT_TEXT);
@@ -454,62 +428,6 @@ public final class VideoStudioActivity extends Activity {
         if (incomingTitle != null && !incomingTitle.trim().isEmpty()) {
             setStatus("وصل موضوع من الرادار" + (incomingSource == null ? "" : " — " + incomingSource) + ". اختر الوسائط لاختبارها ثم أنشئ MP4.", GOLD);
         }
-    }
-
-    private void restoreEditorState(Bundle state) {
-        ArrayList<String> savedUris = state.getStringArrayList("editor.mediaUris");
-        float[] savedTransforms = state.getFloatArray("editor.transforms");
-        if (savedUris != null) {
-            mediaUris.clear();
-            clipTransforms.clear();
-            for (int i = 0; i < savedUris.size(); i++) {
-                Uri uri = Uri.parse(savedUris.get(i));
-                mediaUris.add(uri);
-                int offset = i * 8;
-                try {
-                    if (savedTransforms == null || savedTransforms.length < offset + 8) throw new IllegalArgumentException();
-                    int fit = Math.max(0, Math.min(1, Math.round(savedTransforms[offset])));
-                    int filter = Math.max(0, Math.min(VideoFilterPreset.values().length - 1, Math.round(savedTransforms[offset + 4])));
-                    clipTransforms.add(new VideoClipTransform(
-                            fit == 0 ? VideoClipTransform.FitMode.FIT : VideoClipTransform.FitMode.FILL,
-                            savedTransforms[offset + 1], savedTransforms[offset + 2], savedTransforms[offset + 3],
-                            VideoFilterPreset.values()[filter], savedTransforms[offset + 5],
-                            savedTransforms[offset + 6], savedTransforms[offset + 7]));
-                } catch (Exception ignored) {
-                    clipTransforms.add(VideoClipTransform.defaultTransform());
-                }
-            }
-            selectedMediaIndex = Math.max(0, Math.min(state.getInt("editor.selected", 0), Math.max(0, mediaUris.size() - 1)));
-            updateMediaList();
-            if (!mediaUris.isEmpty()) previewFirstMedia();
-        }
-        if (state.containsKey("editor.title")) titleInput.setText(state.getString("editor.title"));
-        if (state.containsKey("editor.caption")) captionInput.setText(state.getString("editor.caption"));
-        if (state.containsKey("editor.ticker")) tickerInput.setText(state.getString("editor.ticker"));
-        restoreSpinnerSelection(formatSpinner, state, "editor.format");
-        restoreSpinnerSelection(templateModeSpinner, state, "editor.template");
-        restoreSpinnerSelection(colorPaletteSpinner, state, "editor.palette");
-        restoreSpinnerSelection(imageDurationSpinner, state, "editor.imageDuration");
-        restoreSpinnerSelection(resolutionSpinner, state, "editor.resolution");
-        restoreSpinnerSelection(transitionModeSpinner, state, "editor.transition");
-        restoreSpinnerSelection(transitionDurationSpinner, state, "editor.transitionDuration");
-        String savedAudio = state.getString("editor.audio");
-        if (savedAudio != null) {
-            audioUri = Uri.parse(savedAudio);
-            audioName.setText("الصوت المحدد: " + displayName(audioUri));
-            testAudioButton.setEnabled(true);
-        }
-        String savedMusic = state.getString("editor.music");
-        if (savedMusic != null) {
-            musicUri = Uri.parse(savedMusic);
-            musicName.setText("الخلفية: " + displayName(musicUri));
-            testMusicButton.setEnabled(true);
-        }
-    }
-
-    private void restoreSpinnerSelection(Spinner spinner, Bundle state, String key) {
-        if (state.containsKey(key) && spinner.getAdapter() != null && spinner.getAdapter().getCount() > 0)
-            spinner.setSelection(Math.max(0, Math.min(state.getInt(key), spinner.getAdapter().getCount() - 1)));
     }
 
     private void openMediaPicker() {
@@ -1296,40 +1214,6 @@ public final class VideoStudioActivity extends Activity {
     }
 
     private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
-
-    @Override protected void onSaveInstanceState(Bundle state) {
-        super.onSaveInstanceState(state);
-        ArrayList<String> savedUris = new ArrayList<>();
-        for (Uri uri : mediaUris) savedUris.add(uri.toString());
-        state.putStringArrayList("editor.mediaUris", savedUris);
-        float[] transforms = new float[clipTransforms.size() * 8];
-        for (int i = 0; i < clipTransforms.size(); i++) {
-            VideoClipTransform t = clipTransforms.get(i);
-            int offset = i * 8;
-            transforms[offset] = t.getFitMode() == VideoClipTransform.FitMode.FIT ? 0 : 1;
-            transforms[offset + 1] = t.getZoom();
-            transforms[offset + 2] = t.getPositionX();
-            transforms[offset + 3] = t.getPositionY();
-            transforms[offset + 4] = t.getFilterPreset().ordinal();
-            transforms[offset + 5] = t.getFilterIntensity();
-            transforms[offset + 6] = t.getTrimStartFraction();
-            transforms[offset + 7] = t.getTrimEndFraction();
-        }
-        state.putFloatArray("editor.transforms", transforms);
-        state.putInt("editor.selected", selectedMediaIndex);
-        state.putString("editor.title", titleInput.getText().toString());
-        state.putString("editor.caption", captionInput.getText().toString());
-        state.putString("editor.ticker", tickerInput.getText().toString());
-        state.putInt("editor.format", formatSpinner.getSelectedItemPosition());
-        state.putInt("editor.template", templateModeSpinner.getSelectedItemPosition());
-        state.putInt("editor.palette", colorPaletteSpinner.getSelectedItemPosition());
-        state.putInt("editor.imageDuration", imageDurationSpinner.getSelectedItemPosition());
-        state.putInt("editor.resolution", resolutionSpinner.getSelectedItemPosition());
-        state.putInt("editor.transition", transitionModeSpinner.getSelectedItemPosition());
-        state.putInt("editor.transitionDuration", transitionDurationSpinner.getSelectedItemPosition());
-        if (audioUri != null) state.putString("editor.audio", audioUri.toString());
-        if (musicUri != null) state.putString("editor.music", musicUri.toString());
-    }
 
     @Override protected void onDestroy() {
         if (exporting && exportEngine != null) {
