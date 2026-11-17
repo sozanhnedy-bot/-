@@ -1,6 +1,8 @@
 name: GDELT and RSS live smoke check
 
 on:
+  push:
+    branches: [feature/gdelt-rss-parallel]
   pull_request:
     branches: [main]
     paths:
