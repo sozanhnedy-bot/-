@@ -797,7 +797,7 @@ def build_update(
         raise RuntimeError("تعذر جلب جميع مصادر RSS؛ لم تُنشر بيانات فارغة")
 
     def sort_key(item: dict) -> float:
-        parsed = _parse_date(item.get("published_at"))
+        parsed = _parse_date(item.get("published_at") or item.get("discovered_at"))
         return parsed.timestamp() if parsed else 0.0
 
     candidates.sort(key=sort_key, reverse=True)
@@ -833,6 +833,8 @@ def build_update(
             "source_url": item.get("source_url", ""),
             "image_url": item.get("image_url", ""),
             "published_at": item.get("published_at"),
+            "discovery_source": item.get("discovery_source"),
+            "discovered_at": item.get("discovered_at"),
             "created_at": now_text,
             "summary_date": today,
         })
