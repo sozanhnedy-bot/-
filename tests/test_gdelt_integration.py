@@ -95,6 +95,7 @@ class GDELTAndRSSFailoverTests(unittest.TestCase):
         self.assertEqual(len(data["items"]), 1)
         self.assertIsNone(data["items"][0]["published_at"])
         self.assertEqual(data["items"][0]["discovered_at"], candidate["discovered_at"])
+        self.assertEqual(data["items"][0]["discovery_source"], "GDELT DOC 2.0")
         self.assertTrue(any("RSS" in warning for warning in warnings))
 
 
