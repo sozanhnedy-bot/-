@@ -775,7 +775,7 @@ def load_json(path: Path) -> dict:
 
 
 def _comparison_text(value: str) -> str:
-    return " ".join(re.sub(r"[^\\w\\s]", " ", clean_text(value).casefold(), flags=re.UNICODE).split())
+    return " ".join(re.sub(r"[^\w\s]", " ", clean_text(value).casefold(), flags=re.UNICODE).split())
 
 
 def _is_substantive_copy(
@@ -788,7 +788,7 @@ def _is_substantive_copy(
 ) -> bool:
     candidate = clean_text(value)
     candidate = re.sub(
-        r"\\s*(?:🔴\\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*?$",
+        r"\s*(?:🔴\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*?$",
         "",
         candidate,
         flags=re.IGNORECASE,
