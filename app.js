@@ -367,7 +367,7 @@ async function fetchJson(path) {
 async function loadData() {
   try {
     const [newsResult, reportsResult] = await Promise.allSettled([
-      fetchJson("./data/news.json"),
+      fetchJson("./data/news-latest.json"),
       fetchJson("./data/reports.json"),
     ]);
     if (reportsResult.status !== "fulfilled") throw reportsResult.reason;
