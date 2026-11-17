@@ -50,6 +50,17 @@ def concise_summary(value: object, title: str, source: str) -> str:
     return summary
 
 
+def has_substantive_details(item: dict) -> bool:
+    if text(item.get("summary_type"), 40) == "source_notice":
+        return False
+    title = title_without_source(item.get("title"), item.get("source_name"))
+    for candidate in (item.get("summary"), item.get("excerpt")):
+        detail = concise_summary(candidate, title, text(item.get("source_name"), 160))
+        if detail and len(detail) >= 40 and len(detail.split()) >= 7:
+            return True
+    return False
+
+
 def safe_external_url(value: object, *, image: bool = False) -> str:
     candidate = text(value, 1_000)
     try:
@@ -155,7 +166,7 @@ def build(output: Path) -> int:
         if not isinstance(item, dict) or str(item.get("id", "")) in report_ids:
             continue
         raw_id = text(item.get("id"), 80)
-        if not ID_RE.fullmatch(raw_id):
+        if not ID_RE.fullmatch(raw_id) or not has_substantive_details(item):
             continue
         (target / f"{raw_id}.html").write_text(render(item, items), encoding="utf-8")
         rendered += 1
