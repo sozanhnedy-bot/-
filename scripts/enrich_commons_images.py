@@ -94,7 +94,7 @@ def candidate_metadata(page: dict, story_tokens: set[str]) -> dict | None:
     searchable = tokens(file_title + " " + description + " " + object_name)
     overlap = story_tokens & searchable
     distinctive = {word for word in overlap if len(word) >= 6}
-    if len(overlap) < 2 and not distinctive:
+    if len(overlap) < 2:
         return None
     original = info.get("url", "")
     parsed = urllib.parse.urlsplit(original)
@@ -105,7 +105,7 @@ def candidate_metadata(page: dict, story_tokens: set[str]) -> dict | None:
         "url": original, "extension": ext, "status": status, "license_url": license_url,
         "credit": clean(creator, 300), "description": clean(object_name or description, 300),
         "source_url": source_url, "score": len(overlap) + len(distinctive),
-        "caption": f"صورة توثيقية مرتبطة بموضوع الخبر من Wikimedia Commons ({short})",
+        "caption": f"صورة توثيقية مرتبطة بموضوع الخبر من Wikimedia Commons ({short}) — تصوير: {clean(creator, 180)}",
     }
 
 def download_image(url: str, destination: Path) -> bool:
