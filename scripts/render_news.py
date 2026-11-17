@@ -51,8 +51,6 @@ def concise_summary(value: object, title: str, source: str) -> str:
 
 
 def has_substantive_details(item: dict) -> bool:
-    if text(item.get("summary_type"), 40) == "source_notice":
-        return False
     title = title_without_source(item.get("title"), item.get("source_name"))
     for candidate in (item.get("summary"), item.get("excerpt")):
         detail = concise_summary(candidate, title, text(item.get("source_name"), 160))
