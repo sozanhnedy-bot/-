@@ -136,7 +136,12 @@ def fetch_category(category: str, query: str, timespan: str, maxrecords: int) ->
         raise RuntimeError("GDELT response was not valid JSON") from exc
     articles = data.get("articles") if isinstance(data, dict) else None
     if not isinstance(articles, list):
-        raise RuntimeError("GDELT response did not contain an articles list")
+        keys = sorted(data.keys()) if isinstance(data, dict) else []
+        detail = clean_text(data.get("error") or data.get("message") or "", 240) if isinstance(data, dict) else ""
+        raise RuntimeError(
+            "GDELT response did not contain an articles list "
+            f"(keys={keys}; detail={detail or 'no provider error message'})"
+        )
     result = []
     for article in articles:
         normalized = normalize_article(article, category)
