@@ -14,14 +14,14 @@ permissions:
   contents: write
 
 concurrency:
-  group: news-refresh
+  group: news-refresh-commons-v2
   cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
 
-    timeout-minutes: 12
+    timeout-minutes: 15
 
     env:
       AI_SUMMARIZATION_ENABLED: "false"
