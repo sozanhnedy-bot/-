@@ -26,6 +26,7 @@
     const titleKey = [...titleWords].sort().join(" ");
     const altKey = [...altWords].sort().join(" ");
     const source = text(item.image_source_url, 1000);
+    if (!source.includes("commons.wikimedia.org/wiki/File:")) return true;
     let filename = "";
     try { filename = decodeURIComponent(new URL(source).pathname.split("/").pop() || ""); } catch (_) {}
     const imageWords = words((altKey && altKey !== titleKey ? alt : "") + " " + filename);
