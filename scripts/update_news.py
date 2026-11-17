@@ -662,10 +662,22 @@ def build_update(
         if "article_content" in stored_item:
             stored_item.pop("article_content", None)
             changed_metadata = True
-        stored_excerpt = clean_text(stored_item.get("excerpt", ""))
-        if len(stored_excerpt) > MAX_STORED_EXCERPT_CHARS:
-            stored_item["excerpt"] = stored_excerpt[:MAX_STORED_EXCERPT_CHARS]
+        stored_excerpt = clean_text(stored_item.get("excerpt", ""))[:MAX_STORED_EXCERPT_CHARS]
+        if stored_excerpt != clean_text(stored_item.get("excerpt", "")):
+            stored_item["excerpt"] = stored_excerpt
             changed_metadata = True
+        if stored_item.get("summary_type") == "source_excerpt":
+            title = clean_text(stored_item.get("title", ""))
+            source = clean_text(stored_item.get("source_name", ""))
+            if _is_substantive_copy(stored_excerpt, title, source):
+                safe_summary = stored_excerpt[:MAX_STORED_EXCERPT_CHARS]
+                if stored_item.get("summary") != safe_summary:
+                    stored_item["summary"] = safe_summary
+                    changed_metadata = True
+            else:
+                stored_item["summary"] = RSS_NO_DETAILS
+                stored_item["summary_type"] = "source_notice"
+                changed_metadata = True
 
     prioritized_feeds = sorted(
         feeds,
@@ -918,8 +930,18 @@ def main() -> int:
         if isinstance(stored_item, dict):
             excerpt = clean_text(stored_item.get("excerpt", ""))
             if len(excerpt) > MAX_STORED_EXCERPT_CHARS:
-                stored_item["excerpt"] = excerpt[:MAX_STORED_EXCERPT_CHARS]
+                excerpt = excerpt[:MAX_STORED_EXCERPT_CHARS]
+                stored_item["excerpt"] = excerpt
                 legacy_text_removed = True
+            if stored_item.get("summary_type") == "source_excerpt":
+                title = clean_text(stored_item.get("title", ""))
+                source = clean_text(stored_item.get("source_name", ""))
+                safe_summary = excerpt if _is_substantive_copy(excerpt, title, source) else RSS_NO_DETAILS
+                safe_type = "source_excerpt" if safe_summary != RSS_NO_DETAILS else "source_notice"
+                if stored_item.get("summary") != safe_summary or stored_item.get("summary_type") != safe_type:
+                    stored_item["summary"] = safe_summary
+                    stored_item["summary_type"] = safe_type
+                    legacy_text_removed = True
     try:
         news, changed, warnings = build_update(
             existing,
