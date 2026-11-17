@@ -118,6 +118,19 @@ class InternalNewsBriefTests(unittest.TestCase):
             "article_content": " ".join(["نص منقول من المقال الأصلي" for _ in range(35)]),
         }))
 
+    def test_rss_brief_pages_are_noindex_and_not_in_sitemaps(self):
+        item = {
+            "id": "d" * 20,
+            "title": "عنوان موجز",
+            "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.",
+            "source_name": "مصدر",
+            "source_url": "https://publisher.example",
+        }
+        page = render_news.render(item)
+        self.assertIn('name="robots" content="noindex,follow"', page)
+        sitemap = render_seo.render_sitemap({"items": [item]}, {"items": []})
+        self.assertNotIn("/news/" + "d" * 20 + ".html", sitemap)
+
     def test_rss_page_has_source_date_and_plain_attribution_without_external_navigation(self):
         item = {
             "id": "a" * 20,
@@ -243,7 +256,7 @@ class BuildAndBrowserTests(unittest.TestCase):
         ]}
         reports = {"items": [{"id": "c" * 20, "title": "تقرير", "published_at": "2026-11-14T00:00:00Z", "sections": [{"heading": "قسم", "paragraphs": ["نص"]}]}]}
         sitemap = render_seo.render_sitemap(news, reports)
-        self.assertIn("https://sozanhnedy-bot.github.io/-/news/" + "a" * 20 + ".html", sitemap)
+        self.assertNotIn("/news/" + "a" * 20 + ".html", sitemap)
         self.assertIn("https://sozanhnedy-bot.github.io/-/reports/" + "c" * 20 + ".html", sitemap)
         self.assertNotIn("/news/" + "b" * 20 + ".html", sitemap)
         self.assertNotIn("archive.html", sitemap)
