@@ -18,7 +18,7 @@
   }
 
   function imageMatchesStory(item) {
-    const words = (value) => new Set(text(value, 1000).toLocaleLowerCase("und").replace(/[^\\p{L}\\p{N}]+/gu, " ").split(/\\s+/).filter((word) => word.length > 2));
+    const words = (value) => new Set(text(value, 1000).toLocaleLowerCase("und").replace(/[^\p{L}\p{N}]+/gu, " ").split(/\s+/).filter((word) => word.length > 2));
     const titleWords = words(item.title);
     if (!titleWords.size) return false;
     const alt = text(item.image_alt, 300);
