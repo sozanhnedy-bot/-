@@ -728,7 +728,12 @@ def build_update(
     additions: list[dict] = []
     for item in candidates[:limit]:
         try:
-            summary = RSS_NO_DETAILS if not clean_text(item.get("excerpt", "")) else clean_text(summarizer(item))
+            if not _has_substantive_source_text(item):
+                summary = RSS_NO_DETAILS
+            else:
+                summary = clean_text(summarizer(item))
+                if not _is_substantive_copy(summary, item.get("title", ""), item.get("source_name", "")):
+                    summary = RSS_NO_DETAILS
         except Exception as exc:
             warnings.append(f"تعذر تلخيص خبر: {type(exc).__name__}")
             continue
@@ -769,23 +774,64 @@ def load_json(path: Path) -> dict:
     return data
 
 
+def _comparison_text(value: str) -> str:
+    return " ".join(re.sub(r"[^\w\s]", " ", clean_text(value).casefold(), flags=re.UNICODE).split())
+
+
+def _is_substantive_copy(
+    value: str,
+    title: str,
+    source: str = "",
+    *,
+    minimum_chars: int = 45,
+    minimum_words: int = 7,
+) -> bool:
+    candidate = clean_text(value)
+    candidate = re.sub(
+        r"\s*(?:🔴\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*?$",
+        "",
+        candidate,
+        flags=re.IGNORECASE,
+    ).strip()
+    if not candidate:
+        return False
+    for separator in (" — ", " – ", " - ", " | ", " :: "):
+        index = candidate.rfind(separator)
+        if index > 0 and candidate[index + len(separator):].strip().casefold() == clean_text(source).casefold():
+            candidate = candidate[:index].strip()
+            break
+    clean_title = clean_text(title)
+    if clean_title and candidate.casefold().startswith(clean_title.casefold()):
+        candidate = candidate[len(clean_title):].strip(" \\t—–-:،|")
+    normalized = _comparison_text(candidate)
+    source_normalized = _comparison_text(source)
+    words = normalized.split()
+    if not normalized or normalized == source_normalized:
+        return False
+    return len(candidate) >= minimum_chars and len(words) >= minimum_words
+
+
+def _has_substantive_source_text(item: dict) -> bool:
+    title = clean_text(item.get("title", ""))
+    source = clean_text(item.get("source_name", ""))
+    excerpt = clean_text(item.get("excerpt", ""))
+    if _is_substantive_copy(excerpt, title, source):
+        return True
+    article = clean_article_content(item.get("article_content", ""))
+    return _is_substantive_copy(article, title, source, minimum_chars=250, minimum_words=30)
+
+
 def summarize_rss_excerpt(item: dict) -> str:
     excerpt = clean_text(item.get("excerpt", ""))
     title = clean_text(item.get("title", ""))
-    if excerpt and title and excerpt.casefold().startswith(title.casefold()):
-        excerpt = excerpt[len(title):].strip(" \t—–-:،|")
     source = clean_text(item.get("source_name", ""))
-    if excerpt and excerpt.casefold() != source.casefold() and len(excerpt) >= 30:
+    if _is_substantive_copy(excerpt, title, source):
         return excerpt[:MAX_SUMMARY_CHARS]
     article_content = clean_article_content(item.get("article_content", ""))
     if article_content:
         paragraphs = [part.strip() for part in article_content.splitlines() if part.strip()]
-        if paragraphs and title and paragraphs[0].casefold() == title.casefold():
-            paragraphs = paragraphs[1:]
         article_excerpt = " ".join(paragraphs).strip()
-        if article_excerpt.casefold().startswith(title.casefold()):
-            article_excerpt = article_excerpt[len(title):].lstrip(" \t—–-:،|\n")
-        if len(article_excerpt) >= 30:
+        if _is_substantive_copy(article_excerpt, title, source, minimum_chars=250, minimum_words=30):
             return article_excerpt[:MAX_SUMMARY_CHARS]
     return RSS_NO_DETAILS
 
