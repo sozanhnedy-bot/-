@@ -14,7 +14,10 @@ on:
   pull_request:
     paths:
       - "scripts/gdelt_discovery_preview.py"
+      - "scripts/update_news.py"
+      - "data/news_sources.json"
       - "tests/test_gdelt_discovery_preview.py"
+      - "tests/test_gdelt_rss_integration.py"
       - ".github/workflows/gdelt-preview-tests.yml"
   workflow_dispatch:
 
