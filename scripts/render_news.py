@@ -54,6 +54,9 @@ def concise_summary(value: object, title: str, source: str) -> str:
 def has_public_details(item: dict) -> bool:
     """Require a distinct, minimally informative excerpt or a substantial source article."""
     source = text(item.get("source_name"), 160)
+    source_url = text(item.get("source_url"), 1_000)
+    if not source or not source_url.startswith("https://"):
+        return False
     title = title_without_source(item.get("title"), source)
     excerpt_values = (item.get("excerpt"),) if text(item.get("summary_type"), 40) == "source_notice" else (item.get("summary"), item.get("excerpt"))
     for value in excerpt_values:
@@ -153,7 +156,13 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
         if detail_paragraphs else
         '<section class="news-detail-copy"><h2>تفاصيل الخبر</h2><p>المصدر لم يرفق تفاصيل كافية داخل موجز الأخبار حتى الآن. يمكنك فتح الخبر من المصدر الأصلي للاطلاع على النص الكامل.</p></section>'
     )
+    source_url = safe_external_url(item.get("source_url"))
     source_link = f'<span class="article-source-name">الناشر: {e(source)}</span>'
+    source_site_link = (
+        f'<a class="article-source-link" href="{e(source_url, quote=True)}" '
+        'target="_blank" rel="nofollow noopener noreferrer">موقع الناشر</a>'
+        if source_url else ""
+    )
     related_items = []
     for candidate in all_items or []:
         if not isinstance(candidate, dict) or candidate.get("id") == raw_id or not ID_RE.fullmatch(text(candidate.get("id"), 80)) or not has_public_details(candidate):
@@ -185,7 +194,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
   <section class="portal-interface-cover article-interface-cover" aria-label="واجهة World News"><img src="../assets/portal-interface-banner-optimized.jpg" alt=""><div class="portal-interface-wordmark"><b>World</b> <strong>News</strong><small>أخبار العالم</small></div></section><header class="article-masthead"><a class="article-brand" href="../"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الأخبار</a></header>
   <main class="article-shell"><nav class="breadcrumb" aria-label="مسار الصفحة"><a href="../">الرئيسية</a><span aria-hidden="true">/</span><a href="../archive.html">الأرشيف</a><span aria-hidden="true">/</span><span>{e(category)}</span></nav>
     <article class="full-report brief-report"><header class="article-heading"><p class="eyebrow">{e(category)} · {e(region)}</p><h1>{e(title)}</h1>
-      {f'<p class="article-dek">{e(dek)}</p>' if dek else ''}<div class="article-meta">{source_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>
+      {f'<p class="article-dek">{e(dek)}</p>' if dek else ''}<div class="article-meta">{source_link}{source_site_link}{f'<time datetime="{e(published, quote=True)}">{e(published_display)}</time>' if published_display else ''}</div>
     </header>
     {image_markup}
     {details_markup}

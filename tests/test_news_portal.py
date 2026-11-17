@@ -68,7 +68,7 @@ class ReportRenderingTests(unittest.TestCase):
 
     def test_full_report_can_show_real_related_internal_news(self):
         report = {"id": "fb839c2fe70d9e789a03", "title": "تقرير", "sections": []}
-        page = render_articles.render(report, "fb839c", {"region": "egypt"}, [{"id": "a" * 20, "title": "خبر من مصر", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر"}])
+        page = render_articles.render(report, "fb839c", {"region": "egypt"}, [{"id": "a" * 20, "title": "خبر من مصر", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "source_url": "https://publisher.example"}])
         self.assertIn("أخبار ذات صلة", page)
         self.assertIn("../news/" + "a" * 20 + ".html", page)
         self.assertNotIn("https://publisher.example", page)
@@ -87,7 +87,7 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertFalse(render_news.has_public_details(item))
 
     def test_public_details_require_minimum_distinct_content(self):
-        base = {"title": "اجتماع إقليمي بشأن تطورات جديدة", "source_name": "وكالة المثال"}
+        base = {"title": "اجتماع إقليمي بشأن تطورات جديدة", "source_name": "وكالة المثال", "source_url": "https://publisher.example"}
         self.assertFalse(render_news.has_public_details({
             **base, "summary": "اجتماع إقليمي بشأن تطورات جديدة - وكالة المثال", "excerpt": "",
         }))
@@ -115,11 +115,11 @@ class InternalNewsBriefTests(unittest.TestCase):
             "excerpt": "تفاصيل إضافية من موجز الناشر تشرح الخبر بوضوح.",
             "image_url": "https://images.example/story.jpg",
         }
-        page = render_news.render(item, [{"id": "b" * 20, "title": "خبر مرتبط", "region": "world", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر"}])
+        page = render_news.render(item, [{"id": "b" * 20, "title": "خبر مرتبط", "region": "world", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "source_url": "https://publisher.example"}])
         self.assertIn("وكالة المثال", page)
         self.assertIn("2026-11-02 11:30 UTC", page)
-        self.assertNotIn("https://publisher.example", page)
-        self.assertNotIn('href="https://publisher.example', page)
+        self.assertIn("https://publisher.example", page)
+        self.assertIn('rel="nofollow noopener noreferrer"', page)
         self.assertIn("https://images.example/story.jpg", page)
         self.assertIn("تفاصيل الخبر", page)
         self.assertIn("تفاصيل إضافية من موجز الناشر", page)
@@ -179,7 +179,7 @@ class InternalNewsBriefTests(unittest.TestCase):
             news_path, reports_path = root / "news.json", root / "reports.json"
             news_path.write_text(json.dumps({"items": [
                 {"id": "full-report", "title": "مكتمل"},
-                {"id": "rss-brief", "title": "موجز", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر"},
+                {"id": "rss-brief", "title": "موجز", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "source_url": "https://publisher.example"},
             ]}, ensure_ascii=False), encoding="utf-8")
             reports_path.write_text(json.dumps({"items": [{"id": "full-report"}]}), encoding="utf-8")
             output = root / "site"
@@ -206,7 +206,7 @@ class InternalNewsBriefTests(unittest.TestCase):
 class BuildAndBrowserTests(unittest.TestCase):
     def test_seo_documents_include_public_routes_and_exclude_weak_news_pages(self):
         news = {"updated_at": "2026-11-15T00:00:00Z", "items": [
-            {"id": "a" * 20, "title": "خبر غني", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "published_at": "2026-11-15T00:00:00Z"},
+            {"id": "a" * 20, "title": "خبر غني", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "source_url": "https://publisher.example", "published_at": "2026-11-15T00:00:00Z"},
             {"id": "b" * 20, "title": "عنوان فقط", "summary": "", "summary_type": "source_notice", "excerpt": "عنوان فقط", "source_name": "مصدر"},
         ]}
         reports = {"items": [{"id": "c" * 20, "title": "تقرير", "published_at": "2026-11-14T00:00:00Z", "sections": [{"heading": "قسم", "paragraphs": ["نص"]}]}]}
