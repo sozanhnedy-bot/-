@@ -109,7 +109,7 @@ class NewsParsingTests(unittest.TestCase):
                  patch.dict(os.environ, {"MAX_NEW_SUMMARIES_PER_RUN": "0", "MAX_SUMMARIES_PER_DAY": "100"}), \
                  patch.object(sys, "argv", ["update_news.py"]):
                 self.assertEqual(update_news.main(), 0)
-            fetch_article.assert_called_once_with(entry["url"])
+            fetch_article.assert_not_called()
 
     def test_parse_rss_rejects_google_placeholders_and_publisher_brand_images(self):
         xml = """<rss><channel><item>
@@ -211,6 +211,16 @@ class NewsUpdateTests(unittest.TestCase):
         data, changed, _ = build_update(existing, [self.feed], lambda *_: [], lambda _item: "", now=NOW)
         self.assertTrue(changed)
         self.assertNotIn("article_content", data["items"][0])
+
+    def test_legacy_source_excerpt_summary_is_rebuilt_from_short_rss_excerpt(self):
+        existing = {"schema_version": 1, "items": [{
+            **self.entries[0], "summary_type": "source_excerpt",
+            "summary": "نص طويل من المقال الأصلي" * 80, "excerpt": "عنوان فقط"
+        }]}
+        data, changed, _ = build_update(existing, [self.feed], lambda *_: [], lambda _item: "", now=NOW)
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["summary"], RSS_NO_DETAILS)
+        self.assertEqual(data["items"][0]["summary_type"], "source_notice")
 
     def test_new_items_do_not_persist_full_article_content(self):
         item = {**self.entries[0], "article_content": "الفقرة الأولى\nالفقرة الثانية"}
