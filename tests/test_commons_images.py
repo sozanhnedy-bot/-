@@ -73,7 +73,7 @@ class CommonsImageTests(unittest.TestCase):
         self.assertIn("../assets/news-images/story.jpg", page)
         self.assertIn("Photographer A", page)
         self.assertIn("creativecommons.org/licenses/by/4.0/", page)
-        self.assertIn("commons.wikimedia.org/wiki/File:Story.jpg", page)
+        self.assertIn("commons.wikimedia.org/wiki/File:French_president_Cairo.jpg", page)
 
     def test_subject_queries_remove_publisher_suffix_and_find_person(self):
         queries = images.search_queries("Trump meets world leaders in Philippines - live updates - BBC")
