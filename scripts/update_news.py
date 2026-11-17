@@ -293,7 +293,8 @@ def clean_article_content(value: str | None) -> str:
         parser.feed(value)
         parser.close()
         raw = "".join(parser.parts)
-    except Exception:        raw = re.sub(r"<[^>]*>", " ", value)
+    except Exception:
+        raw = re.sub(r"<[^>]*>", " ", value)
     paragraphs = [re.sub(r"\s+", " ", part).strip() for part in raw.splitlines()]
     return "\n".join(part for part in paragraphs if part)[:MAX_STORED_ARTICLE_CHARS]
 
