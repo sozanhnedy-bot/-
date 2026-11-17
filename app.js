@@ -92,6 +92,21 @@ function hasReusableImageRights(item) {
     return allowed.has(status) && Boolean(credit) && url.protocol === "https:" && Boolean(url.hostname);
   } catch (_) { return false; }
 }
+function imageMatchesStory(item, title) {
+  const storyWords = new Set(comparableCopy(title).split(" ").filter((word) => word.length > 2));
+  if (!storyWords.size) return false;
+  const alt = text(item?.image_alt, 300);
+  const titleKey = comparableCopy(title);
+  const altKey = comparableCopy(alt);
+  const source = text(item?.image_source_url, 1_000);
+  if (!source.includes("commons.wikimedia.org/wiki/File:")) return true;
+  let filename = "";
+  try { filename = decodeURIComponent(new URL(source).pathname.split("/").pop() || ""); } catch (_) {}
+  const imageWords = new Set(`${altKey && altKey !== titleKey ? altKey : ""} ${comparableCopy(filename)}`.split(" ").filter((word) => word.length > 2));
+  let overlap = 0;
+  for (const word of storyWords) if (imageWords.has(word)) overlap += 1;
+  return overlap >= 2;
+}
 function recordFor(item) {
   if (!item || !validId(item.id)) return null;
   const report = reportMap.get(item.id) || null;
@@ -124,7 +139,7 @@ function recordFor(item) {
     reports: "./assets/news-illustrations/world.jpg",
   };
   const verifiedReportImage = report && report.image_verified === true ? safeImage(report.image) : "";
-  const licensedFeedImage = !report && hasReusableImageRights(item) ? safeImage(item.image_url) : "";
+  const licensedFeedImage = !report && hasReusableImageRights(item) && imageMatchesStory(item, title) ? safeImage(item.image_url) : "";
   const image = verifiedReportImage || licensedFeedImage || categoryIllustrations[category] || categoryIllustrations.world;
   const isIllustration = !verifiedReportImage && !licensedFeedImage;
   const imageSource = verifiedReportImage ? "verified-report" : licensedFeedImage ? "licensed-feed" : "section-illustration";

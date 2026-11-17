@@ -45,6 +45,33 @@ def tokens(value: str) -> set[str]:
     normalized = re.sub(r"[^\w\s]", " ", value.casefold(), flags=re.UNICODE)
     return {word for word in normalized.split() if len(word) > 2 and word not in STOP_WORDS}
 
+def image_matches_story(item: dict) -> bool:
+    """Reject licensed images whose available subject metadata does not match the story."""
+    title = clean(item.get("title", ""), 500)
+    if not title:
+        return True
+    story_tokens = tokens(title)
+    image_tokens: set[str] = set()
+    alt = clean(item.get("image_alt", ""), 300)
+    if alt and tokens(alt) != story_tokens:
+        image_tokens.update(tokens(alt))
+    source_url = clean(item.get("image_source_url", ""), 1000)
+    image_path = clean(item.get("image_url", ""), 1000)
+    if not source_url:
+        return not image_path.startswith("assets/news-images/")
+    if urllib.parse.urlsplit(source_url).hostname != "commons.wikimedia.org":
+        return True
+    if source_url:
+        try:
+            filename = urllib.parse.unquote(urllib.parse.urlsplit(source_url).path.rsplit("/", 1)[-1])
+            image_tokens.update(tokens(filename))
+        except ValueError:
+            pass
+    if not image_tokens:
+        return False
+    return len(story_tokens & image_tokens) >= 2
+
+
 def search_queries(title: str) -> list[str]:
     """Build a small set of subject-focused Commons queries, not publisher queries."""
     clean_title = clean(title, 500)
@@ -130,9 +157,8 @@ def candidate_metadata(page: dict, story_tokens: set[str], query_tokens: set[str
     searchable = tokens(file_title + " " + description + " " + object_name)
     overlap = story_tokens & searchable
     query_overlap = (query_tokens or set()) & searchable
-    distinctive = {word for word in overlap if len(word) >= 5}
-    # Require either two matching story terms or one distinctive subject/entity term.
-    if len(overlap) < 2 and not distinctive:
+    # Two independent subject terms are required; a shared surname alone is not enough.
+    if len(overlap) < 2:
         return None
     if query_tokens and not query_overlap:
         return None
@@ -141,6 +167,7 @@ def candidate_metadata(page: dict, story_tokens: set[str], query_tokens: set[str
     if parsed.scheme != "https" or parsed.hostname != "upload.wikimedia.org":
         return None
     source_url = "https://commons.wikimedia.org/wiki/" + urllib.parse.quote(file_title.replace(" ", "_"), safe=":/")
+    distinctive = {word for word in overlap if len(word) >= 5}
     return {
         "url": original, "extension": ext, "status": status, "license_url": license_url,
         "credit": clean(creator, 300), "description": clean(object_name or description, 300),
@@ -242,11 +269,13 @@ def main() -> int:
         if changed >= max(0, args.limit) or examined >= max(0, args.max_attempts):
             break
         current = str(item.get("image_url", "") or "")
-        current_is_local = current.startswith("assets/news-images/") and (ROOT / current).is_file()
-        if current_is_local and item.get("image_rights_status") and item.get("image_license_url") and item.get("image_credit"):
+        has_rights = bool(item.get("image_rights_status") and item.get("image_license_url") and item.get("image_credit"))
+        if has_rights and image_matches_story(item):
             continue
-        if item.get("image_rights_status") in {"licensed", "permission_granted", "public_domain", "cc0", "cc-by", "cc-by-sa"} and item.get("image_credit") and str(item.get("image_license_url", "")).startswith("https://"):
-            continue
+        if current and has_rights:
+            for key in ("image_url", "image_rights_status", "image_credit", "image_license_url", "image_source_url", "image_alt", "image_caption", "image_match_method"):
+                item.pop(key, None)
+            print(f"Cleared an image with a weak subject match for story {item.get('id')}.", flush=True)
         examined += 1
         print(f"Searching Commons for story {examined}/{args.max_attempts}: {clean(item.get('title'), 160)}", flush=True)
         if enrich_item(item):

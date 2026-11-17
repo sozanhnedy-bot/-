@@ -17,6 +17,24 @@
     return /^[A-Za-z0-9_-]{1,80}$/.test(String(value || ""));
   }
 
+  function imageMatchesStory(item) {
+    const words = (value) => new Set(text(value, 1000).toLocaleLowerCase("und").replace(/[^\p{L}\p{N}]+/gu, " ").split(/\s+/).filter((word) => word.length > 2));
+    const titleWords = words(item.title);
+    if (!titleWords.size) return false;
+    const alt = text(item.image_alt, 300);
+    const altWords = words(alt);
+    const titleKey = [...titleWords].sort().join(" ");
+    const altKey = [...altWords].sort().join(" ");
+    const source = text(item.image_source_url, 1000);
+    if (!source.includes("commons.wikimedia.org/wiki/File:")) return true;
+    let filename = "";
+    try { filename = decodeURIComponent(new URL(source).pathname.split("/").pop() || ""); } catch (_) {}
+    const imageWords = words((altKey && altKey !== titleKey ? alt : "") + " " + filename);
+    let overlap = 0;
+    for (const word of titleWords) if (imageWords.has(word)) overlap += 1;
+    return overlap >= 2;
+  }
+
   function localImage(value) {
     const candidate = text(value, 500);
     return /^assets\/[A-Za-z0-9._/-]+$/.test(candidate) && !candidate.includes("..")
@@ -34,7 +52,7 @@
       const host = imageUrl.hostname.toLowerCase().replace(/^www\./, "");
       const path = decodeURIComponent(imageUrl.pathname).toLowerCase();
       const blocked = ["logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "default.jpg"];
-      return allowedRights.has(status) && Boolean(credit)
+      return allowedRights.has(status) && imageMatchesStory(item) && Boolean(credit)
         && imageUrl.protocol === "https:" && licenseUrl.protocol === "https:"
         && Boolean(imageUrl.hostname && licenseUrl.hostname)
         && !imageUrl.username && !imageUrl.password
