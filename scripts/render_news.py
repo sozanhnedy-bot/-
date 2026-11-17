@@ -63,17 +63,7 @@ def has_public_details(item: dict) -> bool:
         detail = concise_summary(value, title, source)
         if len(detail) >= 45 and len(detail.split()) >= 7:
             return True
-    article = text(item.get("article_content"), 8_000)
-    article_detail = concise_summary(article, title, source)
-    return len(article_detail) >= 250 and len(article_detail.split()) >= 30
-
-
-def limited_source_excerpt(value: object) -> str:
-    """Keep fetched publisher text for quality checks, but never render it in full."""
-    article = text(value, 8_000)
-    if len(article) <= PUBLIC_SOURCE_EXCERPT_CHARS:
-        return article
-    return article[:PUBLIC_SOURCE_EXCERPT_CHARS].rstrip() + "…"
+    return False
 
 
 def safe_external_url(value: object, *, image: bool = False) -> str:
@@ -136,10 +126,8 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
         summary = ""
     if excerpt in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
         excerpt = ""
-    article_content = limited_source_excerpt(item.get("article_content"))
-    has_source_excerpt = len(article_content) >= 250
-    details = (article_content if has_source_excerpt else "") or excerpt or summary
-    details_label = "مقتطف محدود من نص أتاحه الناشر" if has_source_excerpt else ("مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else ""))
+    details = excerpt or summary
+    details_label = "مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else "")
     dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
     region = REGIONS.get(text(item.get("region")), "العالم")
     category_key = text(item.get("category"), 30)
