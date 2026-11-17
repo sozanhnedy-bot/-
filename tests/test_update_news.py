@@ -455,7 +455,7 @@ class NewsUpdateTests(unittest.TestCase):
             "excerpt": f"{title} - المصدر",
             "article_content": article,
         }
-        self.assertEqual(summarize_rss_excerpt(item), article.replace("\n", " ")[:600])
+        self.assertEqual(summarize_rss_excerpt(item), RSS_NO_DETAILS)
 
 
 
