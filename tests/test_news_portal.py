@@ -96,10 +96,10 @@ class InternalNewsBriefTests(unittest.TestCase):
             **base,
             "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.",
         }))
-        self.assertTrue(render_news.has_public_details({
+        self.assertFalse(render_news.has_public_details({
             **base,
             "summary": "",
-            "article_content": " ".join(["تفصيل تحريري مستقل عن الخبر" for _ in range(35)]),
+            "article_content": " ".join(["نص منقول من المقال الأصلي" for _ in range(35)]),
         }))
 
     def test_rss_page_has_source_date_and_plain_attribution_without_external_navigation(self):
@@ -143,7 +143,7 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertNotIn("عن هذه المادة", page)
         self.assertNotIn("تعرض هذه الصفحة المعلومات المتاحة في موجز الناشر", page)
 
-    def test_publisher_article_text_is_rendered_as_a_limited_excerpt(self):
+    def test_full_publisher_article_text_is_never_rendered(self):
         item = {
             "id": "e" * 20,
             "title": "خبر مفصل",
@@ -151,9 +151,9 @@ class InternalNewsBriefTests(unittest.TestCase):
             "article_content": "بداية المادة " + ("تفصيل من نص الناشر. " * 100),
         }
         page = render_news.render(item)
-        self.assertIn("مقتطف محدود من نص أتاحه الناشر", page)
-        self.assertIn("بداية المادة", page)
-        self.assertNotIn("تفصيل من نص الناشر. " * 80, page)
+        self.assertNotIn("بداية المادة", page)
+        self.assertNotIn("تفصيل من نص الناشر", page)
+        self.assertNotIn("مقتطف محدود من نص أتاحه الناشر", page)
 
     def test_rss_page_hides_images_without_explicit_reuse_rights(self):
         item = {"id": "f" * 20, "title": "خبر", "source_name": "ناشر",
@@ -279,6 +279,14 @@ class BuildAndBrowserTests(unittest.TestCase):
             self.assertTrue((output / "robots.txt").is_file())
             self.assertIn("Alaaloka878787@GMAIL.COM", (output / "contact.html").read_text(encoding="utf-8"))
 
+    def test_public_site_data_strips_full_publisher_article_text(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "site"
+            build_site.build(output)
+            public_news = json.loads((output / "data" / "news.json").read_text(encoding="utf-8"))
+            self.assertTrue(all("article_content" not in item for item in public_news.get("items", [])))
+            self.assertTrue(all(len(item.get("excerpt", "")) <= 300 for item in public_news.get("items", [])))
+
     def test_verified_image_filter_bumps_app_and_service_worker_cache_versions(self):
         root = Path(__file__).resolve().parents[1]
         page = (root / "index.html").read_text(encoding="utf-8")
@@ -304,7 +312,7 @@ class BuildAndBrowserTests(unittest.TestCase):
             script = (root / filename).read_text(encoding="utf-8")
             self.assertIn("hasSubstantiveDetail", script)
             self.assertIn("summary_type", script)
-            self.assertIn("article_content", script)
+            self.assertNotIn("article_content", script)
 
 
 if __name__ == "__main__":
