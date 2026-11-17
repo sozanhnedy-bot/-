@@ -23,6 +23,7 @@
     }
   }
   function chooseReport() {
+    if ($("report-select").value === "") return;
     const report = reports[Number($("report-select").value)];
     if (!report) return;
     $("video-title").value = clean(report.title);
