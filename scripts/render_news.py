@@ -94,6 +94,15 @@ def safe_external_url(value: object, *, image: bool = False) -> str:
     return candidate
 
 
+def has_reusable_image_rights(item: dict) -> bool:
+    """Require explicit reuse status, credit, and a public HTTPS license/permission reference."""
+    status = text(item.get("image_rights_status"), 40).lower()
+    allowed = {"licensed", "permission_granted", "public_domain", "cc0", "cc-by", "cc-by-sa"}
+    credit = text(item.get("image_credit"), 240)
+    license_url = safe_external_url(item.get("image_license_url"))
+    return status in allowed and bool(credit) and bool(license_url)
+
+
 def _reused_image_urls(items: list[dict]) -> set[str]:
     counts: dict[str, int] = {}
     for item in items:
@@ -137,7 +146,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     category = CATEGORIES.get(category_key, REGIONS.get(category_key, region))
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
-    image_url = safe_external_url(item.get("image_url"), image=True)
+    image_url = safe_external_url(item.get("image_url"), image=True) if has_reusable_image_rights(item) else ""
     if shared_image_urls is None and all_items:
         shared_image_urls = _reused_image_urls(all_items)
     if image_url and image_url in (shared_image_urls or set()):

@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - world-news/main-quality-gate
+      - world-news/image-rights-gate
     paths:
       - "scripts/update_news.py"
       - "scripts/render_news.py"
@@ -14,6 +15,7 @@ on:
       - "section.js"
       - "tests/test_update_news.py"
       - "tests/test_news_portal.py"
+      - "editorial-policy.html"
       - ".github/workflows/news-quality-tests.yml"
   pull_request:
     paths:

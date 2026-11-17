@@ -114,6 +114,9 @@ class InternalNewsBriefTests(unittest.TestCase):
             "published_at": "2026-11-02T11:30:00Z",
             "excerpt": "تفاصيل إضافية من موجز الناشر تشرح الخبر بوضوح.",
             "image_url": "https://images.example/story.jpg",
+            "image_rights_status": "cc-by",
+            "image_credit": "وكالة المثال",
+            "image_license_url": "https://publisher.example/license",
         }
         page = render_news.render(item, [{"id": "b" * 20, "title": "خبر مرتبط", "region": "world", "summary": "ناقش الوزراء خلال الاجتماع آليات التعاون والموعد المتوقع للخطوات المقبلة وفق بيان رسمي صدر اليوم.", "source_name": "مصدر", "source_url": "https://publisher.example"}])
         self.assertIn("وكالة المثال", page)
@@ -151,6 +154,19 @@ class InternalNewsBriefTests(unittest.TestCase):
         self.assertIn("مقتطف محدود من نص أتاحه الناشر", page)
         self.assertIn("بداية المادة", page)
         self.assertNotIn("تفصيل من نص الناشر. " * 80, page)
+
+    def test_rss_page_hides_images_without_explicit_reuse_rights(self):
+        item = {"id": "f" * 20, "title": "خبر", "source_name": "ناشر",
+                "image_url": "https://images.example/story.jpg"}
+        page = render_news.render(item)
+        self.assertNotIn("https://images.example/story.jpg", page)
+        item.update({"image_rights_status": "cc-by", "image_credit": "وكالة المثال",
+                     "image_license_url": "https://publisher.example/license"})
+        page = render_news.render(item)
+        self.assertIn("https://images.example/story.jpg", page)
+        item["image_license_url"] = "javascript:alert(1)"
+        page = render_news.render(item)
+        self.assertNotIn("https://images.example/story.jpg", page)
 
     def test_rss_page_hides_google_placeholders_and_publisher_brand_images(self):
         item = {"id": "d" * 20, "title": "خبر", "source_name": "ناشر", "region": "world",
