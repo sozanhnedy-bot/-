@@ -286,6 +286,7 @@ class BuildAndBrowserTests(unittest.TestCase):
             public_news = json.loads((output / "data" / "news.json").read_text(encoding="utf-8"))
             self.assertTrue(all("article_content" not in item for item in public_news.get("items", [])))
             self.assertTrue(all(len(item.get("excerpt", "")) <= 300 for item in public_news.get("items", [])))
+            self.assertTrue(all(len(item.get("summary", "")) <= 300 for item in public_news.get("items", []) if item.get("summary_type") == "source_excerpt"))
 
     def test_verified_image_filter_bumps_app_and_service_worker_cache_versions(self):
         root = Path(__file__).resolve().parents[1]
