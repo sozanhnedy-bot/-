@@ -106,8 +106,7 @@ function recordFor(item) {
     title,
     sourceName,
   );
-  const articleSummary = !report ? distinctSummary(item.article_content, title, sourceName) : "";
-  const summary = primarySummary || articleSummary;
+  const summary = primarySummary;
   const publishable = Boolean(report || hasSubstantiveDetail(summary));
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
