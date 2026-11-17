@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import shutil
 import subprocess
 import sys
@@ -41,7 +42,30 @@ def build(output: Path) -> int:
     for folder in ("data", "assets"):
         (output / folder).mkdir(exist_ok=True)
     for name in DATA_FILES:
-        shutil.copy2(ROOT / "data" / name, output / "data" / name)
+        source = ROOT / "data" / name
+        if name == "news.json":
+            news = json.loads(source.read_text(encoding="utf-8"))
+            for item in news.get("items", []):
+                if isinstance(item, dict):
+                    item.pop("article_content", None)
+                    if isinstance(item.get("excerpt"), str):
+                        item["excerpt"] = item["excerpt"][:300]
+                    if item.get("summary_type") == "source_excerpt":
+                        excerpt = str(item.get("excerpt") or "")
+                        title = str(item.get("title") or "")
+                        source = str(item.get("source_name") or "")
+                        normalize = lambda value: " ".join("".join(ch if ch.isalnum() or ch.isspace() else " " for ch in value.casefold()).split())
+                        detail = normalize(excerpt)
+                        title_key = normalize(title)
+                        words = detail.split()
+                        if len(excerpt) >= 45 and len(words) >= 7 and detail != title_key:
+                            item["summary"] = excerpt
+                        else:
+                            item["summary"] = "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."
+                            item["summary_type"] = "source_notice"
+            (output / "data" / name).write_text(json.dumps(news, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        else:
+            shutil.copy2(source, output / "data" / name)
     for name in ASSET_FILES:
         shutil.copy2(ROOT / "assets" / name, output / "assets" / name)
     shutil.copytree(ROOT / "assets" / "news-illustrations", output / "assets" / "news-illustrations", dirs_exist_ok=True)

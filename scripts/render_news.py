@@ -20,7 +20,6 @@ CATEGORIES = {"politics": "سياسة", "economy": "اقتصاد", "technology":
 BRAND = "World News"
 ARABIC_BRAND = "أخبار العالم"
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)$", re.IGNORECASE)
-PUBLIC_SOURCE_EXCERPT_CHARS = 600
 
 
 def text(value: object, limit: int = 4_000) -> str:
@@ -52,7 +51,7 @@ def concise_summary(value: object, title: str, source: str) -> str:
 
 
 def has_public_details(item: dict) -> bool:
-    """Require a distinct, minimally informative excerpt or a substantial source article."""
+    """Require a distinct, minimally informative publisher excerpt or approved summary."""
     source = text(item.get("source_name"), 160)
     source_url = text(item.get("source_url"), 1_000)
     if not source or not source_url.startswith("https://"):
@@ -63,17 +62,7 @@ def has_public_details(item: dict) -> bool:
         detail = concise_summary(value, title, source)
         if len(detail) >= 45 and len(detail.split()) >= 7:
             return True
-    article = text(item.get("article_content"), 8_000)
-    article_detail = concise_summary(article, title, source)
-    return len(article_detail) >= 250 and len(article_detail.split()) >= 30
-
-
-def limited_source_excerpt(value: object) -> str:
-    """Keep fetched publisher text for quality checks, but never render it in full."""
-    article = text(value, 8_000)
-    if len(article) <= PUBLIC_SOURCE_EXCERPT_CHARS:
-        return article
-    return article[:PUBLIC_SOURCE_EXCERPT_CHARS].rstrip() + "…"
+    return False
 
 
 def safe_external_url(value: object, *, image: bool = False) -> str:
@@ -129,17 +118,17 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     source = text(item.get("source_name"), 160) or "المصدر غير محدد"
     title = title_without_source(item.get("title"), source) or "خبر قيد التحرير"
     summary = concise_summary(item.get("summary"), title, source)
-    excerpt = concise_summary(item.get("excerpt"), title, source)
+    if text(item.get("summary_type"), 40) == "source_excerpt":
+        summary = summary[:300]
+    excerpt = concise_summary(item.get("excerpt"), title, source)[:300]
     if text(item.get("summary_type"), 40) == "source_notice" or "افتح رابط المصدر" in summary or "اقرأ الخبر" in summary:
         summary = ""
     if summary in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
         summary = ""
     if excerpt in {"لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط.", "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."}:
         excerpt = ""
-    article_content = limited_source_excerpt(item.get("article_content"))
-    has_source_excerpt = len(article_content) >= 250
-    details = (article_content if has_source_excerpt else "") or excerpt or summary
-    details_label = "مقتطف محدود من نص أتاحه الناشر" if has_source_excerpt else ("مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else ""))
+    details = excerpt or summary
+    details_label = "مقتطف من موجز الناشر" if excerpt else ("ملخص الخبر" if summary else "")
     dek = summary if summary and excerpt and summary.casefold() != excerpt.casefold() else ""
     region = REGIONS.get(text(item.get("region")), "العالم")
     category_key = text(item.get("category"), 30)
