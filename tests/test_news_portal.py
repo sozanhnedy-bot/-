@@ -358,13 +358,13 @@ class BuildAndBrowserTests(unittest.TestCase):
             self.assertNotIn('fetchJson("./data/news.json")', homepage_script)
             worker = (Path(__file__).resolve().parents[1] / "service-worker.js").read_text(encoding="utf-8")
             self.assertIn('"data/news-latest.json"', worker)
-            self.assertIn('const CACHE_NAME = "world-news-v18-image-fallback-fix";', worker)
+            self.assertIn('const CACHE_NAME = "world-news-v19-entity-match-guard";', worker)
 
     def test_verified_image_filter_bumps_app_and_service_worker_cache_versions(self):
         root = Path(__file__).resolve().parents[1]
         page = (root / "index.html").read_text(encoding="utf-8")
         worker = (root / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn("app.js?v=20261117-image-fallback-fix", page)
+        self.assertIn("app.js?v=20261117-entity-match-guard", page)
         self.assertIn('const CACHE_NAME = "world-news-v18-image-fallback-fix";', worker)
 
     def test_homepage_has_no_browser_task_link_or_trend_monitor(self):
