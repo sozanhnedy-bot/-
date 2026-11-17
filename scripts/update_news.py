@@ -52,14 +52,14 @@ GDELT_CATEGORY_MAP = {
 
 def fetch_gdelt_items(category: str, *, timespan: str = "24h", maxrecords: int = 25) -> list[dict]:
     """Adapt GDELT discovery candidates to the existing news item schema."""
-    from scripts.gdelt_discovery_preview import CATEGORIES, fetch_category
+    from scripts.gdelt_discovery_preview import CATEGORIES, fetch_category, safe_article_url
 
     if category not in CATEGORIES:
         raise ValueError(f"unsupported GDELT category: {category}")
     candidates = fetch_category(category, CATEGORIES[category], timespan, maxrecords)
     results: list[dict] = []
     for candidate in candidates:
-        article_url = _safe_article_url(str(candidate.get("url", "")))
+        article_url = safe_article_url(candidate.get("url", ""))
         title = clean_text(candidate.get("title", ""))
         if not article_url or not title:
             continue
@@ -792,7 +792,7 @@ def build_update(
                 seen_stories[story_key] = item
 
     enabled_count = sum(1 for feed in feeds if feed.get("enabled", True))
-    print(f"[RSS] Cycle summary | enabled={enabled_count} | successful={successful_feeds} | failed={enabled_count - successful_feeds}")
+    print(f"[NEWS] Cycle summary | enabled={enabled_count} | successful={successful_feeds} | failed={enabled_count - successful_feeds}")
     if enabled_count and successful_feeds == 0:
         raise RuntimeError("تعذر جلب جميع مصادر RSS؛ لم تُنشر بيانات فارغة")
 
