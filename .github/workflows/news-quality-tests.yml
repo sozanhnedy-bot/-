@@ -36,6 +36,7 @@ on:
       - ".github/workflows/news-quality-tests.yml"
   pull_request:
     paths:
+      - ".github/workflows/update-news.yml"
       - "scripts/enrich_commons_images.py"
       - "tests/test_commons_images.py"
       - "scripts/update_news.py"
