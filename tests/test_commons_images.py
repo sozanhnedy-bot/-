@@ -6,6 +6,8 @@ class CommonsImageTests(unittest.TestCase):
         self.assertEqual(images.license_status("CC BY-SA 4.0", "https://creativecommons.org/licenses/by-sa/4.0/"), "cc-by-sa")
         self.assertEqual(images.license_status("CC0 1.0", "https://creativecommons.org/publicdomain/zero/1.0/"), "cc0")
         self.assertEqual(images.license_status("All rights reserved", "https://example.com/license"), "")
+        self.assertEqual(images.license_status("CC BY 4.0", "https://example.com/fake-license"), "")
+        self.assertEqual(images.license_status("CC BY 4.0", "http://creativecommons.org/licenses/by/4.0/"), "")
 
     def test_candidate_requires_creator_credit_and_relevant_words(self):
         story = {"title": "الرئيس الفرنسي يزور القاهرة"}
