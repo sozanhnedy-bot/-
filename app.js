@@ -82,6 +82,16 @@ function hasSubstantiveDetail(value) {
   const words = detail.split(" ").filter(Boolean).length;
   return detail.length >= 45 && words >= 7 || detail.length >= 250 && words >= 30;
 }
+function hasReusableImageRights(item) {
+  const status = text(item?.image_rights_status, 40).toLowerCase();
+  const allowed = new Set(["licensed", "permission_granted", "public_domain", "cc0", "cc-by", "cc-by-sa"]);
+  const credit = text(item?.image_credit, 240);
+  const licenseUrl = text(item?.image_license_url, 1_000);
+  try {
+    const url = new URL(licenseUrl);
+    return allowed.has(status) && Boolean(credit) && url.protocol === "https:" && Boolean(url.hostname);
+  } catch (_) { return false; }
+}
 function recordFor(item) {
   if (!item || !validId(item.id)) return null;
   const report = reportMap.get(item.id) || null;
@@ -101,7 +111,7 @@ function recordFor(item) {
   const publishable = Boolean(report || hasSubstantiveDetail(summary));
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
-  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : safeImage(item.image_url);
+  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : (hasReusableImageRights(item) ? safeImage(item.image_url) : "");
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
