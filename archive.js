@@ -13,6 +13,12 @@ function stripSource(title, source) { let clean = removePromotion(title), publis
 function conciseSummary(value, title, source) { const summary = removePromotion(value), summaryKey = comparable(stripSource(summary, source)), titleKey = comparable(title); if (!summaryKey || summaryKey === titleKey) return ""; if (summaryKey.startsWith(titleKey) && summaryKey.split(" ").length <= titleKey.split(" ").length + 2 && !/\d/u.test(summary)) return ""; return summary; }
 function hasSubstantiveDetail(item, title, source) { const sourceNotice = String(item.summary_type || "").trim() === "source_notice"; const values = sourceNotice ? [item.excerpt] : [item.summary, item.excerpt]; if (values.some((value) => { const detail = conciseSummary(value, title, source), words = comparable(detail).split(" ").filter(Boolean).length; return detail.length >= 45 && words >= 7; })) return true; const article = conciseSummary(item.article_content, title, source), words = comparable(article).split(" ").filter(Boolean).length; return article.length >= 250 && words >= 30; }
 function safeImage(value) { const candidate = String(value || ""); if (/^assets\/[A-Za-z0-9._/-]+$/.test(candidate) && !candidate.includes("..")) return `./${candidate}`; try { const url = new URL(candidate); if (url.protocol === "https:" && url.hostname.includes(".") && !url.username && !url.password && /\.(jpe?g|png|webp|avif)$/i.test(url.pathname)) return url.href; } catch (_) {} return ""; }
+function hasReusableImageRights(item) {
+  const status = String(item?.image_rights_status || "").trim().toLowerCase();
+  const allowed = ["licensed", "permission_granted", "public_domain", "cc0", "cc-by", "cc-by-sa"];
+  const credit = String(item?.image_credit || "").trim();
+  try { const url = new URL(String(item?.image_license_url || "")); return allowed.includes(status) && Boolean(credit) && url.protocol === "https:" && Boolean(url.hostname); } catch (_) { return false; }
+}
 function toRecords(news, reports, updatedAt) {
   const reportMap = new Map(reports.filter((report) => report && validId(report.id)).map((report) => [report.id, report]));
   const rows = (Array.isArray(news) ? news : []).filter((item) => item && validId(item.id)).map((item) => {
@@ -21,7 +27,7 @@ function toRecords(news, reports, updatedAt) {
     const title = report?.title || stripSource(item.title, item.source_name) || "خبر";
     if (!report && !hasSubstantiveDetail(item, title, source)) return null;
     const category = report ? "reports" : (item.category || item.region || "world");
-    const suppliedImage = safeImage(report?.image || item.image_url);
+    const suppliedImage = report ? (report.image_verified === true ? safeImage(report.image) : "") : (hasReusableImageRights(item) ? safeImage(item.image_url) : "");
     const image = suppliedImage || safeImage(`assets/news-illustrations/${ILLUSTRATION_IMAGES[category] || "world"}.jpg`);
     return { id:item.id, title, summary:report?.dek || conciseSummary(item.summary, title, source), source, region:item.region || report?.region || "world", category, date:item.published_at || report?.published_at || item.created_at || "", image, imageAlt:suppliedImage ? (report?.image_alt || title) : `رسم توضيحي لقسم ${CATEGORY_LABELS[category] || "العالم"}، وليس صورة للحدث`, illustrative:!suppliedImage, href:report ? `./reports/${item.id}.html` : `./news/${item.id}.html`, full:Boolean(report) };
   }).filter(Boolean);
