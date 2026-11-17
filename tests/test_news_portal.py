@@ -268,16 +268,27 @@ class BuildAndBrowserTests(unittest.TestCase):
     def test_news_sitemap_only_lists_recent_original_reports(self):
         now = datetime(2026, 11, 17, 12, 0, tzinfo=timezone.utc)
         reports = {"items": [
-            {"id": "a" * 20, "title": "تقرير حديث", "published_at": "2026-11-17T10:00:00Z", "sections": [{"heading": "قسم"}]},
-            {"id": "b" * 20, "title": "تقرير قديم", "published_at": "2026-11-14T10:00:00Z", "sections": [{"heading": "قسم"}]},
-            {"id": "c" * 20, "title": "مسودة بلا أقسام", "published_at": "2026-11-17T11:00:00Z"},
+            {"id": "a" * 20, "title": "تقرير حديث", "sections": [{"heading": "قسم"}]},
+            {"id": "b" * 20, "title": "تقرير قديم", "sections": [{"heading": "قسم"}]},
+            {"id": "c" * 20, "title": "مسودة بلا أقسام"},
         ]}
-        sitemap = render_seo.render_news_sitemap(reports, now)
+        news = {"items": [
+            {"id": "a" * 20, "published_at": "2026-11-17T10:00:00Z"},
+            {"id": "b" * 20, "published_at": "2026-11-14T10:00:00Z"},
+            {"id": "c" * 20, "published_at": "2026-11-17T11:00:00Z"},
+        ]}
+        sitemap = render_seo.render_news_sitemap(reports, now, news)
         self.assertIn("xmlns:news=", sitemap)
         self.assertIn("/reports/" + "a" * 20 + ".html", sitemap)
         self.assertIn("تقرير حديث", sitemap)
         self.assertNotIn("b" * 20, sitemap)
         self.assertNotIn("c" * 20, sitemap)
+
+    def test_report_sitemap_lastmod_uses_linked_news_timestamp(self):
+        news = {"items": [{"id": "e" * 20, "published_at": "2026-11-17T09:15:00Z"}]}
+        reports = {"items": [{"id": "e" * 20, "title": "تقرير", "sections": [{"heading": "قسم"}]}]}
+        sitemap = render_seo.render_sitemap(news, reports)
+        self.assertIn("<lastmod>2026-11-17</lastmod>", sitemap)
 
     def test_sitemap_rejects_invalid_content_ids(self):
         news = {"items": [
