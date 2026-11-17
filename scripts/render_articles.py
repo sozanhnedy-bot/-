@@ -141,7 +141,7 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
             except ValueError:
                 pass
     schema_json = json.dumps(schema, ensure_ascii=False).replace("</", "<\\/")
-    return f\'\'\'<!doctype html>
+    return f'''<!doctype html>
 <html lang="ar" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#14283f"><meta name="description" content="{dek}">
