@@ -182,7 +182,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#14283f"><meta name="description" content="{description}">
+  <meta name="theme-color" content="#14283f"><meta name="robots" content="noindex,follow"><meta name="description" content="{description}">
   <meta property="og:site_name" content="{BRAND}"><meta property="og:type" content="article"><meta property="og:title" content="{e(title, quote=True)} | {BRAND}">
   <meta property="og:description" content="{description}"><meta property="og:url" content="{canonical}">{f'<meta property="og:image" content="{e(preview_image, quote=True)}">' if preview_image else ''}
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title, quote=True)} | {BRAND}"><meta name="twitter:description" content="{description}">{f'<meta name="twitter:image" content="{e(preview_image, quote=True)}">' if preview_image else ''}<link rel="canonical" href="{canonical}"><title>{e(title)} | {BRAND}</title>

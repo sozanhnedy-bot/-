@@ -55,13 +55,6 @@ def _public_paths(news: dict, reports: dict) -> list[tuple[str, str | None]]:
         if report.get("sections") and re.fullmatch(r"[a-f0-9]{20,40}", report_id):
             paths.append((f"reports/{report_id}.html", _iso_date(report.get("published_at"))))
 
-    items = news.get("items", []) if isinstance(news, dict) else []
-    for item in items:
-        if not isinstance(item, dict) or str(item.get("id")) in report_ids:
-            continue
-        raw_id = str(item.get("id") or "")
-        if re.fullmatch(r"[A-Za-z0-9_-]{1,80}", raw_id) and has_public_details(item):
-            paths.append((f"news/{raw_id}.html", _iso_date(item.get("published_at"))))
     return paths
 
 
