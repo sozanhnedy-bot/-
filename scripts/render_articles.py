@@ -5,6 +5,7 @@ import argparse
 import html
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 try:
@@ -115,7 +116,32 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
     ).replace("</", "<\\/")
     share_payload = share_payload.replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
     canonical = f"{SITE_URL}/reports/{report_id}.html"
-    return f'''<!doctype html>
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": str(report.get("title") or "")[:110],
+        "description": str(report.get("dek") or "")[:300],
+        "inLanguage": "ar",
+        "isAccessibleForFree": True,
+        "mainEntityOfPage": {"@type": "WebPage", "@id": canonical},
+        "publisher": {
+            "@type": "Organization",
+            "name": BRAND,
+            "logo": {"@type": "ImageObject", "url": f"{SITE_URL}/assets/brand-mark.png"},
+        },
+    }
+    for field, key in (("datePublished", "published_at"), ("dateModified", "updated_at")):
+        raw_date = str(report.get(key) or "").strip()
+        if raw_date:
+            try:
+                parsed_date = datetime.fromisoformat(raw_date.replace("Z", "+00:00"))
+                if parsed_date.tzinfo is None:
+                    parsed_date = parsed_date.replace(tzinfo=timezone.utc)
+                schema[field] = parsed_date.astimezone(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+            except ValueError:
+                pass
+    schema_json = json.dumps(schema, ensure_ascii=False).replace("</", "<\\/")
+    return f\'\'\'<!doctype html>
 <html lang="ar" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#14283f"><meta name="description" content="{dek}">
@@ -124,7 +150,7 @@ def render(report: dict, code: str, news_item: dict | None = None, related_items
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title} | {BRAND}"><meta name="twitter:description" content="{dek}"><meta name="twitter:image" content="{SITE_URL}/{social_image}">
 <meta property="og:url" content="{canonical}"><link rel="canonical" href="{canonical}">
   <link rel="icon" href="../assets/brand-mark.png" type="image/png"><link rel="stylesheet" href="../styles.css?v=20261107-images"><link rel="stylesheet" href="../styles-newspaper-overrides.css?v=20261114-global">
-<title>{title} | {BRAND}</title><script defer src="../article.js?v=20261107-images"></script>
+<title>{title} | {BRAND}</title><script type="application/ld+json">{schema_json}</script><script defer src="../article.js?v=20261107-images"></script>
 </head><body class="article-body">
 <a class="skip-link" href="#article-main">انتقل إلى التقرير</a>
 <section class="portal-interface-cover article-interface-cover" aria-label="واجهة World News"><img src="../assets/portal-interface-banner-optimized.jpg" alt=""><div class="portal-interface-wordmark"><b>World</b> <strong>News</strong><small>أخبار العالم</small></div></section><header class="article-masthead"><a href="../" class="article-brand"><img src="../assets/brand-mark.png" alt=""><span><small>{ARABIC_BRAND}</small><b>{BRAND}</b></span></a><a class="article-home" href="../">العودة إلى الصفحة الرئيسية</a></header>
