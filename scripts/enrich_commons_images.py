@@ -1,8 +1,8 @@
 """Find subject-matched, reusable Wikimedia Commons images for recent news.
 
-Only files with an explicit CC0, CC BY, CC BY-SA, or public-domain license,
-creator/credit metadata, and a strong title-to-file text match are downloaded.
-Uncertain matches are left without a photo.
+Images are downloaded only when Commons exposes an explicit reuse license,
+creator credit, and a strong match to distinctive words in the story title.
+Ambiguous results are skipped rather than attached to an unrelated story.
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 NEWS_PATH = ROOT / "data" / "news.json"
 IMAGE_DIR = ROOT / "assets" / "news-images"
 API = "https://commons.wikimedia.org/w/api.php"
-USER_AGENT = "WorldNewsImageResearch/1.0 (https://sozanhnedy-bot.github.io/-/; editorial image licensing contact)"
+USER_AGENT = "WorldNewsImageResearch/1.1 (https://sozanhnedy-bot.github.io/-/; editorial image licensing contact)"
 MAX_IMAGE_BYTES = 8 * 1024 * 1024
 ALLOWED_MIMES = {"image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp"}
 STOP_WORDS = {
@@ -29,6 +29,12 @@ STOP_WORDS = {
     "بعد", "قبل", "بين", "خلال", "حول", "أمام", "ضمن", "عبر", "أكثر", "أقل",
     "the", "and", "for", "with", "from", "after", "before", "over", "into",
     "news", "report", "update", "breaking", "صور", "صورة", "أخبار", "خبر",
+    "says", "said", "live", "takeaways", "first", "leg", "other", "middle",
+    "east", "register", "international", "agency", "official", "announces",
+}
+PUBLISHER_WORDS = {
+    "bbc", "news", "register", "telegraph", "times", "post", "today",
+    "international", "middle", "east", "reuters", "associated", "press",
 }
 
 def clean(value: object, limit: int = 2000) -> str:
@@ -38,6 +44,35 @@ def clean(value: object, limit: int = 2000) -> str:
 def tokens(value: str) -> set[str]:
     normalized = re.sub(r"[^\w\s]", " ", value.casefold(), flags=re.UNICODE)
     return {word for word in normalized.split() if len(word) > 2 and word not in STOP_WORDS}
+
+def search_queries(title: str) -> list[str]:
+    """Build a small set of subject-focused Commons queries, not publisher queries."""
+    clean_title = clean(title, 500)
+    story = clean_title.rsplit(" - ", 1)[0]
+    queries = [story]
+    # Proper-name spans in Latin-script headlines, e.g. "Donald Trump", "New Zealand".
+    spans = re.findall(r"\b[A-Z][A-Za-z’'-]*(?:\s+[A-Z][A-Za-z’'-]*){0,2}\b", story)
+    for span in spans:
+        words = [w.casefold() for w in re.findall(r"[A-Za-z’'-]+", span)]
+        if not words or all(w in PUBLISHER_WORDS for w in words):
+            continue
+        if len(span) >= 4:
+            queries.append(span)
+    # Arabic/other scripts: search the headline and a compact pair of meaningful terms.
+    meaningful = [w for w in re.findall(r"[\w]+", story, flags=re.UNICODE)
+                  if len(w) > 3 and w.casefold() not in STOP_WORDS]
+    if len(meaningful) >= 2:
+        queries.append(" ".join(meaningful[:4]))
+    result = []
+    seen = set()
+    for query in queries:
+        key = query.casefold()
+        if key not in seen and len(tokens(query)) >= 1:
+            seen.add(key)
+            result.append(query[:160])
+        if len(result) >= 3:
+            break
+    return result
 
 def license_status(short_name: str, license_url: str) -> str:
     name = clean(short_name, 100).casefold()
@@ -55,22 +90,22 @@ def license_status(short_name: str, license_url: str) -> str:
 def api_json(params: dict) -> dict:
     url = API + "?" + urllib.parse.urlencode(params)
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
-    with urllib.request.urlopen(request, timeout=20) as response:
+    with urllib.request.urlopen(request, timeout=8) as response:
         if response.status != 200:
             raise ValueError("Commons API returned a non-success response")
         return json.loads(response.read(2_000_000).decode("utf-8"))
 
-def search_files(title: str) -> list[dict]:
+def search_files(query: str) -> list[dict]:
     params = {
         "action": "query", "generator": "search", "gsrnamespace": "6",
-        "gsrsearch": title[:220], "gsrlimit": "10",
+        "gsrsearch": query, "gsrlimit": "8",
         "prop": "imageinfo", "iiprop": "url|size|mime|extmetadata",
         "format": "json", "formatversion": "2",
     }
     data = api_json(params)
     return data.get("query", {}).get("pages", []) or []
 
-def candidate_metadata(page: dict, story_tokens: set[str]) -> dict | None:
+def candidate_metadata(page: dict, story_tokens: set[str], query_tokens: set[str] | None = None) -> dict | None:
     info = (page.get("imageinfo") or [{}])[0]
     mime = str(info.get("mime", "")).lower()
     ext = ALLOWED_MIMES.get(mime)
@@ -83,9 +118,7 @@ def candidate_metadata(page: dict, story_tokens: set[str]) -> dict | None:
     status = license_status(short, license_url)
     if not status or not license_url.startswith("https://"):
         return None
-    artist = value("Artist")
-    credit = value("Credit")
-    creator = artist or credit
+    creator = value("Artist") or value("Credit")
     if not creator:
         return None
     file_title = clean(page.get("title", ""), 500)
@@ -93,8 +126,12 @@ def candidate_metadata(page: dict, story_tokens: set[str]) -> dict | None:
     object_name = value("ObjectName")
     searchable = tokens(file_title + " " + description + " " + object_name)
     overlap = story_tokens & searchable
-    distinctive = {word for word in overlap if len(word) >= 6}
-    if len(overlap) < 2:
+    query_overlap = (query_tokens or set()) & searchable
+    distinctive = {word for word in overlap if len(word) >= 5}
+    # Require either two matching story terms or one distinctive subject/entity term.
+    if len(overlap) < 2 and not distinctive:
+        return None
+    if query_tokens and not query_overlap:
         return None
     original = info.get("url", "")
     parsed = urllib.parse.urlsplit(original)
@@ -104,14 +141,14 @@ def candidate_metadata(page: dict, story_tokens: set[str]) -> dict | None:
     return {
         "url": original, "extension": ext, "status": status, "license_url": license_url,
         "credit": clean(creator, 300), "description": clean(object_name or description, 300),
-        "source_url": source_url, "score": len(overlap) + len(distinctive),
+        "source_url": source_url, "score": len(overlap) * 2 + len(distinctive),
         "caption": f"صورة توثيقية مرتبطة بموضوع الخبر من Wikimedia Commons ({short}) — تصوير: {clean(creator, 180)}",
     }
 
 def download_image(url: str, destination: Path) -> bool:
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
-        with urllib.request.urlopen(request, timeout=25) as response:
+        with urllib.request.urlopen(request, timeout=12) as response:
             mime = response.headers.get_content_type().lower()
             if mime not in ALLOWED_MIMES or int(response.headers.get("Content-Length", "0") or 0) > MAX_IMAGE_BYTES:
                 return False
@@ -143,18 +180,26 @@ def enrich_item(item: dict) -> bool:
     story_tokens = tokens(title)
     if len(story_tokens) < 2:
         return False
-    try:
-        pages = search_files(title)
-    except (OSError, ValueError, urllib.error.URLError, TimeoutError) as exc:
-        print(f"Commons search skipped for {item.get('id')}: {type(exc).__name__}", file=sys.stderr)
-        return False
-    candidates = [candidate for page in pages if (candidate := candidate_metadata(page, story_tokens))]
-    candidates.sort(key=lambda entry: entry["score"], reverse=True)
-    IMAGE_DIR.mkdir(parents=True, exist_ok=True)
-    for candidate in candidates[:4]:
-        image_id = re.sub(r"[^A-Za-z0-9_-]", "", str(item.get("id", "")))[:80]
-        if not image_id:
+    candidates_by_url = {}
+    for query in search_queries(title):
+        try:
+            pages = search_files(query)
+        except (OSError, ValueError, urllib.error.URLError, TimeoutError) as exc:
+            print(f"Commons search skipped for {item.get('id')} ({query}): {type(exc).__name__}", file=sys.stderr, flush=True)
             continue
+        query_tokens = tokens(query)
+        for page in pages:
+            candidate = candidate_metadata(page, story_tokens, query_tokens)
+            if candidate:
+                old = candidates_by_url.get(candidate["url"])
+                if not old or candidate["score"] > old["score"]:
+                    candidates_by_url[candidate["url"]] = candidate
+    candidates = sorted(candidates_by_url.values(), key=lambda entry: entry["score"], reverse=True)
+    IMAGE_DIR.mkdir(parents=True, exist_ok=True)
+    image_id = re.sub(r"[^A-Za-z0-9_-]", "", str(item.get("id", "")))[:80]
+    if not image_id:
+        return False
+    for candidate in candidates[:3]:
         relative = f"assets/news-images/{image_id}{candidate['extension']}"
         destination = ROOT / relative
         if not download_image(candidate["url"], destination):
@@ -166,16 +211,18 @@ def enrich_item(item: dict) -> bool:
             "image_license_url": candidate["license_url"],
             "image_source_url": candidate["source_url"],
             "image_alt": candidate["description"] or title,
-            "image_caption": candidate["caption"],
-            "image_match_method": "wikimedia-commons-title-overlap",
+            "image_caption": candidate["caption"] + "؛ لا تعني بالضرورة أنها صورة لحظة الحدث.",
+            "image_match_method": "wikimedia-commons-subject-search",
         })
+        print(f"Added a licensed Commons image for {item.get('id')}: {candidate['source_url']}", flush=True)
         return True
     return False
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--limit", type=int, default=20)
-    parser.add_argument("--days", type=int, default=7)
+    parser.add_argument("--limit", type=int, default=15, help="Maximum number of images to add")
+    parser.add_argument("--days", type=int, default=30, help="Only consider stories published within this many days")
+    parser.add_argument("--max-attempts", type=int, default=25, help="Maximum stories searched in one run")
     args = parser.parse_args()
     data = json.loads(NEWS_PATH.read_text(encoding="utf-8"))
     items = data.get("items", [])
@@ -189,7 +236,7 @@ def main() -> int:
     changed = 0
     examined = 0
     for item in recent:
-        if changed >= max(0, args.limit):
+        if changed >= max(0, args.limit) or examined >= max(0, args.max_attempts):
             break
         current = str(item.get("image_url", "") or "")
         current_is_local = current.startswith("assets/news-images/") and (ROOT / current).is_file()
@@ -198,12 +245,12 @@ def main() -> int:
         if item.get("image_rights_status") in {"licensed", "permission_granted", "public_domain", "cc0", "cc-by", "cc-by-sa"} and item.get("image_credit") and str(item.get("image_license_url", "")).startswith("https://"):
             continue
         examined += 1
+        print(f"Searching Commons for story {examined}/{args.max_attempts}: {clean(item.get('title'), 160)}", flush=True)
         if enrich_item(item):
             changed += 1
-            print(f"Added a licensed Commons image for {item.get('id')}.")
     if changed:
         NEWS_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Commons image pass complete: {changed} images added from {examined} attempted stories.")
+    print(f"Commons image pass complete: {changed} images added from {examined} attempted stories.", flush=True)
     return 0
 
 if __name__ == "__main__":
