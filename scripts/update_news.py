@@ -542,7 +542,8 @@ def _item_image_url(node: ET.Element, article_url: str = "") -> str:
         markup = child.text or ""
         if not markup or "<img" not in markup.lower():
             continue
-        extractor = _ImageExtractor()        try:
+        extractor = _ImageExtractor()
+        try:
             extractor.feed(markup)
             extractor.close()
         except Exception:
