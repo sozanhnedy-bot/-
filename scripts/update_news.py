@@ -11,6 +11,7 @@ import os
 import re
 import socket
 import sys
+import time
 import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -557,17 +558,35 @@ def parse_feed(xml_bytes: bytes, region: str, feed_name: str, now: datetime | No
 
 
 def fetch_feed(url: str, region: str, feed_name: str, timeout: int = 20, feed_source_url: str = "") -> list[dict]:
+    """Fetch one allowlisted RSS feed with bounded retries for transient failures."""
     parsed = urlsplit(url)
     if parsed.scheme != "https" or parsed.hostname not in ALLOWED_FEED_HOSTS or parsed.username or parsed.password:
         raise ValueError("RSS source is outside the HTTPS allowlist")
-    if not _validate_public_https_url(url):
-        raise ValueError("RSS source is not a public HTTPS destination")
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/rss+xml, application/xml, text/xml"})
+
+    request = urllib.request.Request(
+        url,
+        headers={"User-Agent": USER_AGENT, "Accept": "application/rss+xml, application/xml, text/xml"},
+    )
     opener = urllib.request.build_opener(_AllowedFeedRedirectHandler())
-    with opener.open(request, timeout=timeout) as response:
-        if urlsplit(response.geturl()).hostname not in ALLOWED_FEED_HOSTS:
-            raise ValueError("RSS response is outside the configured publisher allowlist")
-        body = response.read(MAX_FEED_BYTES + 1)
+    body = b""
+    for attempt in range(3):
+        try:
+            if not _validate_public_https_url(url):
+                raise ValueError("RSS source is not a public HTTPS destination")
+            with opener.open(request, timeout=timeout) as response:
+                if urlsplit(response.geturl()).hostname not in ALLOWED_FEED_HOSTS:
+                    raise ValueError("RSS response is outside the configured publisher allowlist")
+                body = response.read(MAX_FEED_BYTES + 1)
+            break
+        except urllib.error.HTTPError as exc:
+            if exc.code not in {408, 425, 429, 500, 502, 503, 504} or attempt == 2:
+                raise
+            time.sleep(2 ** (attempt + 1))
+        except (urllib.error.URLError, TimeoutError, OSError):
+            if attempt == 2:
+                raise
+            time.sleep(2 ** (attempt + 1))
+
     if len(body) > MAX_FEED_BYTES:
         raise ValueError("feed exceeds the configured byte limit")
     return parse_feed(body, region, feed_name, feed_source_url=feed_source_url)
@@ -687,11 +706,18 @@ def build_update(
     for feed in prioritized_feeds:
         if not feed.get("enabled", True):
             continue
+        feed_name = feed.get("name", "مصدر RSS")
         try:
-            fetched = fetcher(feed["url"], feed["region"], feed["name"], feed.get("source_url", ""))
+            fetched = fetcher(feed["url"], feed["region"], feed_name, feed.get("source_url", ""))
             successful_feeds += 1
+            newest = max(
+                (item.get("published_at") or "" for item in fetched),
+                default="",
+            )
+            print(f"[RSS] OK | {feed_name} | entries={len(fetched)} | newest_published_at={newest or 'unknown'}")
         except Exception as exc:
-            warnings.append(f"تعذر جلب {feed.get('name', 'مصدر RSS')}: {type(exc).__name__}")
+            warnings.append(f"تعذر جلب {feed_name}: {type(exc).__name__}")
+            print(f"[RSS] FAILED | {feed_name} | error={type(exc).__name__}", file=sys.stderr)
             continue
         for item in fetched:
             url = item.get("url", "")
@@ -730,6 +756,7 @@ def build_update(
                 seen_stories[story_key] = item
 
     enabled_count = sum(1 for feed in feeds if feed.get("enabled", True))
+    print(f"[RSS] Cycle summary | enabled={enabled_count} | successful={successful_feeds} | failed={enabled_count - successful_feeds}")
     if enabled_count and successful_feeds == 0:
         raise RuntimeError("تعذر جلب جميع مصادر RSS؛ لم تُنشر بيانات فارغة")
 
