@@ -76,14 +76,17 @@ def search_queries(title: str) -> list[str]:
 
 def license_status(short_name: str, license_url: str) -> str:
     name = clean(short_name, 100).casefold()
-    url = license_url.casefold()
-    if "public domain" in name or name.startswith("pd-") or "creativecommons.org/publicdomain/mark/" in url:
+    parsed = urllib.parse.urlsplit(license_url)
+    if parsed.scheme != "https" or parsed.hostname not in {"creativecommons.org", "www.creativecommons.org"}:
+        return ""
+    path = parsed.path.casefold()
+    if ("public domain" in name or name.startswith("pd-")) and "/publicdomain/mark/" in path:
         return "public_domain"
-    if "cc0" in name or "creativecommons.org/publicdomain/zero/" in url:
+    if ("cc0" in name or "/publicdomain/zero/" in path) and "/publicdomain/zero/" in path:
         return "cc0"
-    if "cc by-sa" in name or "/licenses/by-sa/" in url:
+    if ("cc by-sa" in name or "/licenses/by-sa/" in path) and re.search(r"/licenses/by-sa/\d", path):
         return "cc-by-sa"
-    if "cc by" in name or re.search(r"/licenses/by/\d", url):
+    if ("cc by" in name or "/licenses/by/" in path) and re.search(r"/licenses/by/\d", path):
         return "cc-by"
     return ""
 
