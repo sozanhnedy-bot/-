@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from datetime import datetime, timedelta, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = (
@@ -63,7 +64,32 @@ def build(output: Path) -> int:
                         else:
                             item["summary"] = "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."
                             item["summary_type"] = "source_notice"
-            (output / "data" / name).write_text(json.dumps(news, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            (output / "data" / name).write_text(json.dumps(news, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+            now = datetime.now(timezone.utc)
+            cutoff = now - timedelta(hours=72)
+            latest_items = []
+            for item in news.get("items", []):
+                if not isinstance(item, dict):
+                    continue
+                raw_date = item.get("published_at") or item.get("created_at")
+                try:
+                    published = datetime.fromisoformat(str(raw_date).replace("Z", "+00:00"))
+                    if published.tzinfo is None:
+                        published = published.replace(tzinfo=timezone.utc)
+                    published = published.astimezone(timezone.utc)
+                except (TypeError, ValueError):
+                    continue
+                if cutoff <= published <= now:
+                    latest_items.append(item)
+            latest = {
+                "schema_version": news.get("schema_version", 1),
+                "updated_at": news.get("updated_at", ""),
+                "items": latest_items,
+            }
+            (output / "data" / "news-latest.json").write_text(
+                json.dumps(latest, ensure_ascii=False, separators=(",", ":")) + "\n",
+                encoding="utf-8",
+            )
         else:
             shutil.copy2(source, output / "data" / name)
     for name in ASSET_FILES:
