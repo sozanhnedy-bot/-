@@ -1,4 +1,4 @@
-const CACHE_NAME = "world-news-v17-homepage-feed";
+const CACHE_NAME = "world-news-v18-image-fallback-fix";
 const ROOT = new URL("./", self.location.href);
 const DATA_URLS = ["data/news-latest.json", "data/news.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
 const CORE_DATA_URLS = ["data/news-latest.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
