@@ -117,10 +117,11 @@ class NewsUpdateTests(unittest.TestCase):
     def test_deduplicates_and_respects_per_run_limit(self):
         existing = {"schema_version": 1, "updated_at": None, "items": [{"url": "https://news.google.com/existing", "summary_date": "2026-10-31"}]}
         summaries = []
+        entries = [{**item, "excerpt": "تتضمن المادة معلومات إضافية عن الحدث وسياقه والأطراف المعنية وتطوراته الأخيرة."} for item in self.entries]
         data, changed, warnings = build_update(
             existing,
             [self.feed],
-            lambda *_: self.entries,
+            lambda *_: entries,
             lambda item: summaries.append(item["url"]) or "ملخص عربي محايد",
             now=NOW,
             max_per_run=1,
