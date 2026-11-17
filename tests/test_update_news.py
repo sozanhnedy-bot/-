@@ -430,7 +430,7 @@ class NewsUpdateTests(unittest.TestCase):
 
     def test_rss_summary_uses_publisher_article_text_when_excerpt_is_title_only(self):
         title = "عنوان الخبر"
-        article = "\\n".join(["تشرح هذه الفقرة تفاصيل الحدث وسياقه والأطراف المعنية وتطوراته التي أتاحها الناشر للقارئ."] * 35)
+        article = "\n".join(["تشرح هذه الفقرة تفاصيل الحدث وسياقه والأطراف المعنية وتطوراته التي أتاحها الناشر للقارئ."] * 35)
         item = {
             "title": title,
             "source_name": "المصدر",
