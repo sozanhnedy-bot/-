@@ -2,7 +2,6 @@ import unittest
 from unittest.mock import patch
 
 from scripts import update_news
-from scripts.gdelt_discovery_preview import fetch_category as _unused
 
 
 class GDELTAdapterTests(unittest.TestCase):
