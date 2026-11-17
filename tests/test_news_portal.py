@@ -322,7 +322,7 @@ class BuildAndBrowserTests(unittest.TestCase):
             (output / "trends").mkdir()
             (output / "trends" / "stale.html").write_text("stale", encoding="utf-8")
             build_site.build(output)
-            for name in ["index.html", "archive.html", "section.html", "videos.html", "photos.html", "about.html", "privacy.html", "contact.html", "editorial-policy.html", "archive.js", "section.js", "videos.js", "photos.js"]:
+            for name in ["index.html", "archive.html", "section.html", "videos.html", "photos.html", "about.html", "privacy.html", "contact.html", "editorial-policy.html", "terms.html", "archive.js", "section.js", "videos.js", "photos.js"]:
                 self.assertTrue((output / name).is_file(), name)
             self.assertFalse((output / "task-chat.html").exists())
             self.assertFalse((output / "trends").exists())
@@ -330,6 +330,7 @@ class BuildAndBrowserTests(unittest.TestCase):
             self.assertTrue((output / "news").is_dir())
             self.assertTrue((output / "reports").is_dir())
             self.assertTrue((output / "sitemap.xml").is_file())
+            self.assertIn("/terms.html", (output / "sitemap.xml").read_text(encoding="utf-8"))
             self.assertTrue((output / "news-sitemap.xml").is_file())
             self.assertIn("news-sitemap.xml", (output / "robots.txt").read_text(encoding="utf-8"))
             self.assertIn('name="robots" content="noindex,follow"', (output / "photos.html").read_text(encoding="utf-8"))
