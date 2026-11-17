@@ -1,0 +1,47 @@
+name: News quality gate tests
+
+on:
+  push:
+    branches:
+      - main
+      - world-news/main-quality-gate
+    paths:
+      - "scripts/update_news.py"
+      - "scripts/render_news.py"
+      - "scripts/build_site.py"
+      - "app.js"
+      - "archive.js"
+      - "section.js"
+      - "tests/test_update_news.py"
+      - "tests/test_news_portal.py"
+      - ".github/workflows/news-quality-tests.yml"
+  pull_request:
+    paths:
+      - "scripts/update_news.py"
+      - "scripts/render_news.py"
+      - "scripts/build_site.py"
+      - "app.js"
+      - "archive.js"
+      - "section.js"
+      - "tests/test_update_news.py"
+      - "tests/test_news_portal.py"
+      - ".github/workflows/news-quality-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  news-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run news pipeline and portal tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Build the static site
+        run: python scripts/build_site.py --output _site
