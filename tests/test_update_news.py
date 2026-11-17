@@ -293,10 +293,11 @@ class NewsUpdateTests(unittest.TestCase):
     def test_deduplicates_and_respects_per_run_limit(self):
         existing = {"schema_version": 1, "updated_at": None, "items": [{"url": "https://news.google.com/existing", "summary_date": "2026-10-31"}]}
         summaries = []
+        entries = [{**item, "excerpt": "تتضمن المادة معلومات إضافية عن الحدث وسياقه والأطراف المعنية وتطوراته الأخيرة."} for item in self.entries]
         data, changed, warnings = build_update(
             existing,
             [self.feed],
-            lambda *_: self.entries,
+            lambda *_: entries,
             lambda item: summaries.append(item["url"]) or "ملخص عربي محايد",
             now=NOW,
             max_per_run=1,
@@ -342,6 +343,41 @@ class NewsUpdateTests(unittest.TestCase):
             [self.feed],
             lambda *_: [item],
             lambda _item: self.fail("summarizer must not be called without an excerpt"),
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["summary"], RSS_NO_DETAILS)
+        self.assertEqual(data["items"][0]["summary_type"], "source_notice")
+
+    def test_headline_and_publisher_only_content_is_not_summarized(self):
+        item = {
+            **self.entries[0],
+            "title": "عنوان الخبر",
+            "source_name": "المصدر",
+            "excerpt": "عنوان الخبر — المصدر",
+            "article_content": "عنوان الخبر — المصدر",
+        }
+        data, changed, _ = build_update(
+            {"schema_version": 1, "items": []},
+            [self.feed],
+            lambda *_: [item],
+            lambda _item: self.fail("insufficient source text must not reach the summarizer"),
+            now=NOW,
+        )
+        self.assertTrue(changed)
+        self.assertEqual(data["items"][0]["summary"], RSS_NO_DETAILS)
+        self.assertEqual(data["items"][0]["summary_type"], "source_notice")
+
+    def test_short_model_output_is_replaced_with_safe_source_notice(self):
+        item = {
+            **self.entries[0],
+            "excerpt": "تتضمن المادة معلومات إضافية عن الحدث وسياقه والأطراف المعنية وتطوراته الأخيرة.",
+        }
+        data, changed, _ = build_update(
+            {"schema_version": 1, "items": []},
+            [self.feed],
+            lambda *_: [item],
+            lambda _item: "ملخص قصير",
             now=NOW,
         )
         self.assertTrue(changed)
@@ -394,7 +430,7 @@ class NewsUpdateTests(unittest.TestCase):
 
     def test_rss_summary_uses_publisher_article_text_when_excerpt_is_title_only(self):
         title = "عنوان الخبر"
-        article = "الفقرة الأولى من الخبر تشرح الحدث بتفاصيل أتاحها الناشر.\nالفقرة الثانية تضيف سياقًا وتطورات مؤكدة."
+        article = "\\n".join(["تشرح هذه الفقرة تفاصيل الحدث وسياقه والأطراف المعنية وتطوراته التي أتاحها الناشر للقارئ."] * 35)
         item = {
             "title": title,
             "source_name": "المصدر",
