@@ -7,6 +7,9 @@ on:
     paths:
       - "scripts/gdelt_discovery_preview.py"
       - "tests/test_gdelt_discovery_preview.py"
+      - "tests/test_gdelt_rss_integration.py"
+      - "scripts/update_news.py"
+      - "data/news_sources.json"
       - ".github/workflows/gdelt-preview-tests.yml"
   pull_request:
     paths:
@@ -32,4 +35,4 @@ jobs:
       - name: Compile discovery script
         run: python -m py_compile scripts/gdelt_discovery_preview.py
       - name: Run offline safety tests
-        run: python -m unittest discover -s tests -p "test_gdelt_discovery_preview.py" -v
+        run: python -m unittest discover -s tests -p "test_gdelt*.py" -v
