@@ -792,7 +792,8 @@ def build_update(
         try:
             if not _has_substantive_source_text(item):
                 summary = RSS_NO_DETAILS
-            else:                summary = clean_text(summarizer(item))
+            else:
+                summary = clean_text(summarizer(item))
                 if not _is_substantive_copy(summary, item.get("title", ""), item.get("source_name", "")):
                     summary = RSS_NO_DETAILS
         except Exception as exc:
