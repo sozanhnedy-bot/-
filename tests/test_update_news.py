@@ -459,6 +459,40 @@ class NewsUpdateTests(unittest.TestCase):
 
 
 
+class RSSRetryTests(unittest.TestCase):
+    def test_fetch_feed_retries_temporary_server_error(self):
+        import urllib.error
+
+        class Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def geturl(self):
+                return "https://news.google.com/rss"
+
+            def read(self, _limit):
+                return b"<rss><channel></channel></rss>"
+
+        opener = unittest.mock.Mock()
+        opener.open.side_effect = [
+            urllib.error.HTTPError("https://news.google.com/rss", 503, "busy", {}, None),
+            Response(),
+        ]
+        with patch.object(update_news, "_validate_public_https_url", return_value=True), \
+             patch.object(update_news.urllib.request, "build_opener", return_value=opener), \
+             patch.object(update_news.time, "sleep") as sleep:
+            items = update_news.fetch_feed(
+                "https://news.google.com/rss", "world", "Google News"
+            )
+        self.assertEqual(items, [])
+        self.assertEqual(opener.open.call_count, 2)
+        sleep.assert_called_once_with(2)
+
+
+
 class PublisherArticleExtractorTests(unittest.TestCase):
     def test_extracts_article_paragraphs_and_ignores_navigation_and_scripts(self):
         from scripts.update_news import extract_publisher_article
