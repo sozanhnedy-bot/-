@@ -99,6 +99,7 @@ function imageMatchesStory(item, title) {
   const titleKey = comparableCopy(title);
   const altKey = comparableCopy(alt);
   const source = text(item?.image_source_url, 1_000);
+  if (!source.includes("commons.wikimedia.org/wiki/File:")) return true;
   let filename = "";
   try { filename = decodeURIComponent(new URL(source).pathname.split("/").pop() || ""); } catch (_) {}
   const imageWords = new Set(`${altKey && altKey !== titleKey ? altKey : ""} ${comparableCopy(filename)}`.split(" ").filter((word) => word.length > 2));
