@@ -10,9 +10,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = (
-    "index.html", "archive.html", "section.html", "videos.html",
+    "index.html", "archive.html", "section.html", "videos.html", "photos.html",
     "about.html", "privacy.html", "contact.html", "editorial-policy.html",
-    "app.js", "archive.js", "section.js", "videos.js", "article.js",
+    "app.js", "archive.js", "section.js", "videos.js", "photos.js", "article.js",
     "styles.css", "styles-newspaper-overrides.css", "manifest.webmanifest", "service-worker.js",
 )
 DATA_FILES = ("news.json", "reports.json")
