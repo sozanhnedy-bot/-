@@ -25,6 +25,31 @@ class CommonsImageTests(unittest.TestCase):
         del page["imageinfo"][0]["extmetadata"]["Artist"]
         self.assertIsNone(images.candidate_metadata(page, images.tokens(story["title"])))
 
+    def test_candidate_rejects_a_different_person_with_the_same_surname(self):
+        meta = lambda value: {"value": value}
+        page = {"title": "File:Melania_Trump_2011.jpg", "imageinfo": [{
+            "mime": "image/jpeg", "size": 1000, "url": "https://upload.wikimedia.org/example.jpg",
+            "extmetadata": {
+                "LicenseShortName": meta("CC BY 4.0"),
+                "LicenseUrl": meta("https://creativecommons.org/licenses/by/4.0/"),
+                "Artist": meta("Photographer A"),
+                "ImageDescription": meta("Melania Trump at an event"),
+            }
+        }]}
+        story = "Donald Trump meets world leaders"
+        self.assertIsNone(images.candidate_metadata(page, images.tokens(story), images.tokens("Donald Trump")))
+
+    def test_existing_image_subject_must_match_story(self):
+        item = {
+            "title": "Donald Trump meets world leaders",
+            "image_alt": "Melania Trump at an event",
+            "image_source_url": "https://commons.wikimedia.org/wiki/File:Melania_Trump_2011.jpg",
+        }
+        self.assertFalse(images.image_matches_story(item))
+        item["image_alt"] = "Donald Trump at a summit"
+        item["image_source_url"] = "https://commons.wikimedia.org/wiki/File:Donald_Trump_summit.jpg"
+        self.assertTrue(images.image_matches_story(item))
+
     def test_local_commons_image_requires_rights_metadata(self):
         item = {"image_url": "assets/news-images/story.jpg", "image_rights_status": "cc-by", "image_credit": "Photographer", "image_license_url": "https://creativecommons.org/licenses/by/4.0/"}
         self.assertEqual(render_news.safe_story_image(item), "assets/news-images/story.jpg")
