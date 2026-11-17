@@ -390,7 +390,12 @@ def build_update(
     additions: list[dict] = []
     for item in candidates[:limit]:
         try:
-            summary = RSS_NO_DETAILS if not clean_text(item.get("excerpt", "")) else clean_text(summarizer(item))
+            if not _substantive_copy(item.get("excerpt", ""), item.get("title", ""), item.get("source_name", "")):
+                summary = RSS_NO_DETAILS
+            else:
+                summary = clean_text(summarizer(item))
+                if not _substantive_copy(summary, item.get("title", ""), item.get("source_name", "")):
+                    summary = RSS_NO_DETAILS
         except Exception as exc:
             warnings.append(f"تعذر تلخيص خبر: {type(exc).__name__}")
             continue
@@ -430,13 +435,32 @@ def load_json(path: Path) -> dict:
     return data
 
 
+def _comparison_text(value: str) -> str:
+    return " ".join(re.sub(r"[^\w\s]", " ", clean_text(value).casefold(), flags=re.UNICODE).split())
+
+
+def _substantive_copy(value: str, title: str, source: str = "") -> bool:
+    candidate = clean_text(value)
+    if not candidate:
+        return False
+    for separator in (" — ", " – ", " - ", " | ", " :: "):
+        index = candidate.rfind(separator)
+        if index > 0 and candidate[index + len(separator):].strip().casefold() == clean_text(source).casefold():
+            candidate = candidate[:index].strip()
+            break
+    normalized = _comparison_text(candidate)
+    title_normalized = _comparison_text(title)
+    words = normalized.split()
+    if not normalized or normalized == title_normalized:
+        return False
+    if title_normalized and normalized.startswith(title_normalized) and len(words) <= len(title_normalized.split()) + 2:
+        return False
+    return len(candidate) >= 40 and len(words) >= 7
+
+
 def summarize_rss_excerpt(item: dict) -> str:
     excerpt = clean_text(item.get("excerpt", ""))
-    title = clean_text(item.get("title", ""))
-    if excerpt and title and excerpt.casefold().startswith(title.casefold()):
-        excerpt = excerpt[len(title):].strip(" \t—–-:،|")
-    source = clean_text(item.get("source_name", ""))
-    if excerpt and excerpt.casefold() != source.casefold() and len(excerpt) >= 30:
+    if _substantive_copy(excerpt, clean_text(item.get("title", "")), clean_text(item.get("source_name", ""))):
         return excerpt[:MAX_SUMMARY_CHARS]
     return RSS_NO_DETAILS
 
