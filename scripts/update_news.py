@@ -572,7 +572,7 @@ def fetch_feed(url: str, region: str, feed_name: str, timeout: int = 20, feed_so
     for attempt in range(3):
         try:
             if not _validate_public_https_url(url):
-                raise ValueError("RSS source is not a public HTTPS destination")
+                raise urllib.error.URLError("RSS source is not currently reachable as a public HTTPS destination")
             with opener.open(request, timeout=timeout) as response:
                 if urlsplit(response.geturl()).hostname not in ALLOWED_FEED_HOSTS:
                     raise ValueError("RSS response is outside the configured publisher allowlist")
