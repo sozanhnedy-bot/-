@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10223a">
+  <meta name="description" content="أداة مجانية محلية لتجهيز محتوى الفيديو والوصول إلى الجمهور العربي باحترام اختياره.">
+  <title>استوديو نمو الجمهور العربي | World News</title>
+  <link rel="icon" href="./assets/brand-mark.png" type="image/png">
+  <link rel="stylesheet" href="./styles.css?v=20261117-audience-studio">
+  <link rel="stylesheet" href="./styles-newspaper-overrides.css?v=20261117-audience-studio">
+  <script defer src="./audience-studio.js?v=20261117-audience-studio"></script>
+  <style>
+    .audience-wrap{max-width:1050px;margin:2rem auto;padding:0 1rem}
+    .audience-hero{background:linear-gradient(135deg,#10223a,#1d4968);color:#fff;border-radius:18px;padding:1.5rem;margin-bottom:1.25rem}
+    .audience-hero h1{margin:.25rem 0 .6rem;font-size:clamp(1.5rem,4vw,2.2rem)}
+    .audience-panel{background:#fff;border:1px solid #dce4ec;border-radius:16px;padding:1.1rem;margin:1rem 0;box-shadow:0 8px 28px #10223a0b}
+    .audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .audience-field{display:flex;flex-direction:column;gap:.45rem}
+    .audience-field input,.audience-field textarea,.audience-field select{width:100%;border:1px solid #cbd5df;border-radius:10px;padding:.8rem;font:inherit;background:#fff;color:#17283b}
+    .audience-field textarea{min-height:100px;resize:vertical}
+    .audience-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+    .audience-btn{border:0;border-radius:10px;padding:.75rem 1rem;font:inherit;font-weight:700;cursor:pointer;background:#123b5a;color:#fff}
+    .audience-btn.secondary{background:#e8eef4;color:#17324b}
+    .audience-output{white-space:pre-wrap;line-height:1.8;background:#f5f8fb;border:1px solid #e1e8ef;border-radius:12px;padding:1rem;margin:.65rem 0}
+    .audience-chip{display:inline-block;background:#e8f1f7;color:#16415e;border-radius:99px;padding:.35rem .7rem;margin:.2rem;font-size:.9rem}
+    .audience-note{color:#526477;font-size:.92rem;line-height:1.8}
+    .audience-status{min-height:1.5rem;color:#17613b;font-weight:700}
+    .audience-section-title{margin:0 0 .4rem;font-size:1.15rem}
+  </style>
+</head>
+<body class="portal-body">
+  <a class="skip-link" href="#audience-main">انتقل إلى الاستوديو</a>
+  <section class="portal-interface-cover" aria-label="واجهة World News"><img src="./assets/portal-interface-banner-optimized.jpg" alt=""><div class="portal-interface-wordmark"><b>World</b> <strong>News</strong><small>أخبار العالم</small></div></section>
+  <header class="portal-header">
+    <div class="portal-utility"><a href="./">الرئيسية</a><a href="./videos.html">مكتبة الفيديو</a><span>استوديو نمو الجمهور</span></div>
+    <div class="portal-brand-row"><a class="portal-brand" href="./"><img src="./assets/brand-mark.png" alt=""><span><b class="portal-arabic-name">أخبار العالم</b><strong lang="en" dir="ltr">World News</strong><small>استوديو تجهيز المحتوى</small></span></a></div>
+    <nav class="portal-nav" aria-label="التنقل"><a href="./">الرئيسية</a><a href="./videos.html">الفيديوهات</a><a href="./archive.html">الأرشيف</a></nav>
+  </header>
+  <main id="audience-main" class="audience-wrap">
+    <section class="audience-hero">
+      <p>أداة مجانية — تعمل داخل المتصفح</p>
+      <h1>استوديو نمو الجمهور العربي</h1>
+      <p>جهّز حزمة نشر مناسبة لموضوع الفيديو، وراجعها قبل مشاركتها مع الجمهور المهتم. لا توجد رسائل تلقائية ولا نشر دون موافقتك.</p>
+    </section>
+    <section class="audience-panel">
+      <h2 class="audience-section-title">1. اختر تقريرًا منشورًا أو أدخل موضوع الفيديو</h2>
+      <p class="audience-note">يمكن تحميل التقارير المنشورة من مكتبة الموقع، أو كتابة بيانات فيديو جديد يدويًا. لا تُرسل البيانات إلى أي خدمة خارجية.</p>
+      <div class="audience-grid">
+        <label class="audience-field">تقرير من المكتبة
+          <select id="report-select"><option value="">تحميل التقارير...</option></select>
+        </label>
+        <label class="audience-field">موضوع / عنوان الفيديو
+          <input id="video-title" maxlength="180" placeholder="اكتب عنوان الفيديو أو موضوعه">
+        </label>
+      </div>
+      <label class="audience-field" style="margin-top:1rem">ملخص الفيديو
+        <textarea id="video-summary" maxlength="1200" placeholder="اكتب ملخصًا حقيقيًا لما يقدمه الفيديو"></textarea>
+      </label>
+      <div class="audience-actions"><button class="audience-btn" id="generate-btn" type="button">جهّز حزمة الوصول</button><button class="audience-btn secondary" id="clear-btn" type="button">مسح البيانات</button></div>
+      <p id="status" class="audience-status" role="status" aria-live="polite"></p>
+    </section>
+    <section id="results" hidden>
+      <section class="audience-panel">
+        <h2 class="audience-section-title">2. كلمات مفتاحية مقترحة</h2>
+        <p class="audience-note">اقتراحات مستخرجة محليًا من العنوان والملخص؛ راجعها واحذف أي كلمة لا تصف الفيديو بدقة.</p>
+        <div id="keywords"></div>
+      </section>
+      <section class="audience-panel">
+        <h2 class="audience-section-title">3. صيغ منشورات للجمهور العربي</h2>
+        <p class="audience-note">هذه مسودات قابلة للتحرير وليست رسائل خاصة. اختر الصيغة المناسبة للمنصة والمجتمع الذي تسمح قواعده بالنشر.</p>
+        <h3>صياغة عربية محايدة</h3><div id="caption-neutral" class="audience-output"></div><button class="audience-btn secondary copy-btn" data-copy="caption-neutral">نسخ المنشور</button>
+        <h3>صياغة مصرية</h3><div id="caption-egypt" class="audience-output"></div><button class="audience-btn secondary copy-btn" data-copy="caption-egypt">نسخ المنشور</button>
+        <h3>صياغة خليجية مبسطة</h3><div id="caption-gulf" class="audience-output"></div><button class="audience-btn secondary copy-btn" data-copy="caption-gulf">نسخ المنشور</button>
+      </section>
+      <section class="audience-panel">
+        <h2 class="audience-section-title">4. خريطة توزيع مقترحة</h2>
+        <div id="distribution" class="audience-output"></div>
+        <p class="audience-note">هذه أفكار سياقية وليست قوائم أشخاص أو مجموعات مؤكدة. افحص قواعد كل مجتمع بنفسك، ولا تراسل أعضاءه على الخاص.</p>
+      </section>
+    </section>
+    <section class="audience-panel">
+      <h2 class="audience-section-title">قواعد التشغيل</h2>
+      <ul class="audience-note">
+        <li>لا رسائل عشوائية أو جمع حسابات أو تعليقات آلية.</li>
+        <li>لا مشاهدات أو إعجابات أو اشتراكات مصطنعة.</li>
+        <li>شارك فقط في المساحات التي تسمح قواعدها بذلك، وبعد مراجعة المنشور.</li>
+        <li>الأداة لا تستخدم API ولا AI سحابيًا ولا تفرض أي تكلفة.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="portal-footer"><a class="portal-footer-brand" href="./" lang="en" dir="ltr">World News</a><p>المحتوى يُجهّز محليًا، وأنت صاحب قرار النشر والمشاركة.</p></footer>
+</body>
+</html>
