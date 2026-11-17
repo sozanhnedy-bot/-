@@ -6,9 +6,10 @@ on:
     paths:
       - "scripts/update_news.py"
       - "scripts/enrich_commons_images.py"
+      - "data/news_sources.json"
       - ".github/workflows/update-news.yml"
   schedule:
-    - cron: "5,35 * * * *"
+    - cron: "5,20,35,50 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -22,7 +23,7 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
 
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     env:
       AI_SUMMARIZATION_ENABLED: "false"
