@@ -50,6 +50,19 @@ def build(output: Path) -> int:
                     item.pop("article_content", None)
                     if isinstance(item.get("excerpt"), str):
                         item["excerpt"] = item["excerpt"][:300]
+                    if item.get("summary_type") == "source_excerpt":
+                        excerpt = str(item.get("excerpt") or "")
+                        title = str(item.get("title") or "")
+                        source = str(item.get("source_name") or "")
+                        normalize = lambda value: " ".join("".join(ch if ch.isalnum() or ch.isspace() else " " for ch in value.casefold()).split())
+                        detail = normalize(excerpt)
+                        title_key = normalize(title)
+                        words = detail.split()
+                        if len(excerpt) >= 45 and len(words) >= 7 and detail != title_key:
+                            item["summary"] = excerpt
+                        else:
+                            item["summary"] = "لم يتضمن موجز الناشر وصفًا إضافيًا يتجاوز العنوان المنشور."
+                            item["summary_type"] = "source_notice"
             (output / "data" / name).write_text(json.dumps(news, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
         else:
             shutil.copy2(source, output / "data" / name)
