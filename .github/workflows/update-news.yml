@@ -6,6 +6,8 @@ on:
     paths:
       - "scripts/update_news.py"
       - "scripts/enrich_commons_images.py"
+      - "scripts/gdelt_discovery_preview.py"
+      - "data/news_sources.json"
       - ".github/workflows/update-news.yml"
   schedule:
     - cron: "5,35 * * * *"
