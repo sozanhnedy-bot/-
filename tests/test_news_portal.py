@@ -320,13 +320,28 @@ class BuildAndBrowserTests(unittest.TestCase):
             self.assertTrue(all("article_content" not in item for item in public_news.get("items", [])))
             self.assertTrue(all(len(item.get("excerpt", "")) <= 300 for item in public_news.get("items", [])))
             self.assertTrue(all(len(item.get("summary", "")) <= 300 for item in public_news.get("items", []) if item.get("summary_type") == "source_excerpt"))
+            latest_path = output / "data" / "news-latest.json"
+            self.assertTrue(latest_path.is_file())
+            latest_news = json.loads(latest_path.read_text(encoding="utf-8"))
+            self.assertLessEqual(len(latest_news.get("items", [])), len(public_news.get("items", [])))
+            cutoff = datetime.now(timezone.utc).timestamp() - 72 * 60 * 60
+            for item in latest_news.get("items", []):
+                published = item.get("published_at") or item.get("created_at")
+                self.assertGreaterEqual(datetime.fromisoformat(published.replace("Z", "+00:00")).timestamp(), cutoff)
+                self.assertNotIn("article_content", item)
+            homepage_script = (Path(__file__).resolve().parents[1] / "app.js").read_text(encoding="utf-8")
+            self.assertIn('./data/news-latest.json', homepage_script)
+            self.assertNotIn('fetchJson("./data/news.json")', homepage_script)
+            worker = (Path(__file__).resolve().parents[1] / "service-worker.js").read_text(encoding="utf-8")
+            self.assertIn('"data/news-latest.json"', worker)
+            self.assertIn('const CACHE_NAME = "world-news-v17-homepage-feed";', worker)
 
     def test_verified_image_filter_bumps_app_and_service_worker_cache_versions(self):
         root = Path(__file__).resolve().parents[1]
         page = (root / "index.html").read_text(encoding="utf-8")
         worker = (root / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn("app.js?v=20261117-image-rights-v1", page)
-        self.assertIn('const CACHE_NAME = "world-news-v16-image-rights";', worker)
+        self.assertIn("app.js?v=20261117-homepage-feed-v1", page)
+        self.assertIn('const CACHE_NAME = "world-news-v17-homepage-feed";', worker)
 
     def test_homepage_has_no_browser_task_link_or_trend_monitor(self):
         root = Path(__file__).resolve().parents[1]
