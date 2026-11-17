@@ -127,6 +127,7 @@ function recordFor(item) {
   const licensedFeedImage = !report && hasReusableImageRights(item) ? safeImage(item.image_url) : "";
   const image = verifiedReportImage || licensedFeedImage || categoryIllustrations[category] || categoryIllustrations.world;
   const isIllustration = !verifiedReportImage && !licensedFeedImage;
+  const imageSource = verifiedReportImage ? "verified-report" : licensedFeedImage ? "licensed-feed" : "section-illustration";
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
@@ -138,8 +139,9 @@ function recordFor(item) {
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
     image,
-    imageAlt: image ? text(report?.image_alt || item.image_alt || item.title, 300) : "",
-    imageCaption: image ? (isIllustration ? "صورة توضيحية" : text(report?.image_caption || item.image_caption, 300)) : "",
+    imageSource,
+    imageAlt: image ? (isIllustration ? `رسم توضيحي لقسم ${categoryLabel}` : text(report?.image_alt || item.image_alt || item.title, 300)) : "",
+    imageCaption: image ? (isIllustration ? "رسم توضيحي للقسم، وليس صورة للحدث" : text(report?.image_caption || item.image_caption, 300)) : "",
     region,
     category,
     summaryType: report ? "editorial_report" : text(item.summary_type, 40),
@@ -155,7 +157,7 @@ function allRecords() {
     if (item.image && !item.report) imageUses.set(item.image, (imageUses.get(item.image) || 0) + 1);
   });
   items.forEach((item) => {
-    if (!item.report && item.image && imageUses.get(item.image) >= 3) {
+    if (!item.report && item.image && item.imageSource !== "section-illustration" && imageUses.get(item.image) >= 3) {
       item.image = "";
       item.imageAlt = "";
       item.imageCaption = "";
