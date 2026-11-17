@@ -89,7 +89,7 @@ class NewsParsingTests(unittest.TestCase):
         self.assertTrue(all(feed["url"].startswith("https://") for feed in direct_feeds))
         self.assertTrue(all(feed["url"].split("/", 3)[2] in ALLOWED_FEED_HOSTS for feed in direct_feeds))
 
-    def test_live_update_fetches_missing_article_text_without_scope_error(self):
+    def test_live_update_does_not_fetch_article_text_when_ai_is_disabled(self):
         now_text = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
         entry = {"title": "خبر مباشر", "excerpt": "مقتطف قصير", "article_content": "", "image_url": "",
                  "url": "https://feeds.bbci.co.uk/news/articles/example", "source_name": "BBC عربي",
@@ -204,7 +204,15 @@ class NewsUpdateTests(unittest.TestCase):
         self.assertEqual(data["items"][0]["excerpt"], item["excerpt"])
         self.assertEqual(data["items"][0]["image_url"], item["image_url"])
 
-    def test_new_items_store_full_article_content(self):
+    def test_existing_full_article_text_is_removed_from_public_records(self):
+        existing = {"schema_version": 1, "items": [
+            {**self.entries[0], "article_content": "نص كامل من الناشر" * 20}
+        ]}
+        data, changed, _ = build_update(existing, [self.feed], lambda *_: [], lambda _item: "", now=NOW)
+        self.assertTrue(changed)
+        self.assertNotIn("article_content", data["items"][0])
+
+    def test_new_items_do_not_persist_full_article_content(self):
         item = {**self.entries[0], "article_content": "الفقرة الأولى\nالفقرة الثانية"}
         data, changed, _ = build_update(
             {"schema_version": 1, "items": []},
@@ -214,7 +222,7 @@ class NewsUpdateTests(unittest.TestCase):
             now=NOW,
         )
         self.assertTrue(changed)
-        self.assertEqual(data["items"][0]["article_content"], item["article_content"])
+        self.assertNotIn("article_content", data["items"][0])
 
     def test_duplicate_story_from_another_rss_query_backfills_excerpt_and_photo(self):
         existing_item = {
@@ -428,7 +436,7 @@ class NewsUpdateTests(unittest.TestCase):
         with patch.dict("os.environ", {"AI_SUMMARIZATION_ENABLED": "true"}, clear=True):
             self.assertTrue(ai_summarization_enabled())
 
-    def test_rss_summary_uses_publisher_article_text_when_excerpt_is_title_only(self):
+    def test_rss_summary_does_not_fall_back_to_full_article_text(self):
         title = "عنوان الخبر"
         article = "\n".join(["تشرح هذه الفقرة تفاصيل الحدث وسياقه والأطراف المعنية وتطوراته التي أتاحها الناشر للقارئ."] * 35)
         item = {
