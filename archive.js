@@ -5,6 +5,7 @@ function el(tag, cls = "", text = "") { const node = document.createElement(tag)
 function validId(value) { return /^[A-Za-z0-9_-]{1,80}$/.test(String(value || "")); }
 function normalized(value) { return String(value || "").normalize("NFKC").replace(/[\u064B-\u065F\u0670]/g, "").toLocaleLowerCase("ar"); }
 function comparable(value) { return normalized(value).replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " ").trim(); }
+function substantiveCopy(value) { return typeof value === "string" && value.trim().length >= 40 && value.trim().split(/\s+/u).filter(Boolean).length >= 7; }
 function dateValue(value) { const date = new Date(value || ""); return Number.isFinite(date.getTime()) ? date : null; }
 function dateLabel(value) { const date = dateValue(value); return date ? new Intl.DateTimeFormat("ar-EG", { dateStyle: "medium", timeStyle: "short" }).format(date) : "التاريخ غير متاح"; }
 function removePromotion(value) { return String(value || "").trim().replace(/\s*(?:🔴\s*)?(?:تابعوا|تابع|اقرأ المزيد|قراءة المزيد|عرض المزيد من العناوين|View more headlines on Google News).*$/iu, "").replace(/[\s…\.]+$/u, "").trim(); }
@@ -17,8 +18,10 @@ function toRecords(news, reports, updatedAt) {
     const report = reportMap.get(item.id);
     const source = report && Array.isArray(report.sources) ? report.sources.join("، ") : (item.source_name || "");
     const title = report?.title || stripSource(item.title, item.source_name) || "خبر";
-    return { id:item.id, title, summary:report?.dek || conciseSummary(item.summary, title, source), source, region:item.region || report?.region || "world", category:report ? "reports" : (item.category || item.region || "world"), date:item.published_at || report?.published_at || item.created_at || "", image:safeImage(report?.image || item.image_url), href:report ? `./reports/${item.id}.html` : `./news/${item.id}.html`, full:Boolean(report) };
-  });
+    const summary = report?.dek || conciseSummary(item.summary_type === "source_notice" ? item.excerpt : item.summary, title, source) || conciseSummary(item.excerpt, title, source);
+    if (!report && !substantiveCopy(summary)) return null;
+    return { id:item.id, title, summary, source, region:item.region || report?.region || "world", category:report ? "reports" : (item.category || item.region || "world"), date:item.published_at || report?.published_at || item.created_at || "", image:safeImage(report?.image || item.image_url), href:report ? `./reports/${item.id}.html` : `./news/${item.id}.html`, full:Boolean(report) };
+  }).filter(Boolean);
   const seen = new Set(rows.map((row) => row.id));
   reports.filter((report) => report && validId(report.id) && !seen.has(report.id)).forEach((report) => { const title = report.title || "تقرير"; rows.push({ id:report.id, title, summary:report.dek || "", source:Array.isArray(report.sources)?report.sources.join("، "):"", region:report.region||"world", category:"reports", date:report.published_at||updatedAt||"", image:safeImage(report.image), href:`./reports/${report.id}.html`, full:true }); });
   return rows.sort((a,b) => (dateValue(b.date)?.getTime()||0) - (dateValue(a.date)?.getTime()||0));
