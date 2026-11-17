@@ -179,6 +179,7 @@ def main() -> int:
     args = parser.parse_args()
     data = json.loads(NEWS_PATH.read_text(encoding="utf-8"))
     items = data.get("items", [])
+    IMAGE_DIR.mkdir(parents=True, exist_ok=True)
     cutoff = datetime.now(timezone.utc) - timedelta(days=max(1, args.days))
     recent = sorted(
         (item for item in items if isinstance(item, dict) and published_date(item) and published_date(item) >= cutoff),
