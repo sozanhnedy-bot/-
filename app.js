@@ -341,22 +341,16 @@ function renderReportsAndVideos(records) {
   $("#reports-section").hidden = reports.length === 0;
   const videoHost = $("#videos-list");
   videoHost.replaceChildren();
-  const videoSources = [
-    ["./assets/news-illustrations/world.jpg", "أبرز أخبار العالم"],
-    ["./assets/news-illustrations/technology.jpg", "التكنولوجيا من حولنا"],
-    ["./assets/news-illustrations/economy.jpg", "أسواق العالم"],
-  ];
-  videoSources.forEach(([image, title]) => {
-    const card = el("a", "portal-video-card video-placeholder");
-    card.href = "./videos.html";
-    const picture = document.createElement("img");
-    picture.src = image;
-    picture.alt = title;
-    picture.loading = "lazy";
-    card.append(picture, el("span", "portal-play", "▶"), el("strong", "", title));
+  const publishedVideos = records.filter((record) =>
+    record.report && record.href && /^[A-Za-z0-9_-]{11}$/.test(record.youtubeId || "")
+  );
+  publishedVideos.slice(0, 3).forEach((record) => {
+    const card = el("a", "portal-video-card");
+    card.href = record.href;
+    card.append(el("span", "portal-play", "▶"), el("strong", "", record.title));
     videoHost.append(card);
   });
-  $("#videos-section").hidden = false;
+  $("#videos-section").hidden = publishedVideos.length === 0;
 }
 function renderBreaking(records) {
   const sixHoursAgo = Date.now() - 6 * 60 * 60 * 1000;
