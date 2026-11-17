@@ -45,7 +45,7 @@ jobs:
         run: python scripts/update_news.py
 
       - name: Find and download verified Wikimedia Commons images
-        run: python scripts/enrich_commons_images.py --limit 20 --days 7
+        run: python scripts/enrich_commons_images.py --limit 15 --days 30 --max-attempts 25
 
       - name: Commit changed archive data
         id: commit
