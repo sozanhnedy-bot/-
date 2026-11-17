@@ -9,9 +9,12 @@ on:
     paths:
       - "scripts/update_news.py"
       - "scripts/render_news.py"
+      - "scripts/render_articles.py"
       - "scripts/build_site.py"
       - "scripts/render_seo.py"
-      - "scripts/build_site.py"
+      - "scripts/render_articles.py"
+      - "photos.html"
+      - "photos.js"
       - "app.js"
       - "archive.js"
       - "section.js"
@@ -29,7 +32,11 @@ on:
     paths:
       - "scripts/update_news.py"
       - "scripts/render_news.py"
+      - "scripts/render_articles.py"
+      - "scripts/render_seo.py"
       - "scripts/build_site.py"
+      - "photos.html"
+      - "photos.js"
       - "app.js"
       - "archive.js"
       - "section.js"
@@ -53,5 +60,7 @@ jobs:
           python-version: "3.12"
       - name: Run news pipeline and portal tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Check browser JavaScript syntax
+        run: node --check photos.js
       - name: Build the static site
         run: python scripts/build_site.py --output _site

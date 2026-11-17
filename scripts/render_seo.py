@@ -4,7 +4,7 @@ from __future__ import annotations
 import html
 import json
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 try:
@@ -78,8 +78,60 @@ def render_sitemap(news: dict, reports: dict) -> str:
     )
 
 
+
+def _parse_datetime(value: object) -> datetime | None:
+    if not value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def render_news_sitemap(reports: dict, now: datetime | None = None) -> str:
+    """List only original editorial reports published in the last 48 hours."""
+    current = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
+    cutoff = current - timedelta(days=2)
+    items = reports.get("items", []) if isinstance(reports, dict) else []
+    eligible = []
+    for report in items:
+        if not isinstance(report, dict) or not report.get("sections"):
+            continue
+        report_id = str(report.get("id") or "")
+        if not re.fullmatch(r"[a-f0-9]{20,40}", report_id):
+            continue
+        published = _parse_datetime(report.get("published_at"))
+        title = str(report.get("title") or "").strip()
+        if not published or not title or not cutoff <= published <= current:
+            continue
+        eligible.append((published, report_id, title))
+    entries = []
+    for published, report_id, title in sorted(eligible, reverse=True):
+        published_value = published.isoformat(timespec="seconds").replace("+00:00", "Z")
+        entries.append(
+            "  <url><loc>{}</loc><news:news><news:publication>"
+            "<news:name>World News</news:name><news:language>ar</news:language>"
+            "</news:publication><news:publication_date>{}</news:publication_date>"
+            "<news:title>{}</news:title></news:news></url>".format(
+                html.escape(_url(f"reports/{report_id}.html")),
+                html.escape(published_value),
+                html.escape(title),
+            )
+        )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
+        + "\n".join(entries)
+        + "\n</urlset>\n"
+    )
+
+
 def render_robots() -> str:
-    return f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {_url('sitemap.xml')}\n"
+    return f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {_url('sitemap.xml')}\nSitemap: {_url('news-sitemap.xml')}\n"
 
 
 def build(output: Path) -> None:
@@ -87,6 +139,7 @@ def build(output: Path) -> None:
     reports = json.loads(REPORTS_PATH.read_text(encoding="utf-8"))
     output.mkdir(parents=True, exist_ok=True)
     (output / "sitemap.xml").write_text(render_sitemap(news, reports), encoding="utf-8")
+    (output / "news-sitemap.xml").write_text(render_news_sitemap(reports), encoding="utf-8")
     (output / "robots.txt").write_text(render_robots(), encoding="utf-8")
 
 
