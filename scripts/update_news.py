@@ -41,6 +41,51 @@ ALLOWED_FEED_HOSTS = {
 GENERIC_IMAGE_PATH_MARKERS = ("logo", "social-preview", "primary-color", "newsgroup-logos", "news-slate-stream", "/seo/", "business_standard_1_685x385.jpg", "default.jpg", "poster-image-")
 RSS_NO_DETAILS = "لا تتوفر تفاصيل كافية بعد لإعداد تقرير موثق داخل الموقع؛ سيظل الخبر ضمن قائمة الرصد فقط."
 
+GDELT_CATEGORY_MAP = {
+    "world": ("world", "world"),
+    "economy": ("world", "economy"),
+    "technology": ("world", "technology"),
+    "sports": ("world", "sports"),
+}
+
+
+def fetch_gdelt_items(category: str, *, timespan: str = "24h", maxrecords: int = 25) -> list[dict]:
+    """Adapt GDELT candidates to the existing RSS item schema.
+
+    Discovery timestamps stay separate from publisher publication timestamps.
+    Article images and article text are never imported from GDELT.
+    """
+    from scripts.gdelt_discovery_preview import CATEGORIES, fetch_category
+
+    if category not in CATEGORIES:
+        raise ValueError(f"unsupported GDELT category: {category}")
+    candidates = fetch_category(category, CATEGORIES[category], timespan, maxrecords)
+    results: list[dict] = []
+    for candidate in candidates:
+        article_url = _safe_article_url(str(candidate.get("url", "")))
+        title = clean_text(candidate.get("title", ""))
+        if not article_url or not title:
+            continue
+        host = (urlsplit(article_url).hostname or "").lower()
+        if not host:
+            continue
+        region, mapped_category = GDELT_CATEGORY_MAP[category]
+        results.append({
+            "title": title,
+            "excerpt": "",
+            "url": article_url,
+            "source_name": host.removeprefix("www."),
+            "source_url": f"https://{host}",
+            "region": region,
+            "category": mapped_category,
+            "image_url": "",
+            "published_at": None,
+            "discovery_source": "GDELT DOC 2.0",
+            "discovered_at": candidate.get("seen_at") or None,
+        })
+    return results
+
+
 
 class _TextExtractor(HTMLParser):
     def __init__(self) -> None:
@@ -173,7 +218,7 @@ def _merge_source_metadata(existing_item: dict, incoming_item: dict) -> bool:
     if image_url and image_url != old_image_url and (not old_image_url or _is_generic_image_url(old_image_url)):
         existing_item["image_url"] = image_url
         changed = True
-    for key in ("source_url", "source_name", "published_at"):
+    for key in ("source_url", "source_name", "published_at", "discovery_source", "discovered_at"):
         if incoming_item.get(key) and not existing_item.get(key):
             existing_item[key] = incoming_item[key]
             changed = True
@@ -247,8 +292,7 @@ def clean_article_content(value: str | None) -> str:
         parser.feed(value)
         parser.close()
         raw = "".join(parser.parts)
-    except Exception:
-        raw = re.sub(r"<[^>]*>", " ", value)
+    except Exception:        raw = re.sub(r"<[^>]*>", " ", value)
     paragraphs = [re.sub(r"\s+", " ", part).strip() for part in raw.splitlines()]
     return "\n".join(part for part in paragraphs if part)[:MAX_STORED_ARTICLE_CHARS]
 
@@ -497,8 +541,7 @@ def _item_image_url(node: ET.Element, article_url: str = "") -> str:
         markup = child.text or ""
         if not markup or "<img" not in markup.lower():
             continue
-        extractor = _ImageExtractor()
-        try:
+        extractor = _ImageExtractor()        try:
             extractor.feed(markup)
             extractor.close()
         except Exception:
@@ -747,8 +790,7 @@ def build_update(
         try:
             if not _has_substantive_source_text(item):
                 summary = RSS_NO_DETAILS
-            else:
-                summary = clean_text(summarizer(item))
+            else:                summary = clean_text(summarizer(item))
                 if not _is_substantive_copy(summary, item.get("title", ""), item.get("source_name", "")):
                     summary = RSS_NO_DETAILS
         except Exception as exc:
@@ -770,6 +812,8 @@ def build_update(
             "source_url": item.get("source_url", ""),
             "image_url": item.get("image_url", ""),
             "published_at": item.get("published_at"),
+            "discovery_source": item.get("discovery_source", ""),
+            "discovered_at": item.get("discovered_at"),
             "created_at": now_text,
             "summary_date": today,
         })
@@ -858,6 +902,25 @@ def main() -> int:
     feeds = config.get("feeds", [])
     if not isinstance(feeds, list):
         raise ValueError("news_sources.json must contain a feeds list")
+    feeds = list(feeds)
+    gdelt_enabled = bool(config.get("gdelt_enabled", False))
+    gdelt_categories = config.get("gdelt_categories", list(GDELT_CATEGORY_MAP))
+    if gdelt_enabled:
+        for category in gdelt_categories:
+            if category not in GDELT_CATEGORY_MAP:
+                raise ValueError(f"unsupported configured GDELT category: {category}")
+            region, mapped_category = GDELT_CATEGORY_MAP[category]
+            feeds.append({
+                "name": f"GDELT:{category}",
+                "region": region,
+                "category": mapped_category,
+                "url": f"gdelt://{category}",
+                "source_url": "",
+                "enabled": True,
+            })
+    gdelt_timespan = str(config.get("gdelt_timespan", "24h"))
+    gdelt_maxrecords = max(1, min(250, int(config.get("gdelt_maxrecords_per_category", 25))))
+    gdelt_pause_seconds = max(0.0, float(config.get("gdelt_pause_seconds", 6)))
     max_items_per_feed = max(1, int(config.get("max_items_per_feed", 12)))
 
     ai_enabled = ai_summarization_enabled()
@@ -865,6 +928,7 @@ def main() -> int:
     model = os.environ.get("OPENAI_MODEL", "").strip()
     can_fetch_article_text = bool(not args.dry_run and ai_enabled and api_key and model)
 
+    gdelt_last_request = [None]
     image_lookup_count = 0
     image_lookup_urls: set[str] = set()
     article_lookup_count = 0
@@ -895,13 +959,26 @@ def main() -> int:
                 item.pop("article_content", None)
         return items
 
+    def combined_fetch(url: str, region: str, name: str, source_url: str = "") -> list[dict]:
+        if url.startswith("gdelt://"):
+            category = url.split("://", 1)[1]
+            previous = gdelt_last_request[0]
+            if previous is not None:
+                wait = gdelt_pause_seconds - (time.monotonic() - previous)
+                if wait > 0:
+                    time.sleep(wait)
+            gdelt_last_request[0] = time.monotonic()
+            return fetch_gdelt_items(category, timespan=gdelt_timespan, maxrecords=gdelt_maxrecords)
+        return limited_fetch(url, region, name, source_url)
+
     if args.dry_run:
         total = 0
         for feed in feeds:
             if feed.get("enabled", True):
-                items = limited_fetch(feed["url"], feed["region"], feed["name"], feed.get("source_url", ""))
+                items = combined_fetch(feed["url"], feed["region"], feed["name"], feed.get("source_url", ""))
                 total += len(items)
-                print(f"{feed['name']}: {len(items)} RSS entries")
+                source_label = "GDELT candidates" if feed["url"].startswith("gdelt://") else "RSS entries"
+                print(f"{feed['name']}: {len(items)} {source_label}")
         print(f"Dry run complete; {total} entries fetched, no summaries or uploads made.")
         return 0
 
@@ -946,7 +1023,7 @@ def main() -> int:
         news, changed, warnings = build_update(
             existing,
             feeds,
-            limited_fetch,
+            combined_fetch,
             summarizer,
             max_per_run=max_per_run,
             max_per_day=max_per_day,
