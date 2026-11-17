@@ -67,6 +67,10 @@ function distinctSummary(value, title, source) {
   }
   return summary;
 }
+function substantiveCopy(value) {
+  const candidate = text(value, 1_200);
+  return candidate.length >= 40 && candidate.split(/\s+/u).filter(Boolean).length >= 7;
+}
 function recordFor(item) {
   if (!item || !validId(item.id)) return null;
   const report = reportMap.get(item.id) || null;
@@ -76,11 +80,14 @@ function recordFor(item) {
     ? report.sources.map((value) => text(value, 160)).filter(Boolean).join("، ")
     : text(item.source_name, 160);
   const title = editorialTitle(report?.title || item.title, sourceName);
+  const rawSummary = report?.dek || (item.summary_type === "source_notice" ? item.excerpt : item.summary) || item.excerpt;
+  const summary = distinctSummary(rawSummary, title, sourceName);
+  if (!report && !substantiveCopy(summary)) return null;
   return {
     id: item.id,
     report,
     title,
-    summary: distinctSummary(report?.dek || (item.summary_type === "source_notice" ? item.excerpt : item.summary), title, sourceName),
+    summary,
     date: text(item.published_at || report?.published_at || item.created_at, 80),
     sourceName,
     sourceUrl: text(item.source_url || report?.source_url, 800),
