@@ -14,8 +14,7 @@
             android:value="${firebaseAppCheckDebugToken}" />
         <activity
             android:name=".VideoStudioActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:exported="false" />
         <activity
             android:name=".AppDiagnosticsActivity"
             android:exported="false" />
