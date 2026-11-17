@@ -116,16 +116,23 @@ def fetch_category(category: str, query: str, timespan: str, maxrecords: int) ->
         "User-Agent": USER_AGENT,
         "Accept": "application/json",
     })
-    try:
-        with urllib.request.urlopen(request, timeout=25) as response:
-            if response.status != 200:
-                raise RuntimeError(f"GDELT returned HTTP {response.status}")
-            content_type = response.headers.get("Content-Type", "").lower()
-            payload = response.read(4_000_001)
-    except urllib.error.HTTPError as exc:
-        if exc.code == 429:
-            raise RuntimeError("GDELT rate limit reached (HTTP 429); wait before retrying") from exc
-        raise RuntimeError(f"GDELT returned HTTP {exc.code}") from exc
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=25) as response:
+                if response.status != 200:
+                    raise RuntimeError(f"GDELT returned HTTP {response.status}")
+                content_type = response.headers.get("Content-Type", "").lower()
+                payload = response.read(4_000_001)
+            break
+        except urllib.error.HTTPError as exc:
+            if exc.code == 429 and attempt < 2:
+                delay = 30 * (attempt + 1)
+                print(f"GDELT rate limited the request; retrying in {delay}s", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            if exc.code == 429:
+                raise RuntimeError("GDELT rate limit persisted after two retries") from exc
+            raise RuntimeError(f"GDELT returned HTTP {exc.code}") from exc
     if len(payload) > 4_000_000:
         raise RuntimeError("GDELT response exceeded the 4 MB safety limit")
     if content_type and "json" not in content_type:
