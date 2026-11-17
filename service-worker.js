@@ -1,17 +1,20 @@
-const CACHE_NAME = "world-news-v16-image-rights";
+const CACHE_NAME = "world-news-v17-homepage-feed";
 const ROOT = new URL("./", self.location.href);
-const DATA_URLS = ["data/news.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
+const DATA_URLS = ["data/news-latest.json", "data/news.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
+const CORE_DATA_URLS = ["data/news-latest.json", "data/reports.json"].map((path) => new URL(path, ROOT).href);
 const SHELL_URLS = [
   ROOT.href,
   new URL("index.html", ROOT).href,
   new URL("archive.html", ROOT).href,
   new URL("section.html", ROOT).href,
   new URL("videos.html", ROOT).href,
+  new URL("photos.html", ROOT).href,
   new URL("styles.css", ROOT).href,
   new URL("app.js", ROOT).href,
   new URL("archive.js", ROOT).href,
   new URL("section.js", ROOT).href,
   new URL("videos.js", ROOT).href,
+  new URL("photos.js", ROOT).href,
   new URL("article.js", ROOT).href,
   new URL("manifest.webmanifest", ROOT).href,
   new URL("assets/brand-mark.png", ROOT).href,
@@ -22,7 +25,7 @@ const SHELL_URLS = [
   new URL("assets/story-morocco-stadium.webp", ROOT).href,
   new URL("assets/story-yemen-diplomacy.webp", ROOT).href,
   ...["egypt", "arab", "world", "politics", "economy", "technology", "sports"].map((name) => new URL(`assets/news-illustrations/${name}.jpg`, ROOT).href),
-  ...DATA_URLS,
+  ...CORE_DATA_URLS,
 ];
 
 self.addEventListener("install", (event) => {
@@ -39,9 +42,9 @@ self.addEventListener("fetch", (event) => {
   const key = new URL(request.url).href.split("?")[0];
   if (DATA_URLS.includes(key)) {
     event.respondWith(fetch(request).then((response) => {
-      if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(request, response.clone()));
+      if (response.ok) event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(new Request(key), response.clone())));
       return response;
-    }).catch(async () => (await caches.match(request)) || new Response("{}", {headers:{"Content-Type":"application/json; charset=utf-8"}})));
+    }).catch(async () => (await caches.match(new Request(key))) || new Response("{}", {headers:{"Content-Type":"application/json; charset=utf-8"}})));
     return;
   }
   event.respondWith(caches.match(request).then((cached) => cached || fetch(request).then((response) => {
