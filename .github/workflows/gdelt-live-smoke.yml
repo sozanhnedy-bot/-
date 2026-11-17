@@ -1,8 +1,6 @@
 name: GDELT and RSS live smoke check
 
 on:
-  push:
-    branches: [feature/gdelt-rss-parallel]
   pull_request:
     branches: [main]
     paths:
@@ -14,6 +12,10 @@ on:
 
 permissions:
   contents: read
+
+concurrency:
+  group: gdelt-live-smoke-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   live-smoke:
