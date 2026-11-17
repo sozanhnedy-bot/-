@@ -110,7 +110,23 @@ function recordFor(item) {
   const publishable = Boolean(report || hasSubstantiveDetail(summary));
   // Never present a section illustration as if it were a photograph of this story.
   // Show an image only when the source/report supplied a real image URL.
-  const image = report ? (report.image_verified === true ? safeImage(report.image) : "") : (hasReusableImageRights(item) ? safeImage(item.image_url) : "");
+  // Use actual publisher/report images only when their reuse is documented.
+  // Otherwise show a clearly labeled local illustration so the layout keeps its imagery
+  // without implying that an illustration depicts the specific event.
+  const categoryIllustrations = {
+    egypt: "./assets/news-illustrations/world.jpg",
+    arab: "./assets/news-illustrations/world.jpg",
+    world: "./assets/news-illustrations/world.jpg",
+    politics: "./assets/news-illustrations/world.jpg",
+    economy: "./assets/news-illustrations/economy.jpg",
+    technology: "./assets/news-illustrations/technology.jpg",
+    sports: "./assets/news-illustrations/world.jpg",
+    reports: "./assets/news-illustrations/world.jpg",
+  };
+  const verifiedReportImage = report && report.image_verified === true ? safeImage(report.image) : "";
+  const licensedFeedImage = !report && hasReusableImageRights(item) ? safeImage(item.image_url) : "";
+  const image = verifiedReportImage || licensedFeedImage || categoryIllustrations[category] || categoryIllustrations.world;
+  const isIllustration = !verifiedReportImage && !licensedFeedImage;
   const categoryLabel = CATEGORY_LABELS[category] || REGION_LABELS[region] || "العالم";
   return {
     id: item.id,
@@ -123,7 +139,7 @@ function recordFor(item) {
     sourceUrl: text(item.source_url || report?.source_url, 800),
     image,
     imageAlt: image ? text(report?.image_alt || item.image_alt || item.title, 300) : "",
-    imageCaption: image ? text(report?.image_caption || item.image_caption, 300) : "",
+    imageCaption: image ? (isIllustration ? "صورة توضيحية" : text(report?.image_caption || item.image_caption, 300)) : "",
     region,
     category,
     summaryType: report ? "editorial_report" : text(item.summary_type, 40),
