@@ -8,6 +8,8 @@ on:
       - world-news/image-rights-gate
     paths:
       - "scripts/update_news.py"
+      - "scripts/enrich_commons_images.py"
+      - "tests/test_commons_images.py"
       - "scripts/render_news.py"
       - "scripts/render_seo.py"
       - "scripts/render_articles.py"

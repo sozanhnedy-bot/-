@@ -92,6 +92,17 @@ def has_reusable_image_rights(item: dict) -> bool:
     return status in allowed and bool(credit) and bool(license_url)
 
 
+
+def safe_story_image(item: dict) -> str:
+    """Accept a local Commons asset or an HTTPS image only with documented reuse rights."""
+    if not has_reusable_image_rights(item):
+        return ""
+    candidate = text(item.get("image_url"), 1_000)
+    if candidate.startswith("assets/news-images/") and ".." not in candidate.split("/") and IMAGE_EXT_RE.search(candidate):
+        return candidate
+    return safe_external_url(candidate, image=True)
+
+
 def _reused_image_urls(items: list[dict]) -> set[str]:
     counts: dict[str, int] = {}
     for item in items:
@@ -135,7 +146,7 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     category = CATEGORIES.get(category_key, REGIONS.get(category_key, region))
     published = text(item.get("published_at") or item.get("created_at"), 80)
     published_display = date_label(published)
-    image_url = safe_external_url(item.get("image_url"), image=True) if has_reusable_image_rights(item) else ""
+    image_url = safe_story_image(item)
     if shared_image_urls is None and all_items:
         shared_image_urls = _reused_image_urls(all_items)
     if image_url and image_url in (shared_image_urls or set()):
@@ -143,9 +154,23 @@ def render(item: dict, all_items: list[dict] | None = None, shared_image_urls: s
     e = html.escape
     description = e((dek or details or title)[:220], quote=True)
     canonical = f"{SITE_URL}/news/{raw_id}.html"
-    preview_image = image_url
+    is_local_image = image_url.startswith("assets/")
+    image_src = f"../{image_url}" if is_local_image else image_url
+    preview_image = f"{SITE_URL}/{image_url}" if is_local_image else image_url
+    image_credit = text(item.get("image_credit"), 300)
+    image_source_url = safe_external_url(item.get("image_source_url"))
+    image_license_url = safe_external_url(item.get("image_license_url"))
+    image_alt = text(item.get("image_alt"), 300) or title
+    image_caption = text(item.get("image_caption"), 300) or "صورة توثيقية مرتبطة بموضوع الخبر"
+    attribution_links = " · ".join(
+        link for link in (
+            f'<a href="{e(image_source_url, quote=True)}" target="_blank" rel="nofollow noopener noreferrer">مصدر الصورة</a>' if image_source_url else "",
+            f'<a href="{e(image_license_url, quote=True)}" target="_blank" rel="nofollow noopener noreferrer">الترخيص</a>' if image_license_url else "",
+        ) if link
+    )
+    attribution = f" · {e(image_credit)}" if image_credit else ""
     image_markup = (
-        f'<figure class="article-figure"><img src="{e(image_url, quote=True)}" alt="{e(title, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>الصورة المرتبطة بالخبر من المصدر: {e(source)}</figcaption></figure>'
+        f'<figure class="article-figure"><img src="{e(image_src, quote=True)}" alt="{e(image_alt, quote=True)}" loading="eager" referrerpolicy="no-referrer"><figcaption>{e(image_caption)}{attribution}{(" · " + attribution_links) if attribution_links else ""}</figcaption></figure>'
         if image_url else ""
     )
     detail_paragraphs = "".join(f"<p>{e(part)}</p>" for part in details.splitlines() if part.strip())
