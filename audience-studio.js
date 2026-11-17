@@ -35,7 +35,7 @@
     const terms = unique([...words(title), ...words(summary)]).slice(0, 12);
     const hashtags = terms.slice(0, 6).map((term) => "#" + term.replace(/[^\p{L}\p{N}_]/gu, ""));
     const tags = $("keywords"); tags.replaceChildren();
-    (terms.length ? terms : ["محتوى عربي", "فيديو جديد"]).forEach((term) => tags.append(make("span", term))).forEach((node) => node.className = "audience-chip");
+    (terms.length ? terms : ["محتوى عربي", "فيديو جديد"]).forEach((term) => { const chip = make("span", term); chip.className = "audience-chip"; tags.append(chip); });
     const neutral = "هل تهتم بموضوع: " + title + "؟\n" + (summary || "شاهد الفيديو للتعرّف على التفاصيل والسياق.") + "\n\nما رأيك؟ شاركنا وجهة نظرك باحترام.\n" + hashtags.join(" ");
     const egypt = "لو الموضوع ده يهمك: " + title + "\n" + (summary || "في الفيديو بنعرض التفاصيل والمعلومات الأساسية.") + "\n\nاتفرج وشاركنا رأيك لو حابب.\n" + hashtags.join(" ");
     const gulf = "إذا كان هذا الموضوع يهمك: " + title + "\n" + (summary || "في هذا الفيديو نستعرض أبرز التفاصيل والمعلومات.") + "\n\nشاهد وشاركنا رأيك إذا رغبت.\n" + hashtags.join(" ");
