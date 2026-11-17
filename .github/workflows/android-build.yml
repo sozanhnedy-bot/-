@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Download FFmpegKitNext Maven repository
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: ffmpeg-kit-next-9.0.2-android-arm64
           path: android-app/ffmpegkitnext-maven
