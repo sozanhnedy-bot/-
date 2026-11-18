@@ -162,6 +162,17 @@ public final class PortalActivity extends Activity {
         actions.addView(youtubeLab, youtubeParams);
         root.addView(actions);
 
+        Button visitBotLab = new Button(this);
+        visitBotLab.setText("Visit Bot Lab — محاكاة الزيارات");
+        visitBotLab.setAllCaps(false);
+        visitBotLab.setTextColor(Color.WHITE);
+        visitBotLab.setTextSize(14);
+        visitBotLab.setBackgroundColor(NAVY);
+        visitBotLab.setOnClickListener(v -> startActivity(new Intent(this, VisitBotLabActivity.class)));
+        LinearLayout.LayoutParams botLabParams = new LinearLayout.LayoutParams(-1, dp(52));
+        botLabParams.setMargins(dp(8), dp(2), dp(8), dp(8));
+        root.addView(visitBotLab, botLabParams);
+
         setContentView(root);
         webView.loadUrl(SITE_URL);
     }
