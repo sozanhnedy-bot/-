@@ -101,7 +101,7 @@ public final class VisitBotLabActivity extends Activity {
         try{requested=Integer.parseInt(countInput.getText().toString().trim());}
         catch(Exception e){countInput.setError("اكتب عددًا من 1 إلى "+MAX_SESSIONS);return;}
         if(requested<1||requested>MAX_SESSIONS){countInput.setError("الحد المسموح من 1 إلى "+MAX_SESSIONS);return;}
-        testUrl=raw; targetCount=requested; completedCount=0; naturalLikeCount=0; suspiciousLikeCount=0; logEntries.clear();;
+        testUrl=raw; targetCount=requested; completedCount=0; naturalLikeCount=0; suspiciousLikeCount=0; logEntries.clear();
         running=true; setInputsEnabled(false); startButton.setEnabled(false); stopButton.setEnabled(true);
         status.setText("يتم توليد بيانات افتراضية محليًا للرابط المحدد — لا يوجد اتصال بيوتيوب.");
         updateDisplay(); handler.post(simulationTick);
