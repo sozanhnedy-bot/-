@@ -34,7 +34,9 @@ public class VisitDetectionEngineTest {
         assertEquals(2, report.total);
         assertEquals(1, report.normal);
         assertEquals(1, report.suspicious);
-        assertEquals(37.5, report.averageRiskScore, 0.001);
+        // The suspicious session scores 90 (30 + 20 + 25 + 15);
+        // the normal session scores 0, so the batch average is 45.
+        assertEquals(45.0, report.averageRiskScore, 0.001);
     }
 
     @Test public void emptyBatchHasZeroAverage() {
