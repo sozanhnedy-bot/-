@@ -33,7 +33,6 @@ public final class VisitBotLabActivity extends Activity {
     private String testUrl="";
     private int targetCount,completedCount,naturalLikeCount,suspiciousLikeCount;
     private boolean running;
-    private final SyntheticTrafficEngine.BatchResult detectorMetrics = new SyntheticTrafficEngine.BatchResult();
 
     private final Runnable simulationTick=new Runnable(){
         @Override public void run(){
@@ -42,7 +41,6 @@ public final class VisitBotLabActivity extends Activity {
             SyntheticTrafficEngine.BatchResult result = SyntheticTrafficEngine.generate(batch, random);
             naturalLikeCount += result.normal;
             suspiciousLikeCount += result.automated;
-            detectorMetrics.add(result);
             completedCount+=batch;
             String stamp=new SimpleDateFormat("HH:mm:ss",Locale.getDefault()).format(new Date());
             logEntries.add(0,stamp+" • توليد "+batch+" جلسة افتراضية • الإجمالي "+completedCount+"/"+targetCount);
@@ -103,7 +101,7 @@ public final class VisitBotLabActivity extends Activity {
         try{requested=Integer.parseInt(countInput.getText().toString().trim());}
         catch(Exception e){countInput.setError("اكتب عددًا من 1 إلى "+MAX_SESSIONS);return;}
         if(requested<1||requested>MAX_SESSIONS){countInput.setError("الحد المسموح من 1 إلى "+MAX_SESSIONS);return;}
-        testUrl=raw; targetCount=requested; completedCount=0; naturalLikeCount=0; suspiciousLikeCount=0; logEntries.clear(); resetDetectorMetrics();
+        testUrl=raw; targetCount=requested; completedCount=0; naturalLikeCount=0; suspiciousLikeCount=0; logEntries.clear();;
         running=true; setInputsEnabled(false); startButton.setEnabled(false); stopButton.setEnabled(true);
         status.setText("يتم توليد بيانات افتراضية محليًا للرابط المحدد — لا يوجد اتصال بيوتيوب.");
         updateDisplay(); handler.post(simulationTick);
@@ -119,25 +117,16 @@ public final class VisitBotLabActivity extends Activity {
         status.setText("اكتمل توليد "+completedCount+" جلسة افتراضية محليًا."); updateDisplay();
     }
     private void resetSimulation(){
-        if(running)stopSimulation(); completedCount=0; targetCount=0; naturalLikeCount=0; suspiciousLikeCount=0; resetDetectorMetrics();
+        if(running)stopSimulation(); completedCount=0; targetCount=0; naturalLikeCount=0; suspiciousLikeCount=0;
         testUrl=""; logEntries.clear(); setInputsEnabled(true); status.setText("جاهز لاختبار جديد."); updateDisplay();
     }
     private void setInputsEnabled(boolean enabled){urlInput.setEnabled(enabled);countInput.setEnabled(enabled);}
     private void updateDisplay(){
         counter.setText(completedCount+" / "+targetCount+" جلسة");
-        summary.setText("طبيعي اصطناعي: "+naturalLikeCount+" | آلي اصطناعي: "+suspiciousLikeCount
-          +"\nكشف صحيح: "+detectorMetrics.truePositive+" | إنذارات كاذبة: "+detectorMetrics.falsePositive
-          +"\nفوات الكشف: "+detectorMetrics.falseNegative+" | دقة الكشف: "+Math.round(detectorMetrics.accuracy()*100)+"%"
-          +"\nمتوسط مدة الجلسة: "+String.format(Locale.US,"%.1f",detectorMetrics.averageDurationSeconds)+" ثانية");
+        summary.setText("جلسات بنمط طبيعي: "+naturalLikeCount+" | جلسات بنمط آلي: "+suspiciousLikeCount);
         if(logEntries.isEmpty())logView.setText("لا توجد جلسات بعد. أدخل الرابط والعدد ثم ابدأ الاختبار.");
         else{StringBuilder out=new StringBuilder();out.append("رابط الاختبار: ").append(testUrl).append('\n');
           for(String entry:logEntries)out.append(entry).append('\n'); logView.setText(out.toString().trim());}
-    }
-    private void resetDetectorMetrics(){
-        detectorMetrics.total=0; detectorMetrics.normal=0; detectorMetrics.automated=0;
-        detectorMetrics.truePositive=0; detectorMetrics.falsePositive=0;
-        detectorMetrics.trueNegative=0; detectorMetrics.falseNegative=0;
-        detectorMetrics.averageDurationSeconds=0; detectorMetrics.averageGapSeconds=0;
     }
     private void addLabel(LinearLayout parent,String value){TextView label=text(value,14,INK,true);label.setPadding(0,dp(16),0,dp(4));parent.addView(label);}
     private Button makeButton(String label,int color){Button b=new Button(this);b.setText(label);b.setAllCaps(false);b.setTextColor(Color.WHITE);b.setTextSize(15);b.setBackgroundColor(color);return b;}
