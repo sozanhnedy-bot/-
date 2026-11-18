@@ -15,6 +15,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.nio.charset.StandardCharsets;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -74,6 +76,10 @@ public final class VisitDetectionActivity extends Activity {
         Button generate = button("توليد 20 جلسة اختبار اصطناعية");
         generate.setOnClickListener(v -> generateSessions());
         root.addView(generate);
+
+        Button export = button("تصدير بيانات الاختبار CSV");
+        export.setOnClickListener(v -> exportCsv());
+        root.addView(export);
 
         Button clear = button("مسح نتائج الاختبار");
         clear.setOnClickListener(v -> {
@@ -155,6 +161,42 @@ public final class VisitDetectionActivity extends Activity {
             card.addView(text("التكرار: " + s.repeatCount + " | الفاصل: " + s.gapSeconds + " ثانية", 13, NAVY, false));
             card.addView(text("سبب التقييم: " + s.reason, 13, NAVY, false));
         }
+    }
+
+
+    private void exportCsv() {
+        if (sessions.isEmpty()) {
+            Toast.makeText(this, "ولّد جلسات الاختبار أولًا.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        StringBuilder csv = new StringBuilder();
+        csv.append("dataset,session_id,expected_label,predicted_label,watch_seconds,repeat_count,gap_seconds,source,reason\\n");
+        for (int i = 0; i < sessions.size(); i++) {
+            Session s = sessions.get(i);
+            csv.append("SYNTHETIC_LOCAL,")
+                    .append(i + 1).append(',')
+                    .append(s.expectedBot ? "BOT" : "HUMAN").append(',')
+                    .append(s.predictedBot ? "SUSPICIOUS" : "NORMAL").append(',')
+                    .append(s.watchSeconds).append(',')
+                    .append(s.repeatCount).append(',')
+                    .append(s.gapSeconds).append(',')
+                    .append(csvValue(s.source)).append(',')
+                    .append(csvValue(s.reason)).append('\\n');
+        }
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/csv");
+        share.putExtra(Intent.EXTRA_SUBJECT, "Synthetic local visit test dataset");
+        share.putExtra(Intent.EXTRA_TEXT, csv.toString());
+        try {
+            startActivity(Intent.createChooser(share, "تصدير بيانات الاختبار"));
+        } catch (Exception e) {
+            Toast.makeText(this, "تعذر فتح خيارات التصدير.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String csvValue(String value) {
+        if (value == null) return "\\"\\"";
+        return "\\"" + value.replace("\\"", "\\"\\"") + "\\"";
     }
 
     private void openYoutube() {
