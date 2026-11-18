@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-18T20:41:49.696383Z",
+  "generated_at": "2026-11-18T20:42:04.641753Z",
   "disclaimer": "ترندات X من مصدر عام خارجي، وGoogle Trends مؤشر اهتمام بحثي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
   "sources_checked": [
     "Google Trends RSS: مصر",
@@ -22,7 +22,7 @@
       "title": "صندوق النقد",
       "region": "مصر",
       "rank": 19,
-      "score": 67,
+      "score": 66,
       "priority": "strong",
       "signal": "x_trends24_public",
       "signals": [
@@ -32,7 +32,7 @@
         "x_trends24_public"
       ],
       "source_count": 1,
-      "corroborating_news_items": 4,
+      "corroborating_news_items": 3,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/egypt/",
       "url": "https://trends24.in/egypt/",
@@ -44,7 +44,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -75,7 +75,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -106,7 +106,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -137,7 +137,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -199,7 +199,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -230,7 +230,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -261,7 +261,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -292,7 +292,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -323,7 +323,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -359,7 +359,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -390,7 +390,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -421,7 +421,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -607,7 +607,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -638,7 +638,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -803,7 +803,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -834,7 +834,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -994,7 +994,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1025,7 +1025,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1149,7 +1149,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1180,7 +1180,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1304,7 +1304,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1335,7 +1335,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1459,7 +1459,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1614,7 +1614,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1645,7 +1645,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1738,7 +1738,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1769,7 +1769,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1929,7 +1929,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1960,7 +1960,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2115,7 +2115,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2146,7 +2146,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2177,7 +2177,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2208,7 +2208,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2239,7 +2239,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2270,7 +2270,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2301,7 +2301,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2332,7 +2332,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2363,7 +2363,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2394,7 +2394,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2425,7 +2425,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2456,7 +2456,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2487,7 +2487,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2518,7 +2518,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2549,7 +2549,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2580,7 +2580,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2611,7 +2611,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2642,7 +2642,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2673,7 +2673,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2704,7 +2704,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2735,7 +2735,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2766,7 +2766,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2797,7 +2797,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2828,7 +2828,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2859,7 +2859,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2890,7 +2890,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2921,7 +2921,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2952,7 +2952,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2983,7 +2983,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3014,7 +3014,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3045,7 +3045,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3076,7 +3076,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3107,7 +3107,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:45.324827Z",
+      "captured_at": "2026-11-18T20:42:00.514994Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3138,7 +3138,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:41:44.967704Z",
+      "captured_at": "2026-11-18T20:42:00.182350Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
