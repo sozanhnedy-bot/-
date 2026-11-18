@@ -126,10 +126,10 @@ public final class VisitBotLabActivity extends Activity {
     private void updateDisplay(){
         counter.setText(completedCount+" / "+targetCount+" جلسة");
         summary.setText("طبيعية: "+naturalLikeCount+" | آلية: "+suspiciousLikeCount
-          +"\\nاكتشاف صحيح: "+metrics.truePositive+" | إنذار كاذب: "+metrics.falsePositive
-          +"\\nحالات فائتة: "+metrics.falseNegative+" | الدقة: "+Math.round(metrics.accuracy()*100)+"%"
-          +"\\nPrecision: "+Math.round(metrics.precision()*100)+"% | Recall: "+Math.round(metrics.recall()*100)+"%"
-          +"\\nمتوسط المشاهدة: "+String.format(Locale.US,"%.1f",metrics.averageDurationSeconds)+" ثانية");
+          +"\nاكتشاف صحيح: "+metrics.truePositive+" | إنذار كاذب: "+metrics.falsePositive
+          +"\nحالات فائتة: "+metrics.falseNegative+" | الدقة: "+Math.round(metrics.accuracy()*100)+"%"
+          +"\nPrecision: "+Math.round(metrics.precision()*100)+"% | Recall: "+Math.round(metrics.recall()*100)+"%"
+          +"\nمتوسط المشاهدة: "+String.format(Locale.US,"%.1f",metrics.averageDurationSeconds)+" ثانية");
         if(logEntries.isEmpty())logView.setText("لا توجد جلسات بعد. أدخل الرابط والعدد ثم ابدأ الاختبار.");
         else{StringBuilder out=new StringBuilder();out.append("رابط الاختبار: ").append(testUrl).append('\n');
           for(String entry:logEntries)out.append(entry).append('\n'); logView.setText(out.toString().trim());}
