@@ -126,9 +126,9 @@ public final class VisitBotLabActivity extends Activity {
     private void updateDisplay(){
         counter.setText(completedCount+" / "+targetCount+" جلسة");
         summary.setText("طبيعي اصطناعي: "+naturalLikeCount+" | آلي اصطناعي: "+suspiciousLikeCount
-          +"\\nكشف صحيح: "+detectorMetrics.truePositive+" | إنذارات كاذبة: "+detectorMetrics.falsePositive
-          +"\\nفوات الكشف: "+detectorMetrics.falseNegative+" | دقة الكشف: "+Math.round(detectorMetrics.accuracy()*100)+"%"
-          +"\\nمتوسط مدة الجلسة: "+String.format(Locale.US,"%.1f",detectorMetrics.averageDurationSeconds)+" ثانية");
+          +"\nكشف صحيح: "+detectorMetrics.truePositive+" | إنذارات كاذبة: "+detectorMetrics.falsePositive
+          +"\nفوات الكشف: "+detectorMetrics.falseNegative+" | دقة الكشف: "+Math.round(detectorMetrics.accuracy()*100)+"%"
+          +"\nمتوسط مدة الجلسة: "+String.format(Locale.US,"%.1f",detectorMetrics.averageDurationSeconds)+" ثانية");
         if(logEntries.isEmpty())logView.setText("لا توجد جلسات بعد. أدخل الرابط والعدد ثم ابدأ الاختبار.");
         else{StringBuilder out=new StringBuilder();out.append("رابط الاختبار: ").append(testUrl).append('\n');
           for(String entry:logEntries)out.append(entry).append('\n'); logView.setText(out.toString().trim());}
