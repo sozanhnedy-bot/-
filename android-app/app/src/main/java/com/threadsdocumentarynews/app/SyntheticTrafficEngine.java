@@ -17,11 +17,14 @@ public final class SyntheticTrafficEngine {
         public double accuracy() { return ratio(truePositive + trueNegative, total); }
         private static double ratio(int n, int d) { return d == 0 ? 0.0 : (double)n / d; }
         public void add(BatchResult other) {
+            int previousTotal = total;
             total += other.total; normal += other.normal; automated += other.automated;
             truePositive += other.truePositive; falsePositive += other.falsePositive;
             trueNegative += other.trueNegative; falseNegative += other.falseNegative;
-            averageDurationSeconds += other.averageDurationSeconds * other.total;
-            averageGapSeconds += other.averageGapSeconds * other.total;
+            averageDurationSeconds = (averageDurationSeconds * previousTotal
+                + other.averageDurationSeconds * other.total) / total;
+            averageGapSeconds = (averageGapSeconds * previousTotal
+                + other.averageGapSeconds * other.total) / total;
         }
         public void finishAverages() {
             if (total > 0) { averageDurationSeconds /= total; averageGapSeconds /= total; }
