@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-06T21:54:45.633346Z",
+  "generated_at": "2026-11-18T13:37:40.898012Z",
   "disclaimer": "ترندات X من مصدر عام خارجي، وGoogle Trends مؤشر اهتمام بحثي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
   "sources_checked": [
     "Google Trends RSS: مصر",
@@ -19,11 +19,11 @@
   },
   "items": [
     {
-      "title": "حسام حسن",
+      "title": "18 نوفمبر 2026",
       "region": "مصر",
-      "rank": 5,
-      "score": 72,
-      "priority": "strong",
+      "rank": 6,
+      "score": 63,
+      "priority": "medium",
       "signal": "x_trends24_public",
       "signals": [
         "x_trends24_public"
@@ -31,109 +31,9 @@
       "platforms": [
         "x_trends24_public"
       ],
-      "source_count": 1,
-      "corroborating_news_items": 2,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "محمد",
-      "region": "السعودية",
-      "rank": 2,
-      "score": 67,
-      "priority": "strong",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
+      "source_count": 2,
       "corroborating_news_items": 1,
       "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "تياغو موتا",
-      "region": "السعودية",
-      "rank": 4,
-      "score": 62,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss",
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "google_trends_rss",
-        "x_trends24_public"
-      ],
-      "source_count": 2,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=SA",
-      "url": "https://trends.google.com/trending/rss?geo=SA",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=SA"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": "2026-11-06T20:40:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "الزمالك",
-      "region": "مصر",
-      "rank": 1,
-      "score": 60,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 2,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/egypt/",
       "url": "https://trends24.in/egypt/",
       "source_links": [
@@ -149,13 +49,44 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "#ساعه_استجابه",
+      "title": "#الشهيد_محمد_مبروك",
+      "region": "مصر",
+      "rank": 1,
+      "score": 60,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "#كارديال",
       "region": "السعودية",
       "rank": 1,
       "score": 60,
@@ -180,13 +111,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "معتمد جمال",
+      "title": "#ثوره_غضب_تكليف23",
       "region": "مصر",
       "rank": 2,
       "score": 59,
@@ -211,13 +142,44 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "كابتن معتمد",
+      "title": "#GTA6",
+      "region": "السعودية",
+      "rank": 2,
+      "score": 59,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "#استغاثه_دفعه23_للسيسي",
       "region": "مصر",
       "rank": 3,
       "score": 58,
@@ -242,13 +204,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "#٢٠٣٠_بلا_نقاب37",
+      "title": "#GTAVI",
       "region": "السعودية",
       "rank": 3,
       "score": 58,
@@ -273,56 +235,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ايفرتون",
-      "region": "مصر",
-      "rank": 8,
-      "score": 58,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss",
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "google_trends_rss",
-        "x_trends24_public"
-      ],
-      "source_count": 3,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=EG",
-      "url": "https://trends.google.com/trending/rss?geo=EG",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=EG"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": "2026-11-06T20:00:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "سيف جعفر",
+      "title": "#الحقيقه_الكامله_لسد_النهضه",
       "region": "مصر",
       "rank": 4,
       "score": 57,
@@ -347,13 +266,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "#تحدي_الطياره",
+      "title": "فراس",
       "region": "السعودية",
       "rank": 4,
       "score": 57,
@@ -365,7 +284,7 @@
       "platforms": [
         "x_trends24_public"
       ],
-      "source_count": 2,
+      "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/saudi-arabia/",
@@ -374,22 +293,48 @@
         {
           "platform": "x_trends24_public",
           "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
           "url": "https://trends24.in/saudi-arabia/"
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "رونالدو",
+      "title": "#GTA6Cat",
+      "region": "مصر",
+      "rank": 5,
+      "score": 56,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "سالم الدوسري",
       "region": "السعودية",
       "rank": 5,
       "score": 56,
@@ -419,13 +364,44 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "مسلسل طالع نازل",
+      "title": "وزير",
+      "region": "مصر",
+      "rank": 8,
+      "score": 56,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 1,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=EG",
+      "url": "https://trends.google.com/trending/rss?geo=EG",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=EG"
+        }
+      ],
+      "published_at": "2026-11-18T11:30:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "رئيس وزراء التشيك",
       "region": "مصر",
       "rank": 1,
       "score": 55,
@@ -437,7 +413,7 @@
       "platforms": [
         "google_trends_rss"
       ],
-      "source_count": 2,
+      "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Google Trends",
       "source_url": "https://trends.google.com/trending/rss?geo=EG",
@@ -447,57 +423,16 @@
           "platform": "google_trends_rss",
           "name": "Google Trends",
           "url": "https://trends.google.com/trending/rss?geo=EG"
-        },
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=SA"
         }
       ],
-      "published_at": "2026-11-06T21:30:00Z",
+      "published_at": "2026-11-18T13:20:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "carlos alcaraz",
-      "region": "الإمارات",
-      "rank": 1,
-      "score": 55,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 2,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=AE",
-      "url": "https://trends.google.com/trending/rss?geo=AE",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=EG"
-        },
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=AE"
-        }
-      ],
-      "published_at": "2026-11-06T20:20:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "منخفض جوي",
+      "title": "اليمن السعودية",
       "region": "السعودية",
       "rank": 1,
       "score": 55,
@@ -521,14 +456,50 @@
           "url": "https://trends.google.com/trending/rss?geo=SA"
         }
       ],
-      "published_at": "2026-11-06T21:40:00Z",
+      "published_at": "2026-11-18T13:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "casper ruud",
+      "title": "موساد",
+      "region": "الإمارات",
+      "rank": 1,
+      "score": 55,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 2,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=AE",
+      "url": "https://trends.google.com/trending/rss?geo=AE",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=SA"
+        },
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=AE"
+        }
+      ],
+      "published_at": "2026-11-18T13:20:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "glenn close",
       "region": "العالم",
       "rank": 1,
       "score": 55,
@@ -552,15 +523,15 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-06T21:40:00Z",
+      "published_at": "2026-11-18T13:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "#جمعه_مباركه",
-      "region": "مصر",
+      "title": "#احمد_قزيع_في_الخبر",
+      "region": "السعودية",
       "rank": 6,
       "score": 55,
       "priority": "medium",
@@ -574,45 +545,9 @@
       "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "#جمعه_طيبه",
-      "region": "السعودية",
-      "rank": 6,
-      "score": 55,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 2,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/saudi-arabia/",
       "url": "https://trends24.in/saudi-arabia/",
       "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        },
         {
           "platform": "x_trends24_public",
           "name": "Trends24 (public X trends)",
@@ -620,13 +555,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "شاهد",
+      "title": "جنسن هوانغ انفيديا",
       "region": "مصر",
       "rank": 2,
       "score": 54,
@@ -650,17 +585,172 @@
           "url": "https://trends.google.com/trending/rss?geo=EG"
         }
       ],
-      "published_at": "2026-11-06T21:30:00Z",
+      "published_at": "2026-11-18T13:10:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "sevilla vs alavés",
+      "title": "indian rupee news",
       "region": "الإمارات",
       "rank": 2,
       "score": 54,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=AE",
+      "url": "https://trends.google.com/trending/rss?geo=AE",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=AE"
+        }
+      ],
+      "published_at": "2026-11-18T12:30:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "anthropic ipo",
+      "region": "العالم",
+      "rank": 2,
+      "score": 54,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=US",
+      "url": "https://trends.google.com/trending/rss?geo=US",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=US"
+        }
+      ],
+      "published_at": "2026-11-18T13:00:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "جلوب سوكر",
+      "region": "مصر",
+      "rank": 7,
+      "score": 54,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "#برنامج_الاجاويد1652",
+      "region": "السعودية",
+      "rank": 7,
+      "score": 54,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "جين بينغ",
+      "region": "مصر",
+      "rank": 15,
+      "score": 54,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 1,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "صدام حسين",
+      "region": "مصر",
+      "rank": 3,
+      "score": 53,
       "priority": "medium",
       "signal": "google_trends_rss",
       "signals": [
@@ -672,8 +762,8 @@
       "source_count": 3,
       "corroborating_news_items": 0,
       "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=AE",
-      "url": "https://trends.google.com/trending/rss?geo=AE",
+      "source_url": "https://trends.google.com/trending/rss?geo=EG",
+      "url": "https://trends.google.com/trending/rss?geo=EG",
       "source_links": [
         {
           "platform": "google_trends_rss",
@@ -691,138 +781,14 @@
           "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-06T19:20:00Z",
+      "published_at": "2026-11-18T12:20:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ios",
-      "region": "العالم",
-      "rank": 2,
-      "score": 54,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=US",
-      "url": "https://trends.google.com/trending/rss?geo=US",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=US"
-        }
-      ],
-      "published_at": "2026-11-06T21:40:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "سيد معوض",
-      "region": "مصر",
-      "rank": 7,
-      "score": 54,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "بيت الشاورما",
-      "region": "السعودية",
-      "rank": 7,
-      "score": 54,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "اليسا",
-      "region": "مصر",
-      "rank": 3,
-      "score": 53,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=EG",
-      "url": "https://trends.google.com/trending/rss?geo=EG",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=EG"
-        }
-      ],
-      "published_at": "2026-11-06T21:10:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "scene movie review",
+      "title": "womens emerging nations trophy",
       "region": "السعودية",
       "rank": 3,
       "score": 53,
@@ -846,14 +812,14 @@
           "url": "https://trends.google.com/trending/rss?geo=SA"
         }
       ],
-      "published_at": "2026-11-06T21:10:00Z",
+      "published_at": "2026-11-18T12:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "uae ramadan 2027 expected dates",
+      "title": "ps5 pro",
       "region": "الإمارات",
       "rank": 3,
       "score": 53,
@@ -865,7 +831,7 @@
       "platforms": [
         "google_trends_rss"
       ],
-      "source_count": 1,
+      "source_count": 2,
       "corroborating_news_items": 0,
       "source_name": "Google Trends",
       "source_url": "https://trends.google.com/trending/rss?geo=AE",
@@ -874,17 +840,22 @@
         {
           "platform": "google_trends_rss",
           "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=SA"
+        },
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
           "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-06T19:20:00Z",
+      "published_at": "2026-11-18T12:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "kristaps porzingis",
+      "title": "flood warning",
       "region": "العالم",
       "rank": 3,
       "score": 53,
@@ -908,46 +879,15 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-06T21:20:00Z",
+      "published_at": "2026-11-18T12:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "مرتضى منصور",
+      "title": "اليوم الاربعاء",
       "region": "مصر",
-      "rank": 8,
-      "score": 53,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "علي النبي",
-      "region": "السعودية",
       "rank": 8,
       "score": 53,
       "priority": "medium",
@@ -961,8 +901,8 @@
       "source_count": 2,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
       "source_links": [
         {
           "platform": "x_trends24_public",
@@ -976,13 +916,44 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "إلهام شاهين",
+      "title": "النظام الازرق",
+      "region": "السعودية",
+      "rank": 8,
+      "score": 53,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "وزير التعليم",
       "region": "مصر",
       "rank": 4,
       "score": 52,
@@ -1006,15 +977,15 @@
           "url": "https://trends.google.com/trending/rss?geo=EG"
         }
       ],
-      "published_at": "2026-11-06T20:40:00Z",
+      "published_at": "2026-11-18T12:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "everton vs coventry",
-      "region": "الإمارات",
+      "title": "kamil mishara",
+      "region": "السعودية",
       "rank": 4,
       "score": 52,
       "priority": "medium",
@@ -1028,8 +999,8 @@
       "source_count": 2,
       "corroborating_news_items": 0,
       "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=AE",
-      "url": "https://trends.google.com/trending/rss?geo=AE",
+      "source_url": "https://trends.google.com/trending/rss?geo=SA",
+      "url": "https://trends.google.com/trending/rss?geo=SA",
       "source_links": [
         {
           "platform": "google_trends_rss",
@@ -1042,14 +1013,45 @@
           "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-06T19:10:00Z",
+      "published_at": "2026-11-18T12:20:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "thierno barry",
+      "title": "cameron bancroft",
+      "region": "الإمارات",
+      "rank": 4,
+      "score": 52,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=AE",
+      "url": "https://trends.google.com/trending/rss?geo=AE",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=AE"
+        }
+      ],
+      "published_at": "2026-11-18T12:00:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "toxic hall of shame",
       "region": "العالم",
       "rank": 4,
       "score": 52,
@@ -1073,46 +1075,15 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-06T21:20:00Z",
+      "published_at": "2026-11-18T12:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "كاس مصر",
+      "title": "الرييس الصيني",
       "region": "مصر",
-      "rank": 9,
-      "score": 52,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "البرتغال",
-      "region": "السعودية",
       "rank": 9,
       "score": 52,
       "priority": "medium",
@@ -1126,8 +1097,8 @@
       "source_count": 2,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
       "source_links": [
         {
           "platform": "x_trends24_public",
@@ -1141,14 +1112,45 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "oxford city vs leicester city",
+      "title": "الصالات الرياضيه",
       "region": "السعودية",
+      "rank": 9,
+      "score": 52,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "سعر الذهب الآن",
+      "region": "مصر",
       "rank": 5,
       "score": 51,
       "priority": "medium",
@@ -1162,54 +1164,23 @@
       "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=SA",
-      "url": "https://trends.google.com/trending/rss?geo=SA",
+      "source_url": "https://trends.google.com/trending/rss?geo=EG",
+      "url": "https://trends.google.com/trending/rss?geo=EG",
       "source_links": [
         {
           "platform": "google_trends_rss",
           "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=SA"
+          "url": "https://trends.google.com/trending/rss?geo=EG"
         }
       ],
-      "published_at": "2026-11-06T20:40:00Z",
+      "published_at": "2026-11-18T11:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "رخصة قيادة",
-      "region": "الإمارات",
-      "rank": 5,
-      "score": 51,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=AE",
-      "url": "https://trends.google.com/trending/rss?geo=AE",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=AE"
-        }
-      ],
-      "published_at": "2026-11-06T19:00:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "boston college basketball",
+      "title": "gta 6 radio stations",
       "region": "العالم",
       "rank": 5,
       "score": 51,
@@ -1233,14 +1204,14 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-06T21:10:00Z",
+      "published_at": "2026-11-18T12:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ادم كايد",
+      "title": "النادي التاريخي المفضل",
       "region": "مصر",
       "rank": 10,
       "score": 51,
@@ -1265,13 +1236,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "جيسوس",
+      "title": "بايرن",
       "region": "السعودية",
       "rank": 10,
       "score": 51,
@@ -1296,13 +1267,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "أكسفورد سيتي ضد ليستر سيتي",
+      "title": "اسعار البنزين اليوم",
       "region": "مصر",
       "rank": 6,
       "score": 50,
@@ -1326,14 +1297,14 @@
           "url": "https://trends.google.com/trending/rss?geo=EG"
         }
       ],
-      "published_at": "2026-11-06T20:10:00Z",
+      "published_at": "2026-11-18T11:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "honor 700 pro",
+      "title": "sony",
       "region": "السعودية",
       "rank": 6,
       "score": 50,
@@ -1357,45 +1328,14 @@
           "url": "https://trends.google.com/trending/rss?geo=SA"
         }
       ],
-      "published_at": "2026-11-06T20:40:00Z",
+      "published_at": "2026-11-18T11:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "تهريب",
-      "region": "الإمارات",
-      "rank": 6,
-      "score": 50,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=AE",
-      "url": "https://trends.google.com/trending/rss?geo=AE",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=AE"
-        }
-      ],
-      "published_at": "2026-11-06T18:10:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "charlie woods florida state signing",
+      "title": "carrie ann inaba dwts comfort",
       "region": "العالم",
       "rank": 6,
       "score": 50,
@@ -1419,14 +1359,14 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-06T21:10:00Z",
+      "published_at": "2026-11-18T12:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "أحمد شريف",
+      "title": "اليوم الثلاثاء",
       "region": "مصر",
       "rank": 11,
       "score": 50,
@@ -1451,13 +1391,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "المسيليم",
+      "title": "الموتمر الصحفي",
       "region": "السعودية",
       "rank": 11,
       "score": 50,
@@ -1482,13 +1422,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "اسعار الفراخ اليوم",
+      "title": "وزير البترول المصري",
       "region": "مصر",
       "rank": 7,
       "score": 49,
@@ -1512,14 +1452,14 @@
           "url": "https://trends.google.com/trending/rss?geo=EG"
         }
       ],
-      "published_at": "2026-11-06T20:10:00Z",
+      "published_at": "2026-11-18T11:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "خلي بالك من نفسك",
+      "title": "mahfijul islam",
       "region": "السعودية",
       "rank": 7,
       "score": 49,
@@ -1531,7 +1471,7 @@
       "platforms": [
         "google_trends_rss"
       ],
-      "source_count": 1,
+      "source_count": 2,
       "corroborating_news_items": 0,
       "source_name": "Google Trends",
       "source_url": "https://trends.google.com/trending/rss?geo=SA",
@@ -1541,16 +1481,21 @@
           "platform": "google_trends_rss",
           "name": "Google Trends",
           "url": "https://trends.google.com/trending/rss?geo=SA"
+        },
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-06T19:40:00Z",
+      "published_at": "2026-11-18T11:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الزمالك ضد مصر للتأمين",
+      "title": "kuwait attack today",
       "region": "الإمارات",
       "rank": 7,
       "score": 49,
@@ -1574,14 +1519,14 @@
           "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-06T17:30:00Z",
+      "published_at": "2026-11-18T11:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "gamemill entertainment xbox game delisting",
+      "title": "jason eck",
       "region": "العالم",
       "rank": 7,
       "score": 49,
@@ -1605,14 +1550,14 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-06T21:00:00Z",
+      "published_at": "2026-11-18T12:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "المهدي سليمان",
+      "title": "الكويت",
       "region": "مصر",
       "rank": 12,
       "score": 49,
@@ -1624,7 +1569,7 @@
       "platforms": [
         "x_trends24_public"
       ],
-      "source_count": 1,
+      "source_count": 2,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/egypt/",
@@ -1634,47 +1579,21 @@
           "platform": "x_trends24_public",
           "name": "Trends24 (public X trends)",
           "url": "https://trends24.in/egypt/"
+        },
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "إشبيلية ضد ألافيس",
-      "region": "السعودية",
-      "rank": 8,
-      "score": 48,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=SA",
-      "url": "https://trends.google.com/trending/rss?geo=SA",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=SA"
-        }
-      ],
-      "published_at": "2026-11-06T19:20:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "maria sakkari",
+      "title": "the times of india",
       "region": "الإمارات",
       "rank": 8,
       "score": 48,
@@ -1698,14 +1617,14 @@
           "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-06T16:40:00Z",
+      "published_at": "2026-11-18T11:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "irs 2027 tax brackets",
+      "title": "gta 6 cheat codes",
       "region": "العالم",
       "rank": 8,
       "score": 48,
@@ -1729,14 +1648,14 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-06T20:50:00Z",
+      "published_at": "2026-11-18T12:20:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "#يوم_الجمعه",
+      "title": "$AZI",
       "region": "مصر",
       "rank": 13,
       "score": 48,
@@ -1761,13 +1680,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "كونتي",
+      "title": "الستور النيوزلندي",
       "region": "السعودية",
       "rank": 13,
       "score": 48,
@@ -1792,17 +1711,771 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ترامب",
+      "title": "kick",
       "region": "مصر",
-      "rank": 29,
-      "score": 48,
+      "rank": 9,
+      "score": 47,
       "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 3,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=EG",
+      "url": "https://trends.google.com/trending/rss?geo=EG",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=EG"
+        },
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=SA"
+        },
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=AE"
+        }
+      ],
+      "published_at": "2026-11-18T10:50:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "gta6 map",
+      "region": "العالم",
+      "rank": 9,
+      "score": 47,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=US",
+      "url": "https://trends.google.com/trending/rss?geo=US",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=US"
+        }
+      ],
+      "published_at": "2026-11-18T12:20:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "التعادل السلبي",
+      "region": "مصر",
+      "rank": 14,
+      "score": 47,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "بيت فاطم",
+      "region": "مصر",
+      "rank": 10,
+      "score": 46,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=EG",
+      "url": "https://trends.google.com/trending/rss?geo=EG",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=EG"
+        }
+      ],
+      "published_at": "2026-11-18T10:40:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "kamindu mendis",
+      "region": "السعودية",
+      "rank": 10,
+      "score": 46,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=SA",
+      "url": "https://trends.google.com/trending/rss?geo=SA",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=SA"
+        }
+      ],
+      "published_at": "2026-11-18T11:00:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "product recall",
+      "region": "العالم",
+      "rank": 10,
+      "score": 46,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=US",
+      "url": "https://trends.google.com/trending/rss?geo=US",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=US"
+        }
+      ],
+      "published_at": "2026-11-18T12:20:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "غلوب سوكر",
+      "region": "السعودية",
+      "rank": 15,
+      "score": 46,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "محمد مبروك",
+      "region": "مصر",
+      "rank": 16,
+      "score": 45,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "Metacritic",
+      "region": "السعودية",
+      "rank": 16,
+      "score": 45,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "عبد الحليم قنديل",
+      "region": "مصر",
+      "rank": 17,
+      "score": 44,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "ابو طارق",
+      "region": "السعودية",
+      "rank": 17,
+      "score": 44,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "صوت الكون",
+      "region": "مصر",
+      "rank": 18,
+      "score": 43,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "قانون تصنيف",
+      "region": "السعودية",
+      "rank": 18,
+      "score": 43,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "تشكيل منتخب مصر",
+      "region": "مصر",
+      "rank": 19,
+      "score": 42,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "أردا",
+      "region": "مصر",
+      "rank": 20,
+      "score": 41,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "المره الثالثه",
+      "region": "السعودية",
+      "rank": 20,
+      "score": 41,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "المنتدي الاقتصادي العالمي",
+      "region": "مصر",
+      "rank": 21,
+      "score": 40,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "الصومال",
+      "region": "السعودية",
+      "rank": 21,
+      "score": 40,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "الرييس الراحل",
+      "region": "مصر",
+      "rank": 22,
+      "score": 39,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "Grand Theft Auto VI",
+      "region": "السعودية",
+      "rank": 22,
+      "score": 39,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "انور السادات",
+      "region": "مصر",
+      "rank": 23,
+      "score": 38,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "ريد ديد",
+      "region": "السعودية",
+      "rank": 23,
+      "score": 38,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "فؤاد علام",
+      "region": "مصر",
+      "rank": 24,
+      "score": 37,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "علي الكويت",
+      "region": "السعودية",
+      "rank": 24,
+      "score": 37,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.589843Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "البحرين",
+      "region": "مصر",
+      "rank": 40,
+      "score": 37,
+      "priority": "low",
       "signal": "x_trends24_public",
       "signals": [
         "x_trends24_public"
@@ -1828,79 +2501,17 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "weather tomorrow",
-      "region": "الإمارات",
-      "rank": 9,
-      "score": 47,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=AE",
-      "url": "https://trends.google.com/trending/rss?geo=AE",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=AE"
-        }
-      ],
-      "published_at": "2026-11-06T16:30:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "michael sanft",
-      "region": "العالم",
-      "rank": 9,
-      "score": 47,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=US",
-      "url": "https://trends.google.com/trending/rss?geo=US",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=US"
-        }
-      ],
-      "published_at": "2026-11-06T20:50:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "احمد ربيع",
+      "title": "خوان ماتا",
       "region": "مصر",
-      "rank": 14,
-      "score": 47,
-      "priority": "medium",
+      "rank": 25,
+      "score": 36,
+      "priority": "low",
       "signal": "x_trends24_public",
       "signals": [
         "x_trends24_public"
@@ -1921,17 +2532,17 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "عبدالله الرياضيه",
+      "title": "والبحرين",
       "region": "السعودية",
-      "rank": 14,
-      "score": 47,
-      "priority": "medium",
+      "rank": 25,
+      "score": 36,
+      "priority": "low",
       "signal": "x_trends24_public",
       "signals": [
         "x_trends24_public"
@@ -1952,110 +2563,17 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "إيفرتون ضد كوفنتري سيتي",
+      "title": "الربع الاول",
       "region": "مصر",
-      "rank": 10,
-      "score": 46,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=EG",
-      "url": "https://trends.google.com/trending/rss?geo=EG",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=EG"
-        }
-      ],
-      "published_at": "2026-11-06T19:10:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "погода завтра",
-      "region": "الإمارات",
-      "rank": 10,
-      "score": 46,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=AE",
-      "url": "https://trends.google.com/trending/rss?geo=AE",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=AE"
-        }
-      ],
-      "published_at": "2026-11-06T16:30:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "sevilla vs",
-      "region": "العالم",
-      "rank": 10,
-      "score": 46,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=US",
-      "url": "https://trends.google.com/trending/rss?geo=US",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=US"
-        }
-      ],
-      "published_at": "2026-11-06T20:40:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "محمد شحاته",
-      "region": "مصر",
-      "rank": 15,
-      "score": 46,
-      "priority": "medium",
+      "rank": 26,
+      "score": 35,
+      "priority": "low",
       "signal": "x_trends24_public",
       "signals": [
         "x_trends24_public"
@@ -2076,17 +2594,17 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "تمويل سمارت",
+      "title": "ديشامب",
       "region": "السعودية",
-      "rank": 15,
-      "score": 46,
-      "priority": "medium",
+      "rank": 26,
+      "score": 35,
+      "priority": "low",
       "signal": "x_trends24_public",
       "signals": [
         "x_trends24_public"
@@ -2107,326 +2625,16 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الفردوس الاعلي",
-      "region": "السعودية",
-      "rank": 16,
-      "score": 45,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "الدرجه الثانيه",
-      "region": "مصر",
-      "rank": 17,
-      "score": 44,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "اليوم الفضيل",
-      "region": "السعودية",
-      "rank": 17,
-      "score": 44,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "كاس الشركات",
-      "region": "السعودية",
-      "rank": 18,
-      "score": 43,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "الاذن الوسطي",
-      "region": "السعودية",
-      "rank": 19,
-      "score": 42,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "6 نوفمبر 2026",
+      "title": "علي محمود",
       "region": "مصر",
       "rank": 27,
-      "score": 42,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 1,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "عبدالله رشدي",
-      "region": "مصر",
-      "rank": 20,
-      "score": 41,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "ملعب الانماء",
-      "region": "السعودية",
-      "rank": 20,
-      "score": 41,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "احمد رضوان",
-      "region": "مصر",
-      "rank": 21,
-      "score": 40,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "إسطنبول",
-      "region": "السعودية",
-      "rank": 21,
-      "score": 40,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "السكه الحديد",
-      "region": "مصر",
-      "rank": 22,
-      "score": 39,
+      "score": 34,
       "priority": "low",
       "signal": "x_trends24_public",
       "signals": [
@@ -2448,16 +2656,16 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الدوري السوري",
+      "title": "الطيران الميهول",
       "region": "السعودية",
-      "rank": 22,
-      "score": 39,
+      "rank": 27,
+      "score": 34,
       "priority": "low",
       "signal": "x_trends24_public",
       "signals": [
@@ -2479,292 +2687,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "دوري المرتبط",
-      "region": "مصر",
-      "rank": 23,
-      "score": 38,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "رياض الجنه",
-      "region": "السعودية",
-      "rank": 23,
-      "score": 38,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "حرس الحدود",
-      "region": "مصر",
-      "rank": 31,
-      "score": 38,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 1,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "المتحدث العسكري",
-      "region": "مصر",
-      "rank": 24,
-      "score": 37,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "موتي المسلمين",
-      "region": "السعودية",
-      "rank": 24,
-      "score": 37,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "#مدبولي_والحركه_التكمليه_دفعه٢٣",
-      "region": "مصر",
-      "rank": 25,
-      "score": 36,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "نور مابين الجمعتين",
-      "region": "السعودية",
-      "rank": 25,
-      "score": 36,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "ليلي فوزي",
-      "region": "مصر",
-      "rank": 26,
-      "score": 35,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "فني كهرباء",
-      "region": "السعودية",
-      "rank": 26,
-      "score": 35,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "باري",
+      "title": "الرابط الثاني",
       "region": "مصر",
       "rank": 28,
       "score": 33,
@@ -2789,13 +2718,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "بولونيا",
+      "title": "جرام بروتين",
       "region": "السعودية",
       "rank": 28,
       "score": 33,
@@ -2820,13 +2749,44 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "كاس العالم",
+      "title": "هيثم حسن",
+      "region": "مصر",
+      "rank": 29,
+      "score": 32,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "كاكا",
       "region": "السعودية",
       "rank": 29,
       "score": 32,
@@ -2851,13 +2811,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "فريق مصر",
+      "title": "السجن المشدد",
       "region": "مصر",
       "rank": 30,
       "score": 31,
@@ -2882,13 +2842,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "جنات النعيم",
+      "title": "#نورت_الخبر_يا_قزيع",
       "region": "السعودية",
       "rank": 30,
       "score": 31,
@@ -2913,13 +2873,44 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "اليوم المبارك",
+      "title": "الحمايه الاجتماعيه",
+      "region": "مصر",
+      "rank": 31,
+      "score": 30,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "#المليشيا_الحوثيه_الارهابيه",
       "region": "السعودية",
       "rank": 31,
       "score": 30,
@@ -2944,13 +2935,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "شهداء الوطن",
+      "title": "الاعتداءات الايرانيه",
       "region": "مصر",
       "rank": 32,
       "score": 29,
@@ -2975,13 +2966,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ثيو هيرنانديز",
+      "title": "#فياض_الرويلي",
       "region": "السعودية",
       "rank": 32,
       "score": 29,
@@ -3006,13 +2997,44 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "منصور آل شريم",
+      "title": "حسام حبيب",
+      "region": "مصر",
+      "rank": 33,
+      "score": 28,
+      "priority": "low",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T13:37:35.465269Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "#OPPOFindX10ProMax",
       "region": "السعودية",
       "rank": 33,
       "score": 28,
@@ -3037,44 +3059,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "امريكا",
-      "region": "مصر",
-      "rank": 34,
-      "score": 27,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "نايف",
+      "title": "#تركي_للذبايح",
       "region": "السعودية",
       "rank": 34,
       "score": 27,
@@ -3099,13 +3090,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "عمر جابر",
+      "title": "الوسايل الاعلاميه",
       "region": "مصر",
       "rank": 35,
       "score": 26,
@@ -3130,13 +3121,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ابو عابد",
+      "title": "#٢٠٣٠_بلا_نقاب49",
       "region": "السعودية",
       "rank": 35,
       "score": 26,
@@ -3161,13 +3152,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.952556Z",
+      "captured_at": "2026-11-18T13:37:35.589843Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "جهاز فني",
+      "title": "اليوم الاثنين",
       "region": "مصر",
       "rank": 36,
       "score": 25,
@@ -3192,13 +3183,14 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-06T21:54:39.798910Z",
+      "captured_at": "2026-11-18T13:37:35.465269Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     }
   ],
   "warnings": [
-    "X العالم: HTTPError"
+    "X العالم: HTTPError",
+    "RSS أخبار الرياضة: HTTPError"
   ]
 }
