@@ -149,6 +149,17 @@ public final class PortalActivity extends Activity {
         LinearLayout.LayoutParams assistantParams = new LinearLayout.LayoutParams(0, dp(58), 1);
         assistantParams.setMargins(dp(5), dp(3), dp(5), dp(3));
         actions.addView(assistant, assistantParams);
+
+        Button youtubeLab = new Button(this);
+        youtubeLab.setText("YouTube Lab");
+        youtubeLab.setTextColor(Color.WHITE);
+        youtubeLab.setAllCaps(false);
+        youtubeLab.setTextSize(13);
+        youtubeLab.setBackgroundColor(NAVY);
+        youtubeLab.setOnClickListener(v -> startActivity(new Intent(this, YouTubeLabActivity.class)));
+        LinearLayout.LayoutParams youtubeParams = new LinearLayout.LayoutParams(0, dp(58), 1);
+        youtubeParams.setMargins(dp(5), dp(3), dp(5), dp(3));
+        actions.addView(youtubeLab, youtubeParams);
         root.addView(actions);
 
         setContentView(root);
