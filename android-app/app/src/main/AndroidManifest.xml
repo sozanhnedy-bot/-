@@ -10,6 +10,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false">
         <activity
+            android:name=".YouTubeLabActivity"
+            android:exported="false" />
+        <activity
             android:name=".TaskAssistantActivity"
             android:exported="false" />
         <activity
