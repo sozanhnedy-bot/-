@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.nio.charset.StandardCharsets;
 
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -27,6 +28,8 @@ public final class VisitDetectionActivity extends Activity {
     private static final int PAPER = Color.rgb(245, 241, 233);
     private static final int GREEN = Color.rgb(35, 125, 82);
     private static final int RED = Color.rgb(175, 55, 55);
+    private static final int CREATE_CSV_REQUEST = 4102;
+    private String pendingCsv;
     private final List<Session> sessions = new ArrayList<>();
     private LinearLayout results;
     private TextView summary;
@@ -183,20 +186,41 @@ public final class VisitDetectionActivity extends Activity {
                     .append(csvValue(s.source)).append(',')
                     .append(csvValue(s.reason)).append('\n');
         }
-        Intent share = new Intent(Intent.ACTION_SEND);
-        share.setType("text/csv");
-        share.putExtra(Intent.EXTRA_SUBJECT, "Synthetic local visit test dataset");
-        share.putExtra(Intent.EXTRA_TEXT, csv.toString());
+        pendingCsv = csv.toString();
+        Intent create = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        create.addCategory(Intent.CATEGORY_OPENABLE);
+        create.setType("text/csv");
+        create.putExtra(Intent.EXTRA_TITLE, "synthetic_visit_test.csv");
         try {
-            startActivity(Intent.createChooser(share, "تصدير بيانات الاختبار"));
+            startActivityForResult(create, CREATE_CSV_REQUEST);
         } catch (Exception e) {
-            Toast.makeText(this, "تعذر فتح خيارات التصدير.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "تعذر فتح اختيار مكان حفظ الملف.", Toast.LENGTH_LONG).show();
         }
     }
 
     private String csvValue(String value) {
         if (value == null) return "\"\"";
         return "\"" + value.replace("\"", "\"\"") + "\"";
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != CREATE_CSV_REQUEST) return;
+        if (resultCode != RESULT_OK || data == null || data.getData() == null) {
+            pendingCsv = null;
+            Toast.makeText(this, "تم إلغاء حفظ ملف CSV.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try (OutputStream output = getContentResolver().openOutputStream(data.getData())) {
+            if (output == null) throw new IllegalStateException("Output stream unavailable");
+            output.write(pendingCsv.getBytes(StandardCharsets.UTF_8));
+            Toast.makeText(this, "تم حفظ ملف بيانات الاختبار.", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "فشل حفظ ملف CSV.", Toast.LENGTH_LONG).show();
+        } finally {
+            pendingCsv = null;
+        }
     }
 
     private void openYoutube() {
