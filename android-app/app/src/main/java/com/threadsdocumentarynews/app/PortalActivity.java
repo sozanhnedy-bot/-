@@ -160,6 +160,17 @@ public final class PortalActivity extends Activity {
         LinearLayout.LayoutParams radarParams = new LinearLayout.LayoutParams(0, dp(58), 1);
         radarParams.setMargins(dp(5), dp(3), dp(5), dp(3));
         actions.addView(radar, radarParams);
+
+        Button visitTest = new Button(this);
+        visitTest.setText("اختبار الزيارات");
+        visitTest.setTextColor(Color.WHITE);
+        visitTest.setAllCaps(false);
+        visitTest.setTextSize(12);
+        visitTest.setBackgroundColor(NAVY);
+        visitTest.setOnClickListener(v -> startActivity(new Intent(this, VisitDetectionActivity.class)));
+        LinearLayout.LayoutParams visitParams = new LinearLayout.LayoutParams(0, dp(58), 1);
+        visitParams.setMargins(dp(5), dp(3), dp(5), dp(3));
+        actions.addView(visitTest, visitParams);
         root.addView(actions);
 
         setContentView(root);
