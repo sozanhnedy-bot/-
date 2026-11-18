@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-18T20:02:10.834108Z",
+  "generated_at": "2026-11-18T20:08:52.287164Z",
   "disclaimer": "ترندات X من مصدر عام خارجي، وGoogle Trends مؤشر اهتمام بحثي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
   "sources_checked": [
     "Google Trends RSS: مصر",
@@ -18,6 +18,37 @@
     "tiktok": "not_connected_requires_approved_access"
   },
   "items": [
+    {
+      "title": "iran attacks kuwait",
+      "region": "السعودية",
+      "rank": 3,
+      "score": 61,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 1,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=SA",
+      "url": "https://trends.google.com/trending/rss?geo=SA",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=SA"
+        }
+      ],
+      "published_at": "2026-11-18T18:50:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
     {
       "title": "GTA 6",
       "region": "مصر",
@@ -44,7 +75,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -75,7 +106,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -106,7 +137,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -137,7 +168,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -168,7 +199,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -199,7 +230,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -230,7 +261,38 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "صندوق النقد",
+      "region": "مصر",
+      "rank": 19,
+      "score": 58,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 2,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/egypt/",
+      "url": "https://trends24.in/egypt/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -266,7 +328,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -297,7 +359,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -333,7 +395,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -364,7 +426,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -473,7 +535,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ngc 1433 supernova",
+      "title": "sarah paulson",
       "region": "العالم",
       "rank": 1,
       "score": 55,
@@ -497,7 +559,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-18T19:40:00Z",
+      "published_at": "2026-11-18T19:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -529,7 +591,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -560,7 +622,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -690,7 +752,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "kash patel",
+      "title": "frances tiafoe",
       "region": "العالم",
       "rank": 2,
       "score": 54,
@@ -714,7 +776,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-18T19:40:00Z",
+      "published_at": "2026-11-18T19:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -746,7 +808,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -777,7 +839,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -819,37 +881,6 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "iran attacks kuwait",
-      "region": "السعودية",
-      "rank": 3,
-      "score": 53,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=SA",
-      "url": "https://trends.google.com/trending/rss?geo=SA",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=SA"
-        }
-      ],
-      "published_at": "2026-11-18T18:50:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
       "title": "avengers doomsday",
       "region": "الإمارات",
       "rank": 3,
@@ -881,7 +912,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "florence pugh governors awards",
+      "title": "tiafoe",
       "region": "العالم",
       "rank": 3,
       "score": 53,
@@ -905,7 +936,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-18T19:40:00Z",
+      "published_at": "2026-11-18T19:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -937,7 +968,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -968,7 +999,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1067,7 +1098,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "golf",
+      "title": "ngc 1433 supernova",
       "region": "العالم",
       "rank": 4,
       "score": 52,
@@ -1123,7 +1154,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1154,7 +1185,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1191,7 +1222,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "jace jung",
+      "title": "kash patel",
       "region": "العالم",
       "rank": 5,
       "score": 51,
@@ -1247,7 +1278,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1278,7 +1309,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1377,7 +1408,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "nick fortes",
+      "title": "golf",
       "region": "العالم",
       "rank": 6,
       "score": 50,
@@ -1401,7 +1432,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-18T19:30:00Z",
+      "published_at": "2026-11-18T19:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1433,38 +1464,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "صندوق النقد",
-      "region": "مصر",
-      "rank": 19,
-      "score": 50,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 1,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1532,7 +1532,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "senate majority leader",
+      "title": "jace jung",
       "region": "العالم",
       "rank": 7,
       "score": 49,
@@ -1556,7 +1556,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-18T19:30:00Z",
+      "published_at": "2026-11-18T19:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1588,7 +1588,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1619,7 +1619,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1718,7 +1718,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "start 'em, sit 'em",
+      "title": "hoover high school",
       "region": "العالم",
       "rank": 8,
       "score": 48,
@@ -1742,7 +1742,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-18T19:30:00Z",
+      "published_at": "2026-11-18T19:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1774,7 +1774,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1805,7 +1805,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1873,7 +1873,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "chelsea vs psg",
+      "title": "florence pugh governors awards",
       "region": "العالم",
       "rank": 9,
       "score": 47,
@@ -1897,7 +1897,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-18T19:20:00Z",
+      "published_at": "2026-11-18T19:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1934,7 +1934,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1965,7 +1965,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2064,7 +2064,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "playstation network",
+      "title": "nick fortes",
       "region": "العالم",
       "rank": 10,
       "score": 46,
@@ -2088,7 +2088,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-18T19:10:00Z",
+      "published_at": "2026-11-18T19:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -2120,7 +2120,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2151,7 +2151,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2182,7 +2182,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2213,7 +2213,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2244,7 +2244,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2275,7 +2275,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2306,7 +2306,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2337,7 +2337,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2368,7 +2368,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2399,7 +2399,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2430,7 +2430,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2461,7 +2461,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2492,7 +2492,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2523,7 +2523,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2554,7 +2554,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2585,7 +2585,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2616,7 +2616,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2647,7 +2647,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2678,7 +2678,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2709,7 +2709,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2740,7 +2740,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2771,7 +2771,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2802,7 +2802,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2833,7 +2833,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2864,7 +2864,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2895,7 +2895,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2926,7 +2926,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2957,7 +2957,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2988,7 +2988,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3019,7 +3019,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3050,7 +3050,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3081,7 +3081,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:05.046675Z",
+      "captured_at": "2026-11-18T20:08:47.952598Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3112,7 +3112,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3143,15 +3143,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-18T20:02:04.721327Z",
+      "captured_at": "2026-11-18T20:08:47.802426Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     }
   ],
   "warnings": [
-    "X العالم: HTTPError",
-    "RSS World News: HTTPError",
-    "RSS أخبار الشرق الأوسط: HTTPError"
+    "X العالم: HTTPError"
   ]
 }
