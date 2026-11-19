@@ -36,6 +36,8 @@ public final class VisitDetectionActivity extends Activity {
     private LinearLayout results;
     private TextView summary;
     private TextView connectionStatus;
+    private Button checkConnectionButton;
+    private boolean connectionCheckRunning;
     private EditText youtubeUrl;
     private EditText sessionCountInput;
     private EditText durationHoursInput;
@@ -73,9 +75,9 @@ public final class VisitDetectionActivity extends Activity {
 
         connectionStatus = text("حالة الوجهة: لم يتم اختبار الاتصال بعد.", 14, NAVY, true);
         root.addView(connectionStatus);
-        Button checkConnection = button("اختبار اتصال واحد بالوجهة الحالية");
-        checkConnection.setOnClickListener(v -> checkCurrentDestination());
-        root.addView(checkConnection);
+        checkConnectionButton = button("اختبار اتصال واحد بالوجهة الحالية");
+        checkConnectionButton.setOnClickListener(v -> checkCurrentDestination());
+        root.addView(checkConnectionButton);
 
         youtubeUrl = new EditText(this);
         youtubeUrl.setSingleLine(true);
@@ -134,7 +136,11 @@ public final class VisitDetectionActivity extends Activity {
 
 
     private void checkCurrentDestination() {
-        connectionStatus.setText("جاري اختبار اتصال واحد بالموقع...");
+        if (connectionCheckRunning) return;
+        connectionCheckRunning = true;
+        checkConnectionButton.setEnabled(false);
+        checkConnectionButton.setText("جاري اختبار اتصال واحد...");
+        connectionStatus.setText("جاري إرسال طلب HEAD واحد إلى موقع المشروع...");
         new Thread(() -> {
             HttpURLConnection connection = null;
             long started = System.currentTimeMillis();
@@ -145,15 +151,25 @@ public final class VisitDetectionActivity extends Activity {
                 connection.setConnectTimeout(10000);
                 connection.setReadTimeout(10000);
                 connection.setInstanceFollowRedirects(true);
+                connection.setUseCaches(false);
                 int status = connection.getResponseCode();
                 long elapsed = System.currentTimeMillis() - started;
-                String message = "الوجهة: موقع المشروع\\nHTTP: " + status + " | زمن الاستجابة: " + elapsed + " ms"
-                        + (status >= 200 && status < 400 ? "\\nالاتصال ناجح." : "\\nالخادم ردّ بحالة غير ناجحة.");
+                String message = "الوجهة: موقع المشروع\\nHTTP: " + status
+                        + " | زمن الاستجابة: " + elapsed + " ms"
+                        + (status >= 200 && status < 400
+                        ? "\\nالاتصال ناجح."
+                        : "\\nوصل رد من الخادم لكنه يشير إلى مشكلة.");
                 runOnUiThread(() -> connectionStatus.setText(message));
             } catch (Exception e) {
-                runOnUiThread(() -> connectionStatus.setText("تعذر الاتصال بالموقع: " + e.getClass().getSimpleName()));
+                runOnUiThread(() -> connectionStatus.setText(
+                        "تعذر الاتصال بالموقع: " + e.getClass().getSimpleName()));
             } finally {
                 if (connection != null) connection.disconnect();
+                runOnUiThread(() -> {
+                    connectionCheckRunning = false;
+                    checkConnectionButton.setEnabled(true);
+                    checkConnectionButton.setText("اختبار اتصال واحد بالوجهة الحالية");
+                });
             }
         }).start();
     }
