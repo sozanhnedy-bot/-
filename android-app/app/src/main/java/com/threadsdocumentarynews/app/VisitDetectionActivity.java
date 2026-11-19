@@ -101,13 +101,13 @@ public final class VisitDetectionActivity extends Activity {
         screenControls.setOrientation(LinearLayout.VERTICAL);
         screenControls.setPadding(dp(12), dp(10), dp(12), dp(10));
         screenControls.setBackgroundColor(Color.WHITE);
-        TextView controlsTitle = text("إدارة جلسات الاختبار المحلية", 17, NAVY, true);
+        TextView controlsTitle = text("إدارة المشاهدات التجريبية المحلية", 17, NAVY, true);
         screenControls.addView(controlsTitle);
         Button playbackToggle = button("إيقاف مشغل الفيديو");
         playbackToggle.setOnClickListener(v -> toggleSection(playbackViews, playbackToggle, "مشغل الفيديو"));
         screenControls.addView(playbackToggle);
-        Button testToggle = button("إيقاف إدارة جلسات الاختبار المحلية");
-        testToggle.setOnClickListener(v -> toggleSection(testViews, testToggle, "جلسات الاختبار المحلية"));
+        Button testToggle = button("إيقاف إدارة المشاهدات التجريبية");
+        testToggle.setOnClickListener(v -> toggleSection(testViews, testToggle, "المشاهدات التجريبية المحلية"));
         screenControls.addView(testToggle);
         Button resultsToggle = button("إيقاف النتائج");
         resultsToggle.setOnClickListener(v -> toggleSection(resultViews, resultsToggle, "النتائج"));
@@ -180,7 +180,7 @@ public final class VisitDetectionActivity extends Activity {
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد سجلات الاختبار (1–3000)");
+        sessionCountInput.setHint("عدد المشاهدات التجريبية (1–3000)");
         sessionCountInput.setText("3000");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
@@ -192,18 +192,18 @@ public final class VisitDetectionActivity extends Activity {
         root.addView(settings);
         testViews.add(settings);
 
-        localScreenStatus = text("لا توجد سجلات اختبار محلية مهيأة.", 14, NAVY, true);
+        localScreenStatus = text("لا توجد مشاهدات تجريبية محلية مهيأة.", 14, NAVY, true);
         root.addView(localScreenStatus);
         testViews.add(localScreenStatus);
-        Button openLocalScreens = button("تهيئة سجلات الاختبار المحددة (حتى ٣٠٠٠)");
+        Button openLocalScreens = button("تهيئة المشاهدات التجريبية (حتى ٣٠٠٠)");
         openLocalScreens.setOnClickListener(v -> openLocalTestScreens());
         root.addView(openLocalScreens);
         testViews.add(openLocalScreens);
-        Button startLocalScreens = button("تفعيل سجلات الاختبار المحددة");
+        Button startLocalScreens = button("تشغيل المشاهدات التجريبية المحددة");
         startLocalScreens.setOnClickListener(v -> setAllLocalPagesRunning(true));
         root.addView(startLocalScreens);
         testViews.add(startLocalScreens);
-        Button stopLocalScreens = button("إيقاف سجلات الاختبار");
+        Button stopLocalScreens = button("إيقاف المشاهدات التجريبية");
         stopLocalScreens.setOnClickListener(v -> stopLocalTestScreens());
         root.addView(stopLocalScreens);
         testViews.add(stopLocalScreens);
@@ -344,7 +344,7 @@ public final class VisitDetectionActivity extends Activity {
             if (!page.error.isEmpty()) errors++;
         }
         int previewCount = Math.min(localPages.size(), 100);
-        localScreenStatus.setText("إجمالي سجلات الاختبار المحلية: " + localPages.size()
+        localScreenStatus.setText("إجمالي المشاهدات التجريبية المحلية: " + localPages.size()
                 + " | تعمل: " + running + " | متوقفة: " + stopped
                 + " | أخطاء: " + errors
                 + "\\nالمعاينة تعرض أول " + previewCount
@@ -356,7 +356,7 @@ public final class VisitDetectionActivity extends Activity {
             row.setGravity(Gravity.CENTER_VERTICAL);
             row.setPadding(dp(8), dp(4), dp(8), dp(4));
             row.setBackgroundColor(Color.WHITE);
-            TextView label = text("سجل اختبار #" + page.id + " — " + (page.running ? "شغالة" : "متوقفة")
+            TextView label = text("مشاهدة تجريبية #" + page.id + " — " + (page.running ? "شغالة" : "متوقفة")
                     + (page.error.isEmpty() ? "" : " — " + page.error), 13,
                     page.running ? GREEN : NAVY, true);
             row.addView(label, new LinearLayout.LayoutParams(0, -2, 1));
