@@ -36,6 +36,9 @@ public final class VisitDetectionActivity extends Activity {
     private static final int CREATE_CSV_REQUEST = 4102;
     private String pendingCsv;
     private final List<Session> sessions = new ArrayList<>();
+    private final List<View> playbackViews = new ArrayList<>();
+    private final List<View> testViews = new ArrayList<>();
+    private final List<View> resultViews = new ArrayList<>();
     private LinearLayout results;
     private TextView summary;
     private TextView connectionStatus;
@@ -80,6 +83,23 @@ public final class VisitDetectionActivity extends Activity {
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
 
+        LinearLayout screenControls = new LinearLayout(this);
+        screenControls.setOrientation(LinearLayout.VERTICAL);
+        screenControls.setPadding(dp(12), dp(10), dp(12), dp(10));
+        screenControls.setBackgroundColor(Color.WHITE);
+        TextView controlsTitle = text("إدارة أقسام YouTube Lab", 17, NAVY, true);
+        screenControls.addView(controlsTitle);
+        Button playbackToggle = button("إيقاف مشغل الفيديو");
+        playbackToggle.setOnClickListener(v -> toggleSection(playbackViews, playbackToggle, "مشغل الفيديو"));
+        screenControls.addView(playbackToggle);
+        Button testToggle = button("إيقاف أدوات الاختبار");
+        testToggle.setOnClickListener(v -> toggleSection(testViews, testToggle, "أدوات الاختبار"));
+        screenControls.addView(testToggle);
+        Button resultsToggle = button("إيقاف النتائج");
+        resultsToggle.setOnClickListener(v -> toggleSection(resultViews, resultsToggle, "النتائج"));
+        screenControls.addView(resultsToggle);
+        root.addView(screenControls, new LinearLayout.LayoutParams(-1, -2));
+
         youtubeUrl = new EditText(this);
         youtubeUrl.setSingleLine(true);
         youtubeUrl.setTextSize(14);
@@ -88,13 +108,16 @@ public final class VisitDetectionActivity extends Activity {
         youtubeUrl.setEnabled(true);
         youtubeUrl.setAlpha(1.0f);
         root.addView(youtubeUrl, new LinearLayout.LayoutParams(-1, dp(54)));
+        playbackViews.add(youtubeUrl);
 
         Button open = button("فتح فيديو YouTube");
         open.setOnClickListener(v -> openYoutube());
         root.addView(open);
+        playbackViews.add(open);
 
         TextView playbackNote = text("الرابط يربط سجل الاختبار بالفيديو فقط. السجلات هنا محلية وليست مشاهدات أو زيارات حقيقية.", 14, NAVY, true);
         root.addView(playbackNote);
+        playbackViews.add(playbackNote);
         youtubePlayer = new WebView(this);
         youtubePlayer.setBackgroundColor(Color.BLACK);
         WebSettings playerSettings = youtubePlayer.getSettings();
@@ -103,6 +126,7 @@ public final class VisitDetectionActivity extends Activity {
         playerSettings.setMediaPlaybackRequiresUserGesture(true);
         youtubePlayer.setWebChromeClient(new WebChromeClient());
         root.addView(youtubePlayer, new LinearLayout.LayoutParams(-1, dp(420)));
+        playbackViews.add(youtubePlayer);
 
         LinearLayout settings = new LinearLayout(this);
         settings.setOrientation(LinearLayout.HORIZONTAL);
@@ -119,14 +143,17 @@ public final class VisitDetectionActivity extends Activity {
         durationHoursInput.setText("24");
         settings.addView(durationHoursInput, new LinearLayout.LayoutParams(0, dp(54), 1));
         root.addView(settings);
+        testViews.add(settings);
 
         Button generate = button("إنشاء سجلات اختبار مرتبطة بالرابط");
         generate.setOnClickListener(v -> generateSessions());
         root.addView(generate);
+        testViews.add(generate);
 
         Button export = button("تصدير سجل المهام CSV");
         export.setOnClickListener(v -> exportCsv());
         root.addView(export);
+        testViews.add(export);
 
         Button clear = button("مسح مهام الاختبار");
         clear.setOnClickListener(v -> {
@@ -134,17 +161,32 @@ public final class VisitDetectionActivity extends Activity {
             renderResults();
         });
         root.addView(clear);
+        testViews.add(clear);
 
         summary = text("لم يتم إنشاء مهام بعد.", 15, NAVY, true);
         summary.setPadding(0, dp(16), 0, dp(10));
         root.addView(summary);
+        resultViews.add(summary);
 
         results = new LinearLayout(this);
         results.setOrientation(LinearLayout.VERTICAL);
         root.addView(results);
+        resultViews.add(results);
         setContentView(scroll);
     }
 
+
+    private void toggleSection(List<View> section, Button toggle, String label) {
+        if (section.isEmpty()) return;
+        boolean currentlyVisible = section.get(0).getVisibility() == View.VISIBLE;
+        int visibility = currentlyVisible ? View.GONE : View.VISIBLE;
+        for (View item : section) item.setVisibility(visibility);
+        toggle.setText((currentlyVisible ? "تشغيل " : "إيقاف ") + label);
+        if (currentlyVisible && section == playbackViews && youtubePlayer != null) {
+            youtubePlayer.onPause();
+            youtubePlayer.loadUrl("about:blank");
+        }
+    }
 
     private void checkCurrentDestination() {
         if (connectionCheckRunning) return;
