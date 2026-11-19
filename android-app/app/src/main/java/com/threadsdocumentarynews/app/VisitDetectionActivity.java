@@ -581,6 +581,12 @@ public final class VisitDetectionActivity extends Activity {
             Toast.makeText(this, "أدخل رابط YouTube صحيحًا يبدأ بـ https://", Toast.LENGTH_LONG).show();
             return;
         }
+        savedVideoUrl = value;
+        getSharedPreferences("video_management", MODE_PRIVATE).edit()
+                .putString("video_url", savedVideoUrl).apply();
+        for (LocalPage page : localPages) page.videoId = videoId;
+        if (!localPages.isEmpty()) renderLocalPages();
+        if (videoStatus != null) videoStatus.setText("حالة الفيديو: جاري تحميل المشغل...");
         try {
             String html = "<!doctype html><html><body style=\"margin:0;background:#000\"><iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube-nocookie.com/embed/" + videoId + "?playsinline=1\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></body></html>";
             youtubePlayer.loadDataWithBaseURL("https://www.youtube-nocookie.com", html, "text/html", "UTF-8", null);
