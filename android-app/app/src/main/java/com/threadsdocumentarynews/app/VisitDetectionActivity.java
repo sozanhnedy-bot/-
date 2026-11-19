@@ -93,7 +93,7 @@ public final class VisitDetectionActivity extends Activity {
 
         TextView title = text("YouTube Lab", 26, NAVY, true);
         root.addView(title);
-        TextView note = text("أدخل رابط فيديو يوتيوب لفتحه داخل التطبيق", 16, NAVY, true);
+        TextView note = text("أدخل رابط فيديو YouTube لتشغيله يدويًا. سجلات الاختبار لا تولّد مشاهدات ولا تغيّر عدّاد YouTube.", 16, NAVY, true);
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
 
@@ -101,13 +101,13 @@ public final class VisitDetectionActivity extends Activity {
         screenControls.setOrientation(LinearLayout.VERTICAL);
         screenControls.setPadding(dp(12), dp(10), dp(12), dp(10));
         screenControls.setBackgroundColor(Color.WHITE);
-        TextView controlsTitle = text("إدارة الصفحات", 17, NAVY, true);
+        TextView controlsTitle = text("إدارة جلسات الاختبار المحلية", 17, NAVY, true);
         screenControls.addView(controlsTitle);
         Button playbackToggle = button("إيقاف مشغل الفيديو");
         playbackToggle.setOnClickListener(v -> toggleSection(playbackViews, playbackToggle, "مشغل الفيديو"));
         screenControls.addView(playbackToggle);
-        Button testToggle = button("إيقاف إدارة الصفحات");
-        testToggle.setOnClickListener(v -> toggleSection(testViews, testToggle, "أدوات الاختبار"));
+        Button testToggle = button("إيقاف إدارة جلسات الاختبار المحلية");
+        testToggle.setOnClickListener(v -> toggleSection(testViews, testToggle, "جلسات الاختبار المحلية"));
         screenControls.addView(testToggle);
         Button resultsToggle = button("إيقاف النتائج");
         resultsToggle.setOnClickListener(v -> toggleSection(resultViews, resultsToggle, "النتائج"));
@@ -146,7 +146,7 @@ public final class VisitDetectionActivity extends Activity {
         root.addView(videoStatus);
         playbackViews.add(videoStatus);
 
-        TextView playbackNote = text("الرابط يربط سجل الاختبار بالفيديو فقط. السجلات هنا محلية وليست مشاهدات أو زيارات حقيقية.", 14, NAVY, true);
+        TextView playbackNote = text("يعمل مشغّل YouTube واحد فقط. المشاهدات الفعلية تأتي من أشخاص يشاهدون الفيديو بشكل طبيعي؛ السجلات المحلية لا تزيد العدّاد.", 14, NAVY, true);
         root.addView(playbackNote);
         playbackViews.add(playbackNote);
         youtubePlayer = new WebView(this);
@@ -180,7 +180,7 @@ public final class VisitDetectionActivity extends Activity {
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد الصفحات (1–3000)");
+        sessionCountInput.setHint("عدد سجلات الاختبار (1–3000)");
         sessionCountInput.setText("3000");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
@@ -192,18 +192,18 @@ public final class VisitDetectionActivity extends Activity {
         root.addView(settings);
         testViews.add(settings);
 
-        localScreenStatus = text("لا توجد شاشات اختبار محلية مفتوحة.", 14, NAVY, true);
+        localScreenStatus = text("لا توجد سجلات اختبار محلية مهيأة.", 14, NAVY, true);
         root.addView(localScreenStatus);
         testViews.add(localScreenStatus);
-        Button openLocalScreens = button("تهيئة الصفحات المحددة");
+        Button openLocalScreens = button("تهيئة سجلات الاختبار المحددة (حتى ٣٠٠٠)");
         openLocalScreens.setOnClickListener(v -> openLocalTestScreens());
         root.addView(openLocalScreens);
         testViews.add(openLocalScreens);
-        Button startLocalScreens = button("تشغيل الصفحات المحددة");
+        Button startLocalScreens = button("تفعيل سجلات الاختبار المحددة");
         startLocalScreens.setOnClickListener(v -> setAllLocalPagesRunning(true));
         root.addView(startLocalScreens);
         testViews.add(startLocalScreens);
-        Button stopLocalScreens = button("إيقاف الصفحات");
+        Button stopLocalScreens = button("إيقاف سجلات الاختبار");
         stopLocalScreens.setOnClickListener(v -> stopLocalTestScreens());
         root.addView(stopLocalScreens);
         testViews.add(stopLocalScreens);
@@ -212,7 +212,7 @@ public final class VisitDetectionActivity extends Activity {
         root.addView(localScreenPreviews);
         testViews.add(localScreenPreviews);
 
-        Button generate = button("إنشاء سجلات اختبار مرتبطة بالرابط");
+        Button generate = button("إنشاء بيانات اختبار محلية (حتى ٣٠٠٠ سجل)");
         generate.setOnClickListener(v -> generateSessions());
         root.addView(generate);
         testViews.add(generate);
@@ -311,12 +311,12 @@ public final class VisitDetectionActivity extends Activity {
             localPages.add(page);
         }
         renderLocalPages();
-        Toast.makeText(this, "تمت تهيئة " + localScreenCount + " صفحة اختبار محلية.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "تمت تهيئة " + localScreenCount + " سجل اختبار محلي.", Toast.LENGTH_SHORT).show();
     }
 
     private void setAllLocalPagesRunning(boolean running) {
         if (localPages.isEmpty()) {
-            Toast.makeText(this, "هيّئ الصفحات أولًا.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "هيّئ سجلات الاختبار أولًا.", Toast.LENGTH_SHORT).show();
             return;
         }
         for (LocalPage page : localPages) {
@@ -344,11 +344,11 @@ public final class VisitDetectionActivity extends Activity {
             if (!page.error.isEmpty()) errors++;
         }
         int previewCount = Math.min(localPages.size(), 100);
-        localScreenStatus.setText("إجمالي الصفحات المحلية: " + localPages.size()
+        localScreenStatus.setText("إجمالي سجلات الاختبار المحلية: " + localPages.size()
                 + " | تعمل: " + running + " | متوقفة: " + stopped
                 + " | أخطاء: " + errors
                 + "\\nالمعاينة تعرض أول " + previewCount
-                + " صفحة فقط. هذه حالات اختبار داخل التطبيق وليست مشغلات فيديو أو مشاهدات فعلية.");
+                + " سجل فقط. هذه حالات محلية داخل التطبيق، ولا تنشئ مشغلات أو مشاهدات على YouTube.");
         for (int i = 0; i < previewCount; i++) {
             LocalPage page = localPages.get(i);
             LinearLayout row = new LinearLayout(this);
@@ -356,7 +356,7 @@ public final class VisitDetectionActivity extends Activity {
             row.setGravity(Gravity.CENTER_VERTICAL);
             row.setPadding(dp(8), dp(4), dp(8), dp(4));
             row.setBackgroundColor(Color.WHITE);
-            TextView label = text("صفحة #" + page.id + " — " + (page.running ? "شغالة" : "متوقفة")
+            TextView label = text("سجل اختبار #" + page.id + " — " + (page.running ? "شغالة" : "متوقفة")
                     + (page.error.isEmpty() ? "" : " — " + page.error), 13,
                     page.running ? GREEN : NAVY, true);
             row.addView(label, new LinearLayout.LayoutParams(0, -2, 1));
@@ -370,7 +370,7 @@ public final class VisitDetectionActivity extends Activity {
         }
         if (localPages.size() > previewCount) {
             localScreenPreviews.addView(text("المعروض أول " + previewCount + " فقط من أصل "
-                    + localPages.size() + " صفحة. التحكم العام يطبق على القائمة كاملة.", 12, NAVY, false));
+                    + localPages.size() + " سجل. التحكم العام يطبق على القائمة كاملة.", 12, NAVY, false));
         }
     }
 
