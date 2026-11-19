@@ -34,6 +34,8 @@ public final class VisitDetectionActivity extends Activity {
     private LinearLayout results;
     private TextView summary;
     private EditText youtubeUrl;
+    private EditText sessionCountInput;
+    private EditText durationHoursInput;
     private final Random random = new Random();
 
     private static final class Session {
@@ -44,6 +46,7 @@ public final class VisitDetectionActivity extends Activity {
         int gapSeconds;
         String source;
         String reason;
+        int elapsedMinutes;
     }
 
     @Override protected void onCreate(Bundle state) {
@@ -76,7 +79,23 @@ public final class VisitDetectionActivity extends Activity {
         open.setOnClickListener(v -> openYoutube());
         root.addView(open);
 
-        Button generate = button("توليد 20 جلسة اختبار اصطناعية");
+        LinearLayout settings = new LinearLayout(this);
+        settings.setOrientation(LinearLayout.HORIZONTAL);
+        sessionCountInput = new EditText(this);
+        sessionCountInput.setSingleLine(true);
+        sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        sessionCountInput.setHint("عدد الجلسات (حتى 20000)");
+        sessionCountInput.setText("20000");
+        settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
+        durationHoursInput = new EditText(this);
+        durationHoursInput.setSingleLine(true);
+        durationHoursInput.setInputType(InputType.TYPE_CLASS_NUMBER);
+        durationHoursInput.setHint("المدة 24 أو 48 ساعة");
+        durationHoursInput.setText("24");
+        settings.addView(durationHoursInput, new LinearLayout.LayoutParams(0, dp(54), 1));
+        root.addView(settings);
+
+        Button generate = button("توليد جلسات اختبار محلية");
         generate.setOnClickListener(v -> generateSessions());
         root.addView(generate);
 
@@ -103,20 +122,24 @@ public final class VisitDetectionActivity extends Activity {
 
     private void generateSessions() {
         sessions.clear();
-        for (int i = 0; i < 20; i++) {
+        int requestedCount = parseBounded(sessionCountInput.getText().toString(), 20000, 1, 20000);
+        int durationHours = parseBounded(durationHoursInput.getText().toString(), 24, 24, 48);
+        if (durationHours != 24 && durationHours != 48) durationHours = 24;
+        for (int i = 0; i < requestedCount; i++) {
             Session s = new Session();
-            s.expectedBot = i >= 12;
+            s.elapsedMinutes = random.nextInt(durationHours * 60);
+            s.expectedBot = (i % 5) != 0;
             if (!s.expectedBot) {
                 s.watchSeconds = 25 + random.nextInt(240);
                 s.repeatCount = random.nextInt(3);
                 s.gapSeconds = 45 + random.nextInt(900);
-                s.source = new String[]{"بحث YouTube", "رابط مباشر", "اقتراحات"}[random.nextInt(3)];
+                s.source = new String[]{"نمط بشري اصطناعي: بحث", "نمط بشري اصطناعي: رابط", "نمط بشري اصطناعي: اقتراحات"}[random.nextInt(3)];
             } else {
                 int pattern = i % 4;
                 s.watchSeconds = pattern == 0 ? 2 + random.nextInt(5) : 3 + random.nextInt(18);
                 s.repeatCount = pattern == 1 ? 10 + random.nextInt(20) : 4 + random.nextInt(10);
                 s.gapSeconds = pattern == 2 ? 1 + random.nextInt(4) : 3 + random.nextInt(20);
-                s.source = pattern == 3 ? "مصدر متكرر" : "نمط آلي تجريبي";
+                s.source = pattern == 3 ? "نمط آلي اصطناعي متكرر" : "نمط آلي اصطناعي تجريبي";
             }
             s.predictedBot = s.watchSeconds < 12 || s.repeatCount >= 8 || s.gapSeconds < 5;
             if (s.watchSeconds < 12) s.reason = "مدة مشاهدة قصيرة جدًا";
@@ -126,6 +149,14 @@ public final class VisitDetectionActivity extends Activity {
             sessions.add(s);
         }
         renderResults();
+    }
+
+    private int parseBounded(String value, int fallback, int min, int max) {
+        try {
+            return Math.max(min, Math.min(max, Integer.parseInt(value.trim())));
+        } catch (Exception e) {
+            return fallback;
+        }
     }
 
     private void renderResults() {
@@ -147,7 +178,8 @@ public final class VisitDetectionActivity extends Activity {
                 "النتائج: %d جلسة اختبار\nصحيح: %d | إنذارات كاذبة: %d | حالات فائتة: %d\nالدقة التجريبية: %.1f%%\nمصفوفة الالتباس — TP: %d، TN: %d، FP: %d، FN: %d",
                 sessions.size(), correct, fp, fn, accuracy, tp, tn, fp, fn));
 
-        for (int i = 0; i < sessions.size(); i++) {
+        int displayCount = Math.min(sessions.size(), 100);
+        for (int i = 0; i < displayCount; i++) {
             Session s = sessions.get(i);
             LinearLayout card = new LinearLayout(this);
             card.setOrientation(LinearLayout.VERTICAL);
@@ -161,8 +193,11 @@ public final class VisitDetectionActivity extends Activity {
             card.addView(head);
             card.addView(text("الحقيقة التجريبية: " + (s.expectedBot ? "BOT" : "HUMAN") + " | تقييم الكاشف: " + (correctLabel ? "صحيح" : "خطأ"), 13, NAVY, false));
             card.addView(text("المصدر: " + s.source + " | مدة المشاهدة: " + s.watchSeconds + " ثانية", 13, NAVY, false));
-            card.addView(text("التكرار: " + s.repeatCount + " | الفاصل: " + s.gapSeconds + " ثانية", 13, NAVY, false));
+            card.addView(text("التكرار: " + s.repeatCount + " | الفاصل: " + s.gapSeconds + " ثانية | وقت تجريبي: الدقيقة " + s.elapsedMinutes, 13, NAVY, false));
             card.addView(text("سبب التقييم: " + s.reason, 13, NAVY, false));
+        }
+        if (sessions.size() > displayCount) {
+            results.addView(text("يتم عرض أول " + displayCount + " جلسة فقط؛ ملف CSV يحتوي على جميع الجلسات.", 13, NAVY, true));
         }
     }
 
@@ -178,6 +213,7 @@ public final class VisitDetectionActivity extends Activity {
             Session s = sessions.get(i);
             csv.append("SYNTHETIC_LOCAL,")
                     .append(i + 1).append(',')
+                    .append(s.elapsedMinutes).append(',')
                     .append(s.expectedBot ? "BOT" : "HUMAN").append(',')
                     .append(s.predictedBot ? "SUSPICIOUS" : "NORMAL").append(',')
                     .append(s.watchSeconds).append(',')
