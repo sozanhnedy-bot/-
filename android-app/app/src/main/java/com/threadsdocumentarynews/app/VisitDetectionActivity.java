@@ -51,7 +51,15 @@ public final class VisitDetectionActivity extends Activity {
     private LinearLayout localScreenPreviews;
     private TextView localScreenStatus;
     private int localScreenCount;
+    private final List<LocalPage> localPages = new ArrayList<>();
     private final Random random = new Random();
+
+    private static final class LocalPage {
+        int id;
+        String videoId;
+        boolean running;
+        String error = "";
+    }
 
     private static final class Session {
         String videoUrl;
@@ -151,10 +159,14 @@ public final class VisitDetectionActivity extends Activity {
         localScreenStatus = text("لا توجد شاشات اختبار محلية مفتوحة.", 14, NAVY, true);
         root.addView(localScreenStatus);
         testViews.add(localScreenStatus);
-        Button openLocalScreens = button("تشغيل الصفحات المحددة");
+        Button openLocalScreens = button("تهيئة الصفحات المحددة");
         openLocalScreens.setOnClickListener(v -> openLocalTestScreens());
         root.addView(openLocalScreens);
         testViews.add(openLocalScreens);
+        Button startLocalScreens = button("تشغيل الصفحات المحددة");
+        startLocalScreens.setOnClickListener(v -> setAllLocalPagesRunning(true));
+        root.addView(startLocalScreens);
+        testViews.add(startLocalScreens);
         Button stopLocalScreens = button("إيقاف الصفحات");
         stopLocalScreens.setOnClickListener(v -> stopLocalTestScreens());
         root.addView(stopLocalScreens);
@@ -254,29 +266,80 @@ public final class VisitDetectionActivity extends Activity {
             return;
         }
         localScreenCount = parseBounded(sessionCountInput.getText().toString(), 3000, 1, 3000);
+        localPages.clear();
+        for (int i = 1; i <= localScreenCount; i++) {
+            LocalPage page = new LocalPage();
+            page.id = i;
+            page.videoId = videoId;
+            page.running = false;
+            localPages.add(page);
+        }
+        renderLocalPages();
+        Toast.makeText(this, "تمت تهيئة " + localScreenCount + " صفحة اختبار محلية.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void setAllLocalPagesRunning(boolean running) {
+        if (localPages.isEmpty()) {
+            Toast.makeText(this, "هيّئ الصفحات أولًا.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        for (LocalPage page : localPages) {
+            page.running = running;
+            page.error = "";
+        }
+        renderLocalPages();
+    }
+
+    private void setLocalPageRunning(int index, boolean running) {
+        if (index < 0 || index >= localPages.size()) return;
+        LocalPage page = localPages.get(index);
+        page.running = running;
+        page.error = "";
+        renderLocalPages();
+    }
+
+    private void renderLocalPages() {
         localScreenPreviews.removeAllViews();
-        int previewCount = Math.min(localScreenCount, 100);
-        localScreenStatus.setText("تم تجهيز " + localScreenCount
-                + " سجل شاشة محلي مرتبط بالفيديو " + videoId
-                + ". المعروض هنا معاينة لأول " + previewCount
-                + " فقط؛ لا يتم فتح مشغلات متعددة أو إنشاء مشاهدات.");
-        for (int i = 1; i <= previewCount; i++) {
-            TextView item = text("شاشة اختبار محلية #" + i + " — مرتبطة بالفيديو: "
-                    + videoId, 13, NAVY, false);
-            item.setPadding(dp(8), dp(6), dp(8), dp(6));
-            item.setBackgroundColor(Color.WHITE);
+        int running = 0;
+        int stopped = 0;
+        int errors = 0;
+        for (LocalPage page : localPages) {
+            if (page.running) running++; else stopped++;
+            if (!page.error.isEmpty()) errors++;
+        }
+        int previewCount = Math.min(localPages.size(), 100);
+        localScreenStatus.setText("إجمالي الصفحات المحلية: " + localPages.size()
+                + " | تعمل: " + running + " | متوقفة: " + stopped
+                + " | أخطاء: " + errors
+                + "\\nالمعاينة تعرض أول " + previewCount
+                + " صفحة فقط. هذه حالات اختبار داخل التطبيق وليست مشغلات فيديو أو مشاهدات فعلية.");
+        for (int i = 0; i < previewCount; i++) {
+            LocalPage page = localPages.get(i);
+            LinearLayout row = new LinearLayout(this);
+            row.setOrientation(LinearLayout.HORIZONTAL);
+            row.setGravity(Gravity.CENTER_VERTICAL);
+            row.setPadding(dp(8), dp(4), dp(8), dp(4));
+            row.setBackgroundColor(Color.WHITE);
+            TextView label = text("صفحة #" + page.id + " — " + (page.running ? "شغالة" : "متوقفة")
+                    + (page.error.isEmpty() ? "" : " — " + page.error), 13,
+                    page.running ? GREEN : NAVY, true);
+            row.addView(label, new LinearLayout.LayoutParams(0, -2, 1));
+            Button toggle = button(page.running ? "إيقاف" : "تشغيل");
+            toggle.setTextSize(11);
+            toggle.setOnClickListener(v -> setLocalPageRunning(page.id - 1, !page.running));
+            row.addView(toggle, new LinearLayout.LayoutParams(dp(88), dp(44)));
             LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(-1, -2);
             p.setMargins(0, dp(2), 0, dp(2));
-            localScreenPreviews.addView(item, p);
+            localScreenPreviews.addView(row, p);
+        }
+        if (localPages.size() > previewCount) {
+            localScreenPreviews.addView(text("المعروض أول " + previewCount + " فقط من أصل "
+                    + localPages.size() + " صفحة. التحكم العام يطبق على القائمة كاملة.", 12, NAVY, false));
         }
     }
 
     private void stopLocalTestScreens() {
-        localScreenCount = 0;
-        if (localScreenPreviews != null) localScreenPreviews.removeAllViews();
-        if (localScreenStatus != null) {
-            localScreenStatus.setText("تم إيقاف ومسح معاينة شاشات الاختبار المحلية.");
-        }
+        setAllLocalPagesRunning(false);
     }
 
     private void generateSessions() {
