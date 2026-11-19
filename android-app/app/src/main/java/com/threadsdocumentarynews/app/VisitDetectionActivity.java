@@ -73,6 +73,8 @@ public final class VisitDetectionActivity extends Activity {
         youtubeUrl.setTextSize(14);
         youtubeUrl.setHint("قسم YouTube غير مفعّل");
         youtubeUrl.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
+        youtubeUrl.setEnabled(false);
+        youtubeUrl.setAlpha(0.55f);
         root.addView(youtubeUrl, new LinearLayout.LayoutParams(-1, dp(54)));
 
         Button open = button("YouTube — غير مفعّل");
@@ -85,13 +87,13 @@ public final class VisitDetectionActivity extends Activity {
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد الجلسات (حتى 20000)");
+        sessionCountInput.setHint("عدد المهام (حتى 20000)");
         sessionCountInput.setText("20000");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
         durationHoursInput.setSingleLine(true);
         durationHoursInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        durationHoursInput.setHint("المدة 24 أو 48 ساعة");
+        durationHoursInput.setHint("مدة الاختبار: 24 أو 48 ساعة");
         durationHoursInput.setText("24");
         settings.addView(durationHoursInput, new LinearLayout.LayoutParams(0, dp(54), 1));
         root.addView(settings);
