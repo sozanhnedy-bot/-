@@ -62,21 +62,22 @@ public final class VisitDetectionActivity extends Activity {
         root.setBackgroundColor(PAPER);
         scroll.addView(root);
 
-        TextView title = text("لوحة اختبار كشف الزيارات", 22, NAVY, true);
+        TextView title = text("محرك إدارة واختبار المهام", 22, NAVY, true);
         root.addView(title);
-        TextView note = text("وضع TEST محلي — كل السجلات التالية اصطناعية ولا تمثل مشاهدات YouTube حقيقية.", 14, RED, true);
+        TextView note = text("محرك محلي لإنشاء واختبار حتى 20,000 مهمة. لا يرسل مشاهدات ولا يتصل بيوتيوب.", 14, RED, true);
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
 
         youtubeUrl = new EditText(this);
         youtubeUrl.setSingleLine(true);
         youtubeUrl.setTextSize(14);
-        youtubeUrl.setHint("الصق رابط فيديو YouTube للاحتفاظ به وفتحه يدويًا");
+        youtubeUrl.setHint("قسم YouTube غير مفعّل");
         youtubeUrl.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
         root.addView(youtubeUrl, new LinearLayout.LayoutParams(-1, dp(54)));
 
-        Button open = button("فتح الفيديو على YouTube");
-        open.setOnClickListener(v -> openYoutube());
+        Button open = button("YouTube — غير مفعّل");
+        open.setEnabled(false);
+        open.setAlpha(0.55f);
         root.addView(open);
 
         LinearLayout settings = new LinearLayout(this);
@@ -95,22 +96,22 @@ public final class VisitDetectionActivity extends Activity {
         settings.addView(durationHoursInput, new LinearLayout.LayoutParams(0, dp(54), 1));
         root.addView(settings);
 
-        Button generate = button("توليد جلسات اختبار محلية");
+        Button generate = button("إنشاء مهام اختبار محلية");
         generate.setOnClickListener(v -> generateSessions());
         root.addView(generate);
 
-        Button export = button("تصدير بيانات الاختبار CSV");
+        Button export = button("تصدير سجل المهام CSV");
         export.setOnClickListener(v -> exportCsv());
         root.addView(export);
 
-        Button clear = button("مسح نتائج الاختبار");
+        Button clear = button("مسح مهام الاختبار");
         clear.setOnClickListener(v -> {
             sessions.clear();
             renderResults();
         });
         root.addView(clear);
 
-        summary = text("لم يتم توليد بيانات بعد.", 15, NAVY, true);
+        summary = text("لم يتم إنشاء مهام بعد.", 15, NAVY, true);
         summary.setPadding(0, dp(16), 0, dp(10));
         root.addView(summary);
 
@@ -142,7 +143,7 @@ public final class VisitDetectionActivity extends Activity {
                 s.source = pattern == 3 ? "نمط آلي اصطناعي متكرر" : "نمط آلي اصطناعي تجريبي";
             }
             s.predictedBot = s.watchSeconds < 12 || s.repeatCount >= 8 || s.gapSeconds < 5;
-            if (s.watchSeconds < 12) s.reason = "مدة مشاهدة قصيرة جدًا";
+            if (s.watchSeconds < 12) s.reason = "مدة اختبار قصيرة جدًا";
             else if (s.repeatCount >= 8) s.reason = "تكرار مرتفع";
             else if (s.gapSeconds < 5) s.reason = "فواصل زمنية غير طبيعية";
             else s.reason = "لا توجد إشارة كافية للاشتباه";
@@ -162,7 +163,7 @@ public final class VisitDetectionActivity extends Activity {
     private void renderResults() {
         results.removeAllViews();
         if (sessions.isEmpty()) {
-            summary.setText("لم يتم توليد بيانات بعد. اضغط زر توليد الجلسات لبدء الاختبار.");
+            summary.setText("لم يتم إنشاء مهام بعد. اضغط زر إنشاء المهام لبدء الاختبار.");
             return;
         }
         int tp = 0, tn = 0, fp = 0, fn = 0;
@@ -175,7 +176,7 @@ public final class VisitDetectionActivity extends Activity {
         int correct = tp + tn;
         double accuracy = 100.0 * correct / sessions.size();
         summary.setText(String.format(Locale.US,
-                "النتائج: %d جلسة اختبار\nصحيح: %d | إنذارات كاذبة: %d | حالات فائتة: %d\nالدقة التجريبية: %.1f%%\nمصفوفة الالتباس — TP: %d، TN: %d، FP: %d، FN: %d",
+                "النتائج: %d مهمة اختبار\nصحيح: %d | إنذارات كاذبة: %d | حالات فائتة: %d\nالدقة التجريبية: %.1f%%\nمصفوفة الالتباس — TP: %d، TN: %d، FP: %d، FN: %d",
                 sessions.size(), correct, fp, fn, accuracy, tp, tn, fp, fn));
 
         int displayCount = Math.min(sessions.size(), 100);
@@ -189,7 +190,7 @@ public final class VisitDetectionActivity extends Activity {
             cp.setMargins(0, dp(4), 0, dp(4));
             results.addView(card, cp);
             boolean correctLabel = s.expectedBot == s.predictedBot;
-            TextView head = text("جلسة #" + (i + 1) + " — " + (s.predictedBot ? "مشتبه بها" : "طبيعية حسب الكاشف"), 15, s.predictedBot ? RED : GREEN, true);
+            TextView head = text("مهمة #" + (i + 1) + " — " + (s.predictedBot ? "مشتبه بها" : "طبيعية حسب الكاشف"), 15, s.predictedBot ? RED : GREEN, true);
             card.addView(head);
             card.addView(text("الحقيقة التجريبية: " + (s.expectedBot ? "BOT" : "HUMAN") + " | تقييم الكاشف: " + (correctLabel ? "صحيح" : "خطأ"), 13, NAVY, false));
             card.addView(text("المصدر: " + s.source + " | مدة المشاهدة: " + s.watchSeconds + " ثانية", 13, NAVY, false));
@@ -197,21 +198,21 @@ public final class VisitDetectionActivity extends Activity {
             card.addView(text("سبب التقييم: " + s.reason, 13, NAVY, false));
         }
         if (sessions.size() > displayCount) {
-            results.addView(text("يتم عرض أول " + displayCount + " جلسة فقط؛ ملف CSV يحتوي على جميع الجلسات.", 13, NAVY, true));
+            results.addView(text("يتم عرض أول " + displayCount + " مهمة فقط؛ ملف CSV يحتوي على جميع الجلسات.", 13, NAVY, true));
         }
     }
 
 
     private void exportCsv() {
         if (sessions.isEmpty()) {
-            Toast.makeText(this, "ولّد جلسات الاختبار أولًا.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "أنشئ مهام الاختبار أولًا.", Toast.LENGTH_LONG).show();
             return;
         }
         StringBuilder csv = new StringBuilder();
         csv.append("dataset,session_id,elapsed_minute,expected_label,predicted_label,watch_seconds,repeat_count,gap_seconds,source,reason\n");
         for (int i = 0; i < sessions.size(); i++) {
             Session s = sessions.get(i);
-            csv.append("SYNTHETIC_LOCAL,")
+            csv.append("LOCAL_TEST_ONLY,")
                     .append(i + 1).append(',')
                     .append(s.elapsedMinutes).append(',')
                     .append(s.expectedBot ? "BOT" : "HUMAN").append(',')
@@ -226,7 +227,7 @@ public final class VisitDetectionActivity extends Activity {
         Intent create = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         create.addCategory(Intent.CATEGORY_OPENABLE);
         create.setType("text/csv");
-        create.putExtra(Intent.EXTRA_TITLE, "synthetic_visit_test.csv");
+        create.putExtra(Intent.EXTRA_TITLE, "local_task_test.csv");
         try {
             startActivityForResult(create, CREATE_CSV_REQUEST);
         } catch (Exception e) {
