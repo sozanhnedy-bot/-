@@ -108,8 +108,8 @@ public final class VisitDetectionActivity extends Activity {
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد الجلسات (1–5000)");
-        sessionCountInput.setText("5000");
+        sessionCountInput.setHint("عدد سجلات الاختبار (1–3000)");
+        sessionCountInput.setText("3000");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
         durationHoursInput.setSingleLine(true);
@@ -192,7 +192,7 @@ public final class VisitDetectionActivity extends Activity {
             return;
         }
         sessions.clear();
-        int requestedCount = parseBounded(sessionCountInput.getText().toString(), 5000, 1, 5000);
+        int requestedCount = parseBounded(sessionCountInput.getText().toString(), 3000, 1, 3000);
         int durationHours = parseBounded(durationHoursInput.getText().toString(), 24, 24, 48);
         if (durationHours != 24 && durationHours != 48) durationHours = 24;
         for (int i = 0; i < requestedCount; i++) {
