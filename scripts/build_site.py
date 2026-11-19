@@ -115,7 +115,22 @@ def build(output: Path) -> int:
         cwd=ROOT,
         check=True,
     )
-    print(f"Built read-only news site in {output}")
+
+    # Publish 5,000 numbered mirrors of the main interface. All mirrors share
+    # the same assets and data at the site root; they do not generate traffic.
+    homepage = (output / "index.html").read_text(encoding="utf-8")
+    mirror_html = homepage.replace(
+        "<title>World News | أخبار العالم</title>",
+        '<meta name="robots" content="noindex,follow">\\n  <title>World News | أخبار العالم</title>',
+        1,
+    )
+    mirrors_dir = output / "pages"
+    mirrors_dir.mkdir(exist_ok=True)
+    for page_number in range(1, 5001):
+        page_path = mirrors_dir / f"page-{page_number:04d}.html"
+        page_path.write_text(mirror_html, encoding="utf-8")
+
+    print(f"Built read-only news site and 5,000 interface mirrors in {output}")
     return 0
 
 
