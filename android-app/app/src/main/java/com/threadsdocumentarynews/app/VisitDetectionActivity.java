@@ -180,8 +180,8 @@ public final class VisitDetectionActivity extends Activity {
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد جلسات اختبار الواجهات (1–3000)");
-        sessionCountInput.setText("3000");
+        sessionCountInput.setHint("عدد جلسات اختبار الواجهات (1–3000، الحد الأقصى ٣٠٠٠)");
+        sessionCountInput.setText("3");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
         durationHoursInput.setSingleLine(true);
