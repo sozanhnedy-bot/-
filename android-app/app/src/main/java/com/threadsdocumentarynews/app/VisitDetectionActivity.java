@@ -15,6 +15,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.webkit.WebChromeClient;
 import android.widget.Toast;
 
@@ -48,6 +49,8 @@ public final class VisitDetectionActivity extends Activity {
     private EditText sessionCountInput;
     private EditText durationHoursInput;
     private WebView youtubePlayer;
+    private TextView videoStatus;
+    private String savedVideoUrl = "";
     private LinearLayout localScreenPreviews;
     private TextView localScreenStatus;
     private int localScreenCount;
@@ -111,20 +114,37 @@ public final class VisitDetectionActivity extends Activity {
         screenControls.addView(resultsToggle);
         root.addView(screenControls, new LinearLayout.LayoutParams(-1, -2));
 
+        android.content.SharedPreferences preferences = getSharedPreferences("video_management", MODE_PRIVATE);
+        savedVideoUrl = preferences.getString("video_url", "");
         youtubeUrl = new EditText(this);
         youtubeUrl.setSingleLine(true);
         youtubeUrl.setTextSize(14);
         youtubeUrl.setHint("الصق رابط فيديو YouTube هنا");
+        youtubeUrl.setText(savedVideoUrl);
         youtubeUrl.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
         youtubeUrl.setEnabled(true);
         youtubeUrl.setAlpha(1.0f);
         root.addView(youtubeUrl, new LinearLayout.LayoutParams(-1, dp(54)));
         playbackViews.add(youtubeUrl);
 
-        Button open = button("فتح فيديو YouTube");
+        Button saveLink = button("حفظ رابط الفيديو");
+        saveLink.setOnClickListener(v -> saveVideoLink());
+        root.addView(saveLink);
+        playbackViews.add(saveLink);
+
+        Button open = button("تشغيل الفيديو");
         open.setOnClickListener(v -> openYoutube());
         root.addView(open);
         playbackViews.add(open);
+
+        Button stopVideo = button("إيقاف الفيديو");
+        stopVideo.setOnClickListener(v -> stopYoutube());
+        root.addView(stopVideo);
+        playbackViews.add(stopVideo);
+
+        videoStatus = text("حالة الفيديو: لم يبدأ التشغيل.", 14, NAVY, true);
+        root.addView(videoStatus);
+        playbackViews.add(videoStatus);
 
         TextView playbackNote = text("الرابط يربط سجل الاختبار بالفيديو فقط. السجلات هنا محلية وليست مشاهدات أو زيارات حقيقية.", 14, NAVY, true);
         root.addView(playbackNote);
@@ -136,6 +156,22 @@ public final class VisitDetectionActivity extends Activity {
         playerSettings.setDomStorageEnabled(true);
         playerSettings.setMediaPlaybackRequiresUserGesture(true);
         youtubePlayer.setWebChromeClient(new WebChromeClient());
+        youtubePlayer.setWebViewClient(new WebViewClient() {
+            @Override public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
+                if (videoStatus != null) videoStatus.setText("حالة الفيديو: جاري تحميل المشغل...");
+            }
+            @Override public void onPageFinished(WebView view, String url) {
+                if (videoStatus != null && !"about:blank".equals(url)) {
+                    videoStatus.setText("حالة الفيديو: تم تحميل صفحة المشغل. ابدأ الفيديو من عناصر تحكم YouTube.");
+                }
+            }
+            @Override public void onReceivedError(WebView view, android.webkit.WebResourceRequest request,
+                                                  android.webkit.WebResourceError error) {
+                if (request.isForMainFrame() && videoStatus != null) {
+                    videoStatus.setText("حالة الفيديو: تعذر تحميل المشغل (" + error.getDescription() + ").");
+                }
+            }
+        });
         root.addView(youtubePlayer, new LinearLayout.LayoutParams(-1, dp(420)));
         playbackViews.add(youtubePlayer);
 
@@ -512,6 +548,30 @@ public final class VisitDetectionActivity extends Activity {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    private void saveVideoLink() {
+        String value = youtubeUrl.getText().toString().trim();
+        String videoId = extractYoutubeVideoId(value);
+        if (videoId == null) {
+            Toast.makeText(this, "أدخل رابط YouTube صحيحًا أولًا.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        savedVideoUrl = value;
+        getSharedPreferences("video_management", MODE_PRIVATE).edit()
+                .putString("video_url", savedVideoUrl).apply();
+        for (LocalPage page : localPages) page.videoId = videoId;
+        if (!localPages.isEmpty()) renderLocalPages();
+        if (videoStatus != null) videoStatus.setText("حالة الفيديو: تم حفظ الرابط بنجاح.");
+        Toast.makeText(this, "تم حفظ رابط الفيديو.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void stopYoutube() {
+        if (youtubePlayer != null) {
+            youtubePlayer.onPause();
+            youtubePlayer.loadUrl("about:blank");
+        }
+        if (videoStatus != null) videoStatus.setText("حالة الفيديو: متوقف.");
     }
 
     private void openYoutube() {
