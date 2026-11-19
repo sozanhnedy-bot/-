@@ -69,7 +69,7 @@ public final class VisitDetectionActivity extends Activity {
 
         TextView title = text("محرك إدارة واختبار المهام", 22, NAVY, true);
         root.addView(title);
-        TextView note = text("محرك محلي لإنشاء واختبار حتى 5,000 مهمة. لا يرسل مشاهدات ولا يتصل بيوتيوب.", 14, RED, true);
+        TextView note = text("أدخل رابط فيديو يوتيوب وافتحه يدويًا. جلسات الاختبار حتى 5,000 تُدار محليًا داخل التطبيق.", 14, RED, true);
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
 
@@ -82,15 +82,14 @@ public final class VisitDetectionActivity extends Activity {
         youtubeUrl = new EditText(this);
         youtubeUrl.setSingleLine(true);
         youtubeUrl.setTextSize(14);
-        youtubeUrl.setHint("قسم YouTube غير مفعّل");
+        youtubeUrl.setHint("الصق رابط فيديو YouTube هنا");
         youtubeUrl.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
-        youtubeUrl.setEnabled(false);
-        youtubeUrl.setAlpha(0.55f);
+        youtubeUrl.setEnabled(true);
+        youtubeUrl.setAlpha(1.0f);
         root.addView(youtubeUrl, new LinearLayout.LayoutParams(-1, dp(54)));
 
-        Button open = button("YouTube — غير مفعّل");
-        open.setEnabled(false);
-        open.setAlpha(0.55f);
+        Button open = button("فتح فيديو YouTube");
+        open.setOnClickListener(v -> openYoutube());
         root.addView(open);
 
         LinearLayout settings = new LinearLayout(this);
@@ -109,7 +108,7 @@ public final class VisitDetectionActivity extends Activity {
         settings.addView(durationHoursInput, new LinearLayout.LayoutParams(0, dp(54), 1));
         root.addView(settings);
 
-        Button generate = button("إنشاء مهام اختبار محلية");
+        Button generate = button("إنشاء جلسات اختبار محلية");
         generate.setOnClickListener(v -> generateSessions());
         root.addView(generate);
 
