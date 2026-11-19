@@ -48,6 +48,8 @@ public final class VisitDetectionActivity extends Activity {
     private final Random random = new Random();
 
     private static final class Session {
+        String videoUrl;
+        String videoId;
         boolean expectedBot;
         boolean predictedBot;
         int watchSeconds;
@@ -90,7 +92,7 @@ public final class VisitDetectionActivity extends Activity {
         open.setOnClickListener(v -> openYoutube());
         root.addView(open);
 
-        TextView playbackNote = text("المشاهدة هنا للعرض العادي فقط؛ لا توجد زيادة مصطنعة للمشاهدات.", 14, NAVY, true);
+        TextView playbackNote = text("الرابط يربط سجل الاختبار بالفيديو فقط. السجلات هنا محلية وليست مشاهدات أو زيارات حقيقية.", 14, NAVY, true);
         root.addView(playbackNote);
         youtubePlayer = new WebView(this);
         youtubePlayer.setBackgroundColor(Color.BLACK);
@@ -117,7 +119,7 @@ public final class VisitDetectionActivity extends Activity {
         settings.addView(durationHoursInput, new LinearLayout.LayoutParams(0, dp(54), 1));
         root.addView(settings);
 
-        Button generate = button("إنشاء جلسات اختبار محلية");
+        Button generate = button("إنشاء سجلات اختبار مرتبطة بالرابط");
         generate.setOnClickListener(v -> generateSessions());
         root.addView(generate);
 
@@ -183,12 +185,20 @@ public final class VisitDetectionActivity extends Activity {
     }
 
     private void generateSessions() {
+        String videoUrl = youtubeUrl.getText().toString().trim();
+        String videoId = extractYoutubeVideoId(videoUrl);
+        if (videoId == null) {
+            Toast.makeText(this, "أدخل رابط فيديو YouTube صحيحًا أولًا.", Toast.LENGTH_LONG).show();
+            return;
+        }
         sessions.clear();
         int requestedCount = parseBounded(sessionCountInput.getText().toString(), 5000, 1, 5000);
         int durationHours = parseBounded(durationHoursInput.getText().toString(), 24, 24, 48);
         if (durationHours != 24 && durationHours != 48) durationHours = 24;
         for (int i = 0; i < requestedCount; i++) {
             Session s = new Session();
+            s.videoUrl = videoUrl;
+            s.videoId = videoId;
             s.elapsedMinutes = (int) (((long) i * durationHours * 60L) / requestedCount);
             s.expectedBot = (i % 5) == 0;
             if (!s.expectedBot) {
@@ -237,8 +247,8 @@ public final class VisitDetectionActivity extends Activity {
         int correct = tp + tn;
         double accuracy = 100.0 * correct / sessions.size();
         summary.setText(String.format(Locale.US,
-                "النتائج: %d مهمة اختبار\nصحيح: %d | إنذارات كاذبة: %d | حالات فائتة: %d\nالدقة التجريبية: %.1f%%\nمصفوفة الالتباس — TP: %d، TN: %d، FP: %d، FN: %d",
-                sessions.size(), correct, fp, fn, accuracy, tp, tn, fp, fn));
+                "الفيديو المرتبط: %s\nمعرّف الفيديو: %s\nالبيانات محلية تجريبية وليست زيارات حقيقية.\nالنتائج: %d مهمة اختبار\nصحيح: %d | إنذارات كاذبة: %d | حالات فائتة: %d\nالدقة التجريبية: %.1f%%\nمصفوفة الالتباس — TP: %d، TN: %d، FP: %d، FN: %d",
+                sessions.get(0).videoUrl, sessions.get(0).videoId, sessions.size(), correct, fp, fn, accuracy, tp, tn, fp, fn));
 
         int displayCount = Math.min(sessions.size(), 100);
         for (int i = 0; i < displayCount; i++) {
@@ -270,10 +280,12 @@ public final class VisitDetectionActivity extends Activity {
             return;
         }
         StringBuilder csv = new StringBuilder();
-        csv.append("dataset,session_id,elapsed_minute,expected_label,predicted_label,watch_seconds,repeat_count,gap_seconds,source,reason\n");
+        csv.append("dataset,video_url,video_id,session_id,elapsed_minute,expected_label,predicted_label,watch_seconds,repeat_count,gap_seconds,source,reason\n");
         for (int i = 0; i < sessions.size(); i++) {
             Session s = sessions.get(i);
             csv.append("LOCAL_TEST_ONLY,")
+                    .append(csvValue(s.videoUrl)).append(',')
+                    .append(csvValue(s.videoId)).append(',')
                     .append(i + 1).append(',')
                     .append(s.elapsedMinutes).append(',')
                     .append(s.expectedBot ? "BOT" : "HUMAN").append(',')
@@ -321,19 +333,13 @@ public final class VisitDetectionActivity extends Activity {
         }
     }
 
-    private void openYoutube() {
-        String value = youtubeUrl.getText().toString().trim();
-        Uri uri;
+    private String extractYoutubeVideoId(String value) {
         try {
-            uri = Uri.parse(value);
+            Uri uri = Uri.parse(value);
+            String scheme = uri.getScheme();
             String host = uri.getHost();
-            if (!"http".equalsIgnoreCase(uri.getScheme()) && !"https".equalsIgnoreCase(uri.getScheme())) throw new IllegalArgumentException();
-            if (host == null || !(host.equalsIgnoreCase("youtube.com") || host.endsWith(".youtube.com") || host.equalsIgnoreCase("youtu.be"))) throw new IllegalArgumentException();
-        } catch (Exception e) {
-            Toast.makeText(this, "أدخل رابط YouTube صحيحًا يبدأ بـ https://", Toast.LENGTH_LONG).show();
-            return;
-        }
-        try {
+            if (!("http".equalsIgnoreCase(scheme) || "https".equalsIgnoreCase(scheme))) return null;
+            if (host == null || !(host.equalsIgnoreCase("youtube.com") || host.endsWith(".youtube.com") || host.equalsIgnoreCase("youtu.be"))) return null;
             String videoId = uri.getQueryParameter("v");
             if (videoId == null || videoId.isEmpty()) {
                 String path = uri.getPath();
@@ -342,10 +348,20 @@ public final class VisitDetectionActivity extends Activity {
                     videoId = parts[parts.length - 1];
                 }
             }
-            if (videoId == null || !videoId.matches("[A-Za-z0-9_-]{11}")) {
-                Toast.makeText(this, "تعذر استخراج معرف الفيديو من الرابط.", Toast.LENGTH_LONG).show();
-                return;
-            }
+            return videoId != null && videoId.matches("[A-Za-z0-9_-]{11}") ? videoId : null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private void openYoutube() {
+        String value = youtubeUrl.getText().toString().trim();
+        String videoId = extractYoutubeVideoId(value);
+        if (videoId == null) {
+            Toast.makeText(this, "أدخل رابط YouTube صحيحًا يبدأ بـ https://", Toast.LENGTH_LONG).show();
+            return;
+        }
+        try {
             String html = "<!doctype html><html><body style=\"margin:0;background:#000\"><iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube-nocookie.com/embed/" + videoId + "?playsinline=1\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></body></html>";
             youtubePlayer.loadDataWithBaseURL("https://www.youtube-nocookie.com", html, "text/html", "UTF-8", null);
         } catch (Exception e) {
