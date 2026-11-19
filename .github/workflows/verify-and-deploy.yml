@@ -2,7 +2,7 @@ name: Verify and deploy World News
 
 on:
   push:
-    branches: [main]
+    branches: [main, feature/visit-detection-test-mode]
   workflow_dispatch:
 
 permissions:
