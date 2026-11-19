@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebChromeClient;
 import android.widget.Toast;
 
 import java.nio.charset.StandardCharsets;
@@ -41,6 +44,7 @@ public final class VisitDetectionActivity extends Activity {
     private EditText youtubeUrl;
     private EditText sessionCountInput;
     private EditText durationHoursInput;
+    private WebView youtubePlayer;
     private final Random random = new Random();
 
     private static final class Session {
@@ -67,17 +71,11 @@ public final class VisitDetectionActivity extends Activity {
         root.setBackgroundColor(PAPER);
         scroll.addView(root);
 
-        TextView title = text("محرك إدارة واختبار المهام", 22, NAVY, true);
+        TextView title = text("YouTube Lab", 26, NAVY, true);
         root.addView(title);
-        TextView note = text("أدخل رابط فيديو يوتيوب وافتحه يدويًا. جلسات الاختبار حتى 5,000 تُدار محليًا داخل التطبيق.", 14, RED, true);
+        TextView note = text("أدخل رابط فيديو يوتيوب لفتحه داخل التطبيق", 16, NAVY, true);
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
-
-        connectionStatus = text("حالة الوجهة: لم يتم اختبار الاتصال بعد.", 14, NAVY, true);
-        root.addView(connectionStatus);
-        checkConnectionButton = button("اختبار اتصال واحد بالوجهة الحالية");
-        checkConnectionButton.setOnClickListener(v -> checkCurrentDestination());
-        root.addView(checkConnectionButton);
 
         youtubeUrl = new EditText(this);
         youtubeUrl.setSingleLine(true);
@@ -92,12 +90,23 @@ public final class VisitDetectionActivity extends Activity {
         open.setOnClickListener(v -> openYoutube());
         root.addView(open);
 
+        TextView playbackNote = text("المشاهدة هنا للعرض العادي فقط؛ لا توجد زيادة مصطنعة للمشاهدات.", 14, NAVY, true);
+        root.addView(playbackNote);
+        youtubePlayer = new WebView(this);
+        youtubePlayer.setBackgroundColor(Color.BLACK);
+        WebSettings playerSettings = youtubePlayer.getSettings();
+        playerSettings.setJavaScriptEnabled(true);
+        playerSettings.setDomStorageEnabled(true);
+        playerSettings.setMediaPlaybackRequiresUserGesture(true);
+        youtubePlayer.setWebChromeClient(new WebChromeClient());
+        root.addView(youtubePlayer, new LinearLayout.LayoutParams(-1, dp(420)));
+
         LinearLayout settings = new LinearLayout(this);
         settings.setOrientation(LinearLayout.HORIZONTAL);
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد المهام (حتى 5000)");
+        sessionCountInput.setHint("عدد الجلسات (1–5000)");
         sessionCountInput.setText("5000");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
@@ -325,7 +334,20 @@ public final class VisitDetectionActivity extends Activity {
             return;
         }
         try {
-            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            String videoId = uri.getQueryParameter("v");
+            if (videoId == null || videoId.isEmpty()) {
+                String path = uri.getPath();
+                if (path != null && !path.isEmpty()) {
+                    String[] parts = path.split("/");
+                    videoId = parts[parts.length - 1];
+                }
+            }
+            if (videoId == null || !videoId.matches("[A-Za-z0-9_-]{11}")) {
+                Toast.makeText(this, "تعذر استخراج معرف الفيديو من الرابط.", Toast.LENGTH_LONG).show();
+                return;
+            }
+            String html = "<!doctype html><html><body style=\"margin:0;background:#000\"><iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube-nocookie.com/embed/" + videoId + "?playsinline=1\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></body></html>";
+            youtubePlayer.loadDataWithBaseURL("https://www.youtube-nocookie.com", html, "text/html", "UTF-8", null);
         } catch (Exception e) {
             Toast.makeText(this, "تعذر فتح الرابط على الجهاز.", Toast.LENGTH_LONG).show();
         }
