@@ -116,7 +116,7 @@ def build(output: Path) -> int:
         check=True,
     )
 
-    # Publish 5,000 numbered mirrors of the main interface. All mirrors share
+    # Publish 3,000 numbered mirrors of the main interface. All mirrors share
     # the same assets and data at the site root; they do not generate traffic.
     homepage = (output / "index.html").read_text(encoding="utf-8")
     mirror_html = homepage.replace(
@@ -126,11 +126,11 @@ def build(output: Path) -> int:
     )
     mirrors_dir = output / "pages"
     mirrors_dir.mkdir(exist_ok=True)
-    for page_number in range(1, 5001):
+    for page_number in range(1, 3001):
         page_path = mirrors_dir / f"page-{page_number:04d}.html"
         page_path.write_text(mirror_html, encoding="utf-8")
 
-    print(f"Built read-only news site and 5,000 interface mirrors in {output}")
+    print(f"Built read-only news site and 3,000 interface mirrors in {output}")
     return 0
 
 
