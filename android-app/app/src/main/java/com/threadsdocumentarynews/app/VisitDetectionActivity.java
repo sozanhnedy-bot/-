@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public final class VisitDetectionActivity extends Activity {
     private static final int NAVY = Color.rgb(20, 40, 63);
@@ -33,6 +35,7 @@ public final class VisitDetectionActivity extends Activity {
     private final List<Session> sessions = new ArrayList<>();
     private LinearLayout results;
     private TextView summary;
+    private TextView connectionStatus;
     private EditText youtubeUrl;
     private EditText sessionCountInput;
     private EditText durationHoursInput;
@@ -67,6 +70,12 @@ public final class VisitDetectionActivity extends Activity {
         TextView note = text("محرك محلي لإنشاء واختبار حتى 20,000 مهمة. لا يرسل مشاهدات ولا يتصل بيوتيوب.", 14, RED, true);
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
+
+        connectionStatus = text("حالة الوجهة: لم يتم اختبار الاتصال بعد.", 14, NAVY, true);
+        root.addView(connectionStatus);
+        Button checkConnection = button("اختبار اتصال واحد بالوجهة الحالية");
+        checkConnection.setOnClickListener(v -> checkCurrentDestination());
+        root.addView(checkConnection);
 
         youtubeUrl = new EditText(this);
         youtubeUrl.setSingleLine(true);
@@ -121,6 +130,32 @@ public final class VisitDetectionActivity extends Activity {
         results.setOrientation(LinearLayout.VERTICAL);
         root.addView(results);
         setContentView(scroll);
+    }
+
+
+    private void checkCurrentDestination() {
+        connectionStatus.setText("جاري اختبار اتصال واحد بالموقع...");
+        new Thread(() -> {
+            HttpURLConnection connection = null;
+            long started = System.currentTimeMillis();
+            try {
+                URL url = new URL("https://sozanhnedy-bot.github.io/-/");
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("HEAD");
+                connection.setConnectTimeout(10000);
+                connection.setReadTimeout(10000);
+                connection.setInstanceFollowRedirects(true);
+                int status = connection.getResponseCode();
+                long elapsed = System.currentTimeMillis() - started;
+                String message = "الوجهة: موقع المشروع\\nHTTP: " + status + " | زمن الاستجابة: " + elapsed + " ms"
+                        + (status >= 200 && status < 400 ? "\\nالاتصال ناجح." : "\\nالخادم ردّ بحالة غير ناجحة.");
+                runOnUiThread(() -> connectionStatus.setText(message));
+            } catch (Exception e) {
+                runOnUiThread(() -> connectionStatus.setText("تعذر الاتصال بالموقع: " + e.getClass().getSimpleName()));
+            } finally {
+                if (connection != null) connection.disconnect();
+            }
+        }).start();
     }
 
     private void generateSessions() {
