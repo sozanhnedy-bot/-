@@ -69,7 +69,7 @@ public final class VisitDetectionActivity extends Activity {
 
         TextView title = text("محرك إدارة واختبار المهام", 22, NAVY, true);
         root.addView(title);
-        TextView note = text("محرك محلي لإنشاء واختبار حتى 10,000 مهمة. لا يرسل مشاهدات ولا يتصل بيوتيوب.", 14, RED, true);
+        TextView note = text("محرك محلي لإنشاء واختبار حتى 5,000 مهمة. لا يرسل مشاهدات ولا يتصل بيوتيوب.", 14, RED, true);
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
 
@@ -98,8 +98,8 @@ public final class VisitDetectionActivity extends Activity {
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد المهام (حتى 10000)");
-        sessionCountInput.setText("10000");
+        sessionCountInput.setHint("عدد المهام (حتى 5000)");
+        sessionCountInput.setText("5000");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
         durationHoursInput.setSingleLine(true);
@@ -148,8 +148,8 @@ public final class VisitDetectionActivity extends Activity {
                 URL url = new URL("https://sozanhnedy-bot.github.io/-/");
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("HEAD");
-                connection.setConnectTimeout(10000);
-                connection.setReadTimeout(10000);
+                connection.setConnectTimeout(5000);
+                connection.setReadTimeout(5000);
                 connection.setInstanceFollowRedirects(true);
                 connection.setUseCaches(false);
                 int status = connection.getResponseCode();
@@ -176,7 +176,7 @@ public final class VisitDetectionActivity extends Activity {
 
     private void generateSessions() {
         sessions.clear();
-        int requestedCount = parseBounded(sessionCountInput.getText().toString(), 10000, 1, 10000);
+        int requestedCount = parseBounded(sessionCountInput.getText().toString(), 5000, 1, 5000);
         int durationHours = parseBounded(durationHoursInput.getText().toString(), 24, 24, 48);
         if (durationHours != 24 && durationHours != 48) durationHours = 24;
         for (int i = 0; i < requestedCount; i++) {
