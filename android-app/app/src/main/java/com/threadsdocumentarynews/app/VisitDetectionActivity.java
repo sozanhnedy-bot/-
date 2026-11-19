@@ -58,6 +58,7 @@ public final class VisitDetectionActivity extends Activity {
         String source;
         String reason;
         int elapsedMinutes;
+        int batchNumber;
     }
 
     @Override protected void onCreate(Bundle state) {
@@ -200,6 +201,7 @@ public final class VisitDetectionActivity extends Activity {
             s.videoUrl = videoUrl;
             s.videoId = videoId;
             s.elapsedMinutes = (int) (((long) i * durationHours * 60L) / requestedCount);
+            s.batchNumber = (i / 100) + 1;
             s.expectedBot = (i % 5) == 0;
             if (!s.expectedBot) {
                 s.watchSeconds = 25 + random.nextInt(240);
@@ -265,7 +267,7 @@ public final class VisitDetectionActivity extends Activity {
             card.addView(head);
             card.addView(text("الحقيقة التجريبية: " + (s.expectedBot ? "BOT" : "HUMAN") + " | تقييم الكاشف: " + (correctLabel ? "صحيح" : "خطأ"), 13, NAVY, false));
             card.addView(text("المصدر: " + s.source + " | مدة المشاهدة: " + s.watchSeconds + " ثانية", 13, NAVY, false));
-            card.addView(text("التكرار: " + s.repeatCount + " | الفاصل: " + s.gapSeconds + " ثانية | وقت تجريبي: الدقيقة " + s.elapsedMinutes, 13, NAVY, false));
+            card.addView(text("الدفعة: " + s.batchNumber + " | التكرار: " + s.repeatCount + " | الفاصل: " + s.gapSeconds + " ثانية | وقت تجريبي: الدقيقة " + s.elapsedMinutes, 13, NAVY, false));
             card.addView(text("سبب التقييم: " + s.reason, 13, NAVY, false));
         }
         if (sessions.size() > displayCount) {
@@ -280,13 +282,14 @@ public final class VisitDetectionActivity extends Activity {
             return;
         }
         StringBuilder csv = new StringBuilder();
-        csv.append("dataset,video_url,video_id,session_id,elapsed_minute,expected_label,predicted_label,watch_seconds,repeat_count,gap_seconds,source,reason\n");
+        csv.append("dataset,video_url,video_id,session_id,batch_number,elapsed_minute,expected_label,predicted_label,watch_seconds,repeat_count,gap_seconds,source,reason\n");
         for (int i = 0; i < sessions.size(); i++) {
             Session s = sessions.get(i);
             csv.append("LOCAL_TEST_ONLY,")
                     .append(csvValue(s.videoUrl)).append(',')
                     .append(csvValue(s.videoId)).append(',')
                     .append(i + 1).append(',')
+                    .append(s.batchNumber).append(',')
                     .append(s.elapsedMinutes).append(',')
                     .append(s.expectedBot ? "BOT" : "HUMAN").append(',')
                     .append(s.predictedBot ? "SUSPICIOUS" : "NORMAL").append(',')
