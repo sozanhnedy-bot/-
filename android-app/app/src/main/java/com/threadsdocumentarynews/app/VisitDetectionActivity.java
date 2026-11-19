@@ -127,8 +127,8 @@ public final class VisitDetectionActivity extends Activity {
         if (durationHours != 24 && durationHours != 48) durationHours = 24;
         for (int i = 0; i < requestedCount; i++) {
             Session s = new Session();
-            s.elapsedMinutes = random.nextInt(durationHours * 60);
-            s.expectedBot = (i % 5) != 0;
+            s.elapsedMinutes = (int) (((long) i * durationHours * 60L) / requestedCount);
+            s.expectedBot = (i % 5) == 0;
             if (!s.expectedBot) {
                 s.watchSeconds = 25 + random.nextInt(240);
                 s.repeatCount = random.nextInt(3);
@@ -208,7 +208,7 @@ public final class VisitDetectionActivity extends Activity {
             return;
         }
         StringBuilder csv = new StringBuilder();
-        csv.append("dataset,session_id,expected_label,predicted_label,watch_seconds,repeat_count,gap_seconds,source,reason\n");
+        csv.append("dataset,session_id,elapsed_minute,expected_label,predicted_label,watch_seconds,repeat_count,gap_seconds,source,reason\n");
         for (int i = 0; i < sessions.size(); i++) {
             Session s = sessions.get(i);
             csv.append("SYNTHETIC_LOCAL,")
