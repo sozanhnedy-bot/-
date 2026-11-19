@@ -93,7 +93,7 @@ public final class VisitDetectionActivity extends Activity {
 
         TextView title = text("YouTube Lab", 26, NAVY, true);
         root.addView(title);
-        TextView note = text("أدخل رابط فيديو YouTube لتشغيله يدويًا. سجلات الاختبار لا تولّد مشاهدات ولا تغيّر عدّاد YouTube.", 16, NAVY, true);
+        TextView note = text("مشغّل YouTube منفصل للاستخدام اليدوي. قسم الاختبار مخصص لتجهيز جلسات واجهات السيرفر؛ التهيئة الحالية محلية فقط ولا ترسل حملًا إلى أي خادم.", 16, NAVY, true);
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
 
@@ -101,13 +101,13 @@ public final class VisitDetectionActivity extends Activity {
         screenControls.setOrientation(LinearLayout.VERTICAL);
         screenControls.setPadding(dp(12), dp(10), dp(12), dp(10));
         screenControls.setBackgroundColor(Color.WHITE);
-        TextView controlsTitle = text("مشاهدات محلية مرتبطة برابط YouTube", 17, NAVY, true);
+        TextView controlsTitle = text("جلسات اختبار واجهات السيرفر (مؤقتًا)", 17, NAVY, true);
         screenControls.addView(controlsTitle);
         Button playbackToggle = button("إيقاف مشغل الفيديو");
         playbackToggle.setOnClickListener(v -> toggleSection(playbackViews, playbackToggle, "مشغل الفيديو"));
         screenControls.addView(playbackToggle);
-        Button testToggle = button("إيقاف المشاهدات المحلية المرتبطة بالرابط");
-        testToggle.setOnClickListener(v -> toggleSection(testViews, testToggle, "المشاهدات المحلية المرتبطة برابط YouTube"));
+        Button testToggle = button("إيقاف جلسات اختبار الواجهات");
+        testToggle.setOnClickListener(v -> toggleSection(testViews, testToggle, "جلسات اختبار الواجهات"));
         screenControls.addView(testToggle);
         Button resultsToggle = button("إيقاف النتائج");
         resultsToggle.setOnClickListener(v -> toggleSection(resultViews, resultsToggle, "النتائج"));
@@ -146,7 +146,7 @@ public final class VisitDetectionActivity extends Activity {
         root.addView(videoStatus);
         playbackViews.add(videoStatus);
 
-        TextView playbackNote = text("يعمل مشغّل YouTube واحد فقط. المشاهدات الفعلية تأتي من أشخاص يشاهدون الفيديو بشكل طبيعي؛ السجلات المحلية لا تزيد العدّاد.", 14, NAVY, true);
+        TextView playbackNote = text("مشغّل YouTube منفصل عن اختبار السيرفر. لا تُستخدم جلسات الاختبار لزيادة مشاهدات الفيديو.", 14, NAVY, true);
         root.addView(playbackNote);
         playbackViews.add(playbackNote);
         youtubePlayer = new WebView(this);
@@ -180,7 +180,7 @@ public final class VisitDetectionActivity extends Activity {
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد المشاهدات المحلية المرتبطة بالرابط (1–3000)");
+        sessionCountInput.setHint("عدد جلسات اختبار الواجهات (1–3000)");
         sessionCountInput.setText("3000");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
@@ -192,18 +192,18 @@ public final class VisitDetectionActivity extends Activity {
         root.addView(settings);
         testViews.add(settings);
 
-        localScreenStatus = text("لا توجد مشاهدات محلية مهيأة لهذا الرابط.", 14, NAVY, true);
+        localScreenStatus = text("لا توجد جلسات اختبار واجهات مهيأة.", 14, NAVY, true);
         root.addView(localScreenStatus);
         testViews.add(localScreenStatus);
-        Button openLocalScreens = button("تهيئة المشاهدات المحلية للرابط (حتى ٣٠٠٠)");
+        Button openLocalScreens = button("تهيئة جلسات اختبار الواجهات (حتى ٣٠٠٠)");
         openLocalScreens.setOnClickListener(v -> openLocalTestScreens());
         root.addView(openLocalScreens);
         testViews.add(openLocalScreens);
-        Button startLocalScreens = button("تشغيل المشاهدات المحلية المحددة");
+        Button startLocalScreens = button("تشغيل جلسات الاختبار المحددة");
         startLocalScreens.setOnClickListener(v -> setAllLocalPagesRunning(true));
         root.addView(startLocalScreens);
         testViews.add(startLocalScreens);
-        Button stopLocalScreens = button("إيقاف المشاهدات المحلية");
+        Button stopLocalScreens = button("إيقاف جلسات اختبار الواجهات");
         stopLocalScreens.setOnClickListener(v -> stopLocalTestScreens());
         root.addView(stopLocalScreens);
         testViews.add(stopLocalScreens);
@@ -311,12 +311,12 @@ public final class VisitDetectionActivity extends Activity {
             localPages.add(page);
         }
         renderLocalPages();
-        Toast.makeText(this, "تمت تهيئة " + localScreenCount + " سجل اختبار محلي.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "تمت تهيئة " + localScreenCount + " جلسة اختبار واجهات محلية. ", Toast.LENGTH_SHORT).show();
     }
 
     private void setAllLocalPagesRunning(boolean running) {
         if (localPages.isEmpty()) {
-            Toast.makeText(this, "هيّئ سجلات الاختبار أولًا.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "هيّئ جلسات الاختبار أولًا.", Toast.LENGTH_SHORT).show();
             return;
         }
         for (LocalPage page : localPages) {
@@ -344,11 +344,11 @@ public final class VisitDetectionActivity extends Activity {
             if (!page.error.isEmpty()) errors++;
         }
         int previewCount = Math.min(localPages.size(), 100);
-        localScreenStatus.setText("إجمالي المشاهدات المحلية لهذا الرابط: " + localPages.size()
+        localScreenStatus.setText("إجمالي جلسات اختبار الواجهات: " + localPages.size()
                 + " | تعمل: " + running + " | متوقفة: " + stopped
                 + " | أخطاء: " + errors
                 + "\\nالمعاينة تعرض أول " + previewCount
-                + " سجل فقط. هذه حالات محلية داخل التطبيق، ولا تنشئ مشغلات أو مشاهدات على YouTube.");
+                + " سجل فقط. هذه سجلات محلية للتهيئة فقط؛ لا ترسل طلبات إلى السيرفر ولا تمثل حملًا فعليًا عليه.");
         for (int i = 0; i < previewCount; i++) {
             LocalPage page = localPages.get(i);
             LinearLayout row = new LinearLayout(this);
@@ -356,7 +356,7 @@ public final class VisitDetectionActivity extends Activity {
             row.setGravity(Gravity.CENTER_VERTICAL);
             row.setPadding(dp(8), dp(4), dp(8), dp(4));
             row.setBackgroundColor(Color.WHITE);
-            TextView label = text("مشاهدة محلية #" + page.id + " — " + (page.running ? "شغالة" : "متوقفة")
+            TextView label = text("جلسة اختبار #" + page.id + " — " + (page.running ? "شغالة" : "متوقفة")
                     + (page.error.isEmpty() ? "" : " — " + page.error), 13,
                     page.running ? GREEN : NAVY, true);
             row.addView(label, new LinearLayout.LayoutParams(0, -2, 1));
