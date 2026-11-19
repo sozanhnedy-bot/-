@@ -69,7 +69,7 @@ public final class VisitDetectionActivity extends Activity {
 
         TextView title = text("محرك إدارة واختبار المهام", 22, NAVY, true);
         root.addView(title);
-        TextView note = text("محرك محلي لإنشاء واختبار حتى 20,000 مهمة. لا يرسل مشاهدات ولا يتصل بيوتيوب.", 14, RED, true);
+        TextView note = text("محرك محلي لإنشاء واختبار حتى 10,000 مهمة. لا يرسل مشاهدات ولا يتصل بيوتيوب.", 14, RED, true);
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
 
@@ -98,8 +98,8 @@ public final class VisitDetectionActivity extends Activity {
         sessionCountInput = new EditText(this);
         sessionCountInput.setSingleLine(true);
         sessionCountInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-        sessionCountInput.setHint("عدد المهام (حتى 20000)");
-        sessionCountInput.setText("20000");
+        sessionCountInput.setHint("عدد المهام (حتى 10000)");
+        sessionCountInput.setText("10000");
         settings.addView(sessionCountInput, new LinearLayout.LayoutParams(0, dp(54), 2));
         durationHoursInput = new EditText(this);
         durationHoursInput.setSingleLine(true);
@@ -176,7 +176,7 @@ public final class VisitDetectionActivity extends Activity {
 
     private void generateSessions() {
         sessions.clear();
-        int requestedCount = parseBounded(sessionCountInput.getText().toString(), 20000, 1, 20000);
+        int requestedCount = parseBounded(sessionCountInput.getText().toString(), 10000, 1, 10000);
         int durationHours = parseBounded(durationHoursInput.getText().toString(), 24, 24, 48);
         if (durationHours != 24 && durationHours != 48) durationHours = 24;
         for (int i = 0; i < requestedCount; i++) {
