@@ -121,7 +121,7 @@ def build(output: Path) -> int:
     homepage = (output / "index.html").read_text(encoding="utf-8")
     mirror_html = homepage.replace(
         "<title>World News | أخبار العالم</title>",
-        '<meta name="robots" content="noindex,follow">\\n  <title>World News | أخبار العالم</title>',
+        '<meta name="robots" content="noindex,follow"><title>World News | أخبار العالم</title>',
         1,
     )
     mirrors_dir = output / "pages"
