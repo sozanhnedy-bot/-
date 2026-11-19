@@ -48,6 +48,9 @@ public final class VisitDetectionActivity extends Activity {
     private EditText sessionCountInput;
     private EditText durationHoursInput;
     private WebView youtubePlayer;
+    private LinearLayout localScreenPreviews;
+    private TextView localScreenStatus;
+    private int localScreenCount;
     private final Random random = new Random();
 
     private static final class Session {
@@ -145,6 +148,22 @@ public final class VisitDetectionActivity extends Activity {
         root.addView(settings);
         testViews.add(settings);
 
+        localScreenStatus = text("لا توجد شاشات اختبار محلية مفتوحة.", 14, NAVY, true);
+        root.addView(localScreenStatus);
+        testViews.add(localScreenStatus);
+        Button openLocalScreens = button("فتح العدد المحدد من شاشات الاختبار المحلية");
+        openLocalScreens.setOnClickListener(v -> openLocalTestScreens());
+        root.addView(openLocalScreens);
+        testViews.add(openLocalScreens);
+        Button stopLocalScreens = button("إيقاف شاشات الاختبار المحلية");
+        stopLocalScreens.setOnClickListener(v -> stopLocalTestScreens());
+        root.addView(stopLocalScreens);
+        testViews.add(stopLocalScreens);
+        localScreenPreviews = new LinearLayout(this);
+        localScreenPreviews.setOrientation(LinearLayout.VERTICAL);
+        root.addView(localScreenPreviews);
+        testViews.add(localScreenPreviews);
+
         Button generate = button("إنشاء سجلات اختبار مرتبطة بالرابط");
         generate.setOnClickListener(v -> generateSessions());
         root.addView(generate);
@@ -225,6 +244,39 @@ public final class VisitDetectionActivity extends Activity {
                 });
             }
         }).start();
+    }
+
+    private void openLocalTestScreens() {
+        String videoUrl = youtubeUrl.getText().toString().trim();
+        String videoId = extractYoutubeVideoId(videoUrl);
+        if (videoId == null) {
+            Toast.makeText(this, "أدخل رابط فيديو YouTube صحيحًا أولًا.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        localScreenCount = parseBounded(sessionCountInput.getText().toString(), 3000, 1, 3000);
+        localScreenPreviews.removeAllViews();
+        int previewCount = Math.min(localScreenCount, 100);
+        localScreenStatus.setText("تم تجهيز " + localScreenCount
+                + " سجل شاشة محلي مرتبط بالفيديو " + videoId
+                + ". المعروض هنا معاينة لأول " + previewCount
+                + " فقط؛ لا يتم فتح مشغلات متعددة أو إنشاء مشاهدات.");
+        for (int i = 1; i <= previewCount; i++) {
+            TextView item = text("شاشة اختبار محلية #" + i + " — مرتبطة بالفيديو: "
+                    + videoId, 13, NAVY, false);
+            item.setPadding(dp(8), dp(6), dp(8), dp(6));
+            item.setBackgroundColor(Color.WHITE);
+            LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(-1, -2);
+            p.setMargins(0, dp(2), 0, dp(2));
+            localScreenPreviews.addView(item, p);
+        }
+    }
+
+    private void stopLocalTestScreens() {
+        localScreenCount = 0;
+        if (localScreenPreviews != null) localScreenPreviews.removeAllViews();
+        if (localScreenStatus != null) {
+            localScreenStatus.setText("تم إيقاف ومسح معاينة شاشات الاختبار المحلية.");
+        }
     }
 
     private void generateSessions() {
