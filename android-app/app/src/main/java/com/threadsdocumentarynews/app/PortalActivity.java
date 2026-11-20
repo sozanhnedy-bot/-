@@ -43,6 +43,7 @@ import java.util.concurrent.Executors;
 
 public final class PortalActivity extends Activity {
     private static final String SITE_URL = "https://sozanhnedy-bot.github.io/-/";
+    private static final String YOUTUBE_LAB_URL = SITE_URL + "youtube-lab.html";
     private static final String NEWS_URL = SITE_URL + "data/news.json";
     private static final String SITE_HOST = "sozanhnedy-bot.github.io";
     private static final String CHANNEL_ID = "news-alerts";
@@ -138,6 +139,17 @@ public final class PortalActivity extends Activity {
         LinearLayout.LayoutParams actionParams = new LinearLayout.LayoutParams(0, dp(58), 1);
         actionParams.setMargins(dp(5), dp(3), dp(5), dp(3));
         actions.addView(alertsButton, actionParams);
+
+        Button youtubeLab = new Button(this);
+        youtubeLab.setText("YouTube Lab");
+        youtubeLab.setTextColor(Color.WHITE);
+        youtubeLab.setAllCaps(false);
+        youtubeLab.setTextSize(12);
+        youtubeLab.setBackgroundColor(Color.rgb(23, 107, 99));
+        youtubeLab.setOnClickListener(v -> webView.loadUrl(YOUTUBE_LAB_URL));
+        LinearLayout.LayoutParams labParams = new LinearLayout.LayoutParams(0, dp(58), 1);
+        labParams.setMargins(dp(5), dp(3), dp(5), dp(3));
+        actions.addView(youtubeLab, labParams);
 
         Button assistant = new Button(this);
         assistant.setText("مساحة المهام");
