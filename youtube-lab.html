@@ -16,7 +16,7 @@ h1{font-size:clamp(27px,4vw,39px);line-height:1.2;margin:30px 0 8px}.sub{color:v
 </style></head>
 <body><main class="wrap">
 <header class="top"><div class="brand">WORLD NEWS <small>مركز التحكم · YouTube Lab</small></div><span class="pill">نسخة أولية · إدارة محلية</span></header>
-<h1>لوحة إدارة السجلات</h1><p class="sub">واجهة موحدة لإدارة 500 سجل ومراجعة حالتها من مكان واحد.</p>
+<section class="panel" style="margin:16px 0"><h2>مشغّل الفيديو</h2><p id="playerLabel" class="sub">اختر سجلًا يحتوي على رابط فيديو لتشغيله هنا.</p><div style="position:relative;width:100%;padding-top:56.25%;background:#050b13;border-radius:12px;overflow:hidden"><iframe id="videoPlayer" title="مشغّل YouTube" src="about:blank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><button id="stopPlayer" type="button" style="margin-top:10px">إيقاف الفيديو</button></section><h1>لوحة إدارة السجلات</h1><p class="sub">واجهة موحدة لإدارة 500 سجل ومراجعة حالتها من مكان واحد.</p>
 <section class="stats">
 <div class="stat"><small>إجمالي السجلات</small><strong id="total">500</strong></div>
 <div class="stat"><small>مفعّلة إداريًا</small><strong id="enabled">0</strong></div>
@@ -34,23 +34,23 @@ h1{font-size:clamp(27px,4vw,39px);line-height:1.2;margin:30px 0 8px}.sub{color:v
 <section class="panel main"><h2>السجلات الـ500</h2><div class="toolbar">
 <input id="search" type="search" placeholder="ابحث برقم السجل…">
 <select id="filter"><option value="all">كل الحالات</option><option value="enabled">مفعّلة إداريًا</option><option value="paused">متوقفة إداريًا</option></select>
-</div><div class="grid" id="grid"></div><p class="foot">هذه النسخة لا تحتوي بعد على API أو قاعدة بيانات مشتركة؛ لذلك لن تتزامن التغييرات تلقائيًا بين الهاتف والمتصفح حتى إعداد خدمة خلفية آمنة.</p></section>
+</div><div class="grid" id="grid"></div><p class="foot">التشغيل يدوي داخل مشغّل YouTube المضمّن. الروابط والحالات محفوظة محليًا على هذا المتصفح فقط؛ المزامنة بين الأجهزة تحتاج خدمة خلفية وقاعدة بيانات مشتركة.</p></section>
 </div></main>
 <script>
 (function(){
 const KEY='worldnews.youtubeLab.records.v1';
 const grid=document.getElementById('grid');
 let records;
-try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');records=Array.isArray(saved)&&saved.length===500?saved:Array.from({length:500},(_,i)=>({id:i+1,enabled:false}));}catch(e){records=Array.from({length:500},(_,i)=>({id:i+1,enabled:false}));}
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(records));document.getElementById('saveState').textContent='الحفظ: تم على هذا المتصفح.';}catch(e){document.getElementById('saveState').textContent='تعذر الحفظ المحلي في هذا المتصفح.';}}
+try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');records=Array.isArray(saved)&&saved.length===500?saved.map((r,i)=>({id:i+1,enabled:!!r.enabled,videoUrl:typeof r.videoUrl==='string'?r.videoUrl:''})):Array.from({length:500},(_,i)=>({id:i+1,enabled:false,videoUrl:''}));}catch(e){records=Array.from({length:500},(_,i)=>({id:i+1,enabled:false}));}
+function videoId(raw){try{const u=new URL(raw);if(u.hostname==='youtu.be')return u.pathname.split('/').filter(Boolean)[0]||'';if(u.hostname==='youtube.com'||u.hostname.endsWith('.youtube.com')){if(u.pathname==='/watch')return u.searchParams.get('v')||'';const m=u.pathname.match(/^\\/(?:embed|shorts|live)\\/([A-Za-z0-9_-]{6,})/);return m?m[1]:'';}}catch(e){}return '';}\nfunction persist(){try{localStorage.setItem(KEY,JSON.stringify(records));document.getElementById('saveState').textContent='الحفظ: تم على هذا المتصفح.';}catch(e){document.getElementById('saveState').textContent='تعذر الحفظ المحلي في هذا المتصفح.';}}
 function render(){const q=document.getElementById('search').value.trim().replace(/^#/,'');const filter=document.getElementById('filter').value;grid.textContent='';let shown=0,enabled=0;
 records.forEach(r=>{if(r.enabled)enabled++;const matches=String(r.id).includes(q)&&(filter==='all'||(filter==='enabled'&&r.enabled)||(filter==='paused'&&!r.enabled));if(!matches)return;shown++;
 const card=document.createElement('article');card.className='session';
 const head=document.createElement('div');head.className='session-head';
 const id=document.createElement('span');id.className='sid';id.textContent='#'+String(r.id).padStart(3,'0');
 const badge=document.createElement('span');badge.className='state'+(r.enabled?' enabled':'');badge.textContent=r.enabled?'مفعّلة':'متوقفة';
-head.append(id,badge);const p=document.createElement('p');p.textContent='حالة سجل إدارية · محلية';
-const b=document.createElement('button');b.textContent=r.enabled?'إيقاف السجل':'تفعيل السجل';b.addEventListener('click',()=>{r.enabled=!r.enabled;persist();render();});card.append(head,p,b);grid.append(card);
+head.append(id,badge);const p=document.createElement('p');p.textContent='حالة السجل: '+(r.enabled?'مفعّل':'متوقف');const url=document.createElement('input');url.type='url';url.placeholder='رابط فيديو YouTube';url.value=r.videoUrl||'';url.style.cssText='width:100%;margin:7px 0;padding:8px;background:#0b1728;color:white;border:1px solid #2b405b;border-radius:8px;direction:ltr';url.addEventListener('change',()=>{r.videoUrl=url.value.trim();persist();});const play=document.createElement('button');play.textContent='تشغيل هذا الفيديو';play.style.cssText='width:100%;margin-bottom:6px;background:#176b63';play.addEventListener('click',()=>{r.videoUrl=url.value.trim();persist();const vid=videoId(r.videoUrl);if(!vid){alert('أدخل رابط YouTube صحيحًا أولًا.');return;}document.getElementById('playerLabel').textContent='تشغيل يدوي للسجل #'+String(r.id).padStart(3,'0');document.getElementById('videoPlayer').src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(vid)+'?autoplay=1&rel=0';});
+const b=document.createElement('button');b.textContent=r.enabled?'إيقاف السجل':'تفعيل السجل';b.addEventListener('click',()=>{r.enabled=!r.enabled;persist();render();});card.append(head,p,url,play,b);grid.append(card);
 });
 document.getElementById('total').textContent=records.length;document.getElementById('enabled').textContent=enabled;document.getElementById('paused').textContent=records.length-enabled;document.getElementById('shown').textContent=shown;
 if(!shown){const empty=document.createElement('div');empty.className='empty';empty.textContent='لا توجد سجلات مطابقة للبحث.';grid.append(empty);}
@@ -59,7 +59,7 @@ document.getElementById('search').addEventListener('input',render);document.getE
 document.getElementById('enableAll').addEventListener('click',()=>{records.forEach(r=>r.enabled=true);persist();render();});
 document.getElementById('pauseAll').addEventListener('click',()=>{records.forEach(r=>r.enabled=false);persist();render();});
 document.getElementById('reset').addEventListener('click',()=>{if(!confirm('إعادة جميع السجلات إلى الحالة المتوقفة؟'))return;records.forEach(r=>r.enabled=false);persist();render();});
-document.getElementById('export').addEventListener('click',()=>{const rows=[['record_id','admin_status','data_scope'],...records.map(r=>[r.id,r.enabled?'enabled':'paused','LOCAL_BROWSER_ONLY'])];const csv='\uFEFF'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='world-news-youtube-lab-records.csv';a.click();URL.revokeObjectURL(url);});
+document.getElementById('stopPlayer').addEventListener('click',()=>{document.getElementById('videoPlayer').src='about:blank';document.getElementById('playerLabel').textContent='تم إيقاف المشغّل.';});\ndocument.getElementById('export').addEventListener('click',()=>{const rows=[['record_id','admin_status','youtube_url','data_scope'],...records.map(r=>[r.id,r.enabled?'enabled':'paused',r.videoUrl||'','LOCAL_BROWSER_ONLY'])];const csv='\uFEFF'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='world-news-youtube-lab-records.csv';a.click();URL.revokeObjectURL(url);});
 render();
 })();
 </script></body></html>
