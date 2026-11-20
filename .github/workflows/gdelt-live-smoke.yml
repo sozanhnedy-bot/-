@@ -1,0 +1,63 @@
+name: GDELT and RSS live smoke check
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/update_news.py"
+      - "scripts/gdelt_discovery_preview.py"
+      - "data/news_sources.json"
+      - ".github/workflows/gdelt-live-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gdelt-live-smoke-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  live-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out proposed pipeline
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch one public RSS feed and GDELT candidates without publishing
+        run: |
+          python - <<'PY'
+          from scripts.update_news import fetch_feed, fetch_gdelt_items
+
+          rss_items = fetch_feed(
+              "https://feeds.bbci.co.uk/news/world/rss.xml",
+              "world",
+              "BBC News",
+              timeout=20,
+              feed_source_url="https://www.bbc.com/news",
+          )
+          if not rss_items:
+              raise SystemExit("RSS smoke check returned no entries")
+
+          gdelt_items = fetch_gdelt_items("world", timespan="24h", maxrecords=5)
+          if not gdelt_items:
+              raise SystemExit("GDELT smoke check returned no usable candidates")
+
+          for item in gdelt_items:
+              if item.get("published_at") is not None:
+                  raise SystemExit("GDELT candidate incorrectly contains a publisher timestamp")
+              if item.get("image_url"):
+                  raise SystemExit("GDELT candidate unexpectedly contains an image URL")
+              if not item.get("url", "").startswith("https://"):
+                  raise SystemExit("GDELT candidate contains a non-HTTPS article URL")
+
+          print(f"Live RSS check: OK ({len(rss_items)} entries)")
+          print(f"Live GDELT check: OK ({len(gdelt_items)} safe candidates)")
+          print("Read-only smoke check complete; no archive or site files were changed.")
+          PY
