@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827"><title>إدارة الجلسات | World News</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#142136;--line:#2b3d56;--text:#eef4fc;--muted:#9aabc0;--mint:#68d8c2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#203a5c,transparent 35%),var(--bg);color:var(--text);font:15px/1.6 system-ui,sans-serif}
+main{max-width:1200px;margin:auto;padding:24px 16px 50px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-size:20px;font-weight:800}.brand small{display:block;font-size:12px;color:var(--muted);font-weight:400}
+a{color:var(--mint)}.tag{border:1px solid var(--line);border-radius:99px;padding:6px 12px;color:var(--muted);font-size:12px}
+h1{font-size:clamp(25px,4vw,36px);margin:28px 0 5px}.muted{color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.box,.session{background:linear-gradient(145deg,#172840,#111c2d);border:1px solid var(--line);border-radius:14px;padding:15px}.num{font-size:28px;font-weight:800;direction:ltr;text-align:right}.label{font-size:12px;color:var(--muted)}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:20px 0}.toolbar input,.toolbar select{background:#0d1727;color:var(--text);border:1px solid var(--line);padding:10px;border-radius:9px;font:inherit}.toolbar input{flex:1;min-width:180px}
+button{border:1px solid var(--line);background:#213650;color:var(--text);padding:9px 13px;border-radius:9px;font:inherit;cursor:pointer}button:hover{border-color:var(--mint)}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.session{padding:12px}.session-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.sid{font-weight:800;direction:ltr}.state{font-size:11px;color:#e7c77c;background:#3a321e;border-radius:99px;padding:3px 8px}.session p{margin:8px 0 0;color:var(--muted);font-size:11px}
+.note{margin:18px 0;padding:13px;border:1px solid #6b5834;background:#2b251a;color:#f0d9a6;border-radius:12px;font-size:13px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:1fr 1fr}}@media(max-width:390px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body><main>
+<header class="top"><div class="brand">World News <small>مركز إدارة الجلسات</small></div><a href="./test-dashboard.html">العودة إلى لوحة التحكم ←</a></header>
+<h1>الجلسات الـ500</h1><p class="muted">500 بطاقة تعريف مستقلة، مرتبطة بهذه الصفحة وتحت إدارة مركزية واحدة.</p>
+<div class="stats"><div class="box"><div class="label">إجمالي الجلسات</div><div class="num" id="total">500</div></div><div class="box"><div class="label">المتوقفة / غير المفعّلة</div><div class="num" id="idle">500</div></div><div class="box"><div class="label">المفعّلة</div><div class="num" id="active">0</div></div></div>
+<div class="toolbar"><input id="search" type="search" placeholder="ابحث برقم الجلسة…"><select id="filter"><option value="all">كل الجلسات</option><option value="idle">المتوقفة</option></select><button id="reset">إعادة ضبط العرض</button></div>
+<div class="note">الحالة الحالية: جميع البطاقات متوقفة. هذه واجهات إدارة ثابتة وليست 500 WebView فعلية، ولا ترسل طلبات شبكة أو تفتح روابط في الخلفية. ربط التنفيذ بخادم يتطلب API ومصادقة وحدود تشغيل آمنة.</div>
+<section class="grid" id="sessions" aria-label="قائمة الجلسات"></section>
+</main><script>
+const root=document.getElementById('sessions');
+for(let i=1;i<=500;i++){const card=document.createElement('article');card.className='session';card.dataset.id=String(i);card.innerHTML='<div class="session-head"><span class="sid">#'+String(i).padStart(3,'0')+'</span><span class="state">متوقفة</span></div><p>بانتظار إعداد اتصال الاختبار</p>';root.appendChild(card)}
+const search=document.getElementById('search');
+function apply(){const q=search.value.trim().replace(/^#/,'');let shown=0;for(const el of root.children){const match=!q||el.dataset.id.includes(q);el.hidden=!match;if(match)shown++}document.getElementById('total').textContent=shown}
+search.addEventListener('input',apply);
+document.getElementById('filter').addEventListener('change',apply);
+document.getElementById('reset').addEventListener('click',()=>{search.value='';document.getElementById('filter').value='all';apply()});
+</script></body></html>
