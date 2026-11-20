@@ -6,6 +6,10 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/ffmpegkitnext-android-build.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/ffmpegkitnext-android-build.yml"
 
 permissions:
   contents: read
@@ -25,6 +29,15 @@ jobs:
           ref: v9.0.2
           path: ffmpeg-kit-next
           persist-credentials: false
+
+      - name: Explicitly enable the built-in PNG decoder
+        working-directory: ffmpeg-kit-next
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'CONFIGURE_POSTFIX=""' scripts/android/ffmpeg.sh
+          sed -i '/^CONFIGURE_POSTFIX=""$/a CONFIGURE_POSTFIX+=" --enable-decoder=png"' scripts/android/ffmpeg.sh
+          grep -Fq 'CONFIGURE_POSTFIX+=" --enable-decoder=png"' scripts/android/ffmpeg.sh
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
