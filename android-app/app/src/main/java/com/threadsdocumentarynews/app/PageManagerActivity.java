@@ -30,6 +30,10 @@ public final class PageManagerActivity extends Activity {
     private GridLayout pageGrid;
     private WebView pageView;
     private TextView status;
+    private volatile boolean batchPaused;
+    private volatile boolean batchStop;
+    private volatile boolean batchRunning;
+    private Thread batchThread;
 
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
@@ -85,6 +89,34 @@ public final class PageManagerActivity extends Activity {
         gridParams.topMargin = dp(5);
         root.addView(gridScroll, gridParams);
         showRange.setOnClickListener(v -> renderRange());
+
+        LinearLayout batchControls = new LinearLayout(this);
+        batchControls.setOrientation(LinearLayout.HORIZONTAL);
+        Button batchStart = button("تشغيل جماعي للفحص");
+        Button batchPause = button("إيقاف مؤقت");
+        Button batchStopButton = button("إيقاف");
+        LinearLayout.LayoutParams batchButtonParams = new LinearLayout.LayoutParams(0, dp(46), 1);
+        batchButtonParams.setMargins(dp(2), dp(3), dp(2), dp(3));
+        batchControls.addView(batchStart, batchButtonParams);
+        LinearLayout.LayoutParams pauseParams = new LinearLayout.LayoutParams(0, dp(46), 1);
+        pauseParams.setMargins(dp(2), dp(3), dp(2), dp(3));
+        batchControls.addView(batchPause, pauseParams);
+        LinearLayout.LayoutParams stopParams = new LinearLayout.LayoutParams(0, dp(46), 1);
+        stopParams.setMargins(dp(2), dp(3), dp(2), dp(3));
+        batchControls.addView(batchStopButton, stopParams);
+        root.addView(batchControls);
+        batchStart.setOnClickListener(v -> startBatchCheck());
+        batchPause.setOnClickListener(v -> {
+            if (!batchRunning) return;
+            batchPaused = !batchPaused;
+            batchPause.setText(batchPaused ? "استكمال" : "إيقاف مؤقت");
+            status.setText(batchPaused ? "الفحص متوقف مؤقتًا." : "تم استكمال الفحص.");
+        });
+        batchStopButton.setOnClickListener(v -> {
+            batchStop = true;
+            batchPaused = false;
+            status.setText("جارٍ إيقاف الفحص الجماعي...");
+        });
 
         status = label("لم يتم فتح صفحة بعد.", 12, NAVY, false);
         status.setPadding(0, dp(6), 0, dp(6));
@@ -186,6 +218,67 @@ public final class PageManagerActivity extends Activity {
                 if (connection != null) connection.disconnect();
             }
         }).start();
+    }
+
+    private void startBatchCheck() {
+        if (batchRunning) {
+            Toast.makeText(this, "الفحص الجماعي يعمل بالفعل", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        int start = readNumber(fromNumber);
+        int end = readNumber(toNumber);
+        if (start < 1 || end > 100 || start > end) {
+            Toast.makeText(this, "اختار نطاقًا صحيحًا من 1 إلى 100", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        batchStart = start;
+        batchEnd = end;
+        batchPaused = false;
+        batchStop = false;
+        batchRunning = true;
+        batchThread = new Thread(() -> {
+            int passed = 0;
+            int failed = 0;
+            for (int page = batchStart; page <= batchEnd; page++) {
+                while (batchPaused && !batchStop) {
+                    try { Thread.sleep(200); } catch (InterruptedException ignored) { Thread.currentThread().interrupt(); batchStop = true; }
+                }
+                if (batchStop) break;
+                final int current = page;
+                runOnUiThread(() -> status.setText("فحص الصفحة " + current + " من " + batchEnd + "..."));
+                boolean ok = checkPage(current);
+                if (ok) passed++; else failed++;
+                final int done = page - batchStart + 1;
+                final int good = passed;
+                final int bad = failed;
+                runOnUiThread(() -> status.setText("اكتمل فحص " + done + " من " + (batchEnd - batchStart + 1) + " — ناجح: " + good + " — فاشل: " + bad));
+            }
+            batchRunning = false;
+            batchPaused = false;
+            final boolean stopped = batchStop;
+            final int good = passed;
+            final int bad = failed;
+            runOnUiThread(() -> status.setText((stopped ? "تم إيقاف الفحص. " : "انتهى الفحص الجماعي. ") + "ناجح: " + good + " — فاشل: " + bad));
+        }, "html-page-batch-check");
+        batchThread.start();
+    }
+
+    private boolean checkPage(int page) {
+        HttpURLConnection connection = null;
+        try {
+            String filename = String.format(java.util.Locale.US, "page-%03d.html", page);
+            connection = (HttpURLConnection) new URL(RAW_BASE + filename).openConnection();
+            connection.setConnectTimeout(10000);
+            connection.setReadTimeout(10000);
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", "WorldNews-Android-PageCheck");
+            int code = connection.getResponseCode();
+            return code >= 200 && code < 300;
+        } catch (Exception ignored) {
+            return false;
+        } finally {
+            if (connection != null) connection.disconnect();
+        }
     }
 
     private int readNumber(EditText input) {
