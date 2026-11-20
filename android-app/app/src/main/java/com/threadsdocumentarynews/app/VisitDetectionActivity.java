@@ -117,7 +117,7 @@ public final class VisitDetectionActivity extends Activity {
                         || !"sozanhnedy-bot.github.io".equalsIgnoreCase(target.getHost());
             }
         });
-        sessionsDashboard.loadUrl("https://sozanhnedy-bot.github.io/-/sessions.html");
+        sessionsDashboard.loadUrl("https://sozanhnedy-bot.github.io/-/youtube-lab.html");
         root.addView(sessionsDashboard, new LinearLayout.LayoutParams(-1, dp(680)));
 
         LinearLayout screenControls = new LinearLayout(this);
