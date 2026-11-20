@@ -1,115 +1,160 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b1220"><title>YouTube Lab | World News</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>فتح يوتيوب التلقائي</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1220;--panel:#121f32;--panel2:#182a42;--line:#2b405b;--text:#edf4ff;--muted:#9aabc0;--accent:#64d8c2;--warn:#e8bd69;--red:#e47b7b}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#244768 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
-.wrap{max-width:1280px;margin:auto;padding:22px 16px 50px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-size:19px;font-weight:850}.brand small{display:block;color:var(--muted);font-size:12px;font-weight:400}.pill{border:1px solid var(--line);padding:6px 11px;border-radius:99px;color:var(--muted);font-size:12px}
-h1{font-size:clamp(27px,4vw,39px);line-height:1.2;margin:30px 0 8px}.sub{color:var(--muted);margin:0 0 22px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.panel,.stat{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:15px;padding:16px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:29px;direction:ltr;text-align:right;margin-top:5px}
-.layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:16px;margin-top:17px}.side h2,.main h2{font-size:17px;margin:0 0 12px}.side p{color:var(--muted);font-size:13px;margin:8px 0 15px}.actions{display:grid;gap:9px}button,input,select{font:inherit}button{border:1px solid var(--line);background:#203752;color:var(--text);padding:10px 13px;border-radius:10px;cursor:pointer}button:hover{border-color:var(--accent)}button.primary{background:#176b63;border-color:#2b988a}button.ghost{background:transparent}button:disabled{opacity:.5;cursor:not-allowed}
-.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 13px}.toolbar input{flex:1;min-width:160px}.toolbar input,.toolbar select{background:#0b1728;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text)}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.session{background:#101d2e;border:1px solid var(--line);border-radius:12px;padding:11px;min-width:0}.session-head{display:flex;align-items:center;justify-content:space-between;gap:5px}.sid{font-weight:800;direction:ltr}.state{font-size:11px;border-radius:99px;padding:3px 8px;background:#39301e;color:#f0d18b}.state.enabled{background:#153d37;color:#8be0c9}.session p{font-size:11px;color:var(--muted);margin:7px 0 9px}.session button{width:100%;font-size:12px;padding:7px}
-.manager{margin:18px 0}.manager-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.manager-controls input{width:110px;background:#0b1728;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text)}.opened-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.opened-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0b1728}.opened-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px}.opened-head small{color:var(--muted)}.opened-card iframe{display:block;width:100%;height:430px;border:0;background:#101d2e}.opened-actions{display:flex;gap:7px;padding:9px}.opened-actions button{flex:1;padding:7px;font-size:12px}.manager-status{color:var(--muted);font-size:13px;margin:10px 0}.manager .notice{margin:12px 0}.notice{border:1px solid #665332;background:#2a2419;color:#f0d9a7;border-radius:12px;padding:12px 14px;font-size:13px;margin:18px 0}.foot{color:var(--muted);font-size:12px;margin-top:15px}.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
-@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.opened-list{grid-template-columns:1fr}.opened-card iframe{height:390px}}@media(max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:16px 11px 35px}}
-</style></head>
-<body><main class="wrap">
-<header class="top"><div class="brand">WORLD NEWS <small>مركز التحكم · YouTube Lab</small></div><span class="pill">نسخة أولية · إدارة محلية</span></header>
-<section class="panel" style="margin:16px 0"><h2>مشغّل الفيديو</h2><p id="playerLabel" class="sub">اختر سجلًا يحتوي على رابط فيديو لتشغيله هنا.</p><div style="position:relative;width:100%;padding-top:56.25%;background:#050b13;border-radius:12px;overflow:hidden"><iframe id="videoPlayer" title="مشغّل YouTube" src="about:blank" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div><button id="stopPlayer" type="button" style="margin-top:10px">إيقاف الفيديو</button></section><h1>لوحة إدارة السجلات</h1><p class="sub">واجهة موحدة لإدارة 500 سجل ومراجعة حالتها من مكان واحد.</p>
-<section class="stats">
-<div class="stat"><small>إجمالي السجلات</small><strong id="total">500</strong></div>
-<div class="stat"><small>مفعّلة إداريًا</small><strong id="enabled">0</strong></div>
-<div class="stat"><small>متوقفة إداريًا</small><strong id="paused">500</strong></div>
-<div class="stat"><small>نتائج البحث</small><strong id="shown">500</strong></div>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#121f32;--panel2:#182a42;--line:#2b405b;--text:#edf4ff;--muted:#9aabc0;--accent:#64d8c2;--warn:#e8bd69}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 80% -10%,#244768 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:900px;margin:auto;padding:22px 16px 50px}
+h1{font-size:clamp(24px,4vw,34px);margin:10px 0 8px}
+.sub{color:var(--muted);margin:0 0 20px}
+.panel{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:15px;padding:18px;margin-bottom:16px}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.controls label{color:var(--muted);font-size:14px}
+.controls input{width:110px;background:#0b1728;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text);font:inherit}
+button{border:1px solid var(--line);background:#203752;color:var(--text);padding:11px 16px;border-radius:10px;cursor:pointer;font:inherit}
+button:hover{border-color:var(--accent)}
+button.primary{background:#176b63;border-color:#2b988a}
+button.danger{background:#6b1f1f;border-color:#a04040}
+button:disabled{opacity:.5;cursor:not-allowed}
+.status{color:var(--muted);font-size:14px;margin:12px 0 0}
+.notice{border:1px solid #665332;background:#2a2419;color:#f0d9a7;border-radius:12px;padding:12px 14px;font-size:13px;margin:16px 0}
+.notice b{color:#ffe3a3}
+.progress{height:8px;background:#0b1728;border-radius:99px;overflow:hidden;margin-top:12px}
+.progress-fill{height:100%;background:linear-gradient(90deg,#2b988a,#64d8c2);width:0%;transition:width .3s}
+.counter{font-size:32px;font-weight:800;direction:ltr;text-align:center;color:var(--accent);margin:8px 0}
+</style>
+</head>
+<body>
+<main class="wrap">
+<h1>فتح يوتيوب تلقائي في المتصفح</h1>
+<p class="sub">كل تاب هيتفتح على يوتيوب في المتصفح بتاعك. المتصفح ممكن يمنع التابات الكتير — اقرا التنبيه تحت.</p>
+
+<section class="panel">
+  <div class="controls">
+    <label for="count">عدد الصفحات:</label>
+    <input id="count" type="number" min="1" max="100" value="5">
+    <button class="primary" id="start">ابدأ فتح التابات</button>
+    <button class="danger" id="stop">إيقاف</button>
+  </div>
+  <div class="counter" id="counter">0 / 0</div>
+  <div class="progress"><div class="progress-fill" id="bar"></div></div>
+  <p class="status" id="status" aria-live="polite">جاهز. اختَر العدد واضغط ابدأ.</p>
 </section>
-<section class="panel manager"><h2>شريط الصفحات المفتوحة</h2><p class="sub">اختَر عدد الصفحات من 1 إلى 100. الفتح التلقائي يجهّز صفحات السجلات بالتتابع؛ تشغيل الفيديو يظل يدويًا.</p><div class="manager-controls"><label for="openCount">عدد الصفحات:</label><input id="openCount" type="number" min="1" max="100" value="2"><button class="primary" id="openSelected">فتح العدد المحدد</button><button class="primary" id="autoOpenSelected">فتح تلقائي للعدد المحدد</button><button id="stopAllPages">إيقاف الكل</button></div><p class="manager-status" id="managerStatus" aria-live="polite">لا توجد صفحات مفتوحة حاليًا.</p><div class="opened-list" id="openedList"></div><div class="notice">فتح الصفحة هنا يعرض صفحة السجل داخل لوحة التحكم فقط. تشغيل فيديو YouTube يظل يدويًا من داخل الصفحة، وإيقاف الصفحة يغلق محتواها ويوقف أي تشغيل بداخلها.</div></section>
-<div class="layout">
-<aside class="panel side"><h2>أدوات الإدارة</h2><p>تغيير الحالة هنا يحدّث سجل الواجهة على هذا المتصفح فقط.</p><div class="actions">
-<button class="primary" id="enableAll">تفعيل كل السجلات إداريًا</button>
-<button id="pauseAll">إيقاف كل السجلات إداريًا</button>
-<button id="export">تصدير CSV</button>
-<button class="ghost" id="reset">إعادة ضبط البيانات المحلية</button>
-</div><div class="notice">تنبيه: التفعيل هنا حالة إدارية للسجل فقط. لا يتم فتح فيديوهات أو إنشاء زيارات أو مشاهدات أو إرسال طلبات إلى YouTube.</div>
-<p id="saveState">الحفظ: محلي على هذا الجهاز.</p></aside>
-<section class="panel main"><h2>السجلات الـ500</h2><div class="toolbar">
-<input id="search" type="search" placeholder="ابحث برقم السجل…">
-<select id="filter"><option value="all">كل الحالات</option><option value="enabled">مفعّلة إداريًا</option><option value="paused">متوقفة إداريًا</option></select>
-</div><div class="grid" id="grid"></div><p class="foot">التشغيل يدوي داخل مشغّل YouTube المضمّن. الروابط والحالات محفوظة محليًا على هذا المتصفح فقط؛ المزامنة بين الأجهزة تحتاج خدمة خلفية وقاعدة بيانات مشتركة.</p></section>
-</div></main>
+
+<div class="notice">
+  <b>مهم:</b> المتصفحات بتمنع فتح تابات كتير تلقائيًا (popup blocker). عشان كده لما تدوس "ابدأ"، المتصفح ممكن يفتح أول تاب أو اتنين بس ويوقف الباقي.
+  <br><br>
+  الحل: المتصفح هيطلب منك "السماح بفتح النوافذ المنبثقة" — اضغط <b>السماح (Allow)</b> وهيفتحوا كلهم.
+  <br><br>
+  لو حصل إنه منعهم، ممكن تفتحهم على دفعات: 5 تابات في كل ضغطة.
+</div>
+
+<section class="panel">
+  <h2 style="font-size:16px;margin:0 0 10px">طريقة الفتح</h2>
+  <div class="controls">
+    <button id="openBatch">فتح دفعة (5 تابات)</button>
+    <button id="openOne">فتح تاب واحد</button>
+  </div>
+  <p class="status">الدُفعات دي حل بديل لو المتصفح منع الفتح التلقائي.</p>
+</section>
+</main>
+
 <script>
 (function(){
-const KEY='worldnews.youtubeLab.records.v1';
-const grid=document.getElementById('grid');
-const openedPages=new Map();
-const openedList=document.getElementById('openedList');
-const managerStatus=document.getElementById('managerStatus');
-function renderOpenedPages(){
-  openedList.textContent='';
-  const ids=Array.from(openedPages.keys()).sort((a,b)=>a-b);
-  managerStatus.textContent=ids.length+' صفحة مفتوحة من الحد المحدد.';
-  ids.forEach(id=>{
-    const item=openedPages.get(id), card=document.createElement('article');card.className='opened-card';
-    const head=document.createElement('div');head.className='opened-head';
-    const name=document.createElement('strong');name.textContent='الصفحة #'+String(id).padStart(3,'0');
-    const state=document.createElement('small');state.textContent=item.active?'مفتوحة':'متوقفة';
-    head.append(name,state);card.append(head);
-    if(item.active){const frame=document.createElement('iframe');frame.title='صفحة السجل '+id;frame.loading='lazy';frame.style.cssText='display:block;width:100%;height:150px;border:0;background:#101d2e';const record=records[id-1];const safeUrl=record&&record.videoUrl?record.videoUrl:'';const safeTitle='السجل #'+String(id).padStart(3,'0');frame.srcdoc='<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><body style="margin:0;padding:16px;background:#101d2e;color:#edf4ff;font:14px system-ui"><b>'+safeTitle+'</b><p style="color:#9aabc0">'+(safeUrl?'رابط الفيديو محفوظ في هذا السجل.':'لا يوجد رابط فيديو مضاف لهذا السجل.')+'</p>'+(safeUrl?'<a target="_blank" rel="noopener" href="'+safeUrl.replace(/&/g,'&amp;').replace(/\"/g,'&quot;')+'" style="color:#64d8c2">فتح رابط YouTube يدويًا</a>':'')+'</body></html>';card.append(frame);}
-    const actions=document.createElement('div');actions.className='opened-actions';
-    const toggle=document.createElement('button');toggle.textContent=item.active?'إيقاف الصفحة':'تشغيل الصفحة';toggle.addEventListener('click',()=>{item.active=!item.active;renderOpenedPages();});
-    const close=document.createElement('button');close.textContent='إزالة';close.addEventListener('click',()=>{openedPages.delete(id);renderOpenedPages();});
-    actions.append(toggle,close);card.append(actions);openedList.append(card);
+  const countInput = document.getElementById('count');
+  const startBtn = document.getElementById('start');
+  const stopBtn = document.getElementById('stop');
+  const status = document.getElementById('status');
+  const counter = document.getElementById('counter');
+  const bar = document.getElementById('bar');
+
+  const BATCH_SIZE = 5;
+  let openedCount = 0;
+  let targetCount = 0;
+  let stopped = false;
+
+  function setStatus(t){ status.textContent = t; }
+  function updateCounter(){
+    counter.textContent = openedCount + ' / ' + targetCount;
+    const pct = targetCount > 0 ? (openedCount / targetCount) * 100 : 0;
+    bar.style.width = Math.min(100, pct) + '%';
+  }
+
+  function openYouTubeTab(){
+    // يوتيوب الصفحة الرئيسية
+    const win = window.open('https://www.youtube.com/', '_blank', 'noopener');
+    return !!win; // لو المتصفح منع، بيرجع null
+  }
+
+  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+  async function startAuto(){
+    const count = Number.parseInt(countInput.value, 10);
+    if(!Number.isInteger(count) || count < 1 || count > 100){
+      alert('اختَر رقم من 1 إلى 100.');
+      return;
+    }
+    targetCount = count;
+    openedCount = 0;
+    stopped = false;
+    startBtn.disabled = true;
+    updateCounter();
+    setStatus('بدء الفتح... لو المتصفح سألك، اضغط "السماح".');
+
+    for(let i = 0; i < count; i++){
+      if(stopped) break;
+      const ok = openYouTubeTab();
+      if(!ok){
+        setStatus('⚠️ المتصفح منع فتح التابات. اسمح بالنوافذ المنبثقة من أيقونة القفل جنب العنوان، أو استخدم "فتح دفعة".');
+        break;
+      }
+      openedCount++;
+      updateCounter();
+      setStatus('فتحنا ' + openedCount + ' من ' + count + ' تاب على يوتيوب.');
+      await sleep(400); // 0.4 ثانية بين كل تاب
+    }
+
+    startBtn.disabled = false;
+    if(!stopped && openedCount === count){
+      setStatus('✅ خلصنا: فتحنا ' + count + ' تاب على يوتيوب.');
+    }
+  }
+
+  startBtn.addEventListener('click', startAuto);
+
+  stopBtn.addEventListener('click', () => {
+    stopped = true;
+    startBtn.disabled = false;
+    setStatus('تم الإيقاف عند ' + openedCount + ' تاب.');
   });
-}
-document.getElementById('openSelected').addEventListener('click',()=>{
-  const field=document.getElementById('openCount'), count=Number.parseInt(field.value,10);
-  if(!Number.isInteger(count)||count<1||count>100){alert('اختَر عددًا من 1 إلى 100 صفحة.');return;}
-  openedPages.clear();
-  for(let id=1;id<=count;id++)openedPages.set(id,{active:true});
-  renderOpenedPages();
-});
-let autoOpenTimer=null;
-document.getElementById('autoOpenSelected').addEventListener('click',()=>{
-  const field=document.getElementById('openCount'), count=Number.parseInt(field.value,10);
-  if(!Number.isInteger(count)||count<1||count>100){alert('اختَر عددًا من 1 إلى 100 صفحة.');return;}
-  if(autoOpenTimer!==null){clearInterval(autoOpenTimer);autoOpenTimer=null;}
-  openedPages.clear();let next=1;
-  const openOne=()=>{
-    openedPages.set(next,{active:true});renderOpenedPages();
-    managerStatus.textContent='فتح تلقائي: '+next+' من '+count+' صفحات.';
-    next++;
-    if(next>count){clearInterval(autoOpenTimer);autoOpenTimer=null;managerStatus.textContent='اكتمل فتح '+count+' صفحة.';}
-  };
-  openOne();
-  if(next<=count)autoOpenTimer=setInterval(openOne,700);
-});
-document.getElementById('stopAllPages').addEventListener('click',()=>{
-  if(autoOpenTimer!==null){clearInterval(autoOpenTimer);autoOpenTimer=null;}
-  openedPages.forEach(item=>item.active=false);renderOpenedPages();
-  managerStatus.textContent='تم إيقاف كل الصفحات والفتح التلقائي.';
-});
-let records;
-try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');records=Array.isArray(saved)&&saved.length===500?saved.map((r,i)=>({id:i+1,enabled:!!r.enabled,videoUrl:typeof r.videoUrl==='string'?r.videoUrl:''})):Array.from({length:500},(_,i)=>({id:i+1,enabled:false,videoUrl:''}));}catch(e){records=Array.from({length:500},(_,i)=>({id:i+1,enabled:false,videoUrl:''}));}
-function videoId(raw){try{const u=new URL(raw);if(u.hostname==='youtu.be')return u.pathname.split('/').filter(Boolean)[0]||'';if(u.hostname==='youtube.com'||u.hostname.endsWith('.youtube.com')||u.hostname==='www.youtube-nocookie.com'){if(u.pathname==='/watch')return u.searchParams.get('v')||'';const m=u.pathname.match(/^\\/(?:embed|shorts|live)\\/([A-Za-z0-9_-]{6,})/);return m?m[1]:'';}}catch(e){}return '';}
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(records));document.getElementById('saveState').textContent='الحفظ: تم على هذا المتصفح.';}catch(e){document.getElementById('saveState').textContent='تعذر الحفظ المحلي في هذا المتصفح.';}}
-function render(){const q=document.getElementById('search').value.trim().replace(/^#/,'');const filter=document.getElementById('filter').value;grid.textContent='';let shown=0,enabled=0;
-records.forEach(r=>{if(r.enabled)enabled++;const matches=String(r.id).includes(q)&&(filter==='all'||(filter==='enabled'&&r.enabled)||(filter==='paused'&&!r.enabled));if(!matches)return;shown++;
-const card=document.createElement('article');card.className='session';
-const head=document.createElement('div');head.className='session-head';
-const id=document.createElement('span');id.className='sid';id.textContent='#'+String(r.id).padStart(3,'0');
-const badge=document.createElement('span');badge.className='state'+(r.enabled?' enabled':'');badge.textContent=r.enabled?'مفعّلة':'متوقفة';
-head.append(id,badge);const p=document.createElement('p');p.textContent='حالة السجل: '+(r.enabled?'مفعّل':'متوقف');const url=document.createElement('input');url.type='url';url.placeholder='رابط فيديو YouTube';url.value=r.videoUrl||'';url.style.cssText='width:100%;margin:7px 0;padding:8px;background:#0b1728;color:white;border:1px solid #2b405b;border-radius:8px;direction:ltr';url.addEventListener('change',()=>{r.videoUrl=url.value.trim();persist();});const play=document.createElement('button');play.textContent='تشغيل هذا الفيديو';play.style.cssText='width:100%;margin-bottom:6px;background:#176b63';play.addEventListener('click',()=>{r.videoUrl=url.value.trim();persist();const vid=videoId(r.videoUrl);if(!vid){alert('أدخل رابط YouTube صحيحًا أولًا.');return;}document.getElementById('playerLabel').textContent='تشغيل يدوي للسجل #'+String(r.id).padStart(3,'0');document.getElementById('videoPlayer').src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(vid)+'?autoplay=1&rel=0';});
-const b=document.createElement('button');b.textContent=r.enabled?'إيقاف السجل':'تفعيل السجل';b.addEventListener('click',()=>{r.enabled=!r.enabled;persist();render();});const pageLink=document.createElement('a');pageLink.href='youtube-lab-pages/'+String(r.id).padStart(3,'0')+'.html';pageLink.textContent='فتح الصفحة المستقلة';pageLink.target='_blank';pageLink.rel='noopener';pageLink.style.cssText='display:block;text-align:center;margin:7px 0;padding:7px;border:1px solid #42617f;border-radius:8px;color:#edf4ff;text-decoration:none;font-size:12px';card.append(head,p,url,play,pageLink,b);grid.append(card);
-});
-document.getElementById('total').textContent=records.length;document.getElementById('enabled').textContent=enabled;document.getElementById('paused').textContent=records.length-enabled;document.getElementById('shown').textContent=shown;
-if(!shown){const empty=document.createElement('div');empty.className='empty';empty.textContent='لا توجد سجلات مطابقة للبحث.';grid.append(empty);}
-}
-document.getElementById('search').addEventListener('input',render);document.getElementById('filter').addEventListener('change',render);
-document.getElementById('enableAll').addEventListener('click',()=>{records.forEach(r=>r.enabled=true);persist();render();});
-document.getElementById('pauseAll').addEventListener('click',()=>{records.forEach(r=>r.enabled=false);persist();render();});
-document.getElementById('reset').addEventListener('click',()=>{if(!confirm('إعادة جميع السجلات إلى الحالة المتوقفة؟'))return;records.forEach(r=>r.enabled=false);persist();render();});
-document.getElementById('stopPlayer').addEventListener('click',()=>{document.getElementById('videoPlayer').src='about:blank';document.getElementById('playerLabel').textContent='تم إيقاف المشغّل.';});
-document.getElementById('export').addEventListener('click',()=>{const rows=[['record_id','admin_status','youtube_url','data_scope'],...records.map(r=>[r.id,r.enabled?'enabled':'paused',r.videoUrl||'','LOCAL_BROWSER_ONLY'])];const csv='\uFEFF'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='world-news-youtube-lab-records.csv';a.click();URL.revokeObjectURL(url);});
-render();
+
+  // فتح دفعة صغيرة — دي طريقة يدوية لما المتصفح يمنع
+  document.getElementById('openBatch').addEventListener('click', () => {
+    let opened = 0;
+    for(let i = 0; i < BATCH_SIZE; i++){
+      if(openYouTubeTab()) opened++;
+    }
+    if(opened < BATCH_SIZE){
+      setStatus('فاتحنا ' + opened + ' من ' + BATCH_SIZE + '. المتصفح منع الباقي.');
+    } else {
+      setStatus('فاتحنا ' + BATCH_SIZE + ' تابات.');
+    }
+  });
+
+  document.getElementById('openOne').addEventListener('click', () => {
+    if(openYouTubeTab()){
+      setStatus('فتحنا تاب واحد.');
+    } else {
+      setStatus('المتصفح منع الفتح.');
+    }
+  });
+
+  updateCounter();
 })();
-</script></body></html>
+</script>
+</body>
+</html>
