@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-20T21:02:15.295576Z",
+  "generated_at": "2026-11-20T21:20:01.616409Z",
   "disclaimer": "ترندات X من مصدر عام خارجي، وGoogle Trends مؤشر اهتمام بحثي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
   "sources_checked": [
     "Google Trends RSS: مصر",
@@ -22,50 +22,7 @@
       "title": "النصر",
       "region": "السعودية",
       "rank": 1,
-      "score": 78,
-      "priority": "strong",
-      "signal": "x_trends24_public",
-      "signals": [
-        "google_trends_rss",
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "google_trends_rss",
-        "x_trends24_public"
-      ],
-      "source_count": 3,
-      "corroborating_news_items": 1,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=AE"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "رونالدو",
-      "region": "السعودية",
-      "rank": 2,
-      "score": 67,
+      "score": 76,
       "priority": "strong",
       "signal": "x_trends24_public",
       "signals": [
@@ -75,7 +32,7 @@
         "x_trends24_public"
       ],
       "source_count": 2,
-      "corroborating_news_items": 1,
+      "corroborating_news_items": 2,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/saudi-arabia/",
       "url": "https://trends24.in/saudi-arabia/",
@@ -92,7 +49,38 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "مباريات",
+      "region": "السعودية",
+      "rank": 3,
+      "score": 61,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 1,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=SA",
+      "url": "https://trends.google.com/trending/rss?geo=SA",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=SA"
+        }
+      ],
+      "published_at": "2026-11-20T19:50:00Z",
+      "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -100,8 +88,8 @@
     {
       "title": "ديميرال",
       "region": "السعودية",
-      "rank": 4,
-      "score": 62,
+      "rank": 5,
+      "score": 61,
       "priority": "medium",
       "signal": "google_trends_rss",
       "signals": [
@@ -161,7 +149,43 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "رونالدو",
+      "region": "السعودية",
+      "rank": 2,
+      "score": 59,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 2,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        },
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -192,7 +216,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -228,7 +252,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -297,7 +321,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -328,7 +352,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -359,7 +383,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -390,7 +414,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -437,7 +461,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "اليمن والسعودية",
+      "title": "المركز المالي بالرياض",
       "region": "السعودية",
       "rank": 1,
       "score": 55,
@@ -468,7 +492,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "bayern munich",
+      "title": "سعر الذهب اليوم في مصر",
       "region": "الإمارات",
       "rank": 1,
       "score": 55,
@@ -492,14 +516,14 @@
           "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-20T20:40:00Z",
+      "published_at": "2026-11-20T21:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "porto vs paredes",
+      "title": "10 year treasury yield",
       "region": "العالم",
       "rank": 1,
       "score": 55,
@@ -523,7 +547,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:40:00Z",
+      "published_at": "2026-11-20T21:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -555,7 +579,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -591,7 +615,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -628,7 +652,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "المركز المالي بالرياض",
+      "title": "اليمن والسعودية",
       "region": "السعودية",
       "rank": 2,
       "score": 54,
@@ -659,7 +683,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "البايرن ضد كولن",
+      "title": "bayern munich",
       "region": "الإمارات",
       "rank": 2,
       "score": 54,
@@ -671,7 +695,7 @@
       "platforms": [
         "google_trends_rss"
       ],
-      "source_count": 2,
+      "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Google Trends",
       "source_url": "https://trends.google.com/trending/rss?geo=AE",
@@ -680,22 +704,17 @@
         {
           "platform": "google_trends_rss",
           "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=SA"
-        },
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
           "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-20T19:50:00Z",
+      "published_at": "2026-11-20T20:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "spcx stock",
+      "title": "palantir stock",
       "region": "العالم",
       "rank": 2,
       "score": 54,
@@ -719,7 +738,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:40:00Z",
+      "published_at": "2026-11-20T21:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -751,7 +770,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -788,7 +807,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "al-ahli saudi fc vs al-nassr standings",
+      "title": "البايرن ضد كولن",
       "region": "الإمارات",
       "rank": 3,
       "score": 53,
@@ -817,14 +836,14 @@
           "url": "https://trends.google.com/trending/rss?geo=AE"
         }
       ],
-      "published_at": "2026-11-20T19:40:00Z",
+      "published_at": "2026-11-20T19:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ben affleck",
+      "title": "indiana state basketball",
       "region": "العالم",
       "rank": 3,
       "score": 53,
@@ -848,7 +867,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:40:00Z",
+      "published_at": "2026-11-20T21:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -880,7 +899,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -911,13 +930,49 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "stephen a smith",
+      "title": "al-ahli saudi fc vs al-nassr standings",
+      "region": "مصر",
+      "rank": 4,
+      "score": 52,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 2,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=EG",
+      "url": "https://trends.google.com/trending/rss?geo=EG",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=EG"
+        },
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=AE"
+        }
+      ],
+      "published_at": "2026-11-20T19:40:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "cnbc",
       "region": "العالم",
       "rank": 4,
       "score": 52,
@@ -941,7 +996,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:40:00Z",
+      "published_at": "2026-11-20T20:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -973,7 +1028,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1004,7 +1059,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1041,74 +1096,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "جدول الدوري السعودي",
-      "region": "السعودية",
-      "rank": 5,
-      "score": 51,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=SA",
-      "url": "https://trends.google.com/trending/rss?geo=SA",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=SA"
-        }
-      ],
-      "published_at": "2026-11-20T19:30:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "bayern vs köln",
-      "region": "الإمارات",
-      "rank": 5,
-      "score": 51,
-      "priority": "medium",
-      "signal": "google_trends_rss",
-      "signals": [
-        "google_trends_rss"
-      ],
-      "platforms": [
-        "google_trends_rss"
-      ],
-      "source_count": 2,
-      "corroborating_news_items": 0,
-      "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=AE",
-      "url": "https://trends.google.com/trending/rss?geo=AE",
-      "source_links": [
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=SA"
-        },
-        {
-          "platform": "google_trends_rss",
-          "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=AE"
-        }
-      ],
-      "published_at": "2026-11-20T18:30:00Z",
-      "captured_at": null,
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "gavin sheets",
+      "title": "katie zacharia",
       "region": "العالم",
       "rank": 5,
       "score": 51,
@@ -1132,7 +1120,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:40:00Z",
+      "published_at": "2026-11-20T20:50:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1164,7 +1152,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1195,7 +1183,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1237,7 +1225,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "نتيجة النصر",
+      "title": "جدول الدوري السعودي",
       "region": "السعودية",
       "rank": 6,
       "score": 50,
@@ -1268,7 +1256,38 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "dell stock",
+      "title": "bayern vs köln",
+      "region": "الإمارات",
+      "rank": 6,
+      "score": 50,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=AE",
+      "url": "https://trends.google.com/trending/rss?geo=AE",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=AE"
+        }
+      ],
+      "published_at": "2026-11-20T18:30:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "porto vs paredes",
       "region": "العالم",
       "rank": 6,
       "score": 50,
@@ -1292,7 +1311,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:30:00Z",
+      "published_at": "2026-11-20T20:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1329,7 +1348,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1360,7 +1379,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1397,7 +1416,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ال مكتوم",
+      "title": "نتيجة النصر",
       "region": "السعودية",
       "rank": 7,
       "score": 49,
@@ -1421,7 +1440,7 @@
           "url": "https://trends.google.com/trending/rss?geo=SA"
         }
       ],
-      "published_at": "2026-11-20T19:00:00Z",
+      "published_at": "2026-11-20T19:30:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1459,7 +1478,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "meta stock",
+      "title": "mu stock",
       "region": "العالم",
       "rank": 7,
       "score": 49,
@@ -1483,7 +1502,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:20:00Z",
+      "published_at": "2026-11-20T20:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1515,7 +1534,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1546,13 +1565,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "لعبة gta6",
+      "title": "ميثا ال مكتوم",
       "region": "السعودية",
       "rank": 8,
       "score": 48,
@@ -1576,7 +1595,7 @@
           "url": "https://trends.google.com/trending/rss?geo=SA"
         }
       ],
-      "published_at": "2026-11-20T19:00:00Z",
+      "published_at": "2026-11-20T19:20:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1614,7 +1633,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "virginia tech vs northwestern",
+      "title": "ben affleck",
       "region": "العالم",
       "rank": 8,
       "score": 48,
@@ -1638,7 +1657,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:20:00Z",
+      "published_at": "2026-11-20T20:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1670,7 +1689,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1701,13 +1720,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "al nassr",
+      "title": "الطقس غدًا",
       "region": "مصر",
       "rank": 9,
       "score": 47,
@@ -1731,7 +1750,38 @@
           "url": "https://trends.google.com/trending/rss?geo=EG"
         }
       ],
-      "published_at": "2026-11-20T19:10:00Z",
+      "published_at": "2026-11-20T18:50:00Z",
+      "captured_at": null,
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "لعبة gta6",
+      "region": "السعودية",
+      "rank": 9,
+      "score": 47,
+      "priority": "medium",
+      "signal": "google_trends_rss",
+      "signals": [
+        "google_trends_rss"
+      ],
+      "platforms": [
+        "google_trends_rss"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Google Trends",
+      "source_url": "https://trends.google.com/trending/rss?geo=SA",
+      "url": "https://trends.google.com/trending/rss?geo=SA",
+      "source_links": [
+        {
+          "platform": "google_trends_rss",
+          "name": "Google Trends",
+          "url": "https://trends.google.com/trending/rss?geo=SA"
+        }
+      ],
+      "published_at": "2026-11-20T19:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1769,7 +1819,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "nolan gorman",
+      "title": "spcx stock",
       "region": "العالم",
       "rank": 9,
       "score": 47,
@@ -1793,7 +1843,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:10:00Z",
+      "published_at": "2026-11-20T20:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1825,7 +1875,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1856,14 +1906,14 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الطقس غدًا",
-      "region": "مصر",
+      "title": "ال مكتوم",
+      "region": "السعودية",
       "rank": 10,
       "score": 46,
       "priority": "medium",
@@ -1877,23 +1927,23 @@
       "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Google Trends",
-      "source_url": "https://trends.google.com/trending/rss?geo=EG",
-      "url": "https://trends.google.com/trending/rss?geo=EG",
+      "source_url": "https://trends.google.com/trending/rss?geo=SA",
+      "url": "https://trends.google.com/trending/rss?geo=SA",
       "source_links": [
         {
           "platform": "google_trends_rss",
           "name": "Google Trends",
-          "url": "https://trends.google.com/trending/rss?geo=EG"
+          "url": "https://trends.google.com/trending/rss?geo=SA"
         }
       ],
-      "published_at": "2026-11-20T18:50:00Z",
+      "published_at": "2026-11-20T19:00:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "is taylor swift pregnant",
+      "title": "gavin sheets",
       "region": "العالم",
       "rank": 10,
       "score": 46,
@@ -1917,7 +1967,7 @@
           "url": "https://trends.google.com/trending/rss?geo=US"
         }
       ],
-      "published_at": "2026-11-20T20:10:00Z",
+      "published_at": "2026-11-20T20:40:00Z",
       "captured_at": null,
       "media": [],
       "rights_status": "not_assessed",
@@ -1949,7 +1999,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1980,7 +2030,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2011,7 +2061,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2042,7 +2092,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2073,7 +2123,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2104,7 +2154,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2135,7 +2185,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2166,7 +2216,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2197,7 +2247,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2233,7 +2283,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2264,7 +2314,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2295,7 +2345,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2326,7 +2376,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2357,7 +2407,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2388,7 +2438,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2419,7 +2469,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2450,7 +2500,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2481,7 +2531,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2512,7 +2562,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2543,7 +2593,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2574,7 +2624,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2605,7 +2655,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2636,7 +2686,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2667,7 +2717,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2698,7 +2748,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2729,7 +2779,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2760,7 +2810,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2791,7 +2841,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2822,7 +2872,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2853,7 +2903,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2884,7 +2934,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2915,7 +2965,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2946,7 +2996,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2977,7 +3027,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3008,7 +3058,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3039,7 +3089,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3070,7 +3120,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3101,7 +3151,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
+      "captured_at": "2026-11-20T21:19:57.948651Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3132,69 +3182,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "عبدالرحمن المطيري",
-      "region": "السعودية",
-      "rank": 37,
-      "score": 24,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-20T21:02:11.161884Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "الساق الواحده",
-      "region": "مصر",
-      "rank": 38,
-      "score": 23,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/egypt/",
-      "url": "https://trends24.in/egypt/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-20T21:02:10.851429Z",
+      "captured_at": "2026-11-20T21:19:57.787966Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
