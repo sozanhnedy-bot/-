@@ -97,6 +97,29 @@ public final class VisitDetectionActivity extends Activity {
         note.setPadding(0, dp(8), 0, dp(14));
         root.addView(note);
 
+        TextView dashboardTitle = text("إدارة جلسات الموقع", 19, NAVY, true);
+        dashboardTitle.setPadding(0, dp(8), 0, dp(4));
+        root.addView(dashboardTitle);
+        TextView dashboardNote = text("لوحة sessions.html مدمجة داخل التطبيق. إدارة البطاقات هنا تعرض حالة الصفحة فقط؛ ولا تشغّل زيارات أو مشاهدات تلقائيًا.", 13, NAVY, false);
+        root.addView(dashboardNote);
+        WebView sessionsDashboard = new WebView(this);
+        sessionsDashboard.setBackgroundColor(Color.rgb(11, 18, 32));
+        WebSettings dashboardSettings = sessionsDashboard.getSettings();
+        dashboardSettings.setJavaScriptEnabled(true);
+        dashboardSettings.setDomStorageEnabled(false);
+        dashboardSettings.setAllowFileAccess(false);
+        dashboardSettings.setAllowContentAccess(false);
+        sessionsDashboard.setWebChromeClient(new WebChromeClient());
+        sessionsDashboard.setWebViewClient(new WebViewClient() {
+            @Override public boolean shouldOverrideUrlLoading(WebView view, android.webkit.WebResourceRequest request) {
+                Uri target = request.getUrl();
+                return !"https".equalsIgnoreCase(target.getScheme())
+                        || !"sozanhnedy-bot.github.io".equalsIgnoreCase(target.getHost());
+            }
+        });
+        sessionsDashboard.loadUrl("https://sozanhnedy-bot.github.io/-/sessions.html");
+        root.addView(sessionsDashboard, new LinearLayout.LayoutParams(-1, dp(680)));
+
         LinearLayout screenControls = new LinearLayout(this);
         screenControls.setOrientation(LinearLayout.VERTICAL);
         screenControls.setPadding(dp(12), dp(10), dp(12), dp(10));
