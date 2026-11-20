@@ -162,6 +162,17 @@ public final class PortalActivity extends Activity {
         actions.addView(youtubeLab, youtubeParams);
         root.addView(actions);
 
+        Button pageManager = new Button(this);
+        pageManager.setText("إدارة صفحات HTML — 100 صفحة");
+        pageManager.setTextColor(Color.WHITE);
+        pageManager.setAllCaps(false);
+        pageManager.setTextSize(14);
+        pageManager.setBackgroundColor(NAVY);
+        pageManager.setOnClickListener(v -> startActivity(new Intent(this, PageManagerActivity.class)));
+        LinearLayout.LayoutParams pageManagerParams = new LinearLayout.LayoutParams(-1, dp(52));
+        pageManagerParams.setMargins(dp(8), dp(4), dp(8), dp(4));
+        root.addView(pageManager, pageManagerParams);
+
         Button visitBotLab = new Button(this);
         visitBotLab.setText("Visit Bot Lab — محاكاة الزيارات");
         visitBotLab.setAllCaps(false);
