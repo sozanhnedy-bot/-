@@ -17,6 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public final class PageManagerActivity extends Activity {
     private static final int NAVY = Color.rgb(20, 40, 63);
@@ -96,12 +100,20 @@ public final class PageManagerActivity extends Activity {
         pageView.setWebViewClient(new WebViewClient() {
             @Override public boolean shouldOverrideUrlLoading(WebView view, android.webkit.WebResourceRequest request) {
                 String host = request.getUrl().getHost();
-                return !"raw.githubusercontent.com".equalsIgnoreCase(host);
+                if ("raw.githubusercontent.com".equalsIgnoreCase(host)) {
+                    loadHtml(request.getUrl().toString());
+                    return true;
+                }
+                return true;
             }
             @SuppressWarnings("deprecation")
             @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 android.net.Uri uri = android.net.Uri.parse(url);
-                return !"raw.githubusercontent.com".equalsIgnoreCase(uri.getHost());
+                if ("raw.githubusercontent.com".equalsIgnoreCase(uri.getHost())) {
+                    loadHtml(url);
+                    return true;
+                }
+                return true;
             }
         });
         root.addView(pageView, new LinearLayout.LayoutParams(-1, 0, 1));
@@ -145,7 +157,35 @@ public final class PageManagerActivity extends Activity {
         pageNumber.setText(String.valueOf(page));
         String filename = String.format(java.util.Locale.US, "page-%03d.html", page);
         status.setText("جاري فتح الصفحة رقم " + page + " من 100");
-        pageView.loadUrl(RAW_BASE + filename);
+        loadHtml(RAW_BASE + filename);
+    }
+
+    private void loadHtml(String address) {
+        status.setText("جاري تحميل الصفحة...");
+        new Thread(() -> {
+            HttpURLConnection connection = null;
+            try {
+                connection = (HttpURLConnection) new URL(address).openConnection();
+                connection.setConnectTimeout(12000);
+                connection.setReadTimeout(12000);
+                connection.setRequestProperty("User-Agent", "WorldNews-Android");
+                try (InputStream input = connection.getInputStream();
+                     ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+                    byte[] buffer = new byte[4096];
+                    int count;
+                    while ((count = input.read(buffer)) != -1) output.write(buffer, 0, count);
+                    String html = output.toString("UTF-8");
+                    runOnUiThread(() -> {
+                        pageView.loadDataWithBaseURL(address, html, "text/html", "UTF-8", null);
+                        status.setText("تم فتح الصفحة داخل التطبيق: " + pageNumber.getText().toString());
+                    });
+                }
+            } catch (Exception error) {
+                runOnUiThread(() -> status.setText("تعذر تحميل الصفحة. راجع اتصال الإنترنت وحاول مرة أخرى."));
+            } finally {
+                if (connection != null) connection.disconnect();
+            }
+        }).start();
     }
 
     private int readNumber(EditText input) {
