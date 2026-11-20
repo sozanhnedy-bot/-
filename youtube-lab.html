@@ -23,7 +23,7 @@ h1{font-size:clamp(27px,4vw,39px);line-height:1.2;margin:30px 0 8px}.sub{color:v
 <div class="stat"><small>متوقفة إداريًا</small><strong id="paused">500</strong></div>
 <div class="stat"><small>نتائج البحث</small><strong id="shown">500</strong></div>
 </section>
-<section class="panel manager"><h2>شريط الصفحات المفتوحة</h2><p class="sub">حدد عدد الصفحات التي تريد فتحها معًا. الحد الأقصى 10 صفحات لتقليل الضغط على الجهاز والموقع.</p><div class="manager-controls"><label for="openCount">عدد الصفحات:</label><input id="openCount" type="number" min="1" max="10" value="2"><button class="primary" id="openSelected">فتح العدد المحدد</button><button id="stopAllPages">إيقاف كل الصفحات</button></div><p class="manager-status" id="managerStatus" aria-live="polite">لا توجد صفحات مفتوحة حاليًا.</p><div class="opened-list" id="openedList"></div><div class="notice">فتح الصفحة هنا يعرض صفحة السجل داخل لوحة التحكم فقط. تشغيل فيديو YouTube يظل يدويًا من داخل الصفحة، وإيقاف الصفحة يغلق محتواها ويوقف أي تشغيل بداخلها.</div></section>
+<section class="panel manager"><h2>شريط الصفحات المفتوحة</h2><p class="sub">حدد عدد الصفحات التي تريد فتحها معًا، من 1 إلى 100 صفحة. افتح الصفحات للاختبار والمراجعة؛ تشغيل الفيديو يظل يدويًا.</p><div class="manager-controls"><label for="openCount">عدد الصفحات:</label><input id="openCount" type="number" min="1" max="100" value="2"><button class="primary" id="openSelected">فتح العدد المحدد</button><button id="stopAllPages">إيقاف كل الصفحات</button></div><p class="manager-status" id="managerStatus" aria-live="polite">لا توجد صفحات مفتوحة حاليًا.</p><div class="opened-list" id="openedList"></div><div class="notice">فتح الصفحة هنا يعرض صفحة السجل داخل لوحة التحكم فقط. تشغيل فيديو YouTube يظل يدويًا من داخل الصفحة، وإيقاف الصفحة يغلق محتواها ويوقف أي تشغيل بداخلها.</div></section>
 <div class="layout">
 <aside class="panel side"><h2>أدوات الإدارة</h2><p>تغيير الحالة هنا يحدّث سجل الواجهة على هذا المتصفح فقط.</p><div class="actions">
 <button class="primary" id="enableAll">تفعيل كل السجلات إداريًا</button>
@@ -63,7 +63,7 @@ function renderOpenedPages(){
 }
 document.getElementById('openSelected').addEventListener('click',()=>{
   const field=document.getElementById('openCount'), count=Number.parseInt(field.value,10);
-  if(!Number.isInteger(count)||count<1||count>10){alert('اختَر عددًا من 1 إلى 10 صفحات.');return;}
+  if(!Number.isInteger(count)||count<1||count>100){alert('اختَر عددًا من 1 إلى 100 صفحة.');return;}
   openedPages.clear();
   for(let id=1;id<=count;id++)openedPages.set(id,{active:true});
   renderOpenedPages();
