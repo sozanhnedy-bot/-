@@ -22,7 +22,7 @@ button{border:1px solid var(--line);background:#213650;color:var(--text);padding
 <div class="box"><div class="label">المتوقفة</div><div class="num" id="idle">100</div></div>
 <div class="box"><div class="label">قيد الاختبار</div><div class="num" id="active">0</div></div>
 </div>
-<div class="toolbar"><input id="search" type="search" placeholder="ابحث برقم الشاشة…"><select id="filter"><option value="all">كل الشاشات</option><option value="idle">المتوقفة</option><option value="running">قيد الاختبار</option><option value="done">انتهى الاختبار</option></select><button id="reset">إعادة ضبط الحالات</button></div>
+<div class="toolbar"><input id="search" type="search" placeholder="ابحث برقم الشاشة…"><select id="filter"><option value="all">كل الشاشات</option><option value="idle">المتوقفة</option><option value="running">قيد الاختبار</option><option value="done">انتهى الاختبار</option></select><button id="startAll">تشغيل الكل معًا</button><button id="reset">إعادة ضبط الحالات</button></div>
 <div class="note">تنبيه: هذه نسخة اختبار للوحة فقط؛ الأزرار تغيّر حالة تجريبية داخل المتصفح ولا تفتح اتصالات خارجية أو تشغّل فيديوهات أو تولّد مشاهدات. كل شاشة تبدأ اختبارًا تجريبيًا مرة واحدة ثم تنتقل إلى «انتهى الاختبار» وتتوقف، ولا تعيد التشغيل تلقائيًا.</div>
 <section class="grid" id="screens" aria-label="شاشات الاختبار"></section>
 </main>
@@ -65,7 +65,7 @@ root.addEventListener('click',event=>{
 });
 document.getElementById('search').addEventListener('input',refresh);
 document.getElementById('filter').addEventListener('change',refresh);
-document.getElementById('reset').addEventListener('click',()=>{
+document.getElementById('startAll').addEventListener('click',()=>{\n  for(let i=1;i<=100;i++)if(states.get(i)==='idle')states.set(i,'running');\n  refresh();\n});\ndocument.getElementById('reset').addEventListener('click',()=>{
   for(let i=1;i<=100;i++)states.set(i,'idle');
   document.getElementById('search').value='';
   document.getElementById('filter').value='all';
