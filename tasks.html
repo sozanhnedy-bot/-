@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14283f">
+  <meta name="description" content="صفحة مستقلة لتنظيم المهام ومتابعة ما تم إنجازه.">
+  <title>المهام | World News</title>
+  <link rel="icon" href="./assets/brand-mark.png" type="image/png">
+  <style>
+    :root{color-scheme:light;--navy:#14283f;--copper:#c56c52;--paper:#f5f1e9;--card:#fffdf8;--ink:#1d2937;--muted:#68717b;--line:#dfd9cf;--green:#286344}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.7}
+    a{color:inherit}.top{background:var(--navy);color:#fff;padding:15px 20px;border-bottom:4px solid var(--copper)}
+    .top-inner{width:min(900px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-weight:850;font-size:1.05rem}.back{color:#f4c4ad;text-decoration:none;font-size:.9rem}
+    main{width:min(900px,calc(100% - 28px));margin:30px auto 60px}.intro{margin-bottom:20px}.eyebrow{margin:0;color:var(--copper);font-weight:800;font-size:.82rem}h1{margin:2px 0;font-size:clamp(1.7rem,5vw,2.35rem);color:var(--navy)}.hint{margin:5px 0;color:var(--muted);font-size:.9rem}
+    .panel{background:var(--card);border:1px solid var(--line);padding:18px;border-radius:12px;box-shadow:0 10px 28px #14283f0d}
+    form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}.field{min-width:0}label{display:block;font-size:.83rem;font-weight:750;margin-bottom:5px}input,select{width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);font:inherit}button{font:inherit;cursor:pointer}.add{align-self:end;min-height:46px;padding:9px 20px;border:0;border-radius:8px;background:var(--navy);color:white;font-weight:800}.add:hover{background:#203c59}
+    .toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 12px}.filters{display:flex;flex-wrap:wrap;gap:7px}.filter{padding:7px 12px;border:1px solid var(--line);border-radius:20px;background:transparent;color:var(--navy)}.filter[aria-pressed=true]{background:var(--navy);color:white;border-color:var(--navy)}.count{color:var(--muted);font-size:.83rem}
+    .tasks{display:grid;gap:9px}.task{display:flex;align-items:center;gap:11px;padding:12px;background:white;border:1px solid var(--line);border-radius:9px}.task input[type=checkbox]{width:20px;min-height:20px;accent-color:var(--green);flex:0 0 auto}.task-text{flex:1;min-width:0;overflow-wrap:anywhere}.task.done .task-text{text-decoration:line-through;color:var(--muted)}.task-date{display:block;color:var(--muted);font-size:.75rem}.delete{border:1px solid #e5c9c2;border-radius:7px;background:#fff8f5;color:#984b3b;padding:6px 10px}.empty{text-align:center;padding:28px 12px;color:var(--muted);background:#fffdf8;border:1px dashed var(--line);border-radius:9px}.footnote{margin:14px 2px;color:var(--muted);font-size:.78rem}
+    @media(max-width:560px){.top-inner{align-items:flex-start}.panel{padding:13px}form{grid-template-columns:1fr}.add{width:100%}.task{gap:8px}.delete{padding:6px 8px}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="top-inner"><span class="brand">World News · المهام</span><a class="back" href="./">العودة إلى الموقع ←</a></div></header>
+  <main>
+    <section class="intro"><p class="eyebrow">مساحة تنظيم شخصية</p><h1>قائمة المهام</h1><p class="hint">اكتب المهمة، وأضفها للقائمة، ثم علّم عليها عند الانتهاء.</p></section>
+    <section class="panel" aria-label="إضافة مهمة">
+      <form id="task-form">
+        <div class="field"><label for="task-input">المهمة الجديدة</label><input id="task-input" maxlength="180" required placeholder="مثال: مراجعة خطة الأسبوع" autocomplete="off"></div>
+        <button class="add" type="submit">＋ إضافة مهمة</button>
+      </form>
+      <div class="toolbar"><div class="filters" aria-label="تصفية المهام">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">الكل</button>
+        <button class="filter" type="button" data-filter="active" aria-pressed="false">قيد التنفيذ</button>
+        <button class="filter" type="button" data-filter="done" aria-pressed="false">مكتملة</button>
+      </div><span id="task-count" class="count" aria-live="polite">0 مهام</span></div>
+      <div id="task-list" class="tasks" aria-live="polite"></div>
+      <p id="empty-state" class="empty">لسه مفيش مهام. أضف أول مهمة من الخانة اللي فوق.</p>
+    </section>
+    <p class="footnote">ملاحظة: تُحفظ المهام في المتصفح على هذا الجهاز فقط. مسح بيانات المتصفح أو استخدام جهاز آخر لن ينقل المهام تلقائيًا.</p>
+  </main>
+  <script>
+    (() => {
+      const STORAGE_KEY = "world-news-personal-tasks-v1";
+      const form = document.getElementById("task-form");
+      const input = document.getElementById("task-input");
+      const list = document.getElementById("task-list");
+      const empty = document.getElementById("empty-state");
+      const count = document.getElementById("task-count");
+      const filters = [...document.querySelectorAll("[data-filter]")];
+      let tasks = [];
+      let currentFilter = "all";
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        if (Array.isArray(saved)) tasks = saved.filter(t => t && typeof t.id === "string" && typeof t.text === "string");
+      } catch (_) { tasks = []; }
+      const save = () => {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); }
+        catch (_) { alert("تعذر حفظ المهام. تأكد من تفعيل مساحة التخزين في المتصفح."); }
+      };
+      const render = () => {
+        list.replaceChildren();
+        const shown = tasks.filter(t => currentFilter === "all" || (currentFilter === "done" ? t.done : !t.done));
+        count.textContent = "المهام: " + tasks.length + " · المكتملة: " + tasks.filter(t => t.done).length;
+        empty.hidden = shown.length > 0;
+        shown.forEach(task => {
+          const row = document.createElement("div");
+          row.className = "task" + (task.done ? " done" : "");
+          const check = document.createElement("input");
+          check.type = "checkbox"; check.checked = !!task.done;
+          check.setAttribute("aria-label", "تحديد إنجاز: " + task.text);
+          check.addEventListener("change", () => { task.done = check.checked; save(); render(); });
+          const label = document.createElement("span");
+          label.className = "task-text"; label.textContent = task.text;
+          const date = document.createElement("small");
+          date.className = "task-date";
+          date.textContent = new Date(task.createdAt).toLocaleDateString("ar-EG");
+          label.append(date);
+          const del = document.createElement("button");
+          del.type = "button"; del.className = "delete"; del.textContent = "حذف";
+          del.setAttribute("aria-label", "حذف المهمة: " + task.text);
+          del.addEventListener("click", () => { tasks = tasks.filter(t => t.id !== task.id); save(); render(); });
+          row.append(check, label, del); list.append(row);
+        });
+      };
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+        tasks.unshift({id: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()), text, done:false, createdAt:Date.now()});
+        save(); input.value = ""; render(); input.focus();
+      });
+      filters.forEach(button => button.addEventListener("click", () => {
+        currentFilter = button.dataset.filter;
+        filters.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+        render();
+      }));
+      render();
+    })();
+  </script>
+</body>
+</html>
