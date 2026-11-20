@@ -11,8 +11,8 @@ h1{font-size:clamp(27px,4vw,39px);line-height:1.2;margin:30px 0 8px}.sub{color:v
 .layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:16px;margin-top:17px}.side h2,.main h2{font-size:17px;margin:0 0 12px}.side p{color:var(--muted);font-size:13px;margin:8px 0 15px}.actions{display:grid;gap:9px}button,input,select{font:inherit}button{border:1px solid var(--line);background:#203752;color:var(--text);padding:10px 13px;border-radius:10px;cursor:pointer}button:hover{border-color:var(--accent)}button.primary{background:#176b63;border-color:#2b988a}button.ghost{background:transparent}button:disabled{opacity:.5;cursor:not-allowed}
 .toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 13px}.toolbar input{flex:1;min-width:160px}.toolbar input,.toolbar select{background:#0b1728;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text)}
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.session{background:#101d2e;border:1px solid var(--line);border-radius:12px;padding:11px;min-width:0}.session-head{display:flex;align-items:center;justify-content:space-between;gap:5px}.sid{font-weight:800;direction:ltr}.state{font-size:11px;border-radius:99px;padding:3px 8px;background:#39301e;color:#f0d18b}.state.enabled{background:#153d37;color:#8be0c9}.session p{font-size:11px;color:var(--muted);margin:7px 0 9px}.session button{width:100%;font-size:12px;padding:7px}
-.notice{border:1px solid #665332;background:#2a2419;color:#f0d9a7;border-radius:12px;padding:12px 14px;font-size:13px;margin:18px 0}.foot{color:var(--muted);font-size:12px;margin-top:15px}.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
-@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:16px 11px 35px}}
+.manager{margin:18px 0}.manager-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.manager-controls input{width:110px;background:#0b1728;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text)}.opened-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.opened-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0b1728}.opened-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px}.opened-head small{color:var(--muted)}.opened-card iframe{display:block;width:100%;height:430px;border:0;background:#101d2e}.opened-actions{display:flex;gap:7px;padding:9px}.opened-actions button{flex:1;padding:7px;font-size:12px}.manager-status{color:var(--muted);font-size:13px;margin:10px 0}.manager .notice{margin:12px 0}.notice{border:1px solid #665332;background:#2a2419;color:#f0d9a7;border-radius:12px;padding:12px 14px;font-size:13px;margin:18px 0}.foot{color:var(--muted);font-size:12px;margin-top:15px}.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.opened-list{grid-template-columns:1fr}.opened-card iframe{height:390px}}@media(max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:16px 11px 35px}}
 </style></head>
 <body><main class="wrap">
 <header class="top"><div class="brand">WORLD NEWS <small>مركز التحكم · YouTube Lab</small></div><span class="pill">نسخة أولية · إدارة محلية</span></header>
@@ -23,6 +23,7 @@ h1{font-size:clamp(27px,4vw,39px);line-height:1.2;margin:30px 0 8px}.sub{color:v
 <div class="stat"><small>متوقفة إداريًا</small><strong id="paused">500</strong></div>
 <div class="stat"><small>نتائج البحث</small><strong id="shown">500</strong></div>
 </section>
+<section class="panel manager"><h2>شريط الصفحات المفتوحة</h2><p class="sub">حدد عدد الصفحات التي تريد فتحها معًا. الحد الأقصى 10 صفحات لتقليل الضغط على الجهاز والموقع.</p><div class="manager-controls"><label for="openCount">عدد الصفحات:</label><input id="openCount" type="number" min="1" max="10" value="2"><button class="primary" id="openSelected">فتح العدد المحدد</button><button id="stopAllPages">إيقاف كل الصفحات</button></div><p class="manager-status" id="managerStatus" aria-live="polite">لا توجد صفحات مفتوحة حاليًا.</p><div class="opened-list" id="openedList"></div><div class="notice">فتح الصفحة هنا يعرض صفحة السجل داخل لوحة التحكم فقط. تشغيل فيديو YouTube يظل يدويًا من داخل الصفحة، وإيقاف الصفحة يغلق محتواها ويوقف أي تشغيل بداخلها.</div></section>
 <div class="layout">
 <aside class="panel side"><h2>أدوات الإدارة</h2><p>تغيير الحالة هنا يحدّث سجل الواجهة على هذا المتصفح فقط.</p><div class="actions">
 <button class="primary" id="enableAll">تفعيل كل السجلات إداريًا</button>
@@ -40,6 +41,36 @@ h1{font-size:clamp(27px,4vw,39px);line-height:1.2;margin:30px 0 8px}.sub{color:v
 (function(){
 const KEY='worldnews.youtubeLab.records.v1';
 const grid=document.getElementById('grid');
+const openedPages=new Map();
+const openedList=document.getElementById('openedList');
+const managerStatus=document.getElementById('managerStatus');
+function renderOpenedPages(){
+  openedList.textContent='';
+  const ids=Array.from(openedPages.keys()).sort((a,b)=>a-b);
+  managerStatus.textContent=ids.length+' صفحة مفتوحة من الحد المحدد.';
+  ids.forEach(id=>{
+    const item=openedPages.get(id), card=document.createElement('article');card.className='opened-card';
+    const head=document.createElement('div');head.className='opened-head';
+    const name=document.createElement('strong');name.textContent='الصفحة #'+String(id).padStart(3,'0');
+    const state=document.createElement('small');state.textContent=item.active?'مفتوحة':'متوقفة';
+    head.append(name,state);card.append(head);
+    if(item.active){const frame=document.createElement('iframe');frame.title='صفحة السجل '+id;frame.loading='lazy';frame.src='youtube-lab-pages/'+String(id).padStart(3,'0')+'.html';card.append(frame);}
+    const actions=document.createElement('div');actions.className='opened-actions';
+    const toggle=document.createElement('button');toggle.textContent=item.active?'إيقاف الصفحة':'تشغيل الصفحة';toggle.addEventListener('click',()=>{item.active=!item.active;renderOpenedPages();});
+    const close=document.createElement('button');close.textContent='إزالة';close.addEventListener('click',()=>{openedPages.delete(id);renderOpenedPages();});
+    actions.append(toggle,close);card.append(actions);openedList.append(card);
+  });
+}
+document.getElementById('openSelected').addEventListener('click',()=>{
+  const field=document.getElementById('openCount'), count=Number.parseInt(field.value,10);
+  if(!Number.isInteger(count)||count<1||count>10){alert('اختَر عددًا من 1 إلى 10 صفحات.');return;}
+  openedPages.clear();
+  for(let id=1;id<=count;id++)openedPages.set(id,{active:true});
+  renderOpenedPages();
+});
+document.getElementById('stopAllPages').addEventListener('click',()=>{
+  openedPages.forEach(item=>item.active=false);renderOpenedPages();
+});
 let records;
 try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');records=Array.isArray(saved)&&saved.length===500?saved.map((r,i)=>({id:i+1,enabled:!!r.enabled,videoUrl:typeof r.videoUrl==='string'?r.videoUrl:''})):Array.from({length:500},(_,i)=>({id:i+1,enabled:false,videoUrl:''}));}catch(e){records=Array.from({length:500},(_,i)=>({id:i+1,enabled:false,videoUrl:''}));}
 function videoId(raw){try{const u=new URL(raw);if(u.hostname==='youtu.be')return u.pathname.split('/').filter(Boolean)[0]||'';if(u.hostname==='youtube.com'||u.hostname.endsWith('.youtube.com')||u.hostname==='www.youtube-nocookie.com'){if(u.pathname==='/watch')return u.searchParams.get('v')||'';const m=u.pathname.match(/^\\/(?:embed|shorts|live)\\/([A-Za-z0-9_-]{6,})/);return m?m[1]:'';}}catch(e){}return '';}
