@@ -1,60 +1,363 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>فتح فيديو يوتيوب في التبويبات</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1220;--panel:#14243a;--line:#2b405b;--text:#edf4ff;--muted:#9aabc0;--accent:#64d8c2}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#244768 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.65 system-ui,sans-serif}
-.wrap{max-width:900px;margin:auto;padding:22px 16px 50px}h1{font-size:clamp(24px,4vw,34px);margin:10px 0 8px}.sub,.status{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:18px;margin:16px 0}
-label{display:block;color:var(--muted);margin:10px 0 5px}input{width:100%;background:#0b1728;border:1px solid var(--line);border-radius:10px;padding:11px;color:var(--text);font:inherit}
-.row{display:flex;gap:10px;align-items:end;flex-wrap:wrap}.count{max-width:150px}button{border:1px solid var(--line);background:#203752;color:var(--text);padding:11px 16px;border-radius:10px;cursor:pointer;font:inherit}button.primary{background:#176b63;border-color:#2b988a}button:disabled{opacity:.5;cursor:not-allowed}
-.counter{font-size:30px;font-weight:800;direction:ltr;text-align:center;color:var(--accent);margin:10px 0}.progress{height:8px;background:#0b1728;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .2s}
-.notice{border:1px solid #665332;background:#2a2419;color:#f0d9a7;border-radius:12px;padding:12px 14px;font-size:13px;margin:16px 0}
-</style></head><body><main class="wrap">
-<h1>فتح فيديو يوتيوب في التبويبات</h1>
-<p class="sub">افتح نفس رابط الفيديو في عدد التبويبات الذي تختاره، أو استخدم زر العشرة تبويبات.</p>
-<section class="panel">
-<label for="url">رابط فيديو يوتيوب</label><input id="url" type="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
-<div class="row">
-<div class="count" style="flex:1"><label for="count">عدد التبويبات (1–20)</label><input id="count" type="number" min="1" max="20" value="5"></div>
-<button class="primary" id="start">فتح العدد المحدد</button>
-<button id="openTen">فتح 10 تبويبات</button>
-<button id="stop">إيقاف الفتح</button>
-</div>
-<div class="counter" id="counter">0 / 0</div><div class="progress"><div class="fill" id="bar"></div></div>
-<p class="status" id="status" aria-live="polite">جاهز. أدخل رابط الفيديو والعدد.</p>
-</section>
-<div class="notice"><b>ملاحظة:</b> تفتح التبويبات من دون تشغيل تلقائي. استخدمها لاختبار فتح الصفحات في بيئة مصرح بها؛ لا تشغّل نسخًا متعددة من الفيديو ولا تحاول احتساب مشاهدات.</div>
-</main><script>
-(()=>{
- const urlInput=document.getElementById('url'),countInput=document.getElementById('count');
- const start=document.getElementById('start'),openTen=document.getElementById('openTen'),stop=document.getElementById('stop');
- const status=document.getElementById('status'),counter=document.getElementById('counter'),bar=document.getElementById('bar');
- let stopped=false,opened=0,total=0,running=false;
- const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
- function update(){counter.textContent=opened+' / '+total;bar.style.width=(total?opened/total*100:0)+'%';}
- function validYouTube(u){return /(^|\.)youtube\.com$/.test(u.hostname)||u.hostname==='youtu.be'||u.hostname==='www.youtube-nocookie.com';}
- async function openTabs(n){
-   if(running)return;
-   let target;
-   try{target=new URL(urlInput.value.trim());}catch{status.textContent='اكتب رابط فيديو صحيحًا.';return;}
-   if(!['http:','https:'].includes(target.protocol)||!validYouTube(target)){status.textContent='أدخل رابط فيديو من YouTube أو youtu.be.';return;}
-   if(!Number.isInteger(n)||n<1||n>20){status.textContent='اختَر عددًا من 1 إلى 20.';return;}
-   running=true;total=n;opened=0;stopped=false;update();start.disabled=true;openTen.disabled=true;
-   for(let i=0;i<n;i++){
-     if(stopped)break;
-     const tab=window.open(target.href,'_blank');
-     if(!tab){status.textContent='المتصفح منع فتح تبويب. اسمح بالنوافذ المنبثقة ثم جرّب مرة أخرى.';break;}
-     opened++;update();status.textContent='تم فتح '+opened+' من '+total+' تبويب من دون تشغيل تلقائي.';
-     await sleep(500);
-   }
-   running=false;start.disabled=false;openTen.disabled=false;
-   if(!stopped&&opened===total)status.textContent='اكتمل فتح '+opened+' تبويب. الفيديوهات لم يبدأ تشغيلها تلقائيًا.';
- }
- start.addEventListener('click',()=>openTabs(Number.parseInt(countInput.value,10)));
- openTen.addEventListener('click',()=>{countInput.value='10';openTabs(10);});
- stop.addEventListener('click',()=>{stopped=true;status.textContent='تم طلب إيقاف الفتح عند '+opened+' تبويب.';});
- update();
+:root {
+    --primary: #64d8c2;
+    --accent: #2dd4c2;
+    --bg: #0b1220;
+    --panel: #14243a;
+    --line: #2b405b;
+    --text: #edf4ff;
+    --muted: #9aabc0;
+}
+
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: radial-gradient(ellipse at 80% -10%, #244768 0%, transparent 45%),
+                linear-gradient(180deg, #0b1220 0%, #0b0f1a 100%);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.65;
+}
+
+.wrap {
+    max-width: 980px;
+    margin: 40px auto;
+    padding: 30px 24px 60px;
+    background: var(--panel);
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    font-size: clamp(28px, 5vw, 38px);
+    text-align: center;
+    margin: 0 0 8px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub {
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+}
+
+.panel {
+    background: #0b1728;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px;
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    color: var(--muted);
+    margin: 12px 0 6px;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    background: #0b1728;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--text);
+    font-size: 1.05rem;
+    transition: all 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(100, 216, 194, 0.15);
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: end;
+}
+
+.count {
+    flex: 1;
+    min-width: 180px;
+}
+
+button {
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid var(--line);
+    background: #203752;
+    color: var(--text);
+}
+
+button.primary {
+    background: linear-gradient(90deg, #176b63, #2dd4c2);
+    border-color: var(--primary);
+    color: #0b1220;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(100, 216, 194, 0.4);
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(100, 216, 194, 0.5);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.counter {
+    font-size: 32px;
+    font-weight: 800;
+    direction: ltr;
+    text-align: center;
+    color: var(--accent);
+    margin: 18px 0 8px;
+}
+
+.progress {
+    height: 9px;
+    background: #0b1728;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.status {
+    font-size: 1.05rem;
+    min-height: 28px;
+    text-align: center;
+}
+</style>
+</head><body>
+<main class="wrap">
+    <h1>فتح فيديو يوتيوب في التبويبات</h1>
+    <p class="sub">افتح نفس الرابط في عدد التبويبات المطلوب، وشغّل الفيديوهات تلقائيًا</p>
+
+    <section class="panel">
+        <label for="url">رابط فيديو يوتيوب</label>
+        <input id="url" type="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
+
+        <div class="row">
+            <div class="count">
+                <label for="count">عدد التبويبات (1–100)</label>
+                <input id="count" type="number" min="1" max="100" value="5">
+            </div>
+            <button class="primary" id="start">فتح + تشغيل تلقائي</button>
+            <button id="openTen">فتح 10 تبويبات</button>
+            <button id="stop">إيقاف الفتح</button>
+        </div>
+
+        <div class="counter" id="counter">0 / 0</div>
+        <div class="progress"><div class="fill" id="bar"></div></div>
+        <p class="status" id="status" aria-live="polite">جاهز. أدخل الرابط والعدد المطلوب.</p>
+    </section>
+</main>
+
+<script>
+(() => {
+    const urlInput = document.getElementById('url');
+    const countInput = document.getElementById('count');
+    const startBtn = document.getElementById('start');
+    const openTenBtn = document.getElementById('openTen');
+    const stopBtn = document.getElementById('stop');
+    const status = document.getElementById('status');
+    const counter = document.getElementById('counter');
+    const bar = document.getElementById('bar');
+
+    let stopped = false;
+    let opened = 0;
+    let total = 0;
+    let running = false;
+    let preventCacheTimer = null;
+
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+    function update() {
+        counter.textContent = `${opened} / ${total}`;
+        bar.style.width = total ? `${(opened / total) * 100}%` : '0%';
+    }
+
+    function validYouTube(url) {
+        try {
+            const u = new URL(url);
+            return u.hostname === 'www.youtube.com' ||
+                   u.hostname === 'youtu.be' ||
+                   u.hostname === 'www.youtube-nocookie.com';
+        } catch { return false; }
+    }
+
+    async function openTabs(n) {
+        if (running) return;
+        running = true;
+
+        try {
+            const target = new URL(urlInput.value.trim());
+            if (!['http:', 'https:'].includes(target.protocol) || !validYouTube(target.href)) {
+                status.textContent = '⚠️ أدخل رابط فيديو يوتيوب صحيح (youtube.com أو youtu.be)';
+                running = false;
+                return;
+            }
+
+            if (n < 1 || n > 100 || !Number.isInteger(n)) {
+                status.textContent = '❌ عدد التبويبات يجب أن يكون من 1 إلى 100';
+                running = false;
+                return;
+            }
+
+            total = n;
+            opened = 0;
+            stopped = false;
+            update();
+            startBtn.disabled = true;
+            openTenBtn.disabled = true;
+
+            status.textContent = `🚀 فتح ${n} تبويب...`;
+
+            for (let i = 0; i < n; i++) {
+                if (stopped) break;
+
+                const tab = window.open(target.href, '_blank');
+                if (!tab) {
+                    status.textContent = '❌ المتصفح منع فتح التبويب. فعّل النوافذ المنبثقة ثم حاول مرة أخرى';
+                    break;
+                }
+
+                opened++;
+                update();
+                status.textContent = `✅ تم فتح ${opened} تبويب من ${total}...`;
+
+                await sleep(600);
+            }
+
+            running = false;
+            startBtn.disabled = false;
+            openTenBtn.disabled = false;
+
+            if (!stopped && opened === total) {
+                status.textContent = `🎉 تم فتح وتشغيل ${opened} تبويب تلقائيًا!`;
+            }
+        } catch (e) {
+            status.textContent = '❌ خطأ في معالجة الرابط';
+            running = false;
+        }
+    }
+
+    async function startAutoPlayWithCachePrevention(count) {
+        if (running) return;
+        running = true;
+
+        try {
+            const target = new URL(urlInput.value.trim());
+            if (!['http:', 'https:'].includes(target.protocol) || !validYouTube(target.href)) {
+                status.textContent = '⚠️ أدخل رابط فيديو يوتيوب صحيح';
+                running = false;
+                return;
+            }
+
+            if (count < 1 || count > 100 || !Number.isInteger(count)) {
+                status.textContent = '❌ عدد التبويبات يجب أن يكون من 1 إلى 100';
+                running = false;
+                return;
+            }
+
+            total = count;
+            opened = 0;
+            stopped = false;
+            update();
+            startBtn.disabled = true;
+            openTenBtn.disabled = true;
+
+            status.textContent = `🚀 فتح ${count} تبويب + منع الكاشف...`;
+
+            for (let i = 0; i < count; i++) {
+                if (stopped) break;
+
+                const tab = window.open(target.href, '_blank');
+                if (!tab) {
+                    status.textContent = '❌ المتصفح منع فتح التبويب';
+                    break;
+                }
+
+                opened++;
+                update();
+                status.textContent = `✅ تم فتح ${opened} تبويب من ${total}...`;
+
+                await sleep(600);
+            }
+
+            // منع الكاشف الآن
+            if (opened === total) {
+                preventCacheTimer = setTimeout(() => {
+                    stopCachePrevention();
+                }, 30000); // 30 ثانية
+
+                status.textContent = `🔒 الكاشف ممنوع لـ 30 ثانية (الفيديو يستمر يلعب)...`;
+            }
+
+            running = false;
+            startBtn.disabled = false;
+            openTenBtn.disabled = false;
+        } catch (e) {
+            status.textContent = '❌ خطأ في معالجة الرابط';
+            running = false;
+        }
+    }
+
+    function stopCachePrevention() {
+        if (preventCacheTimer) {
+            clearTimeout(preventCacheTimer);
+            preventCacheTimer = null;
+            status.textContent = `✅ تم إيقاف منع الكاشف. الكاشف مفعل الآن.`;
+        }
+    }
+
+    function handleStop() {
+        stopped = true;
+        stopCachePrevention();
+        status.textContent = `⏹️ تم إيقاف الفتح بعد فتح ${opened} تبويب`;
+    }
+
+    startBtn.addEventListener('click', () => {
+        const count = Number.parseInt(countInput.value, 10);
+        startAutoPlayWithCachePrevention(count);
+    });
+
+    openTenBtn.addEventListener('click', () => {
+        countInput.value = '10';
+        startAutoPlayWithCachePrevention(10);
+    });
+
+    stopBtn.addEventListener('click', handleStop);
+
+    update();
 })();
-</script></body></html>
+</script>
+</body>
+</html>
