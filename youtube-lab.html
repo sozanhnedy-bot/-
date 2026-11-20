@@ -23,7 +23,7 @@ h1{font-size:clamp(27px,4vw,39px);line-height:1.2;margin:30px 0 8px}.sub{color:v
 <div class="stat"><small>متوقفة إداريًا</small><strong id="paused">500</strong></div>
 <div class="stat"><small>نتائج البحث</small><strong id="shown">500</strong></div>
 </section>
-<section class="panel manager"><h2>شريط الصفحات المفتوحة</h2><p class="sub">حدد عدد الصفحات التي تريد فتحها معًا، من 1 إلى 100 صفحة. افتح الصفحات للاختبار والمراجعة؛ تشغيل الفيديو يظل يدويًا.</p><div class="manager-controls"><label for="openCount">عدد الصفحات:</label><input id="openCount" type="number" min="1" max="100" value="2"><button class="primary" id="openSelected">فتح العدد المحدد</button><button id="stopAllPages">إيقاف كل الصفحات</button></div><p class="manager-status" id="managerStatus" aria-live="polite">لا توجد صفحات مفتوحة حاليًا.</p><div class="opened-list" id="openedList"></div><div class="notice">فتح الصفحة هنا يعرض صفحة السجل داخل لوحة التحكم فقط. تشغيل فيديو YouTube يظل يدويًا من داخل الصفحة، وإيقاف الصفحة يغلق محتواها ويوقف أي تشغيل بداخلها.</div></section>
+<section class="panel manager"><h2>شريط الصفحات المفتوحة</h2><p class="sub">اختَر عدد الصفحات من 1 إلى 100. الفتح التلقائي يجهّز صفحات السجلات بالتتابع؛ تشغيل الفيديو يظل يدويًا.</p><div class="manager-controls"><label for="openCount">عدد الصفحات:</label><input id="openCount" type="number" min="1" max="100" value="2"><button class="primary" id="openSelected">فتح العدد المحدد</button><button class="primary" id="autoOpenSelected">فتح تلقائي للعدد المحدد</button><button id="stopAllPages">إيقاف الكل</button></div><p class="manager-status" id="managerStatus" aria-live="polite">لا توجد صفحات مفتوحة حاليًا.</p><div class="opened-list" id="openedList"></div><div class="notice">فتح الصفحة هنا يعرض صفحة السجل داخل لوحة التحكم فقط. تشغيل فيديو YouTube يظل يدويًا من داخل الصفحة، وإيقاف الصفحة يغلق محتواها ويوقف أي تشغيل بداخلها.</div></section>
 <div class="layout">
 <aside class="panel side"><h2>أدوات الإدارة</h2><p>تغيير الحالة هنا يحدّث سجل الواجهة على هذا المتصفح فقط.</p><div class="actions">
 <button class="primary" id="enableAll">تفعيل كل السجلات إداريًا</button>
@@ -54,7 +54,7 @@ function renderOpenedPages(){
     const name=document.createElement('strong');name.textContent='الصفحة #'+String(id).padStart(3,'0');
     const state=document.createElement('small');state.textContent=item.active?'مفتوحة':'متوقفة';
     head.append(name,state);card.append(head);
-    if(item.active){const frame=document.createElement('iframe');frame.title='صفحة السجل '+id;frame.loading='lazy';frame.src='youtube-lab-pages/'+String(id).padStart(3,'0')+'.html';card.append(frame);}
+    if(item.active){const frame=document.createElement('iframe');frame.title='صفحة السجل '+id;frame.loading='lazy';frame.style.cssText='display:block;width:100%;height:150px;border:0;background:#101d2e';const record=records[id-1];const safeUrl=record&&record.videoUrl?record.videoUrl:'';const safeTitle='السجل #'+String(id).padStart(3,'0');frame.srcdoc='<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><body style="margin:0;padding:16px;background:#101d2e;color:#edf4ff;font:14px system-ui"><b>'+safeTitle+'</b><p style="color:#9aabc0">'+(safeUrl?'رابط الفيديو محفوظ في هذا السجل.':'لا يوجد رابط فيديو مضاف لهذا السجل.')+'</p>'+(safeUrl?'<a target="_blank" rel="noopener" href="'+safeUrl.replace(/&/g,'&amp;').replace(/\"/g,'&quot;')+'" style="color:#64d8c2">فتح رابط YouTube يدويًا</a>':'')+'</body></html>';card.append(frame);}
     const actions=document.createElement('div');actions.className='opened-actions';
     const toggle=document.createElement('button');toggle.textContent=item.active?'إيقاف الصفحة':'تشغيل الصفحة';toggle.addEventListener('click',()=>{item.active=!item.active;renderOpenedPages();});
     const close=document.createElement('button');close.textContent='إزالة';close.addEventListener('click',()=>{openedPages.delete(id);renderOpenedPages();});
@@ -68,8 +68,25 @@ document.getElementById('openSelected').addEventListener('click',()=>{
   for(let id=1;id<=count;id++)openedPages.set(id,{active:true});
   renderOpenedPages();
 });
+let autoOpenTimer=null;
+document.getElementById('autoOpenSelected').addEventListener('click',()=>{
+  const field=document.getElementById('openCount'), count=Number.parseInt(field.value,10);
+  if(!Number.isInteger(count)||count<1||count>100){alert('اختَر عددًا من 1 إلى 100 صفحة.');return;}
+  if(autoOpenTimer!==null){clearInterval(autoOpenTimer);autoOpenTimer=null;}
+  openedPages.clear();let next=1;
+  const openOne=()=>{
+    openedPages.set(next,{active:true});renderOpenedPages();
+    managerStatus.textContent='فتح تلقائي: '+next+' من '+count+' صفحات.';
+    next++;
+    if(next>count){clearInterval(autoOpenTimer);autoOpenTimer=null;managerStatus.textContent='اكتمل فتح '+count+' صفحة.';}
+  };
+  openOne();
+  if(next<=count)autoOpenTimer=setInterval(openOne,700);
+});
 document.getElementById('stopAllPages').addEventListener('click',()=>{
+  if(autoOpenTimer!==null){clearInterval(autoOpenTimer);autoOpenTimer=null;}
   openedPages.forEach(item=>item.active=false);renderOpenedPages();
+  managerStatus.textContent='تم إيقاف كل الصفحات والفتح التلقائي.';
 });
 let records;
 try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');records=Array.isArray(saved)&&saved.length===500?saved.map((r,i)=>({id:i+1,enabled:!!r.enabled,videoUrl:typeof r.videoUrl==='string'?r.videoUrl:''})):Array.from({length:500},(_,i)=>({id:i+1,enabled:false,videoUrl:''}));}catch(e){records=Array.from({length:500},(_,i)=>({id:i+1,enabled:false,videoUrl:''}));}
