@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>مختبر اختبار الصفحات والزيارات</title>
+<title>فتح فيديو يوتيوب في التبويبات</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1220;--panel:#121f32;--line:#2b405b;--text:#edf4ff;--muted:#9aabc0;--accent:#64d8c2}
+:root{color-scheme:dark;--bg:#0b1220;--panel:#14243a;--line:#2b405b;--text:#edf4ff;--muted:#9aabc0;--accent:#64d8c2}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#244768 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.65 system-ui,sans-serif}
-.wrap{max-width:900px;margin:auto;padding:22px 16px 50px}h1{font-size:clamp(24px,4vw,34px);margin:10px 0 8px}.sub,.status{color:var(--muted)}.panel{background:#14243a;border:1px solid var(--line);border-radius:15px;padding:18px;margin:16px 0}
+.wrap{max-width:900px;margin:auto;padding:22px 16px 50px}h1{font-size:clamp(24px,4vw,34px);margin:10px 0 8px}.sub,.status{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:18px;margin:16px 0}
 label{display:block;color:var(--muted);margin:10px 0 5px}input{width:100%;background:#0b1728;border:1px solid var(--line);border-radius:10px;padding:11px;color:var(--text);font:inherit}
 .row{display:flex;gap:10px;align-items:end;flex-wrap:wrap}.count{max-width:150px}button{border:1px solid var(--line);background:#203752;color:var(--text);padding:11px 16px;border-radius:10px;cursor:pointer;font:inherit}button.primary{background:#176b63;border-color:#2b988a}button:disabled{opacity:.5;cursor:not-allowed}
 .counter{font-size:30px;font-weight:800;direction:ltr;text-align:center;color:var(--accent);margin:10px 0}.progress{height:8px;background:#0b1728;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .2s}
@@ -15,20 +15,20 @@ label{display:block;color:var(--muted);margin:10px 0 5px}input{width:100%;backgr
 </style>
 </head>
 <body><main class="wrap">
-<h1>مختبر اختبار الصفحات والزيارات</h1>
-<p class="sub">افتح صفحة اختبار تملكها في عدد من التبويبات لمراجعة طريقة رصد برنامجك للصفحات والزيارات.</p>
+<h1>فتح فيديو يوتيوب في التبويبات</h1>
+<p class="sub">يفتح رابط الفيديو في العدد الذي تحدده، ويطلب التشغيل التلقائي في التبويب الأول فقط.</p>
 <section class="panel">
-<label for="url">رابط صفحة الاختبار</label>
-<input id="url" type="url" placeholder="https://example.com/test" autocomplete="url">
+<label for="url">رابط فيديو يوتيوب</label>
+<input id="url" type="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
 <div class="row">
 <div class="count" style="flex:1"><label for="count">عدد التبويبات (1–20)</label><input id="count" type="number" min="1" max="20" value="5"></div>
-<button class="primary" id="start">فتح التبويبات</button>
-<button id="stop">إيقاف</button>
+<button class="primary" id="start">فتح وتشغيل الأول تلقائيًا</button>
+<button id="stop">إيقاف الفتح</button>
 </div>
 <div class="counter" id="counter">0 / 0</div><div class="progress"><div class="fill" id="bar"></div></div>
-<p class="status" id="status" aria-live="polite">جاهز. أدخل رابط صفحة الاختبار والعدد.</p>
+<p class="status" id="status" aria-live="polite">جاهز. أدخل رابط الفيديو والعدد.</p>
 </section>
-<div class="notice"><b>تنبيه للاختبار:</b> استخدم رابطًا تملكه أو بيئة اختبار مصرحًا لك بها فقط. هذه الأداة تفتح صفحات في تبويبات منفصلة ولا تشغّل الفيديو تلقائيًا ولا تحاول احتساب مشاهدات.</div>
+<div class="notice"><b>ملاحظة:</b> التشغيل التلقائي مطلوب في التبويب الأول فقط. التبويبات الأخرى تفتح الفيديو من دون تشغيل تلقائي. قد يمنع المتصفح أو يوتيوب التشغيل التلقائي، وعندها يلزم الضغط على تشغيل يدويًا. الأداة لا تحاول تجاوز قيود التشغيل أو توليد مشاهدات مصطنعة.</div>
 </main>
 <script>
 (()=>{
@@ -38,21 +38,26 @@ label{display:block;color:var(--muted);margin:10px 0 5px}input{width:100%;backgr
  let stopped=false,opened=0,total=0;
  const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
  function update(){counter.textContent=opened+' / '+total;bar.style.width=(total?opened/total*100:0)+'%';}
+ function isYouTube(u){return /(^|\.)youtube\.com$/.test(u.hostname)||u.hostname==='youtu.be'||u.hostname==='www.youtube-nocookie.com';}
  start.addEventListener('click',async()=>{
    let target;
-   try{target=new URL(urlInput.value.trim());}catch{status.textContent='اكتب رابطًا صحيحًا يبدأ بـ https:// أو http://';return;}
-   if(!['http:','https:'].includes(target.protocol)){status.textContent='المسموح روابط http وhttps فقط.';return;}
+   try{target=new URL(urlInput.value.trim());}catch{status.textContent='اكتب رابط فيديو صحيحًا.';return;}
+   if(!['http:','https:'].includes(target.protocol)||!isYouTube(target.hostname)){status.textContent='أدخل رابط فيديو من YouTube أو youtu.be.';return;}
    const n=Number.parseInt(countInput.value,10);
    if(!Number.isInteger(n)||n<1||n>20){status.textContent='اختَر عددًا من 1 إلى 20.';return;}
+   const first=new URL(target.href);first.searchParams.set('autoplay','1');
    total=n;opened=0;stopped=false;update();start.disabled=true;
    for(let i=0;i<n;i++){
      if(stopped)break;
-     const tab=window.open(target.href,'_blank');
+     const tabUrl=i===0?first.href:target.href;
+     const tab=window.open(tabUrl,'_blank');
      if(!tab){status.textContent='المتصفح منع فتح تبويب. اسمح بالنوافذ المنبثقة ثم جرّب مرة أخرى.';break;}
-     opened++;update();status.textContent='تم فتح '+opened+' من '+total+' تبويب.';await sleep(500);
+     opened++;update();
+     status.textContent=i===0?'تم فتح التبويب الأول مع طلب التشغيل التلقائي.':'تم فتح '+opened+' من '+total+' تبويب؛ التشغيل التلقائي للأول فقط.';
+     await sleep(500);
    }
    start.disabled=false;
-   if(!stopped&&opened===total)status.textContent='اكتمل فتح '+opened+' تبويب لصفحة الاختبار.';
+   if(!stopped&&opened===total)status.textContent='اكتمل فتح '+opened+' تبويب. التشغيل التلقائي مطلوب في الأول فقط وقد يخضع لسياسة المتصفح.';
  });
  stop.addEventListener('click',()=>{stopped=true;start.disabled=false;status.textContent='تم إيقاف الفتح عند '+opened+' تبويب.';});
  update();
