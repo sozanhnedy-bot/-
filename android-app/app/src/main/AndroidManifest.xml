@@ -22,6 +22,9 @@
             android:name=".RadarActivity"
             android:exported="false" />
         <activity
+            android:name=".HtmlPageControllerActivity"
+            android:exported="false" />
+        <activity
             android:name=".VisitDetectionActivity"
             android:exported="false" />
         <activity
