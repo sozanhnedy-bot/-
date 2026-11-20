@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>فتح فيديو يوتيوب في التبويبات</title>
 <style>
 :root{color-scheme:dark;--bg:#0b1220;--panel:#14243a;--line:#2b405b;--text:#edf4ff;--muted:#9aabc0;--accent:#64d8c2}
@@ -12,54 +11,50 @@ label{display:block;color:var(--muted);margin:10px 0 5px}input{width:100%;backgr
 .row{display:flex;gap:10px;align-items:end;flex-wrap:wrap}.count{max-width:150px}button{border:1px solid var(--line);background:#203752;color:var(--text);padding:11px 16px;border-radius:10px;cursor:pointer;font:inherit}button.primary{background:#176b63;border-color:#2b988a}button:disabled{opacity:.5;cursor:not-allowed}
 .counter{font-size:30px;font-weight:800;direction:ltr;text-align:center;color:var(--accent);margin:10px 0}.progress{height:8px;background:#0b1728;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .2s}
 .notice{border:1px solid #665332;background:#2a2419;color:#f0d9a7;border-radius:12px;padding:12px 14px;font-size:13px;margin:16px 0}
-</style>
-</head>
-<body><main class="wrap">
+</style></head><body><main class="wrap">
 <h1>فتح فيديو يوتيوب في التبويبات</h1>
-<p class="sub">يفتح رابط الفيديو في العدد الذي تحدده، ويطلب التشغيل التلقائي في التبويب الأول فقط.</p>
+<p class="sub">افتح نفس رابط الفيديو في عدد التبويبات الذي تختاره، أو استخدم زر العشرة تبويبات.</p>
 <section class="panel">
-<label for="url">رابط فيديو يوتيوب</label>
-<input id="url" type="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
+<label for="url">رابط فيديو يوتيوب</label><input id="url" type="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
 <div class="row">
 <div class="count" style="flex:1"><label for="count">عدد التبويبات (1–20)</label><input id="count" type="number" min="1" max="20" value="5"></div>
-<button class="primary" id="start">فتح وتشغيل الأول تلقائيًا</button>
+<button class="primary" id="start">فتح العدد المحدد</button>
+<button id="openTen">فتح 10 تبويبات</button>
 <button id="stop">إيقاف الفتح</button>
 </div>
 <div class="counter" id="counter">0 / 0</div><div class="progress"><div class="fill" id="bar"></div></div>
 <p class="status" id="status" aria-live="polite">جاهز. أدخل رابط الفيديو والعدد.</p>
 </section>
-<div class="notice"><b>ملاحظة:</b> التشغيل التلقائي مطلوب في التبويب الأول فقط. التبويبات الأخرى تفتح الفيديو من دون تشغيل تلقائي. قد يمنع المتصفح أو يوتيوب التشغيل التلقائي، وعندها يلزم الضغط على تشغيل يدويًا. الأداة لا تحاول تجاوز قيود التشغيل أو توليد مشاهدات مصطنعة.</div>
-</main>
-<script>
+<div class="notice"><b>ملاحظة:</b> تفتح التبويبات من دون تشغيل تلقائي. استخدمها لاختبار فتح الصفحات في بيئة مصرح بها؛ لا تشغّل نسخًا متعددة من الفيديو ولا تحاول احتساب مشاهدات.</div>
+</main><script>
 (()=>{
  const urlInput=document.getElementById('url'),countInput=document.getElementById('count');
- const start=document.getElementById('start'),stop=document.getElementById('stop');
+ const start=document.getElementById('start'),openTen=document.getElementById('openTen'),stop=document.getElementById('stop');
  const status=document.getElementById('status'),counter=document.getElementById('counter'),bar=document.getElementById('bar');
- let stopped=false,opened=0,total=0;
+ let stopped=false,opened=0,total=0,running=false;
  const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
  function update(){counter.textContent=opened+' / '+total;bar.style.width=(total?opened/total*100:0)+'%';}
- function isYouTube(u){return /(^|\.)youtube\.com$/.test(u.hostname)||u.hostname==='youtu.be'||u.hostname==='www.youtube-nocookie.com';}
- start.addEventListener('click',async()=>{
+ function validYouTube(u){return /(^|\.)youtube\.com$/.test(u.hostname)||u.hostname==='youtu.be'||u.hostname==='www.youtube-nocookie.com';}
+ async function openTabs(n){
+   if(running)return;
    let target;
    try{target=new URL(urlInput.value.trim());}catch{status.textContent='اكتب رابط فيديو صحيحًا.';return;}
-   if(!['http:','https:'].includes(target.protocol)||!isYouTube(target.hostname)){status.textContent='أدخل رابط فيديو من YouTube أو youtu.be.';return;}
-   const n=Number.parseInt(countInput.value,10);
+   if(!['http:','https:'].includes(target.protocol)||!validYouTube(target)){status.textContent='أدخل رابط فيديو من YouTube أو youtu.be.';return;}
    if(!Number.isInteger(n)||n<1||n>20){status.textContent='اختَر عددًا من 1 إلى 20.';return;}
-   const first=new URL(target.href);first.searchParams.set('autoplay','1');
-   total=n;opened=0;stopped=false;update();start.disabled=true;
+   running=true;total=n;opened=0;stopped=false;update();start.disabled=true;openTen.disabled=true;
    for(let i=0;i<n;i++){
      if(stopped)break;
-     const tabUrl=i===0?first.href:target.href;
-     const tab=window.open(tabUrl,'_blank');
+     const tab=window.open(target.href,'_blank');
      if(!tab){status.textContent='المتصفح منع فتح تبويب. اسمح بالنوافذ المنبثقة ثم جرّب مرة أخرى.';break;}
-     opened++;update();
-     status.textContent=i===0?'تم فتح التبويب الأول مع طلب التشغيل التلقائي.':'تم فتح '+opened+' من '+total+' تبويب؛ التشغيل التلقائي للأول فقط.';
+     opened++;update();status.textContent='تم فتح '+opened+' من '+total+' تبويب من دون تشغيل تلقائي.';
      await sleep(500);
    }
-   start.disabled=false;
-   if(!stopped&&opened===total)status.textContent='اكتمل فتح '+opened+' تبويب. التشغيل التلقائي مطلوب في الأول فقط وقد يخضع لسياسة المتصفح.';
- });
- stop.addEventListener('click',()=>{stopped=true;start.disabled=false;status.textContent='تم إيقاف الفتح عند '+opened+' تبويب.';});
+   running=false;start.disabled=false;openTen.disabled=false;
+   if(!stopped&&opened===total)status.textContent='اكتمل فتح '+opened+' تبويب. الفيديوهات لم يبدأ تشغيلها تلقائيًا.';
+ }
+ start.addEventListener('click',()=>openTabs(Number.parseInt(countInput.value,10)));
+ openTen.addEventListener('click',()=>{countInput.value='10';openTabs(10);});
+ stop.addEventListener('click',()=>{stopped=true;status.textContent='تم طلب إيقاف الفتح عند '+opened+' تبويب.';});
  update();
 })();
 </script></body></html>
