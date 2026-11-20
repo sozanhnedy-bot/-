@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827"><title>لوحة الاختبارات | World News</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#131e30;--line:#26364d;--muted:#91a2b9;--text:#edf3fb;--accent:#67d5c2;--blue:#79a9ff;--danger:#ff8585}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#1b3150 0,transparent 34%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1180px;margin:auto;padding:28px 20px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:28px}.brand{font-weight:800;font-size:20px}.brand small{display:block;color:var(--muted);font-size:12px;font-weight:500}.pill{border:1px solid var(--line);border-radius:99px;padding:7px 13px;color:var(--muted);font-size:13px}
+h1{font-size:clamp(26px,4vw,38px);margin:0 0 8px}.sub{color:var(--muted);margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}.card,.panel{background:linear-gradient(145deg,#17253a,#111b2b);border:1px solid var(--line);border-radius:18px;padding:19px}.metric{font-size:30px;font-weight:800;direction:ltr;text-align:right}.label{color:var(--muted);font-size:13px}.layout{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.panel h2{font-size:18px;margin:0 0 16px}.field{margin:13px 0}.field label{display:block;color:#c6d2e2;font-size:13px;margin-bottom:7px}input,select{width:100%;background:#0b1423;border:1px solid #30435d;border-radius:10px;padding:12px;color:var(--text);font:inherit;outline:none}input:focus,select:focus{border-color:var(--blue)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}button{border:0;border-radius:10px;padding:11px 17px;font:700 14px system-ui;cursor:pointer;background:var(--accent);color:#09201e}button.secondary{background:#243650;color:var(--text);border:1px solid #39516f}button:disabled{opacity:.5;cursor:not-allowed}.notice{border:1px solid #6c5731;background:#2a2418;color:#f2d9a6;border-radius:12px;padding:12px 14px;font-size:13px;margin:18px 0}.status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:#e7b65e}.bar{height:9px;background:#26364d;border-radius:99px;overflow:hidden;margin:12px 0}.bar span{display:block;width:0;height:100%;background:var(--accent);transition:width .3s}.log{min-height:135px;max-height:220px;overflow:auto;background:#09111d;border:1px solid var(--line);border-radius:12px;padding:12px;font:12px/1.8 ui-monospace,monospace;color:#b9c8dc}.log p{margin:0}.muted{color:var(--muted)}footer{color:var(--muted);font-size:12px;margin-top:22px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}}@media(max-width:480px){.wrap{padding:18px 13px}.row{grid-template-columns:1fr}.metric{font-size:25px}}
+</style></head>
+<body><main class="wrap">
+<header class="top"><div class="brand">World News <small>مركز إدارة اختبارات الويب</small></div><span class="pill">واجهة تجريبية · لا يوجد اتصال بسيرفر</span></header>
+<h1>لوحة التحكم</h1><p class="sub">إعداد ومراقبة دفعات اختبار صفحات الويب على نطاق تملكه أو لديك تصريح باختباره.</p>
+<div class="grid">
+<div class="card"><div class="label">إجمالي مهام الاختبار</div><div class="metric" id="mTotal">500</div></div>
+<div class="card"><div class="label">حجم الدفعة</div><div class="metric" id="mBatch">10</div></div>
+<div class="card"><div class="label">الفاصل بين الدفعات</div><div class="metric" id="mInterval">3 <small style="font-size:14px">دقيقة</small></div></div>
+<div class="card"><div class="label">حالة التشغيل</div><div class="metric" id="mState" style="font-size:21px">متوقف</div></div>
+</div>
+<div class="layout">
+<section class="panel"><h2>إعدادات الاختبار</h2>
+<div class="field"><label for="target">عنوان صفحة الاختبار (URL) — استخدم نقطة اختبار تملكها</label><input id="target" type="url" placeholder="https://example.com/health-check"></div>
+<div class="row"><div class="field"><label for="total">عدد مهام الاختبار</label><input id="total" type="number" min="1" max="500" value="500"></div><div class="field"><label for="batch">المهام في كل دفعة</label><input id="batch" type="number" min="1" max="10" value="10"></div></div>
+<div class="row"><div class="field"><label for="interval">الفاصل بين الدفعات (دقيقة)</label><input id="interval" type="number" min="1" max="60" value="3"></div><div class="field"><label for="duration">مدة الاختبار (دقيقة)</label><input id="duration" type="number" min="1" max="120" value="5"></div></div>
+<div class="notice">هذه الصفحة واجهة أمامية تجريبية فقط. لا تنشئ 500 WebView ولا ترسل طلبات فعلية، ولا تتصل بسيرفر حتى تتم إضافة API آمن ومصادقة وصلاحيات وحدود تحميل.</div>
+<div class="actions"><button id="start">بدء محاكاة الجدولة</button><button class="secondary" id="stop" disabled>إيقاف</button><button class="secondary" id="reset">إعادة ضبط</button></div>
+</section>
+<aside class="panel"><h2>حالة التنفيذ</h2><div class="status"><span class="dot" id="dot"></span><span id="statusText">بانتظار الإعداد</span></div><div class="bar"><span id="progress"></span></div><div class="row"><div><div class="label">الدفعات المنفذة</div><div class="metric" id="done">0</div></div><div><div class="label">المهام المحاكاة</div><div class="metric" id="tasks">0</div></div></div><h2 style="margin-top:22px">سجل الأحداث</h2><div class="log" id="log" aria-live="polite"><p>جاهز — لم يبدأ أي اختبار.</p></div></aside>
+</div>
+<footer>ملاحظة: التشغيل الحقيقي يتطلب خدمة خلفية لإدارة طوابير الاختبار ومراقبتها. لا تستخدم الصفحة لرفع مشاهدات أو تفاعلات مصطنعة على منصات الفيديو.</footer>
+</main>
+<script>
+(()=>{const $=id=>document.getElementById(id);let timer=null,batches=0,completed=0,stopped=true;
+function log(s){const p=document.createElement('p');p.textContent=new Date().toLocaleTimeString('ar-EG')+' — '+s;$('log').prepend(p)}
+function sync(){const total=+$('total').value||500,batch=+$('batch').value||10,interval=+$('interval').value||3;$('mTotal').textContent=total;$('mBatch').textContent=batch;$('mInterval').innerHTML=interval+' <small style="font-size:14px">دقيقة</small>'}
+['total','batch','interval'].forEach(id=>$(id).addEventListener('input',sync));
+function stop(){if(timer)clearInterval(timer);timer=null;stopped=true;$('start').disabled=false;$('stop').disabled=true;$('mState').textContent='متوقف';$('statusText').textContent='تم إيقاف المحاكاة';$('dot').style.background='#e7b65e';log('توقفت المحاكاة.')}
+$('start').onclick=()=>{const url=$('target').value.trim(),total=+$('total').value,batch=+$('batch').value,interval=+$('interval').value,duration=+$('duration').value;if(!url||!/^https?:\/\//i.test(url)){alert('أدخل رابط HTTPS/HTTP لصفحة اختبار تملكها.');return}if(!(total>0&&total<=500&&batch>0&&batch<=10&&interval>0&&duration>0)){alert('راجع القيم: الحد الأقصى 500 مهمة و10 مهام في الدفعة.');return}if(!stopped)return;stopped=false;batches=0;completed=0;$('log').innerHTML='';$('start').disabled=true;$('stop').disabled=false;$('mState').textContent='محاكاة';$('statusText').textContent='محاكاة الجدولة محليًا — لا توجد طلبات شبكة';$('dot').style.background='var(--accent)';log('بدأت محاكاة الجدولة للرابط: '+url);const run=()=>{if(stopped)return;const count=Math.min(batch,total-completed);if(count<=0){stop();$('statusText').textContent='اكتملت المحاكاة';log('اكتملت جميع المهام المحاكاة.');return}batches++;completed+=count;$('done').textContent=batches;$('tasks').textContent=completed;$('progress').style.width=(completed/total*100)+'%';log('دفعة '+batches+': '+count+' مهام محاكاة (الإجمالي '+completed+'/'+total+').');if(completed>=total){stop();$('statusText').textContent='اكتملت المحاكاة';log('اكتملت جميع المهام المحاكاة.')}};run();timer=setInterval(run,Math.max(1,interval)*1000);setTimeout(()=>{if(!stopped){stop();$('statusText').textContent='انتهت مدة المحاكاة المحددة';log('انتهت مدة الاختبار المحددة.')}},duration*1000)};
+$('stop').onclick=stop;$('reset').onclick=()=>{stop();batches=completed=0;$('done').textContent='0';$('tasks').textContent='0';$('progress').style.width='0';$('mState').textContent='متوقف';$('statusText').textContent='بانتظار الإعداد';$('log').innerHTML='<p>تمت إعادة الضبط.</p>'};sync();
+})();
+</script></body></html>
