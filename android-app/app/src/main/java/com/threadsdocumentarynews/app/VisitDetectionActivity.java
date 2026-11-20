@@ -262,6 +262,11 @@ public final class VisitDetectionActivity extends Activity {
         results.setOrientation(LinearLayout.VERTICAL);
         root.addView(results);
         resultViews.add(results);
+        Button openHtmlController = button("فتح صفحات HTML المحلية (001–500)");
+        openHtmlController.setOnClickListener(v ->
+                startActivity(new Intent(this, HtmlPageControllerActivity.class)));
+        root.addView(openHtmlController);
+
         setContentView(scroll);
     }
 
