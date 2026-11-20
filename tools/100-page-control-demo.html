@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لوحة التحكم — 100 صفحة محلية</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#142238;--line:#2b405c;--blue:#287df0;--muted:#a8bad1;--green:#28c995;--red:#ff7182;--amber:#f2bd61}
+*{box-sizing:border-box}body{margin:0;padding:18px;background:var(--bg);color:#edf4ff;font:16px system-ui,Arial}main{max-width:1050px;margin:auto}h1{font-size:24px;margin:4px 0}.muted{color:var(--muted);line-height:1.7;font-size:14px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:17px;margin:15px 0}.notice{border-right:4px solid var(--amber);background:#352d1d;padding:10px;border-radius:8px;color:#f6dfb2;font-size:13px;line-height:1.7}label{display:block;margin:12px 0 6px;color:#c3d2e5;font-size:14px}input{width:100%;max-width:220px;padding:11px;background:#091525;border:1px solid var(--line);border-radius:9px;color:white;font-size:16px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}button{border:0;border-radius:9px;padding:11px 17px;background:var(--blue);color:white;font-weight:700;font-size:15px}button.secondary{background:#334963}button.stop{background:#783747}button:disabled{opacity:.45}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.stat{background:#0b1829;border:1px solid var(--line);border-radius:10px;padding:12px}.stat strong{display:block;font-size:23px;margin-top:4px}.pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:8px}.page{background:#0b1829;border:1px solid var(--line);padding:10px;border-radius:9px}.page b{display:block;margin-bottom:6px}.state{font-size:13px}.idle{color:var(--muted)}.active{color:var(--amber)}.done{color:var(--green)}.stopped{color:var(--red)}@media(max-width:560px){body{padding:11px}.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:21px}}
+</style></head>
+<body><main>
+<header><div class="muted">أداة عرض وتجربة محلية</div><h1>لوحة التحكم — 100 صفحة</h1><p class="muted">تجربة واجهة التحكم في 100 صفحة داخلية تجريبية، مع متابعة الحالة والتحكم في التشغيل.</p></header>
+<section class="panel">
+<div class="notice">هذه محاكاة محلية داخل الصفحة نفسها: لا تفتح 100 تبويب أو متصفحًا خارجيًا، ولا ترسل طلبات إلى مواقع أو تشغّل فيديوهات أو تنشئ زيارات حقيقية. يمكن ربط واجهة مشابهة بتطبيق Android بعد توفير ملفات Android الفعلية.</div>
+<label for="limit">عدد الصفحات الداخلية (1 إلى 100)</label><input id="limit" type="number" min="1" max="100" value="100">
+<div class="actions"><button id="start">تشغيل</button><button id="pause" class="secondary" disabled>إيقاف مؤقت</button><button id="resume" class="secondary" disabled>استكمال</button><button id="stop" class="stop" disabled>إيقاف نهائي</button></div>
+<p id="message" class="muted" aria-live="polite">جاهز — لم يبدأ التشغيل.</p>
+</section>
+<section class="panel"><h2>ملخص الحالة</h2><div class="stats">
+<div class="stat"><span class="muted">الإجمالي</span><strong id="total">100</strong></div>
+<div class="stat"><span class="muted">قيد التشغيل</span><strong id="running">0</strong></div>
+<div class="stat"><span class="muted">اكتمل</span><strong id="complete">0</strong></div>
+<div class="stat"><span class="muted">متوقف</span><strong id="halted">100</strong></div>
+</div></section>
+<section class="panel"><h2>الصفحات</h2><div id="pages" class="pages"></div></section>
+</main>
+<script>
+const el=id=>document.getElementById(id);let states=[],timer=null,paused=false,finished=false,index=0;
+function render(){const total=states.length,complete=states.filter(x=>x==='اكتملت').length,running=states.filter(x=>x==='قيد التشغيل').length;el('total').textContent=total;el('running').textContent=running;el('complete').textContent=complete;el('halted').textContent=total-complete-running;el('pages').innerHTML='';states.forEach((s,i)=>{const d=document.createElement('div');d.className='page';const b=document.createElement('b');b.textContent='صفحة '+(i+1);const span=document.createElement('span');span.className='state '+(s==='اكتملت'?'done':s==='قيد التشغيل'?'active':s==='أُوقفت'?'stopped':'idle');span.textContent=s;d.append(b,span);el('pages').append(d);});}
+function stopTimer(){if(timer){clearInterval(timer);timer=null;}}
+function tick(){if(paused||finished)return;if(index>=states.length){stopTimer();finished=true;el('message').textContent='اكتملت المحاكاة المحلية لكل الصفحات.';el('start').disabled=false;el('pause').disabled=true;el('resume').disabled=true;el('stop').disabled=true;return;}states[index]='قيد التشغيل';render();states[index]='اكتملت';index++;render();if(index>=states.length){stopTimer();finished=true;el('message').textContent='اكتملت المحاكاة المحلية لكل الصفحات.';el('start').disabled=false;el('pause').disabled=true;el('resume').disabled=true;el('stop').disabled=true;}}
+function begin(){stopTimer();const n=Math.max(1,Math.min(100,Number(el('limit').value)||1));states=Array(n).fill('بانتظار التشغيل');index=0;paused=false;finished=false;el('start').disabled=true;el('pause').disabled=false;el('resume').disabled=true;el('stop').disabled=false;el('message').textContent='المحاكاة تعمل محليًا؛ لا يوجد اتصال بمواقع خارجية.';render();timer=setInterval(tick,180);}
+el('start').onclick=begin;
+el('pause').onclick=()=>{if(finished)return;paused=true;stopTimer();el('pause').disabled=true;el('resume').disabled=false;el('message').textContent='تم إيقاف المحاكاة مؤقتًا.';};
+el('resume').onclick=()=>{if(finished)return;paused=false;el('pause').disabled=false;el('resume').disabled=true;el('message').textContent='تم استكمال المحاكاة.';timer=setInterval(tick,180);};
+el('stop').onclick=()=>{stopTimer();finished=true;paused=false;states=states.map(s=>s==='اكتملت'?s:'أُوقفت');render();el('message').textContent='تم الإيقاف النهائي للمحاكاة.';el('start').disabled=false;el('pause').disabled=true;el('resume').disabled=true;el('stop').disabled=true;};
+states=Array(100).fill('بانتظار التشغيل');render();
+</script></body></html>
