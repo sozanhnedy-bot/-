@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-20T20:32:37.460412Z",
+  "generated_at": "2026-11-20T20:35:56.349920Z",
   "disclaimer": "ترندات X من مصدر عام خارجي، وGoogle Trends مؤشر اهتمام بحثي، ومنشورات فيسبوك من الصفحات المصرح بها فقط. لا تمثل هذه البيانات وصولًا كاملًا أو رسميًا لكل المنصات.",
   "sources_checked": [
     "Google Trends RSS: مصر",
@@ -18,42 +18,6 @@
     "tiktok": "not_connected_requires_approved_access"
   },
   "items": [
-    {
-      "title": "رونالدو",
-      "region": "السعودية",
-      "rank": 2,
-      "score": 75,
-      "priority": "strong",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 2,
-      "corroborating_news_items": 2,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
     {
       "title": "النصر",
       "region": "مصر",
@@ -85,7 +49,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -185,7 +149,43 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "رونالدو",
+      "region": "السعودية",
+      "rank": 2,
+      "score": 59,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 2,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        },
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -216,13 +216,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "كومان",
+      "title": "الشوط الاول",
       "region": "السعودية",
       "rank": 3,
       "score": 58,
@@ -247,7 +247,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -265,7 +265,7 @@
       "platforms": [
         "x_trends24_public"
       ],
-      "source_count": 2,
+      "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/egypt/",
@@ -275,21 +275,16 @@
           "platform": "x_trends24_public",
           "name": "Trends24 (public X trends)",
           "url": "https://trends24.in/egypt/"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الشوط الاول",
+      "title": "كومان",
       "region": "السعودية",
       "rank": 4,
       "score": 57,
@@ -314,7 +309,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -345,13 +340,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الشوط الثاني",
+      "title": "#Haifa_Wehbe",
       "region": "السعودية",
       "rank": 5,
       "score": 56,
@@ -363,7 +358,7 @@
       "platforms": [
         "x_trends24_public"
       ],
-      "source_count": 2,
+      "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/saudi-arabia/",
@@ -372,16 +367,11 @@
         {
           "platform": "x_trends24_public",
           "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
           "url": "https://trends24.in/saudi-arabia/"
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -490,7 +480,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "apple stock price",
+      "title": "nolan gorman",
       "region": "العالم",
       "rank": 1,
       "score": 55,
@@ -551,13 +541,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "زياد",
+      "title": "الشوط الثاني",
       "region": "السعودية",
       "rank": 6,
       "score": 55,
@@ -569,7 +559,7 @@
       "platforms": [
         "x_trends24_public"
       ],
-      "source_count": 1,
+      "source_count": 2,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/saudi-arabia/",
@@ -578,11 +568,16 @@
         {
           "platform": "x_trends24_public",
           "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        },
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
           "url": "https://trends24.in/saudi-arabia/"
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -712,7 +707,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الحمدان",
+      "title": "كوستا",
       "region": "السعودية",
       "rank": 7,
       "score": 54,
@@ -737,7 +732,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -841,7 +836,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "nolan gorman",
+      "title": "apple stock price",
       "region": "العالم",
       "rank": 3,
       "score": 53,
@@ -897,13 +892,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "كوستا",
+      "title": "جواو",
       "region": "السعودية",
       "rank": 8,
       "score": 53,
@@ -928,7 +923,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1031,13 +1026,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "بينتو",
+      "title": "الحمدان",
       "region": "السعودية",
       "rank": 9,
       "score": 52,
@@ -1062,7 +1057,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1161,7 +1156,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "virginia tech basketball",
+      "title": "kathy hochul food additive veto",
       "region": "العالم",
       "rank": 5,
       "score": 51,
@@ -1222,13 +1217,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "جواو",
+      "title": "الحكم الاجنبي",
       "region": "السعودية",
       "rank": 10,
       "score": 51,
@@ -1253,7 +1248,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1321,7 +1316,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "kathy hochul food additive veto",
+      "title": "tomasz kosowski",
       "region": "العالم",
       "rank": 6,
       "score": 50,
@@ -1377,38 +1372,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "زكريا",
-      "region": "السعودية",
-      "rank": 11,
-      "score": 50,
-      "priority": "medium",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1507,7 +1471,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "tomasz kosowski",
+      "title": "northwestern basketball",
       "region": "العالم",
       "rank": 7,
       "score": 49,
@@ -1563,13 +1527,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الغاء الهدف",
+      "title": "البليهي",
       "region": "السعودية",
       "rank": 12,
       "score": 49,
@@ -1594,7 +1558,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1687,13 +1651,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الخيبري",
+      "title": "الحكم المحلي",
       "region": "السعودية",
       "rank": 13,
       "score": 48,
@@ -1718,7 +1682,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1842,13 +1806,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الدون",
+      "title": "زياد",
       "region": "السعودية",
       "rank": 14,
       "score": 47,
@@ -1873,7 +1837,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -1941,7 +1905,7 @@
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "mikey moore",
+      "title": "medvedev",
       "region": "العالم",
       "rank": 10,
       "score": 46,
@@ -1997,7 +1961,38 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "بينتو",
+      "region": "السعودية",
+      "rank": 15,
+      "score": 46,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2028,13 +2023,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ميندي",
+      "title": "الخيبري",
       "region": "السعودية",
       "rank": 16,
       "score": 45,
@@ -2046,7 +2041,7 @@
       "platforms": [
         "x_trends24_public"
       ],
-      "source_count": 2,
+      "source_count": 1,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/saudi-arabia/",
@@ -2055,16 +2050,11 @@
         {
           "platform": "x_trends24_public",
           "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/egypt/"
-        },
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
           "url": "https://trends24.in/saudi-arabia/"
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2095,13 +2085,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "قول توني",
+      "title": "سري الليل",
       "region": "السعودية",
       "rank": 17,
       "score": 44,
@@ -2126,7 +2116,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2157,13 +2147,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "سرا الليل",
+      "title": "زكريا",
       "region": "السعودية",
       "rank": 18,
       "score": 43,
@@ -2188,7 +2178,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2219,13 +2209,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "ريان حامد",
+      "title": "ميندي",
       "region": "السعودية",
       "rank": 19,
       "score": 42,
@@ -2237,7 +2227,7 @@
       "platforms": [
         "x_trends24_public"
       ],
-      "source_count": 1,
+      "source_count": 2,
       "corroborating_news_items": 0,
       "source_name": "Trends24 (public X trends)",
       "source_url": "https://trends24.in/saudi-arabia/",
@@ -2246,11 +2236,16 @@
         {
           "platform": "x_trends24_public",
           "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/egypt/"
+        },
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
           "url": "https://trends24.in/saudi-arabia/"
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2281,7 +2276,38 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
+      "media": [],
+      "rights_status": "not_assessed",
+      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
+    },
+    {
+      "title": "الغاء الهدف",
+      "region": "السعودية",
+      "rank": 20,
+      "score": 41,
+      "priority": "medium",
+      "signal": "x_trends24_public",
+      "signals": [
+        "x_trends24_public"
+      ],
+      "platforms": [
+        "x_trends24_public"
+      ],
+      "source_count": 1,
+      "corroborating_news_items": 0,
+      "source_name": "Trends24 (public X trends)",
+      "source_url": "https://trends24.in/saudi-arabia/",
+      "url": "https://trends24.in/saudi-arabia/",
+      "source_links": [
+        {
+          "platform": "x_trends24_public",
+          "name": "Trends24 (public X trends)",
+          "url": "https://trends24.in/saudi-arabia/"
+        }
+      ],
+      "published_at": null,
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2312,13 +2338,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "كرستيانو",
+      "title": "قول توني",
       "region": "السعودية",
       "rank": 21,
       "score": 40,
@@ -2343,7 +2369,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2374,13 +2400,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "نايف مسعود",
+      "title": "الدون",
       "region": "السعودية",
       "rank": 22,
       "score": 39,
@@ -2405,7 +2431,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2436,13 +2462,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الحكم الاجنبي",
+      "title": "الموسم الماضي",
       "region": "السعودية",
       "rank": 23,
       "score": 38,
@@ -2467,7 +2493,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2498,13 +2524,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الهدف الثالث",
+      "title": "رجل المباراه",
       "region": "السعودية",
       "rank": 24,
       "score": 37,
@@ -2529,7 +2555,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2560,7 +2586,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2591,13 +2617,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "العمري",
+      "title": "المباريات الكبيره",
       "region": "السعودية",
       "rank": 25,
       "score": 36,
@@ -2622,13 +2648,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "محمد بكر",
+      "title": "العمري",
       "region": "السعودية",
       "rank": 26,
       "score": 35,
@@ -2653,7 +2679,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2684,13 +2710,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الحكم المحلي",
+      "title": "كرستيانو",
       "region": "السعودية",
       "rank": 27,
       "score": 34,
@@ -2715,7 +2741,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2746,13 +2772,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الهدف الملغي",
+      "title": "نادي صغير",
       "region": "السعودية",
       "rank": 28,
       "score": 33,
@@ -2777,7 +2803,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2808,13 +2834,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "المباريات الكبيره",
+      "title": "نواف التميمي",
       "region": "السعودية",
       "rank": 29,
       "score": 32,
@@ -2839,7 +2865,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2870,13 +2896,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "توني الثاني",
+      "title": "محمد بكر",
       "region": "السعودية",
       "rank": 30,
       "score": 31,
@@ -2901,7 +2927,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -2932,13 +2958,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "عبدالرحمن المطيري",
+      "title": "معلم الشاورما",
       "region": "السعودية",
       "rank": 31,
       "score": 30,
@@ -2963,38 +2989,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
-      "media": [],
-      "rights_status": "not_assessed",
-      "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
-    },
-    {
-      "title": "علي الحارس",
-      "region": "السعودية",
-      "rank": 32,
-      "score": 29,
-      "priority": "low",
-      "signal": "x_trends24_public",
-      "signals": [
-        "x_trends24_public"
-      ],
-      "platforms": [
-        "x_trends24_public"
-      ],
-      "source_count": 1,
-      "corroborating_news_items": 0,
-      "source_name": "Trends24 (public X trends)",
-      "source_url": "https://trends24.in/saudi-arabia/",
-      "url": "https://trends24.in/saudi-arabia/",
-      "source_links": [
-        {
-          "platform": "x_trends24_public",
-          "name": "Trends24 (public X trends)",
-          "url": "https://trends24.in/saudi-arabia/"
-        }
-      ],
-      "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3025,13 +3020,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "الهدف الاول",
+      "title": "المدرب السباك",
       "region": "السعودية",
       "rank": 33,
       "score": 28,
@@ -3056,7 +3051,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
@@ -3087,13 +3082,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.000547Z",
+      "captured_at": "2026-11-20T20:35:50.727771Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "دوري جورجينا",
+      "title": "الهدف الثالث",
       "region": "السعودية",
       "rank": 34,
       "score": 27,
@@ -3118,13 +3113,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "المدرب السباك",
+      "title": "#ديميرال",
       "region": "السعودية",
       "rank": 35,
       "score": 26,
@@ -3149,13 +3144,13 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
     },
     {
-      "title": "مارتينيز",
+      "title": "علي الفوز",
       "region": "السعودية",
       "rank": 36,
       "score": 25,
@@ -3180,7 +3175,7 @@
         }
       ],
       "published_at": null,
-      "captured_at": "2026-11-20T20:32:32.267885Z",
+      "captured_at": "2026-11-20T20:35:51.016142Z",
       "media": [],
       "rights_status": "not_assessed",
       "assessment_note": "تجميع تقريبي حسب تشابه الكلمات؛ التقييم ترتيب وإشارات متاحة وليس حجم بحث أو توقع مشاهدات."
