@@ -33,6 +33,8 @@ public final class PageManagerActivity extends Activity {
     private volatile boolean batchPaused;
     private volatile boolean batchStop;
     private volatile boolean batchRunning;
+    private volatile int batchStart;
+    private volatile int batchEnd;
     private Thread batchThread;
 
     @Override protected void onCreate(Bundle state) {
