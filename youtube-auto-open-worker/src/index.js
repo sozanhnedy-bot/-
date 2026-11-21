@@ -1,71 +1,16 @@
+const PAGE = "<!doctype html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>YouTube Auto Open</title>\n<style>\n:root{color-scheme:dark;--bg:#0b1220;--panel:#14243a;--line:#2b405b;--text:#edf4ff;--muted:#9aabc0;--accent:#2dd4c2}\n*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px;background:radial-gradient(ellipse at 80% -10%,#244768 0%,transparent 45%),linear-gradient(180deg,#0b1220,#0b0f1a);color:var(--text);font-family:system-ui,sans-serif;line-height:1.65}.wrap{max-width:850px;margin:32px auto;padding:28px;background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:0 20px 40px #0006}h1{text-align:center;color:var(--accent);margin:0 0 6px}.sub{text-align:center;color:var(--muted);margin:0 0 24px}.panel{background:#0b1728;border:1px solid var(--line);border-radius:16px;padding:22px}label{display:block;color:var(--muted);margin:12px 0 6px}input{width:100%;padding:13px;border:2px solid var(--line);border-radius:11px;background:#0b1728;color:var(--text);font-size:16px}input:focus{outline:none;border-color:var(--accent)}.row{display:flex;gap:10px;align-items:end;flex-wrap:wrap}.count{flex:1;min-width:150px}button{padding:13px 18px;border:1px solid var(--line);border-radius:12px;background:#203752;color:var(--text);font-weight:700;cursor:pointer}button.primary{background:var(--accent);color:#081521;border-color:var(--accent)}button:disabled{opacity:.5;cursor:not-allowed}.counter{text-align:center;font-size:28px;font-weight:800;color:var(--accent);margin:18px 0 8px;direction:ltr}.progress{height:8px;background:#07101d;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .2s}.status{text-align:center;min-height:28px}.note{font-size:13px;color:var(--muted);margin-top:16px}\n</style>\n</head>\n<body>\n<main class=\"wrap\">\n<h1>YouTube Auto Open</h1>\n<p class=\"sub\">افتح رابط الفيديو في عدد التبويبات اللي تحدده</p>\n<section class=\"panel\">\n<label for=\"videoUrl\">رابط فيديو يوتيوب</label>\n<input id=\"videoUrl\" type=\"url\" placeholder=\"https://www.youtube.com/watch?v=...\" autocomplete=\"url\">\n<div class=\"row\">\n<div class=\"count\"><label for=\"tabCount\">عدد التبويبات (1–100)</label><input id=\"tabCount\" type=\"number\" min=\"1\" max=\"100\" value=\"5\"></div>\n<button class=\"primary\" id=\"start\">بدء الفتح</button>\n<button id=\"stop\" disabled>إيقاف</button>\n</div>\n<div class=\"counter\" id=\"counter\">0 / 0</div>\n<div class=\"progress\"><div class=\"fill\" id=\"bar\"></div></div>\n<p class=\"status\" id=\"status\" aria-live=\"polite\">جاهز. أدخل الرابط والعدد المطلوب.</p>\n<p class=\"note\">ملاحظة: المتصفح قد يمنع فتح عدد كبير من التبويبات. اسمح بالنوافذ المنبثقة لهذا الموقع عند ظهور التنبيه. لا يمكن ضمان التشغيل التلقائي بسبب سياسات YouTube والمتصفح.</p>\n</section>\n</main>\n<script>\n(() => {\n const urlInput=document.getElementById('videoUrl');\n const countInput=document.getElementById('tabCount');\n const startBtn=document.getElementById('start');\n const stopBtn=document.getElementById('stop');\n const status=document.getElementById('status');\n const counter=document.getElementById('counter');\n const bar=document.getElementById('bar');\n let stopped=false,opened=0,total=0,running=false;\n const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));\n function update(){counter.textContent=opened+' / '+total;bar.style.width=(total?opened/total*100:0)+'%';}\n function validYouTube(value){\n  try{const u=new URL(value);return ['youtube.com','www.youtube.com','m.youtube.com','youtu.be','www.youtube-nocookie.com'].includes(u.hostname)&&['http:','https:'].includes(u.protocol);}\n  catch{return false;}\n }\n async function start(){\n  if(running)return;\n  const video=urlInput.value.trim();\n  const amount=Number(countInput.value);\n  if(!validYouTube(video)){status.textContent='أدخل رابط يوتيوب صحيحًا.';return;}\n  if(!Number.isInteger(amount)||amount<1||amount>100){status.textContent='العدد لازم يكون من 1 إلى 100.';return;}\n  running=true;stopped=false;opened=0;total=amount;update();\n  startBtn.disabled=true;stopBtn.disabled=false;\n  for(let i=0;i<amount;i++){\n   if(stopped)break;\n   const tab=window.open(video,'_blank');\n   if(!tab){status.textContent='المتصفح منع فتح تبويب جديد. اسمح بالنوافذ المنبثقة ثم أعد المحاولة.';break;}\n   opened++;update();status.textContent='تم فتح '+opened+' من '+total+' تبويب.';\n   await sleep(600);\n  }\n  running=false;startBtn.disabled=false;stopBtn.disabled=true;\n  if(stopped)status.textContent='تم الإيقاف بعد فتح '+opened+' تبويب.';\n  else if(opened===total)status.textContent='اكتمل فتح '+opened+' تبويب.';\n }\n startBtn.addEventListener('click',start);\n stopBtn.addEventListener('click',()=>{stopped=true;stopBtn.disabled=true;});\n update();\n})();\n</script>\n</body>\n</html>";
+
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request) {
     const url = new URL(request.url);
-    // الصفحة الرئيسية (اللي هيظهر للمستخدم)
-    if (url.pathname === "/") {
-      return new Response(
-        `<!DOCTYPE html>
-        <html lang="ar">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Youtube Auto Open</title>
-          <style>
-            body { font-family: Arial; text-align: center; margin: 50px; }
-            input, button { padding: 12px; font-size: 18px; margin: 10px; }
-            #status { margin-top: 20px; font-size: 20px; }
-          </style>
-        </head>
-        <body>
-          <h1>يوتيوب تبويبات أوتو</h1>
-          <input type="text" id="urlInput" placeholder="رابط الفيديو" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-          <input type="number" id="countInput" placeholder="عدد التبويبات" value="10" min="1" max="100">
-          <button onclick="startAutoOpen()">تشغيل أوتوماتيك</button>
-          <button onclick="stopAutoOpen()">إيقاف</button>
-          <div id="status">جاهز</div>
-          <script>
-            let interval;
-            async function startAutoOpen() {
-              const url = document.getElementById('urlInput').value;
-              const count = parseInt(document.getElementById('countInput').value);
-              document.getElementById('status').innerText = "بدأت...";
-              interval = setInterval(async () => {
-                if (count <= 0) { clearInterval(interval); return; }
-                try {
-                  const res = await fetch(window.location.origin + "/open?url=" + encodeURIComponent(url));
-                  document.getElementById('status').innerText = await res.text();
-                } catch(e) {}
-                count--;
-              }, 600);
-            }
-            function stopAutoOpen() {
-              clearInterval(interval);
-              document.getElementById('status').innerText = "موقف";
-            }
-          </script>
-        </body>
-        </html>`,
-        { headers: { "Content-Type": "text/html; charset=utf-8" } }
-      );
+    if (url.pathname !== "/") {
+      return new Response("Not Found", { status: 404 });
     }
-    // نهاية الطريق – يفتح التبويب في الخلفية (الجزء السحابي)
-    if (url.pathname === "/open") {
-      const videoUrl = url.searchParams.get("url");
-      if (!videoUrl) return new Response("No URL", { status: 400 });
-      // إعدادات لإجبار المتصفح يفتح في الخلفية بدون pop-up blocker
-      const openWindow = (url) => {
-        const newWin = window.open(url, "_blank", "popup=1,location=1,status=1,toolbar=0,menubar=0,scrollbars=1,resizable=1,width=600,height=400");
-        if (!newWin) {
-          return "تم إيقاف الـ pop-up blocker";
-        }
-        newWin.blur();
-        setTimeout(() => newWin.close(), 100); // يغلق فوراً عشان التبويب يفتح في الخلفية
-        return "تم فتح التبويب بنجاح ✅";
-      };
-      // فتح التبويب + إضافة autoplay تلقائي
-      openWindow(videoUrl + "&autoplay=1");
-      return new Response("تم فتح التبويب بنجاح ✅");
-    }
-    return new Response("Not Found", { status: 404 });
+    return new Response(PAGE, {
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "no-store"
+      }
+    });
   }
 };
