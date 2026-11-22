@@ -35,12 +35,14 @@ The test path should:
 - [x] Inspected the current entry file and confirmed the local `window.open` loop.
 - [x] Confirmed the existing `BROWSER` binding is configured on the deployed Worker.
 - [ ] Inspect the project's dependency/configuration files before adding Puppeteer.
-- [ ] Add and test an isolated QA endpoint using permitted non-YouTube test URLs.
-- [ ] Review costs, concurrency limits, authentication, and cleanup.
-- [ ] Only after review, decide whether to integrate any safe QA functionality.
+- [x] Add an isolated QA Worker project in `browser-qa-worker/`, with token authentication and an `example.com`-only URL allowlist.
+- [x] Verify Browser Run Quick Action against `https://example.com/` (HTTP 200, title `Example Domain`).
+- [ ] Run the new Worker-bound Playwright script end-to-end; the first direct custom-script API attempt timed out after 30 seconds, so this remains unverified.
+- [x] Add server-side bearer-token authentication, single-page execution, redirect blocking, and browser cleanup in `finally`.
+- [ ] Review account-specific costs and limits before deployment.
+- [ ] Configure the `QA_TOKEN` secret and deploy the separate QA Worker only after the owner is ready; production Worker remains untouched.
 
 ## Important
 
-No production file was edited and nothing was deployed. This branch does not
-implement automated multi-tab YouTube playback. Cloudflare Browser Run's current
+No production file was edited and nothing was deployed. The isolated QA Worker code is committed on this branch but is not yet deployed or end-to-end tested. This branch does not implement automated multi-tab YouTube playback. Cloudflare Browser Run's current
 Puppeteer guide: https://developers.cloudflare.com/browser-run/puppeteer/
