@@ -66,7 +66,7 @@ export default {
   if(!env.BROWSER||typeof env.BROWSER.script!=="function")return json({ok:false,error:"Cloudflare Browser binding BROWSER is unavailable."},503);
   try{
    const result=await env.BROWSER.script(
-    `async ({page,browser})=>{try{const response=await page.goto(${JSON.stringify(target.href)},{waitUntil:"domcontentloaded",timeout:20000});return {url:page.url(),title:await page.title(),httpStatus:response?response.status():null,host:new URL(page.url()).hostname};}finally{await browser.close();}}`,
+    `async ({page,browser})=>{try{await page.route("**/*",route=>{try{const requestUrl=new URL(route.request().url());if(requestUrl.protocol!=="https:"||requestUrl.hostname!=="example.com")return route.abort();return route.continue();}catch{return route.abort();}});const response=await page.goto(${JSON.stringify(target.href)},{waitUntil:"domcontentloaded",timeout:20000});const finalUrl=new URL(page.url());if(finalUrl.protocol!=="https:"||finalUrl.hostname!=="example.com")throw new Error("Navigation left the allowed host.");return {url:page.url(),title:await page.title(),httpStatus:response?response.status():null,host:finalUrl.hostname};}finally{await browser.close();}}`,
     {library:"playwright",timeout:30000,keepAlive:10000}
    );
    const data=await result.json();
