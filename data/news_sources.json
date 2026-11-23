@@ -111,5 +111,15 @@
       "url": "https://news.google.com/rss/search?q=technology%20news&hl=en&gl=US&ceid=US:en",
       "enabled": true
     }
-  ]
+  ],
+  "gdelt_enabled": true,
+  "gdelt_categories": [
+    "world",
+    "economy",
+    "technology",
+    "sports"
+  ],
+  "gdelt_timespan": "24h",
+  "gdelt_maxrecords_per_category": 25,
+  "gdelt_pause_seconds": 6
 }
