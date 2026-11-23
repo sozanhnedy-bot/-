@@ -52,7 +52,7 @@ function refresh(){
     card.querySelector('.start').disabled=state!=='idle';
     card.querySelector('.stop').disabled=state!=='running';
   }
-  document.getElementById('total').textContent=visible;
+  document.getElementById('total').textContent=100;
   document.getElementById('idle').textContent=idle;
   document.getElementById('active').textContent=running;
 }
@@ -65,7 +65,10 @@ root.addEventListener('click',event=>{
 });
 document.getElementById('search').addEventListener('input',refresh);
 document.getElementById('filter').addEventListener('change',refresh);
-document.getElementById('startAll').addEventListener('click',()=>{\n  for(let i=1;i<=100;i++)if(states.get(i)==='idle')states.set(i,'running');\n  refresh();\n});\ndocument.getElementById('reset').addEventListener('click',()=>{
+document.getElementById('startAll').addEventListener('click',()=>{
+  for(let i=1;i<=100;i++) if(states.get(i)==='idle') states.set(i,'running');
+  refresh();
+});\ndocument.getElementById('reset').addEventListener('click',()=>{
   for(let i=1;i<=100;i++)states.set(i,'idle');
   document.getElementById('search').value='';
   document.getElementById('filter').value='all';
